@@ -10,7 +10,6 @@
 @endsection
 
 @section('container')
-
     <div class="content-wrapper">
         <!-- Content -->
 
