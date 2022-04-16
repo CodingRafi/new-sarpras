@@ -25,7 +25,7 @@ class ProfilController extends Controller
      */
     public function create()
     {
-        //
+        return view('jeniskompeten.create');
     }
 
     /**
@@ -47,7 +47,14 @@ class ProfilController extends Controller
      */
     public function show(Profil $profil)
     {
+        $profilDepo = ProfilDepo::where('id', $profil->id)->get()[0];
         
+        return view('profil.index', [
+            'profil' => $profil,
+            'kopetensikeahlians' => $profil->kopetensikeahlian,
+            'koleksis' => $profilDepo->koleksi,
+            'kompetens' => $profil->kompeten
+        ]);
     }
 
     /**
@@ -56,11 +63,10 @@ class ProfilController extends Controller
      * @param  \App\Models\Profil  $profil
      * @return \Illuminate\Http\Response
      */
-    public function edit(Profil $profil, $id)
+    public function edit(Profil $profil)
     {
-        $data = ProfilDepo::where('id', $id)->get()[0];
         return view('profil.edit', [
-            'data' => $data
+            'data' => $profil
         ]);
     }
 
@@ -90,12 +96,11 @@ class ProfilController extends Controller
             'akreditas' => 'required',
         ]);
         
-        $profilDepo = ProfilDepo::where('id', $request->profil_depo_id)->get()[0];
-        if(count($profilDepo->kopetensikeahlian) == 0){
+        if(count($profil->kopetensikeahlian) == 0){
             $validatedData['jml_siswa_l'] = 0;
             $validatedData['jml_siswa_p'] = 0;
         }else{
-            foreach($profilDepo->kopetensikeahlian as $kopetensi){
+            foreach($profil->kopetensikeahlian as $kopetensi){
                  $jml_lk += $kopetensi->jml_lk;
                  $jml_pr += $kopetensi->jml_pr;
             }
@@ -106,9 +111,9 @@ class ProfilController extends Controller
             $jml_pr = 0;
         }
 
-        Profil::where('id' , $request->profil_depo_id)->update($validatedData);
+        Profil::where('id' , $profil->id)->update($validatedData);
 
-        return redirect('/profildepo/' . $request->profil_depo_id);
+        return redirect('/profil/' . $request->profil_depo_id);
 
     }
 

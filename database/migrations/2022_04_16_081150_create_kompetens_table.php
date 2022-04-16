@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kopetensikeahlians', function (Blueprint $table) {
+        Schema::create('kompetens', function (Blueprint $table) {
             $table->id();
             $table->foreignId('profil_id');
-            $table->foreignId('kompeten_id');
-            $table->integer('jml_lk');
-            $table->integer('jml_pr');
+            $table->string('nama');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kopetensikeahlians');
+        Schema::dropIfExists('kompetens');
     }
 };

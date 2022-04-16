@@ -6,7 +6,7 @@
 
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="card">
-                <a href="/profiloke/{{ $profil->id }}/edit" class="btn btn-warning">Edit Profil</a>
+                <a href="/profil/{{ $profil->id }}/edit" class="btn btn-warning">Edit Profil</a>
                 <h6>NPSN: {{ $profil->npsn }}</h6>
                 <h6>Sekolah Id: {{ $profil->sekolah_id }}</h6>
                 <h6>Nama: {{ $profil->nama }}</h6>
@@ -50,10 +50,29 @@
                 <h6>Akreditasi: {{ $profil->akreditas }}</h6>
                 <h6>Jumlah Siswa Laki Laki: {{ $profil->jml_siswa_l }}</h6>
                 <h6>Jumlah Siswa Perempuan: {{ $profil->jml_siswa_p }}</h6>
-                <a href="/kopetensi/create/{{ $profil->id }}" class="btn btn-primary">Tambah Kopetensi</a>
+                <br>
+                <a href="/kompeten/create/{{ $profil->id }}">Tambah Kompetensi</a>
+                <p>Kompetensi yang tersedia:</p>
+                @foreach ($kompetens as $key => $kompeten)
+
+                    <a href="/kompeten/{{ $kompeten->id }}/edit">Edit Kompeten</a>
+                    <form action="/kompeten/{{ $kompeten->id }}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button type="submit">Delete</button>
+                    </form>
+                    <p>{{ $key + 1 }}. {{ $kompeten->nama }}</p>
+                    
+                @endforeach
+
+                <br>
+
+                <a href="/kopetensi/create/{{ $profil->id }}" class="btn btn-primary">Tambah Jumlah Data Siswa Kopetensi</a>
 
                 <br>
                 <a href="/koleksi/create/{{ $profil->id }}" class="btn btn-primary">Buat Koleksi</a>
+
+                <br>
             </div>
 
         </div>

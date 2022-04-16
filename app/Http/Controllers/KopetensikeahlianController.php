@@ -27,8 +27,10 @@ class KopetensikeahlianController extends Controller
      */
     public function create($id)
     {
+        $data = Profil::where('id', $id)->get()[0];
         return view('kopetensi.create', [
             'id_profil' => $id,
+            'kompetens' => $data->kompeten
         ]);
     }
 
@@ -41,15 +43,15 @@ class KopetensikeahlianController extends Controller
     public function store(StoreKopetensikeahlianRequest $request)
     {
         $validatedData = $request->validate([
-            'profil_depo_id' => 'required',
-            'nama' => 'required',
+            'profil_id' => 'required',
+            'kompeten_id' => 'required',
             'jml_lk' => 'required',
             'jml_pr' => 'required',
         ]);
 
         Kopetensikeahlian::create($validatedData);
 
-        $profil = ProfilDepo::where('id', $request->profil_depo_id)->get()[0];
+        $profil = Profil::where('id', $request->profil_id)->get()[0];
 
         $jml_lk = 0;
         $jml_pr = 0;
@@ -63,11 +65,11 @@ class KopetensikeahlianController extends Controller
             'jml_siswa_p' => $jml_pr
         ];
 
-        Profil::where('id', $request->profil_depo_id)->update($updateData);
+        Profil::where('id', $request->profil_id)->update($updateData);
         $jml_lk = 0;
         $jml_pr = 0;
 
-        return redirect('/profildepo/'. $request->profil_depo_id);
+        return redirect('/profil/'. $request->profil_id);
     }
 
     /**
@@ -90,8 +92,10 @@ class KopetensikeahlianController extends Controller
     public function edit(Kopetensikeahlian $kopetensikeahlian, $id)
     {
         $data = Kopetensikeahlian::where('id', $id)->get()[0];
+        $profil = Profil::where('id', $data->profil_id)->get()[0];
         return view('kopetensi.edit', [
-            'data' => $data
+            'data' => $data,
+            'kompetens' => $profil->kompeten
         ]);
     }
 
@@ -105,14 +109,14 @@ class KopetensikeahlianController extends Controller
     public function update(UpdateKopetensikeahlianRequest $request, Kopetensikeahlian $kopetensikeahlian, $id)
     {
         $validatedData = $request->validate([
-            'nama' => 'required',
+            'kompeten_id' => 'required',
             'jml_lk' => 'required',
             'jml_pr' => 'required',
         ]);
 
         Kopetensikeahlian::where('id', $id)->update($validatedData);
 
-        $profil = ProfilDepo::where('id', $request->profil_depo_id)->get()[0];
+        $profil = Profil::where('id', $request->profil_id)->get()[0];
 
         $jml_lk = 0;
         $jml_pr = 0;
@@ -126,11 +130,11 @@ class KopetensikeahlianController extends Controller
             'jml_siswa_p' => $jml_pr
         ];
 
-        Profil::where('id', $request->profil_depo_id)->update($updateData);
+        Profil::where('id', $request->profil_id)->update($updateData);
         $jml_lk = 0;
         $jml_pr = 0;
 
-        return redirect('/profildepo/'. $request->profil_depo_id);
+        return redirect('/profil/'. $request->profil_id);
     }
 
     /**
@@ -142,11 +146,11 @@ class KopetensikeahlianController extends Controller
     public function destroy(Kopetensikeahlian $kopetensikeahlian, $id)
     {
         $data = Kopetensikeahlian::where('id', $id)->get()[0];
-
+        
         Kopetensikeahlian::destroy($id);
-
-        $profil = ProfilDepo::where('id', $data->profil_depo_id)->get()[0];
-
+        
+        $profil = Profil::where('id', $data->profil_id)->get()[0];
+        
         $jml_lk = 0;
         $jml_pr = 0;
         foreach($profil->kopetensikeahlian as $kopetensi){
@@ -159,10 +163,10 @@ class KopetensikeahlianController extends Controller
             'jml_siswa_p' => $jml_pr
         ];
 
-        Profil::where('id', $data->profil_depo_id)->update($updateData);
+        Profil::where('id', $data->profil_id)->update($updateData);
         $jml_lk = 0;
         $jml_pr = 0;
 
-        return redirect('/profildepo/'. $data->profil_depo_id);
+        return redirect('/profil/'. $data->profil_id);
     }
 }

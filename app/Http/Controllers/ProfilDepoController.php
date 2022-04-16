@@ -48,14 +48,7 @@ class ProfilDepoController extends Controller
      */
     public function show(ProfilDepo $profilDepo, $id)
     {
-        $profilDepo = ProfilDepo::where('id', $id)->get()[0];
-        $profil = Profil::where('id', $id)->get()[0];
-
-        return view('profil.index', [
-            'profil' => $profil,
-            'kopetensikeahlians' => $profilDepo->kopetensikeahlian,
-            'koleksis' => $profilDepo->koleksi
-        ]);
+        
     }
 
     /**

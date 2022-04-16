@@ -52,10 +52,6 @@ class ProfilDepo extends Model
         return $this->belongsTo(Profil::class);
     }
 
-    public function kopetensikeahlian(){
-        return $this->hasMany(Kopetensikeahlian::class);
-    }
-
     public function koleksi(){
         return $this->hasMany(Koleksi::class);
     }

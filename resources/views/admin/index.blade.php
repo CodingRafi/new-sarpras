@@ -1,12 +1,18 @@
 @extends('mylayouts.main')
 
 @section('container')
-
-{{-- @dd($profils) --}}
+    {{-- @dd($profils) --}}
     <div class="content-wrapper">
         <!-- Content -->
 
         <div class="container-xxl flex-grow-1 container-p-y">
+
+            <form action="/profil/admin" method="GET">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search NPSN, sekolah id, nama sekolah" name="search">
+                    <button class="btn btn-outline-primary" type="submit" id="button-addon2">Search</button>
+                </div>
+            </form>
 
             <div class="card">
                 <table class="table" style="text-align: center;">
@@ -24,12 +30,12 @@
                         @foreach ($profils as $profil)
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>
-                                <td>{{ $profil->depo_npsn }}</td>
-                                <td>{{ $profil->depo_sekolah_id }}</td>
-                                <td>{{ $profil->depo_nama }}</td>
-                                <td>{{ $profil->depo_status_sekolah }}</td>
+                                <td>{{ $profil->npsn }}</td>
+                                <td>{{ $profil->sekolah_id }}</td>
+                                <td>{{ $profil->nama }}</td>
+                                <td>{{ $profil->status_sekolah }}</td>
                                 <td>
-                                    <a href="/profildepo/{{ $profil->id }}" class="btn btn-primary">Show</a>
+                                    <a href="/profil/{{ $profil->id }}" class="btn btn-primary">Show</a>
                                 </td>
                             </tr>
                         @endforeach
