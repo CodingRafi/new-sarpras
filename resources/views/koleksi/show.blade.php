@@ -8,6 +8,15 @@
 
             <div class="card">
                 <a href="/foto/create/{{ $koleksi->slug }}">Tambah foto</a>
+
+                @foreach ($fotos as $foto)
+                    <img src="{{ asset('storage/'. $foto->filename) }}" alt="" width="300">
+                    <form action="/foto/{{ $foto->id }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit">Hapus</button>
+                    </form>
+                @endforeach
             </div>
 
         </div>

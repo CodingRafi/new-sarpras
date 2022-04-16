@@ -22,12 +22,13 @@
                 @foreach ($kopetensikeahlians as $key => $kopetensikeahlian)
                     <br>
                     <h6>Kopetensi Keahlian {{ $key + 1 }}</h6>
-                    <a href="/kopetensi/{{ $kopetensikeahlian->id }}/edit" class="badge bg-warning border-0" style="width: 20%">Ubah Kompetensi {{ $kopetensikeahlian->nama }}</a>
+                    <a href="/kopetensi/{{ $kopetensikeahlian->id }}/edit" class="badge bg-warning border-0"
+                        style="width: 20%">Ubah Kompetensi {{ $kopetensikeahlian->nama }}</a>
                     <form action="/kopetensi/{{ $kopetensikeahlian->id }}" class="d-inline" method="POST">
                         @method("delete")
                         @csrf
                         <button class="badge bg-danger border-0" onclick="return confirm('Yakin?')">Delete</button>
-                      </form>
+                    </form>
                     <h6>Nama Kopetensi : {{ $kopetensikeahlian->nama }}</h6>
                     <h6>Jumlah Laki Laki : {{ $kopetensikeahlian->jml_lk }}</h6>
                     <h6>Jumlah Perempuan : {{ $kopetensikeahlian->jml_pr }}</h6>
@@ -35,9 +36,15 @@
                 @endforeach
 
                 @foreach ($koleksis as $koleksi)
-                      <br>
-                      <a href="/koleksi/{{ $koleksi->slug }}">{{ $koleksi->nama }}</a>
-                      <br>
+                    <br>
+                    <a href="/koleksi/{{ $koleksi->slug }}/edit">Edit</a>
+                    <form action="/koleksi/{{ $koleksi->slug }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit">Delete</button>
+                    </form>
+                    <a href="/koleksi/{{ $koleksi->slug }}">{{ $koleksi->nama }}</a>
+                    <br>
                 @endforeach
 
                 <h6>Akreditasi: {{ $profilDepo->depo_akreditas }}</h6>

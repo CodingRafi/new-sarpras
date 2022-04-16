@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Foto;
+use App\Models\Koleksi;
 use App\Http\Requests\StoreFotoRequest;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateFotoRequest;
+use ImageOptimizer;
 
 class FotoController extends Controller
 {
@@ -23,9 +26,12 @@ class FotoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($slug)
     {
-        return view('foto.create');
+        $data = Koleksi::where('slug', $slug)->get()[0];
+        return view('foto.create',[
+            'koleksi_id' => $data->id
+        ]);
     }
 
     /**
@@ -36,7 +42,27 @@ class FotoController extends Controller
      */
     public function store(StoreFotoRequest $request)
     {
-        //
+        $validatedData = $request->validate([
+            'koleksi_id' => 'required',
+            'nama' => 'required',
+            'nama.*' => 'mimes:jpg,jpeg,png|file|max:5120'
+        ]);
+
+        $koleksi = Koleksi::where('id', $request->koleksi_id)->get()[0];
+
+        if($request->hasfile('nama')){ // mengecek lagi bener bener ada gak isinya
+            $files = [];
+            foreach($request->nama as $file){
+                $nama = $file->store('imgUploads');
+                ImageOptimizer::optimize('storage/' . $nama);
+                Foto::create([
+                    'koleksi_id' => $validatedData['koleksi_id'],
+                    'filename' => $nama
+                ]);
+            }
+        }
+
+        return redirect('/koleksi/' . $koleksi->slug);
     }
 
     /**
@@ -81,6 +107,9 @@ class FotoController extends Controller
      */
     public function destroy(Foto $foto)
     {
-        //
+        Storage::delete($foto->filename);
+        Foto::destroy($foto->id);
+
+        return redirect()->back();
     }
 }

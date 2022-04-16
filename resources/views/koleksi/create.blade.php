@@ -14,7 +14,7 @@
                         <label for="nama" class="form-label">Nama Koleksi</label>
                         <input type="text" class="form-control" id="nama" aria-describedby="emailHelp" name="nama" placeholder="Nama Kopetensi" required>
                     </div>
-                    <select class="form-select" aria-label="Default select example" name="kategori">
+                    <select class="form-select" aria-label="Default select example" name="jenis">
                         <option value="bangunan">Bangunan Sekolah</option>
                         <option value="gerbang">Gerbang</option>
                         <option value="fasilitas">Fasilitas</option>

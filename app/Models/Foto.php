@@ -9,6 +9,12 @@ class Foto extends Model
 {
     use HasFactory;
 
+    protected $guarded =[
+        "id"
+    ];
+    protected $table ='fotos';
+    protected $primaryKey = 'id';
+
     public function koleksi(){
         return $this->belongsTo(Koleksi::class);
     }

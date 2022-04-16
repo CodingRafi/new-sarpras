@@ -168,6 +168,7 @@ return [
          * Package Service Providers...
          */
         Spatie\Permission\PermissionServiceProvider::class,
+        Spatie\LaravelImageOptimizer\ImageOptimizerServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -192,6 +193,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'ImageOptimizer' => Spatie\LaravelImageOptimizer\ImageOptimizerFacade::class,
     ])->toArray(),
 
 ];

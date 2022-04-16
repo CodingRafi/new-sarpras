@@ -7,22 +7,18 @@
         <div class="container-xxl flex-grow-1 container-p-y">
 
             <div class="card">
-                <form action="/kopetensi/{{ $data->id }}" method="POST">
+                <form action="/koleksi/{{ $koleksi->slug }}" method="POST">
                     @csrf
-                    @method('put')
-                    <input type="hidden" name="profil_id" value="{{ $data->profil_id }}">
+                    @method('patch')
                     <div class="mb-3">
-                        <label for="nama" class="form-label">Nama Kopetensi Keahlian</label>
-                        <input type="text" class="form-control" id="nama" aria-describedby="emailHelp" name="nama" placeholder="Nama Kopetensi" required value="{{ $data->nama }}">
+                        <label for="nama" class="form-label">Nama Koleksi</label>
+                        <input type="text" class="form-control" id="nama" aria-describedby="emailHelp" name="nama" placeholder="Nama Koleksi" required value="{{ $koleksi->nama }}">
                     </div>
-                    <div class="mb-3">
-                        <label for="jml_lk" class="form-label">Jumlah laki laki</label>
-                        <input type="number" class="form-control" id="jml_lk" aria-describedby="emailHelp" name="jml_lk" placeholder="Jumlah Laki Laki" required value="{{ $data->jml_lk }}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="jml_pr" class="form-label">Jumlah Perempuan</label>
-                        <input type="number" class="form-control" id="jml_pr" aria-describedby="emailHelp" name="jml_pr" placeholder="Jumlah Laki Laki" required value="{{ $data->jml_pr }}">
-                    </div>
+                    <select class="form-select" aria-label="Default select example" name="jenis">
+                        <option value="bangunan" {{ $koleksi->jenis == 'bangunan' ? 'selected' : '' }}>Bangunan Sekolah</option>
+                        <option value="gerbang" {{ $koleksi->jenis == 'gerbang' ? 'selected' : '' }}>Gerbang</option>
+                        <option value="fasilitas" {{ $koleksi->jenis == 'fasilitas' ? 'selected' : '' }}>Fasilitas</option>
+                      </select>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>

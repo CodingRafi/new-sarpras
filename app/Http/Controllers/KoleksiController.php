@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Koleksi;
+use App\Models\Foto;
 use App\Http\Requests\StoreKoleksiRequest;
 use App\Http\Requests\UpdateKoleksiRequest;
+use Illuminate\Support\Facades\Storage;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class KoleksiController extends Controller
@@ -42,7 +44,7 @@ class KoleksiController extends Controller
         $validatedData = $request->validate([
             'profil_id' => 'required',
             'nama' => 'required',
-            'kategori' => 'required',
+            'jenis' => 'required',
         ]);
 
         $validatedData['slug'] = SlugService::createSlug(Koleksi::class, 'slug', $request->nama);
@@ -74,7 +76,9 @@ class KoleksiController extends Controller
      */
     public function edit(Koleksi $koleksi)
     {
-        //
+        return view('koleksi.edit', [
+            'koleksi' => $koleksi
+        ]);
     }
 
     /**
@@ -86,7 +90,16 @@ class KoleksiController extends Controller
      */
     public function update(UpdateKoleksiRequest $request, Koleksi $koleksi)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'jenis' => 'required'
+        ]);
+
+        $validatedData['slug'] = SlugService::createSlug(Koleksi::class, 'slug', $request->nama);
+
+        Koleksi::where('id', $koleksi->id)->update($validatedData);
+
+        return redirect('profil/'.$koleksi->profil_id);
     }
 
     /**
@@ -97,6 +110,17 @@ class KoleksiController extends Controller
      */
     public function destroy(Koleksi $koleksi)
     {
-        //
+        $fotos = $koleksi->foto;
+
+        if(count($fotos) > 0){
+            foreach($fotos as $foto){
+                Storage::delete($foto->filename);
+                Foto::destroy($foto->id);
+            }
+        }
+
+        Koleksi::destroy($koleksi->id);
+
+        return redirect('profil/'.$koleksi->profil_id);
     }
 }

@@ -19,7 +19,7 @@ class Koleksi extends Model
     }
 
     public function foto(){
-        return $this->hasMany(foto::class);
+        return $this->hasMany(Foto::class);
     }
 
     public function sluggable(): array
