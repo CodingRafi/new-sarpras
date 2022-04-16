@@ -13,7 +13,7 @@ class Kopetensikeahlian extends Model
         "id"
     ];
 
-    public function profil(){
-        return $this->belongsTo(Profil::class);
+    public function profilDepo(){
+        return $this->belongsTo(ProfilDepo::class);
     }
 }

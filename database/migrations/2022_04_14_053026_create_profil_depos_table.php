@@ -31,7 +31,8 @@ return new class extends Migration
             $table->string('depo_program')->nullable();
             $table->string('depo_jurusan')->nullable();
             $table->string('depo_akreditas')->nullable();
-            $table->string('depo_jml_siswa');
+            $table->string('depo_jml_siswa_l')->nullable();
+            $table->string('depo_jml_siswa_p')->nullable();
             $table->timestamps();
         });
     }

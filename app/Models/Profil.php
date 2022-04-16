@@ -13,11 +13,7 @@ class Profil extends Model
         "id"
     ];
 
-    public function kopetensikeahlian(){
-        return $this->hasMany(Kopetensikeahlian::class);
-    }
-
-    public function koleksi(){
-        return $this->hasMany(Koleksi::class);
+    public function profildepo(){
+        return $this->belongsTo(ProfilDepo::class);
     }
 }

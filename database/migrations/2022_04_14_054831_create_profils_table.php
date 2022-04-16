@@ -15,12 +15,22 @@ return new class extends Migration
     {
         Schema::create('profils', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('profil_depo_id');
             $table->string('npsn');
             $table->string('sekolah_id');
             $table->string('nama');
             $table->string('status_sekolah');
-            $table->string('jml_siswa_l')->nullable();
-            $table->string('jml_siswa_p')->nullable();
+            $table->string('alamat');
+            $table->string('provinsi');
+            $table->string('kabupaten');
+            $table->string('kecamatan');
+            $table->string('email')->nullable();
+            $table->string('website')->nullable();
+            $table->string('nomor_telepon')->nullable();
+            $table->string('nomor_fax')->nullable();
+            $table->string('akreditas')->nullable();
+            $table->string('jml_siswa_l');
+            $table->string('jml_siswa_p');
             $table->string('jml_rombel')->nullable();
             $table->timestamps();
         });

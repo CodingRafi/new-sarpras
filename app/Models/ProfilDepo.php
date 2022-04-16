@@ -37,7 +37,8 @@ class ProfilDepo extends Model
                 'nomor_telepon' => $hasil->nomor_telepon,
                 'nomor_fax' => $hasil->nomor_fax,
                 'akreditasi' => $hasilJsons[1][$key]->akreditasi,
-                'jml_siswa' => $hasilJsons[2][$key]->k_l + $hasilJsons[2][$key]->k_p,
+                'jml_siswa_l' => $hasilJsons[2][$key]->k_l,
+                'jml_siswa_p' => $hasilJsons[2][$key]->k_p,
                 'bidang' => $hasilJsons[2][$key]->bidang,
                 'program' => $hasilJsons[2][$key]->program,
                 'jurusan' => $hasilJsons[2][$key]->jurusan,
@@ -45,5 +46,17 @@ class ProfilDepo extends Model
         }
 
         return $data;
+    }
+
+    public function profil(){
+        return $this->belongsTo(Profil::class);
+    }
+
+    public function kopetensikeahlian(){
+        return $this->hasMany(Kopetensikeahlian::class);
+    }
+
+    public function koleksi(){
+        return $this->hasMany(Koleksi::class);
     }
 }

@@ -24,12 +24,12 @@
                         @foreach ($profils as $profil)
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>
-                                <td>{{ $profil->npsn }}</td>
-                                <td>{{ $profil->sekolah_id }}</td>
-                                <td>{{ $profil->nama }}</td>
-                                <td>{{ $profil->status_sekolah }}</td>
+                                <td>{{ $profil->depo_npsn }}</td>
+                                <td>{{ $profil->depo_sekolah_id }}</td>
+                                <td>{{ $profil->depo_nama }}</td>
+                                <td>{{ $profil->depo_status_sekolah }}</td>
                                 <td>
-                                    <a href="/profil/{{ $profil->id }}" class="btn btn-primary">Show</a>
+                                    <a href="/profildepo/{{ $profil->id }}" class="btn btn-primary">Show</a>
                                 </td>
                             </tr>
                         @endforeach

@@ -10,7 +10,7 @@
                 <form action="/kopetensi/{{ $data->id }}" method="POST">
                     @csrf
                     @method('put')
-                    <input type="hidden" name="profil_id" value="{{ $data->profil_id }}">
+                    <input type="hidden" name="profil_depo_id" value="{{ $data->profil_depo_id }}">
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama Kopetensi Keahlian</label>
                         <input type="text" class="form-control" id="nama" aria-describedby="emailHelp" name="nama" placeholder="Nama Kopetensi" required value="{{ $data->nama }}">

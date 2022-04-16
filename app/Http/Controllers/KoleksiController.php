@@ -29,7 +29,7 @@ class KoleksiController extends Controller
     public function create($id)
     {
         return view('koleksi.create', [
-            'profil_id' => $id,
+            'profil_depo_id' => $id,
         ]);
     }
 
@@ -42,7 +42,7 @@ class KoleksiController extends Controller
     public function store(StoreKoleksiRequest $request)
     {
         $validatedData = $request->validate([
-            'profil_id' => 'required',
+            'profil_depo_id' => 'required',
             'nama' => 'required',
             'jenis' => 'required',
         ]);
@@ -99,7 +99,7 @@ class KoleksiController extends Controller
 
         Koleksi::where('id', $koleksi->id)->update($validatedData);
 
-        return redirect('profil/'.$koleksi->profil_id);
+        return redirect('profil/'.$koleksi->profil_depo_id);
     }
 
     /**
@@ -121,6 +121,6 @@ class KoleksiController extends Controller
 
         Koleksi::destroy($koleksi->id);
 
-        return redirect('profil/'.$koleksi->profil_id);
+        return redirect('profil/'.$koleksi->profil_depo_id);
     }
 }

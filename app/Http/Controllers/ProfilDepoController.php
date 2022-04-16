@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProfilDepo;
+use App\Models\Profil;
 use App\Http\Requests\StoreProfilDepoRequest;
 use App\Http\Requests\UpdateProfilDepoRequest;
 
@@ -45,9 +46,16 @@ class ProfilDepoController extends Controller
      * @param  \App\Models\ProfilDepo  $profilDepo
      * @return \Illuminate\Http\Response
      */
-    public function show(ProfilDepo $profilDepo)
+    public function show(ProfilDepo $profilDepo, $id)
     {
-        //
+        $profilDepo = ProfilDepo::where('id', $id)->get()[0];
+        $profil = Profil::where('id', $id)->get()[0];
+
+        return view('profil.index', [
+            'profil' => $profil,
+            'kopetensikeahlians' => $profilDepo->kopetensikeahlian,
+            'koleksis' => $profilDepo->koleksi
+        ]);
     }
 
     /**

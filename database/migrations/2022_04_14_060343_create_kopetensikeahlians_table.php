@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('kopetensikeahlians', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('profil_id');
+            $table->foreignId('profil_depo_id');
             $table->string('nama');
             $table->integer('jml_lk');
             $table->integer('jml_pr');

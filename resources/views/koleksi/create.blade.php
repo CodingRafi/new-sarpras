@@ -9,7 +9,7 @@
             <div class="card">
                 <form action="/koleksi" method="POST">
                     @csrf
-                    <input type="hidden" name="profil_id" value="{{ $profil_id }}">
+                    <input type="hidden" name="profil_depo_id" value="{{ $profil_depo_id }}">
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama Koleksi</label>
                         <input type="text" class="form-control" id="nama" aria-describedby="emailHelp" name="nama" placeholder="Nama Kopetensi" required>

@@ -9,7 +9,7 @@
             <div class="card">
                 <form action="/kopetensi" method="POST">
                     @csrf
-                    <input type="hidden" name="profil_id" value="{{ $id_profil }}">
+                    <input type="hidden" name="profil_depo_id" value="{{ $id_profil }}">
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama Kopetensi Keahlian</label>
                         <input type="text" class="form-control" id="nama" aria-describedby="emailHelp" name="nama" placeholder="Nama Kopetensi" required>

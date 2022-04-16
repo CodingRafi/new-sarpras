@@ -7,6 +7,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\KoleksiController;
+use App\Http\Controllers\ProfilDepoController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\KopetensikeahlianController;
 
@@ -28,11 +29,12 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
     Route::resource('users', RegisteredUserController::class);
-    Route::resource('/profil', ProfilController::class);
+    Route::resource('/profiloke', ProfilController::class);
+    Route::get('/profildepo/{id:profil}', [ProfilDepoController::class, 'show']);
     Route::resource('/kopetensi', KopetensikeahlianController::class);
-    Route::get('/kopetensi/create/{id:profil}', [KopetensikeahlianController::class, 'create']);
+    Route::get('/kopetensi/create/{id:profildepo}', [KopetensikeahlianController::class, 'create']);
     Route::resource('/koleksi', KoleksiController::class);
-    Route::get('/koleksi/create/{id:profil}', [KoleksiController::class, 'create']);
+    Route::get('/koleksi/create/{id:profildepo}', [KoleksiController::class, 'create']);
     Route::resource('/foto', FotoController::class);
     Route::get('/foto/create/{koleksi:slug}', [FotoController::class, 'create']);
     Route::get('/profilsekolah', [AdminController::class, 'index']);

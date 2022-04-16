@@ -14,8 +14,8 @@ class Koleksi extends Model
         "id"
     ];
 
-    public function Profil(){
-        return $this->belongsTo(Profil::class);
+    public function ProfilDepo(){
+        return $this->belongsTo(ProfilDepo::class);
     }
 
     public function foto(){

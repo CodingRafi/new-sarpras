@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Profil;
+use App\Models\ProfilDepo;
 
 class AdminController extends Controller
 {
@@ -15,7 +15,7 @@ class AdminController extends Controller
     public function index()
     {
         return view('admin.index',[
-            'profils' => Profil::paginate(40),
+            'profils' => ProfilDepo::paginate(40),
         ]);
     }
 
