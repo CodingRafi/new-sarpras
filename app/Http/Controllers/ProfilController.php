@@ -48,12 +48,19 @@ class ProfilController extends Controller
     public function show(Profil $profil)
     {
         $profilDepo = ProfilDepo::where('id', $profil->id)->get()[0];
+        $koleksis = $profilDepo->koleksi;
+        $fotos = [];
+
+        foreach($koleksis as $koleksi){
+            $fotos[] = $koleksi->foto;
+        }
         
         return view('profil.index', [
             'profil' => $profil,
             'kopetensikeahlians' => $profil->kopetensikeahlian,
             'koleksis' => $profilDepo->koleksi,
-            'kompetens' => $profil->kompeten
+            'kompetens' => $profil->kompeten,
+            'fotos' => $fotos
         ]);
     }
 
