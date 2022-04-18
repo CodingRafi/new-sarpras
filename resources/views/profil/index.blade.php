@@ -20,6 +20,7 @@
                 <h6>No Telp: {{ $profil->nomor_telepon }}</h6>
                 <h6>No Fax:{{ $profil->nomor_fax }}</h6>
                 @foreach ($kopetensikeahlians as $key => $kopetensikeahlian)
+                @dd($kopetensikeahlian)
                     <br>
                     <h6>Kopetensi Keahlian {{ $key + 1 }}</h6>
                     <a href="/kopetensi/{{ $kopetensikeahlian->id }}/edit" class="badge bg-warning border-0"
