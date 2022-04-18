@@ -8,7 +8,7 @@
     </ul>
 
     <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
+    <form class="form-inline ml-2">
       <div class="input-group input-group-sm">
         <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" style="border-radius: 50px 0 0 50px">
         <div class="input-group-append">
@@ -22,7 +22,7 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <span>NAMA SEKOLAH</span>
+        <span class="nama-sekolah">NAMA SEKOLAH</span>
         <img src="/assets/img/avatars/TarunaBhaktiLogo.png" alt="TarunaBhakti Logo" class="brand-image img-circle bg-white"
           width="33" style="opacity: .8">
       </li>
