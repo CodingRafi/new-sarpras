@@ -56,6 +56,18 @@
                         <label for="akreditas" class="form-label">Akreditas</label>
                         <input type="text" class="form-control" id="akreditas" aria-describedby="akreditasHelp" name="akreditas" placeholder="Akreditas" required value="{{ $data->akreditas }}">
                     </div>
+                    <div class="mb-3">
+                        <label for="lat" class="form-label">lat</label>
+                        <input type="text" class="form-control" id="lat" aria-describedby="latHelp" name="lat" placeholder="lat" required value="{{ $data->lat }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="long" class="form-label">long</label>
+                        <input type="text" class="form-control" id="long" aria-describedby="longHelp" name="long" placeholder="long" required value="{{ $data->long }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="jml_rombel" class="form-label">jml_rombel</label>
+                        <input type="text" class="form-control" id="jml_rombel" aria-describedby="jml_rombelHelp" name="jml_rombel" placeholder="jml_rombel" required value="{{ $data->jml_rombel }}">
+                    </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>

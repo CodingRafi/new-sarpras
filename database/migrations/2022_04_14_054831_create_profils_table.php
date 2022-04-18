@@ -31,6 +31,8 @@ return new class extends Migration
             $table->string('akreditas')->nullable();
             $table->string('jml_siswa_l');
             $table->string('jml_siswa_p');
+            $table->string('lat')->nullable();
+            $table->string('long')->nullable();
             $table->string('jml_rombel')->nullable();
             $table->timestamps();
         });

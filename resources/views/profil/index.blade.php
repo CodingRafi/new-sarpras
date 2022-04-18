@@ -1,6 +1,7 @@
 @extends('mylayouts.main')
 
 @section('container')
+
 <div class="container-fluid">
     <!-- Small boxes (Stat box) -->
     <div class="card mb-5">
@@ -475,6 +476,10 @@
         <h6>Jumlah Perempuan : {{ $kopetensikeahlian->jml_pr }}</h6> {{-- Sudah --}}
         <br>
         @endforeach
+
+        <h6>Latitude : {{ $profil->lat }}</h6>
+        <h6>Longtitude : {{ $profil->long }}</h6>
+        <h6>Jumlah Rombel : {{ $profil->jml_rombel ?? 0 }}</h6>
 
         @foreach ($koleksis as $koleksi)
         <br>
