@@ -473,6 +473,10 @@
         <br>
         @endforeach
 
+        <h6>Latitude : {{ $profil->lat }}</h6>
+        <h6>Longtitude : {{ $profil->long }}</h6>
+        <h6>Jumlah Rombel : {{ $profil->jml_rombel ?? 0 }}</h6>
+
         @foreach ($koleksis as $koleksi)
         <br>
         <a href="/koleksi/{{ $koleksi->slug }}/edit">Edit</a>

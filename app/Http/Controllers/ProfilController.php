@@ -101,6 +101,9 @@ class ProfilController extends Controller
             'nomor_telepon' => 'required',
             'nomor_fax' => 'required',
             'akreditas' => 'required',
+            'jml_rombel' => 'required',
+            'lat' => 'required',
+            'long' => 'required'
         ]);
         
         if(count($profil->kopetensikeahlian) == 0){
