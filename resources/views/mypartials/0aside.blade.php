@@ -84,7 +84,7 @@
             </li>
         @endcan
 
-        <li class="menu-item {{ Request::is('profilsekolah') ? 'active' : '' }}">
+        <li class="menu-item {{ Request::is('profil/*') ? 'active' : '' }}">
             <a href="/profil/admin" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
                 <div data-i18n="Analytics">Sekolah</div>
