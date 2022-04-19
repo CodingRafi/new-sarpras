@@ -1,7 +1,6 @@
 @extends('mylayouts.main')
 
 @section('container')
-
 <div class="container-fluid">
     <!-- Small boxes (Stat box) -->
     <div class="card mb-5">
@@ -12,8 +11,8 @@
                             class="bi bi-house-fill mr-1"></i>Data Sekolah</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#input-data-sekolah" data-toggle="tab"><i
-                            class="bi bi-plus-lg mr-1"></i>Input Data Sekolah</a>
+                    <a class="nav-link text-white" href="#edit-data-sekolah" data-toggle="tab"><i
+                            class="bi bi-plus-lg mr-1"></i>Edit Data Sekolah</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="#foto-sekolah" data-toggle="tab"><i
@@ -22,95 +21,141 @@
             </ul>
         </div>
         <!-- /.card-header DATA SEKOLAH-->
-        <div class="card-body table-responsive p-0">
+        <div class="card-body p-0">
             <div class="tab-content p-0">
                 <div class="tab-pane active" id="data-sekolah">
-                    <table class="table table-hover table-borderless text-nowrap">
-                        {{------------------------------------------------------------------------------------------ NPSN ------------------------------------------------------------------------------------------}}
-                        <tr>
-                            <th>NPSN</th>
-                            <td>: {{ $profil->npsn }}</td>
-                        </tr>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <table class="table table-hover table-borderless text-nowrap">
+                                {{------------------------------------------------------------------------------------------ NPSN ------------------------------------------------------------------------------------------}}
+                                <tr>
+                                    <th>NPSN</th>
+                                    <td class="text-wrap">: {{ $profil->npsn }}</td>
+                                </tr>
+                                {{------------------------------------------------------------------------------------------ NAMA SEKOLAH ------------------------------------------------------------------------------------------}}
+                                <tr>
+                                    <th>Nama Sekolah</th>
+                                    <td class="text-wrap">: {{ $profil->nama }}</td>
+                                </tr>
+                                {{------------------------------------------------------------------------------------------ STATUS SEKOLAH ------------------------------------------------------------------------------------------}}
+                                <tr>
+                                    <th>Status Sekolah</th>
+                                    <td class="text-wrap">: {{ $profil->status_sekolah }}</td>
+                                </tr>
+                                {{------------------------------------------------------------------------------------------ ALAMAT SEKOLAH ------------------------------------------------------------------------------------------}}
+                                <tr>
+                                    <th>Alamat</th>
+                                    <td class="text-wrap">: {{ $profil->alamat }}</td>
+                                </tr>
+                                {{------------------------------------------------------------------------------------------ KOORDINAT SEKOLAH ------------------------------------------------------------------------------------------}}
+                                <tr>
+                                    <th>Koordinat</th>
+                                    <td class="text-wrap">: {{ $profil->lat . "," . $profil->long}}</td>
+                                </tr>
+                                {{------------------------------------------------------------------------------------------ EMAIL SEKOLAH ------------------------------------------------------------------------------------------}}
+                                <tr>
+                                    <th>Email</th>
+                                    <td class="text-wrap">: {{ $profil->email }}</td>
+                                </tr>
+                                {{------------------------------------------------------------------------------------------ WEBSITE SEKOLAH ------------------------------------------------------------------------------------------}}
+                                <tr>
+                                    <th>Website</th>
+                                    <td class="text-wrap">: {{ $profil->website }}</td>
+                                </tr>
+                                {{------------------------------------------------------------------------------------------ NOMOR TELEPON SEKOLAH ------------------------------------------------------------------------------------------}}
+                                <tr>
+                                    <th>Nomor Telepon</th>
+                                    <td class="text-wrap">: {{ $profil->nomor_telepon }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="p-3">
+                                {{------------------------------------------------------------------------------------------ EMBED MAP ------------------------------------------------------------------------------------------}}
+                                <iframe src="https://www.google.com/maps?q={{ $profil->lat . "," . $profil->long}}&hl=es;z=14&output=embed"
+                                    frameborder="0" width="100%" height="300" style="border-radius: 15px;"></iframe>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="info-box shadow-none">
+                                            <span class="info-box-icon" style="background-color: rgba(37, 181, 233, 0.1)"><i class="fa-solid fa-users text-info"></i></span>
 
-                        {{------------------------------------------------------------------------------------------ NAMA SEKOLAH ------------------------------------------------------------------------------------------}}
-                        <tr>
-                            <th>Nama Sekolah</th>
-                            <td>: {{ $profil->nama }}</td>
-                        </tr>
+                                            <div class="info-box-content">
+                                                <span class="info-box-text">GTK</span>
+                                                <span class="info-box-number">1,410</span>
+                                            </div>
+                                            <!-- /.info-box-content -->
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="info-box shadow-none">
+                                            <span class="info-box-icon" style="background-color: rgba(0, 166, 91, 0.06)"><i class="fa-solid fa-graduation-cap text-success"></i></span>
 
-                        {{------------------------------------------------------------------------------------------ NAMA SEKOLAH ------------------------------------------------------------------------------------------}}
-                        <tr>
-                            <th>Status Sekolah</th>
-                            <td>: -</td>
-                        </tr>
-
-                        {{------------------------------------------------------------------------------------------ ALAMAT SEKOLAH ------------------------------------------------------------------------------------------}}
-                        <tr>
-                            <th>Alamat</th>
-                            <td>: {{ $profil->alamat }}</td>
-                        </tr>
-
-                        {{------------------------------------------------------------------------------------------ KOORDINAT SEKOLAH ------------------------------------------------------------------------------------------}}
-                        <tr>
-                            <th>Koordinat</th>
-                            <td>: -</td>
-                        </tr>
-
-                        {{------------------------------------------------------------------------------------------ EMAIL SEKOLAH ------------------------------------------------------------------------------------------}}
-                        <tr>
-                            <th>Email</th>
-                            <td>: {{ $profil->email }}</td>
-                        </tr>
-
-                        {{------------------------------------------------------------------------------------------ WEBSITE SEKOLAH ------------------------------------------------------------------------------------------}}
-                        <tr>
-                            <th>Website</th>
-                            <td>: {{ $profil->website }}</td>
-                        </tr>
-
-                        {{------------------------------------------------------------------------------------------ NOMOR TELEPON SEKOLAH ------------------------------------------------------------------------------------------}}
-                        <tr>
-                            <th>Nomor Telepon</th>
-                            <td>: {{ $profil->nomor_telepon }}</td>
-                        </tr>
-                    </table>
+                                            <div class="info-box-content">
+                                                <span class="info-box-text">SISWA/I</span>
+                                                <span class="info-box-number">{{ $profil->jml_siswa_l + $profil->jml_siswa_p }}</span>
+                                            </div>
+                                            <!-- /.info-box-content -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="chart tab-pane" id="input-data-sekolah">
-                    <form role="form">
+                <div class="chart tab-pane" id="edit-data-sekolah">
+                    {{------------------------------------------------------------------------------------------ FORM PROFIL SEKOLAH ------------------------------------------------------------------------------------------}}
+                    <form action="/profil/{{ $profil->id }}" method="POST">
+                        @csrf
+                        @method('put')
+                        <input type="hidden" name="profil_depo_id" value="{{ $profil->id }}">
+                        <input type="hidden" name="provinsi" value="{{ $profil->provinsi }}">
+                        <input type="hidden" name="kabupaten" value="{{ $profil->kabupaten }}">
+                        <input type="hidden" name="kecamatan" value="{{ $profil->kecamatan }}">
+                        <input type="hidden" name="nomor_fax" value="{{ $profil->nomor_fax }}">
+                        <input type="hidden" name="akreditas" value="{{ $profil->akreditas }}">
+                        
                         <div class="card-body">
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">NPSN</label>
-                                <input type="number" class="form-control col-sm-6" placeholder="Input NPSN">
+                                <input type="number" class="form-control col-sm-6" placeholder="NPSN" id="npsn" name="npsn" required value="{{ $profil->npsn }}">
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nama Sekolah</label>
-                                <input type="text" class="form-control col-sm-6" placeholder="Input Sekolah">
+                                <input type="text" class="form-control col-sm-6" placeholder="Nama Sekolah" id="nama" name="nama" required value="{{ $profil->nama }}">
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Alamat</label>
-                                <input type="text" class="form-control col-sm-6" placeholder="Input Alamat">
+                                <label class="col-sm-2 col-form-label">Status Sekolah</label>
+                                <input type="text" class="form-control col-sm-6" placeholder="Status Sekolah" id="status" name="status_sekolah" required value="{{ $profil->status_sekolah }}">
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Koordinat</label>
-                                <input type="text" class="form-control col-sm-6" placeholder="Input Koordinat">
+                                <label class="col-sm-2 col-form-label">Latitude</label>
+                                <input type="text" class="form-control col-sm-6" placeholder="Latitude" id="lat" name="lat" required value="{{ $profil->lat }}">
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Longtitude</label>
+                                <input type="text" class="form-control col-sm-6" placeholder="Longtitude" id="long" name="long" required value="{{ $profil->long }}">
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Email</label>
-                                <input type="email" class="form-control col-sm-6" placeholder="Input Email">
+                                <input type="text" class="form-control col-sm-6" placeholder="Email" id="email" name="email" required value="{{ $profil->email }}">
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Website</label>
-                                <input type="text" class="form-control col-sm-6" placeholder="Input Website">
+                                <input type="text" class="form-control col-sm-6" placeholder="Website" id="website" name="website" required value="{{ $profil->website }}">
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nomor Telepon</label>
-                                <input type="text" class="form-control col-sm-6" placeholder="Input No. Telp">
+                                <input type="text" class="form-control col-sm-6" placeholder="No. Telp" id="no_telp" name="nomor_telepon" required value="{{ $profil->nomor_telepon }}">
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Jumlah Rombel</label>
+                                <input type="text" class="form-control col-sm-6" placeholder="Jumlah Rombel" id="jml_rombel" name="jml_rombel" required value="{{ $profil->jml_rombel }}">
                             </div>
                         </div>
                         <!-- /.card-body DATA SEKOLAH-->
 
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-success">Submit</button>
+                            <button type="submit" class="btn btn-success">Simpan</button>
                         </div>
                     </form>
                 </div>
@@ -156,7 +201,7 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
                     </form>
 
@@ -176,7 +221,7 @@
                 {{------------------------------------------------------------------------------------------ JUMLAH ROMBEL ------------------------------------------------------------------------------------------}}
                 <div class="info-box-content">
                     <span class="info-box-text">Jumlah Rombel</span>
-                    <span class="info-box-number h1">25</span>
+                    <span class="info-box-number h1">{{ $profil->jml_rombel }}</span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -243,10 +288,6 @@
                             <a class="nav-link text-white active" href="#data-siswa" data-toggle="tab"><i
                                     class="bi bi-person-fill mr-1"></i>Data Siswa</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#input-data-siswa" data-toggle="tab"><i
-                                    class="bi bi-plus-lg mr-1"></i>Input Data Siswa</a>
-                        </li>
                     </ul>
                 </div><!-- /.card-header -->
                 <div class="card-body table-responsive">
@@ -256,65 +297,33 @@
                                 <tbody>
                                     {{------------------------------------------------------------------------------------------ NAMA SEKOLAH ------------------------------------------------------------------------------------------}}
                                     <tr>
-                                        <th>Nama Sekolah</th>
-                                        <td>{{ $profil->nama }}</td>
+                                        <th>Keterangan</th>
+                                        <th>Data Terkini</th>
+                                        <th>Data Dapodik</th>
                                     </tr>
 
                                     {{------------------------------------------------------------------------------------------ JUMLAH SISWA LAKI-LAKI ------------------------------------------------------------------------------------------}}
                                     <tr>
                                         <th>Laki-laki</th>
                                         <td>{{ $profil->jml_siswa_l }}</td>
+                                        <td>{{ $profil_depo->depo_jml_siswa_l }}</td>
                                     </tr>
 
                                     {{------------------------------------------------------------------------------------------ JUMLAH SISWA PEREMPUAN ------------------------------------------------------------------------------------------}}
                                     <tr>
                                         <th>Perempuan</th>
                                         <td>{{ $profil->jml_siswa_p }}</td>
+                                        <td>{{ $profil_depo->depo_jml_siswa_p }}</td>
                                     </tr>
 
-                                    {{------------------------------------------------------------------------------------------ JUMLAH SISWA KELUAR ------------------------------------------------------------------------------------------}}
+                                    {{------------------------------------------------------------------------------------------ JUMLAH TOTAL ------------------------------------------------------------------------------------------}}
                                     <tr>
-                                        <th>Keluar</th>
-                                        <td>0</td>
+                                        <th>Jumlah</th>
+                                        <td>{{ $profil->jml_siswa_l + $profil->jml_siswa_p }}</td>
+                                        <td>{{ $profil_depo->depo_jml_siswa_l +  $profil_depo->depo_jml_siswa_p}}</td>
                                     </tr>
                                 </tbody>
-
-                                {{------------------------------------------------------------------------------------------ TOTAL SISWA ------------------------------------------------------------------------------------------}}
-                                <tr>
-                                    <th>Jumlah Terkini</th>
-                                    <td>{{ $profil->jml_siswa_l + $profil->jml_siswa_p }}</td>
-                                </tr>
                             </table>
-                        </div>
-                        <div class="chart tab-pane" id="input-data-siswa">
-                            <form role="form">
-                                <div class="card-body">
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Nama Sekolah</label>
-                                        <input type="text" class="form-control col-sm-6" placeholder="Input Sekolah">
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Laki-laki</label>
-                                        <input type="number" class="form-control col-sm-6"
-                                            placeholder="Input Jml Laki-laki">
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Perempuan</label>
-                                        <input type="number" class="form-control col-sm-6"
-                                            placeholder="Input Jml Perempuan">
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Keluar</label>
-                                        <input type="number" class="form-control col-sm-6"
-                                            placeholder="Input Jml Keluar">
-                                    </div>
-                                </div>
-                                <!-- /.card-body -->
-
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-success">Submit</button>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div><!-- /.card-body -->
@@ -332,7 +341,8 @@
                     <ul class="nav nav-pills ml-auto">
                         <li class="nav-item">
                             <a class="nav-link text-white active" href="#kompetensi-keahlian" data-toggle="tab"><i
-                                    class="bi bi-gear-wide-connected mr-1"></i>Kompetensi Keahlian</a>
+                                    class="bi bi-gear-wide-connected mr-1"></i>Kompetensi
+                                Keahlian</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="#input-kk" data-toggle="tab"><i
@@ -396,7 +406,7 @@
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-success">Submit</button>
+                                    <button type="submit" class="btn btn-success">Simpan</button>
                                 </div>
                             </form>
                         </div>
@@ -449,18 +459,19 @@
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="card">
         <a href="/profil/{{ $profil->id }}/edit" class="btn btn-warning">Edit Profil</a>
-        <h6>NPSN: {{ $profil->npsn }}</h6> {{-- Sudah --}}
+        <h6>NPSN: {{ $profil->npsn }}</h6>
         <h6>Sekolah Id: {{ $profil->sekolah_id }}</h6>
-        <h6>Nama: {{ $profil->nama }}</h6> {{-- Sudah --}}
+        <h6>Nama: {{ $profil->nama }}</h6>
         <h6>Status Sekolah: {{ $profil->status_sekolah }}</h6>
-        <h6>Alamat: {{ $profil->alamat }}</h6> {{-- Sudah --}}
+        <h6>Alamat: {{ $profil->alamat }}</h6>
         <h6>Provinsi: {{ $profil->provinsi }}</h6>
         <h6>Kabupaten: {{ $profil->kabupaten }}</h6>
         <h6>Kecamatan: {{ $profil->kecamatan }}</h6>
-        <h6>Email: {{ $profil->email }}</h6> {{-- Sudah --}}
-        <h6>Website: {{ $profil->website }}</h6> {{-- Sudah --}}
-        <h6>No Telp: {{ $profil->nomor_telepon }}</h6> {{-- Sudah --}}
+        <h6>Email: {{ $profil->email }}</h6>
+        <h6>Website: {{ $profil->website }}</h6>
+        <h6>No Telp: {{ $profil->nomor_telepon }}</h6>
         <h6>No Fax:{{ $profil->nomor_fax }}</h6>
+        
         @foreach ($kopetensikeahlians as $key => $kopetensikeahlian)
         <br>
         <h6>Kopetensi Keahlian {{ $key + 1 }}</h6>
@@ -471,9 +482,9 @@
             @csrf
             <button class="badge bg-danger border-0" onclick="return confirm('Yakin?')">Delete</button>
         </form>
-        <h6>Nama Kopetensi : {{ $kopetensikeahlian->nama }}</h6> {{-- Sudah --}}
-        <h6>Jumlah Laki Laki : {{ $kopetensikeahlian->jml_lk }}</h6> {{-- Sudah --}}
-        <h6>Jumlah Perempuan : {{ $kopetensikeahlian->jml_pr }}</h6> {{-- Sudah --}}
+        <h6>Nama Kopetensi : {{ $kopetensikeahlian->nama }}</h6>
+        <h6>Jumlah Laki Laki : {{ $kopetensikeahlian->jml_lk }}</h6>
+        <h6>Jumlah Perempuan : {{ $kopetensikeahlian->jml_pr }}</h6>
         <br>
         @endforeach
 
@@ -493,9 +504,9 @@
         <br>
         @endforeach
 
-        <h6>Akreditasi: {{ $profil->akreditas }}</h6> {{-- Sudah --}}
-        <h6>Jumlah Siswa Laki Laki: {{ $profil->jml_siswa_l }}</h6> {{-- Sudah --}}
-        <h6>Jumlah Siswa Perempuan: {{ $profil->jml_siswa_p }}</h6> {{-- Sudah --}}
+        <h6>Akreditasi: {{ $profil->akreditas }}</h6>
+        <h6>Jumlah Siswa Laki Laki: {{ $profil->jml_siswa_l }}</h6>
+        <h6>Jumlah Siswa Perempuan: {{ $profil->jml_siswa_p }}</h6>
         <br>
         <a href="/kompeten/create/{{ $profil->id }}">Tambah Kompetensi</a>
         <p>Kompetensi yang tersedia:</p>
@@ -507,13 +518,14 @@
             @method('delete')
             <button type="submit">Delete</button>
         </form>
-        <p>{{ $key + 1 }}. {{ $kompeten->nama }}</p> {{-- Sudah --}}
+        <p>{{ $key + 1 }}. {{ $kompeten->nama }}</p>
 
         @endforeach
 
         <br>
 
-        <a href="/kopetensi/create/{{ $profil->id }}" class="btn btn-primary">Tambah Jumlah Data Siswa Kopetensi</a>
+        <a href="/kopetensi/create/{{ $profil->id }}" class="btn btn-primary">Tambah Jumlah Data Siswa
+            Kopetensi</a>
 
         <br>
         <a href="/koleksi/create/{{ $profil->id }}" class="btn btn-primary">Buat Koleksi</a>
@@ -523,5 +535,6 @@
 
 </div>
 <!-- / Content -->
+
 <div class="content-backdrop fade"></div>
 @endsection
