@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FotoController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\KomliController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\KoleksiController;
 use App\Http\Controllers\KompetenController;
