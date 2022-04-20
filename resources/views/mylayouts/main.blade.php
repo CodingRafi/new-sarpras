@@ -10,7 +10,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Starter</title>
+  <title>SISTEM SARPRAS | Starter</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="/css/all.min.css">
@@ -25,6 +25,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
+    *{
+      font-size: 14px;
+    }
     aside .active {
       background-color: #00A65B !important;
       color: white !important;
@@ -33,6 +36,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
       background-color: white !important;
       color: black !important;
     }
+    @media (max-width:768px) {
+      .nama-sekolah{
+        display: none;
+      }
+    }
+}
 
   </style>
 </head>
@@ -55,7 +64,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0 text-dark pl-4">Profil Sekolah</h1>
+              <h1 class="m-0 text-dark pl-4 display-4">Profil Sekolah</h1>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -73,13 +82,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-    <footer class="main-footer">
-      <strong>Copyright &copy; 2022 <a href="https://smktarunabhakti.net/">SMK Taruna Bhakti</a>.</strong>
-      All rights reserved.
-      <div class="float-right d-none d-sm-inline-block">
-        <!-- <b>Version</b> 3.0.4 -->
-      </div>
-    </footer>
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
