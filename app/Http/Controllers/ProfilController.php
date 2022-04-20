@@ -51,15 +51,16 @@ class ProfilController extends Controller
         $koleksis = $profilDepo->koleksi;
         $fotos = [];
         $komli = [];
-
+        
         foreach($koleksis as $koleksi){
             $fotos[] = $koleksi->foto;
             $koleksi_id = $koleksi->id;
         }
-
+        
         foreach($profil->kompeten as $kompe){
             $komli[] = $kompe->komli;
         }
+        // dd('oke');
         // $data = Koleksi::where('slug', $slug)->get()[0];
         // return view('foto.create',[
         //     'koleksi_id' => $data->id
