@@ -11,9 +11,9 @@
                     @csrf
                     <input type="hidden" name="profil_id" value="{{ $id_profil }}">
                     <select class="form-select" aria-label="Default select example" name="kompeten_id">
-                        @foreach ($kompetens as $kompeten)
-                            <option value="{{ $kompeten->id }}">{{ $kompeten->nama }}</option>
-                        @endforeach
+                        @foreach ($kompetens as $key => $kompeten)
+                            <option value="{{ $komlis[$key]->id }}">{{ $komlis[$key]->kompetensi }}</option>
+                        @endforeach 
                     </select>
                     <div class="mb-3">
                         <label for="jml_lk" class="form-label">Jumlah laki laki</label>

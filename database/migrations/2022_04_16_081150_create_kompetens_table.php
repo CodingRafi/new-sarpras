@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('kompetens', function (Blueprint $table) {
             $table->id();
             $table->foreignId('profil_id');
-            $table->string('nama');
+            $table->foreignId('komli_id');
             $table->timestamps();
         });
     }

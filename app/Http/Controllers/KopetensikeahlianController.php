@@ -28,9 +28,16 @@ class KopetensikeahlianController extends Controller
     public function create($id)
     {
         $data = Profil::where('id', $id)->get()[0];
+        $komli = [];
+
+        foreach($data->kompeten as $kompete){
+            $komli[] = $kompete->komli;
+        }
+
         return view('kopetensi.create', [
             'id_profil' => $id,
-            'kompetens' => $data->kompeten
+            'kompetens' => $data->kompeten,
+            'komlis' => $komli
         ]);
     }
 

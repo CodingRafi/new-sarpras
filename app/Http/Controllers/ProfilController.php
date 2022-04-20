@@ -46,13 +46,18 @@ class ProfilController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Profil $profil)
-    {
+    {  
         $profilDepo = ProfilDepo::where('id', $profil->id)->get()[0];
         $koleksis = $profilDepo->koleksi;
         $fotos = [];
+        $komli = [];
 
         foreach($koleksis as $koleksi){
             $fotos[] = $koleksi->foto;
+        }
+
+        foreach($profil->kompeten as $kompe){
+            $komli[] = $kompe->komli;
         }
         
         return view('profil.index', [
@@ -60,7 +65,8 @@ class ProfilController extends Controller
             'kopetensikeahlians' => $profil->kopetensikeahlian,
             'koleksis' => $profilDepo->koleksi,
             'kompetens' => $profil->kompeten,
-            'fotos' => $fotos
+            'fotos' => $fotos,
+            'komli' => $komli
         ]);
     }
 

@@ -1,7 +1,6 @@
 @extends('mylayouts.main')
 
 @section('container')
-
     <div class="content-wrapper">
         <!-- Content -->
 
@@ -11,10 +10,19 @@
                 <form action="/kompeten" method="POST">
                     @csrf
                     <input type="hidden" name="profil_id" value="{{ $profil_id }}">
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label for="nama" class="form-label">Nama Kompeten</label>
-                        <input type="text" class="form-control" id="nama" aria-describedby="emailHelp" name="nama" placeholder="Nama Kopetensi" required>
+                        <input type="text" class="form-control" id="nama" aria-describedby="emailHelp" name="nama"
+                            placeholder="Nama Kopetensi" required>
+                    </div> --}}
+                    @foreach ($komlis as $komli)    
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="{{ $komli->id }}" id="flexCheckChecked" name="komli[]">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            {{ $komli->kompetensi }}
+                        </label>
                     </div>
+                    @endforeach
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>

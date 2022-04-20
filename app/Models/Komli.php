@@ -12,4 +12,8 @@ class Komli extends Model
     protected $guarded =[
         "id"
     ];
+
+    public function kompeten(){
+        return $this->hasMany(Kompeten::class);
+    }
 }

@@ -20,4 +20,8 @@ class Kompeten extends Model
     public function kompetensikeahlian(){
         return $this->belongsTo(Kompetensikeahlain::class);
     }
+
+    public function komli(){
+        return $this->belongsTo(Komli::class);
+    }
 }

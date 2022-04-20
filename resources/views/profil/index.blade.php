@@ -497,13 +497,12 @@
         <p>Kompetensi yang tersedia:</p>
         @foreach ($kompetens as $key => $kompeten)
 
-        <a href="/kompeten/{{ $kompeten->id }}/edit">Edit Kompeten</a>
-        <form action="/kompeten/{{ $kompeten->id }}" method="POST">
+        <form action="/kompeten/{{ $kompeten->  id }}" method="POST">
             @csrf
             @method('delete')
             <button type="submit">Delete</button>
         </form>
-        <p>{{ $key + 1 }}. {{ $kompeten->nama }}</p> {{-- Sudah --}}
+        <p>{{ $key + 1 }}. {{ $komli[$key]->kompetensi }}</p> {{-- Sudah --}}
 
         @endforeach
 

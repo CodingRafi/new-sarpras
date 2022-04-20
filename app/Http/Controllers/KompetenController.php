@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kompeten;
+use App\Models\Komli;
 use App\Http\Requests\StoreKompetenRequest;
 use App\Http\Requests\UpdateKompetenRequest;
 
@@ -25,8 +26,10 @@ class KompetenController extends Controller
      */
     public function create($id)
     {
+        $komli = Komli::all();
         return view('jeniskompeten.create', [
-            'profil_id' => $id 
+            'profil_id' => $id,
+            'komlis' => $komli
         ]);
     }
 
@@ -40,10 +43,15 @@ class KompetenController extends Controller
     {
         $validatedData = $request->validate([
             'profil_id' => 'required',
-            'nama' => 'required'
+            'komli' => 'required'
         ]);
 
-        Kompeten::create($validatedData);
+        foreach($request->komli as $kom){
+            Kompeten::create([
+                'profil_id' => $request->profil_id,
+                'komli_id' => $kom
+            ]);
+        }
 
         return redirect('/profil/' . $request->profil_id);
     }
@@ -101,6 +109,6 @@ class KompetenController extends Controller
     {
         Kompeten::destroy($kompeten->id);
 
-        return redirect('/profil/' . $kompeten->id);
+        return redirect('/profil/' . $kompeten->profil_id);
     }
 }
