@@ -53,7 +53,13 @@ class ProfilController extends Controller
 
         foreach($koleksis as $koleksi){
             $fotos[] = $koleksi->foto;
+            $koleksi_id = $koleksi->id;
         }
+
+        // $data = Koleksi::where('slug', $slug)->get()[0];
+        // return view('foto.create',[
+        //     'koleksi_id' => $data->id
+        // ]);
         
         return view('profil.index', [
             'profil' => $profil,

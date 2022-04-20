@@ -2,11 +2,11 @@
 <aside class="main-sidebar sidebar-light-success elevation-4" style="position: fixed">
     <!-- Brand Logo -->
     <a href="/" class="brand-link bg-success" style="background-color: #00A65B !important; display: flex; align-items: center; padding: 10px 8px;">
-        <img src="/assets/img/avatars/TarunaBhaktiLogo.png" alt="TarunaBhakti Logo"
+        <img src="/assets/img/avatars/logo-jawa-barat.png" alt="TarunaBhakti Logo"
             class="brand-image img-circle bg-white" style="opacity: .8">
         <div style="display: flex; flex-direction: column;">
           <span class="brand-text h6" style="margin: 0;">SISTEM SARPRAS</span>
-          <p class="font-weight-light h6" style="font-size: .8rem;margin: 0;">Admin</p>
+          <p class="brand-text font-weight-light h6" style="font-size: .8rem;margin: 0;">Admin</p>
         </div>
     </a>
 

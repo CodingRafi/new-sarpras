@@ -1,6 +1,18 @@
 @extends('mylayouts.main')
 
 @section('container')
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark pl-4 display-4">Profil Sekolah</h1>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
 <div class="container-fluid">
     <!-- Small boxes (Stat box) -->
     <div class="card mb-5">
@@ -50,7 +62,7 @@
                                 {{------------------------------------------------------------------------------------------ KOORDINAT SEKOLAH ------------------------------------------------------------------------------------------}}
                                 <tr>
                                     <th>Koordinat</th>
-                                    <td class="text-wrap">: {{ $profil->lat . "," . $profil->long}}</td>
+                                    <td class="text-wrap">: {{ $profil->lat . ", " . $profil->long}}</td>
                                 </tr>
                                 {{------------------------------------------------------------------------------------------ EMAIL SEKOLAH ------------------------------------------------------------------------------------------}}
                                 <tr>
@@ -161,7 +173,6 @@
                 </div>
                 <div class="chart tab-pane p-3" id="foto-sekolah">
                     <div class="row row-cols-2">
-                        
                         {{------------------------------------------------------------------------------------------ KOLEKSI ------------------------------------------------------------------------------------------}}
                         @if ($koleksis->count())
                         @foreach ($koleksis as $koleksi)
@@ -169,15 +180,16 @@
                                 <div class="card mb-3" style="max-width: 540px;">
                                     <div class="row no-gutters">
                                         <div class="col-md-4">
-                                            <img class="img-thumbnail" src="/assets/img/backgrounds/school.jpg" style="height: 140px; width: 100%; object-fit: cover;">
+                                            <img class="img-thumbnail" src="/assets/img/backgrounds/no-image.jpg" style="height: 140px; width: 100%; object-fit: cover;">
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body">
                                                 <h5 class="card-text">{{ $koleksi->nama }}</h5>
-                                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#tampak-depan">Tambah</a>
+                                                <a href="#" class="btn btn-primary bg-info" data-toggle="modal" data-target="#tambah-gambar{{ $koleksi->id }}">Tambah</a>
+                                                <a href="#" class="btn btn-danger">Hapus</a>
 
                                                 <!-- Modal -->
-                                                <div class="modal fade" id="tampak-depan" tabindex="-1"
+                                                <div class="modal fade" id="tambah-gambar{{ $koleksi->id }}" tabindex="-1"
                                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered">
                                                         <div class="modal-content">
@@ -192,7 +204,7 @@
                                                             <div class="modal-body">
                                                                 <form action="/foto" method="POST" enctype="multipart/form-data">
                                                                     @csrf
-                                                                    <input type="hidden" name="koleksi_id" value="1">
+                                                                    <input type="hidden" name="koleksi_id" value="{{ $koleksi->id }}">
                                                                     <div class="mb-3">
                                                                         <input type="file" id="formFileMultiple" multiple accept="image/*" name="nama[]">
                                                                     </div>
@@ -260,7 +272,7 @@
         <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="info-box mb-3 bg-success">
-                <span class="info-box-icon"><i class="bi bi-people-fill"></i></span>
+                <span class="info-box-icon"><i class="bi bi-people-fill h1"></i></span>
 
                 {{------------------------------------------------------------------------------------------ JUMLAH ROMBEL ------------------------------------------------------------------------------------------}}
                 <div class="info-box-content">
@@ -274,7 +286,7 @@
         <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="info-box mb-3 bg-info">
-                <span class="info-box-icon"><i class="bi bi-person-badge-fill"></i></span>
+                <span class="info-box-icon"><i class="bi bi-person-badge-fill h1"></i></span>
 
                 {{------------------------------------------------------------------------------------------ JUMLAH JURUSAN ------------------------------------------------------------------------------------------}}
                 <div class="info-box-content">
@@ -288,7 +300,7 @@
         <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="info-box mb-3 bg-warning">
-                <span class="info-box-icon"><i class="bi bi-bookmark-star-fill text-white"></i></span>
+                <span class="info-box-icon"><i class="bi bi-bookmark-star-fill text-white h1"></i></span>
 
                 {{------------------------------------------------------------------------------------------ AKREDITASI ------------------------------------------------------------------------------------------}}
                 <div class="info-box-content">
@@ -302,7 +314,7 @@
         <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="info-box mb-3 bg-dark">
-                <span class="info-box-icon"><i class="bi bi-person-fill"></i></span>
+                <span class="info-box-icon"><i class="bi bi-person-fill h1"></i></span>
 
                 {{------------------------------------------------------------------------------------------ JUMLAH SISWA ------------------------------------------------------------------------------------------}}
                 <div class="info-box-content">
@@ -498,7 +510,7 @@
 
 
 
-<!-- Content -->
+{{-- <!-- Content -->
 
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="card">
@@ -539,6 +551,7 @@
         @foreach ($koleksis as $koleksi)
         <br>
         <a href="/koleksi/{{ $koleksi->slug }}/edit">Edit</a>
+        <p>{{ $koleksi->id }}</p>
         <form action="/koleksi/{{ $koleksi->slug }}" method="post">
             @csrf
             @method('delete')
@@ -578,7 +591,7 @@
     </div>
 
 </div>
-<!-- / Content -->
+<!-- / Content --> --}}
 
 <div class="content-backdrop fade"></div>
 @endsection
