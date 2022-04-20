@@ -66,7 +66,8 @@ class ProfilController extends Controller
             'koleksis' => $profilDepo->koleksi,
             'kompetens' => $profil->kompeten,
             'fotos' => $fotos,
-            'komli' => $komli
+            'komli' => $komli,
+            'profil_depo' => $profilDepo
         ]);
     }
 
