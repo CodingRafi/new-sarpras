@@ -159,52 +159,96 @@
                         </div>
                     </form>
                 </div>
-                <div class="chart tab-pane" id="foto-sekolah">
-                    <form role="form">
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="exampleInputFile">Tampak Depan Sekolah</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input">
-                                        <label class="custom-file-label">Choose file</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputFile">Tampak Kiri Sekolah</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input">
-                                        <label class="custom-file-label">Choose file</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputFile">Tampak Kanan Sekolah</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input">
-                                        <label class="custom-file-label">Choose file</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputFile">Tampak Dalam Sekolah</label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input">
-                                        <label class="custom-file-label">Choose file</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Simpan</button>
-                        </div>
-                    </form>
+                <div class="chart tab-pane p-3" id="foto-sekolah">
+                    <div class="row row-cols-2">
+                        
+                        {{------------------------------------------------------------------------------------------ KOLEKSI ------------------------------------------------------------------------------------------}}
+                        @if ($koleksis->count())
+                        @foreach ($koleksis as $koleksi)
+                            <div class="col-md-6">
+                                <div class="card mb-3" style="max-width: 540px;">
+                                    <div class="row no-gutters">
+                                        <div class="col-md-4">
+                                            <img class="img-thumbnail" src="/assets/img/backgrounds/school.jpg" style="height: 140px; width: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h5 class="card-text">{{ $koleksi->nama }}</h5>
+                                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#tampak-depan">Tambah</a>
 
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="tampak-depan" tabindex="-1"
+                                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Tampak Depan
+                                                                </h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form action="/foto" method="POST" enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    <input type="hidden" name="koleksi_id" value="1">
+                                                                    <div class="mb-3">
+                                                                        <input type="file" id="formFileMultiple" multiple accept="image/*" name="nama[]">
+                                                                    </div>
+                                                                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                        @else
+                            <div class="col-md-12">
+                                <p class="display-5 text-center text-muted py-4">Tidak Ada Koleksi</p>
+                            </div>
+                        @endif
+                        
+                    </div>
+                    <a href="/koleksi/create/{{ $profil->id }}" class="btn btn-info btn-block" data-toggle="modal" data-target="#buat-koleksi">Buat Koleksi</a>
+                    
+                    {{------------------------------------------------------------------------------------------ FORM KOLEKSI BARU ------------------------------------------------------------------------------------------}}
+                    <div class="modal fade" id="buat-koleksi" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Koleksi
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/koleksi" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="profil_depo_id" value="{{ $profil->id }}">
+                                        <div class="mb-3">
+                                            <label for="nama" class="form-label">Nama Koleksi</label>
+                                            <input type="text" class="form-control" id="nama" aria-describedby="emailHelp" name="nama" placeholder="Nama Koleksi" required>
+                                        </div>
+                                        <select class="form-select" aria-label="Default select example" name="jenis">
+                                            <option value="bangunan">Bangunan Sekolah</option>
+                                            <option value="gerbang">Gerbang</option>
+                                            <option value="fasilitas">Fasilitas</option>
+                                          </select>
+                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
