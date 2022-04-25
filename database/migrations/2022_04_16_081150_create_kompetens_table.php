@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('profil_id');
             $table->foreignId('komli_id');
+            $table->string('jml_lk');
+            $table->string('jml_pr');
             $table->timestamps();
         });
     }

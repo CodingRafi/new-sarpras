@@ -60,15 +60,10 @@ class ProfilController extends Controller
         foreach($profil->kompeten as $kompe){
             $komli[] = $kompe->komli;
         }
-        // dd('oke');
-        // $data = Koleksi::where('slug', $slug)->get()[0];
-        // return view('foto.create',[
-        //     'koleksi_id' => $data->id
-        // ]);
         
         return view('profil.index', [
             'profil' => $profil,
-            'kopetensikeahlians' => $profil->kopetensikeahlian,
+            'kopetensikeahlians'=> $profil->kompeten,
             'koleksis' => $profilDepo->koleksi,
             'kompetens' => $profil->kompeten,
             'fotos' => $fotos,
@@ -119,11 +114,11 @@ class ProfilController extends Controller
             'long' => 'required'
         ]);
         
-        if(count($profil->kopetensikeahlian) == 0){
+        if(count($profil->kompeten) == 0){
             $validatedData['jml_siswa_l'] = 0;
             $validatedData['jml_siswa_p'] = 0;
         }else{
-            foreach($profil->kopetensikeahlian as $kopetensi){
+            foreach($profil->kompeten as $kopetensi){
                  $jml_lk += $kopetensi->jml_lk;
                  $jml_pr += $kopetensi->jml_pr;
             }

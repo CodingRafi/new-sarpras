@@ -51,8 +51,8 @@ class KoleksiController extends Controller
 
         Koleksi::create($validatedData);
 
-        // return redirect('/foto/create/'.$validatedData['slug']);
-        return redirect('/profil/'.$request->profil_depo_id);
+        return redirect('/foto/create/'.$validatedData['slug']);
+        // return redirect('/profil/'.$request->profil_depo_id);
     }
 
     /**

@@ -10,18 +10,27 @@
                 <form action="/kompeten" method="POST">
                     @csrf
                     <input type="hidden" name="profil_id" value="{{ $profil_id }}">
-                    {{-- <div class="mb-3">
-                        <label for="nama" class="form-label">Nama Kompeten</label>
-                        <input type="text" class="form-control" id="nama" aria-describedby="emailHelp" name="nama"
-                            placeholder="Nama Kopetensi" required>
-                    </div> --}}
-                    @foreach ($komlis as $komli)    
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="{{ $komli->id }}" id="flexCheckChecked" name="komli[]">
-                        <label class="form-check-label" for="flexCheckChecked">
-                            {{ $komli->kompetensi }}
-                        </label>
-                    </div>
+                    @foreach ($komlis as $komli)
+                        @if (count($profilKompetens) > 0)
+                            @foreach ($profilKompetens as $profilKompeten)
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="{{ $komli->id }}"
+                                        id="flexCheckChecked" name="komli[]"
+                                        {{ $profilKompeten->komli_id == $komli->id ? 'disabled' : '' }}>
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        {{ $komli->kompetensi }}
+                                    </label>
+                                </div>
+                            @endforeach
+                        @else
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="{{ $komli->id }}"
+                                    id="flexCheckChecked" name="komli[]">
+                                <label class="form-check-label" for="flexCheckChecked">
+                                    {{ $komli->kompetensi }}
+                                </label>
+                            </div>
+                        @endif
                     @endforeach
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

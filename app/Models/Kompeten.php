@@ -17,10 +17,6 @@ class Kompeten extends Model
         return $this->belongsTo(Profil::class);
     }
 
-    public function kompetensikeahlian(){
-        return $this->belongsTo(Kompetensikeahlain::class);
-    }
-
     public function komli(){
         return $this->belongsTo(Komli::class);
     }

@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav class="main-header navbar navbar-expand navbar-white navbar-light bg-success" style="background-color: #00A65B !important">
+<nav class="main-header navbar navbar-expand navbar-white navbar-light" style="background-color: #00A65B !important;height: 11vh;">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -8,11 +8,11 @@
     </ul>
 
     <!-- SEARCH FORM -->
-    <form class="form-inline ml-2">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" style="border-radius: 50px 0 0 50px">
+    <form class="form-inline ml-2" action="/profil/admin" method="GET">
+      <div class="input-group input-group-sm" style="width: 25rem;">
+        <input class="form-control form-control-navbar" type="search" placeholder="Search NPSN, sekolah id, nama sekolah" aria-label="Search" style="height: 2.5rem;font-size: 15px;padding: 0 10px;" name="search">
         <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit" style="border-radius: 0 50px 50px 0">
+          <button class="btn btn-navbar" type="submit" style="width: 40px;">
             <i class="fas fa-search"></i>
           </button>
         </div>

@@ -33,10 +33,11 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', RegisteredUserController::class);
     Route::get('/profil/admin', [AdminController::class, 'index']);
     Route::resource('/profil', ProfilController::class);
+    Route::patch('/kompeten/tambahsiswa/{id:profil}', [KompetenController::class, 'update']);
     Route::resource('/kompeten', KompetenController::class);
     Route::get('/kompeten/create/{id:profil}', [KompetenController::class, 'create']);
-    Route::resource('/kopetensi', KopetensikeahlianController::class);
-    Route::get('/kopetensi/create/{id:profil}', [KopetensikeahlianController::class, 'create']);
+    // Route::resource('/kopetensi', KopetensikeahlianController::class);
+    // Route::get('/kopetensi/create/{id:profil}', [KopetensikeahlianController::class, 'create']);
     Route::resource('/koleksi', KoleksiController::class);
     Route::get('/koleksi/create/{id:profil}', [KoleksiController::class, 'create']);
     Route::resource('/foto', FotoController::class);

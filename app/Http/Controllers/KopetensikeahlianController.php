@@ -36,7 +36,6 @@ class KopetensikeahlianController extends Controller
 
         return view('kopetensi.create', [
             'id_profil' => $id,
-            'kompetens' => $data->kompeten,
             'komlis' => $komli
         ]);
     }
@@ -58,23 +57,7 @@ class KopetensikeahlianController extends Controller
 
         Kopetensikeahlian::create($validatedData);
 
-        $profil = Profil::where('id', $request->profil_id)->get()[0];
-
-        $jml_lk = 0;
-        $jml_pr = 0;
-        foreach($profil->kopetensikeahlian as $kopetensi){
-            $jml_lk += $kopetensi->jml_lk;
-            $jml_pr += $kopetensi->jml_pr;
-        }
-
-        $updateData = [
-            'jml_siswa_l' => $jml_lk,
-            'jml_siswa_p' => $jml_pr
-        ];
-
-        Profil::where('id', $request->profil_id)->update($updateData);
-        $jml_lk = 0;
-        $jml_pr = 0;
+        
 
         return redirect('/profil/'. $request->profil_id);
     }

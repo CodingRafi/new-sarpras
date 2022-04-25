@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark pl-4 display-4">Profil Sekolah</h1>
+                <h1 class="m-0 text-dark display-4">Profil Sekolah</h1>
             </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -17,13 +17,13 @@
 <div class="container-fluid">
     <!-- Content -->
     <div class="container-xxl flex-grow-1 container-p-y">
-        <form action="/profil/admin" method="GET">
+        {{-- <form action="/profil/admin" method="GET">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Search NPSN, sekolah id, nama sekolah"
                     name="search">
                 <button class="btn btn-outline-primary" type="submit" id="button-addon2">Search</button>
             </div>
-        </form>
+        </form> --}}
         <div class="card" style="overflow-x: auto">
             <table class="table" style="text-align: center;" >
                 <thead>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kompeten;
 use App\Models\Komli;
+use App\Models\Profil;
 use App\Http\Requests\StoreKompetenRequest;
 use App\Http\Requests\UpdateKompetenRequest;
 
@@ -27,9 +28,12 @@ class KompetenController extends Controller
     public function create($id)
     {
         $komli = Komli::all();
+        $profilKomli = Profil::where('id', $id)->get()[0];
+
         return view('jeniskompeten.create', [
             'profil_id' => $id,
-            'komlis' => $komli
+            'komlis' => $komli,
+            'profilKompetens' => $profilKomli->kompeten
         ]);
     }
 
@@ -49,9 +53,29 @@ class KompetenController extends Controller
         foreach($request->komli as $kom){
             Kompeten::create([
                 'profil_id' => $request->profil_id,
-                'komli_id' => $kom
+                'komli_id' => $kom,
+                'jml_lk' => 0,
+                'jml_pr' => 0,
             ]);
         }
+
+        $profil = Profil::where('id', $request->profil_id)->get()[0];
+
+        $jml_lk = 0;
+        $jml_pr = 0;
+        foreach($profil->kompeten as $kopetensi){
+            $jml_lk += $kopetensi->jml_lk;
+            $jml_pr += $kopetensi->jml_pr;
+        }
+
+        $updateData = [
+            'jml_siswa_l' => $jml_lk,
+            'jml_siswa_p' => $jml_pr
+        ];
+
+        Profil::where('id', $request->profil_id)->update($updateData);
+        $jml_lk = 0;
+        $jml_pr = 0;
 
         return redirect('/profil/' . $request->profil_id);
     }
@@ -73,10 +97,19 @@ class KompetenController extends Controller
      * @param  \App\Models\Kompeten  $kompeten
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kompeten $kompeten)
+    public function edit(Kompeten $kompeten, $id)
     {
+        $kompetens = Profil::where('id', $id)->get()[0]->kompeten;
+        $komli = [];
+
+        foreach($kompetens as $kompeten){
+            $komli[] = $kompeten->komli;
+        }
+
         return view('jeniskompeten.edit', [
-            'data' => $kompeten
+            'kompetens' => $kompetens,
+            'komlis' => $komli,
+            'profil_id' => $id
         ]);
     }
 
@@ -89,12 +122,38 @@ class KompetenController extends Controller
      */
     public function update(UpdateKompetenRequest $request, Kompeten $kompeten)
     {
+        // dd($request);
         $validatedData = $request->validate([
             'profil_id' => 'required',
-            'nama' => 'required'
+            'id_kopetensi' => 'required',
+            'jml_lk' => 'required',
+            'jml_pr' => 'required'
         ]);
 
-        Kompeten::where('id', $kompeten->id)->update($validatedData);
+        foreach($request->id_kopetensi as $key => $kopetensi){
+            Kompeten::where('profil_id', $request->profil_id)->where('id', $kopetensi)->update([
+                'jml_lk' => $request->jml_lk[$key],
+                'jml_pr' => $request->jml_pr[$key],
+            ]);
+        }   
+
+        $profil = Profil::where('id', $request->profil_id)->get()[0];
+
+        $jml_lk = 0;
+        $jml_pr = 0;
+        foreach($profil->kompeten as $kopetensi){
+            $jml_lk += $kopetensi->jml_lk;
+            $jml_pr += $kopetensi->jml_pr;
+        }
+
+        $updateData = [
+            'jml_siswa_l' => $jml_lk,
+            'jml_siswa_p' => $jml_pr
+        ];
+
+        Profil::where('id', $request->profil_id)->update($updateData);
+        $jml_lk = 0;
+        $jml_pr = 0;
 
         return redirect('/profil/' . $request->profil_id);
     }

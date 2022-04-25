@@ -19,11 +19,7 @@ class Profil extends Model
 
     public function kompeten(){
         return $this->hasMany(Kompeten::class);
-    }
-
-    public function kopetensikeahlian(){
-        return $this->hasMany(Kopetensikeahlian::class);
-    }
+}
 
     public function scopeSearch($query, array $search)
     {

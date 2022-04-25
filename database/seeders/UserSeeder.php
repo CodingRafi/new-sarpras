@@ -18,13 +18,13 @@ class UserSeeder extends Seeder
     public function run()
     {
         $admin = User::create([
-            'name' => 'Admin',
+            'name' => 'Dinas',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('12345678'),
         ]);
 
         $role = Role::create([
-            'name' => 'admin',
+            'name' => 'dinas',
             'guard_name' => 'web'
         ]);
 
@@ -37,7 +37,7 @@ class UserSeeder extends Seeder
 
         //? Membuat role Teacher 
         $roleTeacher = Role::create([
-            'name' => 'teacher',
+            'name' => 'sekolah',
             'guard_name' => 'web'
         ]);
 
