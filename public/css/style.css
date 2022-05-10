@@ -1,0 +1,90 @@
+.con-img{
+    background: linear-gradient(rgba(33, 33, 33, 0.47), rgba(33, 33, 33, 0.47)), url('/assets/img/rectangle.png') no-repeat center center;
+    background-size: cover;
+    background-position-y: -80px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.con-img-text{
+    color: #fff;
+    z-index: 1;
+}
+
+.con-img-text h1{
+    color: #fff;
+    font-weight: 300;
+    font-size: 2.5rem;
+}
+
+.con-img-text h1 span{
+    color: #FCC12D;
+    font-weight: 700;
+}
+
+.con-img-text h3{
+    font-size: .7rem;
+    color: #fff;
+    font-weight: 300;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+}
+
+.con-img-text p {
+    font-size: .8rem;
+}
+
+.tombol-mata{
+    position: absolute;
+    border: none;
+    padding: 11px 16px;
+    background: url('/assets/svg/vector.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: translateY(-135%);
+    right: 11vw;
+}
+
+.form-select:focus, .form-control:focus, .btn:focus{
+    border-color: #696cff !important;
+    /* box-shadow: none !important; */
+    box-shadow: 0 0 0 0.07rem #0d6efd1a !important;
+}
+
+.bagian-row{
+    height: 30rem;
+    width: 100%;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.con-main{
+    align-items: center;
+}
+
+.row-bulet-warna .col-md-2{
+    width: 4rem !important;
+}
+
+@media(max-width:850px){
+    .con-img{
+        border: 1px solid red;
+        display: none !important;
+    }
+
+    .bagian-row{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* height: 40vh; */
+    }
+
+    .bagian-row .col-7{
+        width: 91.66666667% !important;
+    }
+
+    .con-main{
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+}

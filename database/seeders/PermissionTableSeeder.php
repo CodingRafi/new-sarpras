@@ -25,17 +25,16 @@ class PermissionTableSeeder extends Seeder
             'add_roles',
             'edit_roles',
 
-            'view_courses',
-            'add_courses',
-            'edit_courses',
-            'delete_courses',
+            'view_profil',
+            'add_profil',
+            'edit_profil',
+            'delete_profil',
 
-            'view_lessons',
-            'add_lessons',
-            'edit_lessons',
-            'delete_lessons',
+            'view_lahan',
+            'add_lahan',
+            'edit_lahan',
+            'delete_lahan',
 
-            'view_admin',
         ];
 
         foreach ($permissions as $permission) {

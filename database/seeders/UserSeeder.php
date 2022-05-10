@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\ProfilDepo;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -29,46 +30,84 @@ class UserSeeder extends Seeder
         ]);
 
         $permissions = Permission::pluck('id','id')->all();
-   
+
         $role->syncPermissions($permissions);
 
         $admin->assignRole([$role->id]);
 
 
-        //? Membuat role Teacher 
+        //? Membuat role sekolah 
         $roleTeacher = Role::create([
             'name' => 'sekolah',
             'guard_name' => 'web'
         ]);
 
-        $izinTeachers = ['1', '9', '10', '11', '12', '13', '14', '15', '16'];
-        $resultTeacher = array_map(function($izinTeacher){
-            return $izinTeacher;
-        }, $izinTeachers);
+        $izinSekolahs = ['1', '9', '10', '11', '12', '13', '14', '15'];
+        $resultSekolah = array_map(function($izinSekolah){
+            return $izinSekolah;
+        }, $izinSekolahs);
 
-        $roleTeacher->syncPermissions($resultTeacher);
+        $roleTeacher->syncPermissions($resultSekolah);
 
 
-        //? Membuat Role Student 
-        $roleStudent = Role::create([
-            'name' => 'student',
+        //? Membuat Role KCD
+        $roleKcd = Role::create([
+            'name' => 'kcd',
             'guard_name' => 'web'
         ]);
 
-        $izinStudents = ['9', '13'];
+        $izinKcds = ['9', '13'];
 
-        $resultStudent = array_map(function($izinStudent){
-            return $izinStudent;
-        },$izinStudents);
+        $resultKcd = array_map(function($izinKcd){
+            return $izinKcd;
+        },$izinKcds);
 
-        $roleStudent->syncPermissions($resultStudent);
+        $roleKcd->syncPermissions($resultKcd);
 
-        $user = User::create([
-            'name' => 'User',
-            'email' => 'user@gmail.com',
-            'password' => bcrypt('12345678'),
+
+        //? Membuat Role pengawas
+        $rolePengawas = Role::create([
+            'name' => 'pengawas',
+            'guard_name' => 'web'
         ]);
 
-        $user->assignRole('student');
+        $izinPengawases = ['9', '13'];
+
+        $resultPengawas = array_map(function($izinPengawas){
+            return $izinPengawas;
+        }, $izinPengawases);
+
+        $rolePengawas->syncPermissions($resultPengawas);
+
+
+        //? membuat Role Verifikator
+        $roleVerifikator = Role::create([
+            'name' => 'verifikator',
+            'guard_name' => 'web'
+        ]);
+
+        $izinVerifikators = ['9', '13'];
+
+        $resultVerifikator = array_map(function($izinVerifikator){
+            return $izinVerifikator;
+        }, $izinVerifikators);
+
+        $roleVerifikator->syncPermissions($resultVerifikator);
+
+
+
+        // $user->assignRole('student');
+
+
+        //? Membuat user sekolah
+        $profils = ProfilDepo::all();
+        foreach ($profils as $key => $profil) {
+            User::create([
+                'name' => $profil['depo_nama'],
+                'npsn' => $profil["depo_npsn"],
+                'password' => bcrypt('12345678')
+            ]);
+        }
+
     }
 }

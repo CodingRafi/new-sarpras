@@ -15,11 +15,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        // $this->call(ProfilDepoSeeder::class);
+        $this->call(ProfilSeeder::class);
         $this->call(KomliSeeder::class);
         $this->call(PermissionTableSeeder::class);
         $this->call(UserSeeder::class);
-        $this->call(ProfilDepoSeeder::class);
-        $this->call(ProfilSeeder::class);
 
         
     }

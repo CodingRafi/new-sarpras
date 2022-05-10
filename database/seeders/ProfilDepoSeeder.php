@@ -16,6 +16,7 @@ class ProfilDepoSeeder extends Seeder
     public function run()
     {
         $profils = ProfilDepo::DataProfilSekolah();
+        // dd($profils);
         foreach($profils as $profil){
             ProfilDepo::create([
                 'depo_npsn' => $profil["npsn"],
