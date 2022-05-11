@@ -6,6 +6,7 @@ use App\Http\Controllers\FotoController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KomliController;
+use App\Http\Controllers\LahanController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\KoleksiController;
 use App\Http\Controllers\KompetenController;
@@ -42,6 +43,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/koleksi/create/{id:profil}', [KoleksiController::class, 'create']);
     Route::resource('/foto', FotoController::class);
     Route::get('/foto/create/{koleksi:slug}', [FotoController::class, 'create']);
+    Route::resource('/lahan', LahanController::class);
 });
 
 require __DIR__.'/auth.php';
