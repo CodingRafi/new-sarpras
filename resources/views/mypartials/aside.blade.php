@@ -46,14 +46,14 @@
                     <ul class="nav nav-treeview">
                         {{------------------------------------------------------------------------------------------ KETERSEDIAAN LAHAN & ANALISI LAHAN ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="#" class="nav-link" style="display: flex; align-items: center; gap: 4px;">
+                            <a href="/lahan" class="nav-link" style="display: flex; align-items: center; gap: 4px;">
                                 <i class="fa-regular fa-circle"></i>
                                 <p class="text-wrap">Ketersediaan Lahan & Analisi Lahan</p>
                             </a>
                         </li>
                         {{------------------------------------------------------------------------------------------ USULAN LAHAN SEKOLAH ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/lahan/create" class="nav-link">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Usulan Lahan Sekolah</p>
                             </a>
