@@ -50,7 +50,7 @@
                                         <td class="text-wrap">: {{ $profil->nama }}</td>
                                     </tr>
                                     {{-- ---------------------------------------------------------------------------------------- STATUS SEKOLAH ---------------------------------------------------------------------------------------- --}}
-                                    <tr>z
+                                    <tr>
                                         <th>Status Sekolah</th>
                                         <td class="text-wrap">: {{ $profil->status_sekolah }}</td>
                                     </tr>
@@ -135,27 +135,24 @@
                             <input type="hidden" name="kecamatan" value="{{ $profil->kecamatan }}">
                             <input type="hidden" name="nomor_fax" value="{{ $profil->nomor_fax }}">
                             <input type="hidden" name="akreditas" value="{{ $profil->akreditas }}">
+                            <input type="hidden" name="npsn" value="{{ $profil->npsn }}">
+                            <input type="hidden" name="nama_sekolah" value="{{ $profil->nama }}">
+                            <input type="hidden" name="status" value="{{ $profil->status_sekolah }}">
+                            <input type="hidden" name="status" value="{{ $profil->status_sekolah }}">
+                            <input type="hidden" name="email" value="{{ $profil->email }}">
+                            <input type="hidden" name="website" value="{{ $profil->website }}">
+                            <input type="hidden" name="nomor_telepon" value="{{ $profil->nomor_telepon }}">
 
                             <div class="card-body">
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">NPSN</label>
-                                    <input type="number" class="form-control col-sm-6" placeholder="NPSN" id="npsn"
-                                        name="npsn" required value="{{ $profil->npsn }}">
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Nama Sekolah</label>
-                                    <input type="text" class="form-control col-sm-6" placeholder="Nama Sekolah" id="nama"
-                                        name="nama" required value="{{ $profil->nama }}">
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Status Sekolah</label>
-                                    <input type="text" class="form-control col-sm-6" placeholder="Status Sekolah"
-                                        id="status" name="status_sekolah" required value="{{ $profil->status_sekolah }}">
-                                </div>
-                                <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Nama Kepala Sekolah</label>
                                     <input type="text" class="form-control col-sm-6" placeholder="Kepala Sekolah"
-                                        id="kepala" name="kepala_sekolah" required value="">
+                                    id="kepala" name="kepala_sekolah" required value="">
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Jumlah Rombel</label>
+                                    <input type="text" class="form-control col-sm-6" placeholder="Jumlah Rombel"
+                                        id="jml_rombel" name="jml_rombel" required value="{{ $profil->jml_rombel }}">
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Latitude</label>
@@ -166,26 +163,6 @@
                                     <label class="col-sm-2 col-form-label">Longtitude</label>
                                     <input type="text" class="form-control col-sm-6" placeholder="Longtitude" id="long"
                                         name="long" required value="{{ $profil->long }}">
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Email</label>
-                                    <input type="text" class="form-control col-sm-6" placeholder="Email" id="email"
-                                        name="email" required value="{{ $profil->email }}">
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Website</label>
-                                    <input type="text" class="form-control col-sm-6" placeholder="Website" id="website"
-                                        name="website" required value="{{ $profil->website }}">
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Nomor Telepon</label>
-                                    <input type="text" class="form-control col-sm-6" placeholder="No. Telp" id="no_telp"
-                                        name="nomor_telepon" required value="{{ $profil->nomor_telepon }}">
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Jumlah Rombel</label>
-                                    <input type="text" class="form-control col-sm-6" placeholder="Jumlah Rombel"
-                                        id="jml_rombel" name="jml_rombel" required value="{{ $profil->jml_rombel }}">
                                 </div>
                             </div>
                             <!-- /.card-body DATA SEKOLAH-->
