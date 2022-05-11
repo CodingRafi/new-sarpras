@@ -20,7 +20,5 @@ class DatabaseSeeder extends Seeder
         $this->call(KomliSeeder::class);
         $this->call(PermissionTableSeeder::class);
         $this->call(UserSeeder::class);
-
-        
     }
 }

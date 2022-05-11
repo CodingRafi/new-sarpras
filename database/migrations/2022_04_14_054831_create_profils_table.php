@@ -34,6 +34,7 @@ return new class extends Migration
             $table->string('lat')->nullable();
             $table->string('long')->nullable();
             $table->string('jml_rombel')->nullable();
+            $table->string('nama_kepala_sekolah')->nullable();
             $table->timestamps();
         });
     }
