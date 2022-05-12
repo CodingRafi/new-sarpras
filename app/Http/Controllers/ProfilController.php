@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Profil;
+use App\Models\Komli;
 use App\Models\ProfilDepo;
 use App\Http\Requests\StoreProfilRequest;
 use App\Http\Requests\UpdateProfilRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ProfilController extends Controller
 {
@@ -60,15 +62,22 @@ class ProfilController extends Controller
         foreach($profil->kompeten as $kompe){
             $komli[] = $kompe->komli;
         }
+
+        $semua_jurusan = Komli::select('komlis.*')->where(function($query){
+            $query->leftJoin('kompetens', 'komlis.id', '=', 'kompetens.komli_id')
+                ->whereColumn('kompetens.profil_id', Auth::user()->id);
+        })->whereColumn('kompetens.komli_id', 'komlis.id')->get(); 
+
+        dd($semua_jurusan);
         
         return view('profil.index', [
             'profil' => $profil,
             'kopetensikeahlians'=> $profil->kompeten,
             'koleksis' => $profilDepo->koleksi,
-            'kompetens' => $profil->kompeten,
             'fotos' => $fotos,
             'komli' => $komli,
-            'profil_depo' => $profilDepo
+            'profil_depo' => $profilDepo,
+            // 'semua_jurusan' => $semuaJurusan
         ]);
     }
 
