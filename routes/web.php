@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FotoController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KomliController;
 use App\Http\Controllers\LahanController;
 use App\Http\Controllers\ProfilController;
@@ -41,6 +42,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/foto', FotoController::class);
     Route::get('/foto/create/{koleksi:slug}', [FotoController::class, 'create']);
     Route::resource('/lahan', LahanController::class);
+    Route::resource('/bangunan/ruang-kelas', KelasController::class);
 });
 
 require __DIR__.'/auth.php';
