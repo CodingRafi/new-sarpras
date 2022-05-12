@@ -16,4 +16,8 @@ class Komli extends Model
     public function kompeten(){
         return $this->hasMany(Kompeten::class);
     }
+
+    public function logo(){
+        return $this->hasMany(Logo::class);
+    }
 }

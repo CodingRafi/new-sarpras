@@ -317,7 +317,7 @@
                                                     required>
                                             </div>
                                             <div class="mb-3">
-                                                <select class="form-select" name="jenis">
+                                                <select class="custom-select" name="jenis">
                                                     <option value="bangunan">Bangunan Sekolah</option>
                                                     <option value="gerbang">Gerbang</option>
                                                     <option value="fasilitas">Fasilitas</option>
@@ -459,7 +459,7 @@
                     <div class="card-header bg-success">
                         <ul class="nav nav-pills">
                             <li class="nav-item">
-                                <a class="nav-link text-white awalKopetensi" href="#kompetensi-keahlian"
+                                <a class="nav-link text-white awalKopetensi active" href="#kompetensi-keahlian"
                                     data-toggle="tab"><i class="bi bi-gear-wide-connected mr-1"></i>Kompetensi
                                     Keahlian</a>
                             </li>
@@ -480,7 +480,7 @@
                     <div class="card-body"
                         style="overflow-y: auto; max-height: 300px !important; height: 300px !important;">
                         <div class="tab-content p-0">
-                            <div class="tab-pane  isikopetensi" id="kompetensi-keahlian">
+                            <div class="tab-pane  isikopetensi active" id="kompetensi-keahlian">
                                 <form action="/kompeten/tambahsiswa/{{ $profil->id }}" method="POST">
                                     @csrf
                                     @method('patch')
@@ -568,7 +568,7 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="chart tab-pane isitambahkopetensi active" id="tambah-jurusan">
+                            <div class="chart tab-pane isitambahkopetensi" id="tambah-jurusan">
                                 <form style="height: 18rem" action="/kompeten" method="POST">
                                     @csrf
                                     <input type="hidden" name="profil_id" value="{{ $profil->id }}">
@@ -578,16 +578,11 @@
 
                                             <select class="fstdropdown-select select-jurusan" id="select" multiple
                                                 name="jurusanTerpilih[]">
-                                                {{-- @foreach ($semua_jurusan as $jurusan)
+                                                @foreach ($semua_jurusan as $jurusan)
                                                     <option value="{{ $jurusan->id }}">{{ $jurusan->kompetensi }}
                                                     </option>
-                                                @endforeach --}}
+                                                @endforeach
                                             </select>
-                                        </div>
-                                        <label>Logo Jurusan</label>
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="customFile">
-                                            <label class="custom-file-label" for="customFile">Choose file</label>
                                         </div>
                                     </div>
                                     <!-- /.card-body -->
