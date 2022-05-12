@@ -43,12 +43,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/foto', FotoController::class);
     Route::get('/foto/create/{koleksi:slug}', [FotoController::class, 'create']);
     Route::resource('/lahan', LahanController::class);
-<<<<<<< HEAD
     Route::resource('/bangunan/ruang-kelas', KelasController::class);
-=======
-    
     Route::resource('/bangunan/lab-komputer', KomputerController::class);
->>>>>>> a71124729f30aa13dedce067819971892feb3cc5
 });
 
 require __DIR__.'/auth.php';
