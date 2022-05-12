@@ -25,7 +25,7 @@ class LahanController extends Controller
      */
     public function create()
     {
-        //
+        return view("lahan.usulan");
     }
 
     /**
