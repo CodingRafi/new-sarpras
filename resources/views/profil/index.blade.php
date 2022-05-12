@@ -1,6 +1,34 @@
 @extends('mylayouts.main')
 
+{{-- @dd($semua_jurusan[0]) --}}
+{{-- @dd($kopetensikeahlians) --}}
+
+@section('tambahcss')
+    <link rel="stylesheet" href="/css/fstdropdown.css">
+
+    <style>
+        .nav-pills .show>.nav-link {
+            background-color: transparent !important;
+        }
+
+        .dropdown-menu.show {
+            top: .4rem !important;
+            left: -8rem !important;
+        }
+
+        .fstdropdown>.fstlist {
+            max-height: 150px !important;
+        }
+
+        .fstAll {
+            display: none !important;
+        }
+
+    </style>
+@endsection
+
 @section('container')
+
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -151,6 +179,11 @@
                                     <label class="col-sm-2 col-form-label">Status Sekolah</label>
                                     <input type="text" class="form-control col-sm-6" placeholder="Status Sekolah"
                                         id="status" name="status_sekolah" required value="{{ $profil->status_sekolah }}">
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Nama Kepala Sekolah</label>
+                                    <input type="text" class="form-control col-sm-6" placeholder="Kepala Sekolah"
+                                        id="kepala" name="kepala_sekolah" required value="">
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Latitude</label>
@@ -370,54 +403,48 @@
                 <!-- Data Siswa card-->
                 <div class="card">
                     <div class="card-header bg-info">
-                        <!-- <h3 class="card-title">
-                      <i class="nav-icon bi bi-person-fill mr-1"></i>
-                      Data Siswa
-                    </h3> -->
-                        <ul class="nav nav-pills ml-auto">
+                        <ul class="nav nav-pills">
                             <li class="nav-item">
-                                <a class="nav-link text-white active" href="#data-siswa" data-toggle="tab"><i
-                                        class="bi bi-person-fill mr-1"></i>Data Siswa</a>
+                                <a class="nav-link text-white active"><i class="bi bi-person-fill mr-1"></i>Data Siswa</a>
                             </li>
                         </ul>
                     </div><!-- /.card-header -->
-                    <div class="card-body table-responsive">
-                        <div class="tab-content p-0">
-                            <div class="tab-pane active" id="data-siswa">
-                                <table class="table table-bordered table-hover">
-                                    <tbody>
-                                        {{-- ---------------------------------------------------------------------------------------- NAMA SEKOLAH ---------------------------------------------------------------------------------------- --}}
-                                        <tr>
-                                            <th>Keterangan</th>
-                                            <th>Data Terkini</th>
-                                            <th>Data Dapodik</th>
-                                        </tr>
+                    <div class="card-body table-responsive"
+                        style="max-height: 300px !important; height: 300px !important;">
+                        <table class="table table-bordered table-hover">
+                            <tbody>
+                                {{-- ---------------------------------------------------------------------------------------- NAMA SEKOLAH ---------------------------------------------------------------------------------------- --}}
+                                <tr>
+                                    <th>Keterangan</th>
+                                    <th>Data Terkini</th>
+                                    <th>Data Dapodik</th>
+                                </tr>
 
-                                        {{-- ---------------------------------------------------------------------------------------- JUMLAH SISWA LAKI-LAKI ---------------------------------------------------------------------------------------- --}}
-                                        <tr>
-                                            <th>Laki-laki</th>
-                                            <td>{{ $profil->jml_siswa_l }}</td>
-                                            <td>{{ $profil_depo->depo_jml_siswa_l }}</td>
-                                        </tr>
+                                {{-- ---------------------------------------------------------------------------------------- JUMLAH SISWA LAKI-LAKI ---------------------------------------------------------------------------------------- --}}
+                                <tr>
+                                    <th>Laki-laki</th>
+                                    <td>{{ $profil->jml_siswa_l }}</td>
+                                    <td>{{ $profil_depo->depo_jml_siswa_l }}</td>
+                                </tr>
 
-                                        {{-- ---------------------------------------------------------------------------------------- JUMLAH SISWA PEREMPUAN ---------------------------------------------------------------------------------------- --}}
-                                        <tr>
-                                            <th>Perempuan</th>
-                                            <td>{{ $profil->jml_siswa_p }}</td>
-                                            <td>{{ $profil_depo->depo_jml_siswa_p }}</td>
-                                        </tr>
+                                {{-- ---------------------------------------------------------------------------------------- JUMLAH SISWA PEREMPUAN ---------------------------------------------------------------------------------------- --}}
+                                <tr>
+                                    <th>Perempuan</th>
+                                    <td>{{ $profil->jml_siswa_p }}</td>
+                                    <td>{{ $profil_depo->depo_jml_siswa_p }}</td>
+                                </tr>
 
-                                        {{-- ---------------------------------------------------------------------------------------- JUMLAH TOTAL ---------------------------------------------------------------------------------------- --}}
-                                        <tr>
-                                            <th>Jumlah</th>
-                                            <td>{{ $profil->jml_siswa_l + $profil->jml_siswa_p }}</td>
-                                            <td>{{ $profil_depo->depo_jml_siswa_l + $profil_depo->depo_jml_siswa_p }}
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                                {{-- ---------------------------------------------------------------------------------------- JUMLAH TOTAL ---------------------------------------------------------------------------------------- --}}
+                                <tr>
+                                    <th>Jumlah</th>
+                                    <td>{{ $profil->jml_siswa_l + $profil->jml_siswa_p }}</td>
+                                    <td>{{ $profil_depo->depo_jml_siswa_l + $profil_depo->depo_jml_siswa_p }}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
                     </div><!-- /.card-body -->
                 </div>
                 <!-- /.card -->
@@ -427,28 +454,33 @@
             <!-- right col (We are only adding the ID to make the widgets sortable)-->
             <section class="col-lg-4 connectedSortable">
 
-                <!-- Update Data Siswa card -->
+                <!-- Kompetensi Keahlian card -->
                 <div class="card">
                     <div class="card-header bg-success">
-                        <ul class="nav nav-pills ml-auto">
-                            <li class="nav-item awalKopetensi">
-                                <a class="nav-link text-white active" href="#kompetensi-keahlian" data-toggle="tab"><i
-                                        class="bi bi-gear-wide-connected mr-1"></i>Kompetensi
+                        <ul class="nav nav-pills">
+                            <li class="nav-item">
+                                <a class="nav-link text-white awalKopetensi" href="#kompetensi-keahlian"
+                                    data-toggle="tab"><i class="bi bi-gear-wide-connected mr-1"></i>Kompetensi
                                     Keahlian</a>
                             </li>
-                            <li class="nav-item tambahsiswa">
-                                <a class="nav-link text-white" href="#" data-toggle="tab"><i
-                                        class="bi bi-plus-lg mr-1"></i>Tambah Siswa</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="#" data-toggle="tab"><i
-                                        class="bi bi-plus-lg mr-1"></i>Input KK</a>
+                            <li class="nav-item dropdown" style="position: absolute; right: 0;">
+                                <a class="nav-link" data-toggle="dropdown" href="#"><i
+                                        class="bi bi-three-dots-vertical text-white"></i>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item tambahsiswa" data-toggle="tab" href="#tambah-siswa">Tambah
+                                        Siswa</a>
+                                    <a class="dropdown-item tambahkopetensi" data-toggle="tab"
+                                        href="#tambah-jurusan">Tambah
+                                        Jurusan</a>
+                                </div>
                             </li>
                         </ul>
                     </div><!-- /.card-header -->
-                    <div class="card-body">
+                    <div class="card-body"
+                        style="overflow-y: auto; max-height: 300px !important; height: 300px !important;">
                         <div class="tab-content p-0">
-                            <div class="tab-pane active" id="kompetensi-keahlian">
+                            <div class="tab-pane  isikopetensi" id="kompetensi-keahlian">
                                 <form action="/kompeten/tambahsiswa/{{ $profil->id }}" method="POST">
                                     @csrf
                                     @method('patch')
@@ -488,36 +520,78 @@
 
                                         </tbody>
                                     </table>
-                                    <div class="buttonSubmit" style="display: none;">
+                                </form>
+                            </div>
+                            <div class="chart tab-pane isitambahsiswa" id="tambah-siswa">
+                                <form action="/kompeten/tambahsiswa/{{ $profil->id }}" method="POST">
+                                    @csrf
+                                    @method('patch')
+                                    <input type="hidden" name="profil_id" value="{{ $profil->id }}">
+                                    <table class="table table-bordered table-hover">
+                                        <tbody>
+                                            <tr>
+                                                <th>Kompetensi Keahlian</th>
+                                                <th>L</th>
+                                                <th>P</th>
+                                                <th class="th-jumlah">Jumlah</th>
+                                            </tr>
+
+                                            @foreach ($kopetensikeahlians as $key => $kopetensikeahlian)
+                                                <input type="hidden" name="id_kopetensi[]"
+                                                    value="{{ $kopetensikeahlian->id }}">
+                                                <tr class="barisKopetensi">
+                                                    <td>{{ $komli[$key]->kompetensi }}</td>
+                                                    <td class="kolomJmlLk">
+                                                        <span
+                                                            class="span-jmlLk">{{ $kopetensikeahlian->jml_lk }}</span>
+                                                        <input type="text" name="jml_lk[]" class="form-text inputJmlLk"
+                                                            style="width:60px;display: none;"
+                                                            value="{{ $kopetensikeahlian->jml_lk }}">
+                                                    </td>
+                                                    <td class="kolomJmlPr">
+                                                        <span
+                                                            class="span-jmlPr">{{ $kopetensikeahlian->jml_pr }}</span>
+                                                        <input type="text" name="jml_pr[]" class="form-text inputJmlPr"
+                                                            style="width:60px;display: none;"
+                                                            value="{{ $kopetensikeahlian->jml_pr }}">
+                                                    </td>
+                                                    <td class="td-jumlah">
+                                                        {{ $kopetensikeahlian->jml_lk + $kopetensikeahlian->jml_pr }}
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+
+                                        </tbody>
+                                    </table>
+                                    <div class="buttonSubmit">
                                         <button class="btn btn-success">Apply</button>
                                     </div>
                                 </form>
                             </div>
-                            <div class="chart tab-pane" id="tambah-siswa">
-                                <form role="form">
+                            <div class="chart tab-pane isitambahkopetensi active" id="tambah-jurusan">
+                                <form style="height: 18rem" action="/kompeten" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="profil_id" value="{{ $profil->id }}">
                                     <div class="card-body p-0 ">
                                         <div class="form-group">
-                                            <label class="col-form-label">Kompetensi Keahlian</label>
-                                            <input type="text" class="form-control col-md-12" placeholder="Input KK">
+                                            <label>Jurusan</label>
+
+                                            <select class="fstdropdown-select select-jurusan" id="select" multiple
+                                                name="jurusanTerpilih[]">
+                                                {{-- @foreach ($semua_jurusan as $jurusan)
+                                                    <option value="{{ $jurusan->id }}">{{ $jurusan->kompetensi }}
+                                                    </option>
+                                                @endforeach --}}
+                                            </select>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="col-form-label">Laki-laki</label>
-                                            <input type="number" class="form-control col-md-12"
-                                                placeholder="Input Jml Laki-laki">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-form-label">Perempuan</label>
-                                            <input type="number" class="form-control col-md-12"
-                                                placeholder="Input Jml Perempuan">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-form-label">Keluar</label>
-                                            <input type="number" class="form-control col-md-12"
-                                                placeholder="Input Jml Keluar">
+                                        <label>Logo Jurusan</label>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="customFile">
+                                            <label class="custom-file-label" for="customFile">Choose file</label>
                                         </div>
                                     </div>
                                     <!-- /.card-body -->
-                                    <div class="card-footer">
+                                    <div class="card-footer p-0 mt-3" style="background: none;">
                                         <button type="submit" class="btn btn-success">Simpan</button>
                                     </div>
                                 </form>
@@ -532,100 +606,51 @@
             <!-- right col -->
             <section class="col-lg-4 connectedSortable">
 
-                <!-- Update Data Siswa card -->
+                <!-- Log Pengguna card -->
                 <div class="card">
-                    <div class="card-header bg-success">
-                        <ul class="nav nav-pills ml-auto">
-                            <li class="nav-item awalKopetensi">
-                                <a class="nav-link text-white active" href="#kompetensi-keahlian" data-toggle="tab"><i
-                                        class="bi bi-gear-wide-connected mr-1"></i>Kompetensi
-                                    Keahlian</a>
-                            </li>
-                            <li class="nav-item tambahsiswa">
-                                <a class="nav-link text-white" href="#" data-toggle="tab"><i
-                                        class="bi bi-plus-lg mr-1"></i>Tambah Siswa</a>
-                            </li>
+                    <div class="card-header bg-secondary">
+                        <ul class="nav nav-pills">
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="#" data-toggle="tab"><i
-                                        class="bi bi-plus-lg mr-1"></i>Input KK</a>
+                                <a class="nav-link text-white active"><i class="bi bi-card-heading mr-1"></i>Log
+                                    Pengguna</a>
                             </li>
                         </ul>
                     </div><!-- /.card-header -->
-                    <div class="card-body">
+                    <div class="card-body" style="overflow-y: auto; max-height: 300px !important;">
                         <div class="tab-content p-0">
-                            <div class="tab-pane active" id="kompetensi-keahlian">
-                                <form action="/kompeten/tambahsiswa/{{ $profil->id }}" method="POST">
-                                    @csrf
-                                    @method('patch')
-                                    <input type="hidden" name="profil_id" value="{{ $profil->id }}">
-                                    <table class="table table-bordered table-hover">
-                                        <tbody>
-                                            <tr>
-                                                <th>Kompetensi Keahlian</th>
-                                                <th>L</th>
-                                                <th>P</th>
-                                                <th>Jumlah</th>
-                                            </tr>
-
-                                            @foreach ($kopetensikeahlians as $key => $kopetensikeahlian)
-                                                <input type="hidden" name="id_kopetensi[]"
-                                                    value="{{ $kopetensikeahlian->id }}">
-                                                <tr class="barisKopetensi">
-                                                    <td>{{ $komli[$key]->kompetensi }}</td>
-                                                    <td class="kolomJmlLk">
-                                                        <span
-                                                            class="span-jmlLk">{{ $kopetensikeahlian->jml_lk }}</span>
-                                                        <input type="text" name="jml_lk[]" class="form-text inputJmlLk"
-                                                            style="width:50px;display: none;"
-                                                            value="{{ $kopetensikeahlian->jml_lk }}">
-                                                    </td>
-                                                    <td class="kolomJmlPr">
-                                                        <span
-                                                            class="span-jmlPr">{{ $kopetensikeahlian->jml_pr }}</span>
-                                                        <input type="text" name="jml_pr[]" class="form-text inputJmlPr"
-                                                            style="width:50px;display: none;"
-                                                            value="{{ $kopetensikeahlian->jml_pr }}">
-                                                    </td>
-                                                    <td>{{ $kopetensikeahlian->jml_lk + $kopetensikeahlian->jml_pr }}
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-
-                                        </tbody>
-                                    </table>
-                                    <div class="buttonSubmit" style="display: none;">
-                                        <button class="btn btn-success">Apply</button>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="chart tab-pane" id="tambah-siswa">
-                                <form role="form">
-                                    <div class="card-body p-0 ">
-                                        <div class="form-group">
-                                            <label class="col-form-label">Kompetensi Keahlian</label>
-                                            <input type="text" class="form-control col-md-12" placeholder="Input KK">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-form-label">Laki-laki</label>
-                                            <input type="number" class="form-control col-md-12"
-                                                placeholder="Input Jml Laki-laki">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-form-label">Perempuan</label>
-                                            <input type="number" class="form-control col-md-12"
-                                                placeholder="Input Jml Perempuan">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-form-label">Keluar</label>
-                                            <input type="number" class="form-control col-md-12"
-                                                placeholder="Input Jml Keluar">
-                                        </div>
-                                    </div>
-                                    <!-- /.card-body -->
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-success">Simpan</button>
-                                    </div>
-                                </form>
+                            <div class="tab-pane active">
+                                <div class="callout callout-info">
+                                    <p>Input foto sekolah</p>
+                                    <small>Admin Sekolah<br>Jum'at, 22 april 2022</small>
+                                </div>
+                                <div class="callout callout-info">
+                                    <p>Input foto sekolah</p>
+                                    <small>Admin Sekolah<br>Jum'at, 22 april 2022</small>
+                                </div>
+                                <div class="callout callout-info">
+                                    <p>Input foto sekolah</p>
+                                    <small>Admin Sekolah<br>Jum'at, 22 april 2022</small>
+                                </div>
+                                <div class="callout callout-info">
+                                    <p>Input foto sekolah</p>
+                                    <small>Admin Sekolah<br>Jum'at, 22 april 2022</small>
+                                </div>
+                                <div class="callout callout-info">
+                                    <p>Input foto sekolah</p>
+                                    <small>Admin Sekolah<br>Jum'at, 22 april 2022</small>
+                                </div>
+                                <div class="callout callout-info">
+                                    <p>Input foto sekolah</p>
+                                    <small>Admin Sekolah<br>Jum'at, 22 april 2022</small>
+                                </div>
+                                <div class="callout callout-info">
+                                    <p>Input foto sekolah</p>
+                                    <small>Admin Sekolah<br>Jum'at, 22 april 2022</small>
+                                </div>
+                                <div class="callout callout-info">
+                                    <p>Input foto sekolah</p>
+                                    <small>Admin Sekolah<br>Jum'at, 22 april 2022</small>
+                                </div>
                             </div>
                         </div>
 
@@ -642,7 +667,7 @@
             <div class="card-header bg-secondary">
                 <h3 class="card-title">
                     <i class="nav-icon bi bi-alarm-fill mr-1"></i>
-                    Riwayat Update Data
+                    Rekap
                 </h3>
             </div><!-- /.card-header -->
             <div class="card-body">
@@ -650,17 +675,23 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Tanggal Update</th>
-                            <th>User</th>
-                            <th>Log Update</th>
+                            <th>Kategori</th>
+                            <th>Nama</th>
+                            <th>Kondisi</th>
+                            <th>Keterangan</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1.</td>
-                            <td>2022-04-06 13:01:12</td>
-                            <td>Admin</td>
-                            <td>Foto Sekolah/Bagian Depan</td>
+                            <td>Lahan</td>
+                            <td>Tanah 1</td>
+                            <td>SHM</td>
+                            <td>Ideal</td>
+                            <td>
+                                <div class="btn btn-success">Detail</div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -673,7 +704,7 @@
 
     <!-- Content -->
 
-    <div class="container-xxl flex-grow-1 container-p-y">
+    {{-- <div class="container-xxl flex-grow-1 container-p-y">
         <div class="card">
             <a href="/profil/{{ $profil->id }}/edit" class="btn btn-warning">Edit Profil</a>
             <h6>NPSN: {{ $profil->npsn }}</h6>
@@ -694,7 +725,7 @@
             <a href="/kompeten/tambahsiswa/{{ $profil->id }}">Tambah Siswa</a>
             @foreach ($kopetensikeahlians as $key => $kopetensikeahlian)
                 <h6>Kopetensi Keahlian {{ $key + 1 }}</h6>
-                <form action="/kompeten/{{ $kompetens[$key]->id }}" class="d-inline" method="POST">
+                <form action="/kompeten" class="d-inline" method="POST">
                     @method("delete")
                     @csrf
                     <button class="badge bg-danger border-0" onclick="return confirm('Yakin?')">Delete</button>
@@ -737,24 +768,37 @@
             <br>
         </div>
 
-    </div>
-    <!-- / Content --> --}}
+    </div> --}}
+    <!-- / Content -->
 
     <div class="content-backdrop fade"></div>
 @endsection
 
 @section('tambahjs')
+    <script src="/js/fstdropdown.js"></script>
     <script>
-        const buttonTambahSiswa = document.querySelector('.tambahsiswa');
+        setFstDropdown();
+    </script>
+    <script>
         const barisKopetensi = document.querySelectorAll('.barisKopetensi');
-        const buttonSubmit = document.querySelector('.buttonSubmit');
-        const awalKopetensi = document.querySelector('.awalKopetensi');
         const kolomJmlLk = document.querySelectorAll('.kolomJmlLk');
         const kolomJmlPr = document.querySelectorAll('.kolomJmlPr');
         const spanJmlLk = document.querySelectorAll('.span-jmlLk');
         const spanJmlPr = document.querySelectorAll('.span-jmlPr');
         const inputJmlLk = document.querySelectorAll('.inputJmlLk');
         const inputJmlPr = document.querySelectorAll('.inputJmlPr');
+        const thJumlah = document.querySelector('.th-jumlah');
+        const tdJumlah = document.querySelectorAll('.td-jumlah');
+
+        // tombol
+        const buttonTambahSiswa = document.querySelector('.tambahsiswa');
+        const awalKopetensi = document.querySelector('.awalKopetensi');
+        const tambahkopetensi = document.querySelector('.tambahkopetensi');
+
+        // isi
+        const isikopetensi = document.querySelector('.isikopetensi');
+        const isitambahsiswa = document.querySelector('.isitambahsiswa');
+        const isitambahkopetensi = document.querySelector('.isitambahkopetensi');
 
         buttonTambahSiswa.addEventListener('click', function() {
             barisKopetensi.forEach((e, i) => {
@@ -762,8 +806,15 @@
                 inputJmlPr[i].style.display = 'block';
                 spanJmlLk[i].style.display = 'none';
                 spanJmlPr[i].style.display = 'none';
-                buttonSubmit.style.display = 'block';
+                thJumlah.style.display = 'none';
+                tdJumlah.forEach(e => {
+                    e.style.display = 'none';
+                })
             });
+            isitambahsiswa.classList.add('active');
+            isikopetensi.classList.remove('active');
+            isitambahkopetensi.classList.remove('active');
+            awalKopetensi.classList.remove('active');
         })
 
         awalKopetensi.addEventListener('click', function() {
@@ -772,8 +823,30 @@
                 inputJmlPr[i].style.display = 'none';
                 spanJmlLk[i].style.display = 'block';
                 spanJmlPr[i].style.display = 'block';
-                buttonSubmit.style.display = 'none';
+                thJumlah.style.display = 'block';
+                tdJumlah.forEach(e => {
+                    e.style.display = 'block';
+                })
             })
+            isikopetensi.classList.add('active');
+            awalKopetensi.classList.add('active');
+            isitambahkopetensi.classList.remove('active');
+            isitambahsiswa.classList.remove('active');
+        })
+
+        tambahkopetensi.addEventListener('click', function() {
+            isitambahsiswa.classList.remove('active');
+            isikopetensi.classList.remove('active');
+            awalKopetensi.classList.remove('active');
+            isitambahkopetensi.classList.add('active');
+        })
+
+
+        // search tambah jurusan
+        const selectjurusan = document.querySelector('.select-jurusan');
+
+        selectjurusan.addEventListener('change', function() {
+            console.log(selectjurusan.value)
         })
     </script>
 @endsection

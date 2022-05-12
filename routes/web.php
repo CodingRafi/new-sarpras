@@ -12,7 +12,6 @@ use App\Http\Controllers\KoleksiController;
 use App\Http\Controllers\KompetenController;
 use App\Http\Controllers\ProfilDepoController;
 use App\Http\Controllers\RegisteredUserController;
-use App\Http\Controllers\KopetensikeahlianController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,8 +36,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::patch('/kompeten/tambahsiswa/{id:profil}', [KompetenController::class, 'update']);
     Route::resource('/kompeten', KompetenController::class);
     Route::get('/kompeten/create/{id:profil}', [KompetenController::class, 'create']);
-    // Route::resource('/kopetensi', KopetensikeahlianController::class);
-    // Route::get('/kopetensi/create/{id:profil}', [KopetensikeahlianController::class, 'create']);
     Route::resource('/koleksi', KoleksiController::class);
     Route::get('/koleksi/create/{id:profil}', [KoleksiController::class, 'create']);
     Route::resource('/foto', FotoController::class);
