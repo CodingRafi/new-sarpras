@@ -40,7 +40,7 @@
                                     </tr>
                                   </thead>
                                 {{-- end judul table --}}
-                                
+
                                 {{-- isi table --}}
                                 <tbody>
                                     <tr>
@@ -90,21 +90,21 @@
                     {{-- input nama lahan --}}
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Nama Lahan</label>
-                        <input type="text" class="form-control col-sm-6" placeholder="Masukan Nama Lahan" id="nama-lahan" name="npsn" required value="">
+                        <input type="text" class="form-control col-sm-9" placeholder="Masukan Nama Lahan" id="nama-lahan" name="npsn" required value="">
                     </div>
                     {{-- end input nama lahan --}}
 
                     {{-- input panjang --}}
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Panjang(M)</label>
-                        <input type="text" class="form-control col-sm-6" placeholder="Masukan Panjang Lahan" id="panjang" name="nama" required value="">
+                        <input type="text" class="form-control col-sm-9" placeholder="Masukan Panjang Lahan" id="panjang" name="nama" required value="">
                     </div>
                     {{-- end input panjang --}}
 
                     {{-- input lebar --}}
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Lebar(M)</label>
-                        <input type="text" class="form-control col-sm-6" placeholder="Masukan Lebar Lahan"
+                        <input type="text" class="form-control col-sm-9" placeholder="Masukan Lebar Lahan"
                         id="lebar" name="status_sekolah" required value="">
                     </div>
                     {{-- end input lebar --}}
@@ -112,14 +112,14 @@
                     {{-- input luas lahan --}}
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Luas Lahan(M²)</label>
-                        <input type="text" class="form-control col-sm-6" placeholder="Masukan Luas Lahan" id="l-lahan"name="lat" required value="">
+                        <input type="text" class="form-control col-sm-9" placeholder="Masukan Luas Lahan" id="l-lahan"name="lat" required value="">
                     </div>
                     {{-- end input luas lahan --}}
 
                     {{-- input alamat --}}
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Alamat</label>
-                        <input type="text" class="form-control col-sm-6" placeholder="Masukan Alamat" id="alamat"
+                        <input type="text" class="form-control col-sm-9" placeholder="Masukan Alamat" id="alamat"
                         name="long" required value="">
                     </div>
                     {{-- end input alamat --}}
@@ -134,7 +134,7 @@
                     {{-- input status usulan --}}
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Status Usulan</label>
-                        <input type="text" class="form-control col-sm-6" placeholder="Masukan Status Usulan" id="status-usulan" name="website" required value="">
+                        <input type="text" class="form-control col-sm-9" placeholder="Masukan Status Usulan" id="status-usulan" name="website" required value="">
                     </div>
                     {{-- end input status usulan --}}
 
