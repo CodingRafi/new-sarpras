@@ -12,9 +12,17 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-    {{-- main-content --}}
-        
-    {{-- end main-content --}}
+    {{-- main-atas --}}
+    <div class="col-lg-3 col-6">
+        <div class="info-box mb-3 bg-info">
+            <span class="info-box-icon"><i class="bi bi-person-badge-fill h1"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Jumlah Jurusan</span>
+                <span class="info-box-number h1"></span>
+            </div>
+        </div>
+    </div>  
+    {{-- end main-atas --}}   
 
     
 
