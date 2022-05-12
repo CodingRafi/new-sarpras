@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('lahans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('profil_depo_id');
             $table->timestamps();
         });
     }
