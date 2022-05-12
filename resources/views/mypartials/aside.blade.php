@@ -73,7 +73,7 @@
                     <ul class="nav nav-treeview">
                         {{------------------------------------------------------------------------------------------ RUANG KELAS ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/bangunan/ruang-kelas" class="nav-link">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Ruang Kelas</p>
                             </a>
