@@ -47,10 +47,10 @@ class KompetenController extends Controller
     {
         $validatedData = $request->validate([
             'profil_id' => 'required',
-            'komli' => 'required'
+            'jurusanTerpilih' => 'required'
         ]);
 
-        foreach($request->komli as $kom){
+        foreach($request->jurusanTerpilih as $kom){
             Kompeten::create([
                 'profil_id' => $request->profil_id,
                 'komli_id' => $kom,

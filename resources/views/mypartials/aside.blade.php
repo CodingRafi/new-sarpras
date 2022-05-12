@@ -1,5 +1,5 @@
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-light-success elevation-4" style="position: fixed">
+<aside class="main-sidebar sidebar-light-success elevation-4" style="position: fixed;">
     <!-- Brand Logo -->
     <a href="/" class="brand-link bg-success" style="background-color: #00A65B !important; display: flex; align-items: center;padding: 9px 11px;">
         <div class="bungkusGambar bg-white p-2" style="border-radius: 50%;">
@@ -46,9 +46,9 @@
                     <ul class="nav nav-treeview">
                         {{------------------------------------------------------------------------------------------ KETERSEDIAAN LAHAN & ANALISI LAHAN ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="/lahan" class="nav-link " style="display: flex; align-items: center; gap: 4px;background: #fff;">
+                            <a href="/lahan" class="nav-link">
                                 <i class="fa-regular fa-circle"></i>
-                                <p class="text-wrap">Ketersediaan Lahan & Analisi Lahan</p>
+                                <p>Ketersediaan Lahan & Analisi Lahan</p>
                             </a>
                         </li>
                         {{------------------------------------------------------------------------------------------ USULAN LAHAN SEKOLAH ------------------------------------------------------------------------------------------}}
@@ -62,7 +62,7 @@
                 </li>
 
                 {{------------------------------------------------------------------------------------------ BANGUNAN SEKOLAH ------------------------------------------------------------------------------------------}}
-                <li class="nav-item has-treeview">
+                <li class="nav-item has-treeview {{ Request::is('bangunan/*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-building"></i>
                         <p>
@@ -83,6 +83,13 @@
                             <a href="#" class="nav-link">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Ruang Praktek</p>
+                            </a>
+                        </li>
+                        {{------------------------------------------------------------------------------------------ LAB KOMPUTER ------------------------------------------------------------------------------------------}}
+                        <li class="nav-item">
+                            <a href="/bangunan/lab-komputer" class="nav-link {{ Request::is('bangunan/lab-komputer') ? 'active' : '' }}">
+                                <i class="fa-regular fa-circle"></i>
+                                <p>Lab Komputer</p>
                             </a>
                         </li>
                         {{------------------------------------------------------------------------------------------ PERPUSTAKAAN ------------------------------------------------------------------------------------------}}
