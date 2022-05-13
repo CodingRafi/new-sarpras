@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark display-4" style="padding: 0 !important;">Lab Komputer</h1>
+                <h1 class="m-0 text-dark display-4" style="padding: 0 !important;">Toilet</h1>
             </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -20,17 +20,17 @@
     <div class="row">
         <div class="col-lg-3 col-6">
 
-            {{-- ---------------------------------------------------------------------------------------- JUMLAH ROMBEL ---------------------------------------------------------------------------------------- --}}
+            {{-- ---------------------------------------------------------------------------------------- JUMLAH PESERTADIDIK ---------------------------------------------------------------------------------------- --}}
             <div class="card card-success">
                 <div class="card-header">
-                    <h3 class="card-title">Jumlah Rombel</h3>
+                    <h3 class="card-title ">Jumlah Peserta Didik</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool"><i class="fas fa-minus" style="display: none"></i>
                         </button>
                     </div>
                 </div>
                 <div class="card-body">
-                    <h1 class="text-center display-4">5</h1>
+                    <h1 class="text-center display-4">20</h1>
                 </div>
             </div>
         </div>
@@ -41,13 +41,43 @@
                 <div class="card-header">
                     <h3 class="card-title">Kondisi Ideal</h3>
                     <div class="card-tools">
-                        <button type="button" class="btn btn-tool"><i class="fas fa-minus" style="display: none"></i>
+                        <button type="button" class="btn btn-tool" data-toggle="modal"
+                        data-target="#edit-ideal"><i class="bi bi-pencil-fill"></i>
                         </button>
                     </div>
                 </div>
                 <div class="card-body d-flex align-items-end justify-content-center">
                     <h1 class="display-4">25</h1>
-                    <p>/ Kelas</p>
+                    <p>/ Toilet</p>
+                </div>
+            </div>
+
+            {{-- ---------------------------------------------------------------------------------------- MODAL IDEAL ---------------------------------------------------------------------------------------- --}}
+            <div class="modal fade" id="edit-ideal">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info">
+                            <h4 class="modal-title">Kondisi Ideal</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal">
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label for="ideal" class="col-sm-2 col-form-label">Kondisi Ideal</label>
+                                        <div class="col-sm-10">
+                                            <input type="number" class="form-control" id="ideal">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-info float-right">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -65,7 +95,7 @@
                 </div>
                 <div class="card-body d-flex align-items-end justify-content-center">
                     <h1 class="display-4">11</h1>
-                    <p>/ Kelas</p>
+                    <p>/ Toilet</p>
                 </div>
             </div>
 
@@ -112,7 +142,7 @@
                 </div>
                 <div class="card-body d-flex align-items-end justify-content-center">
                     <h1 class="display-4">4</h1>
-                    <p>/ Kelas</p>
+                    <p>/ Toilet</p>
                 </div>
             </div>
         </div>
@@ -147,10 +177,10 @@
         </div>
     </div>
 
-    {{-- ---------------------------------------------------------------------------------------- USULAN LAB KOMPUTER ---------------------------------------------------------------------------------------- --}}
+    {{-- ---------------------------------------------------------------------------------------- USULAN TOILET ---------------------------------------------------------------------------------------- --}}
     <div class="card card-info">
         <div class="card-header">
-            <h3 class="card-title">Usulan Lab Komputer</h3>
+            <h3 class="card-title">Usulan Toilet</h3>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool border border-light" data-toggle="modal"
                     data-target="#tambah-usulan"><i class="bi bi-plus"></i> Tambah Usulan
@@ -163,7 +193,6 @@
                     <tr class="text-center">
                         <th rowspan="2" style="vertical-align: middle;">No</th>
                         <th rowspan="2" style="vertical-align: middle;">Jenis Ruang</th>
-                        <th rowspan="2" style="vertical-align: middle;">Jumlah Ruang</th>
                         <th colspan="2">Ketersedian Lahan</th>
                         <th rowspan="2" style="vertical-align: middle;">Proposal</th>
                         <th rowspan="2" style="vertical-align: middle;">Aksi</th>
@@ -176,10 +205,9 @@
                 <tbody>
                     <tr>
                         <td style="vertical-align: middle">1</td>
-                        <td style="vertical-align: middle">Ruang Komputer</td>
-                        <td class="text-center" style="vertical-align: middle">3</td>
+                        <td style="vertical-align: middle">Toilet</td>
                         <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/assets/img/backgrounds/school.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
-                        <td class="text-center" style="vertical-align: middle">100m²</td>
+                        <td class="text-center" style="vertical-align: middle">20m²</td>
                         <td class="text-center" style="vertical-align: middle"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
                         <td class="text-center" style="vertical-align: middle"><button class="btn btn-success">Batalkan</button></td>
                     </tr>
@@ -202,9 +230,9 @@
                     <form class="form-horizontal">
                         <div class="card-body">
                             <div class="form-group row">
-                                <label for="jumlah-ruangan" class="col-sm-2 col-form-label">Jumlah Ruangan</label>
+                                <label for="jumlah-lahan" class="col-sm-2 col-form-label">Jumlah Lahan</label>
                                 <div class="col-sm-10">
-                                    <input type="number" class="form-control" id="jumlah-ruangan">
+                                    <input type="number" class="form-control" id="jumlah-lahan">
                                 </div>
                             </div>
                             <div class="form-group row">
