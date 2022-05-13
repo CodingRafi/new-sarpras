@@ -7,12 +7,14 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KomliController;
-use App\Http\Controllers\KomputerController;
 use App\Http\Controllers\LahanController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\KoleksiController;
 use App\Http\Controllers\KompetenController;
+use App\Http\Controllers\KomputerController;
 use App\Http\Controllers\ProfilDepoController;
+use App\Http\Controllers\RehabRenovController;
+use App\Http\Controllers\PerpustakaanController;
 use App\Http\Controllers\RegisteredUserController;
 
 /*
@@ -45,6 +47,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/lahan', LahanController::class);
     Route::resource('/bangunan/ruang-kelas', KelasController::class);
     Route::resource('/bangunan/lab-komputer', KomputerController::class);
+    Route::resource('/bangunan/ruang-perpustakaan', PerpustakaanController::class);
+    Route::resource('/bangunan/ruang-rehabrenov', RehabRenovController::class);
 });
 
 require __DIR__.'/auth.php';
