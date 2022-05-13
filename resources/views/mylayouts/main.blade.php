@@ -42,6 +42,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
       .nama-sekolah{
         display: none;
       }
+
+      .pimpinan-infobox{
+        flex-direction: column;
+      }
     }
 }
 
