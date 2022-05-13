@@ -44,7 +44,7 @@
                 {{-- end card header --}}
                 {{-- card body --}}
                 <div class="card-body"> 
-                    <h1 class="text-center font-weight-bold pt-2">20m²</h1>
+                    <h1 class="text-center font-weight-bold pt-2">25</h1>
                 </div>
                 {{-- end card body --}}
             </div>
@@ -62,7 +62,7 @@
                 {{-- end card header --}}
                 {{-- card body --}}
                 <div class="card-body"> 
-                    <h1 class="text-center font-weight-bold pt-2">20m²</h1>
+                    <h1 class="text-center font-weight-bold pt-2">5/ Kelas</h1>
                 </div>
                 {{-- end card body --}}
             </div>
@@ -74,13 +74,13 @@
                 <div class="card-header text-white" href="" style="background-color: #fcc12d"> 
                     <h4 class="card-title">Ketersediaan</h4> 
                     <div class="card-tools"> 
-                        <button type="button" class="btn btn-tool text-white"><i class="bi bi-pencil-square"></i></button> 
+                        <button type="button" class="btn btn-tool text-white"><i class="bi bi-pencil-square" data-toggle="modal" data-target="#modal-ketersediaan"></i></button> 
                     </div> 
                 </div> 
                 {{-- end card header --}}
                 {{-- card body --}}
                 <div class="card-body"> 
-                    <h1 class="text-center font-weight-bold pt-2">20m²</h1>
+                    <h1 class="text-center font-weight-bold pt-2">5</h1>
                 </div>
                 {{-- end card body --}}
             </div>
@@ -92,13 +92,13 @@
                 <div class="card-header text-white" href="" style="background-color: #263238"> 
                     <h4 class="card-title">Kekurangan</h4> 
                     <div class="card-tools"> 
-                        <button type="button" class="btn btn-tool text-white"><i class="bi bi-pencil-square"></i></button> 
+                        <button type="button" class="btn btn-tool text-white"><i class="bi bi-pencil-square" data-toggle="modal" data-target="#modal-kekurangan"></i></button> 
                     </div> 
                 </div> 
                 {{-- end card header --}}
                 {{-- card body --}}
                 <div class="card-body"> 
-                    <h1 class="text-center font-weight-bold pt-2">20m²</h1>
+                    <h1 class="text-center font-weight-bold pt-2">5</h1>
                 </div>
                 {{-- end card body --}}
             </div>
@@ -178,22 +178,106 @@
 </div>
 {{-- End Main-Content --}}
 
-<!-- Modal -->
-  <div class="modal fade" id="modal-default">
+{{-- modal ketersediaan --}}
+<div class="modal fade" id="modal-ketersediaan">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Default Modal</h4>
+          <h4 class="modal-title">Masukan Ketersediaan</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <p>One fine body&hellip;</p>
+          {{-- input jumlah ruangan --}}
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Ketersediaan</label>
+            <input type="text" class="form-control col-sm-7" placeholder="Masukan Ketersediaan" id="jumlah-ruangan"name="jumlah-ruangan" required value="">
+        </div>
+        {{-- end input jumlah ruangan --}}
         </div>
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn text-white" style="background-color: #00a65b">Save changes</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+{{-- end modal ketersediaan --}}
+
+{{-- modal kekurangan --}}
+<div class="modal fade" id="modal-kekurangan">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Masukan Kekurangan</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{-- input jumlah ruangan --}}
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Kekurangan</label>
+            <input type="text" class="form-control col-sm-7" placeholder="Masukan Kekurangan" id="jumlah-ruangan"name="jumlah-ruangan" required value="">
+        </div>
+        {{-- end input jumlah ruangan --}}
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn text-white" style="background-color: #00a65b">Save changes</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+{{-- end modal kekurangan --}}
+
+<!-- modal tambah usulan -->
+  <div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Usulan</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{-- input jumlah ruangan --}}
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Jumlah Ruangan</label>
+            <input type="text" class="form-control col-sm-7" placeholder="Masukan Jumlah Ruangan" id="jumlah-ruangan"name="jumlah-ruangan" required value="">
+        </div>
+        {{-- end input jumlah ruangan --}}
+
+        {{-- input luas lahan --}}
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Luas Lahan</label>
+            <input type="text" class="form-control col-sm-7" placeholder="Masukan Alamat" id="alamat"
+            name="long" required value="">
+        </div>
+        {{-- end luas lahan --}}
+
+        {{-- upload gambar lokasi --}}
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lokasi</label>
+            <input type="file" id="chooseFile">
+        </div>
+        {{-- end upload gambar lokasi --}}
+        {{-- upload proposal --}}
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label pt-1" for="customFile">Proposal</label>
+            <input type="file" id="chooseFile">
+        </div>
+        {{-- end upload proposal --}}
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn text-white" style="background-color: #00a65b">Save changes</button>
         </div>
       </div>
       <!-- /.modal-content -->
