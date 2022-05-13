@@ -9,6 +9,7 @@ use App\Http\Controllers\KomliController;
 use App\Http\Controllers\LahanController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\KoleksiController;
+use App\Http\Controllers\PraktikController;
 use App\Http\Controllers\KompetenController;
 use App\Http\Controllers\ProfilDepoController;
 use App\Http\Controllers\RegisteredUserController;
@@ -41,6 +42,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/foto', FotoController::class);
     Route::get('/foto/create/{koleksi:slug}', [FotoController::class, 'create']);
     Route::resource('/lahan', LahanController::class);
+    Route::resource('/bangunan/ruang-praktik', PraktikController::class);
+    
+    // Route::resource('/praktik', LahanController::class);
 });
 
 require __DIR__.'/auth.php';
