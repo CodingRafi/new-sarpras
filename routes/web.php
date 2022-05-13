@@ -13,6 +13,7 @@ use App\Http\Controllers\PimpinanController;
 use App\Http\Controllers\LahanController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\KoleksiController;
+use App\Http\Controllers\PraktikController;
 use App\Http\Controllers\KompetenController;
 use App\Http\Controllers\ProfilDepoController;
 use App\Http\Controllers\RegisteredUserController;
@@ -51,6 +52,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/foto', FotoController::class);
     Route::get('/foto/create/{koleksi:slug}', [FotoController::class, 'create']);
     Route::resource('/lahan', LahanController::class);
+    Route::resource('/bangunan/ruang-praktik', PraktikController::class);
     Route::resource('/bangunan/ruang-kelas', KelasController::class);
     Route::resource('/bangunan/lab-komputer', KomputerController::class);
     Route::resource('/bangunan/toilet', ToiletController::class);

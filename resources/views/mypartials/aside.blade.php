@@ -80,7 +80,7 @@
                         </li>
                         {{------------------------------------------------------------------------------------------ RUANG PRAKTEK ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/bangunan/ruang-praktik" class="nav-link">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Ruang Praktek</p>
                             </a>
