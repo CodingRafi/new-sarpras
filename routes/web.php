@@ -9,6 +9,7 @@ use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KomliController;
 use App\Http\Controllers\KomputerController;
 use App\Http\Controllers\ToiletController;
+use App\Http\Controllers\PimpinanController;
 use App\Http\Controllers\LahanController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\KoleksiController;
@@ -53,6 +54,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/bangunan/ruang-kelas', KelasController::class);
     Route::resource('/bangunan/lab-komputer', KomputerController::class);
     Route::resource('/bangunan/toilet', ToiletController::class);
+    Route::resource('/bangunan/pimpinan', PimpinanController::class);
 });
 
 require __DIR__.'/auth.php';

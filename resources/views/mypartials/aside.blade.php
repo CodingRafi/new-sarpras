@@ -108,7 +108,7 @@
                         </li>
                         {{------------------------------------------------------------------------------------------ RUANGAN PIMPINAN ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/bangunan/pimpinan" class="nav-link {{ Request::is('bangunan/pimpinan') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Ruangan Pimpinan</p>
                             </a>
