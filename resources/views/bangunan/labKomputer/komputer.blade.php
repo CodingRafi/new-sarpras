@@ -161,12 +161,12 @@
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr class="text-center">
-                        <th rowspan="2" style="padding-bottom: 35px">No</th>
-                        <th rowspan="2" style="padding-bottom: 35px">Jenis Ruang</th>
-                        <th rowspan="2" style="padding-bottom: 35px">Jumlah Ruang</th>
+                        <th rowspan="2" style="vertical-align:;">No</th>
+                        <th rowspan="2" style="vertical-align:;">Jenis Ruang</th>
+                        <th rowspan="2" style="vertical-align:;">Jumlah Ruang</th>
                         <th colspan="2">Ketersedian Lahan</th>
-                        <th rowspan="2" style="padding-bottom: 35px">Proposal</th>
-                        <th rowspan="2" style="padding-bottom: 35px">Aksi</th>
+                        <th rowspan="2" style="vertical-align:;">Proposal</th>
+                        <th rowspan="2" style="vertical-align:;">Aksi</th>
                     </tr>
                     <tr class="text-center">
                         <th>Gambar Lahan</th>
@@ -175,13 +175,13 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1</td>
-                        <td>Ruang Komputer</td>
-                        <td>3</td>
-                        <td>#</td>
-                        <td>100m²</td>
-                        <td>#</td>
-                        <td class="text-center"><button class="btn btn-success">Batalkan</button></td>
+                        <td style="vertical-align: middle">1</td>
+                        <td style="vertical-align: middle">Ruang Komputer</td>
+                        <td class="text-center" style="vertical-align: middle">3</td>
+                        <td class="text-center" style="vertical-align: middle"><img src="/assets/img/backgrounds/school.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></td>
+                        <td class="text-center" style="vertical-align: middle">100m²</td>
+                        <td class="text-center" style="vertical-align: middle"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
+                        <td class="text-center" style="vertical-align: middle"><button class="btn btn-success">Batalkan</button></td>
                     </tr>
                 </tbody>
             </table>

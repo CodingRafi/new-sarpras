@@ -33,11 +33,12 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-            <span class="nama-sekolah">NAMA SEKOLAH</span>
-            <img src="/assets/img/avatars/TarunaBhaktiLogo.png" alt="TarunaBhakti Logo"
-                class="brand-image img-circle bg-white" width="33" style="opacity: .8">
-        </li>
+      <li class="nav-item">
+        <span class="nama-sekolah text-white">NAMA SEKOLAH</span>
+        <img src="/assets/img/avatars/TarunaBhaktiLogo.png" alt="TarunaBhakti Logo" class="brand-image img-circle bg-white"
+          width="33" style="opacity: .8">
+      </li>
+
     </ul>
 </nav>
 <!-- /.navbar -->

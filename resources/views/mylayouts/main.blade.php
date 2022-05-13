@@ -16,6 +16,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="/css/all.min.css">
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <!-- Fancy Box -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
@@ -92,6 +94,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="/js/bootstrap.bundle.min.js"></script>
   <!-- AdminLTE App -->
   <script src="/js/adminlte.min.js"></script>
+  <!-- Fancy Box -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 
   @yield('tambahjs')
 </body>
