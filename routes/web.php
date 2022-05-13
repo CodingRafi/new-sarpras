@@ -29,6 +29,12 @@ Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// |-------------------------------------------------------------------------- SEMENTARA |--------------------------------------------------------------------------
+Route::get('gallery', function () {
+    return view('profil.gallery');
+});
+// |-------------------------------------------------------------------------- /SEMENTARA |--------------------------------------------------------------------------
+
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
     Route::resource('users', RegisteredUserController::class);
