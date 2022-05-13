@@ -1,3 +1,5 @@
+{{-- @dd($logs[0]['keterangan']) --}}
+
 @extends('mylayouts.main')
 
 {{-- @dd($semua_jurusan[0]) --}}
@@ -77,6 +79,12 @@
                                         <th>Nama Sekolah</th>
                                         <td class="text-wrap">: {{ $profil->nama }}</td>
                                     </tr>
+                                    
+                                    {{-- ---------------------------------------------------------------------------------------- Kepala Sekolah---------------------------------------------------------------------------------------- --}}
+                                    <tr>
+                                        <th>Kepala Sekolah</th>
+                                        <td class="text-wrap">: {{ $profil->nama_kepala_sekolah ?? 'Data tidak ditemukan' }}</td>
+                                    </tr>
                                     {{-- ---------------------------------------------------------------------------------------- STATUS SEKOLAH ---------------------------------------------------------------------------------------- --}}
                                     <tr>
                                         <th>Status Sekolah</th>
@@ -85,7 +93,19 @@
                                     {{-- ---------------------------------------------------------------------------------------- ALAMAT SEKOLAH ---------------------------------------------------------------------------------------- --}}
                                     <tr>
                                         <th>Alamat</th>
-                                        <td class="text-wrap">: {{ $profil->alamat }}</td>
+                                        <td class="text-wrap">: {{ $profil->provinsi }}, {{ $profil->kabupaten }}, {{ $profil->kecamatan }}, {{ $profil->alamat }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Provinsi</th>
+                                        <td class="text-wrap">: {{ $profil->provinsi }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Kabupaten</th>
+                                        <td class="text-wrap">: {{ $profil->kabupaten }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Kecamatan</th>
+                                        <td class="text-wrap">: {{ $profil->kecamatan }}</td>
                                     </tr>
                                     {{-- ---------------------------------------------------------------------------------------- KOORDINAT SEKOLAH ---------------------------------------------------------------------------------------- --}}
                                     <tr>
@@ -158,39 +178,57 @@
                             @csrf
                             @method('put')
                             <input type="hidden" name="profil_depo_id" value="{{ $profil->id }}">
-                            <input type="hidden" name="provinsi" value="{{ $profil->provinsi }}">
-                            <input type="hidden" name="kabupaten" value="{{ $profil->kabupaten }}">
-                            <input type="hidden" name="kecamatan" value="{{ $profil->kecamatan }}">
-                            <input type="hidden" name="nomor_fax" value="{{ $profil->nomor_fax }}">
-                            <input type="hidden" name="akreditas" value="{{ $profil->akreditas }}">
-                            <input type="hidden" name="npsn" value="{{ $profil->npsn }}">
-                            <input type="hidden" name="nama_sekolah" value="{{ $profil->nama }}">
-                            <input type="hidden" name="status" value="{{ $profil->status_sekolah }}">
-                            <input type="hidden" name="status" value="{{ $profil->status_sekolah }}">
-                            <input type="hidden" name="email" value="{{ $profil->email }}">
-                            <input type="hidden" name="website" value="{{ $profil->website }}">
-                            <input type="hidden" name="nomor_telepon" value="{{ $profil->nomor_telepon }}">
 
                             <div class="card-body">
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Nama Kepala Sekolah</label>
                                     <input type="text" class="form-control col-sm-6" placeholder="Kepala Sekolah"
-                                    id="kepala" name="kepala_sekolah" required value="">
+                                        id="kepala" name="nama_kepala_sekolah" value="{{ $profil->nama_kepala_sekolah, old('nama_kepala_sekolah') }}">
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Jumlah Rombel</label>
-                                    <input type="text" class="form-control col-sm-6" placeholder="Jumlah Rombel"
-                                        id="jml_rombel" name="jml_rombel" required value="{{ $profil->jml_rombel }}">
+                                    <input type="number" class="form-control col-sm-6" placeholder="Jumlah Rombel"
+                                        id="jml_rombel" name="jml_rombel" value="{{ $profil->jml_rombel, old('jml_rombel') }}">
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Latitude</label>
-                                    <input type="text" class="form-control col-sm-6" placeholder="Latitude" id="lat"
-                                        name="lat" required value="{{ $profil->lat }}">
+                                    <label class="col-sm-2 col-form-label">Kabupaten</label>
+                                    <input type="text" class="form-control col-sm-6" placeholder="Kabupaten"
+                                        id="kabupaten" name="kabupaten" value="{{ $profil->kabupaten, old('kabupaten') }}">
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Longtitude</label>
-                                    <input type="text" class="form-control col-sm-6" placeholder="Longtitude" id="long"
-                                        name="long" required value="{{ $profil->long }}">
+                                    <label class="col-sm-2 col-form-label">Kecamatan</label>
+                                    <input type="text" class="form-control col-sm-6" placeholder="Kecamatan"
+                                        id="kecamatan" name="kecamatan" value="{{ $profil->kecamatan, old('kecamatan') }}">
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Alamat</label>
+                                    <input type="text" class="form-control col-sm-6" placeholder="Alamat"
+                                        id="alamat" name="alamat" value="{{ $profil->alamat, old('alamat') }}">
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Lintang</label>
+                                    <input type="text" class="form-control col-sm-6" placeholder="Lintang"
+                                        id="lintang" name="lat" value="{{ $profil->lat, old('lintang') }}">
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Bujur</label>
+                                    <input type="text" class="form-control col-sm-6" placeholder="Bujur"
+                                        id="bujur" name="long" value="{{ $profil->long ,old('bujur') }}">
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Email</label>
+                                    <input type="email" class="form-control col-sm-6" placeholder="Email"
+                                        id="email" name="email" value="{{ $profil->email, old('email') }}">
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Website</label>
+                                    <input type="text" class="form-control col-sm-6" placeholder="Website"
+                                        id="website" name="website" value="{{ $profil->website, old('website') }}">
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Nomor Telepon</label>
+                                    <input type="text" class="form-control col-sm-6" placeholder="Nomor Telepon"
+                                        id="no_telp" name="no_telp" required value="{{ $profil->nomor_telepon, old('no_telp') }}">
                                 </div>
                             </div>
                             <!-- /.card-body DATA SEKOLAH-->
@@ -322,7 +360,7 @@
                     {{-- ---------------------------------------------------------------------------------------- JUMLAH ROMBEL ---------------------------------------------------------------------------------------- --}}
                     <div class="info-box-content">
                         <span class="info-box-text">Jumlah Rombel</span>
-                        <span class="info-box-number h1">{{ $profil->jml_rombel ?? 'Belum ' }}</span>
+                        <span class="info-box-number h1">{{ $profil->jml_rombel ?? '0' }}</span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -457,11 +495,8 @@
                     <div class="card-body"
                         style="overflow-y: auto; max-height: 300px !important; height: 300px !important;">
                         <div class="tab-content p-0">
-                            <div class="tab-pane  isikopetensi active" id="kompetensi-keahlian">
-                                <form action="/kompeten/tambahsiswa/{{ $profil->id }}" method="POST">
-                                    @csrf
-                                    @method('patch')
-                                    <input type="hidden" name="profil_id" value="{{ $profil->id }}">
+                            <div class="tab-pane  isikopetensi " id="kompetensi-keahlian">
+                                @if (count($kopetensikeahlians) > 0)
                                     <table class="table table-bordered table-hover">
                                         <tbody>
                                             <tr>
@@ -497,61 +532,73 @@
 
                                         </tbody>
                                     </table>
-                                </form>
+                                @else
+                                    <div class="alert text-center text-white" role="alert" style="background: #17A2B8;">
+                                        Maaf belum ada jurusan dipilih
+                                    </div>
+                                @endif
                             </div>
                             <div class="chart tab-pane isitambahsiswa" id="tambah-siswa">
-                                <form action="/kompeten/tambahsiswa/{{ $profil->id }}" method="POST">
-                                    @csrf
-                                    @method('patch')
-                                    <input type="hidden" name="profil_id" value="{{ $profil->id }}">
-                                    <table class="table table-bordered table-hover">
-                                        <tbody>
-                                            <tr>
-                                                <th>Kompetensi Keahlian</th>
-                                                <th>L</th>
-                                                <th>P</th>
-                                                <th class="th-jumlah">Jumlah</th>
-                                            </tr>
-
-                                            @foreach ($kopetensikeahlians as $key => $kopetensikeahlian)
-                                                <input type="hidden" name="id_kopetensi[]"
-                                                    value="{{ $kopetensikeahlian->id }}">
-                                                <tr class="barisKopetensi">
-                                                    <td>{{ $komli[$key]->kompetensi }}</td>
-                                                    <td class="kolomJmlLk">
-                                                        <span
-                                                            class="span-jmlLk">{{ $kopetensikeahlian->jml_lk }}</span>
-                                                        <input type="text" name="jml_lk[]" class="form-text inputJmlLk"
-                                                            style="width:60px;display: none;"
-                                                            value="{{ $kopetensikeahlian->jml_lk }}">
-                                                    </td>
-                                                    <td class="kolomJmlPr">
-                                                        <span
-                                                            class="span-jmlPr">{{ $kopetensikeahlian->jml_pr }}</span>
-                                                        <input type="text" name="jml_pr[]" class="form-text inputJmlPr"
-                                                            style="width:60px;display: none;"
-                                                            value="{{ $kopetensikeahlian->jml_pr }}">
-                                                    </td>
-                                                    <td class="td-jumlah">
-                                                        {{ $kopetensikeahlian->jml_lk + $kopetensikeahlian->jml_pr }}
-                                                    </td>
+                                @if (count($kopetensikeahlians) > 0)
+                                    <form action="/kompeten/tambahsiswa/{{ $profil->id }}" method="POST">
+                                        @csrf
+                                        @method('patch')
+                                        <input type="hidden" name="profil_id" value="{{ $profil->id }}">
+                                        <table class="table table-bordered table-hover">
+                                            <tbody>
+                                                <tr>
+                                                    <th>Kompetensi Keahlian</th>
+                                                    <th>L</th>
+                                                    <th>P</th>
+                                                    <th class="th-jumlah">Jumlah</th>
                                                 </tr>
-                                            @endforeach
 
-                                        </tbody>
-                                    </table>
-                                    <div class="buttonSubmit">
-                                        <button class="btn btn-success">Apply</button>
+                                                @foreach ($kopetensikeahlians as $key => $kopetensikeahlian)
+                                                    <input type="hidden" name="id_kopetensi[]"
+                                                        value="{{ $kopetensikeahlian->id }}">
+                                                    <tr class="barisKopetensi">
+                                                        <td>{{ $komli[$key]->kompetensi }}</td>
+                                                        <td class="kolomJmlLk">
+                                                            <span
+                                                                class="span-jmlLk">{{ $kopetensikeahlian->jml_lk }}</span>
+                                                            <input type="text" name="jml_lk[]" class="form-text inputJmlLk"
+                                                                style="width:60px;display: none;"
+                                                                value="{{ $kopetensikeahlian->jml_lk }}">
+                                                        </td>
+                                                        <td class="kolomJmlPr">
+                                                            <span
+                                                                class="span-jmlPr">{{ $kopetensikeahlian->jml_pr }}</span>
+                                                            <input type="text" name="jml_pr[]" class="form-text inputJmlPr"
+                                                                style="width:60px;display: none;"
+                                                                value="{{ $kopetensikeahlian->jml_pr }}">
+                                                        </td>
+                                                        <td class="td-jumlah">
+                                                            {{ $kopetensikeahlian->jml_lk + $kopetensikeahlian->jml_pr }}
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+
+                                            </tbody>
+                                        </table>
+                                        <div class="buttonSubmit">
+                                            <button class="btn btn-success">Apply</button>
+                                        </div>
+                                    </form>
+                                @else
+                                    <div class="alert text-center text-white" role="alert" style="background: #17A2B8;">
+                                        Maaf belum ada jurusan dipilih
                                     </div>
-                                </form>
+                                @endif
                             </div>
-                            <div class="chart tab-pane isitambahkopetensi" id="tambah-jurusan">
-                                <form style="height: 18rem" action="/kompeten" method="POST">
+                            <div class="chart tab-pane isitambahkopetensi active" id="tambah-jurusan">
+                                <form
+                                    style=" {{ count($kopetensikeahlians) > 0 ? 'height: 10rem;' : 'height: 18rem;' }}"
+                                    action="/kompeten" method="POST">
                                     @csrf
                                     <input type="hidden" name="profil_id" value="{{ $profil->id }}">
                                     <div class="card-body p-0 ">
                                         <div class="form-group">
-                                            <label>Jurusan</label>
+                                            <label>Tambah Jurusan</label>
 
                                             <select class="fstdropdown-select select-jurusan" id="select" multiple
                                                 name="jurusanTerpilih[]">
@@ -567,6 +614,36 @@
                                         <button type="submit" class="btn btn-success">Simpan</button>
                                     </div>
                                 </form>
+
+                                @if (count($kopetensikeahlians) > 0)
+                                    <table class="table table-bordered text-center">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 10px">#</th>
+                                                <th>Nama Jurusan</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($kopetensikeahlians as $kopetensikeahlian)
+                                                <tr>
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td>{{ $komli[$key]->kompetensi }}</td>
+                                                    <td>
+                                                        <form action="/kompeten/{{ $kopetensikeahlian->id }}"
+                                                            method="post">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button class="btn btn-danger"
+                                                                onclick="return confirm('Apakah anda yakin akan menghapus jurusan ini?')">Hapus</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                @endif
+
                             </div>
                         </div>
 
@@ -588,41 +665,15 @@
                             </li>
                         </ul>
                     </div><!-- /.card-header -->
-                    <div class="card-body" style="overflow-y: auto; max-height: 300px !important;">
+                    <div class="card-body" style="overflow-y: auto; max-height: 300px !important;height: 300px !important;">
                         <div class="tab-content p-0">
                             <div class="tab-pane active">
+                                @foreach ($logs as $log)     
                                 <div class="callout callout-info">
-                                    <p>Input foto sekolah</p>
-                                    <small>Admin Sekolah<br>Jum'at, 22 april 2022</small>
+                                    <p>{{ $log['keterangan'] }}</p>
+                                    <small>Pengubah : {{ $log['name'] }}<br>{{ $log['created_at'] }}</small>
                                 </div>
-                                <div class="callout callout-info">
-                                    <p>Input foto sekolah</p>
-                                    <small>Admin Sekolah<br>Jum'at, 22 april 2022</small>
-                                </div>
-                                <div class="callout callout-info">
-                                    <p>Input foto sekolah</p>
-                                    <small>Admin Sekolah<br>Jum'at, 22 april 2022</small>
-                                </div>
-                                <div class="callout callout-info">
-                                    <p>Input foto sekolah</p>
-                                    <small>Admin Sekolah<br>Jum'at, 22 april 2022</small>
-                                </div>
-                                <div class="callout callout-info">
-                                    <p>Input foto sekolah</p>
-                                    <small>Admin Sekolah<br>Jum'at, 22 april 2022</small>
-                                </div>
-                                <div class="callout callout-info">
-                                    <p>Input foto sekolah</p>
-                                    <small>Admin Sekolah<br>Jum'at, 22 april 2022</small>
-                                </div>
-                                <div class="callout callout-info">
-                                    <p>Input foto sekolah</p>
-                                    <small>Admin Sekolah<br>Jum'at, 22 april 2022</small>
-                                </div>
-                                <div class="callout callout-info">
-                                    <p>Input foto sekolah</p>
-                                    <small>Admin Sekolah<br>Jum'at, 22 april 2022</small>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
 

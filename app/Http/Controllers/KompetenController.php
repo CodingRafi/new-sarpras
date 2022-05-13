@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Kompeten;
 use App\Models\Komli;
+use App\Models\Log;
 use App\Models\Profil;
 use App\Http\Requests\StoreKompetenRequest;
 use App\Http\Requests\UpdateKompetenRequest;
+use Illuminate\Support\Facades\Auth;
 
 class KompetenController extends Controller
 {
@@ -50,6 +52,9 @@ class KompetenController extends Controller
             'jurusanTerpilih' => 'required'
         ]);
 
+        // dd(Auth::user());
+        // dd($request);
+
         foreach($request->jurusanTerpilih as $kom){
             Kompeten::create([
                 'profil_id' => $request->profil_id,
@@ -77,6 +82,12 @@ class KompetenController extends Controller
         $jml_lk = 0;
         $jml_pr = 0;
 
+        $logs = Log::create([
+            'profil_id' => $request->profil_id,
+            'users_id' => Auth::user()->id,
+            'keterangan' => 'Menambahkan ' . count($request->jurusanTerpilih) . ' jurusan' 
+        ]);
+
         return redirect('/profil/' . $request->profil_id);
     }
 
@@ -99,18 +110,18 @@ class KompetenController extends Controller
      */
     public function edit(Kompeten $kompeten, $id)
     {
-        $kompetens = Profil::where('id', $id)->get()[0]->kompeten;
-        $komli = [];
+        // $kompetens = Profil::where('id', $id)->get()[0]->kompeten;
+        // $komli = [];
 
-        foreach($kompetens as $kompeten){
-            $komli[] = $kompeten->komli;
-        }
+        // foreach($kompetens as $kompeten){
+        //     $komli[] = $kompeten->komli;
+        // }
 
-        return view('jeniskompeten.edit', [
-            'kompetens' => $kompetens,
-            'komlis' => $komli,
-            'profil_id' => $id
-        ]);
+        // return view('jeniskompeten.edit', [
+        //     'kompetens' => $kompetens,
+        //     'komlis' => $komli,
+        //     'profil_id' => $id
+        // ]);
     }
 
     /**
@@ -155,6 +166,12 @@ class KompetenController extends Controller
         $jml_lk = 0;
         $jml_pr = 0;
 
+        $logs = Log::create([
+            'profil_id' => $request->profil_id,
+            'users_id' => Auth::user()->id,
+            'keterangan' => 'Mengubah jumlah siswa'
+        ]);
+
         return redirect('/profil/' . $request->profil_id);
     }
 
@@ -167,6 +184,32 @@ class KompetenController extends Controller
     public function destroy(Kompeten $kompeten)
     {
         Kompeten::destroy($kompeten->id);
+
+        $profil = Profil::where('id', $kompeten->profil_id)->get()[0];
+
+        $jml_lk = 0;
+        $jml_pr = 0;
+        foreach($profil->kompeten as $kopetensi){
+            $jml_lk += $kopetensi->jml_lk;
+            $jml_pr += $kopetensi->jml_pr;
+        }
+
+        $updateData = [
+            'jml_siswa_l' => $jml_lk,
+            'jml_siswa_p' => $jml_pr
+        ];
+
+        Profil::where('id', $kompeten->profil_id)->update($updateData);
+        $jml_lk = 0;
+        $jml_pr = 0;
+
+        $komli = Komli::where('id', $kompeten->komli_id)->get()[0];
+
+        $logs = Log::create([
+            'profil_id' => $kompeten->profil_id,
+            'users_id' => Auth::user()->id,
+            'keterangan' => 'Menghapus jurusan ' . $komli->kompetensi
+        ]);
 
         return redirect('/profil/' . $kompeten->profil_id);
     }

@@ -9,7 +9,15 @@ class Log extends Model
 {
     use HasFactory;
 
-    public function users(){
+    protected $guarded =[
+        "id"
+    ];
+
+    public function user(){
         return $this->belongsTo(Users::class);
+    }
+
+    public function profil(){
+        return $this->belongsTo(Profil::class);
     }
 }

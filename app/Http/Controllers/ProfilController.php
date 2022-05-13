@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Profil;
 use App\Models\Komli;
+use App\Models\Log;
+use App\Models\User;
 use App\Models\Kompeten;
 use App\Models\ProfilDepo;
 use App\Http\Requests\StoreProfilRequest;
@@ -64,14 +66,23 @@ class ProfilController extends Controller
         foreach($profil->kompeten as $kompe){
             $komli[] = $kompe->komli;
         }
-        DB::enableQueryLog();
-
 
         $semua_jurusan = DB::table('komlis as a')->select('a.*')
                         ->leftJoin('kompetens as b', function($join){
                             $join->on('a.id', '=', 'b.komli_id')
                                 ->where('b.profil_id', 1);
                         })->whereNull('b.komli_id')->get();
+
+        $logs = [];
+        $logQuery = Log::where('profil_id', $profil->id)->get();
+
+        foreach ($logQuery as $key => $log) {
+            $logs[] = [
+                'name' => User::where('id', $log->users_id)->get()[0]->name,
+                'keterangan' => $log->keterangan,
+                'created_at' => $log->created_at
+            ];
+        }
         
         return view('profil.index', [
             'profil' => $profil,
@@ -80,7 +91,8 @@ class ProfilController extends Controller
             'fotos' => $fotos,
             'komli' => $komli,
             'profil_depo' => $profilDepo,
-            'semua_jurusan' => $semua_jurusan
+            'semua_jurusan' => $semua_jurusan,
+            'logs' => $logs
         ]);
     }
 
@@ -106,24 +118,21 @@ class ProfilController extends Controller
      */
     public function update(UpdateProfilRequest $request, Profil $profil)
     {
+        // dd($request);
         $jml_lk = 0;
         $jml_pr = 0;
         $validatedData = $request->validate([
             'profil_depo_id' => 'required',
-            'npsn' => 'required',
-            'nama' => 'required',
-            'status_sekolah' => 'required',
-            'provinsi' => 'required',
-            'kabupaten' => 'required',
-            'kecamatan' => 'required',
-            'email' => 'required',
-            'website' => 'required',
-            'nomor_telepon' => 'required',
-            'nomor_fax' => 'required',
-            'akreditas' => 'required',
-            'jml_rombel' => 'required',
-            'lat' => 'required',
-            'long' => 'required'
+            'nama_kepala_sekolah' => 'string',
+            'kabupaten' => 'string',
+            'kecamatan' => 'string',
+            'alamat' => 'string',
+            'email' => 'email',
+            'website' => 'string',
+            'nomor_telepon' => 'string',
+            'jml_rombel' => 'numeric',
+            'lat' => 'string',
+            'long' => 'string'
         ]);
         
         if(count($profil->kompeten) == 0){
@@ -140,6 +149,13 @@ class ProfilController extends Controller
             $jml_lk = 0;
             $jml_pr = 0;
         }
+
+        $logs = Log::create([
+            'profil_id' => $profil->id,
+            'users_id' => Auth::user()->id,
+            'keterangan' => 'Mengubah Data Sekolah '
+        ]);
+
 
         Profil::where('id' , $profil->id)->update($validatedData);
 

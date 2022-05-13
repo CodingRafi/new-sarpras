@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('logs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('users_id');
+            $table->foreignId('profil_id');
             $table->string('keterangan');
             $table->timestamps();
         });
