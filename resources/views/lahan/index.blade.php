@@ -48,8 +48,8 @@
         
         <div class="col">
             <div class="card" style="border-radius: 0px 20px 0px 20px !important">
-                <div class="card-header bg-info" style="border-radius: 0px 20px 0px 20px !important">
-                    <h4 class="text-center font-weight-bold">Jenis Kepemilikan</h4>
+                <div class="card-header" style="background-color: #25b5e9; border-radius: 0px 20px 0px 20px !important">
+                    <h4 class="text-center text-white font-weight-bold">Jenis Kepemilikan</h4>
                 </div><!-- /.card-header -->
                 <div class="card-body">
                     <h1 class="text-center font-weight-bold pt-2">SHM</h1>
@@ -60,7 +60,7 @@
         <div class="col">
             <div class="card" style="border-radius: 0px 20px 0px 20px !important">
                 <div class="card-header bg-warning" style="border-radius: 0px 20px 0px 20px !important">
-                    <h4 class="text-center font-weight-bold">Ketersedian Lahan</h4>
+                    <h4 class="text-center text-white font-weight-bold">Ketersedian Lahan</h4>
                 </div><!-- /.card-header -->
                 <div class="card-body">
                     <h1 class="text-center font-weight-bold pt-2">20m²</h1>
@@ -81,8 +81,8 @@
         
         <div class="col">
             <div class="card" style="border-radius: 0px 20px 0px 20px !important">
-                <div class="card-header bg-secondary" style="border-radius: 0px 20px 0px 20px !important">
-                    <h4 class="text-center font-weight-bold">Jumlah Usulan Lahan</h4>
+                <div class="card-header" style="background-color: #e0e0e0; border-radius: 0px 20px 0px 20px !important">
+                    <h4 class="text-center font-weight-bold">Jumlah Usulan</h4>
                 </div><!-- /.card-header -->
                 <div class="card-body">
                     <h1 class="text-center font-weight-bold pt-2">20m²</h1>
@@ -97,7 +97,7 @@
 <div class="container-fluid mt-3">
     <h3 class="mb-3 text-dark">Lahan Sekolah</h3>
     <div class="card">
-        <div class="card-header bg-info">
+        <div class="card-header" style="background-color: #25b5e9">
             <ul class="nav nav-pills ml-auto">
                 <li class="nav-item">
                     <a class="nav-link text-white active" href="#data-sekolah" data-toggle="tab"><i

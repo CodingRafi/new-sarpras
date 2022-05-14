@@ -15,30 +15,92 @@
 
 @section('container')
 
-{{------------------------------------------------ info box -------------------------------------------------}}
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark display-4" style="padding: 0 !important;">Ruang Rehab/ Renov</h1>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+{{----------------------------------------------- info box --------------------------------------------------}}
 <div class="info-box p-0 pimpinan-infobox">
-    <span class="info-box-icon bg-warning p-4" style="width: auto; min-width: 300px;"> <img src="/assets/img/icons/flaticons/building.png" style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
-    <div class="ml-4 text-white">
-        Ketersediaan
-        <div class="d-flex align-items-end justify-content-center">
-            <h1 class="display-4" style="font-weight: 600;">11</h1>
-            <p>/ Kantor</p>
+    <span class="info-box-icon p-4" style="background-color:#25b5e9; width: auto; min-width: 207px;">
+        <img src="/assets/img/icons/flaticons/town.png"
+            style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
+        <div class="ml-4">
+            <span class="text-white">
+                Kondisi Ideal
+            </span>
+            <div class="d-flex align-items-end justify-content-center">
+                <h1 class="display-4 text-white">30</h1>
+                <p class="text-white">/ Kantor</p>
+            </div>
         </div>
-    </div>
     </span>
     <div class="info-box-content">
-        <label>Keterangan: </label>
-        <p>Ruang guru jga bisa di pakai untuk menyimpan dokumn dokumen penting tentang anak didik mereka, Ruang guru juga sRuang guru jga bisa di pakai untuk menyimpan dokumn dokumen penting tentang anak didik. mereka, Ruang guru juga sangat berfungsi untuk para guru guru atau staf sekolah lain nya, dapat dimanfaatkan untuk tempat peristirahatan para guru ketika selesai mengajar, tempat berkumpulnya para guru ketika ingin melakukan rapat.</p>
+        <label>Keterangan:</label>
+        <p>Ruang guru jga bisa di pakai untuk menyimpan dokumen dokumen penting tentang anak didik mereka,     Ruang guru
+            juga sangat berfungsi untuk para guru guru atau staf sekolah lain nya, dapat dimanfaatkan untuk tempat
+            peristirahatan para guru ketika selesai mengajar, tempat berkumpulnya para guru ketika ingin melakukan
+            rapat.</p>
     </div>
 </div>
+<div class="info-box p-0 pimpinan-infobox">
+    <span class="info-box-icon p-4" style="background-color:#fcc12d; width: auto; min-width: 207px;">
+        <img src="/assets/img/icons/flaticons/town.png"
+            style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
+        <div class="ml-4">
+            <span class="text-white">
+                Kondisi Ideal
+            </span>
+            <div class="d-flex align-items-end justify-content-center">
+                <h1 class="display-4 text-white">30</h1>
+                <p class="text-white">/ Kantor</p>
+            </div>
+        </div>
+    </span>
+    <div class="info-box-content">
+        <label>Keterangan:</label>
+        <p>Ruang guru jga bisa di pakai untuk menyimpan dokumen dokumen penting tentang anak didik mereka, Ruang guru
+            juga sangat berfungsi untuk para guru guru atau staf sekolah lain nya, dapat dimanfaatkan untuk tempat
+            peristirahatan para guru ketika selesai mengajar, tempat berkumpulnya para guru ketika ingin melakukan
+            rapat.</p>
+    </div>
+</div>
+<div class="info-box p-0 pimpinan-infobox">
+    <span class="info-box-icon p-4" style="background-color:#263238; width: auto; min-width: 207px;">
+        <img src="/assets/img/icons/flaticons/town.png"
+            style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
+        <div class="ml-4">
+            <span class="text-white">
+                Kondisi Ideal
+            </span>
+            <div class="d-flex align-items-end justify-content-center">
+                <h1 class="display-4 text-white">30</h1>
+                <p class="text-white">/ Kantor</p>
+            </div>
+        </div>
+    </span>
+    <div class="info-box-content">
+        <label>Keterangan:</label>
+        <p>Ruang guru jga bisa di pakai untuk menyimpan dokumen dokumen penting tentang anak didik mereka, Ruang guru
+            juga sangat berfungsi untuk para guru guru atau staf sekolah lain nya, dapat dimanfaatkan untuk tempat
+            peristirahatan para guru ketika selesai mengajar, tempat berkumpulnya para guru ketika ingin melakukan
+            rapat.</p>
+    </div>
+</div>
+
 {{----------------------------------------------- end inf box -----------------------------------------------}}
 
 <div class="card">
     <div class="card-header" style="background-color: #25b5e9">
         <h3 class="card-title text-white pt-2">Usulan</h3>
         <div class="card-tools">
-            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
-                Tambah Usulan</button>
+            <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal" data-target="#tambah-usulan"><i class="bi bi-plus"></i> Tambah Usulan
+            </button>
         </div>
     </div>
     <!-- /.card-header DATA SEKOLAH-->
@@ -72,7 +134,7 @@
                                     <td class="text-center">Ruang Guru</td>
                                     <td class="text-center">3</td>
                                     <td class="text-center">20 M</td>
-                                    <td class="text-center"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" alt="image" style="width: 30px"></td>
+                                    <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
                                     <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
                                     <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
                                 </tr>
@@ -81,7 +143,7 @@
                                     <td class="text-center">Ruang Guru</td>
                                     <td class="text-center">3</td>
                                     <td class="text-center">20 M</td>
-                                    <td class="text-center"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" alt="image" style="width: 30px"></td>
+                                    <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
                                     <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
                                     <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
                                 </tr>
@@ -90,7 +152,7 @@
                                     <td class="text-center">Ruang Guru</td>
                                     <td class="text-center">3</td>
                                     <td class="text-center">20 M</td>
-                                    <td class="text-center"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" alt="image" style="width: 30px"></td>
+                                    <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
                                     <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
                                     <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
                                 </tr>
@@ -105,11 +167,11 @@
 </div>
 
 <div class="card">
-    <div class="card-header" style="background-color: #25b5e9">
+    <div class="card-header" style="background-color: #fcc12d">
         <h3 class="card-title text-white pt-2">Rencana Rehab/ Renov</h3>
         <div class="card-tools">
-            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
-                Tambah Usulan</button>
+            <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal" data-target="#tambah-usulan"><i class="bi bi-plus"></i> Tambah Usulan
+            </button>
         </div>
     </div>
     <!-- /.card-header DATA SEKOLAH-->
@@ -148,7 +210,7 @@
                                     <td class="text-center">10 Tahun</td>
                                     <td class="text-center">Atap</td>
                                     <td class="text-center">150m²</td>
-                                    <td class="text-center"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" alt="image" style="width: 30px"></td>
+                                    <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
                                     <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
                                     <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
                                 </tr>
@@ -159,7 +221,7 @@
                                     <td class="text-center">10 Tahun</td>
                                     <td class="text-center">Atap</td>
                                     <td class="text-center">150m²</td>
-                                    <td class="text-center"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" alt="image" style="width: 30px"></td>
+                                    <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
                                     <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
                                     <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
                                 </tr>
@@ -170,7 +232,7 @@
                                     <td class="text-center">10 Tahun</td>
                                     <td class="text-center">Atap</td>
                                     <td class="text-center">150m²</td>
-                                    <td class="text-center"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" alt="image" style="width: 30px"></td>
+                                    <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
                                     <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
                                     <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
                                 </tr>
