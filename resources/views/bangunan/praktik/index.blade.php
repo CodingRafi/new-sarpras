@@ -102,8 +102,8 @@
 {{-- Ruang Praktik --}}
 <div class="container-fluid mt-3">
     <div class="card">
-        <div class="card-header bg-info">
-            <h5>Ruang Praktek Tersedia</h5>
+        <div class="card-header" style="background-color: #25b5e9">
+            <h5 class="text-white">Ruang Praktek Tersedia</h5>
 
         </div>
         <div class="card-body">
@@ -155,9 +155,7 @@
         <div class="card-header bg-warning">
             <h3 class="card-title text-white">Usulan Ruang Praktik Baru</h3>
             <div class="card-tools">
-                <button type="button" class="btn btn-block btn-outline-light" data-toggle="modal"
-                    data-target="#modal-lg">
-                    <i class="bi bi-plus-lg mr-2"></i>Tambah Usulan
+                <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal" data-target="#tambah-usulan"><i class="bi bi-plus"></i> Tambah Usulan
                 </button>
             </div>
         </div>

@@ -7,12 +7,14 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KomliController;
+
 use App\Http\Controllers\KomputerController;
 use App\Http\Controllers\ToiletController;
 use App\Http\Controllers\PimpinanController;
 use App\Http\Controllers\PeralatanController;
 use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\LahanController;
+use App\Http\Controllers\MonevController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\KoleksiController;
 use App\Http\Controllers\PraktikController;
@@ -63,6 +65,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/bangunan/ruang-rehabrenov', RehabRenovController::class);
     Route::resource('/bangunan/toilet', ToiletController::class);
     Route::resource('/bangunan/pimpinan', PimpinanController::class);
+    Route::resource('/monev', MonevController::class);
     Route::resource('/peralatan/nama-jurusan', PeralatanController::class);
     Route::resource('/riwayat-bantuan', RiwayatController::class);
 });
