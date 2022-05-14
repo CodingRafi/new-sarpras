@@ -102,6 +102,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 
   @yield('tambahjs')
+  
+  @yield('peralatanjs')
 </body>
 
 </html>
