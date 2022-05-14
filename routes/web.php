@@ -11,6 +11,7 @@ use App\Http\Controllers\KomputerController;
 use App\Http\Controllers\ToiletController;
 use App\Http\Controllers\PimpinanController;
 use App\Http\Controllers\PeralatanController;
+use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\LahanController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\KoleksiController;
@@ -59,6 +60,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/bangunan/toilet', ToiletController::class);
     Route::resource('/bangunan/pimpinan', PimpinanController::class);
     Route::resource('/peralatan/nama-jurusan', PeralatanController::class);
+    Route::resource('/riwayat-bantuan', RiwayatController::class);
 });
 
 require __DIR__.'/auth.php';
