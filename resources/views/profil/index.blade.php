@@ -256,43 +256,15 @@
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="card-body">
-                                                        <h5 class="card-text">{{ $koleksi->nama }}</h5>
-                                                        <a href="#" class="btn btn-primary bg-info" data-toggle="modal"
-                                                            data-target="#tambah-gambar{{ $koleksi->id }}">Tambah</a>
-                                                        <a href="#" class="btn btn-danger">Hapus</a>
+                                                        <a class="card-text d-block" href="/koleksi/{{ $koleksi->slug }}" style="color: black;">{{ $koleksi->nama }}</a>
+                                                        <a href="/foto/create/{{ $koleksi->slug }}" class="btn btn-primary bg-info">Tambah</a>
+                                                        <a href="/koleksi/{{ $koleksi->slug }}/edit" class="btn btn-warning text-white">Edit</a>
 
-                                                        <!-- Modal -->
-                                                        <div class="modal fade" id="tambah-gambar{{ $koleksi->id }}"
-                                                            tabindex="-1" aria-labelledby="exampleModalLabel"
-                                                            aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-centered">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalLabel">
-                                                                            Tampak Depan
-                                                                        </h5>
-                                                                        <button type="button" class="close"
-                                                                            data-dismiss="modal" aria-label="Close">
-                                                                            <span aria-hidden="true">&times;</span>
-                                                                        </button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <form action="/foto" method="POST"
-                                                                            enctype="multipart/form-data">
-                                                                            @csrf
-                                                                            <input type="hidden" name="koleksi_id"
-                                                                                value="{{ $koleksi->id }}">
-                                                                            <div class="mb-3">
-                                                                                <input type="file" id="formFileMultiple"
-                                                                                    multiple accept="image/*" name="nama[]">
-                                                                            </div>
-                                                                            <button type="submit"
-                                                                                class="btn btn-primary btn-block">Submit</button>
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        <form action="/koleksi/{{ $koleksi->slug }}" method="post" class="d-inline-block">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus koleksi ini?')">Hapus</button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -333,9 +305,11 @@
                                             </div>
                                             <div class="mb-3">
                                                 <select class="custom-select" name="jenis">
-                                                    <option value="bangunan">Bangunan Sekolah</option>
-                                                    <option value="gerbang">Gerbang</option>
-                                                    <option value="fasilitas">Fasilitas</option>
+                                                    <option value="tampak_depan">Tampak Depan</option>
+                                                    <option value="tampak_kanan">Tampak kanan</option>
+                                                    <option value="tampak_kiri">Tampak kiri</option>
+                                                    <option value="tampak_dalam">Tampak dalam</option>
+                                                    <option value="lain">Lainnya</option>
                                                 </select>
                                             </div>
                                             <button type="submit" class="btn btn-primary">Simpan</button>

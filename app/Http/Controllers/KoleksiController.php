@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Koleksi;
 use App\Models\Foto;
+use App\Models\Log;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreKoleksiRequest;
 use App\Http\Requests\UpdateKoleksiRequest;
 use Illuminate\Support\Facades\Storage;
@@ -50,6 +52,12 @@ class KoleksiController extends Controller
         $validatedData['slug'] = SlugService::createSlug(Koleksi::class, 'slug', $request->nama);
 
         Koleksi::create($validatedData);
+
+        $logs = Log::create([
+            'profil_id' => $request->profil_depo_id,
+            'users_id' => Auth::user()->id,
+            'keterangan' => 'Membuat Koleksi'
+        ]);
 
         return redirect('/foto/create/'.$validatedData['slug']);
         // return redirect('/profil/'.$request->profil_depo_id);
@@ -121,6 +129,12 @@ class KoleksiController extends Controller
         }
 
         Koleksi::destroy($koleksi->id);
+
+        $logs = Log::create([
+            'profil_id' => $koleksi->profil_depo_id,
+            'users_id' => Auth::user()->id,
+            'keterangan' => 'Menghapus Koleksi ' . $koleksi->nama
+        ]);
 
         return redirect('profil/'.$koleksi->profil_depo_id);
     }

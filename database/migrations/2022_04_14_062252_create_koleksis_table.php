@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('profil_depo_id');
             $table->string('nama');
             $table->string('slug')->unique();
-            $table->enum('jenis', ['bangunan', 'gerbang', 'fasilitas']);
+            $table->enum('jenis', ['tampak_depan', 'tampak_kanan', 'tampak_kiri', 'tampak_dalam', 'lain']);
             $table->timestamps();
         });
     }
