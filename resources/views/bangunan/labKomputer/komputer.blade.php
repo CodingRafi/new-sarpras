@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <h1 class="text-center display-4">5</h1>
+                    <h1 class="text-center font-weight-bold pt-2">5</h1>
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
 
             {{-- ---------------------------------------------------------------------------------------- KONDISI IDEAL ---------------------------------------------------------------------------------------- --}}
             <div class="card card-info">
-                <div class="card-header">
+                <div class="card-header" style="background-color: #25b5e9">
                     <h3 class="card-title">Kondisi Ideal</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool"><i class="fas fa-minus" style="display: none"></i>
@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="card-body d-flex align-items-end justify-content-center">
-                    <h1 class="display-4">25</h1>
+                    <h1 class="text-center font-weight-bold pt-2">25</h1>
                     <p>/ Kelas</p>
                 </div>
             </div>
@@ -56,15 +56,15 @@
             {{-- ---------------------------------------------------------------------------------------- KETERSEDIAAN ---------------------------------------------------------------------------------------- --}}
             <div class="card card-warning">
                 <div class="card-header">
-                    <h3 class="card-title">Ketersediaan</h3>
+                    <h3 class="card-title text-white">Ketersediaan</h3>
                     <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-toggle="modal"
+                        <button type="button" class="btn btn-tool text-white" data-toggle="modal"
                         data-target="#edit-ketersediaan"><i class="bi bi-pencil-fill"></i>
                         </button>
                     </div>
                 </div>
                 <div class="card-body d-flex align-items-end justify-content-center">
-                    <h1 class="display-4">11</h1>
+                    <h1 class="text-center font-weight-bold pt-2">11</h1>
                     <p>/ Kelas</p>
                 </div>
             </div>
@@ -111,7 +111,7 @@
                     </div>
                 </div>
                 <div class="card-body d-flex align-items-end justify-content-center">
-                    <h1 class="display-4">4</h1>
+                    <h1 class="text-center font-weight-bold pt-2">4</h1>
                     <p>/ Kelas</p>
                 </div>
             </div>
@@ -149,11 +149,10 @@
 
     {{-- ---------------------------------------------------------------------------------------- USULAN LAB KOMPUTER ---------------------------------------------------------------------------------------- --}}
     <div class="card card-info">
-        <div class="card-header">
+        <div class="card-header" style="background-color: #25b5e9">
             <h3 class="card-title">Usulan Lab Komputer</h3>
             <div class="card-tools">
-                <button type="button" class="btn btn-tool border border-light" data-toggle="modal"
-                    data-target="#tambah-usulan"><i class="bi bi-plus"></i> Tambah Usulan
+                <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal" data-target="#tambah-usulan"><i class="bi bi-plus"></i> Tambah Usulan
                 </button>
             </div>
         </div>
@@ -161,12 +160,12 @@
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr class="text-center">
-                        <th rowspan="2" style="vertical-align:;">No</th>
-                        <th rowspan="2" style="vertical-align:;">Jenis Ruang</th>
-                        <th rowspan="2" style="vertical-align:;">Jumlah Ruang</th>
+                        <th rowspan="2" style="vertical-align: middle;">No</th>
+                        <th rowspan="2" style="vertical-align: middle;">Jenis Ruang</th>
+                        <th rowspan="2" style="vertical-align: middle;">Jumlah Ruang</th>
                         <th colspan="2">Ketersedian Lahan</th>
-                        <th rowspan="2" style="vertical-align:;">Proposal</th>
-                        <th rowspan="2" style="vertical-align:;">Aksi</th>
+                        <th rowspan="2" style="vertical-align: middle;">Proposal</th>
+                        <th rowspan="2" style="vertical-align: middle;">Aksi</th>
                     </tr>
                     <tr class="text-center">
                         <th>Gambar Lahan</th>
@@ -178,7 +177,7 @@
                         <td style="vertical-align: middle">1</td>
                         <td style="vertical-align: middle">Ruang Komputer</td>
                         <td class="text-center" style="vertical-align: middle">3</td>
-                        <td class="text-center" style="vertical-align: middle"><img src="/assets/img/backgrounds/school.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></td>
+                        <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/assets/img/backgrounds/school.jpg" class="rounded" style="object-fit: cover; width: 100px; aspect-ratio: 1/1;"></a></td>
                         <td class="text-center" style="vertical-align: middle">100m²</td>
                         <td class="text-center" style="vertical-align: middle"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
                         <td class="text-center" style="vertical-align: middle"><button class="btn btn-success">Batalkan</button></td>

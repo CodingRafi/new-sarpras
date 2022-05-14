@@ -44,7 +44,7 @@
                 {{-- end card header --}}
                 {{-- card body --}}
                 <div class="card-body"> 
-                    <h1 class="text-center font-weight-bold pt-2">20m²</h1>
+                    <h1 class="text-center font-weight-bold pt-2">25</h1>
                 </div>
                 {{-- end card body --}}
             </div>
@@ -62,7 +62,7 @@
                 {{-- end card header --}}
                 {{-- card body --}}
                 <div class="card-body"> 
-                    <h1 class="text-center font-weight-bold pt-2">20m²</h1>
+                    <h1 class="text-center font-weight-bold pt-2">5/ Kelas</h1>
                 </div>
                 {{-- end card body --}}
             </div>
@@ -74,13 +74,13 @@
                 <div class="card-header text-white" href="" style="background-color: #fcc12d"> 
                     <h4 class="card-title">Ketersediaan</h4> 
                     <div class="card-tools"> 
-                        <button type="button" class="btn btn-tool text-white"><i class="bi bi-pencil-square"></i></button> 
+                        <button type="button" class="btn btn-tool text-white"><i class="bi bi-pencil-square" data-toggle="modal" data-target="#modal-ketersediaan"></i></button> 
                     </div> 
                 </div> 
                 {{-- end card header --}}
                 {{-- card body --}}
                 <div class="card-body"> 
-                    <h1 class="text-center font-weight-bold pt-2">20m²</h1>
+                    <h1 class="text-center font-weight-bold pt-2">5</h1>
                 </div>
                 {{-- end card body --}}
             </div>
@@ -92,13 +92,13 @@
                 <div class="card-header text-white" href="" style="background-color: #263238"> 
                     <h4 class="card-title">Kekurangan</h4> 
                     <div class="card-tools"> 
-                        <button type="button" class="btn btn-tool text-white"><i class="bi bi-pencil-square"></i></button> 
+                        <button type="button" class="btn btn-tool text-white"><i class="bi bi-pencil-square" data-toggle="modal" data-target="#modal-kekurangan"></i></button> 
                     </div> 
                 </div> 
                 {{-- end card header --}}
                 {{-- card body --}}
                 <div class="card-body"> 
-                    <h1 class="text-center font-weight-bold pt-2">20m²</h1>
+                    <h1 class="text-center font-weight-bold pt-2">5</h1>
                 </div>
                 {{-- end card body --}}
             </div>
@@ -110,8 +110,8 @@
     <div class="card-header" style="background-color: #25b5e9">
         <h3 class="card-title text-white pt-2">Usulan Ruang Kelas Baru</h3>
         <div class="card-tools">
-            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
-                Tambah Usulan</button>
+            <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal" data-target="#tambah-usulan"><i class="bi bi-plus"></i> Tambah Usulan
+            </button>
         </div>
     </div>
     <!-- /.card-header DATA SEKOLAH-->
@@ -132,7 +132,7 @@
                                     <th rowspan="2" class="text-center" style="line-height: 70px">Aksi</th>
                                 </tr>
                                 <tr>
-                                    <th scope="col" class="text-center">Luas</th>
+                                    <th scope="col" class="text-center">Luas Lahan</th>
                                     <th scope="col" class="text-center">Gambar Lahan</th>
                                 </tr>
                               </thead>
@@ -142,29 +142,29 @@
                             <tbody>
                                 <tr>
                                     <th class="text-center">1</th>
-                                    <td class="text-center">XXXXXX</td>
-                                    <td class="text-center">PROPOSAL</td>
+                                    <td class="text-center">Ruang Kelas</td>
+                                    <td class="text-center">3</td>
                                     <td class="text-center">20 M</td>
-                                    <td class="text-center">10 M</td>
-                                    <td class="text-center">30 M²</td>
+                                    <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
+                                    <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
                                     <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
                                 </tr>
                                 <tr>
                                     <th class="text-center">2</th>
-                                    <td class="text-center">XXXXXX</td>
-                                    <td class="text-center">PROPOSAL</td>
+                                    <td class="text-center">Ruang Kelas</td>
+                                    <td class="text-center">3</td>
                                     <td class="text-center">20 M</td>
-                                    <td class="text-center">10 M</td>
-                                    <td class="text-center">30 M²</td>
+                                    <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
+                                    <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
                                     <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
                                 </tr>
                                 <tr>
                                     <th class="text-center">3</th>
-                                    <td class="text-center">XXXXXX</td>
-                                    <td class="text-center">PROPOSAL</td>
+                                    <td class="text-center">Ruang Kelas</td>
+                                    <td class="text-center">3</td>
                                     <td class="text-center">20 M</td>
-                                    <td class="text-center">10 M</td>
-                                    <td class="text-center">30 M²</td>
+                                    <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
+                                    <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
                                     <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
                                 </tr>
                               </tbody>
@@ -178,22 +178,106 @@
 </div>
 {{-- End Main-Content --}}
 
-<!-- Modal -->
-  <div class="modal fade" id="modal-default">
+{{-- modal ketersediaan --}}
+<div class="modal fade" id="modal-ketersediaan">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Default Modal</h4>
+          <h4 class="modal-title">Masukan Ketersediaan</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <p>One fine body&hellip;</p>
+          {{-- input jumlah ruangan --}}
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Ketersediaan</label>
+            <input type="text" class="form-control col-sm-7" placeholder="Masukan Ketersediaan" id="ketersediaan"name="jumlah-ruangan" required value="">
+        </div>
+        {{-- end input jumlah ruangan --}}
         </div>
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn text-white" style="background-color: #00a65b">Save changes</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+{{-- end modal ketersediaan --}}
+
+{{-- modal kekurangan --}}
+<div class="modal fade" id="modal-kekurangan">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Masukan Kekurangan</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{-- input jumlah ruangan --}}
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Kekurangan</label>
+            <input type="text" class="form-control col-sm-7" placeholder="Masukan Kekurangan" id="kekurangan"name="jumlah-ruangan" required value="">
+        </div>
+        {{-- end input jumlah ruangan --}}
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn text-white" style="background-color: #00a65b">Save changes</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+{{-- end modal kekurangan --}}
+
+<!-- modal tambah usulan -->
+  <div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Usulan</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{-- input jumlah ruangan --}}
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Jumlah Ruangan</label>
+            <input type="text" class="form-control col-sm-7" placeholder="Masukan Jumlah Ruangan" id="jumlah-ruangan"name="jumlah-ruangan" required value="">
+        </div>
+        {{-- end input jumlah ruangan --}}
+
+        {{-- input luas lahan --}}
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Luas Lahan</label>
+            <input type="text" class="form-control col-sm-7" placeholder="Masukan Luas Lahan" id="luas-lahan"
+            name="long" required value="">
+        </div>
+        {{-- end luas lahan --}}
+
+        {{-- upload gambar lokasi --}}
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan</label>
+            <input type="file" id="gambar-lahan">
+        </div>
+        {{-- end upload gambar lokasi --}}
+        {{-- upload proposal --}}
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label pt-1" for="customFile">Proposal</label>
+            <input type="file" id="proposal">
+        </div>
+        {{-- end upload proposal --}}
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn text-white" style="background-color: #00a65b">Save changes</button>
         </div>
       </div>
       <!-- /.modal-content -->
