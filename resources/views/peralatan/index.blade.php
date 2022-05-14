@@ -38,18 +38,22 @@
                         <td>Rekayasa Perangkat Lunak</td>
                         <td>Access Point Indoor</td>
                         <td>18 unit / Ruang Praktik</td>
-                        <td>Alat untuk menghubungkan antar PC menggunakan gelombang radio (dalam suatu ruangan).
-                            Connectivity : 802.11 n/g/b wireless Operating Modes : Access Point (AP), WDS with AP,
-                            WDS/Bridge (No AP Broadcast), Wireless Client VLAN/SSID Support</td>
+                        <td><div style="overflow: auto; max-height: 110px;">
+                            Alat untuk menghubungkan antar PC menggunakan gelombang radio (dalam suatu ruangan).
+                                Connectivity : 802.11 n/g/b wireless Operating Modes : Access Point (AP), WDS with AP,
+                                WDS/Bridge (No AP Broadcast), Wireless Client VLAN/SSID Support
+                        </div></td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>Rekayasa Perangkat Lunak</td>
                         <td>Access Point Outdoor</td>
                         <td>18 unit / Ruang Praktik</td>
-                        <td>Alat untuk menghubungkan antar PC menggunakan gelombang radio (jarak jauh antar gedung).Connectivity : 802.11 n/g/b wireless Operating Modes : AP, WDS, WDS
-                            with AP, Wireless Client
-                            VLAN/SSID Support</td>
+                        <td><div style="overflow: auto; max-height: 110px;">
+                            Alat untuk menghubungkan antar PC menggunakan gelombang radio (jarak jauh antar gedung).Connectivity : 802.11 n/g/b wireless Operating Modes : AP, WDS, WDS
+                                with AP, Wireless Client
+                                VLAN/SSID Support
+                        </div></td>
                     </tr>
                 </tbody>
             </table>
@@ -102,17 +106,10 @@
                         <td class="text-center" style="vertical-align: middle">4</td>
                         <td class="text-center" style="vertical-align: middle">5</td>
                         <td class="text-center" style="vertical-align: middle">Kekurangan</td>
-                        <td class="text-center" style="vertical-align: middle"><button class="btn btn-success mr-1">Edit</button><button class="btn btn-success ml-1">Hapus</button></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center" style="vertical-align: middle">2</td>
-                        <td class="text-center" style="vertical-align: middle">Rekayasa Perangkat Lunak</td>
-                        <td class="text-center" style="vertical-align: middle">Komputer Client</td>
-                        <td class="text-center" style="vertical-align: middle">Pendukung</td>
-                        <td class="text-center" style="vertical-align: middle">3</td>
-                        <td class="text-center" style="vertical-align: middle">10</td>
-                        <td class="text-center" style="vertical-align: middle">Kekurangan</td>
-                        <td class="text-center" style="vertical-align: middle"><button class="btn btn-success mr-1">Edit</button><button class="btn btn-success ml-1">Hapus</button></td>
+                        <td class="text-center" style="vertical-align: middle">
+                            <button type="button" class="btn btn-success d-inline" data-toggle="modal" data-target="#edit">Edit</button>
+                            <button class="btn btn-danger d-inline">Hapus</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -133,9 +130,10 @@
                 <div class="modal-body">
                     <form class="form-horizontal">
                         <div class="card-body">
+                            {{-- ---------------------------------------------------------------------------------------- KOMPETENSI KEAHLIAN ---------------------------------------------------------------------------------------- --}}
                             <div class="form-group row">
-                                <label for="kompetensi-keahlian" class="col-sm-2 col-form-label">Kompetensi Keahlian</label>
-                                <div class="col-sm-10">
+                                <label for="kompetensi-keahlian" class="col-sm-3 col-form-label">Kompetensi Keahlian</label>
+                                <div class="col-sm-9">
                                     <select class="form-control" id="kompetensi-keahlian">
                                         <option value="belum" selected>Pilih Kompetensi Keahlian</option>
                                         <option value="#">Rekayasa Perangkat Lunak</option>
@@ -143,9 +141,11 @@
                                     </select>
                                 </div>
                             </div>
+                            <hr>
+                            {{-- ---------------------------------------------------------------------------------------- NAMA PERALATAN ---------------------------------------------------------------------------------------- --}}
                             <div class="form-group row">
-                                <label for="nama-peralatan" class="col-sm-2 col-form-label">Nama Peralatan</label>
-                                <div class="col-sm-10">
+                                <label for="nama-peralatan" class="col-sm-3 col-form-label">Nama Peralatan</label>
+                                <div class="col-sm-9">
                                     <div class="input-group peralatan-parent">
                                         
                                         <select class="form-control" id="peralatan-select">
@@ -165,21 +165,109 @@
                                     </div>
                                 </div>
                             </div>
+                            <hr>
+                            {{-- ---------------------------------------------------------------------------------------- KATEGORI ---------------------------------------------------------------------------------------- --}}
                             <div class="form-group row">
-                                <label for="kategori" class="col-sm-2 col-form-label">Kategori</label>
-                                <div class="col-sm-10">
+                                <label for="kategori" class="col-sm-3 col-form-label">Kategori</label>
+                                <div class="col-sm-9">
                                     <input type="text" class="form-control" id="kategori">
                                 </div>
                             </div>
+                            <hr>
+                            {{-- ---------------------------------------------------------------------------------------- KEKURANGAN ---------------------------------------------------------------------------------------- --}}
                             <div class="form-group row">
-                                <label for="kekurangan" class="col-sm-2 col-form-label">Kekurangan</label>
-                                <div class="col-sm-10">
+                                <label for="kekurangan" class="col-sm-3 col-form-label">Kekurangan</label>
+                                <div class="col-sm-9">
                                     <input type="number" class="form-control" id="kekurangan">
                                 </div>
                             </div>
+                            <hr>
+                            {{-- ---------------------------------------------------------------------------------------- KETERSEDIAAN ---------------------------------------------------------------------------------------- --}}
                             <div class="form-group row">
-                                <label for="ketersediaan" class="col-sm-2 col-form-label">Ketersediaan</label>
-                                <div class="col-sm-10">
+                                <label for="ketersediaan" class="col-sm-3 col-form-label">Ketersediaan</label>
+                                <div class="col-sm-9">
+                                    <input type="number" class="form-control" id="ketersediaan">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-success float-right">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- ---------------------------------------------------------------------------------------- MODAL EDIT PERALATAN ---------------------------------------------------------------------------------------- --}}
+    <div class="modal fade" id="edit">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Usulan</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="card-body">
+                            {{-- ---------------------------------------------------------------------------------------- KOMPETENSI KEAHLIAN ---------------------------------------------------------------------------------------- --}}
+                            <div class="form-group row">
+                                <label for="kompetensi-keahlian" class="col-sm-3 col-form-label">Kompetensi Keahlian</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" id="kompetensi-keahlian">
+                                        <option value="belum" selected>Pilih Kompetensi Keahlian</option>
+                                        <option value="#">Rekayasa Perangkat Lunak</option>
+                                        <option value="#">Ankuntasi</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <hr>
+                            {{-- ---------------------------------------------------------------------------------------- NAMA PERALATAN ---------------------------------------------------------------------------------------- --}}
+                            <div class="form-group row">
+                                <label for="nama-peralatan" class="col-sm-3 col-form-label">Nama Peralatan</label>
+                                <div class="col-sm-9">
+                                    <div class="input-group peralatan-parent">
+                                        
+                                        <select class="form-control" id="peralatan-select">
+                                            <option value="belum" selected>Pilih Peralatan</option>
+                                            <option value="#">Access Point Indoor</option>
+                                            <option value="#">Access Point Outdoor</option>
+                                        </select>
+
+                                        <input type="text" class="form-control" style="display: none" id="peralatan-text">
+
+                                        {{-- ---------------------------------------------------------------------------------------- CHECKBOX ---------------------------------------------------------------------------------------- --}}
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <input id="peralatan-checkbox" type="checkbox">
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            {{-- ---------------------------------------------------------------------------------------- KATEGORI ---------------------------------------------------------------------------------------- --}}
+                            <div class="form-group row">
+                                <label for="kategori" class="col-sm-3 col-form-label">Kategori</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="kategori">
+                                </div>
+                            </div>
+                            <hr>
+                            {{-- ---------------------------------------------------------------------------------------- KEKURANGAN ---------------------------------------------------------------------------------------- --}}
+                            <div class="form-group row">
+                                <label for="kekurangan" class="col-sm-3 col-form-label">Kekurangan</label>
+                                <div class="col-sm-9">
+                                    <input type="number" class="form-control" id="kekurangan">
+                                </div>
+                            </div>
+                            <hr>
+                            {{-- ---------------------------------------------------------------------------------------- KETERSEDIAAN ---------------------------------------------------------------------------------------- --}}
+                            <div class="form-group row">
+                                <label for="ketersediaan" class="col-sm-3 col-form-label">Ketersediaan</label>
+                                <div class="col-sm-9">
                                     <input type="number" class="form-control" id="ketersediaan">
                                 </div>
                             </div>
@@ -257,9 +345,10 @@
                 <div class="modal-body">
                     <form class="form-horizontal">
                         <div class="card-body">
+                            {{-- ---------------------------------------------------------------------------------------- KOPETENSI KEAHLIAN ---------------------------------------------------------------------------------------- --}}
                             <div class="form-group row">
-                                <label for="kompetensi-keahlian" class="col-sm-2 col-form-label">Kompetensi Keahlian</label>
-                                <div class="col-sm-10">
+                                <label for="kompetensi-keahlian" class="col-sm-3 col-form-label">Kompetensi Keahlian</label>
+                                <div class="col-sm-9">
                                     <select class="form-control" id="kompetensi-keahlian2">
                                         <option value="belum" selected>Pilih Kompetensi Keahlian</option>
                                         <option value="#">Rekayasa Perangkat Lunak</option>
@@ -267,9 +356,11 @@
                                     </select>
                                 </div>
                             </div>
+                            <hr>
+                            {{-- ---------------------------------------------------------------------------------------- NAMA PERALATAN ---------------------------------------------------------------------------------------- --}}
                             <div class="form-group row">
-                                <label for="nama-peralatan" class="col-sm-2 col-form-label">Nama Peralatan</label>
-                                <div class="col-sm-10">
+                                <label for="nama-peralatan" class="col-sm-3 col-form-label">Nama Peralatan</label>
+                                <div class="col-sm-9">
                                     <div class="input-group peralatan-parent">
                                         
                                         <select class="form-control" id="usulan-select">
@@ -289,21 +380,27 @@
                                     </div>
                                 </div>
                             </div>
+                            <hr>
+                            {{-- ---------------------------------------------------------------------------------------- KATEGORI ---------------------------------------------------------------------------------------- --}}
                             <div class="form-group row">
-                                <label for="kategori" class="col-sm-2 col-form-label">Kategori</label>
-                                <div class="col-sm-10">
+                                <label for="kategori" class="col-sm-3 col-form-label">Kategori</label>
+                                <div class="col-sm-9">
                                     <input type="text" class="form-control" id="kategori">
                                 </div>
                             </div>
+                            <hr>
+                            {{-- ---------------------------------------------------------------------------------------- JUMLAH ---------------------------------------------------------------------------------------- --}}
                             <div class="form-group row">
-                                <label for="jumlah" class="col-sm-2 col-form-label">Jumlah</label>
-                                <div class="col-sm-10">
+                                <label for="jumlah" class="col-sm-3 col-form-label">Jumlah</label>
+                                <div class="col-sm-9">
                                     <input type="number" class="form-control" id="jumlah">
                                 </div>
                             </div>
+                            <hr>
+                            {{-- ---------------------------------------------------------------------------------------- PROPOSAL ---------------------------------------------------------------------------------------- --}}
                             <div class="form-group row">
-                                <label for="proposal" class="col-sm-2 col-form-label">Proposal</label>
-                                <div class="col-sm-10">
+                                <label for="proposal" class="col-sm-3 col-form-label">Proposal</label>
+                                <div class="col-sm-9">
                                     <div class="input-group">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="proposal">
