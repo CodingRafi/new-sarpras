@@ -204,7 +204,7 @@
       <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
-  </div>
+</div>
 {{-- end modal ketersediaan --}}
 
 {{-- modal kekurangan --}}
@@ -233,7 +233,7 @@
       <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
-  </div>
+</div>
 {{-- end modal kekurangan --}}
 
 <!-- modal tambah usulan -->
