@@ -94,7 +94,7 @@
                         </li>
                         {{------------------------------------------------------------------------------------------ PERPUSTAKAAN ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/bangunan/ruang-perpustakaan" class="nav-link">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Perpustakaan</p>
                             </a>
@@ -115,7 +115,7 @@
                         </li>
                         {{------------------------------------------------------------------------------------------ REHAB/RENOV ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/bangunan/ruang-rehabrenov" class="nav-link">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Rehab/Renov</p>
                             </a>

@@ -16,6 +16,8 @@ use App\Http\Controllers\KoleksiController;
 use App\Http\Controllers\PraktikController;
 use App\Http\Controllers\KompetenController;
 use App\Http\Controllers\ProfilDepoController;
+use App\Http\Controllers\RehabRenovController;
+use App\Http\Controllers\PerpustakaanController;
 use App\Http\Controllers\RegisteredUserController;
 
 /*
@@ -55,8 +57,11 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/bangunan/ruang-praktik', PraktikController::class);
     Route::resource('/bangunan/ruang-kelas', KelasController::class);
     Route::resource('/bangunan/lab-komputer', KomputerController::class);
+    Route::resource('/bangunan/ruang-perpustakaan', PerpustakaanController::class);
+    Route::resource('/bangunan/ruang-rehabrenov', RehabRenovController::class);
     Route::resource('/bangunan/toilet', ToiletController::class);
     Route::resource('/bangunan/pimpinan', PimpinanController::class);
+
 });
 
 require __DIR__.'/auth.php';
