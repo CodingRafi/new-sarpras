@@ -132,7 +132,7 @@
                                     <th rowspan="2" class="text-center" style="line-height: 70px">Aksi</th>
                                 </tr>
                                 <tr>
-                                    <th scope="col" class="text-center">Luas</th>
+                                    <th scope="col" class="text-center">Luas Lahan</th>
                                     <th scope="col" class="text-center">Gambar Lahan</th>
                                 </tr>
                               </thead>
@@ -142,29 +142,29 @@
                             <tbody>
                                 <tr>
                                     <th class="text-center">1</th>
-                                    <td class="text-center">XXXXXX</td>
-                                    <td class="text-center">PROPOSAL</td>
+                                    <td class="text-center">Ruang Kelas</td>
+                                    <td class="text-center">3</td>
                                     <td class="text-center">20 M</td>
-                                    <td class="text-center">10 M</td>
-                                    <td class="text-center">30 M²</td>
+                                    <td class="text-center"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" alt="image" style="width: 30px"></td>
+                                    <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
                                     <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
                                 </tr>
                                 <tr>
                                     <th class="text-center">2</th>
-                                    <td class="text-center">XXXXXX</td>
-                                    <td class="text-center">PROPOSAL</td>
+                                    <td class="text-center">Ruang Kelas</td>
+                                    <td class="text-center">3</td>
                                     <td class="text-center">20 M</td>
-                                    <td class="text-center">10 M</td>
-                                    <td class="text-center">30 M²</td>
+                                    <td class="text-center"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" alt="image" style="width: 30px"></td>
+                                    <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
                                     <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
                                 </tr>
                                 <tr>
                                     <th class="text-center">3</th>
-                                    <td class="text-center">XXXXXX</td>
-                                    <td class="text-center">PROPOSAL</td>
+                                    <td class="text-center">Ruang Kelas</td>
+                                    <td class="text-center">3</td>
                                     <td class="text-center">20 M</td>
-                                    <td class="text-center">10 M</td>
-                                    <td class="text-center">30 M²</td>
+                                    <td class="text-center"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" alt="image" style="width: 30px"></td>
+                                    <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
                                     <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
                                 </tr>
                               </tbody>
@@ -192,7 +192,7 @@
           {{-- input jumlah ruangan --}}
           <div class="form-group row">
             <label class="col-sm-4 col-form-label">Ketersediaan</label>
-            <input type="text" class="form-control col-sm-7" placeholder="Masukan Ketersediaan" id="jumlah-ruangan"name="jumlah-ruangan" required value="">
+            <input type="text" class="form-control col-sm-7" placeholder="Masukan Ketersediaan" id="ketersediaan"name="jumlah-ruangan" required value="">
         </div>
         {{-- end input jumlah ruangan --}}
         </div>
@@ -221,7 +221,7 @@
           {{-- input jumlah ruangan --}}
           <div class="form-group row">
             <label class="col-sm-4 col-form-label">Kekurangan</label>
-            <input type="text" class="form-control col-sm-7" placeholder="Masukan Kekurangan" id="jumlah-ruangan"name="jumlah-ruangan" required value="">
+            <input type="text" class="form-control col-sm-7" placeholder="Masukan Kekurangan" id="kekurangan"name="jumlah-ruangan" required value="">
         </div>
         {{-- end input jumlah ruangan --}}
         </div>
@@ -257,21 +257,21 @@
         {{-- input luas lahan --}}
         <div class="form-group row">
             <label class="col-sm-4 col-form-label">Luas Lahan</label>
-            <input type="text" class="form-control col-sm-7" placeholder="Masukan Alamat" id="alamat"
+            <input type="text" class="form-control col-sm-7" placeholder="Masukan Luas Lahan" id="luas-lahan"
             name="long" required value="">
         </div>
         {{-- end luas lahan --}}
 
         {{-- upload gambar lokasi --}}
         <div class="form-group row">
-            <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lokasi</label>
-            <input type="file" id="chooseFile">
+            <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan</label>
+            <input type="file" id="gambar-lahan">
         </div>
         {{-- end upload gambar lokasi --}}
         {{-- upload proposal --}}
         <div class="form-group row">
             <label class="col-sm-4 col-form-label pt-1" for="customFile">Proposal</label>
-            <input type="file" id="chooseFile">
+            <input type="file" id="proposal">
         </div>
         {{-- end upload proposal --}}
         </div>

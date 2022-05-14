@@ -94,7 +94,7 @@
                         </li>
                         {{------------------------------------------------------------------------------------------ PERPUSTAKAAN ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/bangunan/ruang-perpustakaan" class="nav-link">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Perpustakaan</p>
                             </a>
@@ -115,7 +115,7 @@
                         </li>
                         {{------------------------------------------------------------------------------------------ REHAB/RENOV ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/bangunan/ruang-rehabrenov" class="nav-link">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Rehab/Renov</p>
                             </a>
@@ -124,7 +124,7 @@
                 </li>
 
                 {{------------------------------------------------------------------------------------------ PERALATAN SEKOLAH ------------------------------------------------------------------------------------------}}
-                <li class="nav-item has-treeview">
+                <li class="nav-item has-treeview {{ Request::is('peralatan/*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-collection"></i>
                         <p>
@@ -133,11 +133,11 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        {{------------------------------------------------------------------------------------------ ########### ------------------------------------------------------------------------------------------}}
+                        {{------------------------------------------------------------------------------------------ JURUSAN ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/peralatan/nama-jurusan" class="nav-link {{ Request::is('peralatan/nama-jurusan') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
-                                <p>###############</p>
+                                <p>(nama jurusan)</p>
                             </a>
                         </li>
                     </ul>

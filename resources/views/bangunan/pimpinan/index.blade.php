@@ -18,13 +18,13 @@
 
     {{-- ---------------------------------------------------------------------------------------- KONDISI IDEAL ---------------------------------------------------------------------------------------- --}}
     <div class="info-box p-0 pimpinan-infobox">
-        <span class="info-box-icon bg-info p-4" style="width: auto; min-width: 207px;">
-            <img src="/assets/img/icons/flaticons/town.png"
+        <span class="info-box-icon bg-info p-4" style="width: auto; min-width: 300px;">
+            <img src="/assets/img/icons/flaticons/town.png" 
                 style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
             <div class="ml-4">
                 Kondisi Ideal
                 <div class="d-flex align-items-end justify-content-center">
-                    <h1 class="display-4">30</h1>
+                    <h1 class="display-4" style="font-weight: 600;">30</h1>
                     <p>/ Kantor</p>
                 </div>
             </div>
@@ -40,13 +40,13 @@
     
     {{-- ---------------------------------------------------------------------------------------- KETERSEDIAAN ---------------------------------------------------------------------------------------- --}}
     <div class="info-box p-0 pimpinan-infobox">
-        <span class="info-box-icon bg-warning p-4" style="width: auto; min-width: 207px;">
-            <img src="/assets/img/icons/flaticons/building.png"
+        <span class="info-box-icon bg-warning p-4" style="width: auto; min-width: 300px;">
+            <img src="/assets/img/icons/flaticons/building.png" 
                 style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
             <div class="ml-4 text-white">
                 Ketersediaan
                 <div class="d-flex align-items-end justify-content-center">
-                    <h1 class="display-4">11</h1>
+                    <h1 class="display-4" style="font-weight: 600;">11</h1>
                     <p>/ Kantor</p>
                 </div>
             </div>
@@ -63,13 +63,13 @@
 
     {{-- ---------------------------------------------------------------------------------------- KEKURANGAN ---------------------------------------------------------------------------------------- --}}
     <div class="info-box p-0 pimpinan-infobox">
-        <span class="info-box-icon bg-dark p-4" style="width: auto; min-width: 207px;">
-            <img src="/assets/img/icons/flaticons/school.png"
+        <span class="info-box-icon bg-dark p-4" style="width: auto; min-width: 300px;">
+            <img src="/assets/img/icons/flaticons/school.png"   
                 style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
             <div class="ml-4">
                 Kekurangan
                 <div class="d-flex align-items-end justify-content-center">
-                    <h1 class="display-4">3</h1>
+                    <h1 class="display-4" style="font-weight: 600;">3</h1>
                     <p>/ Kantor</p>
                 </div>
             </div>
