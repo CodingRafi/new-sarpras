@@ -2,7 +2,9 @@
 
 @extends('mylayouts.main')
 
+{{-- @dd($jenis_koleksi_terpilih[0]->id) --}}
 {{-- @dd($semua_jurusan[0]) --}}
+{{-- @dd($fotos[0][0]) --}}
 {{-- @dd($kopetensikeahlians) --}}
 
 @section('tambahcss')
@@ -79,11 +81,12 @@
                                         <th>Nama Sekolah</th>
                                         <td class="text-wrap">: {{ $profil->nama }}</td>
                                     </tr>
-                                    
+
                                     {{-- ---------------------------------------------------------------------------------------- Kepala Sekolah---------------------------------------------------------------------------------------- --}}
                                     <tr>
                                         <th>Kepala Sekolah</th>
-                                        <td class="text-wrap">: {{ $profil->nama_kepala_sekolah ?? 'Data tidak ditemukan' }}</td>
+                                        <td class="text-wrap">:
+                                            {{ $profil->nama_kepala_sekolah ?? 'Data tidak ditemukan' }}</td>
                                     </tr>
                                     {{-- ---------------------------------------------------------------------------------------- STATUS SEKOLAH ---------------------------------------------------------------------------------------- --}}
                                     <tr>
@@ -93,7 +96,8 @@
                                     {{-- ---------------------------------------------------------------------------------------- ALAMAT SEKOLAH ---------------------------------------------------------------------------------------- --}}
                                     <tr>
                                         <th>Alamat</th>
-                                        <td class="text-wrap">: {{ $profil->provinsi }}, {{ $profil->kabupaten }}, {{ $profil->kecamatan }}, {{ $profil->alamat }}</td>
+                                        <td class="text-wrap">: {{ $profil->provinsi }}, {{ $profil->kabupaten }},
+                                            {{ $profil->kecamatan }}, {{ $profil->alamat }}</td>
                                     </tr>
                                     <tr>
                                         <th>Provinsi</th>
@@ -183,52 +187,55 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Nama Kepala Sekolah</label>
                                     <input type="text" class="form-control col-sm-6" placeholder="Kepala Sekolah"
-                                        id="kepala" name="nama_kepala_sekolah" value="{{ $profil->nama_kepala_sekolah, old('nama_kepala_sekolah') }}">
+                                        id="kepala" name="nama_kepala_sekolah"
+                                        value="{{ $profil->nama_kepala_sekolah, old('nama_kepala_sekolah') }}">
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Jumlah Rombel</label>
                                     <input type="number" class="form-control col-sm-6" placeholder="Jumlah Rombel"
-                                        id="jml_rombel" name="jml_rombel" value="{{ $profil->jml_rombel, old('jml_rombel') }}">
+                                        id="jml_rombel" name="jml_rombel"
+                                        value="{{ $profil->jml_rombel, old('jml_rombel') }}">
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Kabupaten</label>
-                                    <input type="text" class="form-control col-sm-6" placeholder="Kabupaten"
-                                        id="kabupaten" name="kabupaten" value="{{ $profil->kabupaten, old('kabupaten') }}">
+                                    <input type="text" class="form-control col-sm-6" placeholder="Kabupaten" id="kabupaten"
+                                        name="kabupaten" value="{{ $profil->kabupaten, old('kabupaten') }}">
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Kecamatan</label>
-                                    <input type="text" class="form-control col-sm-6" placeholder="Kecamatan"
-                                        id="kecamatan" name="kecamatan" value="{{ $profil->kecamatan, old('kecamatan') }}">
+                                    <input type="text" class="form-control col-sm-6" placeholder="Kecamatan" id="kecamatan"
+                                        name="kecamatan" value="{{ $profil->kecamatan, old('kecamatan') }}">
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Alamat</label>
-                                    <input type="text" class="form-control col-sm-6" placeholder="Alamat"
-                                        id="alamat" name="alamat" value="{{ $profil->alamat, old('alamat') }}">
+                                    <input type="text" class="form-control col-sm-6" placeholder="Alamat" id="alamat"
+                                        name="alamat" value="{{ $profil->alamat, old('alamat') }}">
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Lintang</label>
-                                    <input type="text" class="form-control col-sm-6" placeholder="Lintang"
-                                        id="lintang" name="lat" value="{{ $profil->lat, old('lintang') }}">
+                                    <input type="text" class="form-control col-sm-6" placeholder="Lintang" id="lintang"
+                                        name="lat" value="{{ $profil->lat, old('lintang') }}">
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Bujur</label>
-                                    <input type="text" class="form-control col-sm-6" placeholder="Bujur"
-                                        id="bujur" name="long" value="{{ $profil->long ,old('bujur') }}">
+                                    <input type="text" class="form-control col-sm-6" placeholder="Bujur" id="bujur"
+                                        name="long" value="{{ $profil->long, old('bujur') }}">
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Email</label>
-                                    <input type="email" class="form-control col-sm-6" placeholder="Email"
-                                        id="email" name="email" value="{{ $profil->email, old('email') }}">
+                                    <input type="email" class="form-control col-sm-6" placeholder="Email" id="email"
+                                        name="email" value="{{ $profil->email, old('email') }}">
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Website</label>
-                                    <input type="text" class="form-control col-sm-6" placeholder="Website"
-                                        id="website" name="website" value="{{ $profil->website, old('website') }}">
+                                    <input type="text" class="form-control col-sm-6" placeholder="Website" id="website"
+                                        name="website" value="{{ $profil->website, old('website') }}">
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Nomor Telepon</label>
                                     <input type="text" class="form-control col-sm-6" placeholder="Nomor Telepon"
-                                        id="no_telp" name="no_telp" required value="{{ $profil->nomor_telepon, old('no_telp') }}">
+                                        id="no_telp" name="no_telp" required
+                                        value="{{ $profil->nomor_telepon, old('no_telp') }}">
                                 </div>
                             </div>
                             <!-- /.card-body DATA SEKOLAH-->
@@ -238,32 +245,54 @@
                             </div>
                         </form>
                     </div>
-                    <div class="chart tab-pane p-3" id="foto-sekolah">
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <div class="chart tab-pane p-3" id="foto-sekolah" style="height: 40rem;overflow: auto;">
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
                             <a href="/koleksi/create/{{ $profil->id }}" class="btn btn-info" data-toggle="modal"
                                 data-target="#buat-koleksi">Buat Koleksi</a>
                         </div>
                         <div class="row row-cols-2">
                             {{-- ---------------------------------------------------------------------------------------- KOLEKSI ---------------------------------------------------------------------------------------- --}}
                             @if ($koleksis->count())
-                                @foreach ($koleksis as $koleksi)
+                                @foreach ($koleksis as $key => $koleksi)
+                                    <input type="hidden" class="slug-koleksi" value="{{ $koleksi->slug }}">
                                     <div class="col-md-6">
                                         <div class="card mb-3" style="max-width: 540px;">
                                             <div class="row no-gutters">
                                                 <div class="col-md-4">
-                                                    <img class="img-thumbnail" src="/assets/img/backgrounds/no-image.jpg"
-                                                        style="height: 140px; width: 100%; object-fit: cover;">
+                                                    @if (count($fotos[$key]) > 0)
+                                                        <img class="img-thumbnail"
+                                                            src="{{ asset('storage/' . $fotos[$key][0]->filename) }}"
+                                                            style="height: 140px; width: 100%; object-fit: cover;">
+                                                    @else
+                                                        <img class="img-thumbnail"
+                                                            src="/assets/img/backgrounds/no-image.jpg"
+                                                            style="height: 140px; width: 100%; object-fit: cover;">
+                                                    @endif
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="card-body">
-                                                        <a class="card-text d-block" href="/koleksi/{{ $koleksi->slug }}" style="color: black;">{{ $koleksi->nama }}</a>
-                                                        <a href="/foto/create/{{ $koleksi->slug }}" class="btn btn-primary bg-info">Tambah</a>
-                                                        <a href="/koleksi/{{ $koleksi->slug }}/edit" class="btn btn-warning text-white">Edit</a>
+                                                        <a class="card-text d-block nama-koleksi"
+                                                            href="/koleksi/{{ $koleksi->slug }}"
+                                                            style="color: black;">{{ $koleksi->nama }}</a>
+                                                        <p style="text-transform: capitalize">Kategori :
+                                                            {{ str_replace('_', ' ', $jenis_koleksi_terpilih[$key]->nama) }}
+                                                        </p>
+                                                        @if ($jenis_koleksi_terpilih[$key]->id === 5)
+                                                            <a href="/foto/create/{{ $koleksi->slug }}"
+                                                                class="btn btn-primary bg-info">Tambah</a>
+                                                        @endif
+                                                        <button type="button"
+                                                            class="btn btn-warning text-white tombol-edit-koleksi"
+                                                            data-toggle="modal" data-target="#edit-koleksi">
+                                                            Edit
+                                                        </button>
 
-                                                        <form action="/koleksi/{{ $koleksi->slug }}" method="post" class="d-inline-block">
+                                                        <form action="/koleksi/{{ $koleksi->slug }}" method="post"
+                                                            class="d-inline-block">
                                                             @csrf
                                                             @method('delete')
-                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus koleksi ini?')">Hapus</button>
+                                                            <button type="submit" class="btn btn-danger"
+                                                                onclick="return confirm('Apakah anda yakin akan menghapus koleksi ini?')">Hapus</button>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -277,6 +306,44 @@
                                 </div>
                             @endif
 
+
+
+                        </div>
+
+                        <div class="modal fade" id="edit-koleksi">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <form action="/koleksi/update-koleksi" method="post">
+                                        @csrf
+                                        @method('Patch')
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Edit Koleksi</h4>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <input type="hidden" name="profil_depo_id" value="{{ $profil->id }}">
+                                            <input type="hidden" name="slug" class="slug-edit-koleksi">
+                                            <div class="mb-3">
+                                                <label for="nama" class="form-label">Nama Koleksi</label>
+                                                <input type="text" class="form-control input-nama" id="nama" name="nama"
+                                                    placeholder="Nama Koleksi" required>
+                                            </div>
+
+                                        </div>
+                                        <div class="modal-footer justify-content-between">
+                                            <button type="button" class="btn btn-default"
+                                                data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
                         </div>
 
 
@@ -299,17 +366,25 @@
                                             <input type="hidden" name="profil_depo_id" value="{{ $profil->id }}">
                                             <div class="mb-3">
                                                 <label for="nama" class="form-label">Nama Koleksi</label>
-                                                <input type="text" class="form-control" id="nama"
-                                                    aria-describedby="emailHelp" name="nama" placeholder="Nama Koleksi"
-                                                    required>
+                                                <input type="text" class="form-control @error('nama') is-invalid @enderror"
+                                                    id="nama" name="nama" placeholder="Nama Koleksi" required
+                                                    value="{{ old('nama') }}">
+                                                @error('nama')
+                                                    <div class="invalid-feedback d-block">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
                                             <div class="mb-3">
-                                                <select class="custom-select" name="jenis">
-                                                    <option value="tampak_depan">Tampak Depan</option>
-                                                    <option value="tampak_kanan">Tampak kanan</option>
-                                                    <option value="tampak_kiri">Tampak kiri</option>
-                                                    <option value="tampak_dalam">Tampak dalam</option>
-                                                    <option value="lain">Lainnya</option>
+                                                <select class="custom-select" name="jeniskoleksi_id">
+                                                    @foreach ($jenis_koleksis as $jenis)
+                                                        @if ($jenis->nama != 'lain')
+                                                            <option value="{{ $jenis->id }}"
+                                                                style="text-transform: capitalize;">
+                                                                {{ str_replace('_', ' ', $jenis->nama) }}</option>
+                                                        @endif
+                                                    @endforeach
+                                                    <option value="5">Lainnya</option>
                                                 </select>
                                             </div>
                                             <button type="submit" class="btn btn-primary">Simpan</button>
@@ -469,7 +544,7 @@
                     <div class="card-body"
                         style="overflow-y: auto; max-height: 300px !important; height: 300px !important;">
                         <div class="tab-content p-0">
-                            <div class="tab-pane  isikopetensi " id="kompetensi-keahlian">
+                            <div class="tab-pane  isikopetensi active" id="kompetensi-keahlian">
                                 @if (count($kopetensikeahlians) > 0)
                                     <table class="table table-bordered table-hover">
                                         <tbody>
@@ -564,9 +639,8 @@
                                     </div>
                                 @endif
                             </div>
-                            <div class="chart tab-pane isitambahkopetensi active" id="tambah-jurusan">
-                                <form
-                                    style=" {{ count($kopetensikeahlians) > 0 ? 'height: 10rem;' : 'height: 18rem;' }}"
+                            <div class="chart tab-pane isitambahkopetensi" id="tambah-jurusan">
+                                <form style=" {{ count($kopetensikeahlians) > 0 ? 'height: 10rem;' : 'height: 18rem;' }}"
                                     action="/kompeten" method="POST">
                                     @csrf
                                     <input type="hidden" name="profil_id" value="{{ $profil->id }}">
@@ -599,7 +673,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($kopetensikeahlians as $kopetensikeahlian)
+                                            @foreach ($kopetensikeahlians as $key => $kopetensikeahlian)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $komli[$key]->kompetensi }}</td>
@@ -639,14 +713,15 @@
                             </li>
                         </ul>
                     </div><!-- /.card-header -->
-                    <div class="card-body" style="overflow-y: auto; max-height: 300px !important;height: 300px !important;">
+                    <div class="card-body"
+                        style="overflow-y: auto; max-height: 300px !important;height: 300px !important;">
                         <div class="tab-content p-0">
                             <div class="tab-pane active">
-                                @foreach ($logs as $log)     
-                                <div class="callout callout-info">
-                                    <p>{{ $log['keterangan'] }}</p>
-                                    <small>Pengubah : {{ $log['name'] }}<br>{{ $log['created_at'] }}</small>
-                                </div>
+                                @foreach ($logs as $log)
+                                    <div class="callout callout-info">
+                                        <p>{{ $log['keterangan'] }}</p>
+                                        <small>Pengubah : {{ $log['name'] }}<br>{{ $log['created_at'] }}</small>
+                                    </div>
                                 @endforeach
                             </div>
                         </div>
@@ -844,6 +919,23 @@
 
         selectjurusan.addEventListener('change', function() {
             console.log(selectjurusan.value)
+        })
+
+
+        // koleksi
+        const tombolEditKoleksi = document.querySelectorAll('.tombol-edit-koleksi');
+        const namaKoleksi = document.querySelectorAll('.nama-koleksi');
+        const inputNama = document.querySelector('.input-nama');
+        const slugKoleksi = document.querySelectorAll('.slug-koleksi');
+        const slugEditKoleksi = document.querySelector('.slug-edit-koleksi');
+
+        tombolEditKoleksi.forEach((e, i) => {
+            e.addEventListener('click', function() {
+                inputNama.value = '';
+                inputNama.value = namaKoleksi[i].innerHTML;
+                slugEditKoleksi.value = '';
+                slugEditKoleksi.value = slugKoleksi[i].value
+            })
         })
     </script>
 @endsection

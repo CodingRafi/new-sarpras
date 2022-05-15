@@ -20,4 +20,12 @@ class Log extends Model
     public function profil(){
         return $this->belongsTo(Profil::class);
     }
+
+    public static function createLog($profil_id, $user_id, $keterangan){
+        Log::create([
+            'profil_id' => $profil_id,
+            'users_id' => $user_id,
+            'keterangan' => $keterangan
+        ]);
+    }
 }

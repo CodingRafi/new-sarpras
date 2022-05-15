@@ -20,6 +20,8 @@
         </div>
     </form> --}}
 
+
+
     <form class="form-inline ml-2" action="/profil/admin" method="GET">
       <div class="input-group" style="width: 50vw">
         <input class="form-control form-control-navbar" type="search" placeholder="Search NPSN, sekolah id, nama sekolah" aria-label="Search" style="height: 2.5rem;font-size: 15px;padding: 0 10px;" name="search">
@@ -29,6 +31,11 @@
           </button>
         </div>
       </div>
+    </form>
+
+    <form action="/logout" method="post">
+      @csrf
+      <button type="submit" class="btn btn-danger">Logout</button>
     </form>
 
     <!-- Right navbar links -->

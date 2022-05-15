@@ -1,6 +1,7 @@
 @extends('myLayouts.main')
 
 @section('container')
+
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -32,7 +33,7 @@
                             <div class="col-6">
                                 <div class="mb-3">
                                     <label for="formFileMultiple" class="form-label">Upload Gambar</label>
-                                    <input class="form-control filename" type="file" id="formFileMultiple" multiple accept="image/*" name="nama[]" style="padding: 6px;height: 40px;" onchange="previewImage()">
+                                    <input class="form-control filename" type="file" id="formFileMultiple" {{ ($jeniskoleksi->id != 5) ? '' : 'multiple' }} accept="image/*" name="nama[]" style="padding: 6px;height: 40px;" onchange="previewImage()">
                                   </div>
                             </div>
                             <div class="container-preview"></div>

@@ -33,7 +33,8 @@ class FotoController extends Controller
         $data = Koleksi::where('slug', $slug)->get()[0];
         return view('foto.create',[
             'koleksi_id' => $data->id,
-            'koleksi' => $data
+            'koleksi' => $data,
+            'jeniskoleksi' => $data->jeniskoleksi
         ]);
     }
 
@@ -65,11 +66,7 @@ class FotoController extends Controller
             }
         }
 
-        $logs = Log::create([
-            'profil_id' => $koleksi->profil_depo_id,
-            'users_id' => Auth::user()->id,
-            'keterangan' => 'Menambahkan ' . count($request->nama) . ' foto'
-        ]);
+        Log::createLog($koleksi->profil_depo_id, Auth::user()->id, 'Menambahkan ' . count($request->nama) . ' foto');
 
         return redirect('/koleksi/' . $koleksi->slug);
     }
@@ -120,11 +117,7 @@ class FotoController extends Controller
         Storage::delete($foto->filename);
         Foto::destroy($foto->id);
 
-        $logs = Log::create([
-            'profil_id' => $koleksi->profil_depo_id,
-            'users_id' => Auth::user()->id,
-            'keterangan' => 'Menghapus 1 foto dari koleksi' . $koleksi->nama
-        ]);
+        Log::createLog($koleksi->profil_depo_id, Auth::user()->id, 'Menghapus 1 foto dari koleksi' . $koleksi->nama);
 
         return redirect()->back();
     }

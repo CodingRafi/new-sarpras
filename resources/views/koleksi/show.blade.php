@@ -1,7 +1,6 @@
 @extends('myLayouts.main')
 
 @section('container')
-
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -24,7 +23,9 @@
                         </div>
                         <div class="col">
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                @if (count($fotos) < 1 || $koleksi->jenis === 'lain')
                                 <a href="/foto/create/{{ $koleksi->slug }}" class="btn btn-success">Tambah foto</a>
+                                @endif
                                 <a href="/profil/{{ $koleksi->profil_depo_id }}" class="btn btn-danger ml-3">Back</a>
                             </div>
                         </div>
