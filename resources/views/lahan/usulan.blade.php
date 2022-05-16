@@ -85,7 +85,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="chart tab-pane" id="tambah-usulan-lahan">
+
+            <div class="chart tab-pane" id="tambah-usulan-lahan">
                   <div class="card-body">
                     {{-- input nama lahan --}}
                     <div class="form-group row">
@@ -142,7 +143,7 @@
                     <button type="submit" class="btn text-white col-sm-1" style="background-color: #00a65b">Simpan</button>
                     {{-- end button simpan --}}
                  </div>
-              </div>
+            </div>
             </div>
         </div>
     </div>
