@@ -119,6 +119,7 @@
                     <table class="table table-responsive">
                         <thead>
                             <tr>
+                                <th></th>
                                 <th scope="col">No</th>
                                 <th scope="col">Nama Lahan</th>
                                 <th scope="col">No Sertifikat</th>
@@ -133,6 +134,7 @@
                         </thead>
                         <tbody>
                             <tr>
+                                <th><input type="radio" name="list"></th>
                                 <th scope="row">1</th>
                                 <td>Tanah</td>
                                 <td>Proposal</td>
@@ -140,11 +142,12 @@
                                 <td>85m²</td>
                                 <td>120m²</td>
                                 <td>Bandung</td>
-                                <td>PDF</td>
+                                <td>SHM</td>
                                 <td>Butuh Pembelian Lahan</td>
                                 <td><a href="#" class="btn btn-success">Lihat Dokumen</a></td>
                             </tr>
                             <tr>
+                                <th><input type="radio" name="list"></th>
                                 <th scope="row">2</th>
                                 <td>Kelas</td>
                                 <td>Proposal</td>
@@ -157,6 +160,7 @@
                                 <td><a href="#" class="btn btn-success">Lihat Dokumen</a></td>
                             </tr>
                             <tr>
+                                <th><input type="radio" name="list"></th>
                                 <th scope="row">3</th>
                                 <td>Tanah</td>
                                 <td>Proposal</td>

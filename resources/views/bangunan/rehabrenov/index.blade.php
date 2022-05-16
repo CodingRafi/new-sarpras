@@ -50,14 +50,14 @@
 </div>
 <div class="info-box p-0 pimpinan-infobox">
     <span class="info-box-icon p-4" style="background-color:#fcc12d; width: auto; min-width: 207px;">
-        <img src="/assets/img/icons/flaticons/town.png"
+        <img src="/assets/img/icons/flaticons/building.png"
             style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
         <div class="ml-4">
             <span class="text-white">
-                Kondisi Ideal
+                Ketersediaan
             </span>
             <div class="d-flex align-items-end justify-content-center">
-                <h1 class="display-4 text-white">30</h1>
+                <h1 class="display-4 text-white">11</h1>
                 <p class="text-white">/ Kantor</p>
             </div>
         </div>
@@ -72,14 +72,14 @@
 </div>
 <div class="info-box p-0 pimpinan-infobox">
     <span class="info-box-icon p-4" style="background-color:#263238; width: auto; min-width: 207px;">
-        <img src="/assets/img/icons/flaticons/town.png"
+        <img src="/assets/img/icons/flaticons/school.png"
             style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
         <div class="ml-4">
             <span class="text-white">
-                Kondisi Ideal
+                Kekurangan
             </span>
             <div class="d-flex align-items-end justify-content-center">
-                <h1 class="display-4 text-white">30</h1>
+                <h1 class="display-4 text-white">3</h1>
                 <p class="text-white">/ Kantor</p>
             </div>
         </div>
@@ -99,7 +99,7 @@
     <div class="card-header" style="background-color: #25b5e9">
         <h3 class="card-title text-white pt-2">Usulan</h3>
         <div class="card-tools">
-            <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal" data-target="#tambah-usulan"><i class="bi bi-plus"></i> Tambah Usulan
+            <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal" data-target="#modal-usulan"><i class="bi bi-plus"></i> Tambah Usulan
             </button>
         </div>
     </div>
@@ -170,7 +170,7 @@
     <div class="card-header" style="background-color: #fcc12d">
         <h3 class="card-title text-white pt-2">Rencana Rehab/ Renov</h3>
         <div class="card-tools">
-            <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal" data-target="#tambah-usulan"><i class="bi bi-plus"></i> Tambah Usulan
+            <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal" data-target="#modal-rencana-usulan"><i class="bi bi-plus"></i> Tambah Usulan
             </button>
         </div>
     </div>
@@ -353,6 +353,140 @@
     </div>
     <!-- /.modal-dialog -->
   </div>
+
+  {{-- modal tambah usulan --}}
+<div class="modal fade" id="modal-rencana-usulan">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Usulan</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{-- input jumlah ruangan --}}
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Jenis Usulan</label>
+            <input type="text" class="form-control col-sm-7" placeholder="Masukan Jenis Usulan" id="jenis-usulan"name="jenis-usulan" required value="">
+        </div>
+        {{-- end input jumlah ruangan --}}
+
+        {{-- input luas lahan --}}
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Persentase</label>
+            <input type="text" class="form-control col-sm-7" placeholder="Masukan Persentase Kerusakan" id="persentase"
+            name="long" required value="">
+        </div>
+        {{-- end luas lahan --}}
+
+        {{-- input luas lahan --}}
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Usia</label>
+            <input type="text" class="form-control col-sm-7" placeholder="Masukan Usia" id="usia"
+            name="long" required value="">
+        </div>
+        {{-- end luas lahan --}}
+
+        {{-- input luas lahan --}}
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Objek</label>
+            <input type="text" class="form-control col-sm-7" placeholder="Masukan Objek" id="objek"
+            name="long" required value="">
+        </div>
+        {{-- end luas lahan --}}
+        
+        {{-- input luas lahan --}}
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Luas</label>
+            <input type="text" class="form-control col-sm-7" placeholder="Masukan Luas" id="luas"
+            name="long" required value="">
+        </div>
+        {{-- end luas lahan --}}
+
+        {{-- upload proposal --}}
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar</label>
+            <input type="file" id="proposal">
+        </div>
+        {{-- end upload proposal --}}
+        
+        {{-- upload proposal --}}
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label pt-1" for="customFile">Proposal</label>
+            <input type="file" id="proposal">
+        </div>
+        {{-- end upload proposal --}}
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn text-white" style="background-color: #00a65b">Save changes</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+{{-- end modal tambah usulan --}}
+
+{{-- modal tambah usulan --}}
+<div class="modal fade" id="modal-usulan">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Usulan</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{-- input jumlah ruangan --}}
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Jenis Usulan</label>
+            <input type="text" class="form-control col-sm-7" placeholder="Masukan Jenis Usulan" id="jenis-usulan"name="jenis-usulan" required value="">
+        </div>
+        {{-- end input jumlah ruangan --}}
+
+        {{-- input luas lahan --}}
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Jumlah Ruang</label>
+            <input type="text" class="form-control col-sm-7" placeholder="Masukan Jumlah Usulan" id="jumlah-usulan"
+            name="long" required value="">
+        </div>
+        {{-- end luas lahan --}}
+
+        {{-- input luas lahan --}}
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Luas Lahan</label>
+            <input type="text" class="form-control col-sm-7" placeholder="Masukan Luas Lahan" id="luas-lahan"
+            name="long" required value="">
+        </div>
+        {{-- end luas lahan --}}
+
+        {{-- upload gambar lokasi --}}
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan</label>
+            <input type="file" id="gambar-lahan">
+        </div>
+        {{-- end upload gambar lokasi --}}
+
+        {{-- upload proposal --}}
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label pt-1" for="customFile">Proposal</label>
+            <input type="file" id="proposal">
+        </div>
+        {{-- end upload proposal --}}
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn text-white" style="background-color: #00a65b">Save changes</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+{{-- end modal tambah usulan --}}
 
 <div class="content-backdrop fade"></div>
 @endsection
