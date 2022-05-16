@@ -110,7 +110,7 @@
     <div class="card-header" style="background-color: #25b5e9">
         <h3 class="card-title text-white pt-2">Usulan Ruang Kelas Baru</h3>
         <div class="card-tools">
-            <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal" data-target="#tambah-usulan"><i class="bi bi-plus"></i> Tambah Usulan
+            <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal" data-target="#modal-default"><i class="bi bi-plus"></i> Tambah Usulan
             </button>
         </div>
     </div>
