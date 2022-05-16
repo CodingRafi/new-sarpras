@@ -2,28 +2,27 @@
 
 @section('tambahcss')
 <style>
-
-    .card{
+    .card {
         border-radius: 15px;
     }
 
-    .card:hover{ 
+    .card:hover {
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
 
-  .card img{
-      border-radius: 15px
-  }
+    .card img {
+        border-radius: 15px
+    }
 
-  .card-body h5{
-      font-size: 1.3rem;
-      font-weight: 700
-  }
+    .card-body h5 {
+        font-size: 1.3rem;
+        font-weight: 700
+    }
 
-  .card-body p{
-      font-size: 1.2rem;
-      font-weight: 500;
-  }
+    .card-body p {
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
 
 </style>
 @endsection
@@ -222,7 +221,7 @@
                             <label for="cars">Jenis Ruangan :</label>
                         </div>
                         <div class="col">
-                             <select name="cars" id="cars" class="btn btn-outline-secondary">
+                            <select name="cars" id="cars" class="btn btn-outline-secondary">
                                 <option value="">Rekayasa Perangkat Lunak</option>
                                 <option value="">Multimedia</option>
                                 <option value="">Broadcast</option>
@@ -236,7 +235,8 @@
                             <label for="col-sm-4 col-form-label">Jumlah Ruangan :</label>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control col-sm-7" placeholder="Masukan Jumlah Ruang" id="jmlrg" name="long" required value="">
+                            <input type="text" class="form-control col-sm-7" placeholder="Masukan Jumlah Ruang"
+                                id="jmlrg" name="long" required value="">
                         </div>
                     </div>
 
@@ -245,7 +245,8 @@
                             <label for="col-sm-4 col-form-label">Luas Lahan :</label>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control col-sm-7" placeholder="Masukan Luas" id="jmlrg" name="long" required value="">
+                            <input type="text" class="form-control col-sm-7" placeholder="Masukan Luas" id="jmlrg"
+                                name="long" required value="">
                         </div>
                     </div>
 

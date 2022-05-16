@@ -45,6 +45,10 @@ Route::get('/', function () {
 Route::get('gallery', function () {
     return view('profil.gallery');
 });
+
+Route::get('detail', function () {
+    return view('bangunan.praktik.show');
+});
 // |-------------------------------------------------------------------------- /SEMENTARA |--------------------------------------------------------------------------
 
 Route::group(['middleware' => ['auth']], function() {
