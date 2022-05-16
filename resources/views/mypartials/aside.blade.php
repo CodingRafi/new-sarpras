@@ -35,7 +35,7 @@
                 </li>
 
                 {{------------------------------------------------------------------------------------------ LAHAN SEKOLAH ------------------------------------------------------------------------------------------}}
-                <li class="nav-item has-treeview">
+                <li class="nav-item has-treeview {{ Request::is('lahan') ? 'menu-open' : (Request::is('lahan/create') ? 'menu-open' : '') }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-map"></i>
                         <p>
@@ -46,14 +46,14 @@
                     <ul class="nav nav-treeview">
                         {{------------------------------------------------------------------------------------------ KETERSEDIAAN LAHAN & ANALISI LAHAN ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="/lahan" class="nav-link">
+                            <a href="/lahan" class="nav-link {{ Request::is('lahan') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
-                                <p>Ketersediaan Lahan & Analisi Lahan</p>
+                                <p>Ketersediaan & Analisi Lahan</p>
                             </a>
                         </li>
                         {{------------------------------------------------------------------------------------------ USULAN LAHAN SEKOLAH ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="/lahan/create" class="nav-link">
+                            <a href="/lahan/create" class="nav-link {{ Request::is('lahan/create') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Usulan Lahan Sekolah</p>
                             </a>
@@ -73,14 +73,14 @@
                     <ul class="nav nav-treeview">
                         {{------------------------------------------------------------------------------------------ RUANG KELAS ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="/bangunan/ruang-kelas" class="nav-link">
+                            <a href="/bangunan/ruang-kelas" class="nav-link {{ Request::is('bangunan/ruang-kelas') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Ruang Kelas</p>
                             </a>
                         </li>
                         {{------------------------------------------------------------------------------------------ RUANG PRAKTEK ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="/bangunan/ruang-praktik" class="nav-link">
+                            <a href="/bangunan/ruang-praktik" class="nav-link {{ Request::is('bangunan/ruang-praktik') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Ruang Praktek</p>
                             </a>
@@ -94,7 +94,7 @@
                         </li>
                         {{------------------------------------------------------------------------------------------ PERPUSTAKAAN ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="/bangunan/ruang-perpustakaan" class="nav-link">
+                            <a href="/bangunan/ruang-perpustakaan" class="nav-link {{ Request::is('bangunan/ruang-perpustakaan') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Perpustakaan</p>
                             </a>
@@ -115,7 +115,7 @@
                         </li>
                         {{------------------------------------------------------------------------------------------ REHAB/RENOV ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="/bangunan/ruang-rehabrenov" class="nav-link">
+                            <a href="/bangunan/ruang-rehabrenov" class="nav-link {{ Request::is('bangunan/ruang-rehabrenov') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Rehab/Renov</p>
                             </a>
