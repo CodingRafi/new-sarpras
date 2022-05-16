@@ -69,6 +69,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/lahan', LahanController::class);
     Route::resource('/usulan-lahan', UsulanLahanController::class);
     Route::resource('/ketersediaan-lahan', KetersediaanLahanController::class);
+    Route::patch('/kekurangan-lahan/update-kekurangan', [KekuranganLahanController::class, 'update']);
     Route::resource('/kekurangan-lahan', KekuranganLahanController::class);
     Route::resource('/bangunan/ruang-praktik', PraktikController::class);
     Route::resource('/bangunan/ruang-kelas', KelasController::class);
