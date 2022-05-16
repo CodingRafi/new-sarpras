@@ -48,4 +48,8 @@ class User extends Authenticatable
     public function log(){
         return $this->belongsTo(Log::class);
     }
+
+    public function profil(){
+        return $this->belongsTo(Profil::class);
+    }
 }

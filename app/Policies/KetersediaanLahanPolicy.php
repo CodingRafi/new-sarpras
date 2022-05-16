@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Lahan;
+use App\Models\KetersediaanLahan;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class LahanPolicy
+class KetersediaanLahanPolicy
 {
     use HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class LahanPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Lahan  $lahan
+     * @param  \App\Models\KetersediaanLahan  $ketersediaanLahan
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Lahan $lahan)
+    public function view(User $user, KetersediaanLahan $ketersediaanLahan)
     {
         //
     }
@@ -48,10 +48,10 @@ class LahanPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Lahan  $lahan
+     * @param  \App\Models\KetersediaanLahan  $ketersediaanLahan
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Lahan $lahan)
+    public function update(User $user, KetersediaanLahan $ketersediaanLahan)
     {
         //
     }
@@ -60,10 +60,10 @@ class LahanPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Lahan  $lahan
+     * @param  \App\Models\KetersediaanLahan  $ketersediaanLahan
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Lahan $lahan)
+    public function delete(User $user, KetersediaanLahan $ketersediaanLahan)
     {
         //
     }
@@ -72,10 +72,10 @@ class LahanPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Lahan  $lahan
+     * @param  \App\Models\KetersediaanLahan  $ketersediaanLahan
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Lahan $lahan)
+    public function restore(User $user, KetersediaanLahan $ketersediaanLahan)
     {
         //
     }
@@ -84,10 +84,10 @@ class LahanPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Lahan  $lahan
+     * @param  \App\Models\KetersediaanLahan  $ketersediaanLahan
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Lahan $lahan)
+    public function forceDelete(User $user, KetersediaanLahan $ketersediaanLahan)
     {
         //
     }

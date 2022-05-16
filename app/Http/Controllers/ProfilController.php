@@ -62,8 +62,7 @@ class ProfilController extends Controller
      */
     public function show(Profil $profil)
     {  
-        // dd(Auth::user()->profil_id);
-        if($profil->profil_depo_id == Auth::user()->profil_id){
+        if($profil->profil_depo_id == Auth::user()->profil_id || Auth::user()->getRoleNames()[0] != 'sekolah'){
             $profilDepo = ProfilDepo::where('id', $profil->id)->get()[0];
             $koleksis = $profilDepo->koleksi;
             $fotos = [];

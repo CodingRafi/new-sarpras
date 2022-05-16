@@ -29,6 +29,10 @@ class Profil extends Model
         return $this->hasMany(Log::class);
     }
 
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
     public function scopeSearch($query, array $search)
     {
         // dd($query->where('npsn', 'like', '%' . $search['search'] . '%'));

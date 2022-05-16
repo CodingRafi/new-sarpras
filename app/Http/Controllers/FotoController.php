@@ -66,7 +66,7 @@ class FotoController extends Controller
             }
         }
 
-        Log::createLog($koleksi->profil_depo_id, Auth::user()->id, 'Menambahkan ' . count($request->nama) . ' foto');
+        Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan ' . count($request->nama) . ' foto');
 
         return redirect('/koleksi/' . $koleksi->slug);
     }

@@ -55,7 +55,7 @@
                         </li>
                         {{------------------------------------------------------------------------------------------ USULAN LAHAN SEKOLAH ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="/lahan/create" class="nav-link">
+                            <a href="/usulan-lahan" class="nav-link">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Usulan Lahan Sekolah</p>
                             </a>
