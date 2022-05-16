@@ -20,12 +20,13 @@
 
                 {{------------------------------------------------------------------------------------------ DASHBOARD ------------------------------------------------------------------------------------------}}
                 <li class="nav-item">
-                    <a href="/" class="nav-link {{ Request::is('/') ? 'active' : '' }}">
+                    <a href="{{ session('route') }}" class="nav-link {{ Request::is(session('route')) ? 'active' : '' }}">
                         <i class="nav-icon bi bi-house"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
 
+                @can('view_profiladmin')     
                 {{------------------------------------------------------------------------------------------ LIST SEKOLAH & PROFIL SEKOLAH ------------------------------------------------------------------------------------------}}
                 <li class="nav-item">
                     <a href="/profil/admin" class="nav-link {{ Request::is('profil/*') ? 'active' : '' }}">
@@ -33,9 +34,10 @@
                         <p>Profil Sekolah</p>
                     </a>
                 </li>
+                @endcan
 
                 {{------------------------------------------------------------------------------------------ LAHAN SEKOLAH ------------------------------------------------------------------------------------------}}
-                <li class="nav-item has-treeview {{ Request::is('lahan') ? 'menu-open' : (Request::is('lahan/create') ? 'menu-open' : '') }}">
+                <li class="nav-item has-treeview {{ Request::is('lahan') ? 'menu-open' : (Request::is('usulan-lahan') ? 'menu-open' : '') }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-map"></i>
                         <p>
@@ -53,7 +55,7 @@
                         </li>
                         {{------------------------------------------------------------------------------------------ USULAN LAHAN SEKOLAH ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="/lahan/create" class="nav-link {{ Request::is('lahan/create') ? 'active' : '' }}">
+                            <a href="/usulan-lahan" class="nav-link {{ Request::is('usulan-lahan') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Usulan Lahan Sekolah</p>
                             </a>
@@ -153,22 +155,12 @@
 
                 {{------------------------------------------------------------------------------------------ MONITORING & EVALUASI ------------------------------------------------------------------------------------------}}
                 <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
+                    <a href="/monev" class="nav-link">
                         <i class="nav-icon bi bi-shield-check"></i>
                         <p>
                             Monitoring & Evaluasi
-                            <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        {{------------------------------------------------------------------------------------------ ############ ------------------------------------------------------------------------------------------}}
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fa-regular fa-circle"></i>
-                                <p>##########</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
             </ul>
         </nav>

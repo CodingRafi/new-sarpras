@@ -25,10 +25,10 @@ class PermissionTableSeeder extends Seeder
             'add_roles',
             'edit_roles',
 
+            'view_profiladmin',
+
             'view_profil',
-            'add_profil',
             'edit_profil',
-            'delete_profil',
 
             'view_lahan',
             'add_lahan',

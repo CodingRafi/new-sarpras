@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <h1 class="text-center display-4">20</h1>
+                    <h1 class="text-center font-weight-bold pt-2">20</h1>
                 </div>
             </div>
         </div>
@@ -38,16 +38,16 @@
 
             {{-- ---------------------------------------------------------------------------------------- KONDISI IDEAL ---------------------------------------------------------------------------------------- --}}
             <div class="card card-info">
-                <div class="card-header">
+                <div class="card-header" style="background-color: #25b5e9">
                     <h3 class="card-title">Kondisi Ideal</h3>
                     <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-toggle="modal"
+                        <button type="button" class="btn btn-tool text-white" data-toggle="modal"
                         data-target="#edit-ideal"><i class="bi bi-pencil-fill"></i>
                         </button>
                     </div>
                 </div>
                 <div class="card-body d-flex align-items-end justify-content-center">
-                    <h1 class="display-4">25</h1>
+                    <h1 class="text-center font-weight-bold pt-2">25</h1>
                     <p>/ Toilet</p>
                 </div>
             </div>
@@ -86,15 +86,15 @@
             {{-- ---------------------------------------------------------------------------------------- KETERSEDIAAN ---------------------------------------------------------------------------------------- --}}
             <div class="card card-warning">
                 <div class="card-header">
-                    <h3 class="card-title">Ketersediaan</h3>
+                    <h3 class="card-title text-white">Ketersediaan</h3>
                     <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-toggle="modal"
+                        <button type="button" class="btn btn-tool text-white" data-toggle="modal"
                         data-target="#edit-ketersediaan"><i class="bi bi-pencil-fill"></i>
                         </button>
                     </div>
                 </div>
                 <div class="card-body d-flex align-items-end justify-content-center">
-                    <h1 class="display-4">11</h1>
+                    <h1 class="text-center font-weight-bold pt-2">11</h1>
                     <p>/ Toilet</p>
                 </div>
             </div>
@@ -141,7 +141,7 @@
                     </div>
                 </div>
                 <div class="card-body d-flex align-items-end justify-content-center">
-                    <h1 class="display-4">4</h1>
+                    <h1 class="text-center font-weight-bold pt-2">4</h1>
                     <p>/ Toilet</p>
                 </div>
             </div>
@@ -179,11 +179,10 @@
 
     {{-- ---------------------------------------------------------------------------------------- USULAN TOILET ---------------------------------------------------------------------------------------- --}}
     <div class="card card-info">
-        <div class="card-header">
+        <div class="card-header" style="background-color: #25b5e9">
             <h3 class="card-title">Usulan Toilet</h3>
             <div class="card-tools">
-                <button type="button" class="btn btn-tool border border-light" data-toggle="modal"
-                    data-target="#tambah-usulan"><i class="bi bi-plus"></i> Tambah Usulan
+                <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal" data-target="#tambah-usulan"><i class="bi bi-plus"></i> Tambah Usulan
                 </button>
             </div>
         </div>

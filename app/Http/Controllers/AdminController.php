@@ -7,6 +7,11 @@ use App\Models\Profil;
 
 class AdminController extends Controller
 {
+
+    function __construct()
+    {
+         $this->middleware('permission:view_profiladmin', ['only' => ['index','show',]]);
+    }
     /**
      * Display a listing of the resource.
      *

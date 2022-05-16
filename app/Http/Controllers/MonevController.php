@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Lahan;
-use App\Http\Requests\StoreLahanRequest;
-use App\Http\Requests\UpdateLahanRequest;
+use App\Models\Monev;
+use App\Http\Requests\StoreMonevRequest;
+use App\Http\Requests\UpdateMonevRequest;
 
-class LahanController extends Controller
+class MonevController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class LahanController extends Controller
      */
     public function index()
     {
-        return view("lahan.index");
+        return view("monev.index");
     }
 
     /**
@@ -25,16 +25,16 @@ class LahanController extends Controller
      */
     public function create()
     {
-        return view("lahan.usulan");
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreLahanRequest  $request
+     * @param  \App\Http\Requests\StoreMonevRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreLahanRequest $request)
+    public function store(StoreMonevRequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class LahanController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Lahan  $lahan
+     * @param  \App\Models\Monev  $monev
      * @return \Illuminate\Http\Response
      */
-    public function show(Lahan $lahan)
+    public function show(Monev $monev)
     {
         //
     }
@@ -53,10 +53,10 @@ class LahanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Lahan  $lahan
+     * @param  \App\Models\Monev  $monev
      * @return \Illuminate\Http\Response
      */
-    public function edit(Lahan $lahan)
+    public function edit(Monev $monev)
     {
         //
     }
@@ -64,11 +64,11 @@ class LahanController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateLahanRequest  $request
-     * @param  \App\Models\Lahan  $lahan
+     * @param  \App\Http\Requests\UpdateMonevRequest  $request
+     * @param  \App\Models\Monev  $monev
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateLahanRequest $request, Lahan $lahan)
+    public function update(UpdateMonevRequest $request, Monev $monev)
     {
         //
     }
@@ -76,10 +76,10 @@ class LahanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Lahan  $lahan
+     * @param  \App\Models\Monev  $monev
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Lahan $lahan)
+    public function destroy(Monev $monev)
     {
         //
     }

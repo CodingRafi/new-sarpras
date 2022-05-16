@@ -2,28 +2,27 @@
 
 @section('tambahcss')
 <style>
-
-    .card{
+    .card {
         border-radius: 15px;
     }
 
-    .card:hover{ 
+    .card:hover {
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
 
-  .card img{
-      border-radius: 15px
-  }
+    .card img {
+        border-radius: 15px
+    }
 
-  .card-body h5{
-      font-size: 1.3rem;
-      font-weight: 700
-  }
+    .card-body h5 {
+        font-size: 1.3rem;
+        font-weight: 700
+    }
 
-  .card-body p{
-      font-size: 1.2rem;
-      font-weight: 500;
-  }
+    .card-body p {
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
 
 </style>
 @endsection
@@ -102,8 +101,8 @@
 {{-- Ruang Praktik --}}
 <div class="container-fluid mt-3">
     <div class="card">
-        <div class="card-header bg-info">
-            <h5>Ruang Praktek Tersedia</h5>
+        <div class="card-header" style="background-color: #25b5e9">
+            <h5 class="text-white">Ruang Praktek Tersedia</h5>
 
         </div>
         <div class="card-body">
@@ -155,9 +154,7 @@
         <div class="card-header bg-warning">
             <h3 class="card-title text-white">Usulan Ruang Praktik Baru</h3>
             <div class="card-tools">
-                <button type="button" class="btn btn-block btn-outline-light" data-toggle="modal"
-                    data-target="#modal-lg">
-                    <i class="bi bi-plus-lg mr-2"></i>Tambah Usulan
+                <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal" data-target="#modal-default"><i class="bi bi-plus"></i> Tambah Usulan
                 </button>
             </div>
         </div>
@@ -224,7 +221,7 @@
                             <label for="cars">Jenis Ruangan :</label>
                         </div>
                         <div class="col">
-                             <select name="cars" id="cars" class="btn btn-outline-secondary">
+                            <select name="cars" id="cars" class="btn btn-outline-secondary">
                                 <option value="">Rekayasa Perangkat Lunak</option>
                                 <option value="">Multimedia</option>
                                 <option value="">Broadcast</option>
@@ -238,7 +235,8 @@
                             <label for="col-sm-4 col-form-label">Jumlah Ruangan :</label>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control col-sm-7" placeholder="Masukan Jumlah Ruang" id="jmlrg" name="long" required value="">
+                            <input type="text" class="form-control col-sm-7" placeholder="Masukan Jumlah Ruang"
+                                id="jmlrg" name="long" required value="">
                         </div>
                     </div>
 
@@ -247,7 +245,8 @@
                             <label for="col-sm-4 col-form-label">Luas Lahan :</label>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control col-sm-7" placeholder="Masukan Luas" id="jmlrg" name="long" required value="">
+                            <input type="text" class="form-control col-sm-7" placeholder="Masukan Luas" id="jmlrg"
+                                name="long" required value="">
                         </div>
                     </div>
 
@@ -278,6 +277,65 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
+
+{{-- modal tambah usulan --}}
+<div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Usulan</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{-- input jumlah ruangan --}}
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Jenis Ruang</label>
+            <input type="text" class="form-control col-sm-7" placeholder="Masukan Jenis Ruang" id="jenis-ruang"name="jenis-ruang" required value="">
+        </div>
+        {{-- end input jumlah ruangan --}}
+
+        {{-- input luas lahan --}}
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Jumlah Ruang</label>
+            <input type="text" class="form-control col-sm-7" placeholder="Masukan Jumlah Ruang" id="jumlah-ruang"
+            name="long" required value="">
+        </div>
+        {{-- end luas lahan --}}
+
+        {{-- upload gambar lokasi --}}
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan</label>
+            <input type="file" id="gambar-lahan">
+        </div>
+        {{-- end upload gambar lokasi --}}
+
+        {{-- input luas lahan --}}
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Luas Lahan</label>
+            <input type="text" class="form-control col-sm-7" placeholder="Masukan Luas Lahan" id="luas-lahan"
+            name="long" required value="">
+        </div>
+        {{-- end luas lahan --}}
+
+        {{-- upload proposal --}}
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label pt-1" for="customFile">Proposal</label>
+            <input type="file" id="proposal">
+        </div>
+        {{-- end upload proposal --}}
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn text-white" style="background-color: #00a65b">Save changes</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+{{-- end modal tambah usulan --}}
 
 
 {{-- End Main-Content --}}
