@@ -8,6 +8,7 @@ use App\Models\Log;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreUsulanLahanRequest;
 use App\Http\Requests\UpdateUsulanLahanRequest;
+use Illuminate\Support\Facades\Storage;
 
 class UsulanLahanController extends Controller
 {
@@ -20,7 +21,7 @@ class UsulanLahanController extends Controller
     {
         $semua_usulan = UsulanLahan::where('profil_id', Auth::user()->profil_id)->get();
         return view("lahan.usulan", [
-            'semua_usulans' => $semua_usulan
+            'semua_usulan' => $semua_usulan
         ]);
     }
 
@@ -105,6 +106,17 @@ class UsulanLahanController extends Controller
      */
     public function destroy(UsulanLahan $usulanLahan)
     {
-        //
+        if($usulanLahan->profil_id == Auth::user()->profil_id){
+            Storage::delete($usulanLahan->proposal);
+            UsulanLahan::destroy($usulanLahan->id);
+
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Membatalkan usulan');
+
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
+
+        
     }
 }

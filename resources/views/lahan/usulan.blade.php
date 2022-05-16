@@ -21,7 +21,8 @@
                 <div class="tab-content p-0">
                     <div class="tab-pane active" id="data-usulan-sekolah">
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col">
+                                @if (count($semua_usulan) > 0)     
                                 <table class="table table-hover table-border text-nowrap">
                                     {{-- judul table --}}
                                     <thead>
@@ -42,51 +43,41 @@
 
                                     {{-- isi table --}}
                                     <tbody>
+                                        @foreach ($semua_usulan as $usulan)      
                                         <tr>
-                                            <th class="text-center" scope="row">1</th>
-                                            <td class="text-center">XXXXXX</td>
-                                            <td class="text-center">PROPOSAL</td>
-                                            <td class="text-center">20 M</td>
-                                            <td class="text-center">10 M</td>
-                                            <td class="text-center">30 M²</td>
-                                            <td class="text-center">BANDUNG</td>
-                                            <td class="text-center"><img src="/img/pdf.png" alt="image"
-                                                    style="width: 30px"></td>
-                                            <td class="text-center">XXXXXX</td>
-                                            <td class="text-center"><a href="#" class="btn text-white"
-                                                    style="background-color: #00a65b">Batalkan</a></td>
+                                            <th class="text-center" scope="row">{{ $loop->iteration }}</th>
+                                            <td class="text-center">{{ $usulan->nama }}</td>
+                                            <td class="text-center">{{ $usulan->jenis_usulan }}</td>
+                                            <td class="text-center">{{ $usulan->panjang }} M</td>
+                                            <td class="text-center">{{ $usulan->lebar }} M</td>
+                                            <td class="text-center">{{ $usulan->luas }} M²</td>
+                                            <td class="text-center">{{ $usulan->alamat }}</td>
+                                            <td class="text-center">
+                                                <a href="{{ asset('storage/'. $usulan->proposal) }}" target="_blank" rel="noopener noreferrer">
+                                                    <img src="/img/pdf.png" alt="image" style="width: 30px">
+                                                </a>
+                                            </td>
+                                            <td class="text-center">{{ $usulan->status }}</td>
+                                            <td class="text-center">
+                                                <form action="/usulan-lahan/{{ $usulan->id }}" method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn text-white"
+                                                    style="background-color: #00a65b">Batalkan</button>
+                                                </form>
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <th class="text-center" scope="row">2</th>
-                                            <td class="text-center">XXXXXX</td>
-                                            <td class="text-center">PROPOSAL</td>
-                                            <td class="text-center">20 M</td>
-                                            <td class="text-center">10 M</td>
-                                            <td class="text-center">30 M²</td>
-                                            <td class="text-center">BANDUNG</td>
-                                            <td class="text-center"><img src="/img/pdf.png" alt="image"
-                                                    style="width: 30px"></td>
-                                            <td class="text-center">XXXXXX</td>
-                                            <td class="text-center"><a href="#" class="btn text-white"
-                                                    style="background-color: #00a65b">Batalkan</a></td>
-                                        </tr>
-                                        <tr>
-                                            <th class="text-center" scope="row">3</th>
-                                            <td class="text-center">XXXXXX</td>
-                                            <td class="text-center">PROPOSAL</td>
-                                            <td class="text-center">20 M</td>
-                                            <td class="text-center">10 M</td>
-                                            <td class="text-center">30 M²</td>
-                                            <td class="text-center">BANDUNG</td>
-                                            <td class="text-center"><img src="/img/pdf.png" alt="image"
-                                                    style="width: 30px"></td>
-                                            <td class="text-center">XXXXXX</td>
-                                            <td class="text-center"><a href="#" class="btn text-white"
-                                                    style="background-color: #00a65b">Batalkan</a></td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                     {{-- end isi table --}}
                                 </table>
+                                @else
+                                <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                                    <div class="alert" role="alert">
+                                        Tidak ada data ditemukan
+                                      </div>
+                                </div>
+                                @endif
                             </div>
                         </div>
                     </div>
