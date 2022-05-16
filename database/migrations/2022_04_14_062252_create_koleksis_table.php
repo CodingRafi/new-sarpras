@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('koleksis', function (Blueprint $table) {
             $table->id();
             $table->foreignId('profil_depo_id');
+            $table->foreignId('jeniskoleksi_id');
             $table->string('nama');
             $table->string('slug')->unique();
-            $table->enum('jenis', ['bangunan', 'gerbang', 'fasilitas']);
             $table->timestamps();
         });
     }

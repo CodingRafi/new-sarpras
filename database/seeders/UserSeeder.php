@@ -37,17 +37,17 @@ class UserSeeder extends Seeder
 
 
         //? Membuat role sekolah 
-        $roleTeacher = Role::create([
+        $roleSekolah = Role::create([
             'name' => 'sekolah',
             'guard_name' => 'web'
         ]);
 
-        $izinSekolahs = ['1', '9', '10', '11', '12', '13', '14', '15'];
+        $izinSekolahs = ['9', '10', '11', '12', '13', '14'];
         $resultSekolah = array_map(function($izinSekolah){
             return $izinSekolah;
         }, $izinSekolahs);
 
-        $roleTeacher->syncPermissions($resultSekolah);
+        $roleSekolah->syncPermissions($resultSekolah);
 
 
         //? Membuat Role KCD
@@ -102,11 +102,13 @@ class UserSeeder extends Seeder
         //? Membuat user sekolah
         $profils = ProfilDepo::all();
         foreach ($profils as $key => $profil) {
-            User::create([
+            $user = User::create([
+                'profil_id' => $profil['id'],
                 'name' => $profil['depo_nama'],
                 'npsn' => $profil["depo_npsn"],
                 'password' => bcrypt('12345678')
             ]);
+            $user->assignRole('sekolah');
         }
 
     }

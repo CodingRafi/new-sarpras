@@ -20,12 +20,13 @@
 
                 {{------------------------------------------------------------------------------------------ DASHBOARD ------------------------------------------------------------------------------------------}}
                 <li class="nav-item">
-                    <a href="/" class="nav-link {{ Request::is('/') ? 'active' : '' }}">
+                    <a href="{{ session('route') }}" class="nav-link {{ Request::is(session('route')) ? 'active' : '' }}">
                         <i class="nav-icon bi bi-house"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
 
+                @can('view_profiladmin')     
                 {{------------------------------------------------------------------------------------------ LIST SEKOLAH & PROFIL SEKOLAH ------------------------------------------------------------------------------------------}}
                 <li class="nav-item">
                     <a href="/profil/admin" class="nav-link {{ Request::is('profil/*') ? 'active' : '' }}">
@@ -33,6 +34,7 @@
                         <p>Profil Sekolah</p>
                     </a>
                 </li>
+                @endcan
 
                 {{------------------------------------------------------------------------------------------ LAHAN SEKOLAH ------------------------------------------------------------------------------------------}}
                 <li class="nav-item has-treeview">
@@ -53,7 +55,7 @@
                         </li>
                         {{------------------------------------------------------------------------------------------ USULAN LAHAN SEKOLAH ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="/lahan/create" class="nav-link">
+                            <a href="/usulan-lahan" class="nav-link">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Usulan Lahan Sekolah</p>
                             </a>
@@ -144,23 +146,11 @@
                 </li>
 
                 {{------------------------------------------------------------------------------------------ RIWAYAT BANTUAN ------------------------------------------------------------------------------------------}}
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
+                <li class="nav-item">
+                    <a href="/riwayat-bantuan" class="nav-link {{ Request::is('riwayat-bantuan') ? 'active' : '' }}">
                         <i class="nav-icon bi bi-card-text"></i>
-                        <p>
-                            Riwayat Bantuan
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
+                        <p>Riwayat Bantuan</p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        {{------------------------------------------------------------------------------------------ ########## ------------------------------------------------------------------------------------------}}
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fa-regular fa-circle"></i>
-                                <p>###########</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
 
                 {{------------------------------------------------------------------------------------------ MONITORING & EVALUASI ------------------------------------------------------------------------------------------}}

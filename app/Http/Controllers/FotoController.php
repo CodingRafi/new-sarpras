@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Log;
+use ImageOptimizer;
 use App\Models\Foto;
 use App\Models\Koleksi;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreFotoRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateFotoRequest;
-use ImageOptimizer;
 
 class FotoController extends Controller
 {
@@ -30,7 +32,9 @@ class FotoController extends Controller
     {
         $data = Koleksi::where('slug', $slug)->get()[0];
         return view('foto.create',[
-            'koleksi_id' => $data->id
+            'koleksi_id' => $data->id,
+            'koleksi' => $data,
+            'jeniskoleksi' => $data->jeniskoleksi
         ]);
     }
 
@@ -61,6 +65,8 @@ class FotoController extends Controller
                 ]);
             }
         }
+
+        Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan ' . count($request->nama) . ' foto');
 
         return redirect('/koleksi/' . $koleksi->slug);
     }
@@ -107,8 +113,11 @@ class FotoController extends Controller
      */
     public function destroy(Foto $foto)
     {
+        $koleksi = Koleksi::where('id', $foto->koleksi_id)->get()[0];
         Storage::delete($foto->filename);
         Foto::destroy($foto->id);
+
+        Log::createLog($koleksi->profil_depo_id, Auth::user()->id, 'Menghapus 1 foto dari koleksi' . $koleksi->nama);
 
         return redirect()->back();
     }
