@@ -9,7 +9,6 @@ use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KomliController;
-use App\Http\Controllers\Lahan_sekolah\LahanController;
 use App\Http\Controllers\MonevController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ToiletController;
@@ -22,9 +21,12 @@ use App\Http\Controllers\PimpinanController;
 use App\Http\Controllers\PeralatanController;
 use App\Http\Controllers\ProfilDepoController;
 use App\Http\Controllers\RehabRenovController;
-use App\Http\Controllers\Lahan_sekolah\UsulanLahanController;
 use App\Http\Controllers\PerpustakaanController;
 use App\Http\Controllers\RegisteredUserController;
+use App\Http\Controllers\Lahan_sekolah\LahanController;
+use App\Http\Controllers\Lahan_sekolah\UsulanLahanController;
+use App\Http\Controllers\Lahan_sekolah\KekuranganLahanController;
+use App\Http\Controllers\Lahan_sekolah\KetersediaanLahanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +68,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/foto/create/{koleksi:slug}', [FotoController::class, 'create']);
     Route::resource('/lahan', LahanController::class);
     Route::resource('/usulan-lahan', UsulanLahanController::class);
+    Route::resource('/ketersediaan-lahan', KetersediaanLahanController::class);
+    Route::resource('/kekurangan-lahan', KekuranganLahanController::class);
     Route::resource('/bangunan/ruang-praktik', PraktikController::class);
     Route::resource('/bangunan/ruang-kelas', KelasController::class);
     Route::resource('/bangunan/lab-komputer', KomputerController::class);

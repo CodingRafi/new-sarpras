@@ -16,6 +16,15 @@ return new class extends Migration
         Schema::create('ketersediaan_lahans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('profil_id');
+            $table->string('nama');
+            $table->string('no_sertifikat');
+            $table->string('panjang');
+            $table->string('lebar');
+            $table->string('luas');
+            $table->string('alamat');
+            $table->string('jenis_kepemilikan');
+            $table->string('keterangan');
+            $table->string('bukti_lahan');
             $table->timestamps();
         });
     }
