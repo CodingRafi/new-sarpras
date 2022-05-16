@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Profil;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -32,7 +33,19 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $user = Auth::user();
+        
+        if($user->hasRole('dinas')){
+            return redirect('/')->with([
+                'route' => '/'
+            ]);
+        }else if($user->hasRole('sekolah')){
+            $profil = Profil::where('npsn', $user->npsn)->get()[0];
+            return redirect('/profil/' . $profil->id)->with([
+                'route' => '/profil/' . $profil->id
+            ]);
+        }
+
     }
 
     /**

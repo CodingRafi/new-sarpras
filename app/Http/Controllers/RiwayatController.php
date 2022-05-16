@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Profil;
+use App\Models\Riwayat;
+use App\Http\Requests\StoreRiwayatRequest;
+use App\Http\Requests\UpdateRiwayatRequest;
 
-class AdminController extends Controller
+class RiwayatController extends Controller
 {
-
-    function __construct()
-    {
-         $this->middleware('permission:view_profiladmin', ['only' => ['index','show',]]);
-    }
     /**
      * Display a listing of the resource.
      *
@@ -19,9 +15,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index',[
-            'profils' => Profil::search(request(['search']))->paginate(40),
-        ]);
+        return view('riwayatBantuan.index');
     }
 
     /**
@@ -37,10 +31,10 @@ class AdminController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreRiwayatRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRiwayatRequest $request)
     {
         //
     }
@@ -48,10 +42,10 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Riwayat  $riwayat
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Riwayat $riwayat)
     {
         //
     }
@@ -59,10 +53,10 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Riwayat  $riwayat
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Riwayat $riwayat)
     {
         //
     }
@@ -70,11 +64,11 @@ class AdminController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Http\Requests\UpdateRiwayatRequest  $request
+     * @param  \App\Models\Riwayat  $riwayat
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRiwayatRequest $request, Riwayat $riwayat)
     {
         //
     }
@@ -82,10 +76,10 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Riwayat  $riwayat
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Riwayat $riwayat)
     {
         //
     }

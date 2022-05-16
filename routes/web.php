@@ -11,7 +11,9 @@ use App\Http\Controllers\KomputerController;
 use App\Http\Controllers\ToiletController;
 use App\Http\Controllers\PimpinanController;
 use App\Http\Controllers\PeralatanController;
+use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\LahanController;
+use App\Http\Controllers\MonevController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\KoleksiController;
 use App\Http\Controllers\PraktikController;
@@ -20,6 +22,8 @@ use App\Http\Controllers\ProfilDepoController;
 use App\Http\Controllers\RehabRenovController;
 use App\Http\Controllers\PerpustakaanController;
 use App\Http\Controllers\RegisteredUserController;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +60,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/kompeten/create/{id:profil}', [KompetenController::class, 'create']);
     Route::resource('/koleksi', KoleksiController::class);
     Route::get('/koleksi/create/{id:profil}', [KoleksiController::class, 'create']);
+    Route::patch('/koleksi/update-koleksi', [KoleksiController::class, 'update']);
     Route::resource('/foto', FotoController::class);
     Route::get('/foto/create/{koleksi:slug}', [FotoController::class, 'create']);
     Route::resource('/lahan', LahanController::class);
@@ -66,7 +71,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/bangunan/ruang-rehabrenov', RehabRenovController::class);
     Route::resource('/bangunan/toilet', ToiletController::class);
     Route::resource('/bangunan/pimpinan', PimpinanController::class);
+    Route::resource('/monev', MonevController::class);
     Route::resource('/peralatan/nama-jurusan', PeralatanController::class);
+    Route::resource('/riwayat-bantuan', RiwayatController::class);
 });
 
 require __DIR__.'/auth.php';

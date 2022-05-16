@@ -47,8 +47,8 @@
 
         <div class="col">
             <div class="card" style="border-radius: 0px 20px 0px 20px !important">
-                <div class="card-header bg-info" style="border-radius: 0px 20px 0px 20px !important">
-                    <h4 class="text-center font-weight-bold">Jenis Kepemilikan</h4>
+                <div class="card-header" style="background-color: #25b5e9; border-radius: 0px 20px 0px 20px !important">
+                    <h4 class="text-center text-white font-weight-bold">Jenis Kepemilikan</h4>
                 </div><!-- /.card-header -->
                 <div class="card-body">
                     <h1 class="text-center font-weight-bold pt-2">SHM</h1>
@@ -59,7 +59,7 @@
         <div class="col">
             <div class="card" style="border-radius: 0px 20px 0px 20px !important">
                 <div class="card-header bg-warning" style="border-radius: 0px 20px 0px 20px !important">
-                    <h4 class="text-center font-weight-bold text-white">Ketersedian Lahan</h4>
+                    <h4 class="text-center text-white font-weight-bold">Ketersedian Lahan</h4>
                 </div><!-- /.card-header -->
                 <div class="card-body">
                     <h1 class="text-center font-weight-bold pt-2">20m²</h1>
@@ -80,8 +80,8 @@
 
         <div class="col">
             <div class="card" style="border-radius: 0px 20px 0px 20px !important">
-                <div class="card-header bg-secondary" style="border-radius: 0px 20px 0px 20px !important">
-                    <h4 class="text-center font-weight-bold">Jumlah Usulan Lahan</h4>
+                <div class="card-header" style="background-color: #e0e0e0; border-radius: 0px 20px 0px 20px !important">
+                    <h4 class="text-center font-weight-bold">Jumlah Usulan</h4>
                 </div><!-- /.card-header -->
                 <div class="card-body">
                     <h1 class="text-center font-weight-bold pt-2">20m²</h1>
@@ -91,6 +91,7 @@
     </div>
 </div>
 {{----------------------------------------------------- End -------------------------------------------------------}}
+
 
 {{------------------------------------------------- Lahan Sekolah -----------------------------------------------}}
 <div class="card mt-3 mb-5">
@@ -298,12 +299,13 @@
                     <button type="submit" class="btn text-white col-sm-1"
                         style="background-color: #00a65b">Simpan</button>
                     {{-- end button simpan --}}
-                </div>
-            </div>
-        </div>
+                </div>     
+            </div> 
+        </div>   
     </div>
-</div>
-{{------------------------------------------------------ End ---------------------------------------------------}}
+</div> 
+{{----------------------------------------------------- End -----------------------------------------------------}}
+
 
 {{------------------------------------------------ Kekurangan Lahan -------------------------------------------}}
 <div class="card mb-5">

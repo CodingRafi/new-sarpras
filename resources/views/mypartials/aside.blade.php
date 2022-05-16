@@ -20,12 +20,13 @@
 
                 {{------------------------------------------------------------------------------------------ DASHBOARD ------------------------------------------------------------------------------------------}}
                 <li class="nav-item">
-                    <a href="/" class="nav-link {{ Request::is('/') ? 'active' : '' }}">
+                    <a href="{{ session('route') }}" class="nav-link {{ Request::is(session('route')) ? 'active' : '' }}">
                         <i class="nav-icon bi bi-house"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
 
+                @can('view_profiladmin')     
                 {{------------------------------------------------------------------------------------------ LIST SEKOLAH & PROFIL SEKOLAH ------------------------------------------------------------------------------------------}}
                 <li class="nav-item">
                     <a href="/profil/admin" class="nav-link {{ Request::is('profil/*') ? 'active' : '' }}">
@@ -33,6 +34,7 @@
                         <p>Profil Sekolah</p>
                     </a>
                 </li>
+                @endcan
 
                 {{------------------------------------------------------------------------------------------ LAHAN SEKOLAH ------------------------------------------------------------------------------------------}}
                 <li class="nav-item has-treeview">
@@ -73,14 +75,14 @@
                     <ul class="nav nav-treeview">
                         {{------------------------------------------------------------------------------------------ RUANG KELAS ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="/bangunan/ruang-kelas" class="nav-link">
+                            <a href="/bangunan/ruang-kelas" class="nav-link {{ Request::is('bangunan/ruang-kelas') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Ruang Kelas</p>
                             </a>
                         </li>
                         {{------------------------------------------------------------------------------------------ RUANG PRAKTEK ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="/bangunan/ruang-praktik" class="nav-link">
+                            <a href="/bangunan/ruang-praktik" class="nav-link {{ Request::is('bangunan/ruang-praktik') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Ruang Praktek</p>
                             </a>
@@ -94,7 +96,7 @@
                         </li>
                         {{------------------------------------------------------------------------------------------ PERPUSTAKAAN ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="/bangunan/ruang-perpustakaan" class="nav-link">
+                            <a href="/bangunan/ruang-perpustakaan" class="nav-link {{ Request::is('bangunan/ruang-perpustakaan') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Perpustakaan</p>
                             </a>
@@ -115,7 +117,7 @@
                         </li>
                         {{------------------------------------------------------------------------------------------ REHAB/RENOV ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="/bangunan/ruang-rehabrenov" class="nav-link">
+                            <a href="/bangunan/ruang-rehabrenov" class="nav-link {{ Request::is('bangunan/ruang-rehabrenov') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Rehab/Renov</p>
                             </a>
@@ -144,43 +146,21 @@
                 </li>
 
                 {{------------------------------------------------------------------------------------------ RIWAYAT BANTUAN ------------------------------------------------------------------------------------------}}
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
+                <li class="nav-item">
+                    <a href="/riwayat-bantuan" class="nav-link {{ Request::is('riwayat-bantuan') ? 'active' : '' }}">
                         <i class="nav-icon bi bi-card-text"></i>
-                        <p>
-                            Riwayat Bantuan
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
+                        <p>Riwayat Bantuan</p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        {{------------------------------------------------------------------------------------------ ########## ------------------------------------------------------------------------------------------}}
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fa-regular fa-circle"></i>
-                                <p>###########</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
 
                 {{------------------------------------------------------------------------------------------ MONITORING & EVALUASI ------------------------------------------------------------------------------------------}}
                 <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
+                    <a href="/monev" class="nav-link">
                         <i class="nav-icon bi bi-shield-check"></i>
                         <p>
                             Monitoring & Evaluasi
-                            <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        {{------------------------------------------------------------------------------------------ ############ ------------------------------------------------------------------------------------------}}
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="fa-regular fa-circle"></i>
-                                <p>##########</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
             </ul>
         </nav>

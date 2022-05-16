@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use DB;
+
 
 class Koleksi extends Model
 {
@@ -22,6 +24,10 @@ class Koleksi extends Model
         return $this->hasMany(Foto::class);
     }
 
+    public function jeniskoleksi(){
+        return $this->belongsTo(Jeniskoleksi::class);
+    }
+
     public function sluggable(): array
     {
         return [
@@ -33,5 +39,13 @@ class Koleksi extends Model
 
     public function getRouteKeyName(){
         return 'slug';
+    }
+
+    public static function jenisPilihan($profil){
+        return DB::table('jeniskoleksis as a')->select('a.*')
+                ->leftJoin('koleksis as b', function($join) use ($profil){
+                        $join->on('a.id', '=', 'b.jeniskoleksi_id')
+                            ->where('b.profil_depo_id',  $profil->id);
+                })->whereNull('b.jeniskoleksi_id')->get();
     }
 }

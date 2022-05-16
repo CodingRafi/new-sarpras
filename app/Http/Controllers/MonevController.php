@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Profil;
+use App\Models\Monev;
+use App\Http\Requests\StoreMonevRequest;
+use App\Http\Requests\UpdateMonevRequest;
 
-class AdminController extends Controller
+class MonevController extends Controller
 {
-
-    function __construct()
-    {
-         $this->middleware('permission:view_profiladmin', ['only' => ['index','show',]]);
-    }
     /**
      * Display a listing of the resource.
      *
@@ -19,9 +15,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index',[
-            'profils' => Profil::search(request(['search']))->paginate(40),
-        ]);
+        return view("monev.index");
     }
 
     /**
@@ -37,10 +31,10 @@ class AdminController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreMonevRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreMonevRequest $request)
     {
         //
     }
@@ -48,10 +42,10 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Monev  $monev
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Monev $monev)
     {
         //
     }
@@ -59,10 +53,10 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Monev  $monev
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Monev $monev)
     {
         //
     }
@@ -70,11 +64,11 @@ class AdminController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Http\Requests\UpdateMonevRequest  $request
+     * @param  \App\Models\Monev  $monev
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateMonevRequest $request, Monev $monev)
     {
         //
     }
@@ -82,10 +76,10 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Monev  $monev
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Monev $monev)
     {
         //
     }

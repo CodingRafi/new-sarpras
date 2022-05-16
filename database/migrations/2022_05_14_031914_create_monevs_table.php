@@ -13,12 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('koleksis', function (Blueprint $table) {
+        Schema::create('monevs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('profil_depo_id');
-            $table->foreignId('jeniskoleksi_id');
-            $table->string('nama');
-            $table->string('slug')->unique();
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('koleksis');
+        Schema::dropIfExists('monevs');
     }
 };

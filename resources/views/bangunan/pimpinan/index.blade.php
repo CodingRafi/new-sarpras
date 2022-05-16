@@ -18,14 +18,16 @@
 
     {{-- ---------------------------------------------------------------------------------------- KONDISI IDEAL ---------------------------------------------------------------------------------------- --}}
     <div class="info-box p-0 pimpinan-infobox">
-        <span class="info-box-icon bg-info p-4" style="width: auto; min-width: 300px;">
-            <img src="/assets/img/icons/flaticons/town.png" 
+        <span class="info-box-icon p-4" style="background-color: #25b5e9; width: auto; min-width: 207px;">
+            <img src="/assets/img/icons/flaticons/town.png"
                 style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
             <div class="ml-4">
-                Kondisi Ideal
+                <span class="text-white">
+                    Kondisi Ideal
+                </span>
                 <div class="d-flex align-items-end justify-content-center">
-                    <h1 class="display-4" style="font-weight: 600;">30</h1>
-                    <p>/ Kantor</p>
+                    <h1 class="display-4 text-white">30</h1>
+                    <p class="text-white">/ Kantor</p>
                 </div>
             </div>
         </span>
@@ -40,14 +42,16 @@
     
     {{-- ---------------------------------------------------------------------------------------- KETERSEDIAAN ---------------------------------------------------------------------------------------- --}}
     <div class="info-box p-0 pimpinan-infobox">
-        <span class="info-box-icon bg-warning p-4" style="width: auto; min-width: 300px;">
-            <img src="/assets/img/icons/flaticons/building.png" 
+        <span class="info-box-icon p-4" style="background-color: #fcc12d; width: auto; min-width: 207px;">
+            <img src="/assets/img/icons/flaticons/building.png"
                 style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
             <div class="ml-4 text-white">
-                Ketersediaan
+                <span class="text white">
+                    Ketersediaan
+                </span>
                 <div class="d-flex align-items-end justify-content-center">
-                    <h1 class="display-4" style="font-weight: 600;">11</h1>
-                    <p>/ Kantor</p>
+                    <h1 class="display-4 text-white">11</h1>
+                    <p class="text-white">/ Kantor</p>
                 </div>
             </div>
         </span>
@@ -63,14 +67,16 @@
 
     {{-- ---------------------------------------------------------------------------------------- KEKURANGAN ---------------------------------------------------------------------------------------- --}}
     <div class="info-box p-0 pimpinan-infobox">
-        <span class="info-box-icon bg-dark p-4" style="width: auto; min-width: 300px;">
-            <img src="/assets/img/icons/flaticons/school.png"   
+        <span class="info-box-icon p-4" style="background-color: #263238; width: auto; min-width: 207px;">
+            <img src="/assets/img/icons/flaticons/school.png"
                 style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
             <div class="ml-4">
-                Kekurangan
+                <span class="text-white">
+                    Kekurangan
+                </span>
                 <div class="d-flex align-items-end justify-content-center">
-                    <h1 class="display-4" style="font-weight: 600;">3</h1>
-                    <p>/ Kantor</p>
+                    <h1 class="display-4 text-white">3</h1>
+                    <p class="text-white">/ Kantor</p>
                 </div>
             </div>
         </span>
@@ -83,11 +89,11 @@
     </div>
 
     {{-- ---------------------------------------------------------------------------------------- USULAN PIMPINAN ---------------------------------------------------------------------------------------- --}}
-    <div class="card card-info">
-        <div class="card-header">
-            <h3 class="card-title">Usulan Ruang Pimpinan</h3>
+    <div class="card">
+        <div class="card-header" style="background-color: #25b5e9;">
+            <h3 class="card-title text-white">Usulan Ruang Pimpinan</h3>
             <div class="card-tools">
-                <button type="button" class="btn btn-tool border border-light" data-toggle="modal"
+                <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
                     data-target="#tambah-usulan"><i class="bi bi-plus"></i> Tambah Usulan
                 </button>
             </div>
@@ -111,7 +117,7 @@
                     <tr>
                         <td style="vertical-align: middle">1</td>
                         <td style="vertical-align: middle">Ruang Guru</td>
-                        <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/assets/img/backgrounds/school.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
+                        <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/assets/img/backgrounds/school.jpg" class="rounded" style="object-fit: cover; width: 100px; aspect-ratio: 1/1;"></a></td>
                         <td class="text-center" style="vertical-align: middle">100m²</td>
                         <td class="text-center" style="vertical-align: middle"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
                         <td class="text-center" style="vertical-align: middle"><button class="btn btn-success">Batalkan</button></td>
