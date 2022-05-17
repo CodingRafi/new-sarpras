@@ -117,15 +117,15 @@
                             {{-- judul table --}}
                             <thead>
                                 <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">Nama Lahan</th>
-                                    <th scope="col">No Sertifikat</th>
-                                    <th scope="col">Panjang(m)</th>
-                                    <th scope="col">Lebar(m)</th>
-                                    <th scope="col">Luas Lahan(m)</th>
-                                    <th scope="col">Alamat</th>
-                                    <th scope="col">Jenis Kepemilikan</th>
-                                    <th scope="col">Keterangan</th>
+                                    <th class="text-center" scope="col">No</th>
+                                    <th class="text-center" scope="col">Nama Lahan</th>
+                                    <th class="text-center" scope="col">No Sertifikat</th>
+                                    <th class="text-center" scope="col">Panjang(m)</th>
+                                    <th class="text-center" scope="col">Lebar(m)</th>
+                                    <th class="text-center" scope="col">Luas Lahan(m)</th>
+                                    <th class="text-center" scope="col">Alamat</th>
+                                    <th class="text-center" scope="col">Jenis Kepemilikan</th>
+                                    <th class="text-center" scope="col">Keterangan</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -134,16 +134,16 @@
                             {{-- isi table --}}
                             <tbody>
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>Tanah</td>
-                                    <td>123456</td>
-                                    <td>35m²</td>
-                                    <td>85m²</td>
-                                    <td>120m²</td>
-                                    <td>Bandung</td>
-                                    <td>PDF</td>
-                                    <td>Butuh Pembelian Lahan</td>
-                                    <td>
+                                    <th class="text-center" scope="row">1</th>
+                                    <td class="text-center">Tanah</td>
+                                    <td class="text-center">123456</td>
+                                    <td class="text-center">35m²</td>
+                                    <td class="text-center">85m²</td>
+                                    <td class="text-center">120m²</td>
+                                    <td class="text-center">Bandung</td>
+                                    <td class="text-center">Sewa</td>
+                                    <td class="text-center">Butuh Pembelian Lahan</td>
+                                    <td class="text-center">
                                         <div class="card-body">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
@@ -161,16 +161,16 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">2</th>
-                                    <td>Kelas</td>
-                                    <td>1234567</td>
-                                    <td>40m²</td>
-                                    <td>85m²</td>
-                                    <td>120m²</td>
-                                    <td>Bandung</td>
-                                    <td>Sewa</td>
-                                    <td>Tidak Butuh Pembelian Lahan</td>
-                                    <td>
+                                    <th class="text-center" scope="row">2</th>
+                                    <td class="text-center">Kelas</td>
+                                    <td class="text-center">1234567</td>
+                                    <td class="text-center">40m²</td>
+                                    <td class="text-center">85m²</td>
+                                    <td class="text-center">120m²</td>
+                                    <td class="text-center">Bandung</td>
+                                    <td class="text-center">SHM</td>
+                                    <td class="text-center">Tidak Butuh Pembelian Lahan</td>
+                                    <td class="text-center">
                                         <div class="card-body">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
@@ -188,16 +188,16 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">3</th>
-                                    <td>Tanah</td>
-                                    <td>12345678</td>
-                                    <td>45m²</td>
-                                    <td>85m²</td>
-                                    <td>120m²</td>
-                                    <td>Bandung</td>
-                                    <td>SHM</td>
-                                    <td>Tidak Butuh Pembelian Lahan</td>
-                                    <td>
+                                    <th class="text-center" scope="row">3</th>
+                                    <td class="text-center">Tanah</td>
+                                    <td class="text-center">12345678</td>
+                                    <td class="text-center">45m²</td>
+                                    <td class="text-center">85m²</td>
+                                    <td class="text-center">120m²</td>
+                                    <td class="text-center">Bandung</td>
+                                    <td class="text-center">SHM</td>
+                                    <td class="text-center">Tidak Butuh Pembelian Lahan</td>
+                                    <td class="text-center">
                                         <div class="card-body">
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
@@ -332,12 +332,12 @@
                             {{-- judul table --}}
                             <thead>
                                 <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">Nama Lahan</th>
-                                    <th scope="col">Panjang(m)</th>
-                                    <th scope="col">Lebar(m)</th>
-                                    <th scope="col">Luas Lahan(m)</th>
-                                    <th scope="col">Action</th>
+                                    <th class="text-center" scope="col">No</th>
+                                    <th class="text-center" scope="col">Nama Lahan</th>
+                                    <th class="text-center" scope="col">Panjang(m)</th>
+                                    <th class="text-center" scope="col">Lebar(m)</th>
+                                    <th class="text-center" scope="col">Luas Lahan(m)</th>
+                                    <th class="text-center" scope="col">Action</th>
                                 </tr>
                             </thead>
                             {{-- end judul table --}}
@@ -345,45 +345,45 @@
                             {{-- isi table --}}
                             <tbody>
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>Tanah</td>
-                                    <td>Proposal</td>
-                                    <td>35m²</td>
-                                    <td>85m²</td>
-                                    <td>
-                                        <button type="button" class="btn btn-info" data-toggle="modal"
+                                    <th class="text-center" scope="row">1</th>
+                                    <td class="text-center">Tanah</td>
+                                    <td class="text-center">Proposal</td>
+                                    <td class="text-center">35m²</td>
+                                    <td class="text-center">85m²</td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn text-white" style="background-color: #25b5e9" data-toggle="modal"
                                             data-target="#modal-edit">
                                             Edit
                                         </button>
-                                        <a href="#" class="btn btn-success">Hapus</a>
+                                        <a href="#" class="btn text-white" style="background-color: #00a65b">Hapus</a>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>Tanah</td>
-                                    <td>Proposal</td>
-                                    <td>35m²</td>
-                                    <td>85m²</td>
-                                    <td>
-                                        <button type="button" class="btn btn-info" data-toggle="modal"
+                                    <th class="text-center" scope="row">2</th>
+                                    <td class="text-center">Tanah</td>
+                                    <td class="text-center">Proposal</td>
+                                    <td class="text-center">35m²</td>
+                                    <td class="text-center">85m²</td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn text-white" style="background-color: #25b5e9" data-toggle="modal"
                                             data-target="#modal-edit">
                                             Edit
                                         </button>
-                                        <a href="#" class="btn btn-success">Hapus</a>
+                                        <a href="#" class="btn text-white" style="background-color: #00a65b">Hapus</a>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>Tanah</td>
-                                    <td>Proposal</td>
-                                    <td>35m²</td>
-                                    <td>85m²</td>
-                                    <td>
-                                        <button type="button" class="btn btn-info" data-toggle="modal"
+                                    <th class="text-center" scope="row">3</th>
+                                    <td class="text-center">Tanah</td>
+                                    <td class="text-center">Proposal</td>
+                                    <td class="text-center">35m²</td>
+                                    <td class="text-center">85m²</td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn text-white" style="background-color: #25b5e9" data-toggle="modal"
                                             data-target="#modal-edit">
                                             Edit
                                         </button>
-                                        <a href="#" class="btn btn-success">Hapus</a>
+                                        <a href="#" class="btn text-white" style="background-color: #00a65b">Hapus</a>
                                     </td>
                                 </tr>
                             </tbody>

@@ -8,7 +8,7 @@
                 <ul class="nav nav-pills ml-auto">
                     <li class="nav-item">
                         <a class="nav-link text-white active" href="#data-usulan-sekolah" data-toggle="tab">
-                            <i class="bi bi-house-fill mr-1"></i> Data Usulan Lahan Baru</a>
+                            <i class="bi bi-house-fill mr-1"></i> Data Usulan Lahan</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="#tambah-usulan-lahan" data-toggle="tab">

@@ -111,34 +111,34 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Jurusan</th>
-                                <th scope="col">Jumlah Ruangan</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Jumlah Ideal</th>
+                                <th class="text-center" scope="col">No</th>
+                                <th class="text-center" scope="col">Jurusan</th>
+                                <th class="text-center" scope="col">Jumlah Ruangan</th>
+                                <th class="text-center" scope="col">Status</th>
+                                <th class="text-center" scope="col">Jumlah Ideal</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Multimedia</td>
-                                <td>10</td>
-                                <td>Ideal</td>
-                                <td>16 Siswa / Kelas</td>
+                                <th class="text-center" scope="row">1</th>
+                                <td class="text-center">Multimedia</td>
+                                <td class="text-center">10</td>
+                                <td class="text-center">Ideal</td>
+                                <td class="text-center">16 Siswa / Kelas</td>
                             </tr>
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Multimedia</td>
-                                <td>10</td>
-                                <td>Ideal</td>
-                                <td>16 Siswa / Kelas</td>
+                                <th class="text-center" scope="row">1</th>
+                                <td class="text-center">Multimedia</td>
+                                <td class="text-center">10</td>
+                                <td class="text-center">Ideal</td>
+                                <td class="text-center">16 Siswa / Kelas</td>
                             </tr>
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Multimedia</td>
-                                <td>10</td>
-                                <td>Ideal</td>
-                                <td>16 Siswa / Kelas</td>
+                                <th class="text-center" scope="row">1</th>
+                                <td class="text-center">Multimedia</td>
+                                <td class="text-center">10</td>
+                                <td class="text-center">Ideal</td>
+                                <td class="text-center">16 Siswa / Kelas</td>
                             </tr>
                         </tbody>
                     </table>
@@ -173,8 +173,8 @@
                                 <th class="text-center" rowspan="2">Aksi</th>
                             </tr>
                             <tr>
-                                <th>Gambar Lahan</th>
-                                <th>Luas</th>
+                                <th class="text-center">Gambar Lahan</th>
+                                <th class="text-center">Luas</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -182,7 +182,7 @@
                                 <th class="text-center" scope="row">1</th>
                                 <td class="text-center">Multimedia</td>
                                 <td class="text-center">5</td>
-                                <td class="text-center">Img</td>
+                                <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
                                 <td class="text-center">150m²</td>
                                 <td class="text-center"><img src="/img/pdf2.png" alt="image" style="width: 30px"></td>
                                 <td class="text-center"><a href="#" class="btn btn-success">Batalkan</a></td>
@@ -191,7 +191,7 @@
                                 <th class="text-center" scope="row">2</th>
                                 <td class="text-center">Rekayasa Perangkat Lunak</td>
                                 <td class="text-center">10</td>
-                                <td class="text-center">Img</td>
+                                <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
                                 <td class="text-center">200m²</td>
                                 <td class="text-center"><img src="/img/pdf2.png" alt="image" style="width: 30px"></td>
                                 <td class="text-center"><a href="#" class="btn btn-success">Batalkan</a></td>
