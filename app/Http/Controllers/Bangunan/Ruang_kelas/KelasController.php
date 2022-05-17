@@ -1,10 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Bangunan\Ruang_kelas;
 
 use App\Models\Kelas;
+use App\Models\UsulanKelas;
+use App\Models\UsulanKoleksi;
+use App\Models\UsulanFoto;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreKelasRequest;
 use App\Http\Requests\UpdateKelasRequest;
+use Illuminate\Support\Facades\Auth;
 
 class KelasController extends Controller
 {
@@ -15,7 +20,14 @@ class KelasController extends Controller
      */
     public function index()
     {
-        return view("bangunan.kelas.index");
+        $datas = UsulanKelas::where('profil_id', Auth::user()->profil_id)->get();
+        $koleksi = UsulanKoleksi::koleksi($datas);
+        $fotos = UsulanFoto::fotos($koleksi);
+
+        return view("bangunan.kelas.index",[
+            'usulanKelas' => $datas,
+            'usulanFotos' => $fotos
+        ]);
     }
 
     /**

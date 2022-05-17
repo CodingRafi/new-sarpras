@@ -47,44 +47,49 @@ class KompetenController extends Controller
      */
     public function store(StoreKompetenRequest $request)
     {
-        $validatedData = $request->validate([
-            'profil_id' => 'required',
-            'jurusanTerpilih' => 'required'
-        ]);
-
-        // dd(Auth::user());
-        // dd($request);
-
-        foreach($request->jurusanTerpilih as $kom){
-            Kompeten::create([
-                'profil_id' => $request->profil_id,
-                'komli_id' => $kom,
-                'jml_lk' => 0,
-                'jml_pr' => 0,
+        if($request->profil_id == Auth::user()->profil_id){
+            $validatedData = $request->validate([
+                'profil_id' => 'required',
+                'jurusanTerpilih' => 'required'
             ]);
+    
+            // dd(Auth::user());
+            // dd($request);
+    
+            foreach($request->jurusanTerpilih as $kom){
+                Kompeten::create([
+                    'profil_id' => $request->profil_id,
+                    'komli_id' => $kom,
+                    'jml_lk' => 0,
+                    'jml_pr' => 0,
+                ]);
+            }
+    
+            $profil = Profil::where('id', $request->profil_id)->get()[0];
+    
+            $jml_lk = 0;
+            $jml_pr = 0;
+            foreach($profil->kompeten as $kopetensi){
+                $jml_lk += $kopetensi->jml_lk;
+                $jml_pr += $kopetensi->jml_pr;
+            }
+    
+            $updateData = [
+                'jml_siswa_l' => $jml_lk,
+                'jml_siswa_p' => $jml_pr
+            ];
+    
+            Profil::where('id', $request->profil_id)->update($updateData);
+            $jml_lk = 0;
+            $jml_pr = 0;
+    
+            Log::createLog($request->profil_id, Auth::user()->id, 'Menambahkan ' . count($request->jurusanTerpilih) . ' jurusan');
+    
+            return redirect('/profil/' . $request->profil_id);
+        }else{
+            abort(403);
         }
-
-        $profil = Profil::where('id', $request->profil_id)->get()[0];
-
-        $jml_lk = 0;
-        $jml_pr = 0;
-        foreach($profil->kompeten as $kopetensi){
-            $jml_lk += $kopetensi->jml_lk;
-            $jml_pr += $kopetensi->jml_pr;
-        }
-
-        $updateData = [
-            'jml_siswa_l' => $jml_lk,
-            'jml_siswa_p' => $jml_pr
-        ];
-
-        Profil::where('id', $request->profil_id)->update($updateData);
-        $jml_lk = 0;
-        $jml_pr = 0;
-
-        Log::createLog($request->profil_id, Auth::user()->id, 'Menambahkan ' . count($request->jurusanTerpilih) . ' jurusan');
-
-        return redirect('/profil/' . $request->profil_id);
+        
     }
 
     /**
@@ -130,40 +135,44 @@ class KompetenController extends Controller
     public function update(UpdateKompetenRequest $request, Kompeten $kompeten)
     {
         // dd($request);
-        $validatedData = $request->validate([
-            'profil_id' => 'required',
-            'id_kopetensi' => 'required',
-            'jml_lk' => 'required',
-            'jml_pr' => 'required'
-        ]);
-
-        foreach($request->id_kopetensi as $key => $kopetensi){
-            Kompeten::where('profil_id', $request->profil_id)->where('id', $kopetensi)->update([
-                'jml_lk' => $request->jml_lk[$key],
-                'jml_pr' => $request->jml_pr[$key],
+        if($request->profil_id == Auth::user()->profil_id){
+            $validatedData = $request->validate([
+                'profil_id' => 'required',
+                'id_kopetensi' => 'required',
+                'jml_lk' => 'required',
+                'jml_pr' => 'required'
             ]);
-        }   
-
-        $profil = Profil::where('id', $request->profil_id)->get()[0];
-
-        $jml_lk = 0;
-        $jml_pr = 0;
-        foreach($profil->kompeten as $kopetensi){
-            $jml_lk += $kopetensi->jml_lk;
-            $jml_pr += $kopetensi->jml_pr;
+    
+            foreach($request->id_kopetensi as $key => $kopetensi){
+                Kompeten::where('profil_id', $request->profil_id)->where('id', $kopetensi)->update([
+                    'jml_lk' => $request->jml_lk[$key],
+                    'jml_pr' => $request->jml_pr[$key],
+                ]);
+            }   
+    
+            $profil = Profil::where('id', $request->profil_id)->get()[0];
+    
+            $jml_lk = 0;
+            $jml_pr = 0;
+            foreach($profil->kompeten as $kopetensi){
+                $jml_lk += $kopetensi->jml_lk;
+                $jml_pr += $kopetensi->jml_pr;
+            }
+    
+            $updateData = [
+                'jml_siswa_l' => $jml_lk,
+                'jml_siswa_p' => $jml_pr
+            ];
+    
+            Profil::where('id', $request->profil_id)->update($updateData);
+            $jml_lk = 0;
+            $jml_pr = 0;
+            Log::createLog($request->profil_id, Auth::user()->id, 'Mengubah jumlah siswa');
+    
+            return redirect('/profil/' . $request->profil_id);
+        }else{
+            abort(403);
         }
-
-        $updateData = [
-            'jml_siswa_l' => $jml_lk,
-            'jml_siswa_p' => $jml_pr
-        ];
-
-        Profil::where('id', $request->profil_id)->update($updateData);
-        $jml_lk = 0;
-        $jml_pr = 0;
-        Log::createLog($request->profil_id, Auth::user()->id, 'Mengubah jumlah siswa');
-
-        return redirect('/profil/' . $request->profil_id);
     }
 
     /**
@@ -175,30 +184,34 @@ class KompetenController extends Controller
     public function destroy(Kompeten $kompeten)
     {
         // dd($kompeten);
-        Kompeten::destroy($kompeten->id);
-
-        $profil = Profil::where('id', $kompeten->profil_id)->get()[0];
-
-        $jml_lk = 0;
-        $jml_pr = 0;
-        foreach($profil->kompeten as $kopetensi){
-            $jml_lk += $kopetensi->jml_lk;
-            $jml_pr += $kopetensi->jml_pr;
+        if($kompeten->profil_id == Auth::user()->profil_id){
+            Kompeten::destroy($kompeten->id);
+    
+            $profil = Profil::where('id', $kompeten->profil_id)->get()[0];
+    
+            $jml_lk = 0;
+            $jml_pr = 0;
+            foreach($profil->kompeten as $kopetensi){
+                $jml_lk += $kopetensi->jml_lk;
+                $jml_pr += $kopetensi->jml_pr;
+            }
+    
+            $updateData = [
+                'jml_siswa_l' => $jml_lk,
+                'jml_siswa_p' => $jml_pr
+            ];
+    
+            Profil::where('id', $kompeten->profil_id)->update($updateData);
+            $jml_lk = 0;
+            $jml_pr = 0;
+    
+            $komli = Komli::where('id', $kompeten->komli_id)->get()[0];
+    
+            Log::createLog($kompeten->profil_id, Auth::user()->id, 'Menghapus jurusan ' . $komli->kompetensi);
+    
+            return redirect('/profil/' . $kompeten->profil_id);
+        }else{
+            abort(403);
         }
-
-        $updateData = [
-            'jml_siswa_l' => $jml_lk,
-            'jml_siswa_p' => $jml_pr
-        ];
-
-        Profil::where('id', $kompeten->profil_id)->update($updateData);
-        $jml_lk = 0;
-        $jml_pr = 0;
-
-        $komli = Komli::where('id', $kompeten->komli_id)->get()[0];
-
-        Log::createLog($kompeten->profil_id, Auth::user()->id, 'Menghapus jurusan ' . $komli->kompetensi);
-
-        return redirect('/profil/' . $kompeten->profil_id);
     }
 }

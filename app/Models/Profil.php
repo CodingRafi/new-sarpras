@@ -33,6 +33,10 @@ class Profil extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function kelas(){
+        return $this->belongsTo(Kelas::class);
+    }
+
     public function scopeSearch($query, array $search)
     {
         // dd($query->where('npsn', 'like', '%' . $search['search'] . '%'));

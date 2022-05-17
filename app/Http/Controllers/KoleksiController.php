@@ -43,19 +43,23 @@ class KoleksiController extends Controller
      */
     public function store(StoreKoleksiRequest $request)
     {
-        $validatedData = $request->validate([
-            'profil_depo_id' => 'required',
-            'nama' => 'required',
-            'jeniskoleksi_id' => 'required',
-        ]);
-
-        $validatedData['slug'] = SlugService::createSlug(Koleksi::class, 'slug', $request->nama);
-
-        Koleksi::create($validatedData);
-
-        Log::createLog($request->profil_depo_id, Auth::user()->id, 'Membuat Koleksi ' . $request->nama);
-
-        return redirect('/foto/create/'.$validatedData['slug']);
+        if($request->profil_depo_id == Auth::user()->profil_id){
+            $validatedData = $request->validate([
+                'profil_depo_id' => 'required',
+                'nama' => 'required',
+                'jeniskoleksi_id' => 'required',
+            ]);
+    
+            $validatedData['slug'] = SlugService::createSlug(Koleksi::class, 'slug', $request->nama);
+    
+            Koleksi::create($validatedData);
+    
+            Log::createLog($request->profil_depo_id, Auth::user()->id, 'Membuat Koleksi ' . $request->nama);
+    
+            return redirect('/foto/create/'.$validatedData['slug']);
+        }else{
+            abort(403);
+        }
         // return redirect('/profil/'.$request->profil_depo_id);
     }
 
@@ -95,15 +99,19 @@ class KoleksiController extends Controller
      */
     public function update(UpdateKoleksiRequest $request, Koleksi $koleksi)
     {
-        $validatedData = $request->validate([
-            'profil_depo_id' => 'required',
-            'slug' => 'required',
-            'nama' => 'required',
-        ]);
-
-        Koleksi::where('slug', $request->slug)->update($validatedData);
-
-        return redirect('profil/'.$koleksi->profil_depo_id);
+        if($request->profil_depo_id == Auth::user()->profil_id){
+            $validatedData = $request->validate([
+                'profil_depo_id' => 'required',
+                'slug' => 'required',
+                'nama' => 'required',
+            ]);
+    
+            Koleksi::where('slug', $request->slug)->update($validatedData);
+    
+            return redirect('profil/'.$koleksi->profil_depo_id);
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -114,23 +122,27 @@ class KoleksiController extends Controller
      */
     public function destroy(Koleksi $koleksi)
     {
-        $fotos = $koleksi->foto;
-
-        if(count($fotos) > 0){
-            foreach($fotos as $foto){
-                Storage::delete($foto->filename);
-                Foto::destroy($foto->id);
+        if($koleksi->profil_depo_id == Auth::user()->profil_id){
+            $fotos = $koleksi->foto;
+    
+            if(count($fotos) > 0){
+                foreach($fotos as $foto){
+                    Storage::delete($foto->filename);
+                    Foto::destroy($foto->id);
+                }
             }
+    
+            Koleksi::destroy($koleksi->id);
+    
+            $logs = Log::create([
+                'profil_id' => $koleksi->profil_depo_id,
+                'users_id' => Auth::user()->id,
+                'keterangan' => 'Menghapus Koleksi ' . $koleksi->nama
+            ]);
+    
+            return redirect('profil/'.$koleksi->profil_depo_id);
+        }else{
+            abort(403);
         }
-
-        Koleksi::destroy($koleksi->id);
-
-        $logs = Log::create([
-            'profil_id' => $koleksi->profil_depo_id,
-            'users_id' => Auth::user()->id,
-            'keterangan' => 'Menghapus Koleksi ' . $koleksi->nama
-        ]);
-
-        return redirect('profil/'.$koleksi->profil_depo_id);
     }
 }
