@@ -24,6 +24,10 @@
         font-weight: 500;
     }
 
+    @media(max-width 480px){
+        
+    }
+
 </style>
 @endsection
 
