@@ -102,8 +102,11 @@
 <div class="container-fluid mt-3">
     <div class="card">
         <div class="card-header" style="background-color: #25b5e9">
-            <h5 class="text-white">Ruang Praktek Tersedia</h5>
-
+            <h3 class="card-title text-white">Ruang Praktek Tersedia</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal" data-target="#modal-lg"><i class="bi bi-plus"></i> Tambah Usulan
+                </button>
+            </div>
         </div>
         <div class="card-body">
             <div class="tab-content">
@@ -216,61 +219,64 @@
             </div>
             <div class="modal-body">
                 <div class="container">
+                    {{-- input jurusan --}}
                     <div class="row">
                         <div class="col-3">
-                            <label for="cars">Jenis Ruangan :</label>
+                            <label for="cars">Jurusan</label>
                         </div>
                         <div class="col">
-                            <select name="cars" id="cars" class="btn btn-outline-secondary">
+                            <select name="cars" id="cars" class="btn btn-outline-secondary col-12">
                                 <option value="">Rekayasa Perangkat Lunak</option>
-                                <option value="">Multimedia</option>
+                                <option value="">Teknik Elektronika Industri</option>
                                 <option value="">Broadcast</option>
+                                <option value="">Multimedia</option>
                                 <option value="">Teknik Komputer Jaringan</option>
                             </select>
                         </div>
                     </div>
+                    {{-- end input jurusan --}}
 
+                    {{-- input jumlah ruangan --}}
                     <div class="row mt-4">
                         <div class="col-3">
-                            <label for="col-sm-4 col-form-label">Jumlah Ruangan :</label>
+                            <label>Jumlah Ruangan</label>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control col-sm-7" placeholder="Masukan Jumlah Ruang"
+                            <input type="text" class="form-control col-12" placeholder="Masukan Jumlah Ruang"
                                 id="jmlrg" name="long" required value="">
                         </div>
                     </div>
+                    {{-- end input jumlah ruangan --}}
 
+                    {{-- input status --}}
                     <div class="row mt-4">
                         <div class="col-3">
-                            <label for="col-sm-4 col-form-label">Luas Lahan :</label>
+                            <label>Status</label>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control col-sm-7" placeholder="Masukan Luas" id="jmlrg"
+                            <input type="text" class="form-control col-12" placeholder="Masukan Status" id="jmlrg"
                                 name="long" required value="">
                         </div>
                     </div>
+                    {{-- end input status --}}
 
+                    {{-- input jumlah ideal --}}
                     <div class="row mt-4">
                         <div class="col-3">
-                            <label for="col-sm-4 col-form-label">Gambar Lokasi :</label>
+                            <label>Jumlah Ideal</label>
                         </div>
                         <div class="col">
-                            <input type="file" id="file">
+                            <input type="text" class="form-control col-12" placeholder="Masukan Jumlah Ideal" id="jmlrg"
+                                name="long" required value="">
                         </div>
                     </div>
-                    <div class="row mt-4">
-                        <div class="col-3">
-                            <label for="col-sm-4 col-form-label">Lahan :</label>
-                        </div>
-                        <div class="col">
-                            <input type="file" id="file">
-                        </div>
-                    </div>
+                    {{-- end input jumlah ideal --}}
+
                 </div>
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                <button type="button" class="btn btn-success">Ajukan</button>
+                <button type="button" class="btn btn-success">Simpan</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -327,8 +333,8 @@
         {{-- end upload proposal --}}
         </div>
         <div class="modal-footer justify-content-between">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn text-white" style="background-color: #00a65b">Save changes</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+          <button type="button" class="btn text-white" style="background-color: #00a65b">Simpan</button>
         </div>
       </div>
       <!-- /.modal-content -->
