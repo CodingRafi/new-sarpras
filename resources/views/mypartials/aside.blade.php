@@ -37,7 +37,7 @@
                 @endcan
 
                 {{------------------------------------------------------------------------------------------ LAHAN SEKOLAH ------------------------------------------------------------------------------------------}}
-                <li class="nav-item has-treeview">
+                <li class="nav-item has-treeview {{ Request::is('lahan') ? 'menu-open' : (Request::is('usulan-lahan') ? 'menu-open' : '') }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-map"></i>
                         <p>
@@ -48,14 +48,14 @@
                     <ul class="nav nav-treeview">
                         {{------------------------------------------------------------------------------------------ KETERSEDIAAN LAHAN & ANALISI LAHAN ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="/lahan" class="nav-link">
+                            <a href="/lahan" class="nav-link {{ Request::is('lahan') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
-                                <p>Ketersediaan Lahan & Analisi Lahan</p>
+                                <p>Ketersediaan & Analisi Lahan</p>
                             </a>
                         </li>
                         {{------------------------------------------------------------------------------------------ USULAN LAHAN SEKOLAH ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="/usulan-lahan" class="nav-link">
+                            <a href="/usulan-lahan" class="nav-link {{ Request::is('usulan-lahan') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Usulan Lahan Sekolah</p>
                             </a>
