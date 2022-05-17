@@ -6,6 +6,8 @@ use App\Models\Kelas;
 use App\Models\UsulanKelas;
 use App\Models\UsulanKoleksi;
 use App\Models\UsulanFoto;
+use App\Models\Profil;
+use App\Models\Log;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreKelasRequest;
 use App\Http\Requests\UpdateKelasRequest;
@@ -20,13 +22,17 @@ class KelasController extends Controller
      */
     public function index()
     {
-        $datas = UsulanKelas::where('profil_id', Auth::user()->profil_id)->get();
-        $koleksi = UsulanKoleksi::koleksi($datas);
+        $usulanKelas = UsulanKelas::where('profil_id', Auth::user()->profil_id)->get();
+        $koleksi = UsulanKoleksi::koleksi($usulanKelas);
         $fotos = UsulanFoto::fotos($koleksi);
+        $data = Kelas::where('profil_id', Auth::user()->profil_id)->get()[0];
+        $profil = Profil::where('id', Auth::user()->profil_id)->get()[0];
 
         return view("bangunan.kelas.index",[
-            'usulanKelas' => $datas,
-            'usulanFotos' => $fotos
+            'usulanKelas' => $usulanKelas,
+            'usulanFotos' => $fotos,
+            'dataKelas' => $data,
+            'profil' => $profil
         ]);
     }
 
@@ -82,7 +88,25 @@ class KelasController extends Controller
      */
     public function update(UpdateKelasRequest $request, Kelas $kelas)
     {
-        //
+        $data = Kelas::where('id', $request->id_ruangKelas)->get()[0];
+        if($data->profil_id == Auth::user()->profil_id){
+            $validatedData = $request->validate([
+                'ketersediaan' => 'numeric',
+                'kekurangan' => 'numeric',
+            ]);
+
+            $data->update($validatedData);
+
+            if($request->ketersediaan != ''){
+                Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah jumlah ketersediaan ruang kelas');
+            }else{
+                Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah jumlah kekurangan ruang kelas');
+            }
+
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -95,4 +119,5 @@ class KelasController extends Controller
     {
         //
     }
+
 }

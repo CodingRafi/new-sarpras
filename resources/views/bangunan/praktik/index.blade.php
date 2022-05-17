@@ -108,7 +108,7 @@
         <div class="card-body">
             <div class="tab-content">
                 <div class="tab-pane active" id="">
-                    <table class="table">
+                    <table class="table text-center">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>

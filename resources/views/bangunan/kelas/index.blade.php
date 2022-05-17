@@ -3,8 +3,8 @@
 @section('tambahcss')
     <style>
         /* .row-data .col-3 {
-                        max-width: 15.5rem !important;
-                    } */
+                                    max-width: 15.5rem !important;
+                                } */
 
         .card-header h4 {
             font-size: 1.2rem !important
@@ -43,7 +43,7 @@
                     {{-- end card header --}}
                     {{-- card body --}}
                     <div class="card-body">
-                        <h1 class="text-center font-weight-bold pt-2">25</h1>
+                        <h1 class="text-center font-weight-bold pt-2">{{ $profil->jml_rombel ?? 0 }}</h1>
                     </div>
                     {{-- end card body --}}
                 </div>
@@ -61,7 +61,7 @@
                     {{-- end card header --}}
                     {{-- card body --}}
                     <div class="card-body">
-                        <h1 class="text-center font-weight-bold pt-2">5/ Kelas</h1>
+                        <h1 class="text-center font-weight-bold pt-2">{{ $dataKelas->kondisi_ideal }}/ Kelas</h1>
                     </div>
                     {{-- end card body --}}
                 </div>
@@ -80,7 +80,7 @@
                     {{-- end card header --}}
                     {{-- card body --}}
                     <div class="card-body">
-                        <h1 class="text-center font-weight-bold pt-2">5</h1>
+                        <h1 class="text-center font-weight-bold pt-2">{{ $dataKelas->ketersediaan }}</h1>
                     </div>
                     {{-- end card body --}}
                 </div>
@@ -99,7 +99,7 @@
                     {{-- end card header --}}
                     {{-- card body --}}
                     <div class="card-body">
-                        <h1 class="text-center font-weight-bold pt-2">5</h1>
+                        <h1 class="text-center font-weight-bold pt-2">{{ $dataKelas->kekurangan }}</h1>
                     </div>
                     {{-- end card body --}}
                 </div>
@@ -204,26 +204,32 @@
         <div class="modal fade" id="modal-ketersediaan">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Masukan Ketersediaan</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        {{-- input jumlah ruangan --}}
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Ketersediaan</label>
-                            <input type="text" class="form-control col-sm-7" placeholder="Masukan Ketersediaan"
-                                id="ketersediaan" name="jumlah-ruangan" required>
+                    <form action="/bangunan/ruang-kelas/{{ $dataKelas->id }}" method="post">
+                        @csrf
+                        @method('patch')
+                        <div class="modal-header">
+                            <h4 class="modal-title">Masukan Ketersediaan</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                        {{-- end input jumlah ruangan --}}
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn text-white" style="background-color: #00a65b">Save
-                            changes</button>
-                    </div>
+                        <div class="modal-body">
+                            {{-- input jumlah ruangan --}}
+                            <input type="hidden" name="id_ruangKelas" value="{{ $dataKelas->id }}">
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Ketersediaan</label>
+                                <input type="number" class="form-control col-sm-7" placeholder="Masukan Ketersediaan"
+                                    id="ketersediaan" name="ketersediaan" required
+                                    value="{{ $dataKelas->ketersediaan }}">
+                            </div>
+                            {{-- end input jumlah ruangan --}}
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn text-white" style="background-color: #00a65b">Save
+                                changes</button>
+                        </div>
+                    </form>
                 </div>
                 <!-- /.modal-content -->
             </div>
@@ -235,26 +241,31 @@
         <div class="modal fade" id="modal-kekurangan">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Masukan Kekurangan</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        {{-- input jumlah ruangan --}}
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Kekurangan</label>
-                            <input type="text" class="form-control col-sm-7" placeholder="Masukan Kekurangan"
-                                id="kekurangan" name="jumlah-ruangan" required>
+                    <form action="/bangunan/ruang-kelas/{{ $dataKelas->id }}" method="post">
+                        @csrf
+                        @method('patch')
+                        <div class="modal-header">
+                            <h4 class="modal-title">Masukan Kekurangan</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                        {{-- end input jumlah ruangan --}}
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn text-white" style="background-color: #00a65b">Save
-                            changes</button>
-                    </div>
+                        <div class="modal-body">
+                            {{-- input jumlah ruangan --}}
+                            <input type="hidden" name="id_ruangKelas" value="{{ $dataKelas->id }}">
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Kekurangan</label>
+                                <input type="number" class="form-control col-sm-7" placeholder="Masukan Kekurangan"
+                                    id="kekurangan" name="kekurangan" required value="{{ $dataKelas->kekurangan }}">
+                            </div>
+                            {{-- end input jumlah ruangan --}}
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn text-white" style="background-color: #00a65b">Save
+                                changes</button>
+                        </div>
+                    </form>
                 </div>
                 <!-- /.modal-content -->
             </div>
