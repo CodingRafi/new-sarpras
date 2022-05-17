@@ -18,7 +18,7 @@
 
     {{-- ---------------------------------------------------------------------------------------- PERATURAN PERMENDIKBUD ----------------------------------------------------------------------------------------  --}}
     <div class="card card-info">
-        <div class="card-header">
+        <div class="card-header" style="background-color: #25b5e9">
             <h3 class="card-title">PERATURAN PERMENDIKBUD NO. 11 TAHUN 2020 </h3>
         </div>
         <div class="card-body table-responsive">
@@ -34,22 +34,22 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1</td>
-                        <td>Rekayasa Perangkat Lunak</td>
-                        <td>Access Point Indoor</td>
-                        <td>18 unit / Ruang Praktik</td>
-                        <td><div style="overflow: auto; max-height: 110px;">
+                        <td class="text-center">1</td>
+                        <td class="text-center">Rekayasa Perangkat Lunak</td>
+                        <td class="text-center">Access Point Indoor</td>
+                        <td class="text-center">18 unit / Ruang Praktik</td>
+                        <td class="text-center"><div style="overflow: auto; max-height: 110px;">
                             Alat untuk menghubungkan antar PC menggunakan gelombang radio (dalam suatu ruangan).
                                 Connectivity : 802.11 n/g/b wireless Operating Modes : Access Point (AP), WDS with AP,
                                 WDS/Bridge (No AP Broadcast), Wireless Client VLAN/SSID Support
                         </div></td>
                     </tr>
                     <tr>
-                        <td>2</td>
-                        <td>Rekayasa Perangkat Lunak</td>
-                        <td>Access Point Outdoor</td>
-                        <td>18 unit / Ruang Praktik</td>
-                        <td><div style="overflow: auto; max-height: 110px;">
+                        <td class="text-center">2</td>
+                        <td class="text-center">Rekayasa Perangkat Lunak</td>
+                        <td class="text-center">Access Point Outdoor</td>
+                        <td class="text-center">18 unit / Ruang Praktik</td>
+                        <td class="text-center"><div style="overflow: auto; max-height: 110px;">
                             Alat untuk menghubungkan antar PC menggunakan gelombang radio (jarak jauh antar gedung).Connectivity : 802.11 n/g/b wireless Operating Modes : AP, WDS, WDS
                                 with AP, Wireless Client
                                 VLAN/SSID Support
@@ -67,7 +67,7 @@
             <h3 class="card-title p-3 text-white">Peralatan Sekolah</h3>
             <ul class="nav nav-pills ml-auto p-2">
                 <li class="nav-item pr-2">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#tambah-peralatan"><i
+                    <button type="button" class="btn text-white" style="background-color: #00a65b" data-toggle="modal" data-target="#tambah-peralatan"><i
                             class="bi bi-plus"></i> Tambah Peralatan
                     </button>
                 </li>
@@ -107,8 +107,8 @@
                         <td class="text-center" style="vertical-align: middle">5</td>
                         <td class="text-center" style="vertical-align: middle">Kekurangan</td>
                         <td class="text-center" style="vertical-align: middle">
-                            <button type="button" class="btn btn-success d-inline" data-toggle="modal" data-target="#edit">Edit</button>
-                            <button class="btn btn-danger d-inline">Hapus</button>
+                            <button type="button" class="btn text-white d-inline" style="background-color: #25b5e9" data-toggle="modal" data-target="#edit">Edit</button>
+                            <button class="btn text-white d-inline" style="background-color: #00a65b">Hapus</button>
                         </td>
                     </tr>
                 </tbody>
@@ -287,7 +287,7 @@
             <h3 class="card-title p-3">Usulan Peralatan</h3>
             <ul class="nav nav-pills ml-auto p-2">
                 <li class="nav-item pr-2">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#tambah-usulan"><i
+                    <button type="button" class="btn text-white" style="background-color: #00a65b" data-toggle="modal" data-target="#tambah-usulan"><i
                             class="bi bi-plus"></i> Tambah Usulan
                     </button>
                 </li>
@@ -324,7 +324,7 @@
                         <td class="text-center" style="vertical-align: middle">Utama</td>
                         <td class="text-center" style="vertical-align: middle">10</td>
                         <td class="text-center" style="vertical-align: middle"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
-                        <td class="text-center" style="vertical-align: middle"><button class="btn btn-success">Batalkan</button></td>
+                        <td class="text-center" style="vertical-align: middle"><button class="btn text-white" style="background-color: #00a65b">Batalkan</button></td>
                     </tr>
                 </tbody>
             </table>
