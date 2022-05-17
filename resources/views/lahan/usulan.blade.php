@@ -63,7 +63,7 @@
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn text-white"
-                                                    style="background-color: #00a65b">Batalkan</button>
+                                                    style="background-color: #00a65b" onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -97,7 +97,7 @@
                                 {{-- input panjang --}}
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Panjang(M)</label>
-                                    <input type="text" class="form-control col-sm-9" placeholder="Masukan Panjang Lahan"
+                                    <input type="number" class="form-control col-sm-9" placeholder="Masukan Panjang Lahan"
                                         id="panjang" name="panjang" required>
                                 </div>
                                 {{-- end input panjang --}}
@@ -105,7 +105,7 @@
                                 {{-- input lebar --}}
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Lebar(M)</label>
-                                    <input type="text" class="form-control col-sm-9" placeholder="Masukan Lebar Lahan"
+                                    <input type="number" class="form-control col-sm-9" placeholder="Masukan Lebar Lahan"
                                         id="lebar" name="lebar" required>
                                 </div>
                                 {{-- end input lebar --}}
@@ -121,7 +121,7 @@
                                 {{-- upload file(pdf) --}}
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label pt-1" for="customFile">Upload File (PDF)</label>
-                                    <input type="file" id="chooseFile" accept=".pdf" name="proposal">
+                                    <input type="file" id="chooseFile" accept=".pdf" name="proposal" required>
                                 </div>
                                 {{-- end upload file(pdf) --}}
 

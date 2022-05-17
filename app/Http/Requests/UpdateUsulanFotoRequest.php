@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreKekuranganLahanRequest extends FormRequest
+class UpdateUsulanFotoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,13 +13,13 @@ class StoreKekuranganLahanRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function rules()
     {

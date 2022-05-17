@@ -6,6 +6,9 @@ use App\Models\KetersediaanLahan;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreKetersediaanLahanRequest;
 use App\Http\Requests\UpdateKetersediaanLahanRequest;
+use App\Models\Log;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class KetersediaanLahanController extends Controller
 {
@@ -37,7 +40,27 @@ class KetersediaanLahanController extends Controller
      */
     public function store(StoreKetersediaanLahanRequest $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'no_sertifikat' => 'required',
+            'panjang' => 'required',
+            'lebar' => 'required',
+            'alamat' => 'required',
+            'jenis_kepemilikan' => 'required',
+            'keterangan' => 'required',
+            'bukti_lahan' => 'required'
+        ]);
+
+        $validatedData['profil_id'] = Auth::user()->profil_id;
+        $validatedData['luas'] = $request->panjang * $request->lebar;
+        $validatedData['bukti_lahan'] = $request->file('bukti_lahan')->store('ketersedian-lahan');
+
+        KetersediaanLahan::create($validatedData);
+
+        Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan Ketersediaan lahan');
+
+        return redirect()->back();
+
     }
 
     /**
@@ -59,7 +82,7 @@ class KetersediaanLahanController extends Controller
      */
     public function edit(KetersediaanLahan $ketersediaanLahan)
     {
-        //
+        return view('lahan.ketersediaan.edit');
     }
 
     /**
@@ -82,6 +105,15 @@ class KetersediaanLahanController extends Controller
      */
     public function destroy(KetersediaanLahan $ketersediaanLahan)
     {
-        //
+        if($ketersediaanLahan->profil_id == Auth::user()->profil_id){
+            Storage::delete($ketersediaanLahan->bukti_lahan);
+            KetersediaanLahan::destroy($ketersediaanLahan->id);
+
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menghapus Ketersediaan lahan');
+
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
     }
 }
