@@ -166,7 +166,7 @@
                                                                             onclick="return confirm('Apakah anda yakin akan menghapus ketersediaan lahan ini?')">Hapus</button>
                                                                     </form>
                                                                     <a class="dropdown-item"
-                                                                        href="{{ asset('storage/' . $lahan->bukti_lahan) }}">Lihat
+                                                                        href="{{ asset('storage/' . $lahan->bukti_lahan) }}" target="_blank">Lihat
                                                                         Dokumen</a>
                                                                 </div>
                                                             </div>
