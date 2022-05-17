@@ -203,8 +203,8 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td style="vertical-align: middle">1</td>
-                        <td style="vertical-align: middle">Toilet</td>
+                        <td class="text-center" style="vertical-align: middle">1</td>
+                        <td class="text-center" style="vertical-align: middle">Toilet</td>
                         <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/assets/img/backgrounds/school.jpg" class="rounded" style="object-fit: cover; width: 100px; aspect-ratio: 1/1;"></a></td>
                         <td class="text-center" style="vertical-align: middle">20m²</td>
                         <td class="text-center" style="vertical-align: middle"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
