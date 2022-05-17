@@ -135,16 +135,16 @@
       </div>
         <div class="container d-flex justify-content-center p-0 con-main" style="height: 90vh;">
             <div class="row bagian-row">
-                <div class="col-5 con-img p-0" style="border-radius: 10px 0 0 10px">
+                <div class="col con-img p-0" style="border-radius: 10px 0 0 10px">
                     <div class="container con-img-text">
                         <h1>Sistem <span>Sarpras</span></h1>
                         <h3>Sarana Prasarana</h3>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                        <p style="font-weight: 200">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
                             been the industry's standard dummy text ever since the 1500s</p>
                     </div>
                 </div>
                 <div class="col-7 d-flex justify-content-center align-items-center">
-                    <form action="{{ route('login') }}" method="POST" style="width: 85%;">
+                    <form action="{{ route('login') }}" method="POST" style="width: 90%;">
                         @csrf
                         <div class="container p-0">
                             <h1 class="mb-3" style="color: #263238;">Masuk</h1>
