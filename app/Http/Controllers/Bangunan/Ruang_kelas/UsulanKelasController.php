@@ -48,7 +48,7 @@ class UsulanKelasController extends Controller
             'jml_ruang' => 'required',
             'luas_lahan' => 'required',
             'gambar' => 'required',
-            'proposal' => 'required',
+            'proposal' => 'required|mimes:pdf',
             'gambar.*' => 'mimes:jpg,jpeg,png|file|max:5120'
         ]);
 

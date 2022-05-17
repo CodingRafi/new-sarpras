@@ -173,8 +173,8 @@
                                 <th class="text-center" rowspan="2">Aksi</th>
                             </tr>
                             <tr>
-                                <th>Gambar Lahan</th>
-                                <th>Luas</th>
+                                <th class="text-center">Gambar Lahan</th>
+                                <th class="text-center">Luas</th>
                             </tr>
                         </thead>
                         <tbody>

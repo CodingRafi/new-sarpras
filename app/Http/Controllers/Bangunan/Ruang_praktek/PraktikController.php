@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Bangunan\Ruang_praktek;
 
 use App\Models\Praktik;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePraktikRequest;
 use App\Http\Requests\UpdatePraktikRequest;
 

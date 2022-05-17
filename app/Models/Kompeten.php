@@ -22,6 +22,10 @@ class Kompeten extends Model
         return $this->belongsTo(Komli::class);
     }
 
+    public function usulanPraktek(){
+        return $this->hasMany(UsulanPraktek::class);
+    }
+
     public static function pilihanJurusan($profil){
         return DB::table('komlis as a')->select('a.*')
         ->leftJoin('kompetens as b', function($join) use ($profil){
