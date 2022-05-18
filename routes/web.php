@@ -52,6 +52,14 @@ Route::get('gallery', function () {
 Route::get('detail', function () {
     return view('bangunan.praktik.show');
 });
+
+Route::get('upload-logo', function () {
+    return view('myauth.uploadLogo');
+});
+
+Route::get('reset-password', function () {
+    return view('myauth.resetPassword');
+});
 // |-------------------------------------------------------------------------- /SEMENTARA |--------------------------------------------------------------------------
 
 Route::group(['middleware' => ['auth']], function() {

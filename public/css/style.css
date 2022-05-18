@@ -70,8 +70,12 @@
 }
 
 @media(max-width:850px){
+    .row-bulet-warna button{
+        padding: 16px !important;
+    }
+
     .con-img-text h1{
-        font-size: 27px;
+        font-size: 36px;
     }
     .con-img-text h3{
         font-size: 9px;
@@ -82,8 +86,16 @@
 
     .con-img{
         border-radius: 10px 10px 0 0 !important;
-        height: 200px;
+        height: 250px;
         /* display: none !important; */
+    }
+
+    .container.d-flex.justify-content-center.p-0.con-main{
+        align-items: center;
+    }
+
+    .col-7 form{
+        margin-block: 1rem;
     }
 
     .bagian-row{
