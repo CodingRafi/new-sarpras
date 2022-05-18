@@ -3,14 +3,14 @@
 @section('tambahcss')
     <style>
         /* .row-data .col-3 {
-                        max-width: 15.5rem !important;
-                    } */
+                            max-width: 15.5rem !important;
+                        } */
 
         .card-header h4 {
             font-size: 1.2rem !important
         }
 
-        .input-group-prepend button i{
+        .input-group-prepend button i {
             position: absolute;
             margin-top: -25px;
         }
@@ -34,12 +34,13 @@
 
     {{-- Main-Content --}}
 
-    {{----------------------------------------------- Row ---------------------------------------------------}}
+    {{-- --------------------------------------------- Row ------------------------------------------------- --}}
     <div class="container-fluid">
         <div class="row">
             <div class="col">
                 <div class="card" style="border-radius: 0px 20px 0px 20px !important">
-                    <div class="card-header" style="background-color:#00a65b; border-radius: 0px 20px 0px 20px !important">
+                    <div class="card-header"
+                        style="background-color:#00a65b; border-radius: 0px 20px 0px 20px !important">
                         <h4 class="text-center text-white font-weight-bold">Luas Lahan</h4>
                     </div><!-- /.card-header -->
                     <div class="card-body">
@@ -95,10 +96,10 @@
             </div>
         </div>
     </div>
-    {{-- --------------------------------------------- End ---------------------------------------------------}}
+    {{-- --------------------------------------------- End ------------------------------------------------- --}}
 
 
-    {{-- ------------------------------------------- Lahan Sekolah ------------------------------------------}}
+    {{-- ------------------------------------------- Lahan Sekolah ---------------------------------------- --}}
     <div class="card mt-3 mb-5">
         <div class="card-header" style="background-color: #25b5e9">
             <ul class="nav nav-pills ml-auto">
@@ -170,7 +171,8 @@
                                                                             onclick="return confirm('Apakah anda yakin akan menghapus ketersediaan lahan ini?')">Hapus</button>
                                                                     </form>
                                                                     <a class="dropdown-item"
-                                                                        href="{{ asset('storage/' . $lahan->bukti_lahan) }}" target="_blank">Lihat
+                                                                        href="{{ asset('storage/' . $lahan->bukti_lahan) }}"
+                                                                        target="_blank">Lihat
                                                                         Dokumen</a>
                                                                 </div>
                                                             </div>
@@ -243,8 +245,11 @@
                             {{-- input jenis kepemilikan --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Jenis Kepemilikan</label>
-                                <input type="text" class="form-control col-sm-9" placeholder="Masukan Jenis Kepemilikan"
-                                    id="Jenis Kepemilikan" name="jenis_kepemilikan" required>
+                                <select class="custom-select rounded-0 col-sm-9" id="exampleSelectRounded0" name="jenis_kepemilikan">
+                                    <option value="sewa">Sewa</option>
+                                    <option value="shm">SHM</option>
+                                    <option value="hgb">HGB</option>
+                                </select>
                             </div>
                             {{-- end input alamat --}}
 
@@ -258,7 +263,7 @@
 
                             {{-- upload file(pdf) --}}
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label pt-1" for="customFile">Dokumen Bukti Lahan</label>
+                                <label class="col-sm-2 col-form-label pt-1" for="customFile">Dokumen Bukti Lahan (PDF / Foto)</label>
                                 <input type="file" id="chooseFile" name="bukti_lahan" accept="image/*, .pdf" required>
                             </div>
                             {{-- end upload file(pdf) --}}
@@ -273,10 +278,10 @@
             </div>
         </div>
     </div>
-    {{------------------------------------------------ End ---------------------------------------------------}}
+    {{-- ---------------------------------------------- End ------------------------------------------------- --}}
 
 
-    {{-- -------------------------------------------- Kekurangan Lahan --------------------------------------}}
+    {{-- -------------------------------------------- Kekurangan Lahan ------------------------------------ --}}
     <div class="card mb-5">
         <div class="card-header" style="background-color: #FCC12D">
             <ul class="nav nav-pills ml-auto">
@@ -393,9 +398,9 @@
             </div>
         </div>
     </div>
-    {{-- ---------------------------------------------------- End -------------------------------------------}}
+    {{-- ---------------------------------------------------- End ----------------------------------------- --}}
 
-    {{-- --------------------------------------------------- Tab --------------------------------------------}}
+    {{-- --------------------------------------------------- Tab ------------------------------------------ --}}
     <div class="modal fade" id="modal-edit">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -454,7 +459,7 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
-    {{-- --------------------------------------------------- End --------------------------------------------}}
+    {{-- --------------------------------------------------- End ------------------------------------------ --}}
     {{-- End Main-Content --}}
 
     <div class="content-backdrop fade"></div>
