@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Kelas extends Model
+class UsulanKelas extends Model
 {
     use HasFactory;
 
@@ -13,7 +13,7 @@ class Kelas extends Model
         "id"
     ];
 
-    public function profil(){
-        return $this->belongsTo(Profil::class);
+    public function UsulanKoleksi(){
+        return $this->hasMany(UsulanKoleksi::class);
     }
 }

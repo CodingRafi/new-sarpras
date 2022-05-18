@@ -62,7 +62,7 @@ class ProfilController extends Controller
      */
     public function show(Profil $profil)
     {  
-        if($profil->profil_depo_id == Auth::user()->profil_id || Auth::user()->getRoleNames()[0] != 'sekolah'){
+        if($profil->id == Auth::user()->profil_id || Auth::user()->getRoleNames()[0] != 'sekolah'){
             $profilDepo = ProfilDepo::where('id', $profil->id)->get()[0];
             $koleksis = $profilDepo->koleksi;
             $fotos = [];
@@ -136,42 +136,46 @@ class ProfilController extends Controller
      */
     public function update(UpdateProfilRequest $request, Profil $profil)
     {
-        $jml_lk = 0;
-        $jml_pr = 0;
-        $validatedData = $request->validate([
-            'profil_depo_id' => 'required',
-            'nama_kepala_sekolah' => 'string|nullable',
-            'kabupaten' => 'string|nullable',
-            'kecamatan' => 'string|nullable',
-            'alamat' => 'string|nullable',
-            'email' => 'email|nullable',
-            'website' => 'string|nullable',
-            'nomor_telepon' => 'string|nullable',
-            'jml_rombel' => 'numeric|nullable',
-            'lat' => 'string|nullable',
-            'long' => 'string|nullable'
-        ]);
-
-        Log::createLog($profil->id, Auth::user()->id, 'Mengubah Data Sekolah');
-
-        Profil::where('id' , $profil->id)->update($validatedData);
-
-        if(count($profil->kompeten) == 0){
-            $validatedData['jml_siswa_l'] = 0;
-            $validatedData['jml_siswa_p'] = 0;
-        }else{
-            foreach($profil->kompeten as $kopetensi){
-                 $jml_lk += $kopetensi->jml_lk;
-                 $jml_pr += $kopetensi->jml_pr;
-            }
-            $validatedData['jml_siswa_l'] = $jml_lk;
-            $validatedData['jml_siswa_p'] = $jml_pr;
-
+        if($request->profil_depo_id == Auth::user()->profil_id){
             $jml_lk = 0;
             $jml_pr = 0;
+            $validatedData = $request->validate([
+                'profil_depo_id' => 'required',
+                'nama_kepala_sekolah' => 'string|nullable',
+                'kabupaten' => 'string|nullable',
+                'kecamatan' => 'string|nullable',
+                'alamat' => 'string|nullable',
+                'email' => 'email|nullable',
+                'website' => 'string|nullable',
+                'nomor_telepon' => 'string|nullable',
+                'jml_rombel' => 'numeric|nullable',
+                'lat' => 'string|nullable',
+                'long' => 'string|nullable'
+            ]);
+    
+            Log::createLog($profil->id, Auth::user()->id, 'Mengubah Data Sekolah');
+    
+            Profil::where('id' , $profil->id)->update($validatedData);
+    
+            if(count($profil->kompeten) == 0){
+                $validatedData['jml_siswa_l'] = 0;
+                $validatedData['jml_siswa_p'] = 0;
+            }else{
+                foreach($profil->kompeten as $kopetensi){
+                     $jml_lk += $kopetensi->jml_lk;
+                     $jml_pr += $kopetensi->jml_pr;
+                }
+                $validatedData['jml_siswa_l'] = $jml_lk;
+                $validatedData['jml_siswa_p'] = $jml_pr;
+    
+                $jml_lk = 0;
+                $jml_pr = 0;
+            }
+    
+            return redirect('/profil/' . $request->profil_depo_id);
+        }else{
+            abort(403);
         }
-
-        return redirect('/profil/' . $request->profil_depo_id);
 
     }
 

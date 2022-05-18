@@ -20,7 +20,7 @@
     <div class="row">
         <div class="col-lg-3 col-6">
 
-            {{-- ---------------------------------------------------------------------------------------- JUMLAH ROMBEL ---------------------------------------------------------------------------------------- --}}
+            {{--------------------------------------- JUMLAH ROMBEL -----------------------------------------}}
             <div class="card card-success">
                 <div class="card-header">
                     <h3 class="card-title">Jumlah Rombel</h3>
@@ -36,7 +36,7 @@
         </div>
         <div class="col-lg-3 col-6">
 
-            {{-- ---------------------------------------------------------------------------------------- KONDISI IDEAL ---------------------------------------------------------------------------------------- --}}
+            {{-------------------------------------- KONDISI IDEAL ------------------------------------------}}
             <div class="card card-info">
                 <div class="card-header" style="background-color: #25b5e9">
                     <h3 class="card-title">Kondisi Ideal</h3>
@@ -53,13 +53,13 @@
         </div>
         <div class="col-lg-3 col-6">
 
-            {{-- ---------------------------------------------------------------------------------------- KETERSEDIAAN ---------------------------------------------------------------------------------------- --}}
+            {{---------------------------------------- KETERSEDIAAN -----------------------------------------}}
             <div class="card card-warning">
                 <div class="card-header">
                     <h3 class="card-title text-white">Ketersediaan</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool text-white" data-toggle="modal"
-                        data-target="#edit-ketersediaan"><i class="bi bi-pencil-fill"></i>
+                        data-target="#edit-ketersediaan"><i class="bi bi-pencil-square"></i>
                         </button>
                     </div>
                 </div>
@@ -69,12 +69,12 @@
                 </div>
             </div>
 
-            {{-- ---------------------------------------------------------------------------------------- MODAL KETERSEDIAAN ---------------------------------------------------------------------------------------- --}}
+            {{------------------------------------- MODAL KETERSEDIAAN --------------------------------------}}
             <div class="modal fade" id="edit-ketersediaan">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header bg-warning">
-                            <h4 class="modal-title">Ketersediaan</h4>
+                            <h4 class="modal-title text-white">Ketersediaan</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -90,7 +90,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-info float-right">Simpan</button>
+                                    <button type="submit" class="btn text-white float-right" style="background-color: #00a65b">Simpan</button>
                                 </div>
                             </form>
                         </div>
@@ -100,13 +100,13 @@
         </div>
         <div class="col-lg-3 col-6">
 
-            {{-- ---------------------------------------------------------------------------------------- KEKURANGAN ---------------------------------------------------------------------------------------- --}}
+            {{----------------------------------------- KEKURANGAN ------------------------------------------}}
             <div class="card card-dark">
                 <div class="card-header">
                     <h3 class="card-title">Kekurangan</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-toggle="modal"
-                        data-target="#edit-kekurangan"><i class="bi bi-pencil-fill"></i>
+                        data-target="#edit-kekurangan"><i class="bi bi-pencil-square"></i>
                         </button>
                     </div>
                 </div>
@@ -117,7 +117,7 @@
             </div>
         </div>
 
-        {{-- ---------------------------------------------------------------------------------------- MODAL KEKURANGAN ---------------------------------------------------------------------------------------- --}}
+        {{------------------------------------ MODAL KEKURANGAN ---------------------------------------------}}
         <div class="modal fade" id="edit-kekurangan">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -138,7 +138,7 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-info float-right">Simpan</button>
+                                <button type="submit" class="btn text-white float-right" style="background-color: #00a65b">Simpan</button>
                             </div>
                         </form>
                     </div>
@@ -147,7 +147,7 @@
         </div>
     </div>
 
-    {{-- ---------------------------------------------------------------------------------------- USULAN LAB KOMPUTER ---------------------------------------------------------------------------------------- --}}
+    {{----------------------------------------- USULAN LAB KOMPUTER -----------------------------------------}}
     <div class="card card-info">
         <div class="card-header" style="background-color: #25b5e9">
             <h3 class="card-title">Usulan Lab Komputer</h3>
@@ -169,13 +169,13 @@
                     </tr>
                     <tr class="text-center">
                         <th>Gambar Lahan</th>
-                        <th>Luas</th>
+                        <th>Luas Lahan</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td style="vertical-align: middle">1</td>
-                        <td style="vertical-align: middle">Ruang Komputer</td>
+                        <td class="text-center" style="vertical-align: middle">1</td>
+                        <td class="text-center" style="vertical-align: middle">Ruang Komputer</td>
                         <td class="text-center" style="vertical-align: middle">3</td>
                         <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/assets/img/backgrounds/school.jpg" class="rounded" style="object-fit: cover; width: 100px; aspect-ratio: 1/1;"></a></td>
                         <td class="text-center" style="vertical-align: middle">100m²</td>
@@ -187,7 +187,7 @@
         </div>
     </div>
 
-    {{-- ---------------------------------------------------------------------------------------- MODAL USULAN ---------------------------------------------------------------------------------------- --}}
+    {{--------------------------------------------- MODAL USULAN --------------------------------------------}}
     <div class="modal fade" id="tambah-usulan">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -201,15 +201,15 @@
                     <form class="form-horizontal">
                         <div class="card-body">
                             <div class="form-group row">
-                                <label for="jumlah-ruangan" class="col-sm-2 col-form-label">Jumlah Ruangan</label>
+                                <label for="jumlah-ruangan" class="col-sm-2 col-form-label">Jenis Ruangan</label>
                                 <div class="col-sm-10">
                                     <input type="number" class="form-control" id="jumlah-ruangan">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="luas-lahan" class="col-sm-2 col-form-label">Luas Lahan</label>
+                                <label for="jumlah-ruangan" class="col-sm-2 col-form-label">Jumlah Ruangan</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="luas-lahan">
+                                    <input type="number" class="form-control" id="jumlah-ruangan">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -221,6 +221,12 @@
                                             <label class="custom-file-label" for="gambar-lokasi">Pilih Gambar</label>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="luas-lahan" class="col-sm-2 col-form-label">Luas Lahan</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="luas-lahan">
                                 </div>
                             </div>
                             <div class="form-group row">

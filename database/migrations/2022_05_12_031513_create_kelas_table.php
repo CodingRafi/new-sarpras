@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('kelas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('profil_id');
+            $table->string('kondisi_ideal');
+            $table->string('ketersediaan');
+            $table->string('kekurangan');
             $table->timestamps();
         });
     }

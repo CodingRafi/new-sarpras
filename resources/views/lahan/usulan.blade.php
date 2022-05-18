@@ -8,7 +8,7 @@
                 <ul class="nav nav-pills ml-auto">
                     <li class="nav-item">
                         <a class="nav-link text-white active" href="#data-usulan-sekolah" data-toggle="tab">
-                            <i class="bi bi-house-fill mr-1"></i> Data Usulan Lahan Baru</a>
+                            <i class="bi bi-house-fill mr-1"></i> Data Usulan Lahan</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="#tambah-usulan-lahan" data-toggle="tab">
@@ -36,6 +36,7 @@
                                             <th class="text-center" scope="col">Alamat</th>
                                             <th class="text-center" scope="col">Proposal Lahan</th>
                                             <th class="text-center" scope="col">Status Usulan</th>
+                                            <th class="text-center" scope="col">Keterangan</th>
                                             <th class="text-center" scope="col">Aksi</th>
                                         </tr>
                                     </thead>

@@ -18,10 +18,10 @@
 
     {{-- ---------------------------------------------------------------------------------------- RIWAYAT BANTUAN ---------------------------------------------------------------------------------------- --}}
     <div class="card mb-5">
-        <div class="card-header bg-info">
+        <div class="card-header" style="background-color: #25b5e9">
             <ul class="nav nav-pills ml-auto">
                 <li class="nav-item mr-1">
-                    <button type="button" class="btn btn-info border pr-4 pl-4" data-toggle="modal"
+                    <button type="button" class="btn text-white border pr-4 pl-4" data-toggle="modal"
                         data-target="#tambah"><i class="bi bi-plus-lg"></i> Tambah
                     </button>
                 </li>

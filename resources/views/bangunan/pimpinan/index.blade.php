@@ -110,13 +110,13 @@
                     </tr>
                     <tr class="text-center">
                         <th>Gambar Lahan</th>
-                        <th>Luas</th>
+                        <th>Luas Lahan</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td style="vertical-align: middle">1</td>
-                        <td style="vertical-align: middle">Ruang Guru</td>
+                        <td class="text-center" style="vertical-align: middle">1</td>
+                        <td class="text-center" style="vertical-align: middle">Ruang Guru</td>
                         <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/assets/img/backgrounds/school.jpg" class="rounded" style="object-fit: cover; width: 100px; aspect-ratio: 1/1;"></a></td>
                         <td class="text-center" style="vertical-align: middle">100m²</td>
                         <td class="text-center" style="vertical-align: middle"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
@@ -141,29 +141,13 @@
                     <form class="form-horizontal">
                         <div class="card-body">
                             <div class="form-group row">
-                                <label for="jumlah-lahan" class="col-sm-2 col-form-label">Jenis Lahan</label>
-                                <div class="col-sm-10">
-                                    <select class="form-control">
-                                        <option value="#">lahan 1</option>
-                                        <option value="#">lahan 2</option>
-                                        <option value="#">lahan 3</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="jumlah-lahan" class="col-sm-2 col-form-label">Jumlah Lahan</label>
+                                <label for="jumlah-lahan" class="col-sm-2 col-form-label">Jenis Ruang</label>
                                 <div class="col-sm-10">
                                     <input type="number" class="form-control" id="jumlah-lahan">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="luas-lahan" class="col-sm-2 col-form-label">Keterangan Luas Lahan</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="luas-lahan">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="gambar-lokasi" class="col-sm-2 col-form-label">Gambar Lokasi</label>
+                                <label for="gambar-lokasi" class="col-sm-2 col-form-label">Gambar Lahan</label>
                                 <div class="col-sm-10">
                                     <div class="input-group">
                                         <div class="custom-file">
@@ -171,6 +155,12 @@
                                             <label class="custom-file-label" for="gambar-lokasi">Pilih Gambar</label>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="luas-lahan" class="col-sm-2 col-form-label">Luas Lahan</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="luas-lahan">
                                 </div>
                             </div>
                             <div class="form-group row">

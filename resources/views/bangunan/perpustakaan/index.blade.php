@@ -131,7 +131,7 @@
                                     <th rowspan="2" class="text-center" style="line-height: 70px">Aksi</th>
                                 </tr>
                                 <tr>
-                                    <th scope="col" class="text-center">Luas</th>
+                                    <th scope="col" class="text-center">Luas Lahan</th>
                                     <th scope="col" class="text-center">Gambar Lahan</th>
                                 </tr>
                               </thead>
@@ -174,48 +174,6 @@
 </div>
 {{-- End Main-Content --}}
 
-<!-- modal tambah usulan -->
-  <div class="modal fade" id="modal-default">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Usulan</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-        {{-- input luas lahan --}}
-            <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Luas Lahan</label>
-            <input type="text" class="form-control col-sm-7" placeholder="Masukan Luas Lahan" id="luas-lahan"
-            name="long" required value="">
-            </div>
-        {{-- end luas lahan --}}
-
-        {{-- upload gambar lokasi --}}
-            <div class="form-group row">
-            <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan</label>
-            <input type="file" id="gambar-lahan">
-            </div>
-        {{-- end upload gambar lokasi --}}
-        {{-- upload proposal --}}
-            <div class="form-group row">
-            <label class="col-sm-4 col-form-label pt-1" for="customFile">Proposal</label>
-            <input type="file" id="proposal">
-            </div>
-        {{-- end upload proposal --}}
-            </div>
-            <div class="modal-footer justify-content-between">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn text-white" style="background-color: #00a65b">Save changes</button>
-            </div>
-        </div>
-      <!-- /.modal-content -->
-        </div>
-    <!-- /.modal-dialog -->
-    </div>
-
     {{-- modal tambah usulan --}}
 <div class="modal fade" id="modal-usulan">
     <div class="modal-dialog">
@@ -257,8 +215,8 @@
         {{-- end upload proposal --}}
         </div>
         <div class="modal-footer justify-content-between">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn text-white" style="background-color: #00a65b">Save changes</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+          <button type="button" class="btn text-white" style="background-color: #00a65b">Simpan</button>
         </div>
       </div>
       <!-- /.modal-content -->
@@ -266,13 +224,6 @@
     <!-- /.modal-dialog -->
   </div>
 {{-- end modal tambah usulan --}}
-
-
-
-
-
-
-
 
 <div class="content-backdrop fade"></div>
 @endsection
