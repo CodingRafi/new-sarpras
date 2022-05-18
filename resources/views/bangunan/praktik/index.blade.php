@@ -128,6 +128,7 @@
                                 <th scope="col">Jumlah Ruangan</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Jumlah Ideal</th>
+                                <th scope="col">Keterangan</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -138,6 +139,7 @@
                                 <td>10</td>
                                 <td>Ideal</td>
                                 <td>16 Siswa / Kelas</td>
+                                <td></td>
                                 <td>
                                     <div class="card-body">
                                         <div class="input-group">
@@ -161,6 +163,7 @@
                                 <td>10</td>
                                 <td>Ideal</td>
                                 <td>16 Siswa / Kelas</td>
+                                <td></td>
                                 <td>
                                     <div class="card-body">
                                         <div class="input-group">
@@ -184,6 +187,7 @@
                                 <td>10</td>
                                 <td>Ideal</td>
                                 <td>16 Siswa / Kelas</td>
+                                <td></td>
                                 <td>
                                     <div class="card-body">
                                         <div class="input-group">
@@ -232,6 +236,7 @@
                                 <th rowspan="2">Jumlah Ruang</th>
                                 <th colspan="2">Ketersedian Lahan</th>
                                 <th rowspan="2">Proposal</th>
+                                <th rowspan="2">Keterangan</th>
                                 <th rowspan="2">Aksi</th>
                             </tr>
                             <tr>
@@ -251,6 +256,7 @@
                                             style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
                                 <td>150m²</td>
                                 <td><img src="/img/pdf2.png" alt="image" style="width: 30px"></td>
+                                <td></td>
                                 <td><a href="#" class="btn btn-success">Batalkan</a></td>
                             </tr>
                             <tr>
@@ -264,6 +270,7 @@
                                             style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
                                 <td>200m²</td>
                                 <td><img src="/img/pdf2.png" alt="image" style="width: 30px"></td>
+                                <td></td>
                                 <td><a href="#" class="btn btn-success">Batalkan</a></td>
                             </tr>
                         </tbody>

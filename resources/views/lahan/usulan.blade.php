@@ -59,6 +59,7 @@
                                                 </a>
                                             </td>
                                             <td class="text-center">{{ $usulan->status }}</td>
+                                            <td></td>
                                             <td class="text-center">
                                                 <form action="/usulan-lahan/{{ $usulan->id }}" method="post">
                                                     @csrf

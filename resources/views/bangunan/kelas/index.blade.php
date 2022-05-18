@@ -135,6 +135,8 @@
                                                 <th colspan="2" class="text-center">Ketersediaan Lahan</th>
                                                 <th rowspan="2" class="text-center" style="line-height: 70px">Proposal
                                                 </th>
+                                                <th rowspan="2" class="text-center" style="line-height: 70px">Keterangan
+                                                </th>
                                                 <th rowspan="2" class="text-center" style="line-height: 70px">Aksi</th>
                                             </tr>
                                             <tr>
@@ -168,6 +170,7 @@
                                                             <img src="/img/pdf.png" alt="image" style="width: 30px">
                                                         </a>
                                                     </td>
+                                                    <td></td>
                                                     <td class="text-center">
                                                         <form action="/bangunan/usulan-ruang-kelas/{{ $usulan->id }}"
                                                             method="post">
@@ -278,7 +281,7 @@
                         <div class="modal-body">
                             {{-- input jumlah ruangan --}}
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">Jumlah Ruangan</label>
+                                <label class="col-sm-4 col-form-label">Jumlah Ruang</label>
                                 <input type="number" class="form-control col-sm-7" placeholder="Masukan Jumlah Ruangan"
                                     id="jumlah-ruangan" name="jml_ruang" required>
                             </div>

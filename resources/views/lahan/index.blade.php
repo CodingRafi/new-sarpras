@@ -307,6 +307,7 @@
                                             <th scope="col">Panjang(m)</th>
                                             <th scope="col">Lebar(m)</th>
                                             <th scope="col">Luas Lahan(m)</th>
+                                            <th scope="col">Keterangan</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
@@ -323,6 +324,7 @@
                                                 <td class="panjang">{{ $lahan->panjang }} m²</td>
                                                 <td class="lebar">{{ $lahan->lebar }} m²</td>
                                                 <td>{{ $lahan->luas }} m²</td>
+                                                <td></td>
                                                 <td>
                                                     <button type="button" class="btn btn-info tombol-edit"
                                                         data-toggle="modal" data-target="#modal-edit">
