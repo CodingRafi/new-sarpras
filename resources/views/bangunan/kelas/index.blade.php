@@ -174,13 +174,13 @@
                                                             @csrf
                                                             @method('delete')
 
+                                                             <button type="button" class="btn text-white"
+                                                                style="background-color: #fcc12d" data-toggle="modal" data-target="#modal-edit">Edit</button>
+
                                                             <button type="submit" class="btn text-white"
                                                                 style="background-color: #00a65b"
                                                                 onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
 
-                                                            <button type="submit" class="btn text-white"
-                                                                style="background-color: #00a65b"
-                                                                onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Edit</button>
                                                         </form>
                                                 </tr>
                                             @endforeach
@@ -316,5 +316,84 @@
             <!-- /.modal-dialog -->
         </div>
         <div class="content-backdrop fade"></div>
+
+        {{-- Tab --}}
+    <div class="modal fade" id="modal-edit">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form action="/kekurangan-lahan/update-kekurangan" method="post">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Edit</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+
+                            <input type="hidden" name="id_kekurangan" class="inputIdKekurangan">
+                            <div class="row mt-2">
+                                <div class="col-3">
+                                    <label for="col-sm-4 col-form-label">Jenis Ruang :</label>
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control col-sm-7 input-nama-edit"
+                                        placeholder="Masukan Nama Ruangan" id="nmarg" name="nama" required>
+                                </div>
+                            </div>
+
+                            <div class="row mt-4">
+                                <div class="col-3">
+                                    <label for="col-sm-4 col-form-label">Jumlah Ruang Kelas :</label>
+                                </div>
+                                <div class="col">
+                                    <input type="number" class="form-control col-sm-7 panjang-nama-edit"
+                                        placeholder="Masukan Jumlah Ruang" id="jmlrg" name="jumlah" required>
+                                </div>
+                            </div>
+
+                            <div class="row mt-4">
+                                <div class="col-3">
+                                    <label for="col-sm-4 col-form-label">Luas Lahan :</label>
+                                </div>
+                                <div class="col">
+                                    <input type="number" class="form-control acol-sm-7 lebar-nama-edit"
+                                        placeholder="Masukan Luas" id="jmlluas" name="luas" required>
+                                </div>
+                            </div>
+
+                            <div class="row mt-4">
+                                <div class="col-3">
+                                    <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar</label>
+                                </div>
+                                <div class="col">
+                                    <input type="file" id="gambar-lahan">
+                                </div>
+                            </div>
+                            
+                            <div class="row mt-4">
+                                <div class="col-3">
+                                    <label class="col-sm-4 col-form-label pt-1" for="customFile">Proposal</label>
+                                </div>
+                                <div class="col">
+                                    <input type="file" id="proposal">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-warning text-white">Edit</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+        {{-- End Tab --}}
+
+        {{-- End Main --}}
         
     @endsection
