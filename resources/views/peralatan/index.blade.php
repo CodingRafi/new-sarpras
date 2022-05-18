@@ -313,6 +313,7 @@
                         <th>Kategori</th>
                         <th>Jumlah Usulan</th>
                         <th>Proposal</th>
+                        <th>Keterangan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -324,6 +325,7 @@
                         <td class="text-center" style="vertical-align: middle">Utama</td>
                         <td class="text-center" style="vertical-align: middle">10</td>
                         <td class="text-center" style="vertical-align: middle"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
+                        <td></td>
                         <td class="text-center" style="vertical-align: middle"><button class="btn text-white" style="background-color: #00a65b">Batalkan</button></td>
                     </tr>
                 </tbody>
