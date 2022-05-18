@@ -97,7 +97,7 @@
 
 <div class="card">
     <div class="card-header" style="background-color: #25b5e9">
-        <h3 class="card-title text-white pt-2">Usulan</h3>
+        <h3 class="card-title text-white pt-2">Usulan Rehab/ Renov</h3>
         <div class="card-tools">
             <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal" data-target="#modal-usulan"><i class="bi bi-plus"></i> Tambah Usulan
             </button>
@@ -118,6 +118,7 @@
                                     <th rowspan="2" class="text-center" style="line-height: 70px">Jumlah Usulan</th>
                                     <th colspan="2" class="text-center">Ketersediaan Lahan</th>
                                     <th rowspan="2" class="text-center" style="line-height: 70px">Proposal</th>
+                                    <th rowspan="2" class="text-center" style="line-height: 70px">Keterangan</th>
                                     <th rowspan="2" class="text-center" style="line-height: 70px">Aksi</th>
                                 </tr>
                                 <tr>
@@ -136,6 +137,7 @@
                                     <td class="text-center">20 M</td>
                                     <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
                                     <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
+                                    <td></td>
                                     <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
                                 </tr>
                                 <tr>
@@ -145,6 +147,7 @@
                                     <td class="text-center">20 M</td>
                                     <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
                                     <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
+                                    <td></td>
                                     <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
                                 </tr>
                                 <tr>
@@ -154,6 +157,7 @@
                                     <td class="text-center">20 M</td>
                                     <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
                                     <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
+                                    <td></td>
                                     <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
                                 </tr>
                               </tbody>
@@ -189,6 +193,7 @@
                                     <th colspan="2" class="text-center" style="line-height: 70px">Tingkat Kerusakan</th>
                                     <th colspan="3" class="text-center" style="line-height: 70px">Objek Rehab/ Renov</th>
                                     <th rowspan="2" class="text-center" style="line-height: 170px">Proposal</th>
+                                    <th rowspan="2" class="text-center" style="line-height: 170px">Keterangan</th>
                                     <th rowspan="2" class="text-center" style="line-height: 170px">Aksi</th>
                                 </tr>
                                 <tr>
@@ -212,6 +217,7 @@
                                     <td class="text-center">150m²</td>
                                     <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
                                     <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
+                                    <td></td>
                                     <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
                                 </tr>
                                 <tr>
@@ -223,6 +229,7 @@
                                     <td class="text-center">150m²</td>
                                     <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
                                     <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
+                                    <td></td>
                                     <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
                                 </tr>
                                 <tr>
@@ -234,6 +241,7 @@
                                     <td class="text-center">150m²</td>
                                     <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
                                     <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
+                                    <td></td>
                                     <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
                                 </tr>
                               </tbody>

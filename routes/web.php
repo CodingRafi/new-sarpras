@@ -60,6 +60,22 @@ Route::get('upload-logo', function () {
 Route::get('reset-password', function () {
     return view('myauth.resetPassword');
 });
+
+Route::get('edit-ruangpraktik', function () {
+    return view('bangunan.praktik.edit');
+});
+
+Route::get('edit-ruangperpustakaan', function () {
+    return view('bangunan.perpustakaan.edit');
+});
+
+Route::get('edit-ruangpimpinan', function () {
+    return view('bangunan.pimpinan.edit');
+});
+
+Route::get('edit-rehabrenov', function () {
+    return view('bangunan.rehabrenov.edit');
+});
 // |-------------------------------------------------------------------------- /SEMENTARA |--------------------------------------------------------------------------
 
 Route::group(['middleware' => ['auth']], function() {

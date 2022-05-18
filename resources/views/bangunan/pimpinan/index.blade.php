@@ -106,6 +106,7 @@
                         <th rowspan="2" style="vertical-align: middle;">Jenis Ruang</th>
                         <th colspan="2">Ketersedian Lahan</th>
                         <th rowspan="2" style="vertical-align: middle;">Proposal</th>
+                        <th rowspan="2" style="vertical-align: middle;">Keterangan</th>
                         <th rowspan="2" style="vertical-align: middle;">Aksi</th>
                     </tr>
                     <tr class="text-center">
@@ -120,6 +121,7 @@
                         <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/assets/img/backgrounds/school.jpg" class="rounded" style="object-fit: cover; width: 100px; aspect-ratio: 1/1;"></a></td>
                         <td class="text-center" style="vertical-align: middle">100m²</td>
                         <td class="text-center" style="vertical-align: middle"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
+                        <td></td>
                         <td class="text-center" style="vertical-align: middle"><button class="btn btn-success">Batalkan</button></td>
                     </tr>
                 </tbody>

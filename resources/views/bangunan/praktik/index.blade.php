@@ -126,6 +126,7 @@
                                 <th scope="col">Jumlah Ruangan</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Jumlah Ideal</th>
+                                <th scope="col">Keterangan</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -136,6 +137,7 @@
                                 <td>10</td>
                                 <td>Ideal</td>
                                 <td>16 Siswa / Kelas</td>
+                                <td></td>
                                 <td>
                                     <div class="card-body">
                                         <div class="input-group">
@@ -159,6 +161,7 @@
                                 <td>10</td>
                                 <td>Ideal</td>
                                 <td>16 Siswa / Kelas</td>
+                                <td></td>
                                 <td>
                                     <div class="card-body">
                                         <div class="input-group">
@@ -182,6 +185,7 @@
                                 <td>10</td>
                                 <td>Ideal</td>
                                 <td>16 Siswa / Kelas</td>
+                                <td></td>
                                 <td>
                                     <div class="card-body">
                                         <div class="input-group">
@@ -230,6 +234,7 @@
                                 <th rowspan="2">Jumlah Ruang</th>
                                 <th colspan="2">Ketersedian Lahan</th>
                                 <th rowspan="2">Proposal</th>
+                                <th rowspan="2">Keterangan</th>
                                 <th rowspan="2">Aksi</th>
                             </tr>
                             <tr>
@@ -238,7 +243,6 @@
                             </tr>
                         </thead>
                         <tbody>
-
                             @foreach ($usulanPraktek as $key => $usulan)
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>

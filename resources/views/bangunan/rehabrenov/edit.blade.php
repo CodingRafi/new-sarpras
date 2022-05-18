@@ -15,53 +15,41 @@
 
 @section('container')
     <div class="title pt-3">
-        <h3 class="text-dark display-4 pl-3" style="font-size: 25px">Edit Lahan Sekolah</h3>
+        <h3 class="text-dark display-4 pl-3" style="font-size: 25px">Edit Usulan Rehab/ Renov</h3>
     </div>
 
     <div class="form-edit pt-3">
         <div class="card pt-3" style="background-color: white; border-radius: 10px; ">
             <div class="row input pl-5">
-                <label class="col-2 mt-3">Nama Lahan</label>
-                <input type="text" class="col-9 form-control mt-2" placeholder="Masukan Nama Lahan" required value="{{ $ketersediaan->nama }}" name="nama">
+                    <label for="cars" class="col-2 mt-2">Jenis Usulan</label>
+                    <select name="cars" id="cars" class=" col-9 custom-select">
+                        <option value="">Ruang Guru</option>
+                        <option value="">Kantor</option>
+                    </select>
             </div>
     
             <div class="row input pl-5">
-                <label class="col-2 mt-3">No Sertifikat</label>
-                <input type="number" class="col-9 form-control mt-2" placeholder="Masukan No Sertifikat" required value="{{ $ketersediaan->no_sertifikat }}" name="no_sertifikat">
-            </div>
-    
-            <div class="row input pl-5">
-                <label class="col-2 mt-3">Panjang</label>
-                <input type="number" class="col-9 form-control mt-2" placeholder="Masukan Panjang" required value="{{ $ketersediaan->panjang }}" name="panjang">
-            </div>
-    
-            <div class="row input pl-5">
-                <label class="col-2 mt-3">Lebar</label>
-                <input type="number" class="col-9 form-control mt-2" placeholder="Masukan Lebar" required value="{{ $ketersediaan->lebar }}" name="lebar">
+                <label class="col-2 mt-3">Jumlah Usulan</label>
+                <input type="number" class="col-9 form-control mt-2" placeholder="Masukan Jumlah Ruang">
             </div>
     
             <div class="row input pl-5">
                 <label class="col-2 mt-3">Luas Lahan</label>
-                <input type="number" class="col-9 form-control mt-2" placeholder="Masukan Luas Lahan" required value="{{ $ketersediaan->luas }}" name="luas">
+                <input type="number" class="col-9 form-control mt-2" placeholder="Masukan Jumlah Ruang">
             </div>
     
             <div class="row input pl-5">
-                <label class="col-2 mt-3">Alamat</label>
-                <input type="text" class="col-9 form-control mt-2" placeholder="Masukan Alamat" required value="{{ $ketersediaan->alamat }}" name="alamat">
-            </div>
-    
-            <div class="row input pl-5">
-                <label class="col-2 mt-3">Jenis Kepemilikan</label>
-                <input type="text" class="col-9 form-control mt-2" placeholder="Masukan Jenis Kepemilikan" required value="{{ $ketersediaan->jenis_kepemilikan }}" name="jenis_kepemilikan">
-            </div>
-    
-            <div class="row input pb-3 pl-5">
-                <label class="col-2 mt-3">Keterangan</label>
-                <input type="text" class="col-9 form-control mt-2" placeholder="Masukan Keterangan" required value="{{ $ketersediaan->keterangan }}" name="keterangan">
+                <label class="col-2 mt-3" for="customFile">Gambar Lahan</label>
+                <input type="file" id="gambar-lahan" class="mt-2 pt-1">
             </div>
 
-            <div class="pb-3 pl-5">
-                <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
+            <div class="row input pl-5">
+                <label class="col-2 mt-3" for="customFile">Proposal</label>
+                <input type="file" id="gambar-lahan" class="mt-2 pt-1">
+            </div>
+    
+            <div class="pb-3 pl-5 pt-4">
+                <button type="button" class="btn text-white" style="background-color: #00a65b">Simpan</button>
             </div>
         </div>
     </div>
