@@ -175,13 +175,14 @@
                                                             @csrf
                                                             @method('delete')
 
+                                                             <button type="submit" class="btn text-white"
+                                                                style="background-color: #fcc12d"
+                                                                onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Edit</button>
+
                                                             <button type="submit" class="btn text-white"
                                                                 style="background-color: #00a65b"
                                                                 onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
 
-                                                            <button type="submit" class="btn text-white"
-                                                                style="background-color: #00a65b"
-                                                                onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Edit</button>
                                                         </form>
                                                 </tr>
                                             @endforeach
