@@ -1,6 +1,15 @@
 @extends('mylayouts.main')
 
 @section('tambahcss')
+    <style>
+        .input-group-prepend button i{
+            position: absolute;
+            left: 30px;
+        }
+    </style>
+@endsection
+
+@section('tambahcss')
 <style>
     /* .row-data .col-3 {
         max-width: 15.5rem !important;
@@ -147,7 +156,21 @@
                                     <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
                                     <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
                                     <td></td>
-                                    <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
+                                     <td>
+                                            <div class="card-body">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <button type="button" class="btn" data-toggle="dropdown">
+                                                            <i class="bi bi-three-dots-vertical"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu" style="margin-left: -73px">
+                                                            <a class="dropdown-item">Edit</a>
+                                                            <a class="dropdown-item">Batalkan</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
                                 </tr>
                                 <tr>
                                     <th class="text-center">2</th>
@@ -156,7 +179,21 @@
                                     <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
                                     <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
                                     <td></td>
-                                    <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
+                                     <td>
+                                            <div class="card-body">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <button type="button" class="btn" data-toggle="dropdown">
+                                                            <i class="bi bi-three-dots-vertical"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu" style="margin-left: -73px">
+                                                            <a class="dropdown-item">Edit</a>
+                                                            <a class="dropdown-item">Batalkan</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
                                 </tr>
                                 <tr>
                                     <th class="text-center">3</th>
@@ -165,7 +202,21 @@
                                     <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
                                     <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
                                     <td></td>
-                                    <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
+                                     <td>
+                                            <div class="card-body">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <button type="button" class="btn" data-toggle="dropdown">
+                                                            <i class="bi bi-three-dots-vertical"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu" style="margin-left: -73px">
+                                                            <a class="dropdown-item">Edit</a>
+                                                            <a class="dropdown-item">Batalkan</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
                                 </tr>
                               </tbody>
                             {{-- end isi table --}}

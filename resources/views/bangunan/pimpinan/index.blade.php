@@ -1,5 +1,15 @@
 @extends('myLayouts.main')
 
+@section('tambahcss')
+<style>
+    .input-group-prepend button i {
+        position: absolute;
+        left: 35px;
+    }
+
+</style>
+@endsection
+
 @section('container')
 
 <!-- Content Header (Page header) -->
@@ -122,7 +132,21 @@
                         <td class="text-center" style="vertical-align: middle">100m²</td>
                         <td class="text-center" style="vertical-align: middle"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
                         <td></td>
-                        <td class="text-center" style="vertical-align: middle"><button class="btn btn-success">Batalkan</button></td>
+                        <td>
+                            <div class="card-body">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <button type="button" class="btn" data-toggle="dropdown">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </button>
+                                        <div class="dropdown-menu" style="margin-left: -73px">
+                                            <a class="dropdown-item">Edit</a>
+                                            <a class="dropdown-item">Batalkan</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>

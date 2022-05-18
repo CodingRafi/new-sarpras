@@ -69,7 +69,6 @@ Route::get('edit-labkomputer', function () {
     return view('bangunan.labKomputer.edit');
 });
 
-
 Route::get('edit-toilet', function () {
     return view('bangunan.toilet.edit');
 });

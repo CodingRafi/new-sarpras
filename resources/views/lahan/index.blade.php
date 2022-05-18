@@ -2,10 +2,6 @@
 
 @section('tambahcss')
     <style>
-        /* .row-data .col-3 {
-                        max-width: 15.5rem !important;
-                    } */
-
         .card-header h4 {
             font-size: 1.2rem !important
         }
