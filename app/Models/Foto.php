@@ -18,4 +18,5 @@ class Foto extends Model
     public function koleksi(){
         return $this->belongsTo(Koleksi::class);
     }
+
 }

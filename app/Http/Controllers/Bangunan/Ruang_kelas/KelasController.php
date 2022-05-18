@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Bangunan\Ruang_kelas;
 
 use App\Models\Kelas;
 use App\Models\UsulanKelas;
+use App\Models\UsulanBangunan;
 use App\Models\UsulanKoleksi;
 use App\Models\UsulanFoto;
 use App\Models\Profil;
@@ -12,6 +13,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreKelasRequest;
 use App\Http\Requests\UpdateKelasRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class KelasController extends Controller
 {
@@ -22,7 +24,7 @@ class KelasController extends Controller
      */
     public function index()
     {
-        $usulanKelas = UsulanKelas::where('profil_id', Auth::user()->profil_id)->get();
+        $usulanKelas = UsulanBangunan::where('profil_id', Auth::user()->profil_id)->where('jenis', 'ruang_kelas')->get();
         $koleksi = UsulanKoleksi::koleksi($usulanKelas);
         $fotos = UsulanFoto::fotos($koleksi);
         $data = Kelas::where('profil_id', Auth::user()->profil_id)->get()[0];
@@ -118,6 +120,36 @@ class KelasController extends Controller
     public function destroy(Kelas $kelas)
     {
         //
+    }
+
+
+    public function createusulan(Request $request){
+        $validatedData = $request->validate([
+            'jml_ruang' => 'required',
+            'luas_lahan' => 'required',
+            'gambar' => 'required',
+            'proposal' => 'required|mimes:pdf',
+            'gambar.*' => 'mimes:jpg,jpeg,png|file|max:5120'
+        ]);
+
+        UsulanBangunan::createUsulan($request, 'ruang_kelas', $validatedData);
+
+        Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan usulan bangunan kelas');
+
+        return redirect()->back();
+    }
+
+    public function deleteusulan(Request $request, $id){
+        $data = UsulanBangunan::where('id', $id)->get()[0];
+        if($data->profil_id == Auth::user()->profil_id){
+            UsulanBangunan::deleteUsulan($data);
+
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Membatalkan Usulan bangunan kelas');
+
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
     }
 
 }

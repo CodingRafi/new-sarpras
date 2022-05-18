@@ -22,8 +22,8 @@ class Kompeten extends Model
         return $this->belongsTo(Komli::class);
     }
 
-    public function usulanPraktek(){
-        return $this->hasMany(UsulanPraktek::class);
+    public function usulanBangunan(){
+        return $this->hasMany(UsulanBangunan::class);
     }
 
     public static function pilihanJurusan($profil){

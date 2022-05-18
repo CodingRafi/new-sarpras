@@ -13,8 +13,8 @@ class UsulanKoleksi extends Model
         "id"
     ];
 
-    public function UsulanKelas(){
-        return $this->belongsTo(UsulanKelas::class);
+    public function UsulanBangunan(){
+        return $this->belongsTo(UsulanBangunan::class);
     }
     
     public function usulanFoto(){

@@ -156,7 +156,7 @@
                                                     <td class="text-center" style="vertical-align: middle">
                                                         @foreach ($usulanFotos[$key] as $ke => $foto)
                                                             <a href="{{ asset('storage/' . $foto->nama) }}"
-                                                                class="fancybox" data-fancybox="gallery1">
+                                                                class="fancybox" data-fancybox="gallery{{ $key }}">
                                                                 <img src="{{ asset('storage/' . $foto->nama) }}"
                                                                     class="rounded"
                                                                     style="object-fit: cover; width: 150px; aspect-ratio: 1/1;{{ $ke == 0 ? '' : 'display:none;' }}">

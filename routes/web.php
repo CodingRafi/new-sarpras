@@ -7,10 +7,6 @@ use App\Http\Controllers\FotoController;
 use App\Http\Controllers\RoleController;
 use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Bangunan\Ruang_kelas\KelasController;
-use App\Http\Controllers\Bangunan\Ruang_kelas\UsulanKelasController;
-use App\Http\Controllers\Bangunan\Ruang_praktek\PraktikController;
-use App\Http\Controllers\Bangunan\Ruang_praktek\UsulanPraktekController;
 use App\Http\Controllers\KomliController;
 use App\Http\Controllers\MonevController;
 use App\Http\Controllers\ProfilController;
@@ -25,9 +21,12 @@ use App\Http\Controllers\ProfilDepoController;
 use App\Http\Controllers\RehabRenovController;
 use App\Http\Controllers\PerpustakaanController;
 use App\Http\Controllers\RegisteredUserController;
+use App\Http\Controllers\UsulanBangunanController;
 use App\Http\Controllers\Lahan_sekolah\LahanController;
 use App\Http\Controllers\Lahan_sekolah\UsulanLahanController;
+use App\Http\Controllers\Bangunan\Ruang_kelas\KelasController;
 use App\Http\Controllers\Lahan_sekolah\KekuranganLahanController;
+use App\Http\Controllers\Bangunan\Ruang_praktek\PraktikController;
 use App\Http\Controllers\Lahan_sekolah\KetersediaanLahanController;
 
 /*
@@ -74,9 +73,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::patch('/kekurangan-lahan/update-kekurangan', [KekuranganLahanController::class, 'update']);
     Route::resource('/kekurangan-lahan', KekuranganLahanController::class);
     Route::resource('/bangunan/ruang-kelas', KelasController::class);
-    Route::resource('/bangunan/usulan-ruang-kelas', UsulanKelasController::class);
+    Route::post('/bangunan/usulan-ruang-kelas', [KelasController::class, 'createusulan']);
+    Route::delete('/bangunan/usulan-ruang-kelas/{id}', [KelasController::class, 'deleteusulan']);
     Route::resource('/bangunan/ruang-praktik', PraktikController::class);
-    Route::resource('/bangunan/usulan-ruang-praktik', UsulanPraktekController::class);
     Route::resource('/bangunan/lab-komputer', KomputerController::class);
     Route::resource('/bangunan/ruang-perpustakaan', PerpustakaanController::class);
     Route::resource('/bangunan/ruang-rehabrenov', RehabRenovController::class);

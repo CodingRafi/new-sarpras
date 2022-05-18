@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers\Bangunan\Ruang_praktek;
 
+use App\Models\Log;
+use ImageOptimizer;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Praktik;
+use App\Models\Kompeten;
+use App\Models\Komli;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePraktikRequest;
 use App\Http\Requests\UpdatePraktikRequest;
@@ -16,7 +22,16 @@ class PraktikController extends Controller
      */
     public function index()
     {
-        return view("bangunan.praktik.index");
+        $kompetens = Kompeten::where('profil_id', Auth::user()->profil_id)->get();
+
+        $komli = [];
+        foreach($kompetens as $kompeten){
+            $komli[] = $kompeten->komli;
+        }
+
+        return view("bangunan.praktik.index", [
+            'komlis' => $komli
+        ]);
     }
 
     /**
