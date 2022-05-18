@@ -60,6 +60,10 @@ Route::get('upload-logo', function () {
 Route::get('reset-password', function () {
     return view('myauth.resetPassword');
 });
+
+Route::get('edit-ruangkelas', function () {
+    return view('bangunan.kelas.edit');
+});
 // |-------------------------------------------------------------------------- /SEMENTARA |--------------------------------------------------------------------------
 
 Route::group(['middleware' => ['auth']], function() {
