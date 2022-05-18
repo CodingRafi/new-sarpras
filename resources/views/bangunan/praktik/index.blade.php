@@ -24,6 +24,14 @@
         font-weight: 500;
     }
 
+    .input-group-prepend button i {
+        position: absolute;
+        right: -40px;
+        margin-top: -19px;
+    }
+
+    @media(max-width 480px) {}
+
 </style>
 @endsection
 
@@ -104,44 +112,94 @@
         <div class="card-header" style="background-color: #25b5e9">
             <h3 class="card-title text-white">Ruang Praktek Tersedia</h3>
             <div class="card-tools">
-                <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal" data-target="#modal-lg"><i class="bi bi-plus"></i> Tambah Usulan
+                <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
+                    data-target="#modal-lg"><i class="bi bi-plus"></i> Tambah Usulan
                 </button>
             </div>
         </div>
         <div class="card-body">
             <div class="tab-content">
                 <div class="tab-pane active" id="">
-                    <table class="table">
+                    <table class="table table-bordered table-hover text-center">
                         <thead>
                             <tr>
-                                <th class="text-center" scope="col">No</th>
-                                <th class="text-center" scope="col">Jurusan</th>
-                                <th class="text-center" scope="col">Jumlah Ruangan</th>
-                                <th class="text-center" scope="col">Status</th>
-                                <th class="text-center" scope="col">Jumlah Ideal</th>
+                                <th scope="col">No</th>
+                                <th scope="col">Jurusan</th>
+                                <th scope="col">Jumlah Ruangan</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Jumlah Ideal</th>
+                                <th scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th class="text-center" scope="row">1</th>
-                                <td class="text-center">Multimedia</td>
-                                <td class="text-center">10</td>
-                                <td class="text-center">Ideal</td>
-                                <td class="text-center">16 Siswa / Kelas</td>
+                                <th scope="row">1</th>
+                                <td>Multimedia</td>
+                                <td>10</td>
+                                <td>Ideal</td>
+                                <td>16 Siswa / Kelas</td>
+                                <td>
+                                    <div class="card-body">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button type="button" class="btn" data-toggle="dropdown">
+                                                    <i class="bi bi-three-dots-vertical"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" data-toggle="modal"
+                                                        data-target="#modal-edit">Edit</a>
+                                                    <a class="dropdown-item" href="">Hapus</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
-                                <th class="text-center" scope="row">1</th>
-                                <td class="text-center">Multimedia</td>
-                                <td class="text-center">10</td>
-                                <td class="text-center">Ideal</td>
-                                <td class="text-center">16 Siswa / Kelas</td>
+                                <th scope="row">1</th>
+                                <td>Multimedia</td>
+                                <td>10</td>
+                                <td>Ideal</td>
+                                <td>16 Siswa / Kelas</td>
+                                <td>
+                                    <div class="card-body">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button type="button" class="btn" data-toggle="dropdown">
+                                                    <i class="bi bi-three-dots-vertical"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" data-toggle="modal"
+                                                        data-target="#modal-edit">Edit</a>
+                                                    <a class="dropdown-item" href="">Hapus</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
-                                <th class="text-center" scope="row">1</th>
-                                <td class="text-center">Multimedia</td>
-                                <td class="text-center">10</td>
-                                <td class="text-center">Ideal</td>
-                                <td class="text-center">16 Siswa / Kelas</td>
+                                <th scope="row">1</th>
+                                <td>Multimedia</td>
+                                <td>10</td>
+                                <td>Ideal</td>
+                                <td>16 Siswa / Kelas</td>
+                                <td>
+                                    <div class="card-body">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button type="button" class="btn" data-toggle="dropdown">
+                                                    <i class="bi bi-three-dots-vertical"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" data-toggle="modal"
+                                                        data-target="#modal-edit">Edit</a>
+                                                    <a class="dropdown-item" href="">Hapus</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -157,7 +215,8 @@
         <div class="card-header bg-warning">
             <h3 class="card-title text-white">Usulan Ruang Praktik Baru</h3>
             <div class="card-tools">
-                <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal" data-target="#modal-default"><i class="bi bi-plus"></i> Tambah Usulan
+                <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
+                    data-target="#modal-default"><i class="bi bi-plus"></i> Tambah Usulan
                 </button>
             </div>
         </div>
@@ -165,15 +224,15 @@
         <div class="card-body">
             <div class="tab-content">
                 <div class="tab-pane active" id="">
-                    <table class="table table-bordered">
+                    <table class="table table-hover table-bordered text-center">
                         <thead>
                             <tr>
-                                <th class="text-center" rowspan="2">No</th>
-                                <th class="text-center" rowspan="2">Jenis Ruang</th>
-                                <th class="text-center" rowspan="2">Jumlah Ruang</th>
-                                <th class="text-center" colspan="2">Ketersedian Lahan</th>
-                                <th class="text-center" rowspan="2">Proposal</th>
-                                <th class="text-center" rowspan="2">Aksi</th>
+                                <th rowspan="2">No</th>
+                                <th rowspan="2">Jenis Ruang</th>
+                                <th rowspan="2">Jumlah Ruang</th>
+                                <th colspan="2">Ketersedian Lahan</th>
+                                <th rowspan="2">Proposal</th>
+                                <th rowspan="2">Aksi</th>
                             </tr>
                             <tr>
                                 <th class="text-center">Gambar Lahan</th>
@@ -182,22 +241,30 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <th class="text-center" scope="row">1</th>
-                                <td class="text-center">Multimedia</td>
-                                <td class="text-center">5</td>
-                                <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
-                                <td class="text-center">150m²</td>
-                                <td class="text-center"><img src="/img/pdf2.png" alt="image" style="width: 30px"></td>
-                                <td class="text-center"><a href="#" class="btn btn-success">Batalkan</a></td>
+                                <th scope="row">1</th>
+                                <td>Multimedia</td>
+                                <td>5</td>
+                                <td style="vertical-align: middle"><a
+                                        href="/assets/img/backgrounds/school.jpg" class="fancybox"
+                                        data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg"
+                                            class="rounded"
+                                            style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
+                                <td>150m²</td>
+                                <td><img src="/img/pdf2.png" alt="image" style="width: 30px"></td>
+                                <td><a href="#" class="btn btn-success">Batalkan</a></td>
                             </tr>
                             <tr>
-                                <th class="text-center" scope="row">2</th>
-                                <td class="text-center">Rekayasa Perangkat Lunak</td>
-                                <td class="text-center">10</td>
-                                <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
-                                <td class="text-center">200m²</td>
-                                <td class="text-center"><img src="/img/pdf2.png" alt="image" style="width: 30px"></td>
-                                <td class="text-center"><a href="#" class="btn btn-success">Batalkan</a></td>
+                                <th scope="row">2</th>
+                                <td>Rekayasa Perangkat Lunak</td>
+                                <td>10</td>
+                                <td class="text-center" style="vertical-align: middle"><a
+                                        href="/assets/img/backgrounds/school.jpg" class="fancybox"
+                                        data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg"
+                                            class="rounded"
+                                            style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
+                                <td>200m²</td>
+                                <td><img src="/img/pdf2.png" alt="image" style="width: 30px"></td>
+                                <td><a href="#" class="btn btn-success">Batalkan</a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -242,8 +309,8 @@
                             <label>Jumlah Ruangan</label>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control col-12" placeholder="Masukan Jumlah Ruang"
-                                id="jmlrg" name="long" required value="">
+                            <input type="text" class="form-control col-12" placeholder="Masukan Jumlah Ruang" id="jmlrg"
+                                name="long" required value="">
                         </div>
                     </div>
                     {{-- end input jumlah ruangan --}}
@@ -287,61 +354,131 @@
 {{-- modal tambah usulan --}}
 <div class="modal fade" id="modal-default">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Usulan</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          {{-- input jumlah ruangan --}}
-          <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Jenis Ruang</label>
-            <input type="text" class="form-control col-sm-7" placeholder="Masukan Jenis Ruang" id="jenis-ruang"name="jenis-ruang" required value="">
-        </div>
-        {{-- end input jumlah ruangan --}}
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Usulan</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{-- input jumlah ruangan --}}
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Jenis Ruang</label>
+                    <input type="text" class="form-control col-sm-7" placeholder="Masukan Jenis Ruang" id="jenis-ruang"
+                        name="jenis-ruang" required value="">
+                </div>
+                {{-- end input jumlah ruangan --}}
 
-        {{-- input luas lahan --}}
-        <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Jumlah Ruang</label>
-            <input type="text" class="form-control col-sm-7" placeholder="Masukan Jumlah Ruang" id="jumlah-ruang"
-            name="long" required value="">
-        </div>
-        {{-- end luas lahan --}}
+                {{-- input luas lahan --}}
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Jumlah Ruang</label>
+                    <input type="text" class="form-control col-sm-7" placeholder="Masukan Jumlah Ruang"
+                        id="jumlah-ruang" name="long" required value="">
+                </div>
+                {{-- end luas lahan --}}
 
-        {{-- upload gambar lokasi --}}
-        <div class="form-group row">
-            <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan</label>
-            <input type="file" id="gambar-lahan">
-        </div>
-        {{-- end upload gambar lokasi --}}
+                {{-- upload gambar lokasi --}}
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan</label>
+                    <input type="file" id="gambar-lahan">
+                </div>
+                {{-- end upload gambar lokasi --}}
 
-        {{-- input luas lahan --}}
-        <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Luas Lahan</label>
-            <input type="text" class="form-control col-sm-7" placeholder="Masukan Luas Lahan" id="luas-lahan"
-            name="long" required value="">
-        </div>
-        {{-- end luas lahan --}}
+                {{-- input luas lahan --}}
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Luas Lahan</label>
+                    <input type="text" class="form-control col-sm-7" placeholder="Masukan Luas Lahan" id="luas-lahan"
+                        name="long" required value="">
+                </div>
+                {{-- end luas lahan --}}
 
-        {{-- upload proposal --}}
-        <div class="form-group row">
-            <label class="col-sm-4 col-form-label pt-1" for="customFile">Proposal</label>
-            <input type="file" id="proposal">
+                {{-- upload proposal --}}
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label pt-1" for="customFile">Proposal</label>
+                    <input type="file" id="proposal">
+                </div>
+                {{-- end upload proposal --}}
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                <button type="button" class="btn text-white" style="background-color: #00a65b">Simpan</button>
+            </div>
         </div>
-        {{-- end upload proposal --}}
-        </div>
-        <div class="modal-footer justify-content-between">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-          <button type="button" class="btn text-white" style="background-color: #00a65b">Simpan</button>
-        </div>
-      </div>
-      <!-- /.modal-content -->
+        <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
-  </div>
+</div>
 {{-- end modal tambah usulan --}}
+
+{{-- Tab --}}
+<div class="modal fade" id="modal-edit">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form action="/kekurangan-lahan/update-kekurangan" method="post">
+                <div class="modal-header">
+                    <h3 class="modal-title">Edit</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+
+                        <input type="hidden" name="id_kekurangan" class="inputIdKekurangan">
+                        <div class="row mt-2">
+                            <div class="col-3">
+                                <label for="col-sm-4 col-form-label">Jurusan :</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control col-sm-7 input-nama-edit"
+                                    placeholder="Masukan Nama Jurusan" id="nmajk" name="jurusan" required>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-3">
+                                <label for="col-sm-4 col-form-label">Jumlah Ruangan :</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control col-sm-7 panjang-nama-edit"
+                                    placeholder="Masukan Jumlah Ruang" id="jmlrg" name="ruang" required>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-3">
+                                <label for="col-sm-4 col-form-label">Status :</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control col-sm-7 lebar-nama-edit"
+                                    placeholder="Masukan Status" id="status" name="status" required>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-3">
+                                <label for="col-sm-4 col-form-label">Jumlah Ideal :</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control col-sm-7 lebar-nama-edit"
+                                    placeholder="Masukan Jumlah Ideal" id="jmlidl" name="ideal" required>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-warning text-white">Edit</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+{{-- End Tab --}}
 
 
 {{-- End Main-Content --}}

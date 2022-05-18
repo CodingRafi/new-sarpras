@@ -10,6 +10,11 @@
             font-size: 1.2rem !important
         }
 
+        .input-group-prepend button i{
+            position: absolute;
+            margin-top: -25px;
+        }
+
     </style>
 @endsection
 
