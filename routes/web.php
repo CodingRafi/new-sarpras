@@ -69,8 +69,25 @@ Route::get('edit-labkomputer', function () {
     return view('bangunan.labKomputer.edit');
 });
 
+
 Route::get('edit-toilet', function () {
     return view('bangunan.toilet.edit');
+});
+
+Route::get('edit-ruangpraktik', function () {
+    return view('bangunan.praktik.edit');
+});
+
+Route::get('edit-ruangperpustakaan', function () {
+    return view('bangunan.perpustakaan.edit');
+});
+
+Route::get('edit-ruangpimpinan', function () {
+    return view('bangunan.pimpinan.edit');
+});
+
+Route::get('edit-rehabrenov', function () {
+    return view('bangunan.rehabrenov.edit');
 });
 // |-------------------------------------------------------------------------- /SEMENTARA |--------------------------------------------------------------------------
 
