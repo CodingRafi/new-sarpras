@@ -177,7 +177,7 @@
                             </tr>
                             <tr>
                                 <th class="text-center">Gambar Lahan</th>
-                                <th class="text-center">Luas</th>
+                                <th class="text-center">Luas Lahan</th>
                             </tr>
                         </thead>
                         <tbody>
