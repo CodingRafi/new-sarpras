@@ -112,19 +112,19 @@
       </div>
     </div> --}}
 
-    <div class="container-fluid pt-3 container-paling-luar" style="background: #EEEEEE;height: 100vh;" data-color="#EEEEEE">
+    <div class="container-fluid pt-3 container-paling-luar" style="background: #EEEEEE; min-height: 100vh;" data-color="#EEEEEE">
       <div class="container p-0">
         <div class="row">
           <div class="col-md-4">
             <div class="container-fluid p-0">
-              <div class="row row-bulet-warna">
-                <div class="col-md-2">
+              <div class="d-flex row-bulet-warna" style="gap: 1rem">
+                <div class="a">
                   <button style="padding: 20px;border-radius: 50%;border: none;background-color: #25B5E9;" data-color="#25B5E9" class="button-warna"></button>
                 </div>
-                <div class="col-md-2">
+                <div class="q">
                   <button style="padding: 20px;border-radius: 50%;border: none;background-color: #00A65B;" data-color="#00A65B" class="button-warna"></button>
                 </div>
-                <div class="col-md-2">
+                <div class="a">
                   <button style="padding: 20px;border-radius: 50%;border: none;background-color: #FCC12D;" data-color="#FCC12D" class="button-warna"></button>
                 </div>
               </div>
@@ -133,12 +133,12 @@
           <div class="col-md-8"></div>
         </div>
       </div>
-        <div class="container d-flex justify-content-center p-0 con-main" style="height: 90vh;">
+        <div class="container d-flex justify-content-center p-0 con-main" style="min-height: 90vh;">
             <div class="row bagian-row">
                 <div class="col con-img p-0" style="border-radius: 10px 0 0 10px">
                     <div class="container con-img-text">
                         <h1>Sistem <span>Sarpras</span></h1>
-                        <h3>Sarana Prasarana</h3>
+                        <h3 class="mb-1">Sarana Prasarana</h3>
                         <p style="font-weight: 200">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
                             been the industry's standard dummy text ever since the 1500s</p>
                     </div>
@@ -187,7 +187,7 @@
                             <div class="mb-3">
                                 <div class="container p-0">
                                     <div class="row">
-                                        <div class="col-9">
+                                        <div class="col-6">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" id="remember"
                                                     name="remember">
@@ -196,7 +196,9 @@
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="col-6"></div>
+                                        <div class="col-6 d-flex justify-content-end align-items-center">
+                                          <a href="#" class="text-success" style="font-size: 12.5px; text-decoration: none; font-weight: 600;">Lupa Password?</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
