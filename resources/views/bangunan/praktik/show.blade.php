@@ -15,6 +15,14 @@
         font-size: 5rem;
     }
 
+    .col-8{
+        padding-top: 40px;
+    }
+
+    .col-5 h1{
+        margin-left: 25px;
+        margin-bottom: 30px;
+    }
 </style>
 @endsection
 
@@ -106,12 +114,14 @@
             </div>
             <div class="col-8">
                 <div class="font-weight-bold">
-                    <p style="font-size: 1.8rem !important">PERATURAN MENTERI PENDIDIKAN NASIONAL REPUBLIK INDONESIA
-                        NOMOR 40 TAHUN 2008 STANDAR SARANA DAN PRASARANA UNTUK SEKOLAH MENENGAH KEJURUAN MADRASAH ALIYAH
-                        KEJURUAN(SMK/MAK) </p>
+                    <p style="font-size: 1.6rem !important">PERATURAN MENTERI PENDIDIKAN NASIONAL REPUBLIK INDONESIA
+                        NOMOR 40 TAHUN 2008</p>
+                    <p style="font-size: 1.6rem !important">STANDAR SARANA DAN PRASARANA UNTUK SEKOLAH <br> MENENGAH KEJURUAN MADRASAH ALIYAH
+                        KEJURUAN(SMK/MAK)</p>   
                 </div>
             </div>
         </div>
+        <hr>
         <div class="">
             <p style="padding: 0px 4.5rem 0px 4.5rem">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse debitis
                 tenetur, sed temporibus vel perferendis, distinctio officiis soluta culpa vitae magni eum modi ab rerum
