@@ -15,49 +15,49 @@
 
 @section('container')
     <div class="title pt-3">
-        <h3 class="text-dark display-4" style="font-size: 25px">Edit Lahan Sekolah</h3>
+        <h3 class="text-dark display-4 pl-3" style="font-size: 25px">Edit Lahan Sekolah</h3>
     </div>
 
     <div class="form-edit pt-3">
-        <div class="card pt-3" style="background-color: white; border-radius:10px; ">
-            <div class="input pl-5">
+        <div class="card pt-3" style="background-color: white; border-radius: 10px; ">
+            <div class="row input pl-5">
                 <label class="col-2 mt-3">Nama Lahan</label>
-                <input type="text" class="col-9" placeholder="Masukan Nama Lahan">
+                <input type="text" class="col-9 form-control mt-2" placeholder="Masukan Nama Lahan">
             </div>
     
-            <div class="input pl-5">
+            <div class="row input pl-5">
                 <label class="col-2 mt-3">No Sertifikat</label>
-                <input type="number" class="col-9" placeholder="Masukan No Sertifikat">
+                <input type="number" class="col-9 form-control mt-2" placeholder="Masukan No Sertifikat">
             </div>
     
-            <div class="input pl-5">
+            <div class="row input pl-5">
                 <label class="col-2 mt-3">Panjang</label>
-                <input type="number" class="col-9" placeholder="Masukan Panjang">
+                <input type="number" class="col-9 form-control mt-2" placeholder="Masukan Panjang">
             </div>
     
-            <div class="input pl-5">
+            <div class="row input pl-5">
                 <label class="col-2 mt-3">Lebar</label>
-                <input type="number" class="col-9" placeholder="Masukan Lebar">
+                <input type="number" class="col-9 form-control mt-2" placeholder="Masukan Lebar">
             </div>
     
-            <div class="input pl-5">
+            <div class="row input pl-5">
                 <label class="col-2 mt-3">Luas Lahan</label>
-                <input type="number" class="col-9" placeholder="Masukan Luas Lahan">
+                <input type="number" class="col-9 form-control mt-2" placeholder="Masukan Luas Lahan">
             </div>
     
-            <div class="input pl-5">
+            <div class="row input pl-5">
                 <label class="col-2 mt-3">Alamat</label>
-                <input type="text" class="col-9" placeholder="Masukan Alamat">
+                <input type="text" class="col-9 form-control mt-2" placeholder="Masukan Alamat">
             </div>
     
-            <div class="input pl-5">
+            <div class="row input pl-5">
                 <label class="col-2 mt-3">Jenis Kepemilikan</label>
-                <input type="text" class="col-9" placeholder="Masukan Jenis Kepemilikan">
+                <input type="text" class="col-9 form-control mt-2" placeholder="Masukan Jenis Kepemilikan">
             </div>
     
-            <div class="input pb-3 pl-5">
+            <div class="row input pb-3 pl-5">
                 <label class="col-2 mt-3">Keterangan</label>
-                <input type="text" class="col-9" placeholder="Masukan Keterangan">
+                <input type="text" class="col-9 form-control mt-2" placeholder="Masukan Keterangan">
             </div>
 
             <div class="pb-3 pl-5">
