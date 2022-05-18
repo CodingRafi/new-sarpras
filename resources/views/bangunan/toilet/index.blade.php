@@ -42,7 +42,7 @@
                     <h3 class="card-title">Kondisi Ideal</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool text-white" data-toggle="modal"
-                        data-target="#edit-ideal"><i class="bi bi-pencil-fill"></i>
+                        data-target="#edit-ideal"><i class="bi bi-pencil-square"></i>
                         </button>
                     </div>
                 </div>
@@ -56,8 +56,8 @@
             <div class="modal fade" id="edit-ideal">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <div class="modal-header bg-info">
-                            <h4 class="modal-title">Kondisi Ideal</h4>
+                        <div class="modal-header" style="background-color: #25b5e9">
+                            <h4 class="modal-title text-white">Kondisi Ideal</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -73,7 +73,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-info float-right">Simpan</button>
+                                    <button type="submit" class="btn text-white float-right" style="background-color: #00a65b">Simpan</button>
                                 </div>
                             </form>
                         </div>
@@ -89,7 +89,7 @@
                     <h3 class="card-title text-white">Ketersediaan</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool text-white" data-toggle="modal"
-                        data-target="#edit-ketersediaan"><i class="bi bi-pencil-fill"></i>
+                        data-target="#edit-ketersediaan"><i class="bi bi-pencil-square"></i>
                         </button>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header bg-warning">
-                            <h4 class="modal-title">Ketersediaan</h4>
+                            <h4 class="modal-title text-white">Ketersediaan</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -120,7 +120,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-info float-right">Simpan</button>
+                                    <button type="submit" class="btn text-white float-right" style="background-color: #00a65b">Simpan</button>
                                 </div>
                             </form>
                         </div>
@@ -136,7 +136,7 @@
                     <h3 class="card-title">Kekurangan</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-toggle="modal"
-                        data-target="#edit-kekurangan"><i class="bi bi-pencil-fill"></i>
+                        data-target="#edit-kekurangan"><i class="bi bi-pencil-square"></i>
                         </button>
                     </div>
                 </div>
@@ -168,7 +168,7 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-info float-right">Simpan</button>
+                                <button type="submit" class="btn text-white float-right" style="background-color: #00a65b">Simpan</button>
                             </div>
                         </form>
                     </div>
@@ -198,7 +198,7 @@
                     </tr>
                     <tr class="text-center">
                         <th>Gambar Lahan</th>
-                        <th>Luas</th>
+                        <th>Luas Lahan</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -208,7 +208,7 @@
                         <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/assets/img/backgrounds/school.jpg" class="rounded" style="object-fit: cover; width: 100px; aspect-ratio: 1/1;"></a></td>
                         <td class="text-center" style="vertical-align: middle">20m²</td>
                         <td class="text-center" style="vertical-align: middle"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
-                        <td class="text-center" style="vertical-align: middle"><button class="btn btn-success">Batalkan</button></td>
+                        <td class="text-center" style="vertical-align: middle"><button class="btn text-white" style="background-color: #00a65b">Batalkan</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -229,19 +229,13 @@
                     <form class="form-horizontal">
                         <div class="card-body">
                             <div class="form-group row">
-                                <label for="jumlah-lahan" class="col-sm-2 col-form-label">Jumlah Lahan</label>
+                                <label for="jumlah-lahan" class="col-sm-2 col-form-label">Jenis Ruang</label>
                                 <div class="col-sm-10">
                                     <input type="number" class="form-control" id="jumlah-lahan">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="luas-lahan" class="col-sm-2 col-form-label">Luas Lahan</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="luas-lahan">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="gambar-lokasi" class="col-sm-2 col-form-label">Gambar Lokasi</label>
+                                <label for="gambar-lokasi" class="col-sm-2 col-form-label">Gambar Lahan</label>
                                 <div class="col-sm-10">
                                     <div class="input-group">
                                         <div class="custom-file">
@@ -249,6 +243,12 @@
                                             <label class="custom-file-label" for="gambar-lokasi">Pilih Gambar</label>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="luas-lahan" class="col-sm-2 col-form-label">Luas Lahan</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="luas-lahan">
                                 </div>
                             </div>
                             <div class="form-group row">
