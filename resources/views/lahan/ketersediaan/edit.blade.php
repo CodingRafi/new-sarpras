@@ -22,46 +22,46 @@
         <div class="card pt-3" style="background-color: white; border-radius:10px; ">
             <div class="input pl-5">
                 <label class="col-2 mt-3">Nama Lahan</label>
-                <input type="text" class="col-9" placeholder="Masukan Nama Lahan">
+                <input type="text" class="col-9" placeholder="Masukan Nama Lahan" required value="{{ $ketersediaan->nama }}" name="nama">
             </div>
     
             <div class="input pl-5">
                 <label class="col-2 mt-3">No Sertifikat</label>
-                <input type="number" class="col-9" placeholder="Masukan No Sertifikat">
+                <input type="number" class="col-9" placeholder="Masukan No Sertifikat" required value="{{ $ketersediaan->no_sertifikat }}" name="no_sertifikat">
             </div>
     
             <div class="input pl-5">
                 <label class="col-2 mt-3">Panjang</label>
-                <input type="number" class="col-9" placeholder="Masukan Panjang">
+                <input type="number" class="col-9" placeholder="Masukan Panjang" required value="{{ $ketersediaan->panjang }}" name="panjang">
             </div>
     
             <div class="input pl-5">
                 <label class="col-2 mt-3">Lebar</label>
-                <input type="number" class="col-9" placeholder="Masukan Lebar">
+                <input type="number" class="col-9" placeholder="Masukan Lebar" required value="{{ $ketersediaan->lebar }}" name="lebar">
             </div>
     
             <div class="input pl-5">
                 <label class="col-2 mt-3">Luas Lahan</label>
-                <input type="number" class="col-9" placeholder="Masukan Luas Lahan">
+                <input type="number" class="col-9" placeholder="Masukan Luas Lahan" required value="{{ $ketersediaan->luas }}" name="luas">
             </div>
     
             <div class="input pl-5">
                 <label class="col-2 mt-3">Alamat</label>
-                <input type="text" class="col-9" placeholder="Masukan Alamat">
+                <input type="text" class="col-9" placeholder="Masukan Alamat" required value="{{ $ketersediaan->alamat }}" name="alamat">
             </div>
     
             <div class="input pl-5">
                 <label class="col-2 mt-3">Jenis Kepemilikan</label>
-                <input type="text" class="col-9" placeholder="Masukan Jenis Kepemilikan">
+                <input type="text" class="col-9" placeholder="Masukan Jenis Kepemilikan" required value="{{ $ketersediaan->jenis_kepemilikan }}" name="jenis_kepemilikan">
             </div>
     
             <div class="input pb-3 pl-5">
                 <label class="col-2 mt-3">Keterangan</label>
-                <input type="text" class="col-9" placeholder="Masukan Keterangan">
+                <input type="text" class="col-9" placeholder="Masukan Keterangan" required value="{{ $ketersediaan->keterangan }}" name="keterangan">
             </div>
 
             <div class="pb-3 pl-5">
-                <button type="button" class="btn text-white" style="background-color: #00a65b">Simpan</button>
+                <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
             </div>
         </div>
     </div>

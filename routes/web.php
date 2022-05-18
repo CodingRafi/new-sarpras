@@ -84,6 +84,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/bangunan/usulan-ruang-kelas', [KelasController::class, 'createusulan']);
     Route::delete('/bangunan/usulan-ruang-kelas/{id}', [KelasController::class, 'deleteusulan']);
     Route::resource('/bangunan/ruang-praktik', PraktikController::class);
+    Route::post('/bangunan/usulan-ruang-praktik', [PraktikController::class, 'createusulan']);
+    Route::delete('/bangunan/usulan-ruang-praktik/{id}', [PraktikController::class, 'deleteusulan']);
     Route::resource('/bangunan/lab-komputer', KomputerController::class);
     Route::resource('/bangunan/ruang-perpustakaan', PerpustakaanController::class);
     Route::resource('/bangunan/ruang-rehabrenov', RehabRenovController::class);

@@ -334,7 +334,9 @@
     <div class="modal fade" id="modal-edit">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <form action="/kekurangan-lahan/update-kekurangan" method="post">
+                <form action="/bangunan/usulan-ruang-kelas" method="post">
+                    @csrf
+                    @method('patch')
                     <div class="modal-header">
                         <h3 class="modal-title">Edit</h3>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -344,16 +346,7 @@
                     <div class="modal-body">
                         <div class="container">
 
-                            <input type="hidden" name="id_kekurangan" class="inputIdKekurangan">
-                            <div class="row mt-2">
-                                <div class="col-3">
-                                    <label for="col-sm-4 col-form-label">Jenis Ruang :</label>
-                                </div>
-                                <div class="col">
-                                    <input type="text" class="form-control col-sm-7 input-nama-edit"
-                                        placeholder="Masukan Nama Ruangan" id="nmarg" name="nama" required>
-                                </div>
-                            </div>
+                            <input type="hidden" class="id_usulan_modal" name="id">
 
                             <div class="row mt-4">
                                 <div class="col-3">

@@ -238,32 +238,36 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Multimedia</td>
-                                <td>5</td>
-                                <td style="vertical-align: middle"><a
-                                        href="/assets/img/backgrounds/school.jpg" class="fancybox"
-                                        data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg"
-                                            class="rounded"
-                                            style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
-                                <td>150m²</td>
-                                <td><img src="/img/pdf2.png" alt="image" style="width: 30px"></td>
-                                <td><a href="#" class="btn btn-success">Batalkan</a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Rekayasa Perangkat Lunak</td>
-                                <td>10</td>
-                                <td class="text-center" style="vertical-align: middle"><a
-                                        href="/assets/img/backgrounds/school.jpg" class="fancybox"
-                                        data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg"
-                                            class="rounded"
-                                            style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
-                                <td>200m²</td>
-                                <td><img src="/img/pdf2.png" alt="image" style="width: 30px"></td>
-                                <td><a href="#" class="btn btn-success">Batalkan</a></td>
-                            </tr>
+
+                            @foreach ($usulanPraktek as $key => $usulan)
+                                <tr>
+                                    <th scope="row">{{ $loop->iteration }}</th>
+                                    <td>{{ $komliUsulan[$key]->kompetensi }}</td>
+                                    <td>{{ $usulan->jml_ruang }}</td>
+                                    <td style="vertical-align: middle">
+                                        @foreach ($usulanFotos[$key] as $ke => $foto)    
+                                        <a href="{{ asset('storage/' . $foto->nama) }}" class="fancybox"
+                                            data-fancybox="gallery{{ $key }}"><img src="{{ asset('storage/' . $foto->nama) }}"
+                                                class="rounded"
+                                                style="object-fit: cover; width: 150px; aspect-ratio: 1/1;{{ $ke == 0 ? '' : 'display:none;' }}">
+                                        </a>
+                                        @endforeach
+                                    </td>
+                                    <td>{{ $usulan->luas_lahan }} m²</td>
+                                    <td>
+                                        <a href="{{ asset('storage/' . $usulan->proposal) }}" target="_blank">
+                                            <img src="/img/pdf.png" alt="image" style="width: 30px">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <form action="/bangunan/usulan-ruang-praktik/{{ $usulan->id }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-success" onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -271,128 +275,6 @@
         </div>
     </div>
 </div>
-
-
-    {{-- Ruang Praktik --}}
-    <div class="container-fluid mt-3">
-        <div class="card">
-            <div class="card-header" style="background-color: #25b5e9">
-                <h3 class="card-title text-white">Ruang Praktek Tersedia</h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
-                        data-target="#modal-lg"><i class="bi bi-plus"></i> Tambah Usulan
-                    </button>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="tab-content">
-                    <div class="tab-pane active" id="">
-                        <table class="table text-center">
-                            <thead>
-                                <tr>
-                                    <th class="text-center" scope="col">No</th>
-                                    <th class="text-center" scope="col">Jurusan</th>
-                                    <th class="text-center" scope="col">Jumlah Ruangan</th>
-                                    <th class="text-center" scope="col">Status</th>
-                                    <th class="text-center" scope="col">Jumlah Ideal</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th class="text-center" scope="row">1</th>
-                                    <td class="text-center">Multimedia</td>
-                                    <td class="text-center">10</td>
-                                    <td class="text-center">Ideal</td>
-                                    <td class="text-center">16 Siswa / Kelas</td>
-                                </tr>
-                                <tr>
-                                    <th class="text-center" scope="row">1</th>
-                                    <td class="text-center">Multimedia</td>
-                                    <td class="text-center">10</td>
-                                    <td class="text-center">Ideal</td>
-                                    <td class="text-center">16 Siswa / Kelas</td>
-                                </tr>
-                                <tr>
-                                    <th class="text-center" scope="row">1</th>
-                                    <td class="text-center">Multimedia</td>
-                                    <td class="text-center">10</td>
-                                    <td class="text-center">Ideal</td>
-                                    <td class="text-center">16 Siswa / Kelas</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {{-- Usulan --}}
-    <div class="container-fluid mt-2">
-        <div class="card">
-            <div class="card-header bg-warning">
-                <h3 class="card-title text-white">Usulan Ruang Praktik Baru</h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
-                        data-target="#modal-default"><i class="bi bi-plus"></i> Tambah Usulan
-                    </button>
-                </div>
-            </div>
-
-            <div class="card-body">
-                <div class="tab-content">
-                    <div class="tab-pane active" id="">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th class="text-center" rowspan="2">No</th>
-                                    <th class="text-center" rowspan="2">Jenis Ruang</th>
-                                    <th class="text-center" rowspan="2">Jumlah Ruang</th>
-                                    <th class="text-center" colspan="2">Ketersedian Lahan</th>
-                                    <th class="text-center" rowspan="2">Proposal</th>
-                                    <th class="text-center" rowspan="2">Aksi</th>
-                                </tr>
-                                <tr>
-                                    <th class="text-center">Gambar Lahan</th>
-                                    <th class="text-center">Luas</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th class="text-center" scope="row">1</th>
-                                    <td class="text-center">Multimedia</td>
-                                    <td class="text-center">5</td>
-                                    <td class="text-center" style="vertical-align: middle"><a
-                                            href="/assets/img/backgrounds/school.jpg" class="fancybox"
-                                            data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg"
-                                                class="rounded"
-                                                style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
-                                    <td class="text-center">150m²</td>
-                                    <td class="text-center"><img src="/img/pdf2.png" alt="image" style="width: 30px">
-                                    </td>
-                                    <td class="text-center"><a href="#" class="btn btn-success">Batalkan</a></td>
-                                </tr>
-                                <tr>
-                                    <th class="text-center" scope="row">2</th>
-                                    <td class="text-center">Rekayasa Perangkat Lunak</td>
-                                    <td class="text-center">10</td>
-                                    <td class="text-center" style="vertical-align: middle"><a
-                                            href="/assets/img/backgrounds/school.jpg" class="fancybox"
-                                            data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg"
-                                                class="rounded"
-                                                style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
-                                    <td class="text-center">200m²</td>
-                                    <td class="text-center"><img src="/img/pdf2.png" alt="image" style="width: 30px">
-                                    </td>
-                                    <td class="text-center"><a href="#" class="btn btn-success">Batalkan</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     {{-- Modal --}}
     <div class="modal fade" id="modal-lg">
@@ -488,9 +370,9 @@
                             {{-- input jumlah ruangan --}}
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Jenis Ruang</label>
-                                <select class="custom-select col-sm-7" aria-label="Default select example" name="jenis">
-                                    @foreach ($komlis as $komli)
-                                        <option value="{{ $komli->id }}">{{ $komli->kompetensi }}</option>
+                                <select class="custom-select col-sm-7" aria-label="Default select example" name="kompeten_id">
+                                    @foreach ($komlis as $key => $komli)
+                                        <option value="{{ $kompetens[$key]->id }}">{{ $komli->kompetensi }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -515,7 +397,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Luas Lahan</label>
                                 <input type="number" class="form-control col-sm-7" placeholder="Masukan Luas Lahan"
-                                    id="luas-lahan" name="luas" required value="">
+                                    id="luas-lahan" name="luas_lahan" required value="">
                             </div>
                             {{-- end luas lahan --}}
 
