@@ -36,6 +36,7 @@
                                             <th class="text-center" scope="col">Alamat</th>
                                             <th class="text-center" scope="col">Proposal Lahan</th>
                                             <th class="text-center" scope="col">Status Usulan</th>
+                                            <th class="text-center" scope="col">Keterangan</th>
                                             <th class="text-center" scope="col">Aksi</th>
                                         </tr>
                                     </thead>

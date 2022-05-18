@@ -32,7 +32,6 @@
     </div>
     <!-- /.content-header -->
 
-
     {{-- Main-Content --}}
 
     {{----------------------------------------------- Row ---------------------------------------------------}}
@@ -40,8 +39,8 @@
         <div class="row">
             <div class="col">
                 <div class="card" style="border-radius: 0px 20px 0px 20px !important">
-                    <div class="card-header bg-success" style="border-radius: 0px 20px 0px 20px !important">
-                        <h4 class="text-center font-weight-bold">Luas Lahan</h4>
+                    <div class="card-header" style="background-color:#00a65b; border-radius: 0px 20px 0px 20px !important">
+                        <h4 class="text-center text-white font-weight-bold">Luas Lahan</h4>
                     </div><!-- /.card-header -->
                     <div class="card-body">
                         <h1 class="text-center font-weight-bold pt-2">20m²</h1>
