@@ -73,8 +73,7 @@
                     <div class="card-header text-white" href="" style="background-color: #fcc12d">
                         <h4 class="card-title">Ketersediaan</h4>
                         <div class="card-tools">
-                            <button type="button" class="btn btn-tool text-white"><i class="bi bi-pencil-square"
-                                    data-toggle="modal" data-target="#modal-ketersediaan"></i></button>
+                            <button type="button" class="btn btn-tool text-white"><i class="bi bi-pencil-square" data-toggle="modal" data-target="#modal-ketersediaan"></i></button>
                         </div>
                     </div>
                     {{-- end card header --}}
@@ -178,6 +177,10 @@
                                                             <button type="submit" class="btn text-white"
                                                                 style="background-color: #00a65b"
                                                                 onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
+
+                                                            <button type="submit" class="btn text-white"
+                                                                style="background-color: #00a65b"
+                                                                onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Edit</button>
                                                         </form>
                                                 </tr>
                                             @endforeach
@@ -316,9 +319,8 @@
                             {{-- end upload proposal --}}
                         </div>
                         <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn text-white" style="background-color: #00a65b">Save
-                                changes</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
                         </div>
                     </form>
                 </div>
@@ -326,13 +328,6 @@
             </div>
             <!-- /.modal-dialog -->
         </div>
-
-
-
-
-
-
-
-
         <div class="content-backdrop fade"></div>
+        
     @endsection
