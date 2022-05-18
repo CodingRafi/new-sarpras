@@ -15,7 +15,7 @@
 
 @section('container')
     <div class="title pt-3">
-        <h3 class="text-dark display-4 pl-3" style="font-size: 25px">Edit Ruang Kelas</h3>
+        <h3 class="text-dark display-4 pl-3" style="font-size: 25px">Edit Toilet</h3>
     </div>
 
     <div class="form-edit pt-3">
@@ -25,24 +25,14 @@
                 <input type="text" class="col-9 form-control mt-2" placeholder="Masukan Jenis Ruang">
             </div>
     
-            <div class="row input pl-5 mt-2">
-                <label class="col-2 mt-3">Jumlah Ruang Kelas</label>
-                <input type="number" class="col-9 form-control mt-2" placeholder="Masukan Jumlah Ruang">
-            </div>
-    
-            <div class="row input pl-5 mt-2">
-                <label class="col-2 mt-3">Panjang</label>
-                <input type="number" class="col-9 form-control mt-2" placeholder="Masukan Panjang">
-            </div>
-    
-            <div class="row input pl-5 mt-2">
-                <label class="col-2 mt-3">Luas Lahan</label>
-                <input type="number" class="col-9 form-control mt-2" placeholder="Masukan Luas Lahan">
-            </div>
-    
             <div class="row input pl-5 mt-3" style="margin-top: 10px">
                 <label class="col-2 mt-1">Gambar Lahan</label>
                 <input type="file" id="gambar-lahan">
+            </div>
+
+              <div class="row input pl-5 mt-2">
+                <label class="col-2 mt-3">Luas Lahan</label>
+                <input type="number" class="col-9 form-control mt-2" placeholder="Masukan Luas Lahan">
             </div>
     
             <div class="row input pl-5 mt-3" style="margin-top: 10px">

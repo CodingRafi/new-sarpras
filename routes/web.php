@@ -64,6 +64,14 @@ Route::get('reset-password', function () {
 Route::get('edit-ruangkelas', function () {
     return view('bangunan.kelas.edit');
 });
+
+Route::get('edit-labkomputer', function () {
+    return view('bangunan.labKomputer.edit');
+});
+
+Route::get('edit-toilet', function () {
+    return view('bangunan.toilet.edit');
+});
 // |-------------------------------------------------------------------------- /SEMENTARA |--------------------------------------------------------------------------
 
 Route::group(['middleware' => ['auth']], function() {
