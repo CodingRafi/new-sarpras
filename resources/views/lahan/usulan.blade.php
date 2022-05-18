@@ -36,7 +36,6 @@
                                             <th class="text-center" scope="col">Alamat</th>
                                             <th class="text-center" scope="col">Proposal Lahan</th>
                                             <th class="text-center" scope="col">Status Usulan</th>
-                                            <th class="text-center" scope="col">Keterangan</th>
                                             <th class="text-center" scope="col">Aksi</th>
                                         </tr>
                                     </thead>
@@ -59,7 +58,6 @@
                                                 </a>
                                             </td>
                                             <td class="text-center">{{ $usulan->status }}</td>
-                                            <td></td>
                                             <td class="text-center">
                                                 <form action="/usulan-lahan/{{ $usulan->id }}" method="post">
                                                     @csrf
@@ -126,14 +124,6 @@
                                     <input type="file" id="chooseFile" accept=".pdf" name="proposal" required>
                                 </div>
                                 {{-- end upload file(pdf) --}}
-
-                                {{-- input status usulan --}}
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Status Usulan</label>
-                                    <input type="text" class="form-control col-sm-9" placeholder="Masukan Status Usulan"
-                                        id="status-usulan" name="status" required>
-                                </div>
-                                {{-- end input status usulan --}}
 
                                 {{-- button simpan --}}
                                 <button type="submit" class="btn text-white col-sm-1"

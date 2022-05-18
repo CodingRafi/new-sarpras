@@ -18,12 +18,22 @@ class LahanController extends Controller
 
         $luasKekuranganLahan = 0;
         $luasKetersediaanLahan = 0;
+        $shm = 0;
+        $hgb = 0;
+        $sewa = 0;
 
         foreach($kekuranganLahan as $lahan){
             $luasKekuranganLahan += $lahan->luas;
         }
 
         foreach($ketersediaanLahan as $lahan){
+            if($lahan->jenis_kepemilikan == 'shm'){
+                $shm += 1;
+            }else if($lahan->jenis_kepemilikan == 'hgb'){
+                $hgb += 1;
+            }else{
+                $sewa += 1; 
+            }
             $luasKetersediaanLahan += $lahan->luas;
         }
 
@@ -32,7 +42,10 @@ class LahanController extends Controller
             'kekuranganLahans' => $kekuranganLahan,
             'usulanLahans' => $usulanLahan,
             'luasKekuranganLahan' => $luasKekuranganLahan,
-            'luasKetersediaanLahan' => $luasKetersediaanLahan
+            'luasKetersediaanLahan' => $luasKetersediaanLahan,
+            'shm' => $shm,
+            'hgb' => $hgb,
+            'sewa' => $sewa
         ]);
     }
 }

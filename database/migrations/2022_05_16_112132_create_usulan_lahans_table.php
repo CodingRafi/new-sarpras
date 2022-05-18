@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('luas');
             $table->text('alamat');
             $table->string('proposal');
-            $table->string('status');
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

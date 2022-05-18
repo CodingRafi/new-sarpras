@@ -100,7 +100,33 @@ class KetersediaanLahanController extends Controller
      */
     public function update(UpdateKetersediaanLahanRequest $request, KetersediaanLahan $ketersediaanLahan)
     {
-        //
+        if($ketersediaanLahan->profil_id == Auth::user()->profil_id){
+            $validatedData = $request->validate([
+                'nama' => 'required',
+                'no_sertifikat' => 'required',
+                'panjang' => 'required',
+                'lebar' => 'required',
+                'luas' => 'required',
+                'alamat' => 'required',
+                'jenis_kepemilikan' => 'required',
+                'keterangan' => 'required'
+            ]);
+
+            if($request->file('bukti_lahan')){
+                if($request->dokumenOld){
+                    Storage::delete($request->dokumenOld);
+                }
+                $validatedData['bukti_lahan'] = $request->file('bukti_lahan')->store('bukti_lahan');
+            }
+
+            KetersediaanLahan::where('id', $ketersediaanLahan->id)->update($validatedData);
+
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Ketersediaan lahan ' . $request->nama);
+
+            return redirect('/lahan');
+        }else{
+            abort(403);
+        }
     }
 
     /**

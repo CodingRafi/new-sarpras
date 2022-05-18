@@ -42,7 +42,7 @@
     <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
             <a class="nav-link mr-2" data-toggle="dropdown" href="#" style="padding: 0;">
-                <span class="nama-sekolah text-white mr-2">user name</span>
+                <span class="nama-sekolah text-white mr-2">{{ Auth::user()->name }}</span>
                 <img src="/assets/img/avatars/TarunaBhaktiLogo.png" alt="TarunaBhakti Logo"
                     class="brand-image img-circle bg-white" width="33" style="opacity: .8">
             </a>
