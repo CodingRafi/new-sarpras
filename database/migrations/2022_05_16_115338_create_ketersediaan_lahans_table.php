@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('lebar');
             $table->string('luas');
             $table->string('alamat');
-            $table->string('jenis_kepemilikan');
+            $table->enum('jenis_kepemilikan', ['sewa', 'hgb', 'shm']);
             $table->string('keterangan');
             $table->string('bukti_lahan');
             $table->timestamps();

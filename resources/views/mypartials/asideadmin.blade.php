@@ -20,11 +20,21 @@
 
                 {{------------------------------------------------------------------------------------------ DASHBOARD ------------------------------------------------------------------------------------------}}
                 <li class="nav-item">
-                    <a href="/profil/{{ Auth::user()->profil_id }}" class="nav-link {{ Request::is('profil/*') ? 'active' : '' }}">
+                    <a href="{{ session('route') }}" class="nav-link {{ Request::is(session('route')) ? 'active' : '' }}">
                         <i class="nav-icon bi bi-house"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
+
+                @can('view_profiladmin')     
+                {{------------------------------------------------------------------------------------------ LIST SEKOLAH & PROFIL SEKOLAH ------------------------------------------------------------------------------------------}}
+                <li class="nav-item">
+                    <a href="/profil/admin" class="nav-link {{ Request::is('profil/*') ? 'active' : '' }}">
+                        <i class="nav-icon bi bi-book-half"></i>
+                        <p>Profil Sekolah</p>
+                    </a>
+                </li>
+                @endcan
 
                 {{------------------------------------------------------------------------------------------ LAHAN SEKOLAH ------------------------------------------------------------------------------------------}}
                 <li class="nav-item has-treeview {{ Request::is('lahan') ? 'menu-open' : (Request::is('usulan-lahan') ? 'menu-open' : '') }}">

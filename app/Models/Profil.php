@@ -37,6 +37,14 @@ class Profil extends Model
         return $this->belongsTo(Kelas::class);
     }
 
+    public function usulanBangunan(){
+        return $this->hasMany(UsulanBangunan::class);
+    }
+
+    public function praktik(){
+        return $this->hasMany(Praktik::class);
+    }
+
     public function scopeSearch($query, array $search)
     {
         // dd($query->where('npsn', 'like', '%' . $search['search'] . '%'));

@@ -48,10 +48,10 @@ class UsulanLahanController extends Controller
             'panjang' => 'required',
             'lebar' => 'required',
             'alamat' => 'required',
-            'status' => 'required',
             'proposal' => 'required|mimes:pdf|file|max:5120'
         ]);
         
+        $validatedData['status'] = 'Proses Pengajuan';
         $validatedData['proposal'] = $request->file('proposal')->store('proposal-lahan');
         $validatedData['jenis_usulan'] = 'lahan';
         $validatedData['luas'] = $request->panjang * $request->lebar;

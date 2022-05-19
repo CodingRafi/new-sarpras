@@ -8,6 +8,7 @@ use App\Models\Log;
 use App\Models\User;
 use App\Models\Kompeten;
 use App\Models\Koleksi;
+use App\Models\Kelas;
 use App\Models\Jeniskoleksi;
 use App\Models\ProfilDepo;
 use App\Http\Requests\StoreProfilRequest;
@@ -156,6 +157,10 @@ class ProfilController extends Controller
             Log::createLog($profil->id, Auth::user()->id, 'Mengubah Data Sekolah');
     
             Profil::where('id' , $profil->id)->update($validatedData);
+
+            $ketersediaan = Kelas::where('profil_id', Auth::user()->profil_id)->get()[0]->ketersediaan;
+
+            Kelas::kondisi_ideal($request->jml_rombel, $ketersediaan);
     
             if(count($profil->kompeten) == 0){
                 $validatedData['jml_siswa_l'] = 0;

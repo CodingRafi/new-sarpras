@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use ImageOptimizer;
+use Illuminate\Support\Facades\Storage;
 
 class UsulanFoto extends Model
 {
@@ -19,11 +21,32 @@ class UsulanFoto extends Model
 
     public static function fotos($koleksis){
         $fotos = [];
-
+        
         foreach($koleksis as $koleksi){
             $fotos[] = $koleksi[0]->usulanFoto; 
         }
-
+        
         return $fotos;
+    }
+
+    public static function uploadFoto($gambar, $koleksi){
+        if(count($gambar) > 0){ // mengecek lagi bener bener ada gak isinya
+            $files = [];
+            foreach($gambar as $file){
+                $nama = $file->store('fotoUsulan');
+                ImageOptimizer::optimize('storage/' . $nama);
+                UsulanFoto::create([
+                    'usulan_koleksi_id' => $koleksi->id,
+                    'nama' => $nama
+                ]);
+            }
+        }
+    }
+
+    public static function deleteFoto($fotos){
+        foreach ($fotos as $key => $foto) {
+            Storage::delete($foto->nama);
+            UsulanFoto::destroy($foto->id);
+        }
     }
 }

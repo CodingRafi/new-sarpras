@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('praktiks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('profil_id');
+            $table->foreignId('kompeten_id');
+            $table->string('jml_ruang');
+            $table->enum('status', ['ideal', 'tidak_ideal']);
+            $table->string('jml_ideal');
+            $table->string('keterangan');
             $table->timestamps();
         });
     }
