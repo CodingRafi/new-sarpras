@@ -48,7 +48,7 @@
     <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="card mb-5">
-            <div class="card-header bg-info">
+            <div class="card-header" style="background-color: #25b5e9">
                 <ul class="nav nav-pills ml-auto">
                     <li class="nav-item">
                         <a class="nav-link text-white active" href="#data-sekolah" data-toggle="tab"><i
@@ -241,13 +241,13 @@
                             <!-- /.card-body DATA SEKOLAH-->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-success">Simpan</button>
+                                <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
                             </div>
                         </form>
                     </div>
                     <div class="chart tab-pane p-3" id="foto-sekolah" style="height: 40rem;overflow: auto;">
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
-                            <a href="/koleksi/create/{{ $profil->id }}" class="btn btn-info" data-toggle="modal"
+                            <a href="/koleksi/create/{{ $profil->id }}" class="btn text-white" style="background-color: #00a65b" data-toggle="modal"
                                 data-target="#buat-koleksi">Buat Koleksi</a>
                         </div>
                         <div class="row row-cols-2">
@@ -291,7 +291,7 @@
                                                             class="d-inline-block">
                                                             @csrf
                                                             @method('delete')
-                                                            <button type="submit" class="btn btn-danger"
+                                                            <button type="submit" class="btn text-white" style="background-color: #25b5e9"
                                                                 onclick="return confirm('Apakah anda yakin akan menghapus koleksi ini?')">Hapus</button>
                                                         </form>
                                                     </div>
@@ -387,7 +387,7 @@
                                                     <option value="5">Lainnya</option>
                                                 </select>
                                             </div>
-                                            <button type="submit" class="btn btn-primary">Simpan</button>
+                                            <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
                                         </form>
                                     </div>
                                 </div>
@@ -403,11 +403,11 @@
         <div class="row mb-5">
             <div class="col-lg-3 col-6">
                 <!-- small box -->
-                <div class="info-box mb-3 bg-success">
-                    <span class="info-box-icon"><i class="bi bi-people-fill h1"></i></span>
+                <div class="info-box mb-3" style="background-color: #00a65b">
+                    <span class="info-box-icon"><i class="bi bi-people-fill h1 text-white"></i></span>
 
                     {{-- ---------------------------------------------------------------------------------------- JUMLAH ROMBEL ---------------------------------------------------------------------------------------- --}}
-                    <div class="info-box-content">
+                    <div class="info-box-content text-white">
                         <span class="info-box-text">Jumlah Rombel</span>
                         <span class="info-box-number h1">{{ $profil->jml_rombel ?? '0' }}</span>
                     </div>
@@ -417,11 +417,11 @@
             <!-- ./col -->
             <div class="col-lg-3 col-6">
                 <!-- small box -->
-                <div class="info-box mb-3 bg-info">
-                    <span class="info-box-icon"><i class="bi bi-person-badge-fill h1"></i></span>
+                <div class="info-box mb-3" style="background-color: #25b5e9">
+                    <span class="info-box-icon"><i class="bi bi-person-badge-fill h1 text-white"></i></span>
 
                     {{-- ---------------------------------------------------------------------------------------- JUMLAH JURUSAN ---------------------------------------------------------------------------------------- --}}
-                    <div class="info-box-content">
+                    <div class="info-box-content text-white">
                         <span class="info-box-text">Jumlah Jurusan</span>
                         <span class="info-box-number h1">{{ $kopetensikeahlians->count() }}</span>
                     </div>
@@ -445,11 +445,11 @@
             <!-- ./col -->
             <div class="col-lg-3 col-6">
                 <!-- small box -->
-                <div class="info-box mb-3 bg-dark">
-                    <span class="info-box-icon"><i class="bi bi-person-fill h1"></i></span>
+                <div class="info-box mb-3" style="background-color: #263238">
+                    <span class="info-box-icon"><i class="bi bi-person-fill h1 text-white"></i></span>
 
                     {{-- ---------------------------------------------------------------------------------------- JUMLAH SISWA ---------------------------------------------------------------------------------------- --}}
-                    <div class="info-box-content">
+                    <div class="info-box-content text-white">
                         <span class="info-box-text">Jumlah Siswa</span>
                         <span class="info-box-number h1">{{ $profil->jml_siswa_l + $profil->jml_siswa_p }}</span>
                     </div>
@@ -466,7 +466,7 @@
 
                 <!-- Data Siswa card-->
                 <div class="card">
-                    <div class="card-header bg-info">
+                    <div class="card-header" style="background-color: #25b5e9">
                         <ul class="nav nav-pills">
                             <li class="nav-item">
                                 <a class="nav-link text-white active"><i class="bi bi-person-fill mr-1"></i>Data Siswa</a>
@@ -479,30 +479,30 @@
                             <tbody>
                                 {{-- ---------------------------------------------------------------------------------------- NAMA SEKOLAH ---------------------------------------------------------------------------------------- --}}
                                 <tr>
-                                    <th>Keterangan</th>
-                                    <th>Data Terkini</th>
-                                    <th>Data Dapodik</th>
+                                    <th class="text-center">Keterangan</th>
+                                    <th class="text-center">Data Terkini</th>
+                                    <th class="text-center">Data Dapodik</th>
                                 </tr>
 
                                 {{-- ---------------------------------------------------------------------------------------- JUMLAH SISWA LAKI-LAKI ---------------------------------------------------------------------------------------- --}}
                                 <tr>
-                                    <th>Laki-laki</th>
-                                    <td>{{ $profil->jml_siswa_l }}</td>
-                                    <td>{{ $profil_depo->depo_jml_siswa_l }}</td>
+                                    <th class="text-center">Laki-laki</th>
+                                    <td class="text-center">{{ $profil->jml_siswa_l }}</td>
+                                    <td class="text-center">{{ $profil_depo->depo_jml_siswa_l }}</td>
                                 </tr>
 
                                 {{-- ---------------------------------------------------------------------------------------- JUMLAH SISWA PEREMPUAN ---------------------------------------------------------------------------------------- --}}
                                 <tr>
-                                    <th>Perempuan</th>
-                                    <td>{{ $profil->jml_siswa_p }}</td>
-                                    <td>{{ $profil_depo->depo_jml_siswa_p }}</td>
+                                    <th class="text-center">Perempuan</th>
+                                    <td class="text-center">{{ $profil->jml_siswa_p }}</td>
+                                    <td class="text-center">{{ $profil_depo->depo_jml_siswa_p }}</td>
                                 </tr>
 
                                 {{-- ---------------------------------------------------------------------------------------- JUMLAH TOTAL ---------------------------------------------------------------------------------------- --}}
                                 <tr>
-                                    <th>Jumlah</th>
-                                    <td>{{ $profil->jml_siswa_l + $profil->jml_siswa_p }}</td>
-                                    <td>{{ $profil_depo->depo_jml_siswa_l + $profil_depo->depo_jml_siswa_p }}
+                                    <th class="text-center">Jumlah</th>
+                                    <td class="text-center">{{ $profil->jml_siswa_l + $profil->jml_siswa_p }}</td>
+                                    <td class="text-center">{{ $profil_depo->depo_jml_siswa_l + $profil_depo->depo_jml_siswa_p }}
                                     </td>
                                 </tr>
                             </tbody>
@@ -520,7 +520,7 @@
 
                 <!-- Kompetensi Keahlian card -->
                 <div class="card">
-                    <div class="card-header bg-success">
+                    <div class="card-header" style="background-color: #fcc12d">
                         <ul class="nav nav-pills">
                             <li class="nav-item">
                                 <a class="nav-link text-white awalKopetensi active" href="#kompetensi-keahlian"
@@ -582,7 +582,7 @@
                                         </tbody>
                                     </table>
                                 @else
-                                    <div class="alert text-center text-white" role="alert" style="background: #17A2B8;">
+                                    <div class="alert text-center text-white" role="alert" style="background: #00a65b;">
                                         Maaf belum ada jurusan dipilih
                                     </div>
                                 @endif
@@ -634,7 +634,7 @@
                                         </div>
                                     </form>
                                 @else
-                                    <div class="alert text-center text-white" role="alert" style="background: #17A2B8;">
+                                    <div class="alert text-center text-white" role="alert" style="background: #00a65b;">
                                         Maaf belum ada jurusan dipilih
                                     </div>
                                 @endif
@@ -705,7 +705,7 @@
 
                 <!-- Log Pengguna card -->
                 <div class="card">
-                    <div class="card-header bg-secondary">
+                    <div class="card-header" style="background-color: #263238">
                         <ul class="nav nav-pills">
                             <li class="nav-item">
                                 <a class="nav-link text-white active"><i class="bi bi-card-heading mr-1"></i>Log
@@ -736,8 +736,8 @@
 
         <!-- Riwayat Update Data card -->
         <div class="card">
-            <div class="card-header bg-secondary">
-                <h3 class="card-title">
+            <div class="card-header" style="background-color: #263238">
+                <h3 class="card-title text-white">
                     <i class="nav-icon bi bi-alarm-fill mr-1"></i>
                     Rekap
                 </h3>
@@ -746,23 +746,23 @@
                 <table id="example2" class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>No</th>
-                            <th>Kategori</th>
-                            <th>Nama</th>
-                            <th>Kondisi</th>
-                            <th>Keterangan</th>
-                            <th>Aksi</th>
+                            <th class="text-center">No</th>
+                            <th class="text-center">Kategori</th>
+                            <th class="text-center">Nama</th>
+                            <th class="text-center">Kondisi</th>
+                            <th class="text-center">Keterangan</th>
+                            <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1.</td>
-                            <td>Lahan</td>
-                            <td>Tanah 1</td>
-                            <td>SHM</td>
-                            <td>Ideal</td>
-                            <td>
-                                <div class="btn btn-success">Detail</div>
+                            <td class="text-center">1.</td>
+                            <td class="text-center">Lahan</td>
+                            <td class="text-center">Tanah 1</td>
+                            <td class="text-center">SHM</td>
+                            <td class="text-center">Ideal</td>
+                            <td class="text-center">
+                                <div class="btn text-white" style="background-color: #00a65b">Detail</div>
                             </td>
                         </tr>
                     </tbody>

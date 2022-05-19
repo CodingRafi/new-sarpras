@@ -60,8 +60,8 @@
                     </div>
                     {{-- end card header --}}
                     {{-- card body --}}
-                    <div class="card-body">
-                        <h1 class="text-center font-weight-bold pt-2">{{ $dataKelas->kondisi_ideal }} Kelas</h1>
+                    <div class="card-body" style="height: 92px; box-sizing:border-box">
+                        <h1 class="text-center font-weight-bold pt-2" style="font-size: 18px; box-sizing:border-box">{{ $dataKelas->kondisi_ideal }} Kelas</h1>
                         <div id="emailHelp" class="form-text text-center">{{ ($dataKelas->kondisi_ideal == $dataKelas->ketersediaan) ? 'Ideal' : 'Tidak Ideal' }}</div>
                     </div>
                     {{-- end card body --}}
@@ -228,9 +228,8 @@
                             {{-- end input jumlah ruangan --}}
                         </div>
                         <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn text-white" style="background-color: #00a65b">Save
-                                changes</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
                         </div>
                     </form>
                 </div>

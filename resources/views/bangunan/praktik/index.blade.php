@@ -486,7 +486,7 @@
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-warning text-white">Edit</button>
+                        <button type="submit" class="btn text-white" style="background-color: #00a65b">Edit</button>
                     </div>
                 </form>
             </div>

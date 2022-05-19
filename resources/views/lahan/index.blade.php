@@ -56,7 +56,7 @@
                         <h4 class="text-center text-white font-weight-bold">Jenis Kepemilikan</h4>
                     </div><!-- /.card-header -->
                     <div class="card-body">
-                        <h1 class="text-center font-weight-bold pt-2">SHM: {{ $shm }} HGB: {{ $hgb }} Sewa: {{ $sewa }}</h1>
+                        <h1 class="text-center font-weight-bold pt-2" style="font-size: 18px; box-sizing:border-box">SHM: {{ $shm }} HGB: {{ $hgb }} Sewa: {{ $sewa }}</h1>
                     </div><!-- /.card-body -->
                 </div>
             </div>

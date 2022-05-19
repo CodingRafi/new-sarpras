@@ -41,7 +41,7 @@ use App\Http\Controllers\Lahan_sekolah\KetersediaanLahanController;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // |-------------------------------------------------------------------------- SEMENTARA |--------------------------------------------------------------------------
