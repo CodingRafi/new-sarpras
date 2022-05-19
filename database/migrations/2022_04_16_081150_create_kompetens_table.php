@@ -19,6 +19,11 @@ return new class extends Migration
             $table->foreignId('komli_id');
             $table->string('jml_lk');
             $table->string('jml_pr');
+            $table->string('logo')->nullable();
+            $table->string('keterangan')->nullable();
+            $table->string('kondisi_ideal');
+            $table->string('ketersediaan');
+            $table->string('kekurangan');
             $table->timestamps();
         });
     }

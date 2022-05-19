@@ -277,7 +277,7 @@
 
         <!-- modal tambah usulan -->
         <div class="modal fade" id="modal-default">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <form action="/bangunan/usulan-ruang-kelas" method="post" enctype="multipart/form-data">
                         @csrf

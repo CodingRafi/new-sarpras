@@ -25,6 +25,8 @@
     <div class="form-edit pt-3">
 
         <form action="/usulan-bangunan/{{ $data->id }}" method="post">
+            @csrf
+            @method('patch')
             <div class="card pt-3" style="background-color: white; border-radius: 10px; ">
 
 
@@ -67,7 +69,7 @@
                 </div>
 
                 <div class="pb-3 pl-5 mt-4">
-                    <button type="button" class="btn text-white" style="background-color: #00a65b">Simpan</button>
+                    <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
                 </div>
 
                 

@@ -39,16 +39,22 @@
     {{-- Kompetensi Keahlian --}}
     <div class="container d-flex justify-content-center">
         <div class="row" style="width: 95%">
-            <div class="col-4 d-flex justify-content-center mt-4">
-                <div class="card h-15 p-4" style="width: 20rem">
-                    <img src="/img/Kompetensi Keahlian.png" class="card-img-top border rounded-circle" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title mb-2">Rekayasa Perangkat Lunak</h5>
-                        <p class="card-text">30 Siswa</p>
+            @foreach ($kompetens as $id => $kompeten)
+                <div class="col-4 d-flex justify-content-center mt-4">
+                    <div class="card h-15 p-4" style="width: 20rem">
+                        @if ($kompeten->logo)
+                            <h1>ada</h1>
+                        @else
+                            <img src="/img/Kompetensi Keahlian.png" class="card-img-top border rounded-circle" alt="...">
+                        @endif
+                        <div class="card-body">
+                            <h5 class="card-title mb-2">{{ $komlis[$id]->kompetensi }}</h5>
+                            <p class="card-text">{{ $kompeten->jml_lk + $kompeten->jml_pr }} Siswa</p>
+                        </div>
+                        <a href="/kompeten/{{ $kompeten->id }}" class="btn btn-outline-primary">Detail</a>
                     </div>
-                    <button type="button" class="btn btn-outline-primary">Detail</button>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 

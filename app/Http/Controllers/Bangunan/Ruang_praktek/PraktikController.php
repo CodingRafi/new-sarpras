@@ -37,13 +37,14 @@ class PraktikController extends Controller
 
         $data = [];
         $praktiks = Praktik::where('profil_id', Auth::user()->profil_id )->get();
-        foreach($praktiks as $praktik){
+
+        foreach($praktiks as $ke => $praktik){
             $data[] = [
                 'id' => $praktik->id,
                 'kompeten_id' => $praktik->kompeten_id,
                 'jml_ruang' => $praktik->jml_ruang,
                 'status' => $praktik->status,
-                'jml_ideal' => $praktik->jml_ideal,
+                'jml_ideal' => Kompeten::where('id', $praktik->kompeten_id)->get()[0]->kondisi_ideal,
                 'keterangan' => $praktik->keterangan,
                 'jurusan' => Kompeten::where('id', $praktik->kompeten_id)->get()[0]->komli->kompetensi
             ];

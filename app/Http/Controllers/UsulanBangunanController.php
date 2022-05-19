@@ -105,6 +105,8 @@ class UsulanBangunanController extends Controller
                 $jenis = 'Ruang Kelas';
             }elseif($usulanBangunan == 'ruang_praktek'){
                 $jenis = 'Ruang Praktek';
+            }elseif($usulanBangunan == 'lab_komputer'){
+                $jenis = 'Lab Komputer';
             }
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Membatalkan Usulan bangunan ' . $jenis);

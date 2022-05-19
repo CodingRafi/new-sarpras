@@ -98,6 +98,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::patch('/kompeten/tambahsiswa/{id:profil}', [KompetenController::class, 'update']);
     Route::resource('/kompeten', KompetenController::class);
     Route::get('/kompeten/create/{id:profil}', [KompetenController::class, 'create']);
+    Route::patch('/kompeten/update-ketersediaan/{id}', [KompetenController::class, 'updateKetersediaan']);
+    Route::patch('/kompeten/update-kekurangan/{id}', [KompetenController::class, 'updateKekurangan']);
     Route::resource('/koleksi', KoleksiController::class);
     Route::get('/koleksi/create/{id:profil}', [KoleksiController::class, 'create']);
     Route::patch('/koleksi/update-koleksi', [KoleksiController::class, 'update']);
@@ -114,6 +116,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::patch('/bangunan/ruang-praktik', [PraktikController::class, 'update']);
     Route::post('/bangunan/usulan-ruang-praktik', [PraktikController::class, 'createusulan']);
     Route::resource('/bangunan/lab-komputer', KomputerController::class);
+    Route::post('/bangunan/usulan-lab-komputer', [KomputerController::class, 'createusulan']);
     Route::resource('/bangunan/ruang-perpustakaan', PerpustakaanController::class);
     Route::resource('/bangunan/ruang-rehabrenov', RehabRenovController::class);
     Route::resource('/bangunan/toilet', ToiletController::class);
