@@ -13,4 +13,12 @@ class Praktik extends Model
         "id"
     ];
 
+    public function profil(){
+        return $this->belongsTo(Profil::class);
+    }
+
+    public function kompeten(){
+        return $this->belongsTo(Kompeten::class);
+    }
+
 }

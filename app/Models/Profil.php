@@ -41,6 +41,10 @@ class Profil extends Model
         return $this->hasMany(UsulanBangunan::class);
     }
 
+    public function praktik(){
+        return $this->hasMany(Praktik::class);
+    }
+
     public function scopeSearch($query, array $search)
     {
         // dd($query->where('npsn', 'like', '%' . $search['search'] . '%'));

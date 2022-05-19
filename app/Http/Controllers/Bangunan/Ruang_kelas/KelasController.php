@@ -99,6 +99,11 @@ class KelasController extends Controller
 
             $data->update($validatedData);
 
+            $ketersediaan = Kelas::where('profil_id', Auth::user()->profil_id)->get()[0]->ketersediaan;
+            $jml_rombel = Profil::where('id', Auth::user()->profil_id)->get()[0]->jml_rombel;
+
+            Kelas::kondisi_ideal($jml_rombel, $ketersediaan);
+
             if($request->ketersediaan != ''){
                 Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah jumlah ketersediaan ruang kelas');
             }else{
@@ -131,6 +136,8 @@ class KelasController extends Controller
             'proposal' => 'required|mimes:pdf',
             'gambar.*' => 'mimes:jpg,jpeg,png|file|max:5120'
         ]);
+
+        $validatedData['keterangan'] = 'Proses Pengajuan';
 
         UsulanBangunan::createUsulan($request, 'ruang_kelas', $validatedData);
 

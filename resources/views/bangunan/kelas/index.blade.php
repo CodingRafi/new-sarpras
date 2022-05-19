@@ -61,7 +61,8 @@
                     {{-- end card header --}}
                     {{-- card body --}}
                     <div class="card-body">
-                        <h1 class="text-center font-weight-bold pt-2">{{ $dataKelas->kondisi_ideal }}/ Kelas</h1>
+                        <h1 class="text-center font-weight-bold pt-2">{{ $dataKelas->kondisi_ideal }} Kelas</h1>
+                        <div id="emailHelp" class="form-text text-center">{{ ($dataKelas->kondisi_ideal == $dataKelas->ketersediaan) ? 'Ideal' : 'Tidak Ideal' }}</div>
                     </div>
                     {{-- end card body --}}
                 </div>
@@ -79,7 +80,7 @@
                     {{-- end card header --}}
                     {{-- card body --}}
                     <div class="card-body">
-                        <h1 class="text-center font-weight-bold pt-2">{{ $dataKelas->ketersediaan }}</h1>
+                        <h1 class="text-center font-weight-bold pt-2">{{ $dataKelas->ketersediaan }} Kelas</h1>
                     </div>
                     {{-- end card body --}}
                 </div>
@@ -90,15 +91,11 @@
                     {{-- card header --}}
                     <div class="card-header text-white" href="" style="background-color: #263238">
                         <h4 class="card-title">Kekurangan</h4>
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool text-white"><i class="bi bi-pencil-square"
-                                    data-toggle="modal" data-target="#modal-kekurangan"></i></button>
-                        </div>
                     </div>
                     {{-- end card header --}}
                     {{-- card body --}}
                     <div class="card-body">
-                        <h1 class="text-center font-weight-bold pt-2">{{ $dataKelas->kekurangan }}</h1>
+                        <h1 class="text-center font-weight-bold pt-2">{{ $dataKelas->kekurangan }} Kelas</h1>
                     </div>
                     {{-- end card body --}}
                 </div>
@@ -151,7 +148,7 @@
                                             @foreach ($usulanKelas as $key => $usulan)
                                                 <tr>
                                                     <th class="text-center">{{ $loop->iteration }}</th>
-                                                    <td class="text-center">{{ $usulan->jenis }}</td>
+                                                    <td class="text-center text-capitalize">{{ str_replace("_", " ", $usulan->jenis) }}</td>
                                                     <td class="text-center">{{ $usulan->jml_ruang }}</td>
                                                     <td class="text-center">{{ $usulan->luas_lahan }} M</td>
                                                     <td class="text-center" style="vertical-align: middle">
@@ -170,7 +167,7 @@
                                                             <img src="/img/pdf.png" alt="image" style="width: 30px">
                                                         </a>
                                                     </td>
-                                                    <td></td>
+                                                    <td class="text-center">{{ $usulan->keterangan }}</td>
                                                     <td class="text-center">
                                                         <form action="/bangunan/usulan-ruang-kelas/{{ $usulan->id }}"
                                                             method="post">

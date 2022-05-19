@@ -69,7 +69,24 @@ class PraktikController extends Controller
      */
     public function store(StorePraktikRequest $request)
     {
-        //
+        $validatedData = $request->validate([
+            'kompeten_id' => 'required',
+            'jml_ruang' => 'required'
+        ]);
+
+        $validatedData['status'] = 'ideal';
+        $validatedData['jml_ideal'] = '16';
+        $validatedData['keterangan'] = 'sudah cukup';
+        $validatedData['profil_id'] = Auth::user()->profil_id;
+
+        $kompeten = Kompeten::where('id', $request->kompeten_id)->get()[0]->komli;
+
+        Praktik::create($validatedData);
+
+        Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan Ketersedian ruang praktek' . $kompeten->kompetensi);
+
+        return redirect()->back();
+
     }
 
     /**
