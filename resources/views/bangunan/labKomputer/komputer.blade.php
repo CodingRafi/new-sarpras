@@ -1,5 +1,15 @@
 @extends('myLayouts.main')
 
+@section('tambahcss')
+<style>
+    .input-group-prepend button i {
+        position: absolute;
+        left: 20px;
+    }
+
+</style>
+@endsection
+
 @section('container')
 
 <!-- Content Header (Page header) -->
@@ -59,7 +69,7 @@
                     <h3 class="card-title text-white">Ketersediaan</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool text-white" data-toggle="modal"
-                        data-target="#edit-ketersediaan"><i class="bi bi-pencil-square"></i>
+                            data-target="#edit-ketersediaan"><i class="bi bi-pencil-square"></i>
                         </button>
                     </div>
                 </div>
@@ -90,7 +100,8 @@
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <button type="submit" class="btn text-white float-right" style="background-color: #00a65b">Simpan</button>
+                                    <button type="submit" class="btn text-white float-right"
+                                        style="background-color: #00a65b">Simpan</button>
                                 </div>
                             </form>
                         </div>
@@ -105,8 +116,8 @@
                 <div class="card-header">
                     <h3 class="card-title">Kekurangan</h3>
                     <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-toggle="modal"
-                        data-target="#edit-kekurangan"><i class="bi bi-pencil-square"></i>
+                        <button type="button" class="btn btn-tool" data-toggle="modal" data-target="#edit-kekurangan"><i
+                                class="bi bi-pencil-square"></i>
                         </button>
                     </div>
                 </div>
@@ -138,7 +149,8 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <button type="submit" class="btn text-white float-right" style="background-color: #00a65b">Simpan</button>
+                                <button type="submit" class="btn text-white float-right"
+                                    style="background-color: #00a65b">Simpan</button>
                             </div>
                         </form>
                     </div>
@@ -152,7 +164,8 @@
         <div class="card-header" style="background-color: #25b5e9">
             <h3 class="card-title">Usulan Lab Komputer</h3>
             <div class="card-tools">
-                <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal" data-target="#tambah-usulan"><i class="bi bi-plus"></i> Tambah Usulan
+                <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
+                    data-target="#tambah-usulan"><i class="bi bi-plus"></i> Tambah Usulan
                 </button>
             </div>
         </div>
@@ -178,11 +191,29 @@
                         <td class="text-center" style="vertical-align: middle">1</td>
                         <td class="text-center" style="vertical-align: middle">Ruang Komputer</td>
                         <td class="text-center" style="vertical-align: middle">3</td>
-                        <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/assets/img/backgrounds/school.jpg" class="rounded" style="object-fit: cover; width: 100px; aspect-ratio: 1/1;"></a></td>
+                        <td class="text-center" style="vertical-align: middle"><a
+                                href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img
+                                    src="/assets/img/backgrounds/school.jpg" class="rounded"
+                                    style="object-fit: cover; width: 100px; aspect-ratio: 1/1;"></a></td>
                         <td class="text-center" style="vertical-align: middle">100m²</td>
-                        <td class="text-center" style="vertical-align: middle"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
+                        <td class="text-center" style="vertical-align: middle"><img src="/img/pdf.png" alt="image"
+                                style="width: 30px"></td>
                         <td></td>
-                        <td class="text-center" style="vertical-align: middle"><button class="btn btn-success">Batalkan</button></td>
+                        <td>
+                            <div class="card-body">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <button type="button" class="btn" data-toggle="dropdown">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </button>
+                                        <div class="dropdown-menu" style="margin-left: -73px">
+                                            <a class="dropdown-item">Edit</a>
+                                            <a class="dropdown-item">Batalkan</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>
