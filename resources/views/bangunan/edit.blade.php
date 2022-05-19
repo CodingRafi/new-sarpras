@@ -92,6 +92,10 @@
 
         let gambarHapus = [];
 
+        let gambar = gambarHapus.map(function(e, i){
+            console.log(e);
+        });
+
         buttonHapusImage.forEach((e, i) => {
             e.addEventListener('click', function() {
 
@@ -110,8 +114,8 @@
                         </div>
                     </div>`;
                     const myTimeout = setTimeout(function() {
-                        document.querySelector('alert-ke' + i).style.display = 'none';
-                    }, 1000);
+                        document.querySelector('.alert-ke' + i).style.display = 'none';
+                    }, 10000);
                 }
 
             })

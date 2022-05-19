@@ -49,56 +49,6 @@
                     <button type="button" class="btn btn-outline-primary">Detail</button>
                 </div>
             </div>
-            <div class="col-4 d-flex justify-content-center mt-4">
-                <div class="card h-20 p-4" style="width: 20rem">
-                    <img src="/img/Kompetensi Keahlian.png" class="card-img-top border rounded-circle" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title mb-2">Broadcast</h5>
-                        <p class="card-text">30 Siswa</p>
-                    </div>
-                    <button type="button" class="btn btn-outline-primary">Detail</button>
-                </div>
-            </div>
-            <div class="col-4 d-flex justify-content-center mt-4">
-                <div class="card h-20 p-4" style="width: 20rem">
-                    <img src="/img/Kompetensi Keahlian.png" class="card-img-top border rounded-circle" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title mb-2">Teknik Komputer Jaringan</h5>
-                        <p class="card-text">30 Siswa</p>
-                    </div>
-                    <button type="button" class="btn btn-outline-primary">Detail</button>
-                </div>
-            </div>
-            <div class="col-4 d-flex justify-content-center mt-2">
-                <div class="card h-20 p-4" style="width: 20rem">
-                    <img src="/img/Kompetensi Keahlian.png" class="card-img-top border rounded-circle" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title mb-2">Teknik Elektronika Indusrtri</h5>
-                        <p class="card-text">30 Siswa</p>
-                    </div>
-                    <button type="button" class="btn btn-outline-primary">Detail</button>
-                </div>
-            </div>
-            <div class="col-4 d-flex justify-content-center mt-2">
-                <div class="card h-20 p-4" style="width: 20rem">
-                    <img src="/img/Kompetensi Keahlian.png" class="card-img-top border rounded-circle" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title mb-2">Multimedia</h5>
-                        <p class="card-text">30 Siswa</p>
-                    </div>
-                    <button type="button" class="btn btn-outline-primary">Detail</button>
-                </div>
-            </div>
-            <div class="col-4 d-flex justify-content-center mt-2">
-                <div class="card h-20 p-4" style="width: 20rem">
-                    <img src="/img/Kompetensi Keahlian.png" class="card-img-top border rounded-circle" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title mb-2">Akutansi</h5>
-                        <p class="card-text">30 Siswa</p>
-                    </div>
-                    <button type="button" class="btn btn-outline-primary">Detail</button>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -116,93 +66,64 @@
             <div class="card-body">
                 <div class="tab-content">
                     <div class="tab-pane active" id="">
-                        <table class="table table-bordered table-hover text-center">
-                            <thead>
-                                <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">Jurusan</th>
-                                    <th scope="col">Jumlah Ruangan</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Jumlah Ideal</th>
-                                    <th scope="col">Keterangan</th>
-                                    <th scope="col">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Multimedia</td>
-                                    <td>10</td>
-                                    <td>Ideal</td>
-                                    <td>16 Siswa / Kelas</td>
-                                    <td></td>
-                                    <td>
-                                        <div class="card-body">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <button type="button" class="btn" data-toggle="dropdown">
-                                                        <i class="bi bi-three-dots-vertical"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item" data-toggle="modal"
-                                                            data-target="#modal-edit">Edit</a>
-                                                        <a class="dropdown-item" href="">Hapus</a>
+                        @if (count($datas) > 0)
+                            <table class="table table-bordered table-hover text-center">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Jurusan</th>
+                                        <th scope="col">Jumlah Ruangan</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Jumlah Ideal</th>
+                                        <th scope="col">Keterangan</th>
+                                        <th scope="col">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($datas as $data)
+                                        <tr>
+                                            <input type="hidden" class="id-ruangPraktik" value="{{ $data['id'] }}">
+                                            <th scope="row">{{ $loop->iteration }}</th>
+                                            <td class="jurusan">{{ $data['jurusan'] }}</td>
+                                            <td class="jml_ruang">{{ $data['jml_ruang'] }}</td>
+                                            <td class="status">{{ $data['status'] }}</td>
+                                            <td class="jml_ideal">{{ $data['jml_ideal'] }} Siswa / Kelas</td>
+                                            <td class="keterangan">{{ $data['keterangan'] }}</td>
+                                            <td>
+                                                <div class="card-body">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <button type="button" class="btn edit-ketersediaan"
+                                                                data-toggle="dropdown">
+                                                                <i class="bi bi-three-dots-vertical"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu">
+                                                                <a class="dropdown-item" data-toggle="modal"
+                                                                    data-target="#modal-edit">Edit</a>
+
+                                                                <form action="/bangunan/ruang-praktik/{{ $data['id'] }}"
+                                                                    method="post">
+                                                                    @csrf
+                                                                    @method('delete')
+                                                                    <button type="submit" class="dropdown-item"
+                                                                        onclick="return confirm('Apakah anda yakin akan menghapus ketersedian ruang praktek ini?')">Hapus</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Multimedia</td>
-                                    <td>10</td>
-                                    <td>Ideal</td>
-                                    <td>16 Siswa / Kelas</td>
-                                    <td></td>
-                                    <td>
-                                        <div class="card-body">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <button type="button" class="btn" data-toggle="dropdown">
-                                                        <i class="bi bi-three-dots-vertical"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item" data-toggle="modal"
-                                                            data-target="#modal-edit">Edit</a>
-                                                        <a class="dropdown-item" href="">Hapus</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Multimedia</td>
-                                    <td>10</td>
-                                    <td>Ideal</td>
-                                    <td>16 Siswa / Kelas</td>
-                                    <td></td>
-                                    <td>
-                                        <div class="card-body">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <button type="button" class="btn" data-toggle="dropdown">
-                                                        <i class="bi bi-three-dots-vertical"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item" data-toggle="modal"
-                                                            data-target="#modal-edit">Edit</a>
-                                                        <a class="dropdown-item" href="">Hapus</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @else
+                            <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                                <div class="alert" role="alert">
+                                    Data Tidak Ditemukan
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -249,7 +170,8 @@
                                             <td>{{ $usulan->jml_ruang }}</td>
                                             <td style="vertical-align: middle">
                                                 @foreach ($usulanFotos[$key] as $ke => $foto)
-                                                    <a href="{{ asset('storage/' . $foto->nama) }}" class="fancybox"
+                                                    <a href="{{ asset('storage/' . $foto->nama) }}"
+                                                        class="fancybox"
                                                         data-fancybox="gallery{{ $key }}"><img
                                                             src="{{ asset('storage/' . $foto->nama) }}"
                                                             class="rounded"
@@ -263,9 +185,9 @@
                                                     <img src="/img/pdf.png" alt="image" style="width: 30px">
                                                 </a>
                                             </td>
+                                            <td>{{ $usulan->keterangan }}</td>
                                             <td>
-                                                <form action="/bangunan/usulan-ruang-praktik/{{ $usulan->id }}"
-                                                    method="post">
+                                                <form action="/usulan-bangunan/{{ $usulan->id }}" method="post">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-success"
@@ -310,9 +232,11 @@
                                         <label for="cars">Jurusan</label>
                                     </div>
                                     <div class="col">
-                                        <select name="kompeten_id" id="cars" class="custom-select col-12">
-                                            @foreach ($komlis as $key => $komli)
-                                                <option value="{{ $kompetens[$key]->id }}">{{ $komli->kompetensi }}
+                                        <select name="kompeten_id" id="cars" class="custom-select col-12"
+                                            name="kompeten_id">
+                                            @foreach ($komliPraktekTersedias as $key => $komli)
+                                                <option value="{{ $kompetenPraktekTersedias[$key]->id }}">
+                                                    {{ $komli->kompetensi }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -431,7 +355,9 @@
     <div class="modal fade" id="modal-edit">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <form action="/kekurangan-lahan/update-kekurangan" method="post">
+                <form action="/bangunan/ruang-praktik" method="post">
+                    @csrf
+                    @method('patch')
                     <div class="modal-header">
                         <h3 class="modal-title">Edit</h3>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -441,44 +367,14 @@
                     <div class="modal-body">
                         <div class="container">
 
-                            <input type="hidden" name="id_kekurangan" class="inputIdKekurangan">
-                            <div class="row mt-2">
-                                <div class="col-3">
-                                    <label for="col-sm-4 col-form-label">Jurusan :</label>
-                                </div>
-                                <div class="col">
-                                    <input type="text" class="form-control col-sm-7 input-nama-edit"
-                                        placeholder="Masukan Nama Jurusan" id="nmajk" name="jurusan" required>
-                                </div>
-                            </div>
-
+                            <input type="hidden" name="id_praktik" class="id_praktik_kirim">
                             <div class="row mt-4">
                                 <div class="col-3">
                                     <label for="col-sm-4 col-form-label">Jumlah Ruangan :</label>
                                 </div>
                                 <div class="col">
-                                    <input type="number" class="form-control col-sm-7 panjang-nama-edit"
-                                        placeholder="Masukan Jumlah Ruang" id="jmlrg" name="ruang" required>
-                                </div>
-                            </div>
-
-                            <div class="row mt-4">
-                                <div class="col-3">
-                                    <label for="col-sm-4 col-form-label">Status :</label>
-                                </div>
-                                <div class="col">
-                                    <input type="number" class="form-control col-sm-7 lebar-nama-edit"
-                                        placeholder="Masukan Status" id="status" name="status" required>
-                                </div>
-                            </div>
-
-                            <div class="row mt-4">
-                                <div class="col-3">
-                                    <label for="col-sm-4 col-form-label">Jumlah Ideal :</label>
-                                </div>
-                                <div class="col">
-                                    <input type="number" class="form-control col-sm-7 lebar-nama-edit"
-                                        placeholder="Masukan Jumlah Ideal" id="jmlidl" name="ideal" required>
+                                    <input type="number" class="form-control col-sm-7 jumlah-ruang-edit"
+                                        placeholder="Masukan Jumlah Ruang" id="jmlrg" name="jml_ruang" required>
                                 </div>
                             </div>
 
@@ -498,4 +394,23 @@
 
 
     {{-- End Main-Content --}}
+@endsection
+
+@section('tambahjs')
+    <script>
+        const editKetersediaan = document.querySelectorAll('.edit-ketersediaan');
+        const jml_ruang = document.querySelectorAll('.jml_ruang');
+        const jumlahRuangEdit = document.querySelector('.jumlah-ruang-edit');
+        const id_praktik_kirim = document.querySelector('.id_praktik_kirim');
+        const idRuangPraktik = document.querySelectorAll('.id-ruangPraktik');
+
+        editKetersediaan.forEach((e, i) => {
+            e.addEventListener('click', function() {
+                jumlahRuangEdit.value = '';
+                jumlahRuangEdit.value = parseInt(jml_ruang[i].innerHTML);
+                id_praktik_kirim.value = '';
+                id_praktik_kirim.value = idRuangPraktik[i].value;
+            })
+        });
+    </script>
 @endsection
