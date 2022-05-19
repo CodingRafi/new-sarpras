@@ -65,6 +65,10 @@ Route::get('edit-ruangkelas', function () {
     return view('bangunan.kelas.edit');
 });
 
+Route::get('edit-usulan', function () {
+    return view('lahan.edit');
+});
+
 Route::get('edit-labkomputer', function () {
     return view('bangunan.labKomputer.edit');
 });
@@ -91,6 +95,10 @@ Route::get('edit-rehabrenov', function () {
 
 Route::get('edit-usulan-peralatan', function () {
     return view('peralatan.edit');
+});
+
+Route::get('admin-lahan', function () {
+    return view('admin.lahan');
 });
 // |-------------------------------------------------------------------------- /SEMENTARA |--------------------------------------------------------------------------
 

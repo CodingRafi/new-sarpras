@@ -34,64 +34,63 @@
                     <div class="row">
                         <div class="col">
                             @if (count($semua_usulan) > 0)
-                            <table class="table table-hover table-border text-nowrap">
-                                {{-- judul table --}}
-                                <thead>
-                                    <tr>
-                                        <th class="text-center" scope="col">No</th>
-                                        <th class="text-center" scope="col">Nama Lahan</th>
-                                        <th class="text-center" scope="col">Jenis Usulan</th>
-                                        <th class="text-center" scope="col">Panjang(M)</th>
-                                        <th class="text-center" scope="col">Lebar(M)</th>
-                                        <th class="text-center" scope="col">Luas Lahan(M²)</th>
-                                        <th class="text-center" scope="col">Alamat</th>
-                                        <th class="text-center" scope="col">Proposal Lahan</th>
-                                        <th class="text-center" scope="col">Status Usulan</th>
-                                        <th class="text-center" scope="col">Keterangan</th>
-                                        <th class="text-center" scope="col">Aksi</th>
-                                    </tr>
-                                </thead>
-                                {{-- end judul table --}}
-
-                                {{-- isi table --}}
-                                <tbody>
-                                    @foreach ($semua_usulan as $usulan)
-                                    <tr>
-                                        <th class="text-center" scope="row">{{ $loop->iteration }}</th>
-                                        <td class="text-center">{{ $usulan->nama }}</td>
-                                        <td class="text-center">{{ $usulan->jenis_usulan }}</td>
-                                        <td class="text-center">{{ $usulan->panjang }} M</td>
-                                        <td class="text-center">{{ $usulan->lebar }} M</td>
-                                        <td class="text-center">{{ $usulan->luas }} M²</td>
-                                        <td class="text-center">{{ $usulan->alamat }}</td>
-                                        <td class="text-center">
-                                            <a href="{{ asset('storage/'. $usulan->proposal) }}" target="_blank"
-                                                rel="noopener noreferrer">
-                                                <img src="/img/pdf.png" alt="image" style="width: 30px">
-                                            </a>
-                                        </td>
-                                        <td class="text-center">{{ $usulan->status }}</td>
-                                        <td></td>
-                                        <td>
-                                            <div class="card-body">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <button type="button" class="btn" data-toggle="dropdown">
-                                                            <i class="bi bi-three-dots-vertical"></i>
-                                                        </button>
-                                                        <div class="dropdown-menu" style="margin-left: -73px">
-                                                            <a class="dropdown-item">Edit</a>
-                                                            <a class="dropdown-item">Batalkan</a>
+                            <div class="table-responsive">
+                                <table class="table table-hover table-border text-nowrap">
+                                    {{-- judul table --}}
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center" scope="col">No</th>
+                                            <th class="text-center" scope="col">Nama Lahan</th>
+                                            <th class="text-center" scope="col">Jenis Usulan</th>
+                                            <th class="text-center" scope="col">Panjang(M)</th>
+                                            <th class="text-center" scope="col">Lebar(M)</th>
+                                            <th class="text-center" scope="col">Luas Lahan(M²)</th>
+                                            <th class="text-center" scope="col">Alamat</th>
+                                            <th class="text-center" scope="col">Proposal Lahan</th>
+                                            <th class="text-center" scope="col">Status Usulan</th>
+                                            <th class="text-center" scope="col">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    {{-- end judul table --}}
+                                    {{-- isi table --}}
+                                    <tbody>
+                                        @foreach ($semua_usulan as $usulan)
+                                        <tr>
+                                            <th class="text-center" scope="row">{{ $loop->iteration }}</th>
+                                            <td class="text-center">{{ $usulan->nama }}</td>
+                                            <td class="text-center">{{ $usulan->jenis_usulan }}</td>
+                                            <td class="text-center">{{ $usulan->panjang }} M</td>
+                                            <td class="text-center">{{ $usulan->lebar }} M</td>
+                                            <td class="text-center">{{ $usulan->luas }} M²</td>
+                                            <td class="text-center">{{ $usulan->alamat }}</td>
+                                            <td class="text-center">
+                                                <a href="{{ asset('storage/'. $usulan->proposal) }}" target="_blank"
+                                                    rel="noopener noreferrer">
+                                                    <img src="/img/pdf.png" alt="image" style="width: 30px">
+                                                </a>
+                                            </td>
+                                            <td class="text-center">{{ $usulan->status }}</td>
+                                            <td>
+                                                <div class="card-body">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <button type="button" class="btn" data-toggle="dropdown">
+                                                                <i class="bi bi-three-dots-vertical"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu" style="margin-left: -73px">
+                                                                <a class="dropdown-item">Edit</a>
+                                                                <a class="dropdown-item">Batalkan</a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                                {{-- end isi table --}}
-                            </table>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                    {{-- end isi table --}}
+                                </table>
+                            </div>
                             @else
                             <div class="container d-flex justify-content-center align-items-center"
                                 style="height: 10rem">
