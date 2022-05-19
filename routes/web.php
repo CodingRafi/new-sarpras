@@ -61,6 +61,18 @@ Route::get('reset-password', function () {
     return view('myauth.resetPassword');
 });
 
+Route::get('edit-ruangkelas', function () {
+    return view('bangunan.kelas.edit');
+});
+
+Route::get('edit-labkomputer', function () {
+    return view('bangunan.labKomputer.edit');
+});
+
+Route::get('edit-toilet', function () {
+    return view('bangunan.toilet.edit');
+});
+
 Route::get('edit-ruangpraktik', function () {
     return view('bangunan.praktik.edit');
 });
