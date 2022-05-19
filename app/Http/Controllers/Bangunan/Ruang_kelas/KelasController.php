@@ -146,21 +146,4 @@ class KelasController extends Controller
         return redirect()->back();
     }
 
-    public function editusulan(Request $request){
-        dd($request);
-    }
-
-    public function deleteusulan(Request $request, $id){
-        $data = UsulanBangunan::where('id', $id)->get()[0];
-        if($data->profil_id == Auth::user()->profil_id){
-            UsulanBangunan::deleteUsulan($data);
-
-            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Membatalkan Usulan bangunan kelas');
-
-            return redirect()->back();
-        }else{
-            abort(403);
-        }
-    }
-
 }

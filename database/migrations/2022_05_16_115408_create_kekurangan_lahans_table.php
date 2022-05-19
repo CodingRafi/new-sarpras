@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('panjang');
             $table->string('lebar');
             $table->string('luas');
+            $table->string('keterangan');
             $table->timestamps();
         });
     }

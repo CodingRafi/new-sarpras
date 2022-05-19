@@ -122,7 +122,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/kekurangan-lahan', KekuranganLahanController::class);
     Route::resource('/bangunan/ruang-kelas', KelasController::class);
     Route::post('/bangunan/usulan-ruang-kelas', [KelasController::class, 'createusulan']);
-    Route::delete('/bangunan/usulan-ruang-kelas/{id}', [KelasController::class, 'deleteusulan']);
     Route::resource('/bangunan/ruang-praktik', PraktikController::class);
     Route::post('/bangunan/usulan-ruang-praktik', [PraktikController::class, 'createusulan']);
     Route::delete('/bangunan/usulan-ruang-praktik/{id}', [PraktikController::class, 'deleteusulan']);
@@ -134,6 +133,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/monev', MonevController::class);
     Route::resource('/peralatan/nama-jurusan', PeralatanController::class);
     Route::resource('/riwayat-bantuan', RiwayatController::class);
+    Route::resource('/usulan-bangunan', UsulanBangunanController::class);
 });
 
 require __DIR__.'/auth.php';

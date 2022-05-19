@@ -124,18 +124,39 @@
                                             {{-- judul table --}}
                                             <thead>
                                                 <tr>
-                                                    <th rowspan="2" class="text-center" style="line-height: 70px">No</th>
-                                                    <th rowspan="2" class="text-center" style="line-height: 70px">Jenis Ruang
-                                                    </th>
-                                                    <th rowspan="2" class="text-center" style="line-height: 70px">Jumlah
-                                                        Ruang
-                                                        Kelas</th>
-                                                    <th colspan="2" class="text-center">Ketersediaan Lahan</th>
-                                                    <th rowspan="2" class="text-center" style="line-height: 70px">Proposal
-                                                    </th>
-                                                    <th rowspan="2" class="text-center" style="line-height: 70px">Keterangan
-                                                    </th>
-                                                    <th rowspan="2" class="text-center" style="line-height: 70px">Aksi</th>
+                                                    <th class="text-center">{{ $loop->iteration }}</th>
+                                                    <td class="text-center text-capitalize">{{ str_replace("_", " ", $usulan->jenis) }}</td>
+                                                    <td class="text-center">{{ $usulan->jml_ruang }}</td>
+                                                    <td class="text-center">{{ $usulan->luas_lahan }} M</td>
+                                                    <td class="text-center" style="vertical-align: middle">
+                                                        @foreach ($usulanFotos[$key] as $ke => $foto)
+                                                            <a href="{{ asset('storage/' . $foto->nama) }}"
+                                                                class="fancybox" data-fancybox="gallery{{ $key }}">
+                                                                <img src="{{ asset('storage/' . $foto->nama) }}"
+                                                                    class="rounded"
+                                                                    style="object-fit: cover; width: 150px; aspect-ratio: 1/1;{{ $ke == 0 ? '' : 'display:none;' }}">
+                                                            </a>
+                                                        @endforeach
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <a href="{{ asset('storage/' . $usulan->proposal) }}"
+                                                            target="_blank">
+                                                            <img src="/img/pdf.png" alt="image" style="width: 30px">
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-center">{{ $usulan->keterangan }}</td>
+                                                    <td class="text-center">
+                                                        <a href="/usulan-bangunan/{{ $usulan->id }}/edit" class="btn btn-warning text-white">Edit</a>
+
+                                                        <form action="/usulan-bangunan/{{ $usulan->id }}"
+                                                            method="post">
+                                                            @csrf
+                                                            @method('delete')
+
+                                                            <button type="submit" class="btn text-white"
+                                                                style="background-color: #00a65b"
+                                                                onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
+                                                        </form>
                                                 </tr>
                                                 <tr>
                                                     <th scope="col" class="text-center">Luas Lahan</th>

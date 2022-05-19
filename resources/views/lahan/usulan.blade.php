@@ -145,23 +145,11 @@
                                 <input type="file" id="chooseFile" accept=".pdf" name="proposal" required>
                             </div>
                             {{-- end upload file(pdf) --}}
-                            {{-- input status usulan --}}
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Status Usulan</label>
-                                <input type="text" class="form-control col-sm-9" placeholder="Masukan Status Usulan"
-                                    id="status-usulan" name="status" required>
-                            </div>
-                            {{-- end input status usulan --}}
 
                             {{-- button simpan --}}
                             <button type="submit" class="btn text-white col-sm-1"
                                 style="background-color: #00a65b">Simpan</button>
                             {{-- end button simpan --}}
-                        </form>
-                                {{-- button simpan --}}
-                                <button type="submit" class="btn text-white col-sm-1"
-                                    style="background-color: #00a65b">Simpan</button>
-                                {{-- end button simpan --}}
                             </form>
                         </div>
                     </div>

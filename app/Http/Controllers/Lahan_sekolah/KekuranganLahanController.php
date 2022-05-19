@@ -42,7 +42,8 @@ class KekuranganLahanController extends Controller
         $validatedData = $request->validate([
             'nama' => 'required',
             'lebar' => 'required',
-            'panjang' => 'required'
+            'panjang' => 'required',
+            'keterangan' => 'required'
         ]);
 
         $validatedData['luas'] = $request->panjang * $request->lebar;
@@ -91,7 +92,8 @@ class KekuranganLahanController extends Controller
             $validatedData = $request->validate([
                 'nama' => 'required',
                 'panjang' => 'required',
-                'lebar' => 'required'
+                'lebar' => 'required',
+                'keterangan' => 'required'
             ]);
 
             $validatedData['luas'] = $request->panjang * $request->lebar;
