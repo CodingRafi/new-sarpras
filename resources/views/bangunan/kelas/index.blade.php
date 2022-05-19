@@ -169,13 +169,12 @@
                                                     </td>
                                                     <td class="text-center">{{ $usulan->keterangan }}</td>
                                                     <td class="text-center">
-                                                        <form action="/bangunan/usulan-ruang-kelas/{{ $usulan->id }}"
+                                                        <a href="/usulan-bangunan/{{ $usulan->id }}/edit" class="btn btn-warning text-white">Edit</a>
+
+                                                        <form action="/usulan-bangunan/{{ $usulan->id }}"
                                                             method="post">
                                                             @csrf
                                                             @method('delete')
-
-                                                             <button type="button" class="btn text-white"
-                                                                style="background-color: #fcc12d" data-toggle="modal" data-target="#modal-edit">Edit</button>
 
                                                             <button type="submit" class="btn text-white"
                                                                 style="background-color: #00a65b"

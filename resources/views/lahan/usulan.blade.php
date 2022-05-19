@@ -47,7 +47,6 @@
                                         <th class="text-center" scope="col">Alamat</th>
                                         <th class="text-center" scope="col">Proposal Lahan</th>
                                         <th class="text-center" scope="col">Status Usulan</th>
-                                        <th class="text-center" scope="col">Keterangan</th>
                                         <th class="text-center" scope="col">Aksi</th>
                                     </tr>
                                 </thead>
@@ -70,8 +69,7 @@
                                                 <img src="/img/pdf.png" alt="image" style="width: 30px">
                                             </a>
                                         </td>
-                                        <td class="text-center">{{ $usulan->status }}</td>
-                                        <td></td>
+                                        <td class="text-center">{{ $usulan->status }}</td>  
                                         <td>
                                             <div class="card-body">
                                                 <div class="input-group">
@@ -81,7 +79,11 @@
                                                         </button>
                                                         <div class="dropdown-menu" style="margin-left: -73px">
                                                             <a class="dropdown-item">Edit</a>
-                                                            <a class="dropdown-item">Batalkan</a>
+                                                            <form action="/usulan-lahan/{{ $usulan->id }}" method="post">
+                                                                @csrf
+                                                                @method('delete')
+                                                                <button type="submit" class="dropdown-item" onclick="return confirm('Apakah anda yakin akan menghapus usulan ini?')">Batalkan</button>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -146,23 +148,11 @@
                                 <input type="file" id="chooseFile" accept=".pdf" name="proposal" required>
                             </div>
                             {{-- end upload file(pdf) --}}
-                            {{-- input status usulan --}}
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Status Usulan</label>
-                                <input type="text" class="form-control col-sm-9" placeholder="Masukan Status Usulan"
-                                    id="status-usulan" name="status" required>
-                            </div>
-                            {{-- end input status usulan --}}
 
                             {{-- button simpan --}}
                             <button type="submit" class="btn text-white col-sm-1"
                                 style="background-color: #00a65b">Simpan</button>
                             {{-- end button simpan --}}
-                        </form>
-                                {{-- button simpan --}}
-                                <button type="submit" class="btn text-white col-sm-1"
-                                    style="background-color: #00a65b">Simpan</button>
-                                {{-- end button simpan --}}
                             </form>
                         </div>
                     </div>

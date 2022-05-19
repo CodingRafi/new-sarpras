@@ -55,6 +55,7 @@ class UsulanBangunanController extends Controller
     {
         //
     }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -64,7 +65,15 @@ class UsulanBangunanController extends Controller
      */
     public function edit(UsulanBangunan $usulanBangunan)
     {
-        //
+        if($usulanBangunan->profil_id == Auth::user()->profil_id){
+            return view('bangunan.edit', [
+                'data' => $usulanBangunan,
+                'fotos' => $usulanBangunan->UsulanKoleksi[0]->usulanFoto
+            ]);
+            dd($usulanBangunan);
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -87,6 +96,22 @@ class UsulanBangunanController extends Controller
      */
     public function destroy(UsulanBangunan $usulanBangunan)
     {
-        //
+        if($usulanBangunan->profil_id == Auth::user()->profil_id){
+            UsulanBangunan::deleteUsulan($usulanBangunan);
+
+            $jenis = '';
+
+            if($usulanBangunan == 'ruang_kelas'){
+                $jenis = 'Ruang Kelas';
+            }elseif($usulanBangunan == 'ruang_praktek'){
+                $jenis = 'Ruang Praktek';
+            }
+
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Membatalkan Usulan bangunan ' . $jenis);
+
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
     }
 }

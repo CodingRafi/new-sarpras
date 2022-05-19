@@ -325,7 +325,7 @@
                                                 <td class="panjang">{{ $lahan->panjang }} m²</td>
                                                 <td class="lebar">{{ $lahan->lebar }} m²</td>
                                                 <td>{{ $lahan->luas }} m²</td>
-                                                <td></td>
+                                                <td class="keterangan">{{ $lahan->keterangan }}</td>
                                                 <td>
                                                     <button type="button" class="btn btn-info tombol-edit"
                                                         data-toggle="modal" data-target="#modal-edit">
@@ -381,6 +381,11 @@
                                 <label class="col-sm-2 col-form-label">Lebar(M)</label>
                                 <input type="number" class="form-control col-sm-9" placeholder="Masukan Lebar Lahan"
                                     id="lebar" name="lebar" required>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Keterangan</label>
+                                <input type="text" class="form-control col-sm-9" placeholder="Keterangan"
+                                id="keterangan" name="keterangan" required>
                             </div>
                             {{-- end input lebar --}}
 
@@ -443,6 +448,16 @@
                                 </div>
                             </div>
 
+                            <div class="row mt-4">
+                                <div class="col-3">
+                                    <label for="col-sm-4 col-form-label">Keterangan :</label>
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control col-sm-7 keterangan-nama-edit"
+                                        placeholder="Keterangan" id="ketereangan" name="keterangan" required>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
@@ -471,8 +486,10 @@
         const nama = document.querySelectorAll('.nama');
         const panjang = document.querySelectorAll('.panjang');
         const lebar = document.querySelectorAll('.lebar');
+        const inputKetereangan = document.querySelector('.keterangan-nama-edit');
         const id_kekuranganLahan = document.querySelectorAll('.id_kekuranganLahan');
         const inputIdKekurangan = document.querySelector('.inputIdKekurangan');
+        const keterangan = document.querySelectorAll('.keterangan');
 
         tombolEdit.forEach((e, i) => {
             e.addEventListener('click', function() {
@@ -485,6 +502,8 @@
                 inputLebarEdit.value = parseInt(lebar[i].innerHTML.replace('m²', ''));
                 inputIdKekurangan.value = '';
                 inputIdKekurangan.value = id_kekuranganLahan[i].value;
+                inputKetereangan.value = '';
+                inputKetereangan.value = keterangan[i].innerHTML;
             })
         });
     </script>
