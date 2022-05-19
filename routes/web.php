@@ -76,6 +76,10 @@ Route::get('edit-ruangpimpinan', function () {
 Route::get('edit-rehabrenov', function () {
     return view('bangunan.rehabrenov.edit');
 });
+
+Route::get('edit-usulan-peralatan', function () {
+    return view('peralatan.edit');
+});
 // |-------------------------------------------------------------------------- /SEMENTARA |--------------------------------------------------------------------------
 
 Route::group(['middleware' => ['auth']], function() {
