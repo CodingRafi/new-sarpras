@@ -13,10 +13,6 @@
             display: none !important;
         }
 
-        #pdf-loader{
-            display: none
-        }
-
         #pdf-name{
             display: none !important;
         }
@@ -90,8 +86,7 @@
                     @endforeach
                     <div class="item col-lg-3 col-6 mb-3 container-image preview">
                         <div class="shadow-sm rounded border">
-                            <a href="#" class="fancybox a-image"
-                                data-fancybox="gallery1" id="href-preview">
+                            <a href="#" class="fancybox a-image" id="href-preview">
                                 <img id="file-ip-1-preview" class="rounded"
                                     style="object-fit: cover; width: 100%; aspect-ratio: 1/1;">
                             </a>
@@ -105,8 +100,7 @@
                     <input type="file" id="proposal" name="proposal" value="{{ asset('storage/'.$data->proposal) }}">
                 </div>
                 <div class="container d-flex pl-5 mt-3">
-                    <iframe class="iframe-proposal border border-rounded shadow-sm" src="{{ asset('storage/'.$data->proposal) }}" frameborder="0" width="300" height="400" style="display: block; border-radius: 10px !important;"></iframe>
-                    <div id="pdf-loader">Loading Preview ..</div>
+                    <iframe class="iframe-proposal border border-rounded shadow-sm col-lg-3 col-6 p-0" src="{{ asset('storage/'. $data->proposal) }}" frameborder="0" height='400' style="display: block; border-radius: 10px !important;"></iframe>
                     <div><canvas id="pdf-preview" class="border border-rounded shadow-sm" style="width: 300px !important; border-radius: 10px !important;"></canvas></div>
                 </div>
 
@@ -146,6 +140,7 @@
             preview.src = src;
             preview.style.display = "block";
             document.querySelector('.preview').style.display = "block";
+            document.getElementById("href-preview").setAttribute('data-fancybox', 'gallery1'); 
             document.getElementById("href-preview").href = src; 
             }
         }
@@ -210,7 +205,7 @@
                 // render the page contents in the canvas
                 page.render(renderContext).then(function() {
                     document.querySelector("#pdf-preview").style.display = 'inline-block';
-                    document.querySelector("#pdf-loader").style.display = 'none';
+                    // document.querySelector("#pdf-loader").style.display = 'none';
                 });
             });
         }
@@ -256,7 +251,7 @@
             // document.querySelector("#upload-button").style.display = 'inline-block';
         
             // Show the PDF preview loader
-            document.querySelector("#pdf-loader").style.display = 'inline-block';
+            // document.querySelector("#pdf-loader").style.display = 'inline-block';
         
             // object url of PDF 
             _OBJECT_URL = URL.createObjectURL(file)
@@ -282,7 +277,7 @@
             // hide elements that are not required
             // document.querySelector("#pdf-name").style.display = 'none';
             document.querySelector("#pdf-preview").style.display = 'none';
-            document.querySelector("#pdf-loader").style.display = 'none';
+            // document.querySelector("#pdf-loader").style.display = 'none';
             // document.querySelector("#cancel-pdf").style.display = 'none';
             // document.querySelector("#upload-button").style.display = 'none';
         });
@@ -292,8 +287,7 @@
             // AJAX request to server
             alert('This will upload file to server');
         });
-        
-        </script>
+    </script>
 
     <script>
         const buttonHapusImage = document.querySelectorAll('.button-hapus-image');
