@@ -13,12 +13,14 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ToiletController;
 use App\Http\Controllers\KoleksiController;
 use App\Http\Controllers\RiwayatController;
+use App\Http\Controllers\BangunanController;
 use App\Http\Controllers\KompetenController;
 use App\Http\Controllers\KomputerController;
 use App\Http\Controllers\PimpinanController;
 use App\Http\Controllers\PeralatanController;
 use App\Http\Controllers\ProfilDepoController;
 use App\Http\Controllers\RehabRenovController;
+use App\Http\Controllers\UsulanFotoController;
 use App\Http\Controllers\PerpustakaanController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\UsulanBangunanController;
@@ -59,6 +61,14 @@ Route::get('upload-logo', function () {
 
 Route::get('reset-password', function () {
     return view('myauth.resetPassword');
+});
+
+Route::get('edit-ruangkelas', function () {
+    return view('bangunan.kelas.edit');
+});
+
+Route::get('edit-usulan', function () {
+    return view('lahan.edit');
 });
 
 Route::get('edit-labkomputer', function () {
@@ -104,6 +114,47 @@ Route::get('admin-visitasisekolah', function () {
 Route::get('admin-monitoring', function () {
     return view('admin.monitoring');
 });
+
+Route::get('admin-lahan', function () {
+    return view('admin.lahan');
+});
+
+Route::get('admin-ruangkelas', function () {
+    return view('admin.ruangkelas');
+});
+
+Route::get('admin-ruangpraktik', function () {
+    return view('admin.ruangpraktik');
+});
+
+Route::get('admin-labkomputer', function () {
+    return view('admin.labkomputer');
+});
+
+Route::get('admin-perpustakaan', function () {
+    return view('admin.ruangperpustakaan');
+});
+
+Route::get('admin-toilet', function () {
+    return view('admin.toilet');
+});
+
+Route::get('admin-ruangpimpinan', function () {
+    return view('admin.ruangpimpinan');
+});
+
+Route::get('admin-rehab', function () {
+    return view('admin.ruangrehabrenov');
+});
+
+Route::get('admin-monitoringvertifikator', function () {
+    return view('admin.monitoringvertif');
+});
+
+Route::get('admin-detailmonitoring', function () {
+    return view('admin.detailmonitoring');
+});
+
 // |-------------------------------------------------------------------------- /SEMENTARA |--------------------------------------------------------------------------
 
 Route::group(['middleware' => ['auth']], function() {
@@ -114,25 +165,33 @@ Route::group(['middleware' => ['auth']], function() {
     Route::patch('/kompeten/tambahsiswa/{id:profil}', [KompetenController::class, 'update']);
     Route::resource('/kompeten', KompetenController::class);
     Route::get('/kompeten/create/{id:profil}', [KompetenController::class, 'create']);
+    Route::patch('/kompeten/update-ketersediaan/{id}', [KompetenController::class, 'updateKetersediaan']);
+    Route::patch('/kompeten/update-kekurangan/{id}', [KompetenController::class, 'updateKekurangan']);
     Route::resource('/koleksi', KoleksiController::class);
     Route::get('/koleksi/create/{id:profil}', [KoleksiController::class, 'create']);
     Route::patch('/koleksi/update-koleksi', [KoleksiController::class, 'update']);
     Route::resource('/foto', FotoController::class);
     Route::get('/foto/create/{koleksi:slug}', [FotoController::class, 'create']);
+    Route::delete('/foto/delete-sigle-foto/{id}', [UsulanFotoController::class, 'sigleDelete']);
     Route::resource('/lahan', LahanController::class);
     Route::resource('/usulan-lahan', UsulanLahanController::class);
     Route::resource('/ketersediaan-lahan', KetersediaanLahanController::class);
     Route::patch('/kekurangan-lahan/update-kekurangan', [KekuranganLahanController::class, 'update']);
     Route::resource('/kekurangan-lahan', KekuranganLahanController::class);
+    Route::resource('/bangunan-all', BangunanController::class);
+    Route::patch('/bangunan-all/update-ketersediaan/{id}', [BangunanController::class, 'ubahKetersediaan']);
     Route::resource('/bangunan/ruang-kelas', KelasController::class);
     Route::post('/bangunan/usulan-ruang-kelas', [KelasController::class, 'createusulan']);
     Route::resource('/bangunan/ruang-praktik', PraktikController::class);
+    Route::patch('/bangunan/ruang-praktik', [PraktikController::class, 'update']);
     Route::post('/bangunan/usulan-ruang-praktik', [PraktikController::class, 'createusulan']);
-    Route::delete('/bangunan/usulan-ruang-praktik/{id}', [PraktikController::class, 'deleteusulan']);
     Route::resource('/bangunan/lab-komputer', KomputerController::class);
+    Route::post('/bangunan/usulan-lab-komputer', [KomputerController::class, 'createusulan']);
     Route::resource('/bangunan/ruang-perpustakaan', PerpustakaanController::class);
-    Route::resource('/bangunan/ruang-rehabrenov', RehabRenovController::class);
+    Route::post('/bangunan/usulan-ruang-perpustakaan', [PerpustakaanController::class, 'createusulan']);
     Route::resource('/bangunan/toilet', ToiletController::class);
+    Route::post('/bangunan/usulan-toilet', [ToiletController::class, 'createusulan']);
+    Route::resource('/bangunan/ruang-rehabrenov', RehabRenovController::class);
     Route::resource('/bangunan/pimpinan', PimpinanController::class);
     Route::resource('/monev', MonevController::class);
     Route::resource('/peralatan/nama-jurusan', PeralatanController::class);

@@ -9,6 +9,7 @@ use App\Models\Profil;
 use App\Http\Requests\StoreKompetenRequest;
 use App\Http\Requests\UpdateKompetenRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class KompetenController extends Controller
 {
@@ -58,10 +59,13 @@ class KompetenController extends Controller
     
             foreach($request->jurusanTerpilih as $kom){
                 Kompeten::create([
-                    'profil_id' => $request->profil_id,
+                    'profil_id' => Auth::user()->profil_id,
                     'komli_id' => $kom,
                     'jml_lk' => 0,
                     'jml_pr' => 0,
+                    'kondisi_ideal' => 0,
+                    'ketersediaan' => 0,
+                    'kekurangan' => 0
                 ]);
             }
     
@@ -100,7 +104,14 @@ class KompetenController extends Controller
      */
     public function show(Kompeten $kompeten)
     {
-        //
+        if($kompeten->profil_id == Auth::user()->profil_id){
+            return view('bangunan.praktik.show', [
+                'kompeten' => $kompeten,
+                'komli' => $kompeten->komli
+            ]);
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -210,6 +221,45 @@ class KompetenController extends Controller
             Log::createLog($kompeten->profil_id, Auth::user()->id, 'Menghapus jurusan ' . $komli->kompetensi);
     
             return redirect('/profil/' . $kompeten->profil_id);
+        }else{
+            abort(403);
+        }
+    }
+
+    public function updateKetersediaan(Request $request, $id){
+        $data = Kompeten::where('id', $id)->get()[0];
+
+        if($data->profil_id == Auth::user()->profil_id){
+            $validatedData = $request->validate([
+                'ketersediaan' => 'required'
+            ]);
+
+            $data->update($validatedData);
+
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Ketersediaan Ruang Praktik ' . $data->komli->kompetensi);
+
+            return redirect()->back();
+
+        }else{
+            abort(403);
+        }
+    }
+
+
+    public function updateKekurangan(Request $request, $id){
+        $data = Kompeten::where('id', $id)->get()[0];
+
+        if($data->profil_id == Auth::user()->profil_id){
+            $validatedData = $request->validate([
+                'kekurangan' => 'required'
+            ]);
+
+            $data->update($validatedData);
+
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah kekurangan Ruang Praktik ' . $data->komli->kompetensi);
+
+            return redirect()->back();
+
         }else{
             abort(403);
         }

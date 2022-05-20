@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('logos', function (Blueprint $table) {
+        Schema::create('bangunans', function (Blueprint $table) {
             $table->id();
+            $table->enum('jenis', ['ruang_kelas', 'lab_komputer', 'perpustakaan', 'toilet', 'ruang_pimpinan']);
             $table->foreignId('profil_id');
-            $table->foreignId('kompetensi_id');
-            $table->string('filename');
+            $table->string('kondisi_ideal');
+            $table->string('ketersediaan');
+            $table->string('kekurangan');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('logos');
+        Schema::dropIfExists('bangunans');
     }
 };

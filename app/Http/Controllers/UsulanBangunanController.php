@@ -85,7 +85,44 @@ class UsulanBangunanController extends Controller
      */
     public function update(UpdateUsulanBangunanRequest $request, UsulanBangunan $usulanBangunan)
     {
-        //
+        if($usulanBangunan->profil_id == Auth::user()->profil_id){
+            $validatedData = $request->validate([
+                'jml_ruang' => 'required',
+                'luas_lahan' => 'required'
+            ]);
+    
+            if($request->file('gambar')){
+                UsulanFoto::uploadFoto($request->gambar, $usulanBangunan->usulanKoleksi[0]);
+            }
+    
+            if($request->file('proposal')){
+                if($usulanBangunan->proposal){
+                    Storage::delete($usulanBangunan->proposal);
+                }
+                $validatedData['proposal'] = $request->file('proposal')->store('proposal-usulan-bangunan');
+            }
+    
+            UsulanBangunan::where('id', $usulanBangunan->id)
+                ->update($validatedData);
+
+            $jenis = '';
+            $action = str_replace("_", "-", $usulanBangunan->jenis);
+
+            if($usulanBangunan == 'ruang_kelas'){
+                $jenis = 'Ruang Kelas';
+            }elseif($usulanBangunan == 'ruang_praktek'){
+                $jenis = 'Ruang Praktek';
+            }elseif($usulanBangunan == 'lab_komputer'){
+                $jenis = 'Lab Komputer';
+            }
+    
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Usulan Bangunan ' . $jenis);
+
+            return redirect('/bangunan/' . $action);
+        }else{
+            abort(403);
+        }
+
     }
 
     /**
@@ -105,6 +142,8 @@ class UsulanBangunanController extends Controller
                 $jenis = 'Ruang Kelas';
             }elseif($usulanBangunan == 'ruang_praktek'){
                 $jenis = 'Ruang Praktek';
+            }elseif($usulanBangunan == 'lab_komputer'){
+                $jenis = 'Lab Komputer';
             }
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Membatalkan Usulan bangunan ' . $jenis);

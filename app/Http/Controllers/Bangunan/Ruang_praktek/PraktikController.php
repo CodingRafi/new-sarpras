@@ -16,6 +16,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePraktikRequest;
 use App\Http\Requests\UpdatePraktikRequest;
 use Illuminate\Http\Request;
+use DB;
 
 class PraktikController extends Controller
 {
@@ -30,6 +31,24 @@ class PraktikController extends Controller
         $usulanPraktek = UsulanBangunan::where('profil_id', Auth::user()->profil_id)->where('jenis', 'ruang_praktek')->get();
         $koleksi = UsulanKoleksi::koleksi($usulanPraktek);
         $fotos = UsulanFoto::fotos($koleksi);
+
+        $kompetenPraktekTersedia = Praktik::ambilKompeten(Auth::user()->profil_id);
+        $komliPraktekTersedia = Komli::ambilKomli($kompetenPraktekTersedia);
+
+        $data = [];
+        $praktiks = Praktik::where('profil_id', Auth::user()->profil_id )->get();
+
+        foreach($praktiks as $ke => $praktik){
+            $data[] = [
+                'id' => $praktik->id,
+                'kompeten_id' => $praktik->kompeten_id,
+                'jml_ruang' => $praktik->jml_ruang,
+                'status' => $praktik->status,
+                'jml_ideal' => Kompeten::where('id', $praktik->kompeten_id)->get()[0]->kondisi_ideal,
+                'keterangan' => $praktik->keterangan,
+                'jurusan' => Kompeten::where('id', $praktik->kompeten_id)->get()[0]->komli->kompetensi
+            ];
+        }
 
         $komliUsulan = [];
 
@@ -47,7 +66,10 @@ class PraktikController extends Controller
             'usulanPraktek' => $usulanPraktek,
             'kompetens' => $kompetens,
             'komliUsulan' => $komliUsulan,
-            'usulanFotos' => $fotos
+            'usulanFotos' => $fotos,
+            'kompetenPraktekTersedias' => $kompetenPraktekTersedia,
+            'komliPraktekTersedias' => $komliPraktekTersedia,
+            'datas' => $data
         ]);
     }
 
@@ -73,7 +95,7 @@ class PraktikController extends Controller
             'kompeten_id' => 'required',
             'jml_ruang' => 'required'
         ]);
-
+        
         $validatedData['status'] = 'ideal';
         $validatedData['jml_ideal'] = '16';
         $validatedData['keterangan'] = 'sudah cukup';
@@ -120,7 +142,23 @@ class PraktikController extends Controller
      */
     public function update(UpdatePraktikRequest $request, Praktik $praktik)
     {
-        //
+        $data = Praktik::where('id', $request->id_praktik)->get()[0];
+        if($data->profil_id == Auth::user()->profil_id){
+            $validatedData = $request->validate([
+                'jml_ruang' => 'required'
+            ]);
+
+            $data->update($validatedData);
+
+            $kompeten = Kompeten::where('id', $data->kompeten_id)->get()[0]->komli->kompetensi;
+
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Merubah Jumlah Ketersediaan Ruang Praktek ' . $kompeten);
+
+            return redirect()->back();
+
+        }else{  
+            abort(403);
+        }
     }
 
     /**
@@ -129,9 +167,17 @@ class PraktikController extends Controller
      * @param  \App\Models\Praktik  $praktik
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Praktik $praktik)
+    public function destroy(Praktik $praktik, $id)
     {
-        //
+        $data = Praktik::where('id', $id)->get()[0];
+        if($data->profil_id == Auth::user()->profil_id){
+            Praktik::destroy($data->id);
+            $kompeten = Kompeten::where('id', $data->kompeten_id)->get()[0]->komli->kompetensi;
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menghapus Ketersediaan Ruang Praktek ' . $kompeten);
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
     }
 
     public function createusulan(Request $request){
@@ -145,6 +191,7 @@ class PraktikController extends Controller
         ]);
 
         $validatedData['kompeten_id'] = $request->kompeten_id;
+        $validatedData['keterangan'] = "Proses Pengajuan";
 
         UsulanBangunan::createUsulan($request, 'ruang_praktek', $validatedData);
 
@@ -153,20 +200,5 @@ class PraktikController extends Controller
         Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan usulan ruang praktek' . $kompeten);
 
         return redirect()->back();
-    }
-
-    public function deleteusulan(Request $request, $id){
-        $data = UsulanBangunan::where('id', $id)->get()[0];
-        if($data->profil_id == Auth::user()->profil_id){
-            $kompeten = Kompeten::where('id', $data->kompeten_id)->get()[0]->komli->kompetensi;
-
-            UsulanBangunan::deleteUsulan($data);
-
-            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Membatalkan Usulan ruang praktek' . $kompeten);
-
-            return redirect()->back();
-        }else{
-            abort(403);
-        }
     }
 }
