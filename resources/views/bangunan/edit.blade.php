@@ -277,7 +277,7 @@
                 // render the page contents in the canvas
                 page.render(renderContext).then(function() {
                     document.querySelector("#pdf-preview").style.display = 'inline-block';
-                    document.querySelector("#pdf-loader").style.display = 'none';
+                    // document.querySelector("#pdf-loader").style.display = 'none';
                 });
             });
         }
@@ -323,7 +323,8 @@
             // document.querySelector("#upload-button").style.display = 'inline-block';
 
             // Show the PDF preview loader
-            document.querySelector("#pdf-loader").style.display = 'inline-block';
+            // document.querySelector("#pdf-loader").style.display = 'inline-block';
+        
 
             // object url of PDF 
             _OBJECT_URL = URL.createObjectURL(file)
@@ -347,7 +348,7 @@
             // hide elements that are not required
             // document.querySelector("#pdf-name").style.display = 'none';
             document.querySelector("#pdf-preview").style.display = 'none';
-            document.querySelector("#pdf-loader").style.display = 'none';
+            // document.querySelector("#pdf-loader").style.display = 'none';
             // document.querySelector("#cancel-pdf").style.display = 'none';
             // document.querySelector("#upload-button").style.display = 'none';
         });
