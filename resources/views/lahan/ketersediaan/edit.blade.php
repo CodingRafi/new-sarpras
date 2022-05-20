@@ -9,7 +9,7 @@
         body {
             overflow-x: hidden;
         }
-
+        
         #upload-dialog{
             display: none !important;
         }
@@ -37,7 +37,6 @@
                     <span id="pdf-name"></span>
                     <button id="upload-button">Upload</button>
                     <button id="cancel-pdf">Cancel</button> */
-
     </style>
 @endsection
 

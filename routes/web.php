@@ -63,6 +63,14 @@ Route::get('reset-password', function () {
     return view('myauth.resetPassword');
 });
 
+Route::get('edit-ruangkelas', function () {
+    return view('bangunan.kelas.edit');
+});
+
+Route::get('edit-usulan', function () {
+    return view('lahan.edit');
+});
+
 Route::get('edit-labkomputer', function () {
     return view('bangunan.labKomputer.edit');
 });
@@ -90,6 +98,52 @@ Route::get('edit-rehabrenov', function () {
 Route::get('edit-usulan-peralatan', function () {
     return view('peralatan.edit');
 });
+
+Route::get('admin-lahan', function () {
+    return view('admin.lahan');
+});
+
+Route::get('admin-ruangkelas', function () {
+    return view('admin.ruangkelas');
+});
+
+Route::get('admin-ruangkelas', function () {
+    return view('admin.ruangkelas');
+});
+
+Route::get('admin-ruangpraktik', function () {
+    return view('admin.ruangpraktik');
+});
+
+Route::get('admin-labkomputer', function () {
+    return view('admin.labkomputer');
+});
+
+Route::get('admin-perpustakaan', function () {
+    return view('admin.ruangperpustakaan');
+});
+
+Route::get('admin-toilet', function () {
+    return view('admin.toilet');
+});
+
+Route::get('admin-ruangpimpinan', function () {
+    return view('admin.ruangpimpinan');
+});
+
+Route::get('admin-rehab', function () {
+    return view('admin.ruangrehabrenov');
+});
+
+Route::get('admin-monitoringvertifikator', function () {
+    return view('admin.monitoringvertif');
+});
+
+Route::get('admin-detailmonitoring', function () {
+    return view('admin.detailmonitoring');
+});
+
+
 // |-------------------------------------------------------------------------- /SEMENTARA |--------------------------------------------------------------------------
 
 Route::group(['middleware' => ['auth']], function() {
