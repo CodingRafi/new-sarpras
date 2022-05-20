@@ -129,7 +129,7 @@
             <div class="tab-pane active" id="data-usulan-sekolah">
                 <div class="col">
                     <div class="col-lg-12">
-                        <table class="table table-bordered mt-3">
+                        <table class="table table-bordered table-responsive mt-3">
                             {{-- judul table --}}
                             <thead>
                                 <tr>

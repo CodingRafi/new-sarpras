@@ -107,117 +107,118 @@
             <div class="tab-pane active" id="data-usulan-sekolah">
                 <div class="col">
                     <div class="col-lg-12">
-                        <table class="table table-bordered mt-3">
-                            {{-- judul table --}}
-                            <thead>
-                                <tr>
-                                    <th rowspan="2" class="text-center" style="line-height: 70px">No</th>
-                                    <th rowspan="2" class="text-center" style="line-height: 70px">Jenis Usulan</th>
-                                    <th rowspan="2" class="text-center" style="line-height: 70px">Jumlah Usulan</th>
-                                    <th colspan="2" class="text-center">Ketersediaan Lahan</th>
-                                    <th rowspan="2" class="text-center" style="line-height: 70px">Proposal</th>
-                                    <th rowspan="2" class="text-center" style="line-height: 70px">Keterangan</th>
-                                    <th rowspan="2" class="text-center" style="line-height: 70px">Aksi</th>
-                                </tr>
-                                <tr>
-                                    <th scope="col" class="text-center">Luas Lahan</th>
-                                    <th scope="col" class="text-center">Gambar Lahan</th>
-                                </tr>
-                            </thead>
-                            {{-- end judul table --}}
-
-                            {{-- isi table --}}
-                            <tbody>
-                                <tr>
-                                    <th class="text-center">1</th>
-                                    <td class="text-center">Ruang Guru</td>
-                                    <td class="text-center">3</td>
-                                    <td class="text-center">20 M</td>
-                                    <td class="text-center" style="vertical-align: middle"><a
-                                            href="/assets/img/backgrounds/school.jpg" class="fancybox"
-                                            data-fancybox="gallery1"><img
-                                                src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded"
-                                                style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
-                                    <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px">
-                                    </td>
-                                    <td></td>
-                                    <td>
-                                        <div class="card-body">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <button type="button" class="btn" data-toggle="dropdown">
-                                                        <i class="bi bi-three-dots-vertical"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu" style="margin-left: -73px">
-                                                        <a class="dropdown-item">Edit</a>
-                                                        <a class="dropdown-item">Batalkan</a>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hovermt-3">
+                                {{-- judul table --}}
+                                <thead>
+                                    <tr>
+                                        <th rowspan="2" class="text-center" style="line-height: 70px">No</th>
+                                        <th rowspan="2" class="text-center" style="line-height: 70px">Jenis Usulan</th>
+                                        <th rowspan="2" class="text-center" style="line-height: 70px">Jumlah Usulan</th>
+                                        <th colspan="2" class="text-center">Ketersediaan Lahan</th>
+                                        <th rowspan="2" class="text-center" style="line-height: 70px">Proposal</th>
+                                        <th rowspan="2" class="text-center" style="line-height: 70px">Keterangan</th>
+                                        <th rowspan="2" class="text-center" style="line-height: 70px">Aksi</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col" class="text-center">Luas Lahan</th>
+                                        <th scope="col" class="text-center">Gambar Lahan</th>
+                                    </tr>
+                                </thead>
+                                {{-- end judul table --}}
+                                {{-- isi table --}}
+                                <tbody>
+                                    <tr>
+                                        <th class="text-center">1</th>
+                                        <td class="text-center">Ruang Guru</td>
+                                        <td class="text-center">3</td>
+                                        <td class="text-center">20 M</td>
+                                        <td class="text-center" style="vertical-align: middle"><a
+                                                href="/assets/img/backgrounds/school.jpg" class="fancybox"
+                                                data-fancybox="gallery1"><img
+                                                    src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded"
+                                                    style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
+                                        <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px">
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <div class="card-body">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <button type="button" class="btn" data-toggle="dropdown">
+                                                            <i class="bi bi-three-dots-vertical"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu" style="margin-left: -73px">
+                                                            <a class="dropdown-item">Edit</a>
+                                                            <a class="dropdown-item">Batalkan</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th class="text-center">2</th>
-                                    <td class="text-center">Ruang Guru</td>
-                                    <td class="text-center">3</td>
-                                    <td class="text-center">20 M</td>
-                                    <td class="text-center" style="vertical-align: middle"><a
-                                            href="/assets/img/backgrounds/school.jpg" class="fancybox"
-                                            data-fancybox="gallery1"><img
-                                                src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded"
-                                                style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
-                                    <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px">
-                                    </td>
-                                    <td></td>
-                                    <td>
-                                        <div class="card-body">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <button type="button" class="btn" data-toggle="dropdown">
-                                                        <i class="bi bi-three-dots-vertical"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu" style="margin-left: -73px">
-                                                        <a class="dropdown-item">Edit</a>
-                                                        <a class="dropdown-item">Batalkan</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-center">2</th>
+                                        <td class="text-center">Ruang Guru</td>
+                                        <td class="text-center">3</td>
+                                        <td class="text-center">20 M</td>
+                                        <td class="text-center" style="vertical-align: middle"><a
+                                                href="/assets/img/backgrounds/school.jpg" class="fancybox"
+                                                data-fancybox="gallery1"><img
+                                                    src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded"
+                                                    style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
+                                        <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px">
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <div class="card-body">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <button type="button" class="btn" data-toggle="dropdown">
+                                                            <i class="bi bi-three-dots-vertical"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu" style="margin-left: -73px">
+                                                            <a class="dropdown-item">Edit</a>
+                                                            <a class="dropdown-item">Batalkan</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th class="text-center">3</th>
-                                    <td class="text-center">Ruang Guru</td>
-                                    <td class="text-center">3</td>
-                                    <td class="text-center">20 M</td>
-                                    <td class="text-center" style="vertical-align: middle"><a
-                                            href="/assets/img/backgrounds/school.jpg" class="fancybox"
-                                            data-fancybox="gallery1"><img
-                                                src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded"
-                                                style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
-                                    <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px">
-                                    </td>
-                                    <td></td>
-                                    <td>
-                                        <div class="card-body">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <button type="button" class="btn" data-toggle="dropdown">
-                                                        <i class="bi bi-three-dots-vertical"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu" style="margin-left: -73px">
-                                                        <a class="dropdown-item">Edit</a>
-                                                        <a class="dropdown-item">Batalkan</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-center">3</th>
+                                        <td class="text-center">Ruang Guru</td>
+                                        <td class="text-center">3</td>
+                                        <td class="text-center">20 M</td>
+                                        <td class="text-center" style="vertical-align: middle"><a
+                                                href="/assets/img/backgrounds/school.jpg" class="fancybox"
+                                                data-fancybox="gallery1"><img
+                                                    src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded"
+                                                    style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
+                                        <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px">
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            <div class="card-body">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <button type="button" class="btn" data-toggle="dropdown">
+                                                            <i class="bi bi-three-dots-vertical"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu" style="margin-left: -73px">
+                                                            <a class="dropdown-item">Edit</a>
+                                                            <a class="dropdown-item">Batalkan</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            {{-- end isi table --}}
-                        </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                {{-- end isi table --}}
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -240,127 +241,130 @@
             <div class="tab-pane active" id="data-usulan-sekolah">
                 <div class="col">
                     <div class="col-lg-12">
-                        <table class="table table-bordered mt-3">
-                            {{-- judul table --}}
-                            <thead>
-                                <tr>
-                                    <th rowspan="2" class="text-center" style="line-height: 170px">No</th>
-                                    <th rowspan="2" class="text-center" style="line-height: 170px">Jenis Usulan</th>
-                                    <th colspan="2" class="text-center" style="line-height: 70px">Tingkat Kerusakan</th>
-                                    <th colspan="3" class="text-center" style="line-height: 70px">Objek Rehab/ Renov
-                                    </th>
-                                    <th rowspan="2" class="text-center" style="line-height: 170px">Proposal</th>
-                                    <th rowspan="2" class="text-center" style="line-height: 170px">Keterangan</th>
-                                    <th rowspan="2" class="text-center" style="line-height: 170px">Aksi</th>
-                                </tr>
-                                <tr>
-                                    <th class="text-center" style="line-height: 70px">Persentase</th>
-                                    <th class="text-center" style="line-height: 70px">Usia</th>
-                                    <th class="text-center" style="line-height: 70px">Objek</th>
-                                    <th class="text-center" style="line-height: 70px">Luas Lahan</th>
-                                    <th class="text-center" style="line-height: 70px">Gambar</th>
-                                </tr>
-                            </thead>
-                            {{-- end judul table --}}
-
-                            {{-- isi table --}}
-                            <tbody>
-                                <tr>
-                                    <th class="text-center">1</th>
-                                    <td class="text-center">Ruang Pembelajaran Umum</td>
-                                    <td class="text-center">45%</td>
-                                    <td class="text-center">10 Tahun</td>
-                                    <td class="text-center">Atap</td>
-                                    <td class="text-center">150m²</td>
-                                    <td class="text-center" style="vertical-align: middle"><a
-                                            href="/assets/img/backgrounds/school.jpg" class="fancybox"
-                                            data-fancybox="gallery1"><img
-                                                src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded"
-                                                style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
-                                    <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px">
-                                    </td>
-                                    <td></td>
-                                     <td>
-                                        <div class="card-body">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <button type="button" class="btn" data-toggle="dropdown">
-                                                        <i class="bi bi-three-dots-vertical"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu" style="margin-left: -73px">
-                                                        <a class="dropdown-item">Edit</a>
-                                                        <a class="dropdown-item">Batalkan</a>
+                        <div class="table-responsive">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover mt-3">
+                                    {{-- judul table --}}
+                                    <thead>
+                                        <tr>
+                                            <th rowspan="2" class="text-center" style="line-height: 170px">No</th>
+                                            <th rowspan="2" class="text-center" style="line-height: 170px">Jenis Usulan</th>
+                                            <th colspan="2" class="text-center" style="line-height: 70px">Tingkat Kerusakan</th>
+                                            <th colspan="3" class="text-center" style="line-height: 70px">Objek Rehab/ Renov
+                                            </th>
+                                            <th rowspan="2" class="text-center" style="line-height: 170px">Proposal</th>
+                                            <th rowspan="2" class="text-center" style="line-height: 170px">Keterangan</th>
+                                            <th rowspan="2" class="text-center" style="line-height: 170px">Aksi</th>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center" style="line-height: 70px">Persentase</th>
+                                            <th class="text-center" style="line-height: 70px">Usia</th>
+                                            <th class="text-center" style="line-height: 70px">Objek</th>
+                                            <th class="text-center" style="line-height: 70px">Luas Lahan</th>
+                                            <th class="text-center" style="line-height: 70px">Gambar</th>
+                                        </tr>
+                                    </thead>
+                                    {{-- end judul table --}}
+                                    {{-- isi table --}}
+                                    <tbody>
+                                        <tr>
+                                            <th class="text-center">1</th>
+                                            <td class="text-center">Ruang Pembelajaran Umum</td>
+                                            <td class="text-center">45%</td>
+                                            <td class="text-center">10 Tahun</td>
+                                            <td class="text-center">Atap</td>
+                                            <td class="text-center">150m²</td>
+                                            <td class="text-center" style="vertical-align: middle"><a
+                                                    href="/assets/img/backgrounds/school.jpg" class="fancybox"
+                                                    data-fancybox="gallery1"><img
+                                                        src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded"
+                                                        style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
+                                            <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px">
+                                            </td>
+                                            <td></td>
+                                             <td>
+                                                <div class="card-body">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <button type="button" class="btn" data-toggle="dropdown">
+                                                                <i class="bi bi-three-dots-vertical"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu" style="margin-left: -73px">
+                                                                <a class="dropdown-item">Edit</a>
+                                                                <a class="dropdown-item">Batalkan</a>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th class="text-center">2</th>
-                                    <td class="text-center">Ruang Pembelajaran Umum</td>
-                                    <td class="text-center">45%</td>
-                                    <td class="text-center">10 Tahun</td>
-                                    <td class="text-center">Atap</td>
-                                    <td class="text-center">150m²</td>
-                                    <td class="text-center" style="vertical-align: middle"><a
-                                            href="/assets/img/backgrounds/school.jpg" class="fancybox"
-                                            data-fancybox="gallery1"><img
-                                                src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded"
-                                                style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
-                                    <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px">
-                                    </td>
-                                    <td></td>
-                                     <td>
-                                        <div class="card-body">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <button type="button" class="btn" data-toggle="dropdown">
-                                                        <i class="bi bi-three-dots-vertical"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu" style="margin-left: -73px">
-                                                        <a class="dropdown-item">Edit</a>
-                                                        <a class="dropdown-item">Batalkan</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">2</th>
+                                            <td class="text-center">Ruang Pembelajaran Umum</td>
+                                            <td class="text-center">45%</td>
+                                            <td class="text-center">10 Tahun</td>
+                                            <td class="text-center">Atap</td>
+                                            <td class="text-center">150m²</td>
+                                            <td class="text-center" style="vertical-align: middle"><a
+                                                    href="/assets/img/backgrounds/school.jpg" class="fancybox"
+                                                    data-fancybox="gallery1"><img
+                                                        src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded"
+                                                        style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
+                                            <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px">
+                                            </td>
+                                            <td></td>
+                                             <td>
+                                                <div class="card-body">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <button type="button" class="btn" data-toggle="dropdown">
+                                                                <i class="bi bi-three-dots-vertical"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu" style="margin-left: -73px">
+                                                                <a class="dropdown-item">Edit</a>
+                                                                <a class="dropdown-item">Batalkan</a>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th class="text-center">3</th>
-                                    <td class="text-center">Ruang Pembelajaran Umum</td>
-                                    <td class="text-center">45%</td>
-                                    <td class="text-center">10 Tahun</td>
-                                    <td class="text-center">Atap</td>
-                                    <td class="text-center">150m²</td>
-                                    <td class="text-center" style="vertical-align: middle"><a
-                                            href="/assets/img/backgrounds/school.jpg" class="fancybox"
-                                            data-fancybox="gallery1"><img
-                                                src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded"
-                                                style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
-                                    <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px">
-                                    </td>
-                                    <td></td>
-                                     <td>
-                                        <div class="card-body">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <button type="button" class="btn" data-toggle="dropdown">
-                                                        <i class="bi bi-three-dots-vertical"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu" style="margin-left: -73px">
-                                                        <a class="dropdown-item">Edit</a>
-                                                        <a class="dropdown-item">Batalkan</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">3</th>
+                                            <td class="text-center">Ruang Pembelajaran Umum</td>
+                                            <td class="text-center">45%</td>
+                                            <td class="text-center">10 Tahun</td>
+                                            <td class="text-center">Atap</td>
+                                            <td class="text-center">150m²</td>
+                                            <td class="text-center" style="vertical-align: middle"><a
+                                                    href="/assets/img/backgrounds/school.jpg" class="fancybox"
+                                                    data-fancybox="gallery1"><img
+                                                        src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded"
+                                                        style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
+                                            <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px">
+                                            </td>
+                                            <td></td>
+                                             <td>
+                                                <div class="card-body">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <button type="button" class="btn" data-toggle="dropdown">
+                                                                <i class="bi bi-three-dots-vertical"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu" style="margin-left: -73px">
+                                                                <a class="dropdown-item">Edit</a>
+                                                                <a class="dropdown-item">Batalkan</a>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            {{-- end isi table --}}
-                        </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    {{-- end isi table --}}
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
