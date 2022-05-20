@@ -19,6 +19,7 @@ use App\Http\Controllers\PimpinanController;
 use App\Http\Controllers\PeralatanController;
 use App\Http\Controllers\ProfilDepoController;
 use App\Http\Controllers\RehabRenovController;
+use App\Http\Controllers\UsulanFotoController;
 use App\Http\Controllers\PerpustakaanController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\UsulanBangunanController;
@@ -105,6 +106,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::patch('/koleksi/update-koleksi', [KoleksiController::class, 'update']);
     Route::resource('/foto', FotoController::class);
     Route::get('/foto/create/{koleksi:slug}', [FotoController::class, 'create']);
+    Route::delete('/foto/delete-sigle-foto/{id}', [UsulanFotoController::class, 'sigleDelete']);
     Route::resource('/lahan', LahanController::class);
     Route::resource('/usulan-lahan', UsulanLahanController::class);
     Route::resource('/ketersediaan-lahan', KetersediaanLahanController::class);

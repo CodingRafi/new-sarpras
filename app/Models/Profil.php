@@ -33,8 +33,8 @@ class Profil extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function kelas(){
-        return $this->belongsTo(Kelas::class);
+    public function bangunan(){
+        return $this->belongsTo(Bangunan::class);
     }
 
     public function usulanBangunan(){

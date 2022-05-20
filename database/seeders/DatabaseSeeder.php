@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ProfilDepoSeeder::class);
         $this->call(ProfilSeeder::class);
         $this->call(KelasSeeder::class);
+        $this->call(KomputerPSeeder::class);
         $this->call(JeniskoleksiSeeder::class);
         $this->call(KomliSeeder::class);
         $this->call(PermissionTableSeeder::class);

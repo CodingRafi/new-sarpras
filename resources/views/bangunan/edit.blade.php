@@ -1,6 +1,8 @@
 @extends('mylayouts.main')
 
 @section('tambahcss')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
@@ -36,7 +38,7 @@
 
         .preview,
         .preview img {
-            display: none;
+            /* display: none; */
         }
 
     </style>
@@ -50,7 +52,7 @@
 
     <div class="form-edit pt-3">
 
-        <form action="/usulan-bangunan/{{ $data->id }}" method="post">
+        <form action="/usulan-bangunan/{{ $data->id }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('patch')
             <div class="card pt-3" style="background-color: white; border-radius: 10px; ">
@@ -70,12 +72,14 @@
                         value="{{ $data->jml_ruang }}" name="luas_lahan">
                 </div>
 
+                <input type="hidden" name="deleteImage" class="delete-image">
                 {{-- --------------------------------------------- GAMBAR LAHAN --------------------------------------------- --}}
                 <div class="row input pl-5 mt-3" style="margin-top: 10px">
                     <label class="col-2 mt-1">Gambar Lahan</label>
-                    <input type="file" id="gambar-lahan" nama="gambar[]" onchange="showPreview(event);">
+                    <input type="file" id="gambar-lahan" name="gambar[]" onchange="previewImage()" multiple
+                        class="filename" accept="image/*">
                 </div>
-                <div class="container d-flex pl-5 mt-3">
+                <div class="container d-flex mt-3 container-preview flex-wrap" style="width: 100%;padding-left: 2.4rem;">
                     @foreach ($fotos as $foto)
                         <div class="item col-lg-3 col-6 mb-3 container-image">
                             <div class="shadow-sm rounded border">
@@ -83,27 +87,28 @@
                                     style="position: absolute; right: 8px;" type="button"><i
                                         class="bi bi-trash-fill"></i></button>
                                 <a href="{{ asset('storage/' . $foto->nama) }}" class="fancybox a-image"
-                                    data-fancybox="gallery1">
+                                    data-fancybox="gallery1" data-id="{{ $foto->id }}">
                                     <img src="{{ asset('storage/' . $foto->nama) }}" class="rounded"
                                         style="object-fit: cover; width: 100%; aspect-ratio: 1/1;">
                                 </a>
                             </div>
                         </div>
                     @endforeach
-                    <div class="item col-lg-3 col-6 mb-3 container-image preview">
-                        <div class="shadow-sm rounded border">
-                            <a href="#" class="fancybox a-image" data-fancybox="gallery1" id="href-preview">
-                                <img id="file-ip-1-preview" class="rounded"
-                                    style="object-fit: cover; width: 100%; aspect-ratio: 1/1;">
-                            </a>
-                        </div>
-                    </div>
+                    {{-- <div class="item col-lg-3 col-6 mb-3 container-image preview">
+                            <div class="shadow-sm rounded border">
+                                <a href="#" class="fancybox a-image" data-fancybox="gallery1" id="href-preview">
+                                    <img id="file-ip-1-preview" class="rounded"
+                                        style="object-fit: cover; width: 100%; aspect-ratio: 1/1;">
+                                </a>
+                            </div>
+                        </div> --}}
                 </div>
 
                 {{-- --------------------------------------------- PROPOSAL --------------------------------------------- --}}
                 <div class="row input pl-5 mt-3" style="margin-top: 10px">
                     <label class="col-2 mt-1" value="{{ $data->proposal }}">Proposal</label>
-                    <input type="file" id="proposal" name="proposal" value="{{ asset('storage/' . $data->proposal) }}">
+                    <input type="file" id="proposal" name="proposal" value="{{ asset('storage/' . $data->proposal) }}"
+                        accept=".pdf">
                 </div>
                 <div class="container d-flex pl-5 mt-3">
                     <iframe class="iframe-proposal border border-rounded shadow-sm"
@@ -128,6 +133,10 @@
     <div class="container container-alert" style="position: fixed;right: 20px;bottom: 25px;width: auto"></div>
     <div id='alrt' style="fontWeight = 'bold'"></div>
 
+    <div class="d-none input-urungkan">
+
+    </div>
+
     {{-- --------------------------------------------- HIDE --------------------------------------------- --}}
     {{-- <button id="upload-dialog">Choose PDF</button> hide --}}
     {{-- <span id="pdf-name"></span> hide --}}
@@ -142,7 +151,7 @@
     <script src="/pdf.js"></script>
     <script src="/pdf.worker.js"></script>
 
-    <script>
+    {{-- <script>
         function showPreview(event) {
             if (event.target.files.length > 0) {
                 var src = URL.createObjectURL(event.target.files[0]);
@@ -151,6 +160,58 @@
                 preview.style.display = "block";
                 document.querySelector('.preview').style.display = "block";
                 document.getElementById("href-preview").href = src;
+            }
+        }
+    </script> --}}
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        function previewImage() {
+
+            let countFiles = $('.filename')[0].files.length;
+
+            for (let x = 0; x < countFiles; x++) {
+                let imgPath = $('.filename')[0].files[x]['name'];
+                let extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+                let image_holder = $('.container-preview');
+
+                if (extn == "png" || extn == "jpg" || extn == "jpeg") {
+                    if (typeof(FileReader) != "undefined") {
+
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                            let div1 = document.createElement('div');
+                            div1.setAttribute('class', 'item col-lg-3 col-6 mb-3 container-image');
+                            let div2 = document.createElement('div');
+                            div2.setAttribute('class', 'shadow-sm rounded border');
+                            div1.appendChild(div2);
+                            let a = document.createElement('a');
+                            a.setAttribute('href', e.target.result);
+                            a.setAttribute('class', 'fancybox a-image');
+                            a.setAttribute('data-fancybox', 'gallery1');
+                            div2.appendChild(a);
+                            let img = document.createElement('img');
+                            img.setAttribute('id', 'file-ip-1-preview');
+                            img.setAttribute('style', 'object-fit: cover; width: 100%; aspect-ratio: 1/1;');
+                            img.setAttribute('src', e.target.result);
+                            a.appendChild(img);
+                            let containerPreview = document.querySelector('.container-preview');
+                            containerPreview.appendChild(div1);
+
+                        }
+
+                        image_holder.show();
+                        reader.readAsDataURL($('.filename')[0].files[x]);
+
+                    } else {
+                        alert("This browser does not support FileReader.");
+                    }
+                } else {
+                    alert("Pls select only images");
+                }
             }
         }
     </script>
@@ -271,8 +332,6 @@
             showPDF(_OBJECT_URL);
         });
 
-        console.log(document.querySelector('.filePDF').value)
-
         window.addEventListener('load', function() {
             // document.querySelector('#pdf-file').value(document.querySelector('.filePDF').value)
         });
@@ -305,12 +364,35 @@
         const aImage = document.querySelectorAll('.a-image');
         const containerImage = document.querySelectorAll('.container-image');
         const containerAlert = document.querySelector('.container-alert');
+        const deleteImage = document.querySelector('.delete-image');
+        const inputUrungkan = document.querySelector('.input-urungkan');
 
-        let gambarHapus = [];
+        // let gambarHapus = [];
 
-        let gambar = gambarHapus.map(function(e, i) {
-            console.log(e);
-        });
+        // function addImageDelete(data){
+        //     gambarHapus.push(data);
+        //     let gambar = gambarHapus.map(function(e, i) {
+        //         return e;
+        //     });
+
+        //     deleteImage.value = gambar;
+        // }
+
+        function batalkan(i) {
+            containerImage[i].style.display = 'block';
+            console.log(document.querySelector(`input-ke${i}`))
+        }
+
+        function inputBatal() {
+            document.querySelector('.alert-ke' + i).style.display = 'none';
+            console.log('oke')
+
+            return 1;
+        }
+
+        function validate(validate) {
+
+        }
 
         buttonHapusImage.forEach((e, i) => {
             e.addEventListener('click', function() {
@@ -318,20 +400,52 @@
                 let hasilConfirm = confirm('Apakah anda yakin akan mengapus gambar ini?');
 
                 if (hasilConfirm == true) {
-                    gambarHapus.push(aImage[i].getAttribute('href'));
                     containerImage[i].style.display = 'none';
                     containerAlert.innerHTML += `<div class="toast align-items-center show alert-ke${i}" role="alert" aria-live="assertive" aria-atomic="true">
                         <div class="d-flex">
                             <div class="toast-body">
-                                Gambar berhasil dihapus
+                                Gambar akan dihapus <a href="#" class="urungkan-ke${i}" onclick="batalkan(${i})">Urungkan</a>
                             </div>
                             <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"
                                 aria-label="Close"></button>
                         </div>
                     </div>`;
+
+                    let input = document.createElement('input')
+                    input.setAttribute('type', 'hidden');
+                    input.setAttribute('class', `input-ke${i}`)
+                    input.setAttribute('onchange', `inputBatal();`)
+                    inputUrungkan.appendChild(input);
+
                     const myTimeout = setTimeout(function() {
                         document.querySelector('.alert-ke' + i).style.display = 'none';
-                    }, 3000);
+                        let urungkan = document.querySelector(`.urungkan-ke${i}`);
+
+                        let id = '';
+                        id = aImage[i].getAttribute('data-id');
+
+                        // $.ajaxSetup({
+                        //     headers: {
+                        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        //     }
+                        // });
+
+                        // $.ajax({
+                        //     url: '/foto/delete-sigle-foto/' + id,
+                        //     dataType: 'json',
+                        //     type: 'DELETE',
+                        //     data: {
+                        //         _method: 'delete',
+                        //         _token: $('meta[name="csrf-token"]').attr('content')
+                        //     },
+                        //     contentType: false,
+                        //     processData: false,
+                        //     success: function(response) {
+                        //         console.log(response);
+                        //     }
+                        // });
+
+                    }, 5000);
                 }
 
             })
