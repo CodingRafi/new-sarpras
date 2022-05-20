@@ -31,6 +31,14 @@
             display: none;
             width: 300px !important;
         }
+
+        /* button id="upload-dialog">Choose PDF</button>
+                    <input type="file" id="pdf-file" name="pdf" accept="application/pdf, image/*" />
+                    <div id="pdf-loader">Loading Preview ..</div>
+                    <canvas id="pdf-preview" width="250"></canvas>
+                    <span id="pdf-name"></span>
+                    <button id="upload-button">Upload</button>
+                    <button id="cancel-pdf">Cancel</button> */
     </style>
 @endsection
 
