@@ -266,7 +266,7 @@
             alert('This will upload file to server');
         });
         
-        </script>
+    </script>
 
     <script>
         const tombolEdit = document.querySelectorAll('.tombol-edit');
