@@ -120,43 +120,17 @@
                             <div class="col-lg-12">
                                 @if (count($usulanKelas) > 0)
                                     <div class="table-responsive">
-                                        <table class="table table-bordered mt-3">
+                                        <table class="table table-bordered mt-3 text-center">
                                             {{-- judul table --}}
                                             <thead>
                                                 <tr>
-                                                    <th class="text-center">{{ $loop->iteration }}</th>
-                                                    <td class="text-center text-capitalize">{{ str_replace("_", " ", $usulan->jenis) }}</td>
-                                                    <td class="text-center">{{ $usulan->jml_ruang }}</td>
-                                                    <td class="text-center">{{ $usulan->luas_lahan }} M</td>
-                                                    <td class="text-center" style="vertical-align: middle">
-                                                        @foreach ($usulanFotos[$key] as $ke => $foto)
-                                                            <a href="{{ asset('storage/' . $foto->nama) }}"
-                                                                class="fancybox" data-fancybox="gallery{{ $key }}">
-                                                                <img src="{{ asset('storage/' . $foto->nama) }}"
-                                                                    class="rounded"
-                                                                    style="object-fit: cover; width: 150px; aspect-ratio: 1/1;{{ $ke == 0 ? '' : 'display:none;' }}">
-                                                            </a>
-                                                        @endforeach
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <a href="{{ asset('storage/' . $usulan->proposal) }}"
-                                                            target="_blank">
-                                                            <img src="/img/pdf.png" alt="image" style="width: 30px">
-                                                        </a>
-                                                    </td>
-                                                    <td class="text-center">{{ $usulan->keterangan }}</td>
-                                                    <td class="text-center">
-                                                        <a href="/usulan-bangunan/{{ $usulan->id }}/edit" class="btn btn-warning text-white">Edit</a>
-
-                                                        <form action="/usulan-bangunan/{{ $usulan->id }}"
-                                                            method="post">
-                                                            @csrf
-                                                            @method('delete')
-
-                                                            <button type="submit" class="btn text-white"
-                                                                style="background-color: #00a65b"
-                                                                onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
-                                                        </form>
+                                                    <th rowspan="2">No</th>
+                                                    <th rowspan="2">Jenis Ruang</th>
+                                                    <th rowspan="2">Jumlah Ruang</th>
+                                                    <th colspan="2">Ketersedian Lahan</th>
+                                                    <th rowspan="2">Proposal</th>
+                                                    <th rowspan="2">Keterangan</th>
+                                                    <th rowspan="2">Aksi</th>
                                                 </tr>
                                                 <tr>
                                                     <th scope="col" class="text-center">Luas Lahan</th>
