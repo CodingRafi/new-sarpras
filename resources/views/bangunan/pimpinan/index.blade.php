@@ -29,8 +29,7 @@
     {{-- ---------------------------------------------------------------------------------------- KONDISI IDEAL ---------------------------------------------------------------------------------------- --}}
     <div class="info-box p-0 pimpinan-infobox">
         <span class="info-box-icon p-4" style="background-color: #25b5e9; width: auto; min-width: 207px;">
-            <img src="/assets/img/icons/flaticons/town.png"
-                style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
+            <img src="/assets/img/icons/flaticons/town.png" style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
             <div class="ml-4">
                 <span class="text-white">
                     Kondisi Ideal
