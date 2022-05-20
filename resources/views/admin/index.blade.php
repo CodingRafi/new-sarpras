@@ -51,7 +51,7 @@
                     @endforeach
                 </tbody>
             </table>
-            {{ $profils->links() }}
+        {{ $profils->links() }}
         </div>
     </div>
     <!-- / Content -->

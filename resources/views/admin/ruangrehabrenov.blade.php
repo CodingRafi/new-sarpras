@@ -6,7 +6,6 @@
         position: absolute;
         left: 35px;
     }
-
 </style>
 @endsection
 
@@ -17,7 +16,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark display-4" style="padding: 0 !important;">Lahan Sekolah</h1>
+                <h1 class="m-0 text-dark display-4" style="padding: 0 !important;">Ruang Rehab Renov</h1>
             </div>
         </div>
     </div>
@@ -28,7 +27,7 @@
 <div class="container-fluid">
     <div class="card">
         <div class="card-header bg-warning d-flex p-0">
-            <h3 class="card-title p-3 text-white">Lahan</h3>
+            <h3 class="card-title p-3 text-white">Ruang Rehab Renov</h3>
         </div>
         <div class="card-body">
             {{-- Table --}}
@@ -68,7 +67,7 @@
                             <th>Status Sekolah</th>
                             <th>Kabupaten / Kota</th>
                             <th>Kantor Cabang Dinas</th>
-                            <th>Status Lahan</th>
+                            <th>Status Ruang Rehab / Renov</th>
                             <th>Usulan</th>
                             <th>Aksi</th>
                         </tr>
@@ -81,7 +80,7 @@
                             <td class="text-center" style="vertical-align: middle">Depok</td>
                             <td class="text-center" style="vertical-align: middle">Kantor Cabang Dinas Pendidikan
                                 Wilayah II (KCD wilayah 2)</td>
-                            <td class="text-center" style="vertical-align: middle">Lahan Ideal</td>
+                            <td class="text-center" style="vertical-align: middle">Ruang Rehab / Renov Ideal</td>
                             <td class="text-center" style="vertical-align: middle">Tidak Ada Usulan</td>
                             <td class="text-center" style="vertical-align: middle">
                                 <button type="button" class="btn text-white d-inline" style="background-color: #25b5e9"
@@ -95,7 +94,7 @@
                             <td class="text-center" style="vertical-align: middle">Depok</td>
                             <td class="text-center" style="vertical-align: middle">Kantor Cabang Dinas Pendidikan
                                 Wilayah II (KCD wilayah 2)</td>
-                            <td class="text-center" style="vertical-align: middle">Lahan Ideal</td>
+                            <td class="text-center" style="vertical-align: middle">Ruang Rehab / Renov Ideal</td>
                             <td class="text-center" style="vertical-align: middle">Tidak Ada Usulan</td>
                             <td class="text-center" style="vertical-align: middle">
                                 <button type="button" class="btn text-white d-inline" style="background-color: #25b5e9"
@@ -109,7 +108,7 @@
                             <td class="text-center" style="vertical-align: middle">Depok</td>
                             <td class="text-center" style="vertical-align: middle">Kantor Cabang Dinas Pendidikan
                                 Wilayah II (KCD wilayah 2)</td>
-                            <td class="text-center" style="vertical-align: middle">Lahan Ideal</td>
+                            <td class="text-center" style="vertical-align: middle">Ruang Rehab / Renov Ideal</td>
                             <td class="text-center" style="vertical-align: middle">Tidak Ada Usulan</td>
                             <td class="text-center" style="vertical-align: middle">
                                 <button type="button" class="btn text-white d-inline" style="background-color: #25b5e9"
@@ -123,7 +122,7 @@
                             <td class="text-center" style="vertical-align: middle">Depok</td>
                             <td class="text-center" style="vertical-align: middle">Kantor Cabang Dinas Pendidikan
                                 Wilayah II (KCD wilayah 2)</td>
-                            <td class="text-center" style="vertical-align: middle">Lahan Ideal</td>
+                            <td class="text-center" style="vertical-align: middle">Ruang Rehab / Renov Ideal</td>
                             <td class="text-center" style="vertical-align: middle">Tidak Ada Usulan</td>
                             <td class="text-center" style="vertical-align: middle">
                                 <button type="button" class="btn text-white d-inline" style="background-color: #25b5e9"
@@ -137,7 +136,7 @@
                             <td class="text-center" style="vertical-align: middle">Depok</td>
                             <td class="text-center" style="vertical-align: middle">Kantor Cabang Dinas Pendidikan
                                 Wilayah II (KCD wilayah 2)</td>
-                            <td class="text-center" style="vertical-align: middle">Lahan Ideal</td>
+                            <td class="text-center" style="vertical-align: middle">Ruang Rehab / Renov Ideal</td>
                             <td class="text-center" style="vertical-align: middle">Tidak Ada Usulan</td>
                             <td class="text-center" style="vertical-align: middle">
                                 <button type="button" class="btn text-white d-inline" style="background-color: #25b5e9"
@@ -175,7 +174,6 @@
     </div>
 </div>
 {{-- End --}}
-
 
 
 @endsection
