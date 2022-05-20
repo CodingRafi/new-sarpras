@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\UsulanFoto;
+use App\Models\Log;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreUsulanFotoRequest;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateUsulanFotoRequest;
 
 class UsulanFotoController extends Controller
@@ -82,5 +85,19 @@ class UsulanFotoController extends Controller
     public function destroy(UsulanFoto $usulanFoto)
     {
         //
+    }
+
+    public function sigleDelete($id){
+        $foto = UsulanFoto::find($id);
+        if($foto->usulanKoleksi->usulanBangunan->profil_id == Auth::user()->profil_id){
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menghapus 1 foto dari usulan bangunan ' . str_replace("_", ' ', $foto->usulanKoleksi->usulanBangunan->jenis));
+
+            Storage::delete($foto->nama);
+            UsulanFoto::destroy($foto->id);
+            
+            return response()->json(['status' => 'success']);
+        }else{
+            abort(403);
+        }
     }
 }

@@ -116,71 +116,70 @@
                     <div class="row">
                         <div class="col">
                             @if (count($ketersediaanLahans) > 0)
-                                <div class="table-responsive">
-                                    <table class="table table-hover table-border  text-nowrap text-center">
-                                        {{-- judul table --}}
-                                        <thead>
+                                <table class="table table-hover table-border text-nowrap text-center">
+                                    {{-- judul table --}}
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Nama Lahan</th>
+                                            <th scope="col">No Sertifikat</th>
+                                            <th scope="col">Panjang(m)</th>
+                                            <th scope="col">Lebar(m)</th>
+                                            <th scope="col">Luas Lahan(m)</th>
+                                            <th scope="col">Alamat</th>
+                                            <th scope="col">Jenis Kepemilikan</th>
+                                            <th scope="col">Keterangan</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    {{-- end judul table --}}
+
+                                    {{-- isi table --}}
+                                    <tbody>
+                                        @foreach ($ketersediaanLahans as $lahan)
+                                            {{-- @dd($lahan) --}}
                                             <tr>
-                                                <th scope="col">No</th>
-                                                <th scope="col">Nama Lahan</th>
-                                                <th scope="col">No Sertifikat</th>
-                                                <th scope="col">Panjang(m)</th>
-                                                <th scope="col">Lebar(m)</th>
-                                                <th scope="col">Luas Lahan(m)</th>
-                                                <th scope="col">Alamat</th>
-                                                <th scope="col">Jenis Kepemilikan</th>
-                                                <th scope="col">Keterangan</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        {{-- end judul table --}}
-                                        {{-- isi table --}}
-                                        <tbody>
-                                            @foreach ($ketersediaanLahans as $lahan)
-                                                {{-- @dd($lahan) --}}
-                                                <tr>
-                                                    <th scope="row">{{ $loop->iteration }}</th>
-                                                    <td>{{ $lahan->nama }}</td>
-                                                    <td>{{ $lahan->no_sertifikat }}</td>
-                                                    <td>{{ $lahan->panjang }} m²</td>
-                                                    <td>{{ $lahan->lebar }} m²</td>
-                                                    <td>{{ $lahan->luas }} m²</td>
-                                                    <td>{{ $lahan->alamat }}</td>
-                                                    <td>{{ $lahan->jenis_kepemilikan }}</td>
-                                                    <td>{{ $lahan->keterangan }}</td>
-                                                    <td>
-                                                        <div class="card-body">
-                                                            <div class="input-group">
-                                                                <div class="input-group-prepend">
-                                                                    <button type="button" class="btn"
-                                                                        data-toggle="dropdown">
-                                                                        <i class="bi bi-three-dots-vertical"></i>
-                                                                    </button>
-                                                                    <div class="dropdown-menu" style="margin-left: -56px">
-                                                                        <a class="dropdown-item"
-                                                                            href="/ketersediaan-lahan/{{ $lahan->id }}/edit">Edit</a>
-                                                                        <form action="/ketersediaan-lahan/{{ $lahan->id }}"
-                                                                            method="post">
-                                                                            @csrf
-                                                                            @method('delete')
-                                                                            <button type="submit" class="dropdown-item"
-                                                                                onclick="return confirm('Apakah anda yakin akan menghapus ketersediaan lahan ini?')">Hapus</button>
-                                                                        </form>
-                                                                        <a class="dropdown-item"
-                                                                            href="{{ asset('storage/' . $lahan->bukti_lahan) }}"
-                                                                            target="_blank">Lihat
-                                                                            Dokumen</a>
-                                                                    </div>
+                                                <th scope="row">{{ $loop->iteration }}</th>
+                                                <td>{{ $lahan->nama }}</td>
+                                                <td>{{ $lahan->no_sertifikat }}</td>
+                                                <td>{{ $lahan->panjang }} m²</td>
+                                                <td>{{ $lahan->lebar }} m²</td>
+                                                <td>{{ $lahan->luas }} m²</td>
+                                                <td>{{ $lahan->alamat }}</td>
+                                                <td>{{ $lahan->jenis_kepemilikan }}</td>
+                                                <td>{{ $lahan->keterangan }}</td>
+                                                <td>
+                                                    <div class="card-body">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <button type="button" class="btn"
+                                                                    data-toggle="dropdown">
+                                                                    <i class="bi bi-three-dots-vertical"></i>
+                                                                </button>
+                                                                <div class="dropdown-menu" style="margin-left: -56px">
+                                                                    <a class="dropdown-item"
+                                                                        href="/ketersediaan-lahan/{{ $lahan->id }}/edit">Edit</a>
+                                                                    <form action="/ketersediaan-lahan/{{ $lahan->id }}"
+                                                                        method="post">
+                                                                        @csrf
+                                                                        @method('delete')
+                                                                        <button type="submit" class="dropdown-item"
+                                                                            onclick="return confirm('Apakah anda yakin akan menghapus ketersediaan lahan ini?')">Hapus</button>
+                                                                    </form>
+                                                                    <a class="dropdown-item"
+                                                                        href="{{ asset('storage/' . $lahan->bukti_lahan) }}"
+                                                                        target="_blank">Lihat
+                                                                        Dokumen</a>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                        {{-- end isi table --}}
-                                    </table>
-                                </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                    {{-- end isi table --}}
+                                </table>
                             @else
                                 <div class="container d-flex justify-content-center align-items-center"
                                     style="height: 10rem">

@@ -20,4 +20,14 @@ class Komli extends Model
     public function logo(){
         return $this->hasMany(Logo::class);
     }
+
+    public static function ambilKomli($kompetens){
+        $komli = [];
+
+        foreach ($kompetens as $key => $kompeten) {
+            $komli[] = Komli::where('id', $kompeten->komli_id)->get()[0];
+        }
+
+        return $komli;
+    }
 }

@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Komputer extends Model
 {
     use HasFactory;
+
+    public function profil(){
+        return $this->belongsTo(Profil::class);
+    }
 }

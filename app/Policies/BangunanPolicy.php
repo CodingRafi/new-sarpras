@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Logo;
+use App\Models\Bangunan;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class LogoPolicy
+class BangunanPolicy
 {
     use HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class LogoPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Logo  $logo
+     * @param  \App\Models\Bangunan  $bangunan
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Logo $logo)
+    public function view(User $user, Bangunan $bangunan)
     {
         //
     }
@@ -48,10 +48,10 @@ class LogoPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Logo  $logo
+     * @param  \App\Models\Bangunan  $bangunan
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Logo $logo)
+    public function update(User $user, Bangunan $bangunan)
     {
         //
     }
@@ -60,10 +60,10 @@ class LogoPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Logo  $logo
+     * @param  \App\Models\Bangunan  $bangunan
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Logo $logo)
+    public function delete(User $user, Bangunan $bangunan)
     {
         //
     }
@@ -72,10 +72,10 @@ class LogoPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Logo  $logo
+     * @param  \App\Models\Bangunan  $bangunan
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Logo $logo)
+    public function restore(User $user, Bangunan $bangunan)
     {
         //
     }
@@ -84,10 +84,10 @@ class LogoPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Logo  $logo
+     * @param  \App\Models\Bangunan  $bangunan
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Logo $logo)
+    public function forceDelete(User $user, Bangunan $bangunan)
     {
         //
     }
