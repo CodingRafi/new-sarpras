@@ -61,14 +61,14 @@
                 {{-- --------------------------------------------- JUMLAH RUANG KELAS --------------------------------------------- --}}
                 <div class="row input pl-5 mt-2">
                     <label class="col-2 mt-3">Jumlah Ruang Kelas</label>
-                    <input type="number" class="col-9 form-control mt-2" placeholder="Masukan Jumlah Ruang"
+                    <input type="number" class="col-3 form-control mt-2" style="width: 750px" placeholder="Masukan Jumlah Ruang"
                         value="{{ $data->jml_ruang }}" name="jml_ruang">
                 </div>
 
                 {{-- --------------------------------------------- LUAS LAHAN --------------------------------------------- --}}
                 <div class="row input pl-5 mt-2">
                     <label class="col-2 mt-3">Luas Lahan</label>
-                    <input type="number" class="col-9 form-control mt-2" placeholder="Masukan Luas Lahan"
+                    <input type="number" class="col-9 form-control mt-2" style="width: 750px" placeholder="Masukan Luas Lahan"
                         value="{{ $data->jml_ruang }}" name="luas_lahan">
                 </div>
 

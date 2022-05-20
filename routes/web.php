@@ -43,7 +43,7 @@ use App\Http\Controllers\Lahan_sekolah\KetersediaanLahanController;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // |-------------------------------------------------------------------------- SEMENTARA |--------------------------------------------------------------------------
@@ -99,12 +99,24 @@ Route::get('edit-usulan-peralatan', function () {
     return view('peralatan.edit');
 });
 
-Route::get('admin-lahan', function () {
-    return view('admin.lahan');
+Route::get('admin-peralatan', function () {
+    return view('admin.peralatan');
 });
 
-Route::get('admin-ruangkelas', function () {
-    return view('admin.ruangkelas');
+Route::get('admin-usulanperalatan', function () {
+    return view('admin.usulanperalatan');
+});
+
+Route::get('admin-visitasisekolah', function () {
+    return view('admin.visitasisekolah');
+});
+
+Route::get('admin-monitoring', function () {
+    return view('admin.monitoring');
+});
+
+Route::get('admin-lahan', function () {
+    return view('admin.lahan');
 });
 
 Route::get('admin-ruangkelas', function () {
@@ -142,7 +154,6 @@ Route::get('admin-monitoringvertifikator', function () {
 Route::get('admin-detailmonitoring', function () {
     return view('admin.detailmonitoring');
 });
-
 
 // |-------------------------------------------------------------------------- /SEMENTARA |--------------------------------------------------------------------------
 
