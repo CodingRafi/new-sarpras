@@ -206,7 +206,7 @@
         <div class="modal fade" id="modal-ketersediaan">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="/bangunan/ruang-kelas/{{ $dataKelas->id }}" method="post">
+                    <form action="/bangunan-all/update-ketersediaan/{{ $dataKelas->id }}" method="post">
                         @csrf
                         @method('patch')
                         <div class="modal-header">
@@ -217,7 +217,6 @@
                         </div>
                         <div class="modal-body">
                             {{-- input jumlah ruangan --}}
-                            <input type="hidden" name="id_ruangKelas" value="{{ $dataKelas->id }}">
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Ketersediaan</label>
                                 <input type="number" class="form-control col-sm-7" placeholder="Masukan Ketersediaan"
@@ -243,7 +242,7 @@
         <div class="modal fade" id="modal-kekurangan">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="/bangunan/ruang-kelas/{{ $dataKelas->id }}" method="post">
+                    <form action="/bangunan-all/{{ $dataKelas->id }}" method="post">
                         @csrf
                         @method('patch')
                         <div class="modal-header">

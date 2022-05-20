@@ -6,6 +6,8 @@ use App\Models\Komputer;
 use App\Models\UsulanBangunan;
 use App\Models\UsulanKoleksi;
 use App\Models\UsulanFoto;
+use App\Models\Bangunan;
+use App\Models\Profil;
 use App\Http\Requests\StoreKomputerRequest;
 use App\Http\Requests\UpdateKomputerRequest;
 use Illuminate\Support\Facades\Auth;
@@ -22,13 +24,16 @@ class KomputerController extends Controller
     public function index()
     {
         $usulans = UsulanBangunan::where('profil_id', Auth::user()->profil_id)->where('jenis', 'lab_komputer')->get();
-        // dd($usulans);
         $koleksi = UsulanKoleksi::koleksi($usulans);
         $fotos = UsulanFoto::fotos($koleksi);
+        $data = Bangunan::where('profil_id', Auth::user()->profil_id)->where('jenis', 'lab_komputer')->get()[0];
+        $profil = Profil::where('id', Auth::user()->profil_id)->get()[0];
 
         return view("bangunan.labKomputer.komputer",[
             'usulanLabKomputers' => $usulans,
-            'usulanFotos' => $fotos
+            'usulanFotos' => $fotos,
+            'data' => $data,
+            'profil' => $profil
         ]);
     }
 

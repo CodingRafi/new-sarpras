@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <h1 class="text-center font-weight-bold pt-2">5</h1>
+                        <h1 class="text-center font-weight-bold pt-2">{{ $profil->jml_rombel ?? 0 }}</h1>
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                         </div>
                     </div>
                     <div class="card-body d-flex align-items-end justify-content-center">
-                        <h1 class="text-center font-weight-bold pt-2">25</h1>
+                        <h1 class="text-center font-weight-bold pt-2">{{ $data->kondisi_ideal }}</h1>
                         <p>/ Kelas</p>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                         </div>
                     </div>
                     <div class="card-body d-flex align-items-end justify-content-center">
-                        <h1 class="text-center font-weight-bold pt-2">11</h1>
+                        <h1 class="text-center font-weight-bold pt-2">{{ $data->ketersediaan }}</h1>
                         <p>/ Kelas</p>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
                         </div>
                     </div>
                     <div class="card-body d-flex align-items-end justify-content-center">
-                        <h1 class="text-center font-weight-bold pt-2">4</h1>
+                        <h1 class="text-center font-weight-bold pt-2">{{ $data->kekurangan }}</h1>
                         <p>/ Kelas</p>
                     </div>
                 </div>

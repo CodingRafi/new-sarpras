@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Bangunan\Ruang_kelas;
 
 use App\Models\Kelas;
+use App\Models\Bangunan;
 use App\Models\UsulanKelas;
 use App\Models\UsulanBangunan;
 use App\Models\UsulanKoleksi;
@@ -27,7 +28,7 @@ class KelasController extends Controller
         $usulanKelas = UsulanBangunan::where('profil_id', Auth::user()->profil_id)->where('jenis', 'ruang_kelas')->get();
         $koleksi = UsulanKoleksi::koleksi($usulanKelas);
         $fotos = UsulanFoto::fotos($koleksi);
-        $data = Kelas::where('profil_id', Auth::user()->profil_id)->get()[0];
+        $data = Bangunan::where('profil_id', Auth::user()->profil_id)->where('jenis', 'ruang_kelas')->get()[0];
         $profil = Profil::where('id', Auth::user()->profil_id)->get()[0];
 
         return view("bangunan.kelas.index",[
@@ -90,30 +91,7 @@ class KelasController extends Controller
      */
     public function update(UpdateKelasRequest $request, Kelas $kelas)
     {
-        $data = Kelas::where('id', $request->id_ruangKelas)->get()[0];
-        if($data->profil_id == Auth::user()->profil_id){
-            $validatedData = $request->validate([
-                'ketersediaan' => 'numeric',
-                'kekurangan' => 'numeric',
-            ]);
-
-            $data->update($validatedData);
-
-            $ketersediaan = Kelas::where('profil_id', Auth::user()->profil_id)->get()[0]->ketersediaan;
-            $jml_rombel = Profil::where('id', Auth::user()->profil_id)->get()[0]->jml_rombel;
-
-            Kelas::kondisi_ideal($jml_rombel, $ketersediaan);
-
-            if($request->ketersediaan != ''){
-                Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah jumlah ketersediaan ruang kelas');
-            }else{
-                Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah jumlah kekurangan ruang kelas');
-            }
-
-            return redirect()->back();
-        }else{
-            abort(403);
-        }
+        
     }
 
     /**

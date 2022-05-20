@@ -13,6 +13,7 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ToiletController;
 use App\Http\Controllers\KoleksiController;
 use App\Http\Controllers\RiwayatController;
+use App\Http\Controllers\BangunanController;
 use App\Http\Controllers\KompetenController;
 use App\Http\Controllers\KomputerController;
 use App\Http\Controllers\PimpinanController;
@@ -112,6 +113,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/ketersediaan-lahan', KetersediaanLahanController::class);
     Route::patch('/kekurangan-lahan/update-kekurangan', [KekuranganLahanController::class, 'update']);
     Route::resource('/kekurangan-lahan', KekuranganLahanController::class);
+    Route::resource('/bangunan-all', BangunanController::class);
+    Route::patch('/bangunan-all/update-ketersediaan/{id}', [BangunanController::class, 'ubahKetersediaan']);
     Route::resource('/bangunan/ruang-kelas', KelasController::class);
     Route::post('/bangunan/usulan-ruang-kelas', [KelasController::class, 'createusulan']);
     Route::resource('/bangunan/ruang-praktik', PraktikController::class);
@@ -120,8 +123,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/bangunan/lab-komputer', KomputerController::class);
     Route::post('/bangunan/usulan-lab-komputer', [KomputerController::class, 'createusulan']);
     Route::resource('/bangunan/ruang-perpustakaan', PerpustakaanController::class);
-    Route::resource('/bangunan/ruang-rehabrenov', RehabRenovController::class);
+    Route::post('/bangunan/usulan-ruang-perpustakaan', [PerpustakaanController::class, 'createusulan']);
     Route::resource('/bangunan/toilet', ToiletController::class);
+    Route::post('/bangunan/usulan-toilet', [ToiletController::class, 'createusulan']);
+    Route::resource('/bangunan/ruang-rehabrenov', RehabRenovController::class);
     Route::resource('/bangunan/pimpinan', PimpinanController::class);
     Route::resource('/monev', MonevController::class);
     Route::resource('/peralatan/nama-jurusan', PeralatanController::class);

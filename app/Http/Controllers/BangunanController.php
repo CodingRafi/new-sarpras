@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bangunan;
+use App\Models\Profil;
+use App\Models\Kelas;
+use App\Models\Log;
 use App\Http\Requests\StoreBangunanRequest;
 use App\Http\Requests\UpdateBangunanRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BangunanController extends Controller
 {
@@ -68,9 +73,33 @@ class BangunanController extends Controller
      * @param  \App\Models\Bangunan  $bangunan
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateBangunanRequest $request, Bangunan $bangunan)
+    public function update(UpdateBangunanRequest $request, Bangunan $bangunan,$id)
     {
-        //
+        $data = Bangunan::where('id', $id)->get()[0];
+        dd($data);
+        if($data->profil_id == Auth::user()->profil_id){
+            $validatedData = $request->validate([
+                'ketersediaan' => 'numeric',
+                'kekurangan' => 'numeric',
+            ]);
+
+            $data->update($validatedData);
+
+            $ketersediaan = Kelas::where('profil_id', Auth::user()->profil_id)->get()[0]->ketersediaan;
+            $jml_rombel = Profil::where('id', Auth::user()->profil_id)->get()[0]->jml_rombel;
+
+            Kelas::kondisi_ideal($jml_rombel, $ketersediaan);
+
+            if($request->ketersediaan != ''){
+                Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah jumlah ketersediaan ruang kelas');
+            }else{
+                Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah jumlah kekurangan ruang kelas');
+            }
+
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -83,4 +112,28 @@ class BangunanController extends Controller
     {
         //
     }
+
+    public function ubahKetersediaan(Request $request, $id){
+        $data = Bangunan::where('id', $id)->get()[0];
+        if($data->profil_id == Auth::user()->profil_id){
+            $validatedData = $request->validate([
+                'ketersediaan' => 'required|numeric',
+            ]);
+
+            $data->update($validatedData);
+
+            if($data->jenis == 'ruang_kelas'){
+                $ketersediaan = Bangunan::where('id', $id)->get()[0]->ketersediaan;
+                $jml_rombel = Profil::where('id', Auth::user()->profil_id)->get()[0]->jml_rombel;
+                Bangunan::kondisi_ideal($jml_rombel, $ketersediaan);
+            }
+
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah jumlah ketersediaan ' . str_replace("_", " ", $data->jenis));
+
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
+    }
+
 }
