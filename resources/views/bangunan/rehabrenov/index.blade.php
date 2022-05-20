@@ -2,12 +2,9 @@
 
 @section('tambahcss')
 <style>
-    /* .row-data .col-3 {
-        max-width: 15.5rem !important;
-    } */
-
-    .card-header h4 {
-        font-size: 1.2rem !important
+    .input-group-prepend button i {
+        position: absolute;
+        left: 35px;
     }
 
 </style>
@@ -42,7 +39,7 @@
     </span>
     <div class="info-box-content">
         <label>Keterangan:</label>
-        <p>Ruang guru jga bisa di pakai untuk menyimpan dokumen dokumen penting tentang anak didik mereka,     Ruang guru
+        <p>Ruang guru jga bisa di pakai untuk menyimpan dokumen dokumen penting tentang anak didik mereka, Ruang guru
             juga sangat berfungsi untuk para guru guru atau staf sekolah lain nya, dapat dimanfaatkan untuk tempat
             peristirahatan para guru ketika selesai mengajar, tempat berkumpulnya para guru ketika ingin melakukan
             rapat.</p>
@@ -99,7 +96,8 @@
     <div class="card-header" style="background-color: #25b5e9">
         <h3 class="card-title text-white pt-2">Usulan Rehab/ Renov</h3>
         <div class="card-tools">
-            <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal" data-target="#modal-usulan"><i class="bi bi-plus"></i> Tambah Usulan
+            <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
+                data-target="#modal-usulan"><i class="bi bi-plus"></i> Tambah Usulan
             </button>
         </div>
     </div>
@@ -125,7 +123,7 @@
                                     <th scope="col" class="text-center">Luas Lahan</th>
                                     <th scope="col" class="text-center">Gambar Lahan</th>
                                 </tr>
-                              </thead>
+                            </thead>
                             {{-- end judul table --}}
 
                             {{-- isi table --}}
@@ -135,32 +133,89 @@
                                     <td class="text-center">Ruang Guru</td>
                                     <td class="text-center">3</td>
                                     <td class="text-center">20 M</td>
-                                    <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
-                                    <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
+                                    <td class="text-center" style="vertical-align: middle"><a
+                                            href="/assets/img/backgrounds/school.jpg" class="fancybox"
+                                            data-fancybox="gallery1"><img
+                                                src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded"
+                                                style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
+                                    <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px">
+                                    </td>
                                     <td></td>
-                                    <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
+                                    <td>
+                                        <div class="card-body">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <button type="button" class="btn" data-toggle="dropdown">
+                                                        <i class="bi bi-three-dots-vertical"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu" style="margin-left: -73px">
+                                                        <a class="dropdown-item">Edit</a>
+                                                        <a class="dropdown-item">Batalkan</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th class="text-center">2</th>
                                     <td class="text-center">Ruang Guru</td>
                                     <td class="text-center">3</td>
                                     <td class="text-center">20 M</td>
-                                    <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
-                                    <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
+                                    <td class="text-center" style="vertical-align: middle"><a
+                                            href="/assets/img/backgrounds/school.jpg" class="fancybox"
+                                            data-fancybox="gallery1"><img
+                                                src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded"
+                                                style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
+                                    <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px">
+                                    </td>
                                     <td></td>
-                                    <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
+                                    <td>
+                                        <div class="card-body">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <button type="button" class="btn" data-toggle="dropdown">
+                                                        <i class="bi bi-three-dots-vertical"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu" style="margin-left: -73px">
+                                                        <a class="dropdown-item">Edit</a>
+                                                        <a class="dropdown-item">Batalkan</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th class="text-center">3</th>
                                     <td class="text-center">Ruang Guru</td>
                                     <td class="text-center">3</td>
                                     <td class="text-center">20 M</td>
-                                    <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
-                                    <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
+                                    <td class="text-center" style="vertical-align: middle"><a
+                                            href="/assets/img/backgrounds/school.jpg" class="fancybox"
+                                            data-fancybox="gallery1"><img
+                                                src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded"
+                                                style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
+                                    <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px">
+                                    </td>
                                     <td></td>
-                                    <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
+                                    <td>
+                                        <div class="card-body">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <button type="button" class="btn" data-toggle="dropdown">
+                                                        <i class="bi bi-three-dots-vertical"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu" style="margin-left: -73px">
+                                                        <a class="dropdown-item">Edit</a>
+                                                        <a class="dropdown-item">Batalkan</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>
-                              </tbody>
+                            </tbody>
                             {{-- end isi table --}}
                         </table>
                     </div>
@@ -174,7 +229,8 @@
     <div class="card-header" style="background-color: #fcc12d">
         <h3 class="card-title text-white pt-2">Rencana Rehab/ Renov</h3>
         <div class="card-tools">
-            <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal" data-target="#modal-rencana-usulan"><i class="bi bi-plus"></i> Tambah Usulan
+            <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
+                data-target="#modal-rencana-usulan"><i class="bi bi-plus"></i> Tambah Usulan
             </button>
         </div>
     </div>
@@ -191,7 +247,8 @@
                                     <th rowspan="2" class="text-center" style="line-height: 170px">No</th>
                                     <th rowspan="2" class="text-center" style="line-height: 170px">Jenis Usulan</th>
                                     <th colspan="2" class="text-center" style="line-height: 70px">Tingkat Kerusakan</th>
-                                    <th colspan="3" class="text-center" style="line-height: 70px">Objek Rehab/ Renov</th>
+                                    <th colspan="3" class="text-center" style="line-height: 70px">Objek Rehab/ Renov
+                                    </th>
                                     <th rowspan="2" class="text-center" style="line-height: 170px">Proposal</th>
                                     <th rowspan="2" class="text-center" style="line-height: 170px">Keterangan</th>
                                     <th rowspan="2" class="text-center" style="line-height: 170px">Aksi</th>
@@ -203,7 +260,7 @@
                                     <th class="text-center" style="line-height: 70px">Luas Lahan</th>
                                     <th class="text-center" style="line-height: 70px">Gambar</th>
                                 </tr>
-                              </thead>
+                            </thead>
                             {{-- end judul table --}}
 
                             {{-- isi table --}}
@@ -215,10 +272,29 @@
                                     <td class="text-center">10 Tahun</td>
                                     <td class="text-center">Atap</td>
                                     <td class="text-center">150m²</td>
-                                    <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
-                                    <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
+                                    <td class="text-center" style="vertical-align: middle"><a
+                                            href="/assets/img/backgrounds/school.jpg" class="fancybox"
+                                            data-fancybox="gallery1"><img
+                                                src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded"
+                                                style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
+                                    <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px">
+                                    </td>
                                     <td></td>
-                                    <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
+                                     <td>
+                                        <div class="card-body">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <button type="button" class="btn" data-toggle="dropdown">
+                                                        <i class="bi bi-three-dots-vertical"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu" style="margin-left: -73px">
+                                                        <a class="dropdown-item">Edit</a>
+                                                        <a class="dropdown-item">Batalkan</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th class="text-center">2</th>
@@ -227,10 +303,29 @@
                                     <td class="text-center">10 Tahun</td>
                                     <td class="text-center">Atap</td>
                                     <td class="text-center">150m²</td>
-                                    <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
-                                    <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
+                                    <td class="text-center" style="vertical-align: middle"><a
+                                            href="/assets/img/backgrounds/school.jpg" class="fancybox"
+                                            data-fancybox="gallery1"><img
+                                                src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded"
+                                                style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
+                                    <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px">
+                                    </td>
                                     <td></td>
-                                    <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
+                                     <td>
+                                        <div class="card-body">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <button type="button" class="btn" data-toggle="dropdown">
+                                                        <i class="bi bi-three-dots-vertical"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu" style="margin-left: -73px">
+                                                        <a class="dropdown-item">Edit</a>
+                                                        <a class="dropdown-item">Batalkan</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th class="text-center">3</th>
@@ -239,12 +334,31 @@
                                     <td class="text-center">10 Tahun</td>
                                     <td class="text-center">Atap</td>
                                     <td class="text-center">150m²</td>
-                                    <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded" style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
-                                    <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
+                                    <td class="text-center" style="vertical-align: middle"><a
+                                            href="/assets/img/backgrounds/school.jpg" class="fancybox"
+                                            data-fancybox="gallery1"><img
+                                                src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg" class="rounded"
+                                                style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a></td>
+                                    <td class="text-center"><img src="/img/pdf.png" alt="image" style="width: 30px">
+                                    </td>
                                     <td></td>
-                                    <td class="text-center"><a href="#" class="btn text-white" style="background-color: #00a65b">Batalkan</a></td>
+                                     <td>
+                                        <div class="card-body">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <button type="button" class="btn" data-toggle="dropdown">
+                                                        <i class="bi bi-three-dots-vertical"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu" style="margin-left: -73px">
+                                                        <a class="dropdown-item">Edit</a>
+                                                        <a class="dropdown-item">Batalkan</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>
-                              </tbody>
+                            </tbody>
                             {{-- end isi table --}}
                         </table>
                     </div>
@@ -258,134 +372,136 @@
 {{-- modal tambah usulan --}}
 <div class="modal fade" id="modal-usulan">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Usulan</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          {{-- input jumlah ruangan --}}
-          <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Jenis Usulan</label>
-            <input type="text" class="form-control col-sm-7" placeholder="Masukan Jenis Usulan" id="jenis-usulan"name="jenis-usulan" required value="">
-        </div>
-        {{-- end input jumlah ruangan --}}
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Usulan</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{-- input jumlah ruangan --}}
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Jenis Usulan</label>
+                    <input type="text" class="form-control col-sm-7" placeholder="Masukan Jenis Usulan"
+                        id="jenis-usulan" name="jenis-usulan" required value="">
+                </div>
+                {{-- end input jumlah ruangan --}}
 
-        {{-- input luas lahan --}}
-        <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Jumlah Ruang</label>
-            <input type="text" class="form-control col-sm-7" placeholder="Masukan Jumlah Usulan" id="jumlah-usulan"
-            name="long" required value="">
-        </div>
-        {{-- end luas lahan --}}
+                {{-- input luas lahan --}}
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Jumlah Ruang</label>
+                    <input type="text" class="form-control col-sm-7" placeholder="Masukan Jumlah Usulan"
+                        id="jumlah-usulan" name="long" required value="">
+                </div>
+                {{-- end luas lahan --}}
 
-        {{-- input luas lahan --}}
-        <div class="form-group row">
-            <label class="col-sm-4 col-form-label">Luas Lahan</label>
-            <input type="text" class="form-control col-sm-7" placeholder="Masukan Luas Lahan" id="luas-lahan"
-            name="long" required value="">
-        </div>
-        {{-- end luas lahan --}}
+                {{-- input luas lahan --}}
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Luas Lahan</label>
+                    <input type="text" class="form-control col-sm-7" placeholder="Masukan Luas Lahan" id="luas-lahan"
+                        name="long" required value="">
+                </div>
+                {{-- end luas lahan --}}
 
-        {{-- upload gambar lokasi --}}
-        <div class="form-group row">
-            <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan</label>
-            <input type="file" id="gambar-lahan">
-        </div>
-        {{-- end upload gambar lokasi --}}
+                {{-- upload gambar lokasi --}}
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan</label>
+                    <input type="file" id="gambar-lahan">
+                </div>
+                {{-- end upload gambar lokasi --}}
 
-        {{-- upload proposal --}}
-        <div class="form-group row">
-            <label class="col-sm-4 col-form-label pt-1" for="customFile">Proposal</label>
-            <input type="file" id="proposal">
+                {{-- upload proposal --}}
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label pt-1" for="customFile">Proposal</label>
+                    <input type="file" id="proposal">
+                </div>
+                {{-- end upload proposal --}}
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                <button type="button" class="btn text-white" style="background-color: #00a65b">Simpan</button>
+            </div>
         </div>
-        {{-- end upload proposal --}}
-        </div>
-        <div class="modal-footer justify-content-between">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-          <button type="button" class="btn text-white" style="background-color: #00a65b">Simpan</button>
-        </div>
-      </div>
-      <!-- /.modal-content -->
+        <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
-  </div>
+</div>
 {{-- end modal tambah usulan --}}
 
 {{-- modal tambah usulan --}}
 <div class="modal fade" id="modal-rencana-usulan">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Usulan Rencana Rehab/ Renov</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        {{-- input jumlah ruangan --}}
-        <div class="form-group row">
-          <label class="col-sm-4 col-form-label">Jenis Usulan</label>
-          <input type="text" class="form-control col-sm-7" placeholder="Masukan Jenis Usulan" id="jenis-usulan"name="jenis-usulan" required value="">
-      </div>
-      {{-- end input jumlah ruangan --}}
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Usulan Rencana Rehab/ Renov</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{-- input jumlah ruangan --}}
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Jenis Usulan</label>
+                    <input type="text" class="form-control col-sm-7" placeholder="Masukan Jenis Usulan"
+                        id="jenis-usulan" name="jenis-usulan" required value="">
+                </div>
+                {{-- end input jumlah ruangan --}}
 
-      {{-- input luas lahan --}}
-      <div class="form-group row">
-          <label class="col-sm-4 col-form-label">Persentase</label>
-          <input type="text" class="form-control col-sm-7" placeholder="Masukan Persentase Kerusakan" id="persentase"
-          name="long" required value="">
-      </div>
-      {{-- end luas lahan --}}
+                {{-- input luas lahan --}}
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Persentase</label>
+                    <input type="text" class="form-control col-sm-7" placeholder="Masukan Persentase Kerusakan"
+                        id="persentase" name="long" required value="">
+                </div>
+                {{-- end luas lahan --}}
 
-      {{-- input luas lahan --}}
-      <div class="form-group row">
-          <label class="col-sm-4 col-form-label">Usia</label>
-          <input type="text" class="form-control col-sm-7" placeholder="Masukan Usia" id="usia"
-          name="long" required value="">
-      </div>
-      {{-- end luas lahan --}}
+                {{-- input luas lahan --}}
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Usia</label>
+                    <input type="text" class="form-control col-sm-7" placeholder="Masukan Usia" id="usia" name="long"
+                        required value="">
+                </div>
+                {{-- end luas lahan --}}
 
-      {{-- input luas lahan --}}
-      <div class="form-group row">
-          <label class="col-sm-4 col-form-label">Objek</label>
-          <input type="text" class="form-control col-sm-7" placeholder="Masukan Objek" id="objek"
-          name="long" required value="">
-      </div>
-      {{-- end luas lahan --}}
-      
-      {{-- input luas lahan --}}
-      <div class="form-group row">
-          <label class="col-sm-4 col-form-label">Luas Lahan</label>
-          <input type="text" class="form-control col-sm-7" placeholder="Masukan Luas" id="luas"
-          name="long" required value="">
-      </div>
-      {{-- end luas lahan --}}
+                {{-- input luas lahan --}}
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Objek</label>
+                    <input type="text" class="form-control col-sm-7" placeholder="Masukan Objek" id="objek" name="long"
+                        required value="">
+                </div>
+                {{-- end luas lahan --}}
 
-      {{-- upload proposal --}}
-      <div class="form-group row">
-          <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar</label>
-          <input type="file" id="proposal">
-      </div>
-      {{-- end upload proposal --}}
-      
-      {{-- upload proposal --}}
-      <div class="form-group row">
-          <label class="col-sm-4 col-form-label pt-1" for="customFile">Proposal</label>
-          <input type="file" id="proposal">
-      </div>
-      {{-- end upload proposal --}}
-      </div>
-      <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-        <button type="button" class="btn text-white" style="background-color: #00a65b">Simpan</button>
-      </div>
+                {{-- input luas lahan --}}
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Luas Lahan</label>
+                    <input type="text" class="form-control col-sm-7" placeholder="Masukan Luas" id="luas" name="long"
+                        required value="">
+                </div>
+                {{-- end luas lahan --}}
+
+                {{-- upload proposal --}}
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar</label>
+                    <input type="file" id="proposal">
+                </div>
+                {{-- end upload proposal --}}
+
+                {{-- upload proposal --}}
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label pt-1" for="customFile">Proposal</label>
+                    <input type="file" id="proposal">
+                </div>
+                {{-- end upload proposal --}}
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                <button type="button" class="btn text-white" style="background-color: #00a65b">Simpan</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
     </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
+    <!-- /.modal-dialog -->
 </div>
 {{-- end modal tambah usulan --}}
 

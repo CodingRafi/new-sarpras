@@ -61,6 +61,14 @@ Route::get('reset-password', function () {
     return view('myauth.resetPassword');
 });
 
+Route::get('edit-labkomputer', function () {
+    return view('bangunan.labKomputer.edit');
+});
+
+Route::get('edit-toilet', function () {
+    return view('bangunan.toilet.edit');
+});
+
 Route::get('edit-ruangpraktik', function () {
     return view('bangunan.praktik.edit');
 });
@@ -79,6 +87,22 @@ Route::get('edit-rehabrenov', function () {
 
 Route::get('edit-usulan-peralatan', function () {
     return view('peralatan.edit');
+});
+
+Route::get('admin-peralatan', function () {
+    return view('admin.peralatan');
+});
+
+Route::get('admin-usulanperalatan', function () {
+    return view('admin.usulanperalatan');
+});
+
+Route::get('admin-visitasisekolah', function () {
+    return view('admin.visitasisekolah');
+});
+
+Route::get('admin-monitoring', function () {
+    return view('admin.monitoring');
 });
 // |-------------------------------------------------------------------------- /SEMENTARA |--------------------------------------------------------------------------
 
@@ -102,7 +126,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/kekurangan-lahan', KekuranganLahanController::class);
     Route::resource('/bangunan/ruang-kelas', KelasController::class);
     Route::post('/bangunan/usulan-ruang-kelas', [KelasController::class, 'createusulan']);
-    Route::delete('/bangunan/usulan-ruang-kelas/{id}', [KelasController::class, 'deleteusulan']);
     Route::resource('/bangunan/ruang-praktik', PraktikController::class);
     Route::post('/bangunan/usulan-ruang-praktik', [PraktikController::class, 'createusulan']);
     Route::delete('/bangunan/usulan-ruang-praktik/{id}', [PraktikController::class, 'deleteusulan']);
@@ -114,6 +137,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/monev', MonevController::class);
     Route::resource('/peralatan/nama-jurusan', PeralatanController::class);
     Route::resource('/riwayat-bantuan', RiwayatController::class);
+    Route::resource('/usulan-bangunan', UsulanBangunanController::class);
 });
 
 require __DIR__.'/auth.php';
