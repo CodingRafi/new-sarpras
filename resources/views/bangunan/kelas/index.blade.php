@@ -60,8 +60,8 @@
                     </div>
                     {{-- end card header --}}
                     {{-- card body --}}
-                    <div class="card-body" style="height: 92px; box-sizing:border-box">
-                        <h1 class="text-center font-weight-bold pt-2" style="font-size: 18px; box-sizing:border-box">{{ $dataKelas->kondisi_ideal }} Kelas</h1>
+                    <div class="card-body">
+                        <h1 class="text-center font-weight-bold pt-2">{{ $dataKelas->kondisi_ideal }} Kelas</h1>
                         <div id="emailHelp" class="form-text text-center">{{ ($dataKelas->kondisi_ideal == $dataKelas->ketersediaan) ? 'Ideal' : 'Tidak Ideal' }}</div>
                     </div>
                     {{-- end card body --}}
@@ -119,67 +119,73 @@
                         <div class="col">
                             <div class="col-lg-12">
                                 @if (count($usulanKelas) > 0)
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered mt-3 text-center">
-                                            {{-- judul table --}}
-                                            <thead>
+                                    <table class="table table-bordered mt-3">
+                                        {{-- judul table --}}
+                                        <thead>
+                                            <tr>
+                                                <th rowspan="2" class="text-center" style="line-height: 70px">No</th>
+                                                <th rowspan="2" class="text-center" style="line-height: 70px">Jenis Ruang
+                                                </th>
+                                                <th rowspan="2" class="text-center" style="line-height: 70px">Jumlah
+                                                    Ruang
+                                                    Kelas</th>
+                                                <th colspan="2" class="text-center">Ketersediaan Lahan</th>
+                                                <th rowspan="2" class="text-center" style="line-height: 70px">Proposal
+                                                </th>
+                                                <th rowspan="2" class="text-center" style="line-height: 70px">Keterangan
+                                                </th>
+                                                <th rowspan="2" class="text-center" style="line-height: 70px">Aksi</th>
+                                            </tr>
+                                            <tr>
+                                                <th scope="col" class="text-center">Luas Lahan</th>
+                                                <th scope="col" class="text-center">Gambar Lahan</th>
+                                            </tr>
+                                        </thead>
+                                        {{-- end judul table --}}
+
+                                        {{-- isi table --}}
+                                        <tbody>
+                                            @foreach ($usulanKelas as $key => $usulan)
                                                 <tr>
-                                                    <th rowspan="2">No</th>
-                                                    <th rowspan="2">Jenis Ruang</th>
-                                                    <th rowspan="2">Jumlah Ruang</th>
-                                                    <th colspan="2">Ketersedian Lahan</th>
-                                                    <th rowspan="2">Proposal</th>
-                                                    <th rowspan="2">Keterangan</th>
-                                                    <th rowspan="2">Aksi</th>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="col" class="text-center">Luas Lahan</th>
-                                                    <th scope="col" class="text-center">Gambar Lahan</th>
-                                                </tr>
-                                            </thead>
-                                            {{-- end judul table --}}
-                                            {{-- isi table --}}
-                                            <tbody>
-                                                @foreach ($usulanKelas as $key => $usulan)
-                                                    <tr>
-                                                        <th class="text-center">{{ $loop->iteration }}</th>
-                                                        <td class="text-center text-capitalize">{{ str_replace("_", " ", $usulan->jenis) }}</td>
-                                                        <td class="text-center">{{ $usulan->jml_ruang }}</td>
-                                                        <td class="text-center">{{ $usulan->luas_lahan }} M</td>
-                                                        <td class="text-center" style="vertical-align: middle">
-                                                            @foreach ($usulanFotos[$key] as $ke => $foto)
-                                                                <a href="{{ asset('storage/' . $foto->nama) }}"
-                                                                    class="fancybox" data-fancybox="gallery{{ $key }}">
-                                                                    <img src="{{ asset('storage/' . $foto->nama) }}"
-                                                                        class="rounded"
-                                                                        style="object-fit: cover; width: 150px; aspect-ratio: 1/1;{{ $ke == 0 ? '' : 'display:none;' }}">
-                                                                </a>
-                                                            @endforeach
-                                                        </td>
-                                                        <td class="text-center">
-                                                            <a href="{{ asset('storage/' . $usulan->proposal) }}"
-                                                                target="_blank">
-                                                                <img src="/img/pdf.png" alt="image" style="width: 30px">
+                                                    <th class="text-center">{{ $loop->iteration }}</th>
+                                                    <td class="text-center text-capitalize">{{ str_replace("_", " ", $usulan->jenis) }}</td>
+                                                    <td class="text-center">{{ $usulan->jml_ruang }}</td>
+                                                    <td class="text-center">{{ $usulan->luas_lahan }} M</td>
+                                                    <td class="text-center" style="vertical-align: middle">
+                                                        @foreach ($usulanFotos[$key] as $ke => $foto)
+                                                            <a href="{{ asset('storage/' . $foto->nama) }}"
+                                                                class="fancybox" data-fancybox="gallery{{ $key }}">
+                                                                <img src="{{ asset('storage/' . $foto->nama) }}"
+                                                                    class="rounded"
+                                                                    style="object-fit: cover; width: 150px; aspect-ratio: 1/1;{{ $ke == 0 ? '' : 'display:none;' }}">
                                                             </a>
-                                                        </td>
-                                                        <td class="text-center">{{ $usulan->keterangan }}</td>
-                                                        <td class="text-center">
-                                                            <form action="/bangunan/usulan-ruang-kelas/{{ $usulan->id }}"
-                                                                method="post">
-                                                                @csrf
-                                                                @method('delete')
-                                                                 <button type="button" class="btn text-white"
-                                                                    style="background-color: #fcc12d" data-toggle="modal" data-target="#modal-edit">Edit</button>
-                                                                <button type="submit" class="btn text-white"
-                                                                    style="background-color: #00a65b"
-                                                                    onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
-                                                            </form>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                            {{-- end isi table --}}
-                                        </table>
-                                    </div>
+                                                        @endforeach
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <a href="{{ asset('storage/' . $usulan->proposal) }}"
+                                                            target="_blank">
+                                                            <img src="/img/pdf.png" alt="image" style="width: 30px">
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-center">{{ $usulan->keterangan }}</td>
+                                                    <td class="text-center">
+                                                        <a href="/usulan-bangunan/{{ $usulan->id }}/edit" class="btn btn-warning text-white">Edit</a>
+
+                                                        <form action="/usulan-bangunan/{{ $usulan->id }}"
+                                                            method="post">
+                                                            @csrf
+                                                            @method('delete')
+
+                                                            <button type="submit" class="btn text-white"
+                                                                style="background-color: #00a65b"
+                                                                onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
+
+                                                        </form>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                        {{-- end isi table --}}
+                                    </table>
                                 @else
                                     <div class="container d-flex justify-content-center align-items-center"
                                         style="height: 10rem">
@@ -220,8 +226,9 @@
                             {{-- end input jumlah ruangan --}}
                         </div>
                         <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                            <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn text-white" style="background-color: #00a65b">Save
+                                changes</button>
                         </div>
                     </form>
                 </div>
