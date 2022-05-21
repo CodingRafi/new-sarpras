@@ -31,7 +31,7 @@
     {{-- Row --}}
     <div class="container-fluid">
         <div class="row">
-            <div class="col">
+            <div class="col-lg-3 col-6">
                 <div class="card">
                     {{-- card header --}}
                     <div class="card-header text-white" style="background-color: #00a65b">
@@ -42,14 +42,14 @@
                     </div>
                     {{-- end card header --}}
                     {{-- card body --}}
-                    <div class="card-body">
+                    <div class="card-body" style="height: 112px;">
                         <h1 class="text-center font-weight-bold pt-2">{{ $profil->jml_rombel ?? 0 }}</h1>
                     </div>
                     {{-- end card body --}}
                 </div>
             </div>
 
-            <div class="col">
+            <div class="col-lg-3 col-6">
                 <div class="card">
                     {{-- card header --}}
                     <div class="card-header text-white" style="background-color: #25b5e9">
@@ -60,7 +60,7 @@
                     </div>
                     {{-- end card header --}}
                     {{-- card body --}}
-                    <div class="card-body">
+                    <div class="card-body" style="height: 112px;">
                         <h1 class="text-center font-weight-bold pt-2">{{ $dataKelas->kondisi_ideal }}</h1>
                         <div id="emailHelp" class="form-text text-center">{{ ($dataKelas->kondisi_ideal == $dataKelas->ketersediaan) ? 'Ideal' : 'Tidak Ideal' }}</div>
                     </div>
@@ -68,7 +68,7 @@
                 </div>
             </div>
 
-            <div class="col">
+            <div class="col-lg-3 col-6">
                 <div class="card">
                     {{-- card header --}}
                     <div class="card-header text-white" href="" style="background-color: #fcc12d">
@@ -79,14 +79,14 @@
                     </div>
                     {{-- end card header --}}
                     {{-- card body --}}
-                    <div class="card-body">
+                    <div class="card-body" style="height: 112px;">
                         <h1 class="text-center font-weight-bold pt-2">{{ $dataKelas->ketersediaan }}</h1>
                     </div>
                     {{-- end card body --}}
                 </div>
             </div>
 
-            <div class="col">
+            <div class="col-lg-3 col-6">
                 <div class="card">
                     {{-- card header --}}
                     <div class="card-header text-white" href="" style="background-color: #263238">
@@ -94,16 +94,32 @@
                     </div>
                     {{-- end card header --}}
                     {{-- card body --}}
-                    <div class="card-body">
+                    <div class="card-body" style="height: 112px;">
                         <h1 class="text-center font-weight-bold pt-2">{{ $dataKelas->kekurangan }}</h1>
                     </div>
                     {{-- end card body --}}
                 </div>
             </div>
         </div>
-        <div class="alert alert-warning text-white" role="alert">
+
+        {{-- <div class="alert alert-warning text-white" role="alert">
             Kekurangan didapatkan dari selisih kondisi ideal dan ketersediaan 
-          </div>
+        </div> --}}
+
+        <div class="card card-outline card-warning">
+            <div class="card-header">
+                <h3 class="card-title"><i class="bi bi-info-circle"></i> Informasi</h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body text-muted">
+                Kekurangan didapatkan dari selisih kondisi ideal dan ketersediaan 
+            </div>
+        </div>
+
         {{-- End Row --}}
 
         <div class="card">
