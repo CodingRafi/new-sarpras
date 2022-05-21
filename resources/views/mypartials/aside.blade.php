@@ -1,13 +1,12 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-light-success elevation-4" style="position: fixed;">
     <!-- Brand Logo -->
-    <a href="/" class="brand-link bg-success" style="background-color: #00A65B !important; display: flex; align-items: center;padding: 9px 11px;">
+    <a href="/profil/{{ Auth::user()->profil_id }}" class="brand-link bg-success" style="background-color: #00A65B !important; display: flex; align-items: center;padding: 9px 11px;">
         <div class="bungkusGambar bg-white p-2" style="border-radius: 50%;">
             <img src="/assets/img/avatars/logo-jawa-barat.png" alt="TarunaBhakti Logo" class="brand-image m-auto" style="opacity: .8">
         </div>
         <div style="display: flex; flex-direction: column;" class="ml-2">
           <span class="brand-text h6" style="margin: 0;font-size: 17px;">SISTEM SARPRAS</span>
-          <p class="brand-text font-weight-light h6" style="font-size: .8rem;margin: 0;">Admin</p>
         </div>
     </a>
 

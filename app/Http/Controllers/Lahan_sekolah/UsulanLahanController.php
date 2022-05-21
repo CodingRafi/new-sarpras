@@ -83,7 +83,9 @@ class UsulanLahanController extends Controller
      */
     public function edit(UsulanLahan $usulanLahan)
     {
-        //
+        return view('lahan.edit', [
+            'data' => $usulanLahan
+        ]);
     }
 
     /**
@@ -95,7 +97,31 @@ class UsulanLahanController extends Controller
      */
     public function update(UpdateUsulanLahanRequest $request, UsulanLahan $usulanLahan)
     {
-        //
+        if($usulanLahan->profil_id == Auth::user()->profil_id){
+            $validatedData = $request->validate([
+                'nama' => 'required',
+                'panjang' => 'required',
+                'lebar' => 'required',
+                'alamat' => 'required'
+            ]);
+
+            if($request->file('proposal')){
+                if($usulanLahan->proposal){
+                    Storage::delete($usulanLahan->proposal);
+                }
+                $validatedData['proposal'] = $request->file('proposal')->store('proposal-usulan-bangunan');
+            }
+
+            UsulanLahan::where('id', $usulanLahan->id)
+                        ->update($validatedData);
+
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Usulan Lahan');
+
+            return redirect('/usulan-lahan');
+
+        }else{
+            abort(403);
+        }
     }
 
     /**
