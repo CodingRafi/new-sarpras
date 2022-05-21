@@ -15,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('rehab_renovs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('profil_id');
+            $table->enum('jenis', ['ruang_kelas', 'ruang_praktek', 'lab_komputer', 'perpustakaan', 'toilet', 'kantor', 'ruang_guru']);
+            $table->string('persentase');
+            $table->string('usia');
+            $table->string('objek');
+            $table->string('luas_lahan');
+            $table->string('proposal');
+            $table->string('keterangan');
             $table->timestamps();
         });
     }

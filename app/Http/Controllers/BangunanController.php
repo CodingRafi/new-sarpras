@@ -75,31 +75,7 @@ class BangunanController extends Controller
      */
     public function update(UpdateBangunanRequest $request, Bangunan $bangunan,$id)
     {
-        $data = Bangunan::where('id', $id)->get()[0];
-        dd($data);
-        if($data->profil_id == Auth::user()->profil_id){
-            $validatedData = $request->validate([
-                'ketersediaan' => 'numeric',
-                'kekurangan' => 'numeric',
-            ]);
-
-            $data->update($validatedData);
-
-            $ketersediaan = Kelas::where('profil_id', Auth::user()->profil_id)->get()[0]->ketersediaan;
-            $jml_rombel = Profil::where('id', Auth::user()->profil_id)->get()[0]->jml_rombel;
-
-            Kelas::kondisi_ideal($jml_rombel, $ketersediaan);
-
-            if($request->ketersediaan != ''){
-                Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah jumlah ketersediaan ruang kelas');
-            }else{
-                Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah jumlah kekurangan ruang kelas');
-            }
-
-            return redirect()->back();
-        }else{
-            abort(403);
-        }
+        //
     }
 
     /**
@@ -131,6 +107,27 @@ class BangunanController extends Controller
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah jumlah ketersediaan ' . str_replace("_", " ", $data->jenis));
 
             return redirect()->back();
+        }else{
+            abort(403);
+        }
+    }
+
+    public function kondisiIdeal(Request $request, $id){
+        $data = Bangunan::where('id', $id)->get()[0];
+        if($data->profil_id == Auth::user()->profil_id){
+            if($data->jenis == 'toilet'){
+                $validatedData = $request->validate([
+                    'kondisi_ideal' => 'required|numeric',
+                ]);
+    
+                $data->update($validatedData);
+    
+                Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah kondisi ideal ' . str_replace("_", " ", $data->jenis));
+    
+                return redirect()->back();
+            }else{
+                abort(403);
+            }
         }else{
             abort(403);
         }

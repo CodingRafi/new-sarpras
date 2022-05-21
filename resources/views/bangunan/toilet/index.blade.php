@@ -47,7 +47,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <h1 class="text-center font-weight-bold pt-2">20</h1>
+                        <h1 class="text-center font-weight-bold pt-2">{{ $jml_siswa }}</h1>
                     </div>
                 </div>
             </div>
@@ -64,8 +64,7 @@
                         </div>
                     </div>
                     <div class="card-body d-flex align-items-end justify-content-center">
-                        <h1 class="text-center font-weight-bold pt-2">25</h1>
-                        <p>/ Toilet</p>
+                        <h1 class="text-center font-weight-bold pt-2">{{ $data->kondisi_ideal }}</h1>
                     </div>
                 </div>
 
@@ -80,12 +79,14 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form class="form-horizontal">
+                                <form class="form-horizontal" method="post" action="/bangunan-all/update-kondisi-ideal/{{ $data->id }}">
+                                    @csrf
+                                    @method('patch')
                                     <div class="card-body">
                                         <div class="form-group row">
                                             <label for="ideal" class="col-sm-2 col-form-label">Kondisi Ideal</label>
                                             <div class="col-sm-10">
-                                                <input type="number" class="form-control" id="ideal">
+                                                <input type="number" class="form-control" id="ideal" name="kondisi_ideal" value="{{ $data->kondisi_ideal }}">
                                             </div>
                                         </div>
                                     </div>
@@ -112,8 +113,7 @@
                         </div>
                     </div>
                     <div class="card-body d-flex align-items-end justify-content-center">
-                        <h1 class="text-center font-weight-bold pt-2">11</h1>
-                        <p>/ Toilet</p>
+                        <h1 class="text-center font-weight-bold pt-2">{{ $data->ketersediaan }}</h1>
                     </div>
                 </div>
 
@@ -121,28 +121,31 @@
                 <div class="modal fade" id="edit-ketersediaan">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
-                            <div class="modal-header bg-warning">
-                                <h4 class="modal-title text-white">Ketersediaan</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form class="form-horizontal">
+                            <form class="form-horizontal" method="post" action="/bangunan-all/update-ketersediaan/{{ $data->id }}">
+                                @csrf
+                                @method('patch')
+                                <div class="modal-header bg-warning">
+                                    <h4 class="modal-title text-white">Ketersediaan</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
                                     <div class="card-body">
                                         <div class="form-group row">
                                             <label for="ketersediaan" class="col-sm-2 col-form-label">Ketersediaan</label>
                                             <div class="col-sm-10">
-                                                <input type="number" class="form-control" id="ketersediaan">
+                                                <input type="number" class="form-control" id="ketersediaan"
+                                                    name="ketersediaan" value="{{ $data->ketersediaan }}">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn text-white float-right"
-                                            style="background-color: #00a65b">Simpan</button>
-                                    </div>
-                                </form>
-                            </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn text-white float-right"
+                                        style="background-color: #00a65b">Simpan</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -160,8 +163,7 @@
                         </div>
                     </div>
                     <div class="card-body d-flex align-items-end justify-content-center">
-                        <h1 class="text-center font-weight-bold pt-2">4</h1>
-                        <p>/ Toilet</p>
+                        <h1 class="text-center font-weight-bold pt-2">{{ $data->kekurangan }}</h1>
                     </div>
                 </div>
             </div>
@@ -208,59 +210,67 @@
                 </div>
             </div>
             <div class="card-body table-responsive">
-                <table class="table table-bordered table-hover">
-                    <thead>
-                        <tr class="text-center">
-                            <th rowspan="2" style="vertical-align: middle;">No</th>
-                            <th rowspan="2" style="vertical-align: middle;">Jenis Ruang</th>
-                            <th colspan="2">Ketersedian Lahan</th>
-                            <th rowspan="2" style="vertical-align: middle;">Proposal</th>
-                            <th rowspan="2" style="vertical-align: middle;">Keterangan</th>
-                            <th rowspan="2" style="vertical-align: middle;">Aksi</th>
-                        </tr>
-                        <tr class="text-center">
-                            <th>Gambar Lahan</th>
-                            <th>Luas Lahan</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($usulans as $key => $usulan)
-                            <tr>
-                                <th class="text-center">{{ $loop->iteration }}</th>
-                                <td class="text-center text-capitalize">
-                                    {{ str_replace('_', ' ', $usulan->jenis) }}</td>
-                                <td class="text-center">{{ $usulan->luas_lahan }} M</td>
-                                <td class="text-center" style="vertical-align: middle">
-                                    @foreach ($usulanFotos[$key] as $ke => $foto)
-                                        <a href="{{ asset('storage/' . $foto->nama) }}" class="fancybox"
-                                            data-fancybox="gallery{{ $key }}">
-                                            <img src="{{ asset('storage/' . $foto->nama) }}" class="rounded"
-                                                style="object-fit: cover; width: 150px; aspect-ratio: 1/1;{{ $ke == 0 ? '' : 'display:none;' }}">
-                                        </a>
-                                    @endforeach
-                                </td>
-                                <td class="text-center">
-                                    <a href="{{ asset('storage/' . $usulan->proposal) }}" target="_blank">
-                                        <img src="/img/pdf.png" alt="image" style="width: 30px">
-                                    </a>
-                                </td>
-                                <td class="text-center">{{ $usulan->keterangan }}</td>
-                                <td class="text-center">
-                                    <a href="/usulan-bangunan/{{ $usulan->id }}/edit"
-                                        class="btn btn-warning text-white">Edit</a>
-
-                                    <form action="/usulan-bangunan/{{ $usulan->id }}" method="post">
-                                        @csrf
-                                        @method('delete')
-
-                                        <button type="submit" class="btn text-white" style="background-color: #00a65b"
-                                            onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
-
-                                    </form>
+                @if (count($usulans) > 0)
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr class="text-center">
+                                <th rowspan="2" style="vertical-align: middle;">No</th>
+                                <th rowspan="2" style="vertical-align: middle;">Jenis Ruang</th>
+                                <th colspan="2">Ketersedian Lahan</th>
+                                <th rowspan="2" style="vertical-align: middle;">Proposal</th>
+                                <th rowspan="2" style="vertical-align: middle;">Keterangan</th>
+                                <th rowspan="2" style="vertical-align: middle;">Aksi</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                            <tr class="text-center">
+                                <th>Gambar Lahan</th>
+                                <th>Luas Lahan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($usulans as $key => $usulan)
+                                <tr>
+                                    <th class="text-center">{{ $loop->iteration }}</th>
+                                    <td class="text-center text-capitalize">
+                                        {{ str_replace('_', ' ', $usulan->jenis) }}</td>
+                                    <td class="text-center">{{ $usulan->luas_lahan }} M</td>
+                                    <td class="text-center" style="vertical-align: middle">
+                                        @foreach ($usulanFotos[$key] as $ke => $foto)
+                                            <a href="{{ asset('storage/' . $foto->nama) }}" class="fancybox"
+                                                data-fancybox="gallery{{ $key }}">
+                                                <img src="{{ asset('storage/' . $foto->nama) }}" class="rounded"
+                                                    style="object-fit: cover; width: 150px; aspect-ratio: 1/1;{{ $ke == 0 ? '' : 'display:none;' }}">
+                                            </a>
+                                        @endforeach
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="{{ asset('storage/' . $usulan->proposal) }}" target="_blank">
+                                            <img src="/img/pdf.png" alt="image" style="width: 30px">
+                                        </a>
+                                    </td>
+                                    <td class="text-center">{{ $usulan->keterangan }}</td>
+                                    <td class="text-center">
+                                        <a href="/usulan-bangunan/{{ $usulan->id }}/edit"
+                                            class="btn btn-warning text-white">Edit</a>
+
+                                        <form action="/usulan-bangunan/{{ $usulan->id }}" method="post">
+                                            @csrf
+                                            @method('delete')
+
+                                            <button type="submit" class="btn text-white" style="background-color: #00a65b"
+                                                onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
+
+                                        </form>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @else
+                    <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                        <div class="alert" role="alert">
+                            Data Tidak Ditemukan
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
 

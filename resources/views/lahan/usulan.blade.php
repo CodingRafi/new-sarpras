@@ -79,7 +79,11 @@
                                                             </button>
                                                             <div class="dropdown-menu" style="margin-left: -73px">
                                                                 <a class="dropdown-item">Edit</a>
-                                                                <a class="dropdown-item">Batalkan</a>
+                                                                <form action="/usulan-lahan/{{ $usulan->id }}" method="post">
+                                                                    @csrf
+                                                                    @method('delete')
+                                                                    <button type="submit" class="dropdown-item" onclick="return confirm('Apakah anda yakin akan menhapus usulan ini?')">Batalkan</button>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>

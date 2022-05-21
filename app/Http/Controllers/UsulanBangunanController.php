@@ -70,7 +70,6 @@ class UsulanBangunanController extends Controller
                 'data' => $usulanBangunan,
                 'fotos' => $usulanBangunan->UsulanKoleksi[0]->usulanFoto
             ]);
-            dd($usulanBangunan);
         }else{
             abort(403);
         }
@@ -104,21 +103,10 @@ class UsulanBangunanController extends Controller
     
             UsulanBangunan::where('id', $usulanBangunan->id)
                 ->update($validatedData);
-
-            $jenis = '';
-            $action = str_replace("_", "-", $usulanBangunan->jenis);
-
-            if($usulanBangunan == 'ruang_kelas'){
-                $jenis = 'Ruang Kelas';
-            }elseif($usulanBangunan == 'ruang_praktek'){
-                $jenis = 'Ruang Praktek';
-            }elseif($usulanBangunan == 'lab_komputer'){
-                $jenis = 'Lab Komputer';
-            }
     
-            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Usulan Bangunan ' . $jenis);
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Usulan Bangunan ' . str_replace("_", " ", $usulanBangunan->jenis));
 
-            return redirect('/bangunan/' . $action);
+            return redirect('/bangunan/' . str_replace("_", "-", $usulanBangunan->jenis));
         }else{
             abort(403);
         }
@@ -136,17 +124,7 @@ class UsulanBangunanController extends Controller
         if($usulanBangunan->profil_id == Auth::user()->profil_id){
             UsulanBangunan::deleteUsulan($usulanBangunan);
 
-            $jenis = '';
-
-            if($usulanBangunan == 'ruang_kelas'){
-                $jenis = 'Ruang Kelas';
-            }elseif($usulanBangunan == 'ruang_praktek'){
-                $jenis = 'Ruang Praktek';
-            }elseif($usulanBangunan == 'lab_komputer'){
-                $jenis = 'Lab Komputer';
-            }
-
-            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Membatalkan Usulan bangunan ' . $jenis);
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Membatalkan Usulan bangunan ' . str_replace("_", " ", $usulanBangunan->jenis));
 
             return redirect()->back();
         }else{

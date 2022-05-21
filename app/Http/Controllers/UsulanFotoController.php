@@ -100,4 +100,18 @@ class UsulanFotoController extends Controller
             abort(403);
         }
     }
+
+    public function sigleDeleteRehab($id){
+        $foto = UsulanFoto::find($id);
+        if($foto->usulanKoleksi->rehabRenov->profil_id == Auth::user()->profil_id){
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menghapus 1 foto dari rehab/renov ' . str_replace("_", ' ', $foto->usulanKoleksi->rehabRenov->jenis));
+
+            Storage::delete($foto->nama);
+            UsulanFoto::destroy($foto->id);
+            
+            return response()->json(['status' => 'success']);
+        }else{
+            abort(403);
+        }
+    }
 }

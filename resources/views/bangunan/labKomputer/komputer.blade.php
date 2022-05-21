@@ -84,28 +84,30 @@
                 <div class="modal fade" id="edit-ketersediaan">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
-                            <div class="modal-header bg-warning">
-                                <h4 class="modal-title text-white">Ketersediaan</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form class="form-horizontal">
+                            <form class="form-horizontal" method="post" action="/bangunan-all/update-ketersediaan/{{ $data->id }}">
+                                @csrf
+                                @method('patch')
+                                <div class="modal-header bg-warning">
+                                    <h4 class="modal-title text-white">Ketersediaan</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
                                     <div class="card-body">
                                         <div class="form-group row">
                                             <label for="ketersediaan" class="col-sm-2 col-form-label">Ketersediaan</label>
                                             <div class="col-sm-10">
-                                                <input type="number" class="form-control" id="ketersediaan">
+                                                <input type="number" class="form-control" id="ketersediaan" name="ketersediaan" value="{{ $data->ketersediaan }}">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn text-white float-right"
-                                            style="background-color: #00a65b">Simpan</button>
-                                    </div>
-                                </form>
-                            </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn text-white float-right"
+                                        style="background-color: #00a65b">Simpan</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -140,7 +142,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" method="post" action="/bangunan-all/update-kondisi-ideal/{{ $data->id }}">
                                 <div class="card-body">
                                     <div class="form-group row">
                                         <label for="kekurangan" class="col-sm-2 col-form-label">Kekurangan</label>

@@ -63,36 +63,8 @@ Route::get('reset-password', function () {
     return view('myauth.resetPassword');
 });
 
-Route::get('edit-ruangkelas', function () {
-    return view('bangunan.kelas.edit');
-});
-
-Route::get('edit-usulan', function () {
-    return view('lahan.edit');
-});
-
-Route::get('edit-labkomputer', function () {
-    return view('bangunan.labKomputer.edit');
-});
-
-Route::get('edit-toilet', function () {
-    return view('bangunan.toilet.edit');
-});
-
-Route::get('edit-ruangpraktik', function () {
-    return view('bangunan.praktik.edit');
-});
-
-Route::get('edit-ruangperpustakaan', function () {
-    return view('bangunan.perpustakaan.edit');
-});
-
 Route::get('edit-ruangpimpinan', function () {
     return view('bangunan.pimpinan.edit');
-});
-
-Route::get('edit-rehabrenov', function () {
-    return view('bangunan.rehabrenov.edit');
 });
 
 Route::get('edit-usulan-peralatan', function () {
@@ -173,6 +145,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/foto', FotoController::class);
     Route::get('/foto/create/{koleksi:slug}', [FotoController::class, 'create']);
     Route::delete('/foto/delete-sigle-foto/{id}', [UsulanFotoController::class, 'sigleDelete']);
+    Route::delete('/foto/delete-sigle-foto-rehab-renov/{id}', [UsulanFotoController::class, 'sigleDeleteRehab']);
     Route::resource('/lahan', LahanController::class);
     Route::resource('/usulan-lahan', UsulanLahanController::class);
     Route::resource('/ketersediaan-lahan', KetersediaanLahanController::class);
@@ -180,6 +153,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/kekurangan-lahan', KekuranganLahanController::class);
     Route::resource('/bangunan-all', BangunanController::class);
     Route::patch('/bangunan-all/update-ketersediaan/{id}', [BangunanController::class, 'ubahKetersediaan']);
+    Route::patch('/bangunan-all/update-kondisi-ideal/{id}', [BangunanController::class, 'kondisiIdeal']);
     Route::resource('/bangunan/ruang-kelas', KelasController::class);
     Route::post('/bangunan/usulan-ruang-kelas', [KelasController::class, 'createusulan']);
     Route::resource('/bangunan/ruang-praktik', PraktikController::class);

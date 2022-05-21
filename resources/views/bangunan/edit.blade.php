@@ -425,28 +425,28 @@
                         let id = '';
                         id = aImage[i].getAttribute('data-id');
 
-                        // $.ajaxSetup({
-                        //     headers: {
-                        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        //     }
-                        // });
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        });
 
-                        // $.ajax({
-                        //     url: '/foto/delete-sigle-foto/' + id,
-                        //     dataType: 'json',
-                        //     type: 'DELETE',
-                        //     data: {
-                        //         _method: 'delete',
-                        //         _token: $('meta[name="csrf-token"]').attr('content')
-                        //     },
-                        //     contentType: false,
-                        //     processData: false,
-                        //     success: function(response) {
-                        //         console.log(response);
-                        //     }
-                        // });
+                        $.ajax({
+                            url: '/foto/delete-sigle-foto/' + id,
+                            dataType: 'json',
+                            type: 'DELETE',
+                            data: {
+                                _method: 'delete',
+                                _token: $('meta[name="csrf-token"]').attr('content')
+                            },
+                            contentType: false,
+                            processData: false,
+                            success: function(response) {
+                                console.log(response);
+                            }
+                        });
 
-                    }, 5000);
+                    }, 1000);
                 }
 
             })

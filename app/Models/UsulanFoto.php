@@ -21,9 +21,13 @@ class UsulanFoto extends Model
 
     public static function fotos($koleksis){
         $fotos = [];
-        
+
         foreach($koleksis as $koleksi){
-            $fotos[] = $koleksi[0]->usulanFoto; 
+            if(count($koleksi) > 0){
+                $fotos[] = $koleksi[0]->usulanFoto; 
+            }else{
+                $fotos[] = [[]];
+            }
         }
         
         return $fotos;

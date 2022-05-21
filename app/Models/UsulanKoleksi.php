@@ -16,6 +16,10 @@ class UsulanKoleksi extends Model
     public function UsulanBangunan(){
         return $this->belongsTo(UsulanBangunan::class);
     }
+
+    public function rehabRenov(){
+        return $this->belongsTo(RehabRenov::class);
+    }
     
     public function usulanFoto(){
         return $this->hasMany(UsulanFoto::class);
@@ -26,7 +30,6 @@ class UsulanKoleksi extends Model
         foreach($datas as $data){
             $usulanKoleksis[] = $data->UsulanKoleksi;
         }
-
         return $usulanKoleksis;
     }
 }

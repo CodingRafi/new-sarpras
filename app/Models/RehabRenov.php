@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class RehabRenov extends Model
 {
     use HasFactory;
+
+    protected $guarded =[
+        "id"
+    ];
+
+    public function UsulanKoleksi(){
+        return $this->hasMany(UsulanKoleksi::class);
+    }
 }

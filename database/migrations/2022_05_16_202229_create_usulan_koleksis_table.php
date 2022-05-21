@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('usulan_koleksis', function (Blueprint $table) {
             $table->id();
             $table->foreignId('usulan_bangunan_id')->nullable();
+            $table->foreignId('rehab_renov_id')->nullable();
             $table->timestamps();
         });
     }

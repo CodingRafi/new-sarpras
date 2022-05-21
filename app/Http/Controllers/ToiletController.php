@@ -6,6 +6,7 @@ use App\Models\Toilet;
 use App\Models\Perpustakaan;
 use App\Models\Log;
 use App\Models\Bangunan;
+use App\Models\Kompeten;
 use App\Models\Profil;
 use App\Models\UsulanKoleksi;
 use App\Models\UsulanFoto;
@@ -30,11 +31,21 @@ class ToiletController extends Controller
         $data = Bangunan::where('profil_id', Auth::user()->profil_id)->where('jenis', 'toilet')->get()[0];
         $profil = Profil::where('id', Auth::user()->profil_id)->get()[0];
 
+        $jml_lk = 0;
+        $jml_pr = 0;
+
+        $kompetens = Kompeten::where('profil_id', Auth::user()->profil_id)->get();
+        foreach ($kompetens as $key => $kompeten) {
+            $jml_lk += $kompeten->jml_lk;
+            $jml_pr += $kompeten->jml_pr;
+        }
+
         return view("bangunan.toilet.index",[
             'usulans' => $usulans,
             'usulanFotos' => $fotos,
             'data' => $data,
-            'profil' => $profil
+            'profil' => $profil,
+            'jml_siswa' => $jml_lk + $jml_pr
         ]);
     }
 
