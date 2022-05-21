@@ -61,7 +61,7 @@
                     {{-- end card header --}}
                     {{-- card body --}}
                     <div class="card-body">
-                        <h1 class="text-center font-weight-bold pt-2">{{ $dataKelas->kondisi_ideal }} Kelas</h1>
+                        <h1 class="text-center font-weight-bold pt-2">{{ $dataKelas->kondisi_ideal }}</h1>
                         <div id="emailHelp" class="form-text text-center">{{ ($dataKelas->kondisi_ideal == $dataKelas->ketersediaan) ? 'Ideal' : 'Tidak Ideal' }}</div>
                     </div>
                     {{-- end card body --}}
@@ -80,7 +80,7 @@
                     {{-- end card header --}}
                     {{-- card body --}}
                     <div class="card-body">
-                        <h1 class="text-center font-weight-bold pt-2">{{ $dataKelas->ketersediaan }} Kelas</h1>
+                        <h1 class="text-center font-weight-bold pt-2">{{ $dataKelas->ketersediaan }}</h1>
                     </div>
                     {{-- end card body --}}
                 </div>
@@ -95,12 +95,15 @@
                     {{-- end card header --}}
                     {{-- card body --}}
                     <div class="card-body">
-                        <h1 class="text-center font-weight-bold pt-2">{{ $dataKelas->kekurangan }} Kelas</h1>
+                        <h1 class="text-center font-weight-bold pt-2">{{ $dataKelas->kekurangan }}</h1>
                     </div>
                     {{-- end card body --}}
                 </div>
             </div>
         </div>
+        <div class="alert alert-warning text-white" role="alert">
+            Kekurangan didapatkan dari selisih kondisi ideal dan ketersediaan 
+          </div>
         {{-- End Row --}}
 
         <div class="card">

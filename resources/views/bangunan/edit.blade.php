@@ -405,10 +405,8 @@
                     containerAlert.innerHTML += `<div class="toast align-items-center show alert-ke${i}" role="alert" aria-live="assertive" aria-atomic="true">
                         <div class="d-flex">
                             <div class="toast-body">
-                                Gambar akan dihapus <a href="#" class="urungkan-ke${i}" onclick="batalkan(${i})">Urungkan</a>
+                                Gambar Berhasil Dihapus
                             </div>
-                            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"
-                                aria-label="Close"></button>
                         </div>
                     </div>`;
 
@@ -417,36 +415,36 @@
                     input.setAttribute('class', `input-ke${i}`)
                     input.setAttribute('onchange', `inputBatal();`)
                     inputUrungkan.appendChild(input);
+                    
+                    let urungkan = document.querySelector(`.urungkan-ke${i}`);
+
+                    let id = '';
+                    id = aImage[i].getAttribute('data-id');
+
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+
+                    $.ajax({
+                        url: '/foto/delete-sigle-foto/' + id,
+                        dataType: 'json',
+                        type: 'DELETE',
+                        data: {
+                            _method: 'delete',
+                            _token: $('meta[name="csrf-token"]').attr('content')
+                        },
+                        contentType: false,
+                        processData: false,
+                        success: function(response) {
+                            console.log(response);
+                        }
+                    });
 
                     const myTimeout = setTimeout(function() {
                         document.querySelector('.alert-ke' + i).style.display = 'none';
-                        let urungkan = document.querySelector(`.urungkan-ke${i}`);
-
-                        let id = '';
-                        id = aImage[i].getAttribute('data-id');
-
-                        $.ajaxSetup({
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            }
-                        });
-
-                        $.ajax({
-                            url: '/foto/delete-sigle-foto/' + id,
-                            dataType: 'json',
-                            type: 'DELETE',
-                            data: {
-                                _method: 'delete',
-                                _token: $('meta[name="csrf-token"]').attr('content')
-                            },
-                            contentType: false,
-                            processData: false,
-                            success: function(response) {
-                                console.log(response);
-                            }
-                        });
-
-                    }, 1000);
+                    }, 2000);
                 }
 
             })
