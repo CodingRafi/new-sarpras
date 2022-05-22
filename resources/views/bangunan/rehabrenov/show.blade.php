@@ -110,11 +110,6 @@
                                     @if ($data->jenis == 'ruang_pimpinan')
                                         <th rowspan="2" style="vertical-align: middle;">Jenis Ruang</th>
                                     @endif
-                                    @if ($data->jenis != 'perpustakaan')
-                                        @if ($data->jenis != 'toilet')
-                                            <th rowspan="2" style="vertical-align: middle;">Jumlah Ruang</th>
-                                        @endif
-                                    @endif
                                     <th colspan="2" style="vertical-align: middle;">Ketersedian Lahan</th>
                                     <th rowspan="2" style="vertical-align: middle;">Keterangan</th>
                                 </tr>
@@ -134,12 +129,6 @@
                                     @endif
                                     @if ($data->jenis == 'ruang_pimpinan')
                                         <td style="vertical-align: middle;">{{ $jenisPimpinan }}</td>
-                                    @endif
-                                    @if ($data->jenis != 'perpustakaan')
-                                        @if ($data->jenis != 'toilet')
-                                            <td class="text-center" style="vertical-align: middle;">
-                                                {{ $data->jml_ruang }}
-                                        @endif
                                     @endif
                                     </td>
                                     <td style="vertical-align: middle">
