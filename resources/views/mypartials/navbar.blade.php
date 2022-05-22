@@ -51,6 +51,7 @@
                 <span class="brand-text text-white text-right">{{ Auth::user()->name }}</span>
             </div>
             <p class="brand-text font-weight-light h6 text-white text-right" style="font-size: .8rem;margin: 0;text-transform: capitalize;">Masuk Sebagai {{ Auth::user()->getRoleNames()[0] }}</p>
+
         </div>
         <li class="nav-item dropdown">
             <a class="nav-link mr-2" data-toggle="dropdown" href="#" style="padding: 0;">
