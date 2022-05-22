@@ -38,7 +38,7 @@
                         <ul class="nav nav-pills ml-auto p-2">
                             <li class="nav-item dropdown">
                                 <a class="btn btn-light dropdown-toggle" data-toggle="dropdown" href="#">
-                                    Filter by ... <span class="caret"></span>
+                                    Order By ... <span class="caret"></span>
                                 </a>
                                 <div class="dropdown-menu" style="min-width: auto !important; width: 125px;">
                                     <a class="dropdown-item text-truncate" tabindex="-1" href="#">Nama Sekolah</a>

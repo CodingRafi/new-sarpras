@@ -31,12 +31,12 @@
         <span class="info-box-icon p-4" style="background-color: #25b5e9; width: auto; min-width: 207px;">
             <img src="/assets/img/icons/flaticons/town.png" style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
             <div class="ml-4">
-                <span class="text-white">
+                <span class="text-white font-weight-bold">
                     Kondisi Ideal
                 </span>
                 <div class="d-flex align-items-end justify-content-center">
-                    <h1 class="display-4 text-white">30</h1>
-                    <p class="text-white">/ Kantor</p>
+                    <h1 class="display-4 text-white font-weight-bold">30</h1>
+                    <p class="text-white font-weight-bold">/ Kantor</p>
                 </div>
             </div>
         </span>
@@ -55,12 +55,12 @@
             <img src="/assets/img/icons/flaticons/building.png"
                 style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
             <div class="ml-4 text-white">
-                <span class="text white">
+                <span class="text white font-weight-bold">
                     Ketersediaan
                 </span>
                 <div class="d-flex align-items-end justify-content-center">
-                    <h1 class="display-4 text-white">11</h1>
-                    <p class="text-white">/ Kantor</p>
+                    <h1 class="display-4 text-white font-weight-bold">11</h1>
+                    <p class="text-white font-weight-bold">/ Kantor</p>
                 </div>
             </div>
         </span>
@@ -80,12 +80,12 @@
             <img src="/assets/img/icons/flaticons/school.png"
                 style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
             <div class="ml-4">
-                <span class="text-white">
+                <span class="text-white font-weight-bold">
                     Kekurangan
                 </span>
                 <div class="d-flex align-items-end justify-content-center">
-                    <h1 class="display-4 text-white">3</h1>
-                    <p class="text-white">/ Kantor</p>
+                    <h1 class="display-4 text-white font-weight-bold">13</h1>
+                    <p class="text-white font-weight-bold">/ Kantor</p>
                 </div>
             </div>
         </span>
