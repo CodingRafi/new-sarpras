@@ -86,10 +86,6 @@ Route::get('admin-monitoring', function () {
     return view('admin.monitoring');
 });
 
-Route::get('admin-ruangkelas', function () {
-    return view('admin.ruangkelas');
-});
-
 Route::get('admin-ruangpraktik', function () {
     return view('admin.ruangpraktik');
 });
@@ -130,7 +126,13 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/profil/admin', [AdminController::class, 'search']);
     Route::resource('/profil', ProfilController::class);
     Route::get('/lahan-dinas', [AdminController::class, 'lahanDinas']);
-    Route::get('/bangunan/ruang-kelas-dinas', [AdminController::class, 'lahanDinas']);
+    Route::get('/bangunan/ruang-kelas-dinas', [KelasController::class, 'showDinas']);
+    Route::get('/bangunan/lab-komputer-dinas', [KomputerController::class, 'showDinas']);
+    Route::get('/bangunan/perpustakaan-dinas', [PerpustakaanController::class, 'showDinas']);
+    Route::get('/bangunan/toilet-dinas', [ToiletController::class, 'showDinas']);
+    Route::get('/bangunan/ruang-pimpinan-dinas', [PimpinanController::class, 'showDinas']);
+    Route::get('/bangunan/rehab-renov-dinas', [RehabRenovController::class, 'showDinas']);
+    Route::get('/bangunan/ruang-praktik-dinas', [PraktikController::class, 'showDinas']);
     
 
 
@@ -143,6 +145,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/kompeten/create/{id:profil}', [KompetenController::class, 'create']);
     Route::patch('/kompeten/update-ketersediaan/{id}', [KompetenController::class, 'updateKetersediaan']);
     Route::patch('/kompeten/update-kekurangan/{id}', [KompetenController::class, 'updateKekurangan']);
+    Route::patch('/kompeten/upload-logo/{id}', [KompetenController::class, 'uploadLogo']);
+    Route::patch('/kompeten/tambah-keterangan/{id}', [KompetenController::class, 'tambahKeterangan']);
     Route::resource('/koleksi', KoleksiController::class);
     Route::get('/koleksi/create/{id:profil}', [KoleksiController::class, 'create']);
     Route::patch('/koleksi/update-koleksi', [KoleksiController::class, 'update']);

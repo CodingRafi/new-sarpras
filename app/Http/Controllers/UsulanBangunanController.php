@@ -55,7 +55,10 @@ class UsulanBangunanController extends Controller
      */
     public function show(UsulanBangunan $usulanBangunan)
     {
-        //
+        return view('bangunan.show', [
+            'data' => $usulanBangunan,
+            'profil' => $usulanBangunan->profil
+        ]);
     }
     
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Profil;
 use App\Models\UsulanLahan;
 use App\Models\UsulanBangunan;
+use DB;
 
 class AdminController extends Controller
 {
@@ -24,11 +25,49 @@ class AdminController extends Controller
         $usulanLahan = UsulanLahan::all();
         $usulanBangunan = UsulanBangunan::all();
         $usulanPeralatan = 0;
+        $datas = [];
+        DB::enableQueryLog();
+        $profils = Profil::search(request(['search']))->filter(request(['filter']))
+                            ->leftJoin('profil_kcds', 'profils.id', '=', 'profil_kcds.profil_id')
+                            ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi')->paginate(40)->withQueryString();
+                            // dd(DB::getQueryLog());
+
+        // dd($profils[0]);
+        // $profils = Profil::filter(request(['filter']))->select('*')->paginate(40)->withQueryString();
+
+        foreach ($profils as $key => $profil) {
+            $datas[] = [
+                'id' => $profil->id,
+                'profil_depo_id' => $profil->profil_depo_id,
+                'npsn' => $profil->npsn,
+                'sekolah_id' => $profil->sekolah_id,
+                'nama' => $profil->nama,
+                'status_sekolah' => $profil->status_sekolah,
+                'alamat' => $profil->alamat,
+                'provinsi' => $profil->provinsi,
+                'kabupaten' => $profil->kabupaten,
+                'kecamatan' => $profil->kecamatan,
+                'email' => $profil->email,
+                'website' => $profil->website,
+                'nomor_telepon' => $profil->nomor_telepon,
+                'nomor_fax' => $profil->nomor_fax,
+                'akreditas' => $profil->akreditas,
+                'jml_siswa_l' => $profil->jml_siswa_l,
+                'jml_siswa_p' => $profil->jml_siswa_p,
+                'usulanLahan' => $profil->usulanLahan,
+                'usulanBangunan' => $profil->usulanBangunan,
+                'instansi' => $profil->instansi,
+            ];
+        }
+
+        // dd($datas[0]);
 
         return view('admin.dashboard',[
             'jml_usulan_lahan' => count($usulanLahan),
             'jml_usulan_bangunan' => count($usulanBangunan),
-            'jml_usulan_peralatan' => $usulanPeralatan
+            'jml_usulan_peralatan' => $usulanPeralatan,
+            'datas' => $datas,
+            'profils' => $profils
         ]);
     }
 
@@ -100,11 +139,30 @@ class AdminController extends Controller
 
     public function search(){
         return view('admin.index',[
-            'profils' => Profil::search(request(['search']))->paginate(40),
+        'profils' => Profil::search([request(['search'])])->paginate(40),
         ]);
     }
 
     public function lahanDinas(){
-        return view('admin.lahan');
+        // $usulanLahan = UsulanBangunan::search(request(['search']))->filter(request(['filter']))
+        //                 ->leftJoin('profil_kcds', 'profils.id', '=', 'profil_kcds.profil_id')
+        //                 ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi')->paginate(40)->withQueryString();
+
+        $usulanLahan = UsulanLahan::paginate(40);
+        $datas = [];
+        foreach ($usulanLahan as $key => $usulan) {
+            $datas[] = $usulan->profil;
+        }
+
+        $kcds = [];
+        foreach ($datas as $key => $data) {
+            $kcds[] = $data->profilKcd[0]->kcd;
+        }
+
+        return view('admin.lahan', [
+            'usulanLahans' => $usulanLahan,
+            'profils' => $datas,
+            'kcds' => $kcds
+        ]);
     }
 }
