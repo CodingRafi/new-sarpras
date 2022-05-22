@@ -189,10 +189,13 @@
                                 </td>
                                 <td class="text-center col-2">
                                     @foreach ($data['usulanLahan'] as $usulan)
-                                        <a class="btn text-white mt-1" style="background-color: #fcc12d" href="">{{ $usulan->nama }}</a>
+                                        <a class="btn text-white mt-1" style="background-color: #fcc12d" href="/usulan-lahan/{{ $usulan->id }}">Usulan Lahan ({{ $usulan->nama }})</a>
                                     @endforeach
                                     @foreach ($data['usulanBangunan'] as $usulan)
-                                        <a class="btn text-white mt-1" style="background-color: #fcc12d;text-transform: capitalize;" href="/usulan-bangunan/{{ $usulan['id'] }}">{{ str_replace("_", " ", $usulan->jenis) }}</a>
+                                        <a class="btn text-white mt-1" style="background-color: #fcc12d;text-transform: capitalize;" href="/usulan-bangunan/{{ $usulan['id'] }}">Usulan Bangunan ({{ str_replace("_", " ", $usulan->jenis) }})</a>
+                                    @endforeach
+                                    @foreach ($data['rehab'] as $usulan)
+                                        <a class="btn text-white mt-1" style="background-color: #fcc12d;text-transform: capitalize;" href="/bangunan/ruang-rehabrenov/{{ $usulan['id'] }}">Rehab Renov ({{ str_replace("_", " ", $usulan->jenis) }})</a>
                                     @endforeach
                                 </td>
                                 <td class="text-center"><a class="text-center btn text-white"

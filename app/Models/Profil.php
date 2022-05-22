@@ -57,6 +57,10 @@ class Profil extends Model
         return $this->hasMany(UsulanLahan::class);
     }
 
+    public function rehab(){
+        return $this->hasMany(RehabRenov::class);
+    }
+
     public function scopeSearch($query, array $search)
     {
         // dd($query->where('npsn', 'like', '%' . $search['search'] . '%'));
@@ -79,6 +83,5 @@ class Profil extends Model
                 return $query->orderBy('kcds.instansi', 'asc');
             }
         }
-
     }
 }

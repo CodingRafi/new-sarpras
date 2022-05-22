@@ -101,64 +101,33 @@
                         <table class="table table-hover table-bordered text-center">
                             <thead class="bg-light text-center">
                                 <tr>
-                                    @if ($data->jenis != 'ruang_pimpinan')
-                                        <th rowspan="2" style="vertical-align: middle;">Jenis Ruang</th>
-                                    @endif
-                                    @if ($data->jenis == 'ruang_praktek')
-                                        <th rowspan="2" style="vertical-align: middle;">Jurusan</th>
-                                    @endif
-                                    @if ($data->jenis == 'ruang_pimpinan')
-                                        <th rowspan="2" style="vertical-align: middle;">Jenis Ruang</th>
-                                    @endif
-                                    @if ($data->jenis != 'perpustakaan')
-                                        @if ($data->jenis != 'toilet')
-                                            <th rowspan="2" style="vertical-align: middle;">Jumlah Ruang</th>
-                                        @endif
-                                    @endif
-                                    <th colspan="2" style="vertical-align: middle;">Ketersedian Lahan</th>
-                                    <th rowspan="2" style="vertical-align: middle;">Keterangan</th>
-                                </tr>
-                                <tr>
-                                    <th class="text-center">Gambar Lahan</th>
-                                    <th class="text-center">Luas Lahan</th>
+                                    <th rowspan="2" style="vertical-align: middle;">Nama</th>
+                                    <th rowspan="2" style="vertical-align: middle;">Jenis Ruang</th>
+                                    <th rowspan="2" style="vertical-align: middle;">Panjang</th>
+                                    <th rowspan="2" style="vertical-align: middle;">Lebar</th>
+                                    <th rowspan="2" style="vertical-align: middle;">Luas</th>
+                                    <th rowspan="2" style="vertical-align: middle;">Alamat</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    @if ($data->jenis != 'ruang_pimpinan')
-                                        <td style="vertical-align: middle;text-transform: capitalize;">
-                                            {{ str_replace('_', ' ', $data->jenis) }}</td>
-                                    @endif
-                                    @if ($data->jenis == 'ruang_praktek')
-                                        <td style="vertical-align: middle;">{{ $jurusan }}</td>
-                                    @endif
-                                    @if ($data->jenis == 'ruang_pimpinan')
-                                        <td style="vertical-align: middle;">{{ $jenisPimpinan }}</td>
-                                    @endif
-                                    @if ($data->jenis != 'perpustakaan')
-                                        @if ($data->jenis != 'toilet')
-                                            <td class="text-center" style="vertical-align: middle;">
-                                                {{ $data->jml_ruang }}
-                                        @endif
-                                    @endif
+                                    <td style="vertical-align: middle;text-transform: capitalize;">
+                                        {{ $data->nama }}</td>
+                                    <td style="vertical-align: middle;text-transform: capitalize;">
+                                        {{ str_replace('_', ' ', $data->jenis_usulan) }}</td>
+                                    <td style="vertical-align: middle;text-transform: capitalize;">
+                                        {{ $data->panjang }}</td>
+                                    <td style="vertical-align: middle;text-transform: capitalize;">
+                                        {{ $data->lebar }}</td>
+
+                                    <td class="text-center" style="vertical-align: middle;">{{ $data->luas }} m²
                                     </td>
-                                    <td style="vertical-align: middle">
-                                        @foreach ($usulanFoto as $key => $foto)
-                                            <a href="{{ asset('storage/' . $foto->nama) }}" class="fancybox"
-                                                data-fancybox="gallery"><img src="{{ asset('storage/' . $foto->nama) }}"
-                                                    class="rounded"
-                                                    style="object-fit: cover; width: 150px; aspect-ratio: 1/1;{{ $key == 0 ? '' : 'display:none;' }}">
-                                            </a>
-                                        @endforeach
-                                    </td>
-                                    <td class="text-center" style="vertical-align: middle;">{{ $data->luas_lahan }} m²
-                                    </td>
-                                    <td style="vertical-align: middle;">{{ $data->keterangan }}</td>
+                                    <td style="vertical-align: middle;">{{ $data->alamat }}</td>
                                 </tr>
                             </tbody>
                         </table>
                         <iframe src="{{ asset('storage/' . $data->proposal) }}" frameborder="0" style="width: 66%;
-                                                            height: 72rem;"></iframe>
+                                                                    height: 72rem;"></iframe>
                     </div>
                 </div>
             </div>

@@ -109,9 +109,14 @@ class RehabRenovController extends Controller
      * @param  \App\Models\RehabRenov  $rehabRenov
      * @return \Illuminate\Http\Response
      */
-    public function show(RehabRenov $rehabRenov)
+    public function show(RehabRenov $rehabRenov, $id)
     {
-        //
+        $rehabRenov = RehabRenov::find($id);
+        return view('bangunan.rehabrenov.show', [
+            'data' => $rehabRenov,
+            'usulanFoto' => $rehabRenov->usulanKoleksi[0]->usulanFoto,
+            'profil' => $rehabRenov->profil
+        ]);
     }
 
     /**
@@ -198,21 +203,13 @@ class RehabRenovController extends Controller
     }
 
     public function showDinas(){
-        $usulanBangunan = UsulanBangunan::where('jenis', 'rehab')->paginate(40);
-        $datas = [];
-        foreach ($usulanBangunan as $key => $usulan) {
-            $datas[] = $usulan->profil;
-        }
+        $usulanBangunan = RehabRenov::search(request(['search']))
+        ->leftJoin('profils', 'profils.id', '=', 'rehab_renovs.profil_id')
+        ->leftJoin('profil_kcds', 'profils.id', '=', 'profil_kcds.profil_id')
+        ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi', 'rehab_renovs.proposal', 'rehab_renovs.id')->paginate(40)->withQueryString();
 
-        $kcds = [];
-        foreach ($datas as $key => $data) {
-            $kcds[] = $data->profilKcd[0]->kcd;
-        }
-
-        return view('admin.ruangkelas', [
+        return view('admin.ruangrehabrenov', [
             'usulanBangunans' => $usulanBangunan,
-            'profils' => $datas,
-            'kcds' => $kcds
         ]);
     }
 }

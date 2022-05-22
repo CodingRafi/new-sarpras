@@ -125,7 +125,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/', [AdminController::class, 'index']);
     Route::get('/profil/admin', [AdminController::class, 'search']);
     Route::resource('/profil', ProfilController::class);
-    Route::get('/lahan-dinas', [AdminController::class, 'lahanDinas']);
+    Route::get('/lahan-dinas', [UsulanLahanController::class, 'lahanDinas']);
     Route::get('/bangunan/ruang-kelas-dinas', [KelasController::class, 'showDinas']);
     Route::get('/bangunan/lab-komputer-dinas', [KomputerController::class, 'showDinas']);
     Route::get('/bangunan/perpustakaan-dinas', [PerpustakaanController::class, 'showDinas']);

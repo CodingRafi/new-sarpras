@@ -55,8 +55,25 @@ class UsulanBangunanController extends Controller
      */
     public function show(UsulanBangunan $usulanBangunan)
     {
+        if($usulanBangunan->jenis == 'ruang_praktek'){
+            return view('bangunan.show', [
+                'data' => $usulanBangunan,
+                'jurusan' => $usulanBangunan->kompeten->komli->kompetensi,
+                'usulanFoto' => $usulanBangunan->usulanKoleksi[0]->usulanFoto,
+                'profil' => $usulanBangunan->profil
+            ]);
+        }else if($usulanBangunan->jenis == 'ruang_pimpinan'){
+            return view('bangunan.show', [
+                'data' => $usulanBangunan,
+                'jenisPimpinan' => $usulanBangunan->jenisPimpinan->nama,
+                'usulanFoto' => $usulanBangunan->usulanKoleksi[0]->usulanFoto,
+                'profil' => $usulanBangunan->profil
+            ]);
+        }
+
         return view('bangunan.show', [
             'data' => $usulanBangunan,
+            'usulanFoto' => $usulanBangunan->usulanKoleksi[0]->usulanFoto,
             'profil' => $usulanBangunan->profil
         ]);
     }
