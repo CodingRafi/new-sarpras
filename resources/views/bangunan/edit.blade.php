@@ -51,88 +51,123 @@
             {{ str_replace('_', ' ', $data->jenis) }}</h3>
     </div>
 
-    <div class="form-edit pt-3">
+    {{-- <div class="card card-info">
+        <div class="card-header">
+            <h3 class="card-title">Horizontal Form</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form class="form-horizontal">
+            <div class="card-body">
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="offset-sm-2 col-sm-10">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck2">
+                            <label class="form-check-label" for="exampleCheck2">Remember me</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="submit" class="btn btn-info">Sign in</button>
+                <button type="submit" class="btn btn-default float-right">Cancel</button>
+            </div>
+            <!-- /.card-footer -->
+        </form>
+    </div> --}}
 
-        <form action="/usulan-bangunan/{{ $data->id }}" method="post" enctype="multipart/form-data">
+    <div class="card">
+        <form class="form-horizontal" action="/usulan-bangunan/{{ $data->id }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('patch')
-            <div class="card pt-3" style="background-color: white; border-radius: 10px; ">
-
-
+            <div class="card-body">
+                
                 @if ($data->jenis == 'perpustakaan' || $data->jenis == 'toilet')
-                    <input type="hidden" name="jml_ruang" value="{{ $data->jml_ruang }}">
+                <input type="hidden" name="jml_ruang" value="{{ $data->jml_ruang }}">
                 @else
-                    {{-- --------------------------------------------- JUMLAH RUANG KELAS --------------------------------------------- --}}
-                    <div class="row input pl-5 mt-2">
-                        <label class="col-2 mt-3" style="text-transform: capitalize;">Jumlah Ruang
-                            {{ str_replace('_', ' ', $data->jenis) }}</label>
-                        <input type="number" class="col-3 form-control mt-2" style="width: 750px"
-                            placeholder="Masukan Jumlah Ruang" value="{{ $data->jml_ruang }}" name="jml_ruang">
+
+                {{-- --------------------------------------------- JUMLAH RUANG --------------------------------------------- --}}
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" style="text-transform: capitalize;">Jumlah Ruang {{ str_replace('_', ' ', $data->jenis) }}</label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" placeholder="Masukan Jumlah Ruang" value="{{ $data->jml_ruang }}" name="jml_ruang">
                     </div>
+                </div>
                 @endif
 
                 {{-- --------------------------------------------- LUAS LAHAN --------------------------------------------- --}}
-                <div class="row input pl-5 mt-2">
-                    <label class="col-2 mt-3">Luas Lahan</label>
-                    <input type="number" class="col-9 form-control mt-2" style="width: 750px"
-                        placeholder="Masukan Luas Lahan" value="{{ $data->luas_lahan }}" name="luas_lahan">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Luas Lahan</label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" placeholder="Masukan Luas Lahan" value="{{ $data->luas_lahan }}" name="luas_lahan">
+                    </div>
                 </div>
 
                 <input type="hidden" name="deleteImage" class="delete-image">
+
                 {{-- --------------------------------------------- GAMBAR LAHAN --------------------------------------------- --}}
-                <div class="row input pl-5 mt-3" style="margin-top: 10px">
-                    <label class="col-2 mt-1">Gambar Lahan</label>
-                    <input type="file" id="gambar-lahan" name="gambar[]" onchange="previewImage()" multiple
-                        class="filename" accept="image/*">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Gambar Lahan</label>
+                    <div class="col-sm-9">
+                        <input type="file" id="gambar-lahan" name="gambar[]" onchange="previewImage()" multiple class="filename form-control" accept="image/*">
+                    </div>
                 </div>
-                <div class="container d-flex mt-3 container-preview flex-wrap" style="width: 100%;padding-left: 2.4rem;">
+
+                <div class="d-flex flex-wrap container-preview mb-3">
+                    <div class="col-sm-3 col-form-label"></div>
                     @foreach ($fotos as $foto)
-                        <div class="item col-lg-3 col-6 mb-3 container-image">
-                            <div class="shadow-sm rounded border">
-                                <button class="btn btn-danger shadow-sm button-hapus-image"
-                                    style="position: absolute; right: 8px;" type="button"><i
-                                        class="bi bi-trash-fill"></i></button>
-                                <a href="{{ asset('storage/' . $foto->nama) }}" class="fancybox a-image"
-                                    data-fancybox="gallery1" data-id="{{ $foto->id }}">
-                                    <img src="{{ asset('storage/' . $foto->nama) }}" class="rounded"
-                                        style="object-fit: cover; width: 100%; aspect-ratio: 1/1;">
-                                </a>
-                            </div>
+                    <div class="item col-sm-3 col-6 container-image ">
+                        <div class="shadow-sm rounded border">
+                            <button class="btn btn-danger shadow-sm button-hapus-image"
+                                style="position: absolute; right: 8px;" type="button"><i
+                                    class="bi bi-trash-fill"></i></button>
+                            <a href="{{ asset('storage/' . $foto->nama) }}" class="fancybox a-image"
+                                data-fancybox="gallery1" data-id="{{ $foto->id }}">
+                                <img src="{{ asset('storage/' . $foto->nama) }}" class="rounded"
+                                    style="object-fit: cover; width: 100%; aspect-ratio: 1/1;">
+                            </a>
                         </div>
+                    </div>
                     @endforeach
-                    {{-- <div class="item col-lg-3 col-6 mb-3 container-image preview">
-                            <div class="shadow-sm rounded border">
-                                <a href="#" class="fancybox a-image" data-fancybox="gallery1" id="href-preview">
-                                    <img id="file-ip-1-preview" class="rounded"
-                                        style="object-fit: cover; width: 100%; aspect-ratio: 1/1;">
-                                </a>
-                            </div>
-                        </div> --}}
                 </div>
 
                 {{-- --------------------------------------------- PROPOSAL --------------------------------------------- --}}
-                <div class="row input pl-5 mt-3" style="margin-top: 10px">
-                    <label class="col-2 mt-1" value="{{ $data->proposal }}">Proposal</label>
-                    <input type="file" id="proposal" name="proposal" value="{{ asset('storage/' . $data->proposal) }}"
-                        accept=".pdf">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" value="{{ $data->proposal }}">Proposal</label>
+                    <div class="col-sm-9">
+                        <input class="form-control" type="file" id="proposal" name="proposal" value="{{ asset('storage/' . $data->proposal) }}" accept=".pdf">
+                    </div>
                 </div>
-                <div class="container d-flex pl-5 mt-3">
-                    <iframe class="iframe-proposal border border-rounded shadow-sm"
-                        src="{{ asset('storage/' . $data->proposal) }}" frameborder="0" width="300" height="400"
-                        style="display: block; border-radius: 10px !important;"></iframe>
-                    <div id="pdf-loader">Loading Preview ..</div>
-                    <div><canvas id="pdf-preview" class="border border-rounded shadow-sm"
-                            style="width: 300px !important; border-radius: 10px !important;"></canvas></div>
+
+                <div class="row">
+                    <div class="col-sm-3 col-form-label"></div>
+                    <div class="col-sm-9 d-flex">
+                        <iframe class="iframe-proposal col-sm-6 border border-rounded shadow-sm p-0" src="{{ asset('storage/' . $data->proposal) }}" frameborder="0" height="400" style="display: block; border-radius: 10px !important;"></iframe>
+                        <div id="pdf-loader">Loading Preview ..</div>
+                        <div class="col-sm-6 "><canvas id="pdf-preview" class="border border-rounded shadow-sm p-0"
+                                style="border-radius: 10px !important;"></canvas></div>
+                    </div>
                 </div>
 
                 {{-- --------------------------------------------- SUBMIT --------------------------------------------- --}}
                 <div class="pb-3 pl-5 mt-4">
                     <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
                 </div>
-
             </div>
         </form>
-
     </div>
 
     {{-- --------------------------------------------- ALERT --------------------------------------------- --}}
@@ -140,14 +175,7 @@
     <div id='alrt' style="fontWeight = 'bold'"></div>
 
     <div class="d-none input-urungkan">
-
     </div>
-
-    {{-- --------------------------------------------- HIDE --------------------------------------------- --}}
-    {{-- <button id="upload-dialog">Choose PDF</button> hide --}}
-    {{-- <span id="pdf-name"></span> hide --}}
-    {{-- <button id="upload-button">Upload</button> hide --}}
-    {{-- <button id="cancel-pdf">Cancel</button> hide --}}
 @endsection
 
 @section('tambahjs')
@@ -156,19 +184,6 @@
 
     <script src="/pdf.js"></script>
     <script src="/pdf.worker.js"></script>
-
-    {{-- <script>
-        function showPreview(event) {
-            if (event.target.files.length > 0) {
-                var src = URL.createObjectURL(event.target.files[0]);
-                var preview = document.getElementById("file-ip-1-preview");
-                preview.src = src;
-                preview.style.display = "block";
-                document.querySelector('.preview').style.display = "block";
-                document.getElementById("href-preview").href = src;
-            }
-        }
-    </script> --}}
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
@@ -190,7 +205,7 @@
                         var reader = new FileReader();
                         reader.onload = function(e) {
                             let div1 = document.createElement('div');
-                            div1.setAttribute('class', 'item col-lg-3 col-6 mb-3 container-image');
+                            div1.setAttribute('class', 'item col-sm-3 col-6 container-image');
                             let div2 = document.createElement('div');
                             div2.setAttribute('class', 'shadow-sm rounded border');
                             div1.appendChild(div2);
