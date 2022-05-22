@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pimpinan extends Model
+class JenisPimpinan extends Model
 {
     use HasFactory;
 
@@ -13,11 +13,11 @@ class Pimpinan extends Model
         "id"
     ];
 
-    public function profil(){
-        return $this->belongsTo(Profil::class);
+    public function pimpinan(){
+        return $this->hasMany(Pimpinan::class);
     }
 
-    public function jenisPimpinan(){
-        return $this->belongsTo(JenisPimpinan::class);
+    public function usulanBangunan(){
+        return $this->hasMany(UsulanBangunan::class);
     }
 }

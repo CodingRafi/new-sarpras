@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pimpinans', function (Blueprint $table) {
+        Schema::create('profil_kcds', function (Blueprint $table) {
             $table->id();
             $table->foreignId('profil_id');
-            $table->foreignId('jenis_pimpinan_id');
-            $table->string('nama');
-            $table->string('lebar');
-            $table->string('luas');
-            $table->string('panjang');
+            $table->foreignId('kcd_id');
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pimpinans');
+        Schema::dropIfExists('profil_kcds');
     }
 };

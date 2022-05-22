@@ -12,6 +12,15 @@ use Illuminate\Support\Facades\Storage;
 
 class UsulanLahanController extends Controller
 {
+
+    function __construct()
+    {
+         $this->middleware('permission:view_usulan_lahan|add_usulan_lahan|edit_usulan_lahan|delete_usulan_lahan', ['only' => ['index','show']]);
+         $this->middleware('permission:add_usulan_lahan', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_usulan_lahan', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_usulan_lahan', ['only' => ['destroy']]);
+    }   
+
     /**
      * Display a listing of the resource.
      *

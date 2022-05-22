@@ -22,6 +22,7 @@ use App\Http\Controllers\ProfilDepoController;
 use App\Http\Controllers\RehabRenovController;
 use App\Http\Controllers\UsulanFotoController;
 use App\Http\Controllers\PerpustakaanController;
+use App\Http\Controllers\JenisPimpinanController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\UsulanBangunanController;
 use App\Http\Controllers\Lahan_sekolah\LahanController;
@@ -42,9 +43,7 @@ use App\Http\Controllers\Lahan_sekolah\KetersediaanLahanController;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
 
 // |-------------------------------------------------------------------------- SEMENTARA |--------------------------------------------------------------------------
 Route::get('gallery', function () {
@@ -87,10 +86,6 @@ Route::get('admin-monitoring', function () {
     return view('admin.monitoring');
 });
 
-Route::get('admin-lahan', function () {
-    return view('admin.lahan');
-});
-
 Route::get('admin-ruangkelas', function () {
     return view('admin.ruangkelas');
 });
@@ -130,10 +125,19 @@ Route::get('admin-detailmonitoring', function () {
 // |-------------------------------------------------------------------------- /SEMENTARA |--------------------------------------------------------------------------
 
 Route::group(['middleware' => ['auth']], function() {
+    // admin
+    Route::get('/', [AdminController::class, 'index']);
+    Route::get('/profil/admin', [AdminController::class, 'search']);
+    Route::resource('/profil', ProfilController::class);
+    Route::get('/lahan-dinas', [AdminController::class, 'lahanDinas']);
+    Route::get('/bangunan/ruang-kelas-dinas', [AdminController::class, 'lahanDinas']);
+    
+
+
+
+    // sekolah
     Route::resource('roles', RoleController::class);
     Route::resource('users', RegisteredUserController::class);
-    Route::get('/profil/admin', [AdminController::class, 'index']);
-    Route::resource('/profil', ProfilController::class);
     Route::patch('/kompeten/tambahsiswa/{id:profil}', [KompetenController::class, 'update']);
     Route::resource('/kompeten', KompetenController::class);
     Route::get('/kompeten/create/{id:profil}', [KompetenController::class, 'create']);
@@ -153,6 +157,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/kekurangan-lahan', KekuranganLahanController::class);
     Route::resource('/bangunan-all', BangunanController::class);
     Route::patch('/bangunan-all/update-ketersediaan/{id}', [BangunanController::class, 'ubahKetersediaan']);
+    Route::patch('/bangunan-all/update-kekurangan/{id}', [BangunanController::class, 'ubahKekurangan']);
     Route::patch('/bangunan-all/update-kondisi-ideal/{id}', [BangunanController::class, 'kondisiIdeal']);
     Route::resource('/bangunan/ruang-kelas', KelasController::class);
     Route::post('/bangunan/usulan-ruang-kelas', [KelasController::class, 'createusulan']);
@@ -167,6 +172,11 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/bangunan/usulan-toilet', [ToiletController::class, 'createusulan']);
     Route::resource('/bangunan/ruang-rehabrenov', RehabRenovController::class);
     Route::resource('/bangunan/pimpinan', PimpinanController::class);
+    Route::patch('/bangunan/pimpinan', [PimpinanController::class, 'update']);
+    Route::post('/bangunan/usulan-ruang-pimpinan', [PimpinanController::class, 'createusulan']);
+    Route::get('/bangunan/usulan-ruang-pimpinan/{id}/edit', [UsulanBangunanController::class, 'editPimpinan']);
+    Route::patch('/bangunan/usulan-ruang-pimpinan/{id}', [UsulanBangunanController::class, 'updatePimpinan']);
+    Route::resource('/jenis-pimpinan', JenisPimpinanController::class);
     Route::resource('/monev', MonevController::class);
     Route::resource('/peralatan/nama-jurusan', PeralatanController::class);
     Route::resource('/riwayat-bantuan', RiwayatController::class);

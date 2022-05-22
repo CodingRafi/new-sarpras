@@ -45,7 +45,6 @@
 @endsection
 
 @section('container')
-    {{-- @dd($data->jenis) --}}
     <div class="title pt-3">
         <h3 class="text-dark display-4 pl-3" style="font-size: 25px;text-transform: capitalize;">Edit
             {{ str_replace('_', ' ', $data->jenis) }}</h3>
@@ -53,23 +52,25 @@
 
     <div class="form-edit pt-3">
 
-        <form action="/usulan-bangunan/{{ $data->id }}" method="post" enctype="multipart/form-data">
+        <form action="/bangunan/usulan-ruang-pimpinan/{{ $data->id }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('patch')
             <div class="card pt-3" style="background-color: white; border-radius: 10px; ">
 
 
-                @if ($data->jenis == 'perpustakaan' || $data->jenis == 'toilet')
-                    <input type="hidden" name="jml_ruang" value="{{ $data->jml_ruang }}">
-                @else
-                    {{-- --------------------------------------------- JUMLAH RUANG KELAS --------------------------------------------- --}}
-                    <div class="row input pl-5 mt-2">
-                        <label class="col-2 mt-3" style="text-transform: capitalize;">Jumlah Ruang
-                            {{ str_replace('_', ' ', $data->jenis) }}</label>
-                        <input type="number" class="col-3 form-control mt-2" style="width: 750px"
-                            placeholder="Masukan Jumlah Ruang" value="{{ $data->jml_ruang }}" name="jml_ruang">
-                    </div>
-                @endif
+                {{-- --------------------------------------------- JUMLAH RUANG KELAS --------------------------------------------- --}}
+                <div class="row input pl-5 mt-2">
+                    <label class="col-2 mt-3">Jenis Ruang</label>
+                    <select name="jenis_pimpinan_id" id="" required class="custom-select col-9" style="width: 77%;">
+                        @foreach ($jenis_pimpinans as $data_jenis)
+                            @if ($data_jenis->id == $jenis->id)
+                                <option value="{{ $data_jenis->id }}" selected>{{ $data_jenis->nama }}</option>
+                            @else
+                                <option value="{{ $data_jenis->id }}">{{ $data_jenis->nama }}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                </div>
 
                 {{-- --------------------------------------------- LUAS LAHAN --------------------------------------------- --}}
                 <div class="row input pl-5 mt-2">

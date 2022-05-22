@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Profil;
+use App\Models\UsulanLahan;
+use App\Models\UsulanBangunan;
 
 class AdminController extends Controller
 {
@@ -19,8 +21,14 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index',[
-            'profils' => Profil::search(request(['search']))->paginate(40),
+        $usulanLahan = UsulanLahan::all();
+        $usulanBangunan = UsulanBangunan::all();
+        $usulanPeralatan = 0;
+
+        return view('admin.dashboard',[
+            'jml_usulan_lahan' => count($usulanLahan),
+            'jml_usulan_bangunan' => count($usulanBangunan),
+            'jml_usulan_peralatan' => $usulanPeralatan
         ]);
     }
 
@@ -88,5 +96,15 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search(){
+        return view('admin.index',[
+            'profils' => Profil::search(request(['search']))->paginate(40),
+        ]);
+    }
+
+    public function lahanDinas(){
+        return view('admin.lahan');
     }
 }

@@ -34,6 +34,10 @@ class UsulanBangunan extends Model
         return $this->hasMany(UsulanPraktek::class);
     }
 
+    public function jenisPimpinan(){
+        return $this->belongsTo(JenisPimpinan::class);
+    }
+
     public static function createUsulan($request, $jenis, $validatedData){
         $validatedData['proposal'] = $request->file('proposal')->store('proposal-usulan-bangunan');
         $validatedData['profil_id'] = Auth::user()->profil_id;
@@ -46,11 +50,11 @@ class UsulanBangunan extends Model
     }
 
     public static function deleteUsulan($data){
-        $koleksi = $data->usulanKoleksi[0];
-        $fotos = $koleksi->usulanFoto;
-        UsulanFoto::deleteFoto($fotos);
-        UsulanKoleksi::destroy($koleksi->id);
-        Storage::delete($data->proposal);
-        UsulanBangunan::destroy($data->id);
+    $koleksi = $data->usulanKoleksi[0];
+    $fotos = $koleksi->usulanFoto;
+    UsulanFoto::deleteFoto($fotos);
+    UsulanKoleksi::destroy($koleksi->id);
+    Storage::delete($data->proposal);
+    UsulanBangunan::destroy($data->id);
     }
 }

@@ -7,7 +7,6 @@
         </div>
         <div style="display: flex; flex-direction: column;" class="ml-2">
           <span class="brand-text h6" style="margin: 0;font-size: 17px;">SISTEM SARPRAS</span>
-          <p class="brand-text font-weight-light h6" style="font-size: .8rem;margin: 0;">Admin</p>
         </div>
     </a>
 
@@ -20,7 +19,7 @@
 
                 {{------------------------------------------------------------------------------------------ DASHBOARD ------------------------------------------------------------------------------------------}}
                 <li class="nav-item">
-                    <a href="{{ session('route') }}" class="nav-link {{ Request::is(session('route')) ? 'active' : '' }}">
+                    <a href="/" class="nav-link {{ Request::is('/') ? 'active' : '' }}">
                         <i class="nav-icon bi bi-house"></i>
                         <p>Dashboard</p>
                     </a>
@@ -37,30 +36,11 @@
                 @endcan
 
                 {{------------------------------------------------------------------------------------------ LAHAN SEKOLAH ------------------------------------------------------------------------------------------}}
-                <li class="nav-item has-treeview {{ Request::is('lahan') ? 'menu-open' : (Request::is('usulan-lahan') ? 'menu-open' : '') }}">
-                    <a href="#" class="nav-link">
+                <li class="nav-item">
+                    <a href="/lahan-dinas" class="nav-link {{ Request::is('lahan-dinas') ? 'active' : '' }}">
                         <i class="nav-icon bi bi-map"></i>
-                        <p>
-                            Lahan Sekolah
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
+                        <p>Lahan Sekolah</p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        {{------------------------------------------------------------------------------------------ KETERSEDIAAN LAHAN & ANALISI LAHAN ------------------------------------------------------------------------------------------}}
-                        <li class="nav-item">
-                            <a href="/lahan" class="nav-link {{ Request::is('lahan') ? 'active' : '' }}">
-                                <i class="fa-regular fa-circle"></i>
-                                <p>Ketersediaan & Analisi Lahan</p>
-                            </a>
-                        </li>
-                        {{------------------------------------------------------------------------------------------ USULAN LAHAN SEKOLAH ------------------------------------------------------------------------------------------}}
-                        <li class="nav-item">
-                            <a href="/usulan-lahan" class="nav-link {{ Request::is('usulan-lahan') ? 'active' : '' }}">
-                                <i class="fa-regular fa-circle"></i>
-                                <p>Usulan Lahan Sekolah</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
 
                 {{------------------------------------------------------------------------------------------ BANGUNAN SEKOLAH ------------------------------------------------------------------------------------------}}

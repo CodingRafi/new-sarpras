@@ -78,7 +78,7 @@
                                                                 <i class="bi bi-three-dots-vertical"></i>
                                                             </button>
                                                             <div class="dropdown-menu" style="margin-left: -73px">
-                                                                <a class="dropdown-item" href="/usulan-lahan/{{ $usulan->id }}/edit">Edit</a>
+                                                                <a class="dropdown-item">Edit</a>
                                                                 <form action="/usulan-lahan/{{ $usulan->id }}" method="post">
                                                                     @csrf
                                                                     @method('delete')

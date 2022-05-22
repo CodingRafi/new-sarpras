@@ -42,7 +42,7 @@
                     </div>
                     <div class="text ml-5 mt-2">
                         <div class="text-atas text-center">
-                            <h2>15</h2>
+                            <h2>{{ $jml_usulan_lahan }}</h2>
                         </div>
                         <div class="text-bawah text-center">
                             <h4>Usulan Lahan</h4>
@@ -64,7 +64,7 @@
                     </div>
                     <div class="text ml-4 mt-2">
                         <div class="text-atas text-center">
-                            <h2>38</h2>
+                            <h2>{{ $jml_usulan_bangunan }}</h2>
                         </div>
                         <div class="text-bawah text-center">
                             <h4>Usulan Bangunan</h4>
@@ -86,7 +86,7 @@
                     </div>
                     <div class="text ml-4 mt-2">
                         <div class="text-atas text-center">
-                            <h2>25</h2>
+                            <h2>{{ $jml_usulan_peralatan }}</h2>
                         </div>
                         <div class="text-bawah text-center">
                             <h4>Usulan Peralatan</h4>
@@ -108,7 +108,7 @@
                     </div>
                     <div class="text ml-5 mt-2">
                         <div class="text-atas text-center">
-                            <h2>78</h2>
+                            <h2>{{ $jml_usulan_lahan + $jml_usulan_bangunan + $jml_usulan_peralatan }}</h2>
                         </div>
                         <div class="text-bawah text-center">
                             <h4>Total Usulan</h4>
@@ -137,7 +137,18 @@
                     <a class="dropdown-item text-truncate" tabindex="-1" href="#">Kota/ Kabupaten</a>
                     <a class="dropdown-item text-truncate" tabindex="-1" href="#">Kantor Cabang Dinas</a>
                 </div>
-                <input class="form-control ml-3" style="width: 910px" type="search" placeholder="Search NPSN, sekolah id, nama sekolah" aria-label="Search" style="height: 2.5rem;font-size: 15px;padding: 0 10px;" name="search">
+                <form class="form-inline ml-2" action="/profil/admin" method="GET" style="width: 100%;">
+                    <div class="input-group" style="width: 100%;border: 1px solid #ced4da;border-radius: 3px;">
+                        <input class="form-control form-control-navbar" type="search"
+                            placeholder="Search NPSN, sekolah id, nama sekolah" aria-label="Search"
+                            style="height: 2.5rem;font-size: 15px;padding: 0 10px;border:none;" name="search">
+                        <div class="input-group-append" >
+                            <button class="btn btn-navbar" type="submit" style="width: 40px;">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="card mt-3">
                 <table class="table table-responsive table-bordered">
