@@ -29,6 +29,11 @@
         <div class="card">
             <div class="card-header bg-warning d-flex p-0">
                 <h3 class="card-title p-3 text-white">Ruang Pimpinan</h3>
+                <div class="card-tools float-right d-flex align-items-center">
+                    <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
+                        data-target="#tambah-jenis-pimpinan"><i class="bi bi-plus"></i> Tambah Jenis Pimpinan
+                    </button>
+                </div>
             </div>
             <div class="card-body">
                 {{-- Table --}}
@@ -99,7 +104,8 @@
                                                 </a>
                                             </td>
                                             <td class="text-center" style="vertical-align: middle">
-                                                <a href="/usulan-bangunan/{{ $usulan->id }}" class="btn text-white d-inline"
+                                                <a href="/usulan-bangunan/{{ $usulan->id }}"
+                                                    class="btn text-white d-inline"
                                                     style="background-color: #25b5e9">Detail</a>
                                             </td>
                                         </tr>
@@ -115,28 +121,39 @@
                         </div>
                     @endif
                 </div>
+
+                <div class="modal fade" id="tambah-jenis-pimpinan">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Tambah Jenis Ruang Pimpinan</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal" action="/jenis-pimpinan" method="post">
+                                    @csrf
+                                    <div class="card-body">
+                                        <div class="form-group row">
+                                            <label for="jumlah-lahan" class="col-sm-2 col-form-label">Nama Ruang</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="jumlah-lahan" name="nama" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-success float-right">Simpan</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 {{-- End --}}
                 {{-- Pagination --}}
                 <div class="float-right">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">4</a></li>
-                            <li class="page-item"><a class="page-link" href="#">5</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                    {{ $usulanBangunans->links() }}
                 </div>
                 {{-- End --}}
             </div>

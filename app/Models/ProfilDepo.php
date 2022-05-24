@@ -10,16 +10,25 @@ class ProfilDepo extends Model
 {
     use HasFactory;
 
+    protected $guarded =[
+        "id"
+    ];
+
     public static function DataProfilSekolah(){
         $links = [
             'http://datapokok.ditpsmk.net/api/smk_jabar',
             'http://datapokok.ditpsmk.net/api/smk_jabar_akreditasi',
             'http://datapokok.ditpsmk.net/api/smk_jabar_siswa'
         ];
+        
+
         $hasilJsons = [];
         foreach ($links as $link){
             $hasilJsons[] =  json_decode(Http::get($link));
         }
+
+        $jml_lk = 0;
+        $jml_pr = 0;
 
         $data = [];
         foreach ($hasilJsons[0] as $key => $hasil){
@@ -37,13 +46,13 @@ class ProfilDepo extends Model
                 'nomor_telepon' => $hasil->nomor_telepon,
                 'nomor_fax' => $hasil->nomor_fax,
                 'akreditasi' => $hasilJsons[1][$key]->akreditasi,
-                'jml_siswa_l' => $hasilJsons[2][$key]->k_l,
-                'jml_siswa_p' => $hasilJsons[2][$key]->k_p,
-                'bidang' => $hasilJsons[2][$key]->bidang,
-                'program' => $hasilJsons[2][$key]->program,
-                'jurusan' => $hasilJsons[2][$key]->jurusan,
+                'jml_siswa_l' => $jml_lk,
+                'jml_siswa_p' => $jml_pr,
             ];
         }
+
+        $jml_lk = 0;
+        $jml_pr = 0;
 
         return $data;
     }
