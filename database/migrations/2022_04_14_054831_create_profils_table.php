@@ -35,6 +35,11 @@ return new class extends Migration
             $table->string('long')->nullable();
             $table->string('jml_rombel')->nullable();
             $table->string('nama_kepala_sekolah')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('tiktok')->nullable();
+            $table->string('youtube')->nullable();
+            $table->string('twitter')->nullable();
             $table->timestamps();
         });
     }
