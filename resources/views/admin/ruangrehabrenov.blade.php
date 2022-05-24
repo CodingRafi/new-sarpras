@@ -27,7 +27,7 @@
     {{-- Table --}}
     <div class="container-fluid">
         <div class="card">
-            <div class="card-header bg-warning d-flex p-0">
+            <div class="card-header d-flex p-0" style="background-color: #25b5e9">
                 <h3 class="card-title p-3 text-white">Ruang Rehab Renov</h3>
             </div>
             <div class="card-body">
