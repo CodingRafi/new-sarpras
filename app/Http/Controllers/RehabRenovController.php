@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\RehabRenov;
 use App\Models\UsulanKoleksi;
+use App\Models\JenisPimpinan;
+use App\Models\Pimpinan;
+use App\Models\UsulanBangunan;
 use App\Models\UsulanFoto;
 use App\Http\Requests\StoreRehabRenovRequest;
 use App\Http\Requests\UpdateRehabRenovRequest;
@@ -23,10 +26,39 @@ class RehabRenovController extends Controller
         $koleksi = UsulanKoleksi::koleksi($rehab);
         $fotos = UsulanFoto::fotos($koleksi);
 
+        $jenis_pimpinan = JenisPimpinan::all();
+        $pimpinan = Pimpinan::where('profil_id', Auth::user()->profil_id)->get();
+        $usulans = UsulanBangunan::where('profil_id', Auth::user()->profil_id)->where('jenis', 'ruang_pimpinan')->get();
+        $koleksi = UsulanKoleksi::koleksi($usulans);
+        $fotos = UsulanFoto::fotos($koleksi);
+        $jenisUsulanPimpinan = [];
+
+        foreach($usulans as $usulan){
+            $jenisUsulanPimpinan[] = $usulan->jenisPimpinan;
+        }
+
+        $data = [];
+        foreach ($pimpinan as $key => $pim) {
+            $data[] = [
+                'id' => $pim->id,
+                'id_jenis' => $pim->jenisPimpinan->id,
+                'jenis' => $pim->jenisPimpinan->nama,
+                'nama' => $pim->nama,
+                'lebar' => $pim->lebar,
+                'panjang' => $pim->panjang,
+                'luas' => $pim->luas
+            ];
+        }
+
         return view("bangunan.rehabrenov.index", [
             'rehabs' => $rehab,
             'usulanKoleksis' => $koleksi,
-            'usulanFotos' => $fotos
+            'usulanFotos' => $fotos,
+            'jenis_pimpinans' => $jenis_pimpinan,
+            'datas' => $data,
+            'usulans' => $usulans,
+            'usulanFotos' => $fotos,
+            'usulanJenis' => $jenisUsulanPimpinan
         ]);
     }
 
@@ -163,5 +195,24 @@ class RehabRenovController extends Controller
         }else{
             abort(403);
         }
+    }
+
+    public function showDinas(){
+        $usulanBangunan = UsulanBangunan::where('jenis', 'rehab')->paginate(40);
+        $datas = [];
+        foreach ($usulanBangunan as $key => $usulan) {
+            $datas[] = $usulan->profil;
+        }
+
+        $kcds = [];
+        foreach ($datas as $key => $data) {
+            $kcds[] = $data->profilKcd[0]->kcd;
+        }
+
+        return view('admin.ruangkelas', [
+            'usulanBangunans' => $usulanBangunan,
+            'profils' => $datas,
+            'kcds' => $kcds
+        ]);
     }
 }

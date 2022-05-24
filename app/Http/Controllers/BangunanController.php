@@ -91,17 +91,28 @@ class BangunanController extends Controller
 
     public function ubahKetersediaan(Request $request, $id){
         $data = Bangunan::where('id', $id)->get()[0];
+
         if($data->profil_id == Auth::user()->profil_id){
             $validatedData = $request->validate([
                 'ketersediaan' => 'required|numeric',
             ]);
-
+            
             $data->update($validatedData);
-
+            
             if($data->jenis == 'ruang_kelas'){
                 $ketersediaan = Bangunan::where('id', $id)->get()[0]->ketersediaan;
                 $jml_rombel = Profil::where('id', Auth::user()->profil_id)->get()[0]->jml_rombel;
-                Bangunan::kondisi_ideal($jml_rombel, $ketersediaan);
+                Bangunan::kondisi_ideal($jml_rombel, $ketersediaan, 'ruang_kelas');
+            }else if($data->jenis == 'perpustakaan'){
+                $ketersediaan = Bangunan::where('id', $id)->get()[0];
+                $kekurangan = 0;
+                $kekurangan = $ketersediaan->kondisi_ideal - $ketersediaan->ketersediaan;
+                if($kekurangan < 0){
+                    $kekurangan = 0;
+                }
+                $ketersediaan->update([
+                    'kekurangan' => $kekurangan
+            ]);   
             }
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah jumlah ketersediaan ' . str_replace("_", " ", $data->jenis));
@@ -112,10 +123,27 @@ class BangunanController extends Controller
         }
     }
 
+    public function ubahKekurangan(Request $request, $id){
+        $data = Bangunan::where('id', $id)->get()[0];
+        if($data->profil_id == Auth::user()->profil_id){
+            $validatedData = $request->validate([
+                'kekurangan' => 'required|numeric',
+            ]);
+
+            $data->update($validatedData);
+
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah jumlah kekurangan ' . str_replace("_", " ", $data->jenis));
+
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
+    }
+
     public function kondisiIdeal(Request $request, $id){
         $data = Bangunan::where('id', $id)->get()[0];
         if($data->profil_id == Auth::user()->profil_id){
-            if($data->jenis == 'toilet'){
+            if($data->jenis == 'toilet' || $data->jenis == 'lab_komputer'){
                 $validatedData = $request->validate([
                     'kondisi_ideal' => 'required|numeric',
                 ]);

@@ -12,6 +12,15 @@ use Illuminate\Support\Facades\Storage;
 
 class UsulanLahanController extends Controller
 {
+
+    function __construct()
+    {
+         $this->middleware('permission:view_usulan_lahan|add_usulan_lahan|edit_usulan_lahan|delete_usulan_lahan', ['only' => ['index','show']]);
+         $this->middleware('permission:add_usulan_lahan', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_usulan_lahan', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_usulan_lahan', ['only' => ['destroy']]);
+    }   
+
     /**
      * Display a listing of the resource.
      *
@@ -83,7 +92,9 @@ class UsulanLahanController extends Controller
      */
     public function edit(UsulanLahan $usulanLahan)
     {
-        //
+        return view('lahan.edit', [
+            'data' => $usulanLahan
+        ]);
     }
 
     /**
@@ -95,7 +106,31 @@ class UsulanLahanController extends Controller
      */
     public function update(UpdateUsulanLahanRequest $request, UsulanLahan $usulanLahan)
     {
-        //
+        if($usulanLahan->profil_id == Auth::user()->profil_id){
+            $validatedData = $request->validate([
+                'nama' => 'required',
+                'panjang' => 'required',
+                'lebar' => 'required',
+                'alamat' => 'required'
+            ]);
+
+            if($request->file('proposal')){
+                if($usulanLahan->proposal){
+                    Storage::delete($usulanLahan->proposal);
+                }
+                $validatedData['proposal'] = $request->file('proposal')->store('proposal-usulan-bangunan');
+            }
+
+            UsulanLahan::where('id', $usulanLahan->id)
+                        ->update($validatedData);
+
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Usulan Lahan');
+
+            return redirect('/usulan-lahan');
+
+        }else{
+            abort(403);
+        }
     }
 
     /**

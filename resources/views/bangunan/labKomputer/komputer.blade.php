@@ -7,6 +7,12 @@
             left: 20px;
         }
 
+        @media only screen and (max-width: 480px) {
+            .btn-batal{
+              margin-top: 5px;  
+            }
+    }
+
     </style>
 @endsection
 
@@ -51,14 +57,46 @@
                     <div class="card-header" style="background-color: #25b5e9">
                         <h3 class="card-title">Kondisi Ideal</h3>
                         <div class="card-tools">
-                            <button type="button" class="btn btn-tool"><i class="fas fa-minus"
-                                    style="display: none"></i>
+                            <button type="button" class="btn btn-tool text-white" data-toggle="modal"
+                                data-target="#edit-kondisi-ideal"><i class="bi bi-pencil-square"></i>
                             </button>
                         </div>
                     </div>
                     <div class="card-body d-flex align-items-end justify-content-center">
                         <h1 class="text-center font-weight-bold pt-2">{{ $data->kondisi_ideal }}</h1>
-                        <p>/ Kelas</p>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="edit-kondisi-ideal">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <form class="form-horizontal" method="post"
+                                action="/bangunan-all/update-kondisi-ideal/{{ $data->id }}">
+                                @csrf
+                                @method('patch')
+                                <div class="modal-header" style="background-color: #25b5e9">
+                                    <h4 class="modal-title text-white">Kondisi Ideal</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="card-body">
+                                        <div class="form-group row">
+                                            <label for="ketersediaan" class="col-sm-2 col-form-label">Kondisi Ideal</label>
+                                            <div class="col-sm-10">
+                                                <input type="number" class="form-control" id="kondisi_ideal"
+                                                    name="kondisi_ideal" value="{{ $data->kondisi_ideal }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn text-white float-right"
+                                        style="background-color: #00a65b">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -76,7 +114,6 @@
                     </div>
                     <div class="card-body d-flex align-items-end justify-content-center">
                         <h1 class="text-center font-weight-bold pt-2">{{ $data->ketersediaan }}</h1>
-                        <p>/ Kelas</p>
                     </div>
                 </div>
 
@@ -84,7 +121,8 @@
                 <div class="modal fade" id="edit-ketersediaan">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
-                            <form class="form-horizontal" method="post" action="/bangunan-all/update-ketersediaan/{{ $data->id }}">
+                            <form class="form-horizontal" method="post"
+                                action="/bangunan-all/update-ketersediaan/{{ $data->id }}">
                                 @csrf
                                 @method('patch')
                                 <div class="modal-header bg-warning">
@@ -98,7 +136,8 @@
                                         <div class="form-group row">
                                             <label for="ketersediaan" class="col-sm-2 col-form-label">Ketersediaan</label>
                                             <div class="col-sm-10">
-                                                <input type="number" class="form-control" id="ketersediaan" name="ketersediaan" value="{{ $data->ketersediaan }}">
+                                                <input type="number" class="form-control" id="ketersediaan"
+                                                    name="ketersediaan" value="{{ $data->ketersediaan }}">
                                             </div>
                                         </div>
                                     </div>
@@ -126,7 +165,6 @@
                     </div>
                     <div class="card-body d-flex align-items-end justify-content-center">
                         <h1 class="text-center font-weight-bold pt-2">{{ $data->kekurangan }}</h1>
-                        <p>/ Kelas</p>
                     </div>
                 </div>
             </div>
@@ -142,12 +180,15 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form class="form-horizontal" method="post" action="/bangunan-all/update-kondisi-ideal/{{ $data->id }}">
+                            <form class="form-horizontal" method="post"
+                                action="/bangunan-all/update-kekurangan/{{ $data->id }}">
+                                @csrf
+                                @method('patch')
                                 <div class="card-body">
                                     <div class="form-group row">
                                         <label for="kekurangan" class="col-sm-2 col-form-label">Kekurangan</label>
                                         <div class="col-sm-10">
-                                            <input type="number" class="form-control" id="kekurangan">
+                                            <input type="number" class="form-control" id="kekurangan" name="kekurangan" value="{{ $data->kekurangan }}">
                                         </div>
                                     </div>
                                 </div>
@@ -221,7 +262,7 @@
                                             @csrf
                                             @method('delete')
 
-                                            <button type="submit" class="btn text-white" style="background-color: #00a65b"
+                                            <button type="submit" class="btn text-white mt-2 btn-batal"  style="background-color: #00a65b"
                                                 onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
 
                                         </form>

@@ -3,8 +3,8 @@
 @section('tambahcss')
     <style>
         /* .row-data .col-3 {
-                            max-width: 15.5rem !important;
-                        } */
+                                max-width: 15.5rem !important;
+                            } */
 
         .card-header h4 {
             font-size: 1.2rem !important
@@ -38,11 +38,12 @@
             <div class="card">
                 <div class="card-header text-white" style="display:flex; height:100px; background-color: #00a65b">
                     <div class="gambar">
-                        <img src="/assets/img/icons/flaticons/paper.png" class="mt-3" style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
+                        <img src="/assets/img/icons/flaticons/paper.png" class="mt-3"
+                            style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
                     </div>
                     <div class="text ml-5 mt-2">
                         <div class="text-atas text-center">
-                            <h2>15</h2>
+                            <h2>{{ $jml_usulan_lahan }}</h2>
                         </div>
                         <div class="text-bawah text-center">
                             <h4>Usulan Lahan</h4>
@@ -60,11 +61,12 @@
             <div class="card">
                 <div class="card-header text-white" style="display:flex; height:100px; background-color: #25b5e9">
                     <div class="gambar">
-                        <img src="/assets/img/icons/flaticons/building.png" class="mt-3" style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
+                        <img src="/assets/img/icons/flaticons/building.png" class="mt-3"
+                            style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
                     </div>
                     <div class="text ml-4 mt-2">
                         <div class="text-atas text-center">
-                            <h2>38</h2>
+                            <h2>{{ $jml_usulan_bangunan }}</h2>
                         </div>
                         <div class="text-bawah text-center">
                             <h4>Usulan Bangunan</h4>
@@ -82,11 +84,12 @@
             <div class="card">
                 <div class="card-header text-white" style="display:flex; height:100px; background-color: #fcc12d">
                     <div class="gambar">
-                        <img src="/assets/img/icons/flaticons/tools.png" class="mt-3" style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
+                        <img src="/assets/img/icons/flaticons/tools.png" class="mt-3"
+                            style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
                     </div>
                     <div class="text ml-4 mt-2">
                         <div class="text-atas text-center">
-                            <h2>25</h2>
+                            <h2>{{ $jml_usulan_peralatan }}</h2>
                         </div>
                         <div class="text-bawah text-center">
                             <h4>Usulan Peralatan</h4>
@@ -104,11 +107,12 @@
             <div class="card">
                 <div class="card-header text-white" style="display:flex; height:100px; background-color: #263238">
                     <div class="gambar">
-                        <img src="/assets/img/icons/flaticons/email.png" class="mt-3" style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
+                        <img src="/assets/img/icons/flaticons/email.png" class="mt-3"
+                            style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
                     </div>
                     <div class="text ml-5 mt-2">
                         <div class="text-atas text-center">
-                            <h2>78</h2>
+                            <h2>{{ $jml_usulan_lahan + $jml_usulan_bangunan + $jml_usulan_peralatan }}</h2>
                         </div>
                         <div class="text-bawah text-center">
                             <h4>Total Usulan</h4>
@@ -134,100 +138,101 @@
                     Filter by... <span class="caret"></span>
                 </a>
                 <div class="dropdown-menu" style="min-width: auto !important; width: 160px;">
-                    <a class="dropdown-item text-truncate" tabindex="-1" href="#">Kota/ Kabupaten</a>
-                    <a class="dropdown-item text-truncate" tabindex="-1" href="#">Kantor Cabang Dinas</a>
+                    <a class="dropdown-item text-truncate kab" tabindex="-1" href="?filter=kota">Kota/ Kabupaten</a>
+                    <a class="dropdown-item text-truncate kcd" tabindex="-1" href="?filter=kcd">Kantor Cabang Dinas</a>
                 </div>
-                <input class="form-control ml-3" style="width: 910px" type="search" placeholder="Search NPSN, sekolah id, nama sekolah" aria-label="Search" style="height: 2.5rem;font-size: 15px;padding: 0 10px;" name="search">
+                <form class="form-inline ml-2" action="/" method="GET" style="width: 100%;">
+                    <div class="input-group" style="width: 100%;border: 1px solid #ced4da;border-radius: 3px;">
+                        <input class="form-control form-control-navbar" type="search"
+                            placeholder="Search Nama Sekolah" aria-label="Search"
+                            style="height: 2.5rem;font-size: 15px;padding: 0 10px;border:none;" name="search">
+                        <div class="input-group-append">
+                            <button class="btn btn-navbar" type="submit" style="width: 40px;">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="card mt-3">
-                <table class="table table-responsive table-bordered">
+                <table class="table table-responsive table-bordered mb-0">
                     <thead>
-                      <tr>
-                        <th class="text-center col-1" style="background-color: #eeeeee" scope="col">No</th>
-                        <th class="text-center col-1" style="background-color: #eeeeee" scope="col">Nama Sekolah</th>
-                        <th class="text-center col-1" style="background-color: #eeeeee" scope="col">Status Sekolah</th>
-                        <th class="text-center col-1" style="background-color: #eeeeee" scope="col">Kabupaten/ Kota</th>
-                        <th class="text-center col-2" style="background-color: #eeeeee" scope="col">Kantor Cabang Dinas</th>
-                        <th class="text-center col-2" style="background-color: #eeeeee" scope="col">Status Sarpras</th>
-                        <th class="text-center col-2" style="background-color: #eeeeee" scope="col">Usulan</th>
-                        <th class="text-center col-2" style="background-color: #eeeeee" scope="col">Aksi</th>
-                      </tr>
+                        <tr>
+                            <th class="text-center col-1" style="background-color: #eeeeee" scope="col">No</th>
+                            <th class="text-center col-1" style="background-color: #eeeeee" scope="col">Nama Sekolah</th>
+                            <th class="text-center col-1" style="background-color: #eeeeee" scope="col">Status Sekolah</th>
+                            <th class="text-center col-1" style="background-color: #eeeeee" scope="col">Kabupaten/ Kota</th>
+                            <th class="text-center col-2" style="background-color: #eeeeee" scope="col">Kantor Cabang Dinas
+                            </th>
+                            <th class="text-center col-2" style="background-color: #eeeeee" scope="col">Status Sarpras</th>
+                            <th class="text-center col-2" style="background-color: #eeeeee" scope="col">Usulan</th>
+                            <th class="text-center col-2" style="background-color: #eeeeee" scope="col">Aksi</th>
+                        </tr>
                     </thead>
                     <tbody>
-                      {{-- row 1 --}}
-                      <tr>
-                        <th class="text-center col-1" scope="row">1</th>
-                        <td class="text-center col-1">SMK TARUNA BHAKTI</td>
-                        <td class="text-center col-1">Swasta</td>
-                        <td class="text-center col-1">Depok</td>
-                        <td class="text-center col-2">Kantor Cabang Dinas Pendidikan Wilayah II (Wilayah KCD 2)</td>
-                        <td class="text-center col-2">
-                            <div class="text-white mt-1" style="background-color: #00a65b; border-radius:5px">Lahan ideal</div>
-                            <div class="text-white mt-1" style="background-color: #25b5e9; border-radius:5px">Peralatan ideal</div>
-                            <div class="text-white mt-1" style="background-color: #fcc12d; border-radius:5px">Belum ideal, kurang ruang praktik TKJ</div>
-                            <div class="text-white mt-1" style="background-color: #fcc12d; border-radius:5px">Belum ideal, kurang ruang kelas</div>
-                        </td>
-                        <td class="text-center col-2">
-                            <a class="btn text-white mt-1" style="background-color: #fcc12d" href="">Ruang praktik TKJ</a>
-                            <a class="btn text-white mt-1" style="background-color: #fcc12d" href="">Ruang kelas baru</a>
-                        </td>
-                        <td class="text-center"><a class="text-center btn text-white" style="background-color: #263238" href="">Detail</a>
-                        </td>
-                      </tr>
-                      {{-- end row 1 --}}
-
-                      {{-- row 2 --}}
-                      <tr>
-                        <th class="text-center col-1" scope="row">2</th>
-                        <td class="text-center col-1">SMKN 1 CILEUNGSI</td>
-                        <td class="text-center col-1">Negeri</td>
-                        <td class="text-center col-1">Bogor</td>
-                        <td class="text-center col-2">Cabang Dinas Pendidikan Wilayah 1</td>
-                        <td class="text-center col-2">
-                            <div class="text-white mt-1" style="background-color: #00a65b; border-radius:5px">Belum ideal, kurang lahan</div>
-                            <div class="text-white mt-1" style="background-color: #25b5e9; border-radius:5px">Belum ideal, kurang peralatan TKJ</div>
-                            <div class="text-white mt-1" style="background-color: #fcc12d; border-radius:5px">Bangunan ideal</div>
-                        </td>
-                        <td class="text-center col-2">
-                            <a class="btn text-white mt-1" style="background-color: #00a65b" href="">Lahan</a>
-                            <a class="btn text-white mt-1" style="background-color: #25b5e9" href="">Peralatan TKJ</a>
-                        </td>
-                        <td class="text-center"><a class="text-center btn text-white" style="background-color: #263238" href="">Detail</a>
-                        </td>
-                      </tr>
-                      {{-- end row 2 --}}
-
-                      {{-- row 3 --}}
-                      <tr>
-                        <th class="text-center col-1">3</th>
-                        <td class="text-center col-1">SMKN 1 CIOMAS</td>
-                        <td class="text-center col-1">Negeri</td>
-                        <td class="text-center col-1">Bogor</td>
-                        <td class="text-center col-2">Cabang Dinas Pendidikan Wilayah 1</td>
-                        <td class="text-center col-2">
-                            <div class="text-white mt-1" style="background-color: #00a65b; border-radius:5px">Lahan ideal</div>
-                            <div class="text-white mt-1" style="background-color: #25b5e9; border-radius:5px">Peralatan ideal</div>
-                            <div class="text-white mt-1" style="background-color: #fcc12d; border-radius:5px">Bangunan ideal</div>
-                        </td>
-                        <td class="text-center col-2">Tidak Ada Usulan</td>
-                        <td class="text-center"><a class="text-center btn text-white" style="background-color: #263238" href="">Detail</a>
-                        </td>
-                      </tr>
-                      {{-- end row 3 --}}
+                        @foreach ($datas as $data)
+                            <tr>
+                                <th class="text-center col-1" scope="row">{{ ($profils ->currentpage()-1) * $profils ->perpage() + $loop->index + 1 }}</th>
+                                <td class="text-center col-1">{{ $data['nama'] }}</td>
+                                <td class="text-center col-1">{{ $data['status_sekolah'] }}</td>
+                                <td class="text-center col-1">{{ $data['kabupaten'] }}</td>
+                                <td class="text-center col-2">{{ $data['instansi'] }}</td>
+                                <td class="text-center col-2">
+                                    <div class="text-white mt-1" style="background-color: #00a65b; border-radius:5px">Lahan
+                                        ideal</div>
+                                    <div class="text-white mt-1" style="background-color: #25b5e9; border-radius:5px">
+                                        Peralatan ideal</div>
+                                    <div class="text-white mt-1" style="background-color: #fcc12d; border-radius:5px">Belum
+                                        ideal, kurang ruang praktik TKJ</div>
+                                    <div class="text-white mt-1" style="background-color: #fcc12d; border-radius:5px">Belum
+                                        ideal, kurang ruang kelas</div>
+                                </td>
+                                <td class="text-center col-2">
+                                    @foreach ($data['usulanLahan'] as $usulan)
+                                        <a class="btn text-white mt-1" style="background-color: #fcc12d" href="">{{ $usulan->nama }}</a>
+                                    @endforeach
+                                    @foreach ($data['usulanBangunan'] as $usulan)
+                                        <a class="btn text-white mt-1" style="background-color: #fcc12d;text-transform: capitalize;" href="/usulan-bangunan/{{ $usulan['id'] }}">{{ str_replace("_", " ", $usulan->jenis) }}</a>
+                                    @endforeach
+                                </td>
+                                <td class="text-center"><a class="text-center btn text-white"
+                                        style="background-color: #263238" href="/profil/{{ $data['id'] }}">Detail</a>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
-                  </table>
+                </table>
+            </div>
+            <div class="container d-flex justify-content-end">
+                {{ $profils->links() }}
             </div>
             {{-- {{ $variable->link() }} --}}
         </div>
     </div>
     {{-- end konten --}}
-
-
 @endsection
 
 
 @section('tambahjs')
     <script>
+        const kab = document.querySelector('.kab');
+        const kcd = document.querySelector('.kcd');
+
+        kab.addEventListener('click', function(){
+
+        })
+
+    </script>
+@endsection
+
+
+
+
+
+
+
+@section('tambahjs')
+    {{-- <script>
         const tombolEdit = document.querySelectorAll('.tombol-edit');
         const inputNamaEdit = document.querySelector('.input-nama-edit');
         const inputPanjangEdit = document.querySelector('.panjang-nama-edit');
@@ -251,5 +256,5 @@
                 inputIdKekurangan.value = id_kekuranganLahan[i].value;
             })
         });
-    </script>
+    </script> --}}
 @endsection

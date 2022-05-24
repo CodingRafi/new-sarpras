@@ -132,4 +132,23 @@ class ToiletController extends Controller
 
         return redirect()->back();
     }
+
+    public function showDinas(){
+        $usulanBangunan = UsulanBangunan::where('jenis', 'toilet')->paginate(40);
+        $datas = [];
+        foreach ($usulanBangunan as $key => $usulan) {
+            $datas[] = $usulan->profil;
+        }
+
+        $kcds = [];
+        foreach ($datas as $key => $data) {
+            $kcds[] = $data->profilKcd[0]->kcd;
+        }
+
+        return view('admin.ruangkelas', [
+            'usulanBangunans' => $usulanBangunan,
+            'profils' => $datas,
+            'kcds' => $kcds
+        ]);
+    }
 }

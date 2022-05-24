@@ -28,20 +28,116 @@
 @endsection
 
 @section('container')
-    {{-- Main-Content --}}
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark display-4" style="padding: 0 !important;">Ruang Praktik
+                        {{ $komli->kompetensi }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <div class="container-fluid pt-4">
-        <div class="info-box p-4 detail-infobox shadow-sm  mb-5 bg-body rounded">
-            <div class="container ">
-                <h1>{{ $komli->kompetensi }}</h1>
+    {{-- Main-Content --}}
+    <div class="container-fluid">
+        <div class="info-box p-4 detail-infobox shadow-sm mb-5 bg-body rounded">
+            <button type="button" class="btn" data-toggle="dropdown"
+                style="position: absolute; top: 0; right: 0;">
+                <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <div class="dropdown-menu" style="margin-left: -56px">
+                <button type="button" class="dropdown-item" data-toggle="modal" data-target="#upload-logo">Upload
+                    Logo</button>
+                <button type="button" class="dropdown-item" data-toggle="modal" data-target="#ubah-deskripsi">Ubah
+                    Deskripsi</button>
+            </div>
+
+            {{-- --------------------------------------------------------------------------- MODAL UPLOAD LOGO --------------------------------------------------------------------------- --}}
+            <div class="modal fade" id="upload-logo">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <form class="form-horizontal" method="post" action="/kompeten/upload-logo/{{ $kompeten->id }}"
+                            enctype="multipart/form-data">
+                            @csrf
+                            @method('patch')
+                            <div class="modal-header bg-info">
+                                <h4 class="modal-title text-white">Upload Logo</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card-body text-center">
+
+                                    <div class="form-group row">
+                                        <label for="logo-kejuruan" class="col-sm-2 col-form-label">Logo Kejuruan</label>
+                                        <div class="col-sm-10">
+                                            <input type="file" class="form-control" id="logo-kejuruan" name="logo"
+                                                style="height: auto !important;" accept="image/*" required>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn text-white float-right"
+                                    style="background-color: #00a65b">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            {{-- --------------------------------------------------------------------------- MODAL UBAH DESKRIPSI --------------------------------------------------------------------------- --}}
+            <div class="modal fade" id="ubah-deskripsi">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <form class="form-horizontal" method="post" action="/kompeten/tambah-keterangan/{{ $kompeten->id }}">
+                            @csrf
+                            @method('patch')
+                            <div class="modal-header bg-success">
+                                <h4 class="modal-title text-white">Deskripsi</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card-body text-center">
+
+                                    <div class="form-group row">
+                                        <label for="deskripsi-ubah" class="col-sm-2 col-form-label">Deskripsi</label>
+                                        <div class="col-sm-10">
+                                            <textarea class="form-control" id="deskripsi-ubah" rows="3" name="keterangan">{{ $kompeten->keterangan }}</textarea>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn text-white float-right"
+                                    style="background-color: #00a65b">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
                 <div class="row">
-                    <div class="col-5">
-                        <div class="d-flex justify-content-center align-items-center p-2">
-                            <img src="/img/Kompetensi Keahlian.png" style="width: 20rem" class=" border rounded float-start"
-                                alt="...">
+                    <div class="col-lg-5 col-12">
+                        <div class="d-flex justify-content-center align-items-center flex-column p-2">
+                            @if ($kompeten->logo == null)
+                                <img src="/img/Kompetensi Keahlian.png" style="width: 18rem"
+                                    class=" border float-start" alt="...">
+                            @else
+                                <img src="{{ asset('storage/' . $kompeten->logo) }}" style="width: 18rem"
+                                    class=" border float-start" alt="...">
+                            @endif
+                            <p class="h4 mt-4">{{ $komli->kompetensi }}</p>
                         </div>
                     </div>
-                    <div class="col-7 d-flex justify-content-center align-items-center">
+                    <div class="col-lg-7 col-12 d-flex justify-content-center align-items-center">
                         @if ($kompeten->keterangan)
                             <p style="font-size: 1.2rem;">{{ $kompeten->keterangan }}</p>
                         @else
@@ -193,7 +289,8 @@
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn text-white" style="background-color: #00a65b">Save changes</button>
+                        <button type="button" class="btn text-white" style="background-color: #00a65b">Save
+                            changes</button>
                     </div>
                 </form>
             </div>
@@ -202,7 +299,4 @@
         <!-- /.modal-dialog -->
     </div>
     {{-- End Modal Kekurangan --}}
-
-
-    {{-- End Main-Content --}}
 @endsection

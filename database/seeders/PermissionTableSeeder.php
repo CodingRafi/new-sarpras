@@ -31,9 +31,41 @@ class PermissionTableSeeder extends Seeder
             'edit_profil',
 
             'view_lahan',
-            'add_lahan',
-            'edit_lahan',
-            'delete_lahan',
+            'show_dinas_lahan',
+            
+            'view_usulan_lahan',
+            'add_usulan_lahan',
+            'edit_usulan_lahan',
+            'delete_usulan_lahan',
+            'show_dinas_usulan_lahan',
+            'update_dinas_usulan_lahan',
+
+            'view_koleksi',
+            'add_koleksi',
+            'edit_koleksi',
+            'delete_koleksi',
+            
+            'view_bangunan',
+            'add_bangunan',
+            'edit_bangunan',
+            'delete_bangunan',
+
+            'view_usulan_bangunan',
+            'add_usulan_bangunan',
+            'edit_usulan_bangunan',
+            'delete_usulan_bangunan',
+            'show_dinas_usulan_bangunan',
+            'update_dinas_usulan_bangunan',
+
+            'view_kcd',
+            'add_kcd',
+            'edit_kcd',
+            'delete_kcd',
+
+            'view_jenis_pimpinan',
+            'add_jenis_pimpinan',
+            'edit_jenis_pimpinan',
+            'delete_jenis_pimpinan',
 
         ];
 

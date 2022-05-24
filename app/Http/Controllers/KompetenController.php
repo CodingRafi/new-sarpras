@@ -264,4 +264,43 @@ class KompetenController extends Controller
             abort(403);
         }
     }
+
+    public function uploadLogo(Request $request, $id){
+        $data = Kompeten::find($id);
+        if($data->profil_id == Auth::user()->profil->id){
+            $validatedData = $request->validate([
+                'logo' => 'required'
+            ]);
+            
+            if($data->logo){
+                Storage::delete($data->logo);
+            }
+            $validatedData['logo'] = $request->file('logo')->store('logo');
+            
+            $data->update($validatedData);
+
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Logo ' . $data->komli->kompetensi);
+
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
+    }
+
+    public function tambahKeterangan(Request $request, $id){
+        $data = Kompeten::find($id);
+        if($data->profil_id == Auth::user()->profil->id){
+            $validatedData = $request->validate([
+                'keterangan' => 'required'
+            ]);
+            
+            $data->update($validatedData);
+
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Keterangan ' . $data->komli->kompetensi);
+
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
+    }
 }

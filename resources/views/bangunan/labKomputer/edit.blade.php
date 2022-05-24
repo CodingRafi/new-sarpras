@@ -21,8 +21,8 @@
     <div class="form-edit pt-3">
         <div class="card pt-3" style="background-color: white; border-radius: 10px; ">
             <div class="row input pl-5">
-                <label class="col-2 mt-3">Jenis Ruang</label>
-                <input type="text" class="col-9 form-control mt-2" placeholder="Masukan Jenis Ruang">
+                <label class="col-12 mt-3">Jenis Ruang</label>
+                <input type="text" class="col-lg-9 col-12 form-control mt-2" placeholder="Masukan Jenis Ruang">
             </div>
     
             <div class="row input pl-5 mt-2">

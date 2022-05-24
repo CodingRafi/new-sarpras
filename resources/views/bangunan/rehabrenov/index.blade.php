@@ -92,151 +92,354 @@
     {{-- --------------------------------------------- end inf box --------------------------------------------- --}}
 
     <div class="card">
-        <div class="card-header" style="background-color: #25b5e9">
-            <h3 class="card-title text-white pt-2">Usulan Rehab/ Renov</h3>
+        <div class="card-header bg-warning">
+            <h3 class="card-title text-white">Ruang Pimpinan Tersedia</h3>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
-                    data-target="#modal-usulan"><i class="bi bi-plus"></i> Tambah Usulan
+                    data-target="#tambah-jenis-pimpinan"><i class="bi bi-plus"></i> Tambah Jenis Pimpinan
+                </button>
+                <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
+                    data-target="#tambah-tersedia"><i class="bi bi-plus"></i> Tambah Ketersediaan Ruang Pimpinan
                 </button>
             </div>
         </div>
-        <!-- /.card-header DATA SEKOLAH-->
-        <div class="card-body p-0">
-            <div class="tab-content p-0">
-                <div class="tab-pane active" id="data-usulan-sekolah">
-                    <div class="col">
-                        <div class="col-lg-12">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-hovermt-3">
-                                    {{-- judul table --}}
-                                    <thead>
-                                        <tr>
-                                            <th rowspan="2" class="text-center" style="line-height: 70px">No</th>
-                                            <th rowspan="2" class="text-center" style="line-height: 70px">Jenis Usulan
-                                            </th>
-                                            <th rowspan="2" class="text-center" style="line-height: 70px">Jumlah Usulan
-                                            </th>
-                                            <th colspan="2" class="text-center">Ketersediaan Lahan</th>
-                                            <th rowspan="2" class="text-center" style="line-height: 70px">Proposal</th>
-                                            <th rowspan="2" class="text-center" style="line-height: 70px">Keterangan</th>
-                                            <th rowspan="2" class="text-center" style="line-height: 70px">Aksi</th>
-                                        </tr>
-                                        <tr>
-                                            <th scope="col" class="text-center">Luas Lahan</th>
-                                            <th scope="col" class="text-center">Gambar Lahan</th>
-                                        </tr>
-                                    </thead>
-                                    {{-- end judul table --}}
-                                    {{-- isi table --}}
-                                    <tbody>
-                                        <tr>
-                                            <th class="text-center">1</th>
-                                            <td class="text-center">Ruang Guru</td>
-                                            <td class="text-center">3</td>
-                                            <td class="text-center">20 M</td>
-                                            <td class="text-center" style="vertical-align: middle"><a
-                                                    href="/assets/img/backgrounds/school.jpg" class="fancybox"
-                                                    data-fancybox="gallery1"><img
-                                                        src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg"
-                                                        class="rounded"
-                                                        style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a>
-                                            </td>
-                                            <td class="text-center"><img src="/img/pdf.png" alt="image"
-                                                    style="width: 30px">
-                                            </td>
-                                            <td></td>
-                                            <td>
-                                                <div class="card-body">
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <button type="button" class="btn"
-                                                                data-toggle="dropdown">
-                                                                <i class="bi bi-three-dots-vertical"></i>
-                                                            </button>
-                                                            <div class="dropdown-menu" style="margin-left: -73px">
-                                                                <a class="dropdown-item">Edit</a>
-                                                                <a class="dropdown-item">Batalkan</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+        <div class="card-body table-responsive">
+            @if (count($datas) > 0)
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr class="text-center">
+                            <th style="vertical-align: middle;">No</th>
+                            <th style="vertical-align: middle;">Jenis Ruang</th>
+                            <th style="vertical-align: middle;">Nama</th>
+                            <th style="vertical-align: middle;">Luas</th>
+                            <th style="vertical-align: middle;">Panjang</th>
+                            <th style="vertical-align: middle;">Lebar</th>
+                            <th style="vertical-align: middle;">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($datas as $data)
+                            <tr>
+                                <input type="hidden" class="id_pimpinan" value="{{ $data['id'] }}">
+                                <td class="text-center" style="vertical-align: middle">{{ $loop->iteration }}</td>
+                                <td class="text-center jenis" style="vertical-align: middle"
+                                    data-id="{{ $data['id_jenis'] }}">{{ $data['jenis'] }}</td>
+                                <td class="text-center nama" style="vertical-align: middle">{{ $data['nama'] }}</td>
+                                <td class="text-center luas" style="vertical-align: middle">{{ $data['luas'] }}</td>
+                                <td class="text-center panjang" style="vertical-align: middle">{{ $data['panjang'] }}
+                                </td>
+                                <td class="text-center lebar" style="vertical-align: middle">{{ $data['lebar'] }}</td>
+                                <td>
+                                    <div class="card-body">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button type="button" class="btn" data-toggle="dropdown">
+                                                    <i class="bi bi-three-dots-vertical"></i>
+                                                </button>
+                                                <div class="dropdown-menu" style="margin-left: -73px">
+                                                    <button type="button" class="btn btn-tool tombol-edit-ketersediaan"
+                                                        data-toggle="modal" data-target="#edit-tersedia"><i
+                                                            class="bi bi-plus"></i>Edit
+                                                    </button>
+                                                    <form action="/bangunan/pimpinan/{{ $data['id'] }}" method="post">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="dropdown-item"
+                                                            onclick="return confirm('Apakah anda yakin akan manghapus ketersediaan ruang pimpinan ini?')">Hapus</button>
+                                                    </form>
                                                 </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th class="text-center">2</th>
-                                            <td class="text-center">Ruang Guru</td>
-                                            <td class="text-center">3</td>
-                                            <td class="text-center">20 M</td>
-                                            <td class="text-center" style="vertical-align: middle"><a
-                                                    href="/assets/img/backgrounds/school.jpg" class="fancybox"
-                                                    data-fancybox="gallery1"><img
-                                                        src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg"
-                                                        class="rounded"
-                                                        style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a>
-                                            </td>
-                                            <td class="text-center"><img src="/img/pdf.png" alt="image"
-                                                    style="width: 30px">
-                                            </td>
-                                            <td></td>
-                                            <td>
-                                                <div class="card-body">
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <button type="button" class="btn"
-                                                                data-toggle="dropdown">
-                                                                <i class="bi bi-three-dots-vertical"></i>
-                                                            </button>
-                                                            <div class="dropdown-menu" style="margin-left: -73px">
-                                                                <a class="dropdown-item">Edit</a>
-                                                                <a class="dropdown-item">Batalkan</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th class="text-center">3</th>
-                                            <td class="text-center">Ruang Guru</td>
-                                            <td class="text-center">3</td>
-                                            <td class="text-center">20 M</td>
-                                            <td class="text-center" style="vertical-align: middle"><a
-                                                    href="/assets/img/backgrounds/school.jpg" class="fancybox"
-                                                    data-fancybox="gallery1"><img
-                                                        src="/img/kirill-ermakov-sa7IunnCsC0-unsplash.jpg"
-                                                        class="rounded"
-                                                        style="object-fit: cover; width: 150px; aspect-ratio: 1/1;"></a>
-                                            </td>
-                                            <td class="text-center"><img src="/img/pdf.png" alt="image"
-                                                    style="width: 30px">
-                                            </td>
-                                            <td></td>
-                                            <td>
-                                                <div class="card-body">
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <button type="button" class="btn"
-                                                                data-toggle="dropdown">
-                                                                <i class="bi bi-three-dots-vertical"></i>
-                                                            </button>
-                                                            <div class="dropdown-menu" style="margin-left: -73px">
-                                                                <a class="dropdown-item">Edit</a>
-                                                                <a class="dropdown-item">Batalkan</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    {{-- end isi table --}}
-                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            @else
+                <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                    <div class="alert" role="alert">
+                        Data Tidak Ditemukan
+                    </div>
+                </div>
+            @endif
+        </div>
+    </div>
+
+    {{-- ---------------------------------------------------------------------------------------- MODAL USULAN ---------------------------------------------------------------------------------------- --}}
+    <div class="modal fade" id="tambah-jenis-pimpinan">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Tambah Usulan</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" action="/jenis-pimpinan" method="post">
+                        @csrf
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label for="jumlah-lahan" class="col-sm-2 col-form-label">Nama Ruang</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="jumlah-lahan" name="nama" required>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-success float-right">Simpan</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="modal fade" id="tambah-tersedia">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Tambah Ketersediaan Ruang Pimpinan</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" action="/bangunan/pimpinan" method="POST">
+                        @csrf
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label for="jumlah-lahan" class="col-sm-2 col-form-label">Jenis Ruang</label>
+                                <div class="col-sm-10">
+                                    <select name="jenis_pimpinan_id" id="" required class="custom-select">
+                                        @foreach ($jenis_pimpinans as $data)
+                                            <option value="{{ $data->id }}">{{ $data->nama }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="luas-lahan" class="col-sm-2 col-form-label">Nama Bangunan</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="luas-lahan" name="nama" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="luas-lahan" class="col-sm-2 col-form-label">Panjang Lahan</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" id="luas-lahan" name="panjang" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="luas-lahan" class="col-sm-2 col-form-label">Lebar Lahan</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" id="luas-lahan" name="lebar" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-success float-right">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="edit-tersedia">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Ketersediaan Ruang Pimpinan</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" action="/bangunan/pimpinan" method="POST">
+                        @csrf
+                        @method('patch')
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <input type="hidden" name="id_pimpinan" class="id_pimpinan_input">
+                                <label for="jumlah-lahan" class="col-sm-2 col-form-label">Jenis Ruang</label>
+                                <div class="col-sm-10">
+                                    <select name="jenis_pimpinan_id" id="" required class="custom-select">
+                                        @foreach ($jenis_pimpinans as $data)
+                                            <option value="{{ $data->id }}" class="option-jenis">
+                                                {{ $data->nama }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="luas-lahan" class="col-sm-2 col-form-label">Nama Bangunan</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control input-nama" id="luas-lahan" name="nama"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="luas-lahan" class="col-sm-2 col-form-label">Panjang Lahan</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control input-panjang" id="luas-lahan" name="panjang"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="luas-lahan" class="col-sm-2 col-form-label">Lebar Lahan</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control input-lebar" id="luas-lahan" name="lebar"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-success float-right">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- --------------------------------------- USULAN LAB KOMPUTER --------------------------------------- --}}
+    <div class="card card-info">
+        <div class="card-header" style="background-color: #25b5e9">
+            <h3 class="card-title">Usulan Lab Komputer</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
+                    data-target="#tambah-usulan"><i class="bi bi-plus"></i> Tambah Usulan
+                </button>
+            </div>
+        </div>
+        <div class="card-body table-responsive">
+            @if (count($usulans) > 0)
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr class="text-center">
+                            <th rowspan="2" style="vertical-align: middle;">No</th>
+                            <th rowspan="2" style="vertical-align: middle;">Jenis Ruang</th>
+                            <th rowspan="2" style="vertical-align: middle;">Jumlah Ruang</th>
+                            <th colspan="2">Ketersedian Lahan</th>
+                            <th rowspan="2" style="vertical-align: middle;">Proposal</th>
+                            <th rowspan="2" style="vertical-align: middle;">Keterangan</th>
+                            <th rowspan="2" style="vertical-align: middle;">Aksi</th>
+                        </tr>
+                        <tr class="text-center">
+                            <th>Gambar Lahan</th>
+                            <th>Luas Lahan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($usulans as $key => $usulan)
+                            <tr>
+                                <th class="text-center">{{ $loop->iteration }}</th>
+                                <td class="text-center text-capitalize">{{ $usulanJenis[$key]->nama }}
+                                </td>
+                                <td class="text-center">{{ $usulan->jml_ruang }}</td>
+                                <td class="text-center">{{ $usulan->luas_lahan }} M</td>
+                                <td class="text-center" style="vertical-align: middle">
+                                    @foreach ($usulanFotos[$key] as $ke => $foto)
+                                        <a href="{{ asset('storage/' . $foto->nama) }}" class="fancybox"
+                                            data-fancybox="gallery{{ $key }}">
+                                            <img src="{{ asset('storage/' . $foto->nama) }}" class="rounded"
+                                                style="object-fit: cover; width: 150px; aspect-ratio: 1/1;{{ $ke == 0 ? '' : 'display:none;' }}">
+                                        </a>
+                                    @endforeach
+                                </td>
+                                <td class="text-center">
+                                    <a href="{{ asset('storage/' . $usulan->proposal) }}" target="_blank">
+                                        <img src="/img/pdf.png" alt="image" style="width: 30px">
+                                    </a>
+                                </td>
+                                <td class="text-center">{{ $usulan->keterangan }}</td>
+                                <td class="text-center">
+                                    <a href="/bangunan/usulan-ruang-pimpinan/{{ $usulan->id }}/edit"
+                                        class="btn btn-warning text-white">Edit</a>
+
+                                    <form action="/usulan-bangunan/{{ $usulan->id }}" method="post">
+                                        @csrf
+                                        @method('delete')
+
+                                        <button type="submit" class="btn text-white" style="background-color: #00a65b"
+                                            onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
+
+                                    </form>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            @else
+                <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                    <div class="alert" role="alert">
+                        Data Tidak Ditemukan
+                    </div>
+                </div>
+            @endif
+        </div>
+    </div>
+
+    {{-- ------------------------------------------- MODAL USULAN ------------------------------------------ --}}
+    <div class="modal fade" id="tambah-usulan">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form action="/bangunan/usulan-ruang-pimpinan" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-header">
+                        <h4 class="modal-title">Usulan</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group row">
+                            <label for="jumlah-lahan" class="col-sm-4 col-form-label">Jenis Ruang</label>
+                            <div class="col-sm-7">
+                                <select name="jenis_pimpinan_id" id="" required class="custom-select">
+                                    @foreach ($jenis_pimpinans as $data)
+                                        <option value="{{ $data->id }}">{{ $data->nama }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        {{-- input jumlah ruangan --}}
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Jumlah Ruang</label>
+                            <input type="number" class="form-control col-sm-7" placeholder="Masukan Jumlah Ruangan"
+                                id="jumlah-ruangan" name="jml_ruang" required>
+                        </div>
+                        {{-- end input jumlah ruangan --}}
+
+                        {{-- input luas lahan --}}
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Luas Lahan (M)</label>
+                            <input type="number" class="form-control col-sm-7" placeholder="Masukan Luas Lahan"
+                                id="luas-lahan" name="luas_lahan" required>
+                        </div>
+                        {{-- end luas lahan --}}
+
+                        {{-- upload gambar lokasi --}}
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan</label>
+                            <input type="file" id="gambar-lahan" required multiple accept="image/*" name="gambar[]">
+                        </div>
+                        {{-- end upload gambar lokasi --}}
+                        {{-- upload proposal --}}
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label pt-1" for="customFile">Proposal</label>
+                            <input type="file" id="proposal" required accept=".pdf" name="proposal">
+                        </div>
+                        {{-- end upload proposal --}}
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
     </div>
 
     <div class="card">
@@ -330,7 +533,8 @@
                                                                         </button>
                                                                         <div class="dropdown-menu"
                                                                             style="margin-left: -73px">
-                                                                            <a href="/bangunan/ruang-rehabrenov/{{ $rehab->id }}/edit" class="dropdown-item">Edit</a>
+                                                                            <a href="/bangunan/ruang-rehabrenov/{{ $rehab->id }}/edit"
+                                                                                class="dropdown-item">Edit</a>
                                                                             <form
                                                                                 action="/bangunan/ruang-rehabrenov/{{ $rehab->id }}"
                                                                                 method="post">
@@ -367,68 +571,6 @@
         </div>
     </div>
     {{-- End Main-Content --}}
-
-    {{-- modal tambah usulan --}}
-    <div class="modal fade" id="modal-usulan">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <h4 class="modal-title">Usulan</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    {{-- input jumlah ruangan --}}
-                    <div class="form-group row">
-                        <label class="col-sm-4 col-form-label">Jenis Usulan</label>
-                        <input type="text" class="form-control col-sm-7" placeholder="Masukan Jenis Usulan"
-                            id="jenis-usulan" name="jenis-usulan" required value="">
-                    </div>
-                    {{-- end input jumlah ruangan --}}
-
-                    {{-- input luas lahan --}}
-                    <div class="form-group row">
-                        <label class="col-sm-4 col-form-label">Jumlah Ruang</label>
-                        <input type="text" class="form-control col-sm-7" placeholder="Masukan Jumlah Usulan"
-                            id="jumlah-usulan" name="long" required value="">
-                    </div>
-                    {{-- end luas lahan --}}
-
-                    {{-- input luas lahan --}}
-                    <div class="form-group row">
-                        <label class="col-sm-4 col-form-label">Luas Lahan</label>
-                        <input type="text" class="form-control col-sm-7" placeholder="Masukan Luas Lahan" id="luas-lahan"
-                            name="long" required value="">
-                    </div>
-                    {{-- end luas lahan --}}
-
-                    {{-- upload gambar lokasi --}}
-                    <div class="form-group row">
-                        <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan</label>
-                        <input type="file" id="gambar-lahan">
-                    </div>
-                    {{-- end upload gambar lokasi --}}
-
-                    {{-- upload proposal --}}
-                    <div class="form-group row">
-                        <label class="col-sm-4 col-form-label pt-1" for="customFile">Proposal</label>
-                        <input type="file" id="proposal">
-                    </div>
-                    {{-- end upload proposal --}}
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                    <button type="button" class="btn text-white" style="background-color: #00a65b">Simpan</button>
-                </div>
-
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
-    {{-- end modal tambah usulan --}}
 
     {{-- modal tambah usulan --}}
     <div class="modal fade" id="modal-rencana-usulan">
