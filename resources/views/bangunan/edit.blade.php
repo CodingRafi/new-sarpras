@@ -45,9 +45,10 @@
 @endsection
 
 @section('container')
-    {{-- @dd($data) --}}
+    {{-- @dd($data->jenis) --}}
     <div class="title pt-3">
-        <h3 class="text-dark display-4 pl-3" style="font-size: 25px">Edit Ruang Kelas</h3>
+        <h3 class="text-dark display-4 pl-3" style="font-size: 25px;text-transform: capitalize;">Edit
+            {{ str_replace('_', ' ', $data->jenis) }}</h3>
     </div>
 
     <div class="form-edit pt-3">
@@ -58,18 +59,23 @@
             <div class="card pt-3" style="background-color: white; border-radius: 10px; ">
 
 
-                {{-- --------------------------------------------- JUMLAH RUANG KELAS --------------------------------------------- --}}
-                <div class="row input pl-5 mt-2">
-                    <label class="col-2 mt-3">Jumlah Ruang Kelas</label>
-                    <input type="number" class="col-3 form-control mt-2" style="width: 750px" placeholder="Masukan Jumlah Ruang"
-                        value="{{ $data->jml_ruang }}" name="jml_ruang">
-                </div>
+                @if ($data->jenis == 'perpustakaan' || $data->jenis == 'toilet')
+                    <input type="hidden" name="jml_ruang" value="{{ $data->jml_ruang }}">
+                @else
+                    {{-- --------------------------------------------- JUMLAH RUANG KELAS --------------------------------------------- --}}
+                    <div class="row input pl-5 mt-2">
+                        <label class="col-2 mt-3" style="text-transform: capitalize;">Jumlah Ruang
+                            {{ str_replace('_', ' ', $data->jenis) }}</label>
+                        <input type="number" class="col-3 form-control mt-2" style="width: 750px"
+                            placeholder="Masukan Jumlah Ruang" value="{{ $data->jml_ruang }}" name="jml_ruang">
+                    </div>
+                @endif
 
                 {{-- --------------------------------------------- LUAS LAHAN --------------------------------------------- --}}
                 <div class="row input pl-5 mt-2">
                     <label class="col-2 mt-3">Luas Lahan</label>
-                    <input type="number" class="col-9 form-control mt-2" style="width: 750px" placeholder="Masukan Luas Lahan"
-                        value="{{ $data->jml_ruang }}" name="luas_lahan">
+                    <input type="number" class="col-9 form-control mt-2" style="width: 750px"
+                        placeholder="Masukan Luas Lahan" value="{{ $data->luas_lahan }}" name="luas_lahan">
                 </div>
 
                 <input type="hidden" name="deleteImage" class="delete-image">
@@ -324,7 +330,7 @@
 
             // Show the PDF preview loader
             // document.querySelector("#pdf-loader").style.display = 'inline-block';
-        
+
 
             // object url of PDF 
             _OBJECT_URL = URL.createObjectURL(file)
@@ -405,10 +411,8 @@
                     containerAlert.innerHTML += `<div class="toast align-items-center show alert-ke${i}" role="alert" aria-live="assertive" aria-atomic="true">
                         <div class="d-flex">
                             <div class="toast-body">
-                                Gambar akan dihapus <a href="#" class="urungkan-ke${i}" onclick="batalkan(${i})">Urungkan</a>
+                                Gambar Berhasil Dihapus
                             </div>
-                            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"
-                                aria-label="Close"></button>
                         </div>
                     </div>`;
 
@@ -418,35 +422,35 @@
                     input.setAttribute('onchange', `inputBatal();`)
                     inputUrungkan.appendChild(input);
 
+                    let urungkan = document.querySelector(`.urungkan-ke${i}`);
+
+                    let id = '';
+                    id = aImage[i].getAttribute('data-id');
+
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+
+                    $.ajax({
+                        url: '/foto/delete-sigle-foto/' + id,
+                        dataType: 'json',
+                        type: 'DELETE',
+                        data: {
+                            _method: 'delete',
+                            _token: $('meta[name="csrf-token"]').attr('content')
+                        },
+                        contentType: false,
+                        processData: false,
+                        success: function(response) {
+                            console.log(response);
+                        }
+                    });
+
                     const myTimeout = setTimeout(function() {
                         document.querySelector('.alert-ke' + i).style.display = 'none';
-                        let urungkan = document.querySelector(`.urungkan-ke${i}`);
-
-                        let id = '';
-                        id = aImage[i].getAttribute('data-id');
-
-                        $.ajaxSetup({
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            }
-                        });
-
-                        $.ajax({
-                            url: '/foto/delete-sigle-foto/' + id,
-                            dataType: 'json',
-                            type: 'DELETE',
-                            data: {
-                                _method: 'delete',
-                                _token: $('meta[name="csrf-token"]').attr('content')
-                            },
-                            contentType: false,
-                            processData: false,
-                            success: function(response) {
-                                console.log(response);
-                            }
-                        });
-
-                    }, 1000);
+                    }, 2000);
                 }
 
             })

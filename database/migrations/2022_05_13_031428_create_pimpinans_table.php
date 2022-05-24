@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('pimpinans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('profil_id');
+            $table->foreignId('jenis_pimpinan_id');
+            $table->string('nama');
+            $table->string('lebar');
+            $table->string('luas');
+            $table->string('panjang');
             $table->timestamps();
         });
     }

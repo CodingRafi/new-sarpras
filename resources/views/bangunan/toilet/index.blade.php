@@ -179,12 +179,14 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" action="/bangunan-all/update-kekurangan/{{ $data->id }}" method="POST">
+                                @csrf
+                                @method('patch')
                                 <div class="card-body">
                                     <div class="form-group row">
                                         <label for="kekurangan" class="col-sm-2 col-form-label">Kekurangan</label>
                                         <div class="col-sm-10">
-                                            <input type="number" class="form-control" id="kekurangan">
+                                            <input type="number" class="form-control" id="kekurangan" name="kekurangan" value="{{ $data->kekurangan }}">
                                         </div>
                                     </div>
                                 </div>

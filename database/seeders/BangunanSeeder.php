@@ -17,29 +17,28 @@ class BangunanSeeder extends Seeder
     public function run()
     {
         $datas = Profil::all();
-        $jenis = ['ruang_kelas', 'lab_komputer', 'perpustakaan', 'toilet', 'ruang_pimpinan'];
+        $jenis = ['ruang_kelas', 'lab_komputer', 'toilet', 'ruang_pimpinan'];
         foreach ($jenis as $key => $jen) {
-            if($jen == 'perpustakaan'){
-                foreach($datas as $data){
-                    Bangunan::create([
-                        'jenis' => $jen,
-                        'profil_id' => $data->id,
-                        'kondisi_ideal' => 30,
-                        'ketersediaan' => 0,
-                        'kekurangan' => 0
-                    ]);
-                }
-            }else{
-                foreach($datas as $data){
-                    Bangunan::create([
-                        'jenis' => $jen,
-                        'profil_id' => $data->id,
-                        'kondisi_ideal' => 0,
-                        'ketersediaan' => 0,
-                        'kekurangan' => 0
-                    ]);
-                }
+            foreach($datas as $data){
+                Bangunan::create([
+                    'jenis' => $jen,
+                    'profil_id' => $data->id,
+                    'kondisi_ideal' => 0,
+                    'ketersediaan' => 0,
+                    'kekurangan' => 0
+                ]);
             }
         }
+
+        foreach($datas as $data){
+            Bangunan::create([
+                'jenis' => 'perpustakaan',
+                'profil_id' => $data->id,
+                'kondisi_ideal' => 30,
+                'ketersediaan' => 0,
+                'kekurangan' => 0
+            ]);
+        }
+
     }
 }

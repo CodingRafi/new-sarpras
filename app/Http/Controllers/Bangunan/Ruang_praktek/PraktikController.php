@@ -201,4 +201,15 @@ class PraktikController extends Controller
 
         return redirect()->back();
     }
+
+    public function showDinas(){
+        $usulanBangunan = UsulanBangunan::search(request(['search']))
+                        ->leftJoin('profils', 'profils.id', '=', 'usulan_bangunans.profil_id')
+                        ->leftJoin('profil_kcds', 'profils.id', '=', 'profil_kcds.profil_id')
+                        ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi', 'usulan_bangunans.proposal')->where('usulan_bangunans.jenis', 'ruang_praktek')->paginate(40)->withQueryString();
+
+        return view('admin.ruangpraktik', [
+            'usulanBangunans' => $usulanBangunan,
+        ]);
+    }
 }

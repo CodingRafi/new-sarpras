@@ -41,18 +41,47 @@ class Profil extends Model
         return $this->hasMany(UsulanBangunan::class);
     }
 
+    public function pimpinan(){
+        return $this->hasMany(Pimpinan::class);
+    }
+
     public function praktik(){
         return $this->hasMany(Praktik::class);
+    }
+
+    public function profilKcd(){
+        return $this->hasMany(ProfilKcd::class);
+    }
+
+    public function usulanLahan(){
+        return $this->hasMany(UsulanLahan::class);
+    }
+
+    public function rehab(){
+        return $this->hasMany(RehabRenov::class);
     }
 
     public function scopeSearch($query, array $search)
     {
         // dd($query->where('npsn', 'like', '%' . $search['search'] . '%'));
         $query->when($search['search'] ?? false, function($query, $search){
-            return $query->where('npsn', 'like', '%' . $search . '%')
-                        ->orWhere('sekolah_id', 'like', '%' . $search . '%')
-                        ->orWhere('nama', 'like', '%' . $search . '%');
+            return $query->where('profils.npsn', 'like', '%' . $search . '%')
+                        ->orWhere('profils.sekolah_id', 'like', '%' . $search . '%')
+                        ->orWhere('profils.nama', 'like', '%' . $search . '%');
         });
 
+    }
+
+    public function scopeFilter($query, array $filters){
+        // dd($filters['filter'] == 'kota');
+        if(isset($filters['filter'])){
+            if($filters['filter'] == 'kota'){
+                return $query->orderBy('profils.kabupaten', 'asc');
+            }
+    
+            if($filters['filter'] == 'kcd'){
+                return $query->orderBy('kcds.instansi', 'asc');
+            }
+        }
     }
 }

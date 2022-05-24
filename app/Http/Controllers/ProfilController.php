@@ -160,7 +160,7 @@ class ProfilController extends Controller
 
             $ketersediaan = Bangunan::where('profil_id', Auth::user()->profil_id)->where('jenis', 'ruang_kelas')->get()[0]->ketersediaan;
 
-            Bangunan::kondisi_ideal($request->jml_rombel, $ketersediaan);
+            Bangunan::kondisi_ideal($request->jml_rombel, $ketersediaan, 'ruang_kelas');
     
             if(count($profil->kompeten) == 0){
                 $validatedData['jml_siswa_l'] = 0;

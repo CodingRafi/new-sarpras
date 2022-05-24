@@ -18,8 +18,8 @@ class Bangunan extends Model
         return $this->belongsTo(Profil::class);
     }
 
-    public static function kondisi_ideal($jml_rombel, $ketersediaan){
-        if($jml_rombel == null){
+    public static function kondisi_ideal($jml_rombel, $ketersediaan, $jenis){
+        if($jml_rombel === null){
             $jml_rombel = 0;
         }
 
@@ -29,7 +29,7 @@ class Bangunan extends Model
             $kekurangan = 0;
         }
 
-        Bangunan::where('profil_id', Auth::user()->profil_id)->update([
+        Bangunan::where('profil_id', Auth::user()->profil_id)->where('jenis', $jenis)->update([
             'kondisi_ideal' => $jml_rombel,
             'kekurangan' => $kekurangan
         ]);
