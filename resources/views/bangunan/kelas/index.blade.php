@@ -62,7 +62,7 @@
                     {{-- card body --}}
                     <div class="card-body" style="height: 112px;">
                         <h1 class="text-center font-weight-bold pt-2">{{ $dataKelas->kondisi_ideal }}</h1>
-                        <div id="emailHelp" class="form-text text-center">{{ ($dataKelas->kondisi_ideal == $dataKelas->ketersediaan) ? 'Ideal' : 'Tidak Ideal' }}</div>
+                        {{-- <div id="emailHelp" class="form-text text-center">{{ ($dataKelas->kondisi_ideal == $dataKelas->ketersediaan) ? 'Ideal' : 'Tidak Ideal' }}</div> --}}
                     </div>
                     {{-- end card body --}}
                 </div>
