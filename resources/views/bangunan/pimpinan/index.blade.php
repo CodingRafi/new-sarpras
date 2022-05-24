@@ -103,9 +103,6 @@
                 <h3 class="card-title text-white">Ruang Pimpinan Tersedia</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
-                        data-target="#tambah-jenis-pimpinan"><i class="bi bi-plus"></i> Tambah Jenis Pimpinan
-                    </button>
-                    <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
                         data-target="#tambah-tersedia"><i class="bi bi-plus"></i> Tambah Ketersediaan Ruang Pimpinan
                     </button>
                 </div>
@@ -174,34 +171,6 @@
         </div>
 
         {{-- ---------------------------------------------------------------------------------------- MODAL USULAN ---------------------------------------------------------------------------------------- --}}
-        <div class="modal fade" id="tambah-jenis-pimpinan">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Tambah Usulan</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal" action="/jenis-pimpinan" method="post">
-                            @csrf
-                            <div class="card-body">
-                                <div class="form-group row">
-                                    <label for="jumlah-lahan" class="col-sm-2 col-form-label">Nama Ruang</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="jumlah-lahan" name="nama" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-success float-right">Simpan</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="modal fade" id="tambah-tersedia">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">

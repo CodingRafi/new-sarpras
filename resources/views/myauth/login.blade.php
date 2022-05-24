@@ -151,9 +151,9 @@
                             <div class="mb-3">
                                 <select class="form-select select-pilihan" aria-label="Default select example">
                                     <option value="belum" selected>Masuk Sebagai</option>
-                                    <option value="dinas">Dinas</option>
+                                    <option value="dinas">Dinas Pendidikan</option>
                                     <option value="sekolah">Sekolah</option>
-                                    <option value="kcd">Kantor Cabang Dinas</option>
+                                    <option value="kcd">Cadisdik Wil</option>
                                     <option value="pengawas">Pengawas</option>
                                     <option value="verifikator">Verifikator</option>
                                 </select>

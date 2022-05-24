@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('peralatans', function (Blueprint $table) {
+        Schema::create('kompeten_depos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('komli_id');
-            $table->string('nama');
-            $table->enum('kategori', ['utama', 'pendukung']);
-            $table->string('rasio');
-            $table->text('deskripsi');
+            $table->foreignId('profil_depo_id');
+            $table->string('bidang')->nullable();
+            $table->string('program')->nullable();
+            $table->string('kompetensi')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('peralatans');
+        Schema::dropIfExists('kompeten_depos');
     }
 };
