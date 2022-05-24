@@ -190,7 +190,7 @@ class PimpinanController extends Controller
         ->leftJoin('profil_kcds', 'profils.id', '=', 'profil_kcds.profil_id')
         ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi', 'usulan_bangunans.proposal', 'usulan_bangunans.id')->where('usulan_bangunans.jenis', 'ruang_pimpinan')->paginate(40)->withQueryString();
 
-        return view('admin.toilet', [
+        return view('admin.ruangpimpinan', [
             'usulanBangunans' => $usulanBangunan,
         ]);
     }

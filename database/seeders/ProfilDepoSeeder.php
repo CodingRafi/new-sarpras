@@ -16,7 +16,7 @@ class ProfilDepoSeeder extends Seeder
     public function run()
     {
         $profils = ProfilDepo::DataProfilSekolah();
-        // dd($profils);
+
         foreach($profils as $profil){
             ProfilDepo::create([
                 'depo_npsn' => $profil["npsn"],
@@ -34,9 +34,6 @@ class ProfilDepoSeeder extends Seeder
                 'depo_akreditas' => $profil['akreditasi'],
                 'depo_jml_siswa_l' => $profil['jml_siswa_l'],
                 'depo_jml_siswa_p' => $profil['jml_siswa_p'],
-                'depo_bidang' => $profil['bidang'],
-                'depo_program' => $profil['program'],
-                'depo_jurusan' => $profil['jurusan'],
             ]);
         }
     }
