@@ -65,9 +65,6 @@
                     </li>
                 @endif
 
-
-                {{-- ---------------------------------------------------------------------------------------- LAHAN SEKOLAH ---------------------------------------------------------------------------------------- --}}
-
                 {{-- ---------------------------------------------------------------------------------------- BANGUNAN SEKOLAH ---------------------------------------------------------------------------------------- --}}
                 <li class="nav-item has-treeview {{ Request::is('bangunan/*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
@@ -94,13 +91,36 @@
                                 <p>Ruang Praktek</p>
                             </a>
                         </li>
-                        {{-- ---------------------------------------------------------------------------------------- LAB KOMPUTER ---------------------------------------------------------------------------------------- --}}
-                        <li class="nav-item">
-                            <a href="/bangunan/lab-komputer"
-                                class="nav-link {{ Request::is('bangunan/lab-komputer') ? 'active' : '' }}">
+                        {{-- ---------------------------------------------------------------------------------------- LAB ---------------------------------------------------------------------------------------- --}}
+
+                        <li class="nav-item has-treeview {{ Request::is('bangunan/*') ? 'menu-open' : '' }}">
+                            <a href="#" class="nav-link">
                                 <i class="fa-regular fa-circle"></i>
-                                <p>Lab Komputer</p>
+                                <p>
+                                    Laboratorium
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fa-regular fa-circle"></i>
+                                        <p>Laboratorium Biologi</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fa-regular fa-circle"></i>
+                                        <p>Laboratorium Fisika</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/bangunan/lab-komputer" class="nav-link {{ Request::is('bangunan/lab-komputer') ? 'active' : '' }}">
+                                        <i class="fa-regular fa-circle"></i>
+                                        <p>Laboratorium Komputer</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         {{-- ---------------------------------------------------------------------------------------- PERPUSTAKAAN ---------------------------------------------------------------------------------------- --}}
                         <li class="nav-item">
