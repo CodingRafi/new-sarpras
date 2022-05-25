@@ -32,7 +32,6 @@
         </div>
         <div class="card-body">
             {{-- Table --}}
-            <div class="table-responsive">
                 @if (count($usulanBangunans) > 0)
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover mt-2">

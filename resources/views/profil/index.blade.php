@@ -84,7 +84,7 @@
 
                                     {{-- ---------------------------------------------------------------------------------------- Kepala Sekolah---------------------------------------------------------------------------------------- --}}
                                     <tr>
-                                        <th>Kepala Sekolah</th>
+                                        <th>Kepala Sekolah <span style="font-size: 14px;" class="text-danger">*</span></th>
                                         <td class="text-wrap">:
                                             {{ $profil->nama_kepala_sekolah ?? 'Data tidak ditemukan' }}</td>
                                     </tr>
@@ -95,7 +95,7 @@
                                     </tr>
                                     {{-- ---------------------------------------------------------------------------------------- ALAMAT SEKOLAH ---------------------------------------------------------------------------------------- --}}
                                     <tr>
-                                        <th>Alamat</th>
+                                        <th>Alamat <span style="font-size: 14px;" class="text-danger">*</span></th>
                                         <td class="text-wrap">: {{ $profil->provinsi }}, {{ $profil->kabupaten }},
                                             {{ $profil->kecamatan }}, {{ $profil->alamat }}</td>
                                     </tr>
@@ -104,35 +104,60 @@
                                         <td class="text-wrap">: {{ $profil->provinsi }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Kabupaten</th>
+                                        <th>Kabupaten <span style="font-size: 14px;" class="text-danger">*</span></th>
                                         <td class="text-wrap">: {{ $profil->kabupaten }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Kecamatan</th>
+                                        <th>Kecamatan <span style="font-size: 14px;" class="text-danger">*</span></th>
                                         <td class="text-wrap">: {{ $profil->kecamatan }}</td>
                                     </tr>
                                     {{-- ---------------------------------------------------------------------------------------- KOORDINAT SEKOLAH ---------------------------------------------------------------------------------------- --}}
                                     <tr>
-                                        <th>Lintang</th>
+                                        <th>Lintang <span style="font-size: 14px;" class="text-danger">*</span></th>
                                         <td class="text-wrap">: {{ $profil->lat ?? 'Tidak ada Lintang' }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Bujur</th>
+                                        <th>Bujur <span style="font-size: 14px;" class="text-danger">*</span></th>
                                         <td class="text-wrap">: {{ $profil->long ?? 'Tidak ada Bujur' }}</td>
                                     </tr>
                                     {{-- ---------------------------------------------------------------------------------------- EMAIL SEKOLAH ---------------------------------------------------------------------------------------- --}}
                                     <tr>
-                                        <th>Email</th>
+                                        <th>Email <span style="font-size: 14px;" class="text-danger">*</span></th>
                                         <td class="text-wrap">: {{ $profil->email }}</td>
+                                    </tr>
+                                    {{-- ---------------------------------------------------------------------------------------- INSTAGRAM SEKOLAH ---------------------------------------------------------------------------------------- --}}
+                                    <tr>
+                                        <th>Instagram <span style="font-size: 14px;" class="text-danger">*</span></th>
+                                        <td a href="" class="text-wrap">: @smktarunabhakti.depok</td>
+                                    </tr>
+                                    {{-- ---------------------------------------------------------------------------------------- FACEBOOK SEKOLAH ---------------------------------------------------------------------------------------- --}}
+                                    <tr>
+                                        <th>Facebook <span style="font-size: 14px;" class="text-danger">*</span></th>
+                                        <td a href="" class="text-wrap">: Smk Taruna Bhakti Depok</td>
+                                    </tr>
+                                    {{-- ---------------------------------------------------------------------------------------- TWITTER SEKOLAH ---------------------------------------------------------------------------------------- --}}
+                                    <tr>
+                                        <th>Twitter <span style="font-size: 14px;" class="text-danger">*</span></th>
+                                        <td a href="" class="text-wrap">: Belum ada da</td>
+                                    </tr>
+                                    {{-- ---------------------------------------------------------------------------------------- TIKTOK SEKOLAH ---------------------------------------------------------------------------------------- --}}
+                                    <tr>
+                                        <th>Tiktok <span style="font-size: 14px;" class="text-danger">*</span></th>
+                                        <td a href="" class="text-wrap">: Belum ada data</td>
+                                    </tr>
+                                    {{-- ---------------------------------------------------------------------------------------- TIKTOK SEKOLAH ---------------------------------------------------------------------------------------- --}}
+                                    <tr>
+                                        <th>Youtube <span style="font-size: 14px;" class="text-danger">*</span></th>
+                                        <td a href="" class="text-wrap">: Smk Taruna Bhakti Depok</td>
                                     </tr>
                                     {{-- ---------------------------------------------------------------------------------------- WEBSITE SEKOLAH ---------------------------------------------------------------------------------------- --}}
                                     <tr>
-                                        <th>Website</th>
+                                        <th>Website <span style="font-size: 14px;" class="text-danger">*</span></th>
                                         <td class="text-wrap">: {{ $profil->website }}</td>
                                     </tr>
                                     {{-- ---------------------------------------------------------------------------------------- NOMOR TELEPON SEKOLAH ---------------------------------------------------------------------------------------- --}}
                                     <tr>
-                                        <th>Nomor Telepon</th>
+                                        <th>Nomor Telepon <span style="font-size: 14px;" class="text-danger">*</span></th>
                                         <td class="text-wrap">: {{ $profil->nomor_telepon }}</td>
                                     </tr>
                                 </table>
@@ -172,8 +197,18 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="d-flex justify-content-around" style="margin-left: 5px; margin-right: 5px">
+                                        <a href="" class="btn btn-lg" style="background-color: rgba(37, 181, 233, 0.1);"><i class="bi bi-instagram text-danger"></i></a>
+                                        <a href="" class="btn btn-lg" style="background-color: rgba(37, 181, 233, 0.1);"><i class="bi bi-facebook text-info"></i></a>
+                                        <a href="" class="btn btn-lg" style="background-color: rgba(37, 181, 233, 0.1);"><i class="bi bi-twitter text-info"></i></a>             
+                                        <a href="" class="btn btn-lg" style="background-color: rgba(37, 181, 233, 0.1);"><i class="bi bi-tiktok text-dark"></i></a>
+                                        <a href="" class="btn btn-lg" style="background-color: rgba(37, 181, 233, 0.1);"><i class="bi bi-youtube text-danger"></i></a>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="card-footer">
+                            <p class="text-muted">Data berbintang / '<span class="text-danger">*</span>' dapat diinput oleh sekolah</p>
                         </div>
                     </div>
                     <div class="chart tab-pane" id="edit-data-sekolah">
@@ -193,6 +228,12 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Jumlah Rombel</label>
                                     <input type="number" class="form-control col-sm-6" placeholder="Jumlah Rombel"
+                                        id="jml_rombel" name="jml_rombel"
+                                        value="{{ $profil->jml_rombel, old('jml_rombel') }}">
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Guru Dan Tenaga Kependidikan</label>
+                                    <input type="number" class="form-control col-sm-6" placeholder="Guru Dan Tenaga Kependidikan"
                                         id="jml_rombel" name="jml_rombel"
                                         value="{{ $profil->jml_rombel, old('jml_rombel') }}">
                                 </div>
@@ -225,6 +266,26 @@
                                     <label class="col-sm-2 col-form-label">Email</label>
                                     <input type="email" class="form-control col-sm-6" placeholder="Email" id="email"
                                         name="email" value="{{ $profil->email, old('email') }}">
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Instagram</label>
+                                    <input type="text" class="form-control col-sm-6" placeholder="Instagram" id="instagram">
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Facebook</label>
+                                    <input type="text" class="form-control col-sm-6" placeholder="Facebook" id="facebook">
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Twitter</label>
+                                    <input type="text" class="form-control col-sm-6" placeholder="Twitter" id="twitter">
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Tiktok</label>
+                                    <input type="text" class="form-control col-sm-6" placeholder="Tiktok" id="tiktok">
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Youtube</label>
+                                    <input type="text" class="form-control col-sm-6" placeholder="Youtube" id="youtube">
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Website</label>
