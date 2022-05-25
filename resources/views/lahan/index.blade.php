@@ -11,6 +11,30 @@
             margin-top: -25px;
         }
 
+        #upload-dialog {
+            display: none !important;
+        }
+
+        #pdf-loader {
+            display: none
+        }
+
+        #pdf-name {
+            display: none !important;
+        }
+
+        #pdf-preview {
+            display: none;
+            width: 300px !important;
+        }
+
+        #upload-button {
+            display: none !important;
+        }
+
+        #cancel-pdf {
+            display: none !important;
+        }
     </style>
 @endsection
 
@@ -250,7 +274,12 @@
                             {{-- upload file(pdf) --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label pt-1" for="customFile">Dokumen Bukti Lahan (PDF / Foto)</label>
-                                <input type="file" id="chooseFile" name="bukti_lahan" accept="image/*, .pdf" required>
+                                <input type="file" id="chooseFile" name="bukti_lahan" accept="image/*, .pdf" required onchange="previewImage()">
+                            </div>
+                            <img class="img-preview col-sm-3 img-thumbnail mb-3" style="display: none">
+                            <div id="pdf-loader">Loading Preview ..</div>
+                            <div>
+                                <canvas id="pdf-preview" class="border border-rounded shadow-sm" style="width: 300px !important; border-radius: 10px !important;"></canvas>
                             </div>
                             {{-- end upload file(pdf) --}}
 
@@ -468,6 +497,9 @@
 
 
 @section('tambahjs')
+    <script src="/pdf.js"></script>
+    <script src="/pdf.worker.js"></script>
+
     <script>
         const tombolEdit = document.querySelectorAll('.tombol-edit');
         const inputNamaEdit = document.querySelector('.input-nama-edit');
@@ -495,6 +527,169 @@
                 inputKetereangan.value = '';
                 inputKetereangan.value = keterangan[i].innerHTML;
             })
+        });
+
+        function previewImage() {
+            const image = document.querySelector('#chooseFile');
+            const imgPreview = document.querySelector('.img-preview');
+
+            imgPreview.style.display = 'block';
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload = function (oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
+
+            function getExtension(filepicker){
+                return filepicker.split(".").pop().toLowerCase();
+            }
+
+            var filepicker = document.getElementById("chooseFile").value;
+            var tutupPdf = document.getElementById("pdf-preview");
+            var fileextension = getExtension(filepicker);
+            
+            if (fileextension == 'jpg'||fileextension == 'jpeg'||fileextension == 'png') {
+                
+                if(event.target.files.length > 0){
+                    imgPreview.style.display = 'block';
+                    tutupPdf.style.display = 'none';
+                }
+            }else{
+                if(event.target.files.length > 0){
+                    imgPreview.style.display = 'none';
+                    tutupPdf.style.display = 'block';
+                }
+            }
+        }
+    </script>
+
+    <script>
+        var _PDF_DOC,
+            _CANVAS = document.querySelector('#pdf-preview'),
+            _OBJECT_URL;
+
+        function showPDF(pdf_url) {
+            PDFJS.getDocument({
+                url: pdf_url
+            }).then(function (pdf_doc) {
+                _PDF_DOC = pdf_doc;
+
+                // Show the first page
+                showPage(1);
+
+                // destroy previous object url
+                URL.revokeObjectURL(_OBJECT_URL);
+            }).catch(function (error) {
+                // trigger Cancel on error
+                document.querySelector("#cancel-pdf").click();
+
+                // error reason
+                alert(error.message);
+            });;
+        }
+
+        function showPage(page_no) {
+            // fetch the page
+            _PDF_DOC.getPage(page_no).then(function (page) {
+                // set the scale of viewport
+                var scale_required = _CANVAS.width / page.getViewport(1).width;
+
+                // get viewport of the page at required scale
+                var viewport = page.getViewport(scale_required);
+
+                // set canvas height
+                _CANVAS.height = viewport.height;
+
+                var renderContext = {
+                    canvasContext: _CANVAS.getContext('2d'),
+                    viewport: viewport
+                };
+
+                // render the page contents in the canvas
+                page.render(renderContext).then(function () {
+                    document.querySelector("#pdf-preview").style.display = 'inline-block';
+                    // document.querySelector("#pdf-loader").style.display = 'none';
+                });
+            });
+        }
+
+
+        /* Show Select File dialog */
+        // document.querySelector("#upload-dialog").addEventListener('click', function() {
+        //     document.querySelector("#proposal").click();
+        // });
+
+        /* Selected File has changed */
+        document.querySelector("#chooseFile").addEventListener('change', function () {
+
+            // user selected file
+            var file = this.files[0];
+
+            // allowed MIME types
+            var mime_types = ['application/pdf'];
+
+            // Validate whether PDF
+            // if (mime_types.indexOf(file.type) == -1) {
+            //     alert('Error : Incorrect file type');
+            //     return;
+            // }
+
+            // validate file size
+            // if (file.size > 10 * 1024 * 1024) {
+            //     alert('Error : Exceeded size 10MB');
+            //     return;
+            // }
+
+            // validation is successful
+
+            // hide upload dialog button
+            // document.querySelector("#upload-dialog").style.display = 'none';
+
+            // set name of the file
+            // document.querySelector("#pdf-name").innerText = file.name;
+            // document.querySelector("#pdf-name").style.display = 'inline-block';
+
+            // show cancel and upload buttons now
+            // document.querySelector("#cancel-pdf").style.display = 'inline-block';
+            // document.querySelector("#upload-button").style.display = 'inline-block';
+
+            // Show the PDF preview loader
+            // document.querySelector("#pdf-loader").style.display = 'inline-block';
+
+
+            // object url of PDF 
+            _OBJECT_URL = URL.createObjectURL(file)
+
+            // send the object url of the pdf to the PDF preview function
+            showPDF(_OBJECT_URL);
+        });
+
+        window.addEventListener('load', function () {
+            // document.querySelector('#pdf-file').value(document.querySelector('.filePDF').value)
+        });
+
+        /* Reset file input */
+        document.querySelector("#cancel-pdf").addEventListener('click', function () {
+            // show upload dialog button
+            // document.querySelector("#upload-dialog").style.display = 'inline-block';
+
+            // reset to no selection
+            document.querySelector("#chooseFile").value = '';
+
+            // hide elements that are not required
+            // document.querySelector("#pdf-name").style.display = 'none';
+            document.querySelector("#pdf-preview").style.display = 'none';
+            // document.querySelector("#pdf-loader").style.display = 'none';
+            // document.querySelector("#cancel-pdf").style.display = 'none';
+            // document.querySelector("#upload-button").style.display = 'none';
+        });
+
+        /* Upload file to server */
+        document.querySelector("#upload-button").addEventListener('click', function () {
+            // AJAX request to server
+            alert('This will upload file to server');
         });
     </script>
 @endsection
