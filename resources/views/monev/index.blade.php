@@ -33,42 +33,45 @@
                     <p style="line-height: 20px">Nama Pengawas : Drs. Jajang Sukmara</p>
                     <p style="line-height: 20px">Tanggal Monitoring : 24-02-2022</p>
                     <p style="line-height: 20px">Keperluan : Validasi</p>
-                    <p style="line-height: 20px" class="pb-3">Surat Kerja : <img src="/img/pdf.png" alt="" style="width: 30px"></p>
+                    <p style="line-height: 20px" class="pb-3">Surat Kerja : <img src="/img/pdf.png" alt=""
+                            style="width: 30px"></p>
                     <div>
-                        <table class="table table-responsive">
-                        <thead>
-                            <tr>
-                                <th class="text-center" scope="col">No</th>
-                                <th class="text-center col-6" scope="col">Unsur yang Diverifikasi</th>
-                                <th class="text-center col-2" scope="col">Belum Layak</th>
-                                <th class="text-center col-2" scope="col">Layak</th>
-                                <th class="text-center col-2" scope="col">Sangat Layak</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th class="text-center" scope="row">1</th>
-                                <td class="text-center">Standar Persyaratan Peralatan Utama</td>
-                                <td class="text-center"></td>
-                                <td class="text-center"><i class="bi bi-check2"></i></td>
-                                <td class="text-center"></td>
-                            </tr>
-                            <tr>
-                                <th class="text-center" scope="row">2</th>
-                                <td class="text-center">Standar Persyaratan Peralatan Pendukung</td>
-                                <td class="text-center"><i class="bi bi-check2"></i></td>
-                                <td class="text-center"></td>
-                                <td class="text-center"></td>
-                            </tr>
-                            <tr>
-                                <th class="text-center" scope="row">3</th>
-                                <td class="text-center">Standar Persyaratan Tempat/ Ruang</td>
-                                <td class="text-center"></td>
-                                <td class="text-center"></td>
-                                <td class="text-center"><i class="bi bi-check2"></i></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" scope="col">No</th>
+                                        <th class="text-center col-6" scope="col">Unsur yang Diverifikasi</th>
+                                        <th class="text-center col-2" scope="col">Belum Layak</th>
+                                        <th class="text-center col-2" scope="col">Layak</th>
+                                        <th class="text-center col-2" scope="col">Sangat Layak</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th class="text-center" scope="row">1</th>
+                                        <td class="text-center">Standar Persyaratan Peralatan Utama</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center"><i class="bi bi-check2"></i></td>
+                                        <td class="text-center"></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-center" scope="row">2</th>
+                                        <td class="text-center">Standar Persyaratan Peralatan Pendukung</td>
+                                        <td class="text-center"><i class="bi bi-check2"></i></td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center"></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-center" scope="row">3</th>
+                                        <td class="text-center">Standar Persyaratan Tempat/ Ruang</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center"><i class="bi bi-check2"></i></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

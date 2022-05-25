@@ -19,44 +19,46 @@
     {{-- ---------------------------------------------------------------------------------------- PERATURAN PERMENDIKBUD ----------------------------------------------------------------------------------------  --}}
     <div class="card card-info">
         <div class="card-header" style="background-color: #25b5e9">
-            <h3 class="card-title">PERATURAN PERMENDIKBUD NO. 11 TAHUN 2020 </h3>
+            <h3 class="card-title font-weight-bold">PERATURAN PERMENDIKBUD NO. 11 TAHUN 2020 </h3>
         </div>
-        <div class="card-body table-responsive">
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr class="text-center">
-                        <th>No</th>
-                        <th>Kompetensi Keahlian</th>
-                        <th>Jenis</th>
-                        <th>Rasio</th>
-                        <th>Deskripsi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="text-center">1</td>
-                        <td class="text-center">Rekayasa Perangkat Lunak</td>
-                        <td class="text-center">Access Point Indoor</td>
-                        <td class="text-center">18 unit / Ruang Praktik</td>
-                        <td class="text-center"><div style="overflow: auto; max-height: 110px;">
-                            Alat untuk menghubungkan antar PC menggunakan gelombang radio (dalam suatu ruangan).
-                                Connectivity : 802.11 n/g/b wireless Operating Modes : Access Point (AP), WDS with AP,
-                                WDS/Bridge (No AP Broadcast), Wireless Client VLAN/SSID Support
-                        </div></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">2</td>
-                        <td class="text-center">Rekayasa Perangkat Lunak</td>
-                        <td class="text-center">Access Point Outdoor</td>
-                        <td class="text-center">18 unit / Ruang Praktik</td>
-                        <td class="text-center"><div style="overflow: auto; max-height: 110px;">
-                            Alat untuk menghubungkan antar PC menggunakan gelombang radio (jarak jauh antar gedung).Connectivity : 802.11 n/g/b wireless Operating Modes : AP, WDS, WDS
-                                with AP, Wireless Client
-                                VLAN/SSID Support
-                        </div></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr class="text-center">
+                            <th>No</th>
+                            <th>Kompetensi Keahlian</th>
+                            <th>Jenis</th>
+                            <th>Rasio</th>
+                            <th>Deskripsi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-center">1</td>
+                            <td class="text-center">Rekayasa Perangkat Lunak</td>
+                            <td class="text-center">Access Point Indoor</td>
+                            <td class="text-center">18 unit / Ruang Praktik</td>
+                            <td class="text-center"><div style="overflow: auto; max-height: 110px;">
+                                Alat untuk menghubungkan antar PC menggunakan gelombang radio (dalam suatu ruangan).
+                                    Connectivity : 802.11 n/g/b wireless Operating Modes : Access Point (AP), WDS with AP,
+                                    WDS/Bridge (No AP Broadcast), Wireless Client VLAN/SSID Support
+                            </div></td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">2</td>
+                            <td class="text-center">Rekayasa Perangkat Lunak</td>
+                            <td class="text-center">Access Point Outdoor</td>
+                            <td class="text-center">18 unit / Ruang Praktik</td>
+                            <td class="text-center"><div style="overflow: auto; max-height: 110px;">
+                                Alat untuk menghubungkan antar PC menggunakan gelombang radio (jarak jauh antar gedung).Connectivity : 802.11 n/g/b wireless Operating Modes : AP, WDS, WDS
+                                    with AP, Wireless Client
+                                    VLAN/SSID Support
+                            </div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             {{-- {{ $variable->link() }} --}}
         </div>
     </div>
@@ -64,7 +66,7 @@
     {{-- ---------------------------------------------------------------------------------------- PERALATAN SEKOLAH ---------------------------------------------------------------------------------------- --}}
     <div class="card">
         <div class="card-header bg-warning d-flex p-0">
-            <h3 class="card-title p-3 text-white">Peralatan Sekolah</h3>
+            <h3 class="card-title p-3 text-white font-weight-bold">Peralatan Sekolah</h3>
             <ul class="nav nav-pills ml-auto p-2">
                 <li class="nav-item pr-2">
                     <button type="button" class="btn text-white" style="background-color: #00a65b" data-toggle="modal" data-target="#tambah-peralatan"><i
@@ -83,36 +85,38 @@
                 </li>
             </ul>
         </div>
-        <div class="card-body table-responsive">
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr class="text-center">
-                        <th>No</th>
-                        <th>Kompetensi Keahlian</th>
-                        <th>Jenis Alat</th>
-                        <th>Kategori</th>
-                        <th>Ketersediaan</th>
-                        <th>Kekurangan</th>
-                        <th>Status</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="text-center" style="vertical-align: middle">1</td>
-                        <td class="text-center" style="vertical-align: middle">Rekayasa Perangkat Lunak</td>
-                        <td class="text-center" style="vertical-align: middle">Access Point</td>
-                        <td class="text-center" style="vertical-align: middle">Utama</td>
-                        <td class="text-center" style="vertical-align: middle">4</td>
-                        <td class="text-center" style="vertical-align: middle">5</td>
-                        <td class="text-center" style="vertical-align: middle">Kekurangan</td>
-                        <td class="text-center" style="vertical-align: middle">
-                            <button type="button" class="btn text-white d-inline" style="background-color: #25b5e9" data-toggle="modal" data-target="#edit">Edit</button>
-                            <button class="btn text-white d-inline" style="background-color: #00a65b">Hapus</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr class="text-center">
+                            <th>No</th>
+                            <th>Kompetensi Keahlian</th>
+                            <th>Jenis Alat</th>
+                            <th>Kategori</th>
+                            <th>Ketersediaan</th>
+                            <th>Kekurangan</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-center" style="vertical-align: middle">1</td>
+                            <td class="text-center" style="vertical-align: middle">Rekayasa Perangkat Lunak</td>
+                            <td class="text-center" style="vertical-align: middle">Access Point</td>
+                            <td class="text-center" style="vertical-align: middle">Utama</td>
+                            <td class="text-center" style="vertical-align: middle">4</td>
+                            <td class="text-center" style="vertical-align: middle">5</td>
+                            <td class="text-center" style="vertical-align: middle">Kekurangan</td>
+                            <td class="text-center" style="vertical-align: middle">
+                                <button type="button" class="btn text-white d-inline" style="background-color: #25b5e9" data-toggle="modal" data-target="#edit">Edit</button>
+                                <button class="btn text-white d-inline" style="background-color: #00a65b">Hapus</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             {{-- {{ $variable->link() }} --}}
         </div>
     </div>
@@ -122,7 +126,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Tambah Peralatan</h4>
+                    <h4 class="modal-title font-weight-bold">Tambah Peralatan</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -204,7 +208,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Edit Usulan</h4>
+                    <h4 class="modal-title font-weight-bold">Edit Usulan</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -284,7 +288,7 @@
     {{-- ---------------------------------------------------------------------------------------- USUALAN PERALATAN ---------------------------------------------------------------------------------------- --}}
     <div class="card">
         <div class="card-header bg-dark d-flex p-0">
-            <h3 class="card-title p-3">Usulan Peralatan</h3>
+            <h3 class="card-title p-3 font-weight-bold">Usulan Peralatan</h3>
             <ul class="nav nav-pills ml-auto p-2">
                 <li class="nav-item pr-2">
                     <button type="button" class="btn text-white" style="background-color: #00a65b" data-toggle="modal" data-target="#tambah-usulan"><i
@@ -303,7 +307,7 @@
                 </li>
             </ul>
         </div>
-        <div class="card-body table-responsive">
+        <div class="card-body">
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr class="text-center">
