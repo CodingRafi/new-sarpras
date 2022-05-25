@@ -81,7 +81,10 @@ class UsulanLahanController extends Controller
      */
     public function show(UsulanLahan $usulanLahan)
     {
-        //
+        return view('lahan.show', [
+            'data' => $usulanLahan,
+            'profil' => $usulanLahan->profil
+        ]);
     }
 
     /**
@@ -150,8 +153,18 @@ class UsulanLahanController extends Controller
             return redirect()->back();
         }else{
             abort(403);
-        }
+        }        
+    }
 
-        
+    public function lahanDinas(){
+        $usulanLahan = UsulanLahan::search(request(['search']))
+                        ->leftJoin('profils', 'profils.id', '=', 'usulan_lahans.profil_id')
+                        ->leftJoin('profil_kcds', 'profils.id', '=', 'profil_kcds.profil_id')
+                        ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi', 'usulan_lahans.proposal')->paginate(40)->withQueryString();
+
+
+        return view('admin.lahan', [
+            'usulanLahans' => $usulanLahan
+        ]);
     }
 }

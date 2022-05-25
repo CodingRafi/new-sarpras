@@ -23,16 +23,16 @@
 
     {{-- --------------------------------------------- info box ------------------------------------------------ --}}
     <div class="info-box p-0 pimpinan-infobox">
-        <span class="info-box-icon p-4" style="background-color:#25b5e9; width: auto; min-width: 207px;">
+        <span class="info-box-icon p-4" style="background-color:#25b5e9; width: auto; min-width: 300px;">
             <img src="/assets/img/icons/flaticons/town.png"
-                style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
+                style="filter: invert(100%); object-fit: cover; width: 80px; aspect-ratio: 1/1;">
             <div class="ml-4">
-                <span class="text-white font-weight-bold">
+                <span class="text-white font-weight-bold" style="font-size: 25px">
                     Kondisi Ideal
                 </span>
                 <div class="d-flex align-items-end justify-content-center">
                     <h1 class="display-4 text-white font-weight-bold">30</h1>
-                    <p class="text-white font-weight-bold">/ Kantor</p>
+                    <p class="text-white font-weight-bold" style="font-size: 15px">/ Kantor</p>
                 </div>
             </div>
         </span>
@@ -45,16 +45,16 @@
         </div>
     </div>
     <div class="info-box p-0 pimpinan-infobox">
-        <span class="info-box-icon p-4" style="background-color:#fcc12d; width: auto; min-width: 207px;">
+        <span class="info-box-icon p-4" style="background-color:#fcc12d; width: auto; min-width: 300px;">
             <img src="/assets/img/icons/flaticons/building.png"
-                style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
+                style="filter: invert(100%); object-fit: cover; width: 80px; aspect-ratio: 1/1;">
             <div class="ml-4">
-                <span class="text-white font-weight-bold">
+                <span class="text-white font-weight-bold" style="font-size: 25px">
                     Ketersediaan
                 </span>
                 <div class="d-flex align-items-end justify-content-center">
                     <h1 class="display-4 text-white font-weight-bold">11</h1>
-                    <p class="text-white font-weight-bold">/ Kantor</p>
+                    <p class="text-white font-weight-bold" style="font-size: 15px">/ Kantor</p>
                 </div>
             </div>
         </span>
@@ -67,16 +67,16 @@
         </div>
     </div>
     <div class="info-box p-0 pimpinan-infobox">
-        <span class="info-box-icon p-4" style="background-color:#263238; width: auto; min-width: 207px;">
+        <span class="info-box-icon p-4" style="background-color:#263238; width: auto; min-width: 300px;">
             <img src="/assets/img/icons/flaticons/school.png"
-                style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
+                style="filter: invert(100%); object-fit: cover; width: 80px; aspect-ratio: 1/1;">
             <div class="ml-4">
-                <span class="text-white font-weight-bold">
+                <span class="text-white font-weight-bold" style="font-size: 25px">
                     Kekurangan
                 </span>
                 <div class="d-flex align-items-end justify-content-center">
                     <h1 class="display-4 text-white font-weight-bold">23</h1>
-                    <p class="text-white font-weight-bold">/ Kantor</p>
+                    <p class="text-white font-weight-bold" style="font-size: 15px">/ Kantor</p>
                 </div>
             </div>
         </span>
@@ -237,63 +237,62 @@
                 </button>
             </div>
         </div>
-        <div class="card-body table-responsive">
+        <div class="card-body">
             @if (count($usulans) > 0)
-                <table class="table table-bordered table-hover">
-                    <thead>
-                        <tr class="text-center">
-                            <th rowspan="2" style="vertical-align: middle;">No</th>
-                            <th rowspan="2" style="vertical-align: middle;">Jenis Ruang</th>
-                            <th rowspan="2" style="vertical-align: middle;">Jumlah Ruang</th>
-                            <th colspan="2">Ketersedian Lahan</th>
-                            <th rowspan="2" style="vertical-align: middle;">Proposal</th>
-                            <th rowspan="2" style="vertical-align: middle;">Keterangan</th>
-                            <th rowspan="2" style="vertical-align: middle;">Aksi</th>
-                        </tr>
-                        <tr class="text-center">
-                            <th>Gambar Lahan</th>
-                            <th>Luas Lahan</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($usulans as $key => $usulan)
-                            <tr>
-                                <th class="text-center">{{ $loop->iteration }}</th>
-                                <td class="text-center text-capitalize">{{ $usulanJenis[$key]->nama }}
-                                </td>
-                                <td class="text-center">{{ $usulan->jml_ruang }}</td>
-                                <td class="text-center">{{ $usulan->luas_lahan }} M</td>
-                                <td class="text-center" style="vertical-align: middle">
-                                    @foreach ($usulanFotos[$key] as $ke => $foto)
-                                        <a href="{{ asset('storage/' . $foto->nama) }}" class="fancybox"
-                                            data-fancybox="gallery{{ $key }}">
-                                            <img src="{{ asset('storage/' . $foto->nama) }}" class="rounded"
-                                                style="object-fit: cover; width: 150px; aspect-ratio: 1/1;{{ $ke == 0 ? '' : 'display:none;' }}">
-                                        </a>
-                                    @endforeach
-                                </td>
-                                <td class="text-center">
-                                    <a href="{{ asset('storage/' . $usulan->proposal) }}" target="_blank">
-                                        <img src="/img/pdf.png" alt="image" style="width: 30px">
-                                    </a>
-                                </td>
-                                <td class="text-center">{{ $usulan->keterangan }}</td>
-                                <td class="text-center">
-                                    <a href="/bangunan/usulan-ruang-pimpinan/{{ $usulan->id }}/edit"
-                                        class="btn btn-warning text-white">Edit</a>
-
-                                    <form action="/usulan-bangunan/{{ $usulan->id }}" method="post">
-                                        @csrf
-                                        @method('delete')
-
-                                        <button type="submit" class="btn text-white mt-2" style="background-color: #00a65b"
-                                            onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
-
-                                    </form>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr class="text-center">
+                                <th rowspan="2" style="vertical-align: middle;">No</th>
+                                <th rowspan="2" style="vertical-align: middle;">Jenis Ruang</th>
+                                <th rowspan="2" style="vertical-align: middle;">Jumlah Ruang</th>
+                                <th colspan="2">Ketersedian Lahan</th>
+                                <th rowspan="2" style="vertical-align: middle;">Proposal</th>
+                                <th rowspan="2" style="vertical-align: middle;">Keterangan</th>
+                                <th rowspan="2" style="vertical-align: middle;">Aksi</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                            <tr class="text-center">
+                                <th>Gambar Lahan</th>
+                                <th>Luas Lahan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($usulans as $key => $usulan)
+                                <tr>
+                                    <th class="text-center">{{ $loop->iteration }}</th>
+                                    <td class="text-center text-capitalize">{{ $usulanJenis[$key]->nama }}
+                                    </td>
+                                    <td class="text-center">{{ $usulan->jml_ruang }}</td>
+                                    <td class="text-center">{{ $usulan->luas_lahan }} M</td>
+                                    <td class="text-center" style="vertical-align: middle">
+                                        @foreach ($usulanFotos[$key] as $ke => $foto)
+                                            <a href="{{ asset('storage/' . $foto->nama) }}" class="fancybox"
+                                                data-fancybox="gallery{{ $key }}">
+                                                <img src="{{ asset('storage/' . $foto->nama) }}" class="rounded"
+                                                    style="object-fit: cover; width: 150px; aspect-ratio: 1/1;{{ $ke == 0 ? '' : 'display:none;' }}">
+                                            </a>
+                                        @endforeach
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="{{ asset('storage/' . $usulan->proposal) }}" target="_blank">
+                                            <img src="/img/pdf.png" alt="image" style="width: 30px">
+                                        </a>
+                                    </td>
+                                    <td class="text-center">{{ $usulan->keterangan }}</td>
+                                    <td class="text-center">
+                                        <a href="/bangunan/usulan-ruang-pimpinan/{{ $usulan->id }}/edit"
+                                            class="btn btn-warning text-white">Edit</a>
+                                        <form action="/usulan-bangunan/{{ $usulan->id }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn text-white mt-2" style="background-color: #00a65b"
+                                                onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
+                                        </form>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             @else
                 <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
                     <div class="alert" role="alert">

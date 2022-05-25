@@ -48,9 +48,9 @@
     <ul class="navbar-nav ml-auto">
         <div class="nav-item container d-block">
             <div class="container p-0 d-flex justify-content-end">
-                <span class="brand-text text-white text-right">{{ Auth::user()->name }}</span>
+                <span class="text-white text-right">{{ Auth::user()->name }}</span>
             </div>
-            <p class="brand-text font-weight-light h6 text-white text-right" style="font-size: .8rem;margin: 0;text-transform: capitalize;">Masuk Sebagai {{ Auth::user()->getRoleNames()[0] }}</p>
+            <p class="font-weight-light h6 text-white text-right" style="font-size: .8rem;margin: 0;text-transform: capitalize;">Masuk Sebagai {{ Auth::user()->getRoleNames()[0] }}</p>
 
         </div>
         <li class="nav-item dropdown">

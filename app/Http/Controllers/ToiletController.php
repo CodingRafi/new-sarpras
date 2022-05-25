@@ -134,21 +134,13 @@ class ToiletController extends Controller
     }
 
     public function showDinas(){
-        $usulanBangunan = UsulanBangunan::where('jenis', 'toilet')->paginate(40);
-        $datas = [];
-        foreach ($usulanBangunan as $key => $usulan) {
-            $datas[] = $usulan->profil;
-        }
+        $usulanBangunan = UsulanBangunan::search(request(['search']))
+        ->leftJoin('profils', 'profils.id', '=', 'usulan_bangunans.profil_id')
+        ->leftJoin('profil_kcds', 'profils.id', '=', 'profil_kcds.profil_id')
+        ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi', 'usulan_bangunans.proposal', 'usulan_bangunans.id')->where('usulan_bangunans.jenis', 'toilet')->paginate(40)->withQueryString();
 
-        $kcds = [];
-        foreach ($datas as $key => $data) {
-            $kcds[] = $data->profilKcd[0]->kcd;
-        }
-
-        return view('admin.ruangkelas', [
+        return view('admin.toilet', [
             'usulanBangunans' => $usulanBangunan,
-            'profils' => $datas,
-            'kcds' => $kcds
         ]);
     }
 }

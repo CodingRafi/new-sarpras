@@ -125,21 +125,13 @@ class KelasController extends Controller
     }
 
     public function showDinas(){
-        $usulanBangunan = UsulanBangunan::where('jenis', 'ruang_kelas')->paginate(40);
-        $datas = [];
-        foreach ($usulanBangunan as $key => $usulan) {
-            $datas[] = $usulan->profil;
-        }
-
-        $kcds = [];
-        foreach ($datas as $key => $data) {
-            $kcds[] = $data->profilKcd[0]->kcd;
-        }
+        $usulanBangunan = UsulanBangunan::search(request(['search']))
+                        ->leftJoin('profils', 'profils.id', '=', 'usulan_bangunans.profil_id')
+                        ->leftJoin('profil_kcds', 'profils.id', '=', 'profil_kcds.profil_id')
+                        ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi', 'usulan_bangunans.proposal', 'usulan_bangunans.id')->where('usulan_bangunans.jenis', 'ruang_kelas')->paginate(40)->withQueryString();
 
         return view('admin.ruangkelas', [
             'usulanBangunans' => $usulanBangunan,
-            'profils' => $datas,
-            'kcds' => $kcds
         ]);
     }
 

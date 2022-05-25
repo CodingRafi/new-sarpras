@@ -23,19 +23,20 @@
     </div>
     <!-- /.content-header -->
 
-    {{-- ---------------------------------------------------------------------------------------- KONDISI IDEAL ---------------------------------------------------------------------------------------- --}}
     <div class="container-fluid">
+
+        {{-- ---------------------------------------------------------------------------------------- KONDISI IDEAL ---------------------------------------------------------------------------------------- --}}
         <div class="info-box p-0 pimpinan-infobox">
-            <span class="info-box-icon p-4" style="background-color: #25b5e9; width: auto; min-width: 207px;">
+            <span class="info-box-icon p-4" style="background-color: #25b5e9; width: auto; min-width: 300px;">
                 <img src="/assets/img/icons/flaticons/town.png"
-                    style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
+                    style="filter: invert(100%); object-fit: cover; width: 80px; aspect-ratio: 1/1;">
                 <div class="ml-4">
-                    <span class="text-white font-weight-bold">
+                    <span class="text-white font-weight-bold" style="font-size: 25px">
                         Kondisi Ideal
                     </span>
                     <div class="d-flex align-items-end justify-content-center">
                         <h1 class="display-4 text-white font-weight-bold">30</h1>
-                        <p class="text-white font-weight-bold">/ Kantor</p>
+                        <p class="text-white font-weight-bold" style="font-size: 15px">/ Kantor</p>
                     </div>
                 </div>
             </span>
@@ -47,23 +48,22 @@
                     rapat.</p>
             </div>
         </div>
-    </div>
-    
-    {{-- ---------------------------------------------------------------------------------------- KETERSEDIAAN ---------------------------------------------------------------------------------------- --}}
-    <div class="info-box p-0 pimpinan-infobox">
-        <span class="info-box-icon p-4" style="background-color: #fcc12d; width: auto; min-width: 207px;">
-            <img src="/assets/img/icons/flaticons/building.png"
-                style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
-            <div class="ml-4 text-white">
-                <span class="text white font-weight-bold">
-                    Ketersediaan
-                </span>
-                <div class="d-flex align-items-end justify-content-center">
-                    <h1 class="display-4 text-white font-weight-bold">11</h1>
-                    <p class="text-white font-weight-bold">/ Kantor</p>
-                </div>  
-            </div>  
-        </span> 
+
+        {{-- ---------------------------------------------------------------------------------------- KETERSEDIAAN ---------------------------------------------------------------------------------------- --}}
+        <div class="info-box p-0 pimpinan-infobox">
+            <span class="info-box-icon p-4" style="background-color: #fcc12d; width: auto; min-width: 300px;">
+                <img src="/assets/img/icons/flaticons/building.png"
+                    style="filter: invert(100%); object-fit: cover; width: 80px; aspect-ratio: 1/1;">
+                <div class="ml-4 text-white font-weight-bold">
+                    <span class="text white font-weight-bold" style="font-size: 25px">
+                        Ketersediaan
+                    </span>
+                    <div class="d-flex align-items-end justify-content-center">
+                        <h1 class="display-4 text-white font-weight-bold">11</h1>
+                        <p class="text-white font-weight-bold" style="font-size: 15px">/ Kantor</p>
+                    </div>
+                </div>
+            </span>
             <div class="info-box-content">
                 <label>Keterangan:</label>
                 <p>Ruang guru jga bisa di pakai untuk menyimpan dokumn dokumen penting tentang anak didik mereka,Ruang guru
@@ -72,22 +72,22 @@
                     dimanfaatkan untuk tempat peristirahatan para guru ketika selesai mengajar,tempat berkumpulnya para guru
                     ketika ingin melakukan rapat.</p>
             </div>
-    </div>
+        </div>
 
-    {{-- ---------------------------------------------------------------------------------------- KEKURANGAN ---------------------------------------------------------------------------------------- --}}
-    <div class="info-box p-0 pimpinan-infobox">
-        <span class="info-box-icon p-4" style="background-color: #263238; width: auto; min-width: 207px;">
-            <img src="/assets/img/icons/flaticons/school.png"
-                style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
-            <div class="ml-4">
-                <span class="text-white font-weight-bold">
-                    Kekurangan
-                </span>
-                <div class="d-flex align-items-end justify-content-center">
-                    <h1 class="display-4 text-white font-weight-bold">13</h1>
-                    <p class="text-white font-weight-bold">/ Kantor</p>
+        {{-- ---------------------------------------------------------------------------------------- KEKURANGAN ---------------------------------------------------------------------------------------- --}}
+        <div class="info-box p-0 pimpinan-infobox">
+            <span class="info-box-icon p-4" style="background-color: #263238; width: auto; min-width: 300px;">
+                <img src="/assets/img/icons/flaticons/school.png"
+                    style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
+                <div class="ml-4">
+                    <span class="text-white font-weight-bold" style="font-size: 25px">
+                        Kekurangan
+                    </span>
+                    <div class="d-flex align-items-end justify-content-center">
+                        <h1 class="display-4 text-white font-weight-bold">13</h1>
+                        <p class="text-white font-weight-bold" style="font-size: 15px">/ Kantor</p>
+                    </div>
                 </div>
-            </div>       
             </span>
             <div class="info-box-content">
                 <label>Keterangan:</label>
@@ -99,13 +99,10 @@
 
         {{-- ---------------------------------------------------------------------------------------- USULAN PIMPINAN ---------------------------------------------------------------------------------------- --}}
         <div class="card">
-            <div class="card-header bg-warning">
+            <div class="card-header" style="background-color: #25b5e9">
                 <h3 class="card-title text-white font-weight-bold">Ruang Pimpinan Tersedia</h3>
                 <div class="card-tools">
-                    <button type="button" class="btn border-light text-white mr-2" data-toggle="modal"
-                        data-target="#tambah-jenis-pimpinan"><i class="bi bi-plus"></i> Tambah Jenis Pimpinan
-                    </button>
-                    <button type="button" class="btn border-light text-white" data-toggle="modal"
+                    <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
                         data-target="#tambah-tersedia"><i class="bi bi-plus"></i> Tambah Ketersediaan Ruang Pimpinan
                     </button>
                 </div>
@@ -145,8 +142,9 @@
                                                             <i class="bi bi-three-dots-vertical"></i>
                                                         </button>
                                                         <div class="dropdown-menu" style="margin-left: -73px">
-                                                            <button type="button" class="btn tombol-edit-ketersediaan"
-                                                                data-toggle="modal" data-target="#edit-tersedia">Edit
+                                                            <button type="button" class="btn btn-tool tombol-edit-ketersediaan"
+                                                                data-toggle="modal" data-target="#edit-tersedia"><i
+                                                                    class="bi bi-plus"></i>Edit
                                                             </button>
                                                             <form action="/bangunan/pimpinan/{{ $data['id'] }}" method="post">
                                                                 @csrf
@@ -175,34 +173,6 @@
         </div>
 
         {{-- ---------------------------------------------------------------------------------------- MODAL USULAN ---------------------------------------------------------------------------------------- --}}
-        <div class="modal fade" id="tambah-jenis-pimpinan">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Tambah Usulan</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal" action="/jenis-pimpinan" method="post">
-                            @csrf
-                            <div class="card-body">
-                                <div class="form-group row">
-                                    <label for="jumlah-lahan" class="col-sm-2 col-form-label">Nama Ruang</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="jumlah-lahan" name="nama" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-success float-right">Simpan</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="modal fade" id="tambah-tersedia">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -227,19 +197,19 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="luas-lahan" class="col-sm-2 col-form-label">Nama Ruang</label>
+                                    <label for="luas-lahan" class="col-sm-2 col-form-label">Nama Bangunan</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="luas-lahan" name="nama" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="luas-lahan" class="col-sm-2 col-form-label">Panjang Ruang</label>
+                                    <label for="luas-lahan" class="col-sm-2 col-form-label">Panjang Lahan</label>
                                     <div class="col-sm-10">
                                         <input type="number" class="form-control" id="luas-lahan" name="panjang" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="luas-lahan" class="col-sm-2 col-form-label">Lebar Ruang</label>
+                                    <label for="luas-lahan" class="col-sm-2 col-form-label">Lebar Lahan</label>
                                     <div class="col-sm-10">
                                         <input type="number" class="form-control" id="luas-lahan" name="lebar" required>
                                     </div>
@@ -312,8 +282,8 @@
 
         {{-- --------------------------------------- USULAN LAB KOMPUTER --------------------------------------- --}}
         <div class="card card-info">
-            <div class="card-header" style="background-color: #25b5e9">
-                <h3 class="card-title font-weight-bold">Usulan Ruang Pimpinanan</h3>
+            <div class="card-header bg-warning">
+                <h3 class="card-title font-weight-bold text-white">Usulan Ruang Pimpinan</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
                         data-target="#tambah-usulan"><i class="bi bi-plus"></i> Tambah Usulan

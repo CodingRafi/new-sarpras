@@ -125,7 +125,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/', [AdminController::class, 'index']);
     Route::get('/profil/admin', [AdminController::class, 'search']);
     Route::resource('/profil', ProfilController::class);
-    Route::get('/lahan-dinas', [AdminController::class, 'lahanDinas']);
+    Route::get('/lahan-dinas', [UsulanLahanController::class, 'lahanDinas']);
     Route::get('/bangunan/ruang-kelas-dinas', [KelasController::class, 'showDinas']);
     Route::get('/bangunan/lab-komputer-dinas', [KomputerController::class, 'showDinas']);
     Route::get('/bangunan/perpustakaan-dinas', [PerpustakaanController::class, 'showDinas']);
@@ -182,7 +182,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::patch('/bangunan/usulan-ruang-pimpinan/{id}', [UsulanBangunanController::class, 'updatePimpinan']);
     Route::resource('/jenis-pimpinan', JenisPimpinanController::class);
     Route::resource('/monev', MonevController::class);
-    Route::resource('/peralatan/nama-jurusan', PeralatanController::class);
+    Route::resource('/peralatan', PeralatanController::class);
     Route::resource('/riwayat-bantuan', RiwayatController::class);
     Route::resource('/usulan-bangunan', UsulanBangunanController::class);
 });

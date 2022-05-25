@@ -57,6 +57,7 @@ class AdminController extends Controller
                 'usulanLahan' => $profil->usulanLahan,
                 'usulanBangunan' => $profil->usulanBangunan,
                 'instansi' => $profil->instansi,
+                'rehab' => $profil->rehab
             ];
         }
 
@@ -139,30 +140,9 @@ class AdminController extends Controller
 
     public function search(){
         return view('admin.index',[
-        'profils' => Profil::search([request(['search'])])->paginate(40),
+            'profils' => Profil::search(request(['search']))->paginate(40),
         ]);
     }
 
-    public function lahanDinas(){
-        // $usulanLahan = UsulanBangunan::search(request(['search']))->filter(request(['filter']))
-        //                 ->leftJoin('profil_kcds', 'profils.id', '=', 'profil_kcds.profil_id')
-        //                 ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi')->paginate(40)->withQueryString();
-
-        $usulanLahan = UsulanLahan::paginate(40);
-        $datas = [];
-        foreach ($usulanLahan as $key => $usulan) {
-            $datas[] = $usulan->profil;
-        }
-
-        $kcds = [];
-        foreach ($datas as $key => $data) {
-            $kcds[] = $data->profilKcd[0]->kcd;
-        }
-
-        return view('admin.lahan', [
-            'usulanLahans' => $usulanLahan,
-            'profils' => $datas,
-            'kcds' => $kcds
-        ]);
-    }
+    
 }
