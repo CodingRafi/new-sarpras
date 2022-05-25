@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('usulan_peralatans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('profil_id');
+            $table->foreignId('kompeten_id');
+            $table->string('nama');
+            $table->enum('kategori', ['utama', 'pendukung']);
+            $table->string('jml');
+            $table->string('proposal');
+            $table->string('keterangan');
             $table->timestamps();
         });
     }

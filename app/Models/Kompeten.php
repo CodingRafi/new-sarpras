@@ -27,6 +27,10 @@ class Kompeten extends Model
         return $this->hasMany(UsulanBangunan::class);
     }
 
+    public function usulanPeralatan(){
+        return $this->hasMany(UsulanPeralatan::class);
+    }
+
     public function praktik(){
         return $this->hasMany(Praktik::class);
     }

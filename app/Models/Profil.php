@@ -61,6 +61,10 @@ class Profil extends Model
         return $this->hasMany(RehabRenov::class);
     }
 
+    public function usulanPeralatan(){
+        return $this->hasMany(UsulanPeralatan::class);
+    }
+
     public function scopeSearch($query, array $search)
     {
         // dd($query->where('npsn', 'like', '%' . $search['search'] . '%'));
