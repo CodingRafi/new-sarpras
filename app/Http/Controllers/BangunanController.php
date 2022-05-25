@@ -11,6 +11,7 @@ use App\Http\Requests\StoreBangunanRequest;
 use App\Http\Requests\UpdateBangunanRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Kompeten;
 
 class BangunanController extends Controller
 {
@@ -28,6 +29,7 @@ class BangunanController extends Controller
 
         return view('bangunan.showBangunan', [
             'usulanBangunans' => $usulanBangunan,
+            'kompils' => Kompeten::getKompeten()
         ]);
     }
 

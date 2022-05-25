@@ -10,6 +10,7 @@ use App\Http\Requests\StoreKoleksiRequest;
 use App\Http\Requests\UpdateKoleksiRequest;
 use Illuminate\Support\Facades\Storage;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
+use App\Models\Kompeten;
 
 class KoleksiController extends Controller
 {

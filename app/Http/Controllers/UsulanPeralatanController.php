@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\UsulanPeralatan;
 use App\Http\Requests\StoreUsulanPeralatanRequest;
 use App\Http\Requests\UpdateUsulanPeralatanRequest;
+use App\Models\Kompeten;
 
 class UsulanPeralatanController extends Controller
 {

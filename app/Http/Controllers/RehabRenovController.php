@@ -12,6 +12,7 @@ use App\Http\Requests\StoreRehabRenovRequest;
 use App\Http\Requests\UpdateRehabRenovRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Kompeten;
 
 class RehabRenovController extends Controller
 {
@@ -58,7 +59,8 @@ class RehabRenovController extends Controller
             'datas' => $data,
             'usulans' => $usulans,
             'usulanFotos' => $fotos,
-            'usulanJenis' => $jenisUsulanPimpinan
+            'usulanJenis' => $jenisUsulanPimpinan,
+            'kompils' => Kompeten::getKompeten()
         ]);
     }
 
@@ -115,7 +117,8 @@ class RehabRenovController extends Controller
         return view('bangunan.rehabrenov.show', [
             'data' => $rehabRenov,
             'usulanFoto' => $rehabRenov->usulanKoleksi[0]->usulanFoto,
-            'profil' => $rehabRenov->profil
+            'profil' => $rehabRenov->profil,
+            'kompils' => Kompeten::getKompeten()
         ]);
     }
 
@@ -131,7 +134,8 @@ class RehabRenovController extends Controller
         if($data->profil_id == Auth::user()->profil_id){
             return view('bangunan.rehabrenov.edit', [
                 'data' => $data,
-                'fotos' => $data->usulanKoleksi[0]->usulanFoto
+                'fotos' => $data->usulanKoleksi[0]->usulanFoto,
+                'kompils' => Kompeten::getKompeten()
             ]);
         }else{  
             abort(403);
@@ -210,6 +214,7 @@ class RehabRenovController extends Controller
 
         return view('admin.ruangrehabrenov', [
             'usulanBangunans' => $usulanBangunan,
+            'kompils' => Kompeten::getKompeten()
         ]);
     }
 }

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Monev;
 use App\Http\Requests\StoreMonevRequest;
-use App\Http\Requests\UpdateMonevRequest;
+use App\Http\Requests\UpdateMonevRequest;;
+use App\Models\Kompeten;
+
 
 class MonevController extends Controller
 {

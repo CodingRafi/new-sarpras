@@ -2,6 +2,7 @@
 
 @extends('mylayouts.main')
 
+{{-- @dd($kompils) --}}
 {{-- @dd($jenis_koleksi_terpilih[0]->id) --}}
 {{-- @dd($semua_jurusan[0]) --}}
 {{-- @dd($fotos[0][0]) --}}
@@ -530,10 +531,10 @@
                     </div>
                     <!-- /.info-box-content -->
                 </div>
-            </div>  
+            </div>
             <!-- ./col -->
             <div class="col-lg-3 col-6">
-                <!-- small box -->  
+                <!-- small box -->
                 <div class="info-box mb-3" style="background-color: #25b5e9">
                     <span class="info-box-icon"><i class="bi bi-person-badge-fill h1 text-white"></i></span>
 
@@ -614,7 +615,7 @@
                                     <td class="text-center">{{ $profil->jml_siswa_p }}</td>
                                     <td class="text-center">{{ $profil_depo->depo_jml_siswa_p }}</td>
                                 </tr>
-                                
+
                                 {{-- ---------------------------------------------------------------------------------------- JUMLAH TOTAL ---------------------------------------------------------------------------------------- --}}
                                 <tr>
                                     <th class="text-center">Jumlah</th>
@@ -666,7 +667,7 @@
                     <div class="card-body"
                         style="overflow-y: auto; max-height: 300px !important; height: 300px !important;">
                         <div class="tab-content p-0">
-                            <div class="tab-pane  isikopetensi active" id="kompetensi-keahlian">    
+                            <div class="tab-pane  isikopetensi active" id="kompetensi-keahlian">
                                 @if (count($kopetensikeahlians) > 0)
                                     <table class="table table-bordered table-hover">
                                         <tbody>
@@ -790,10 +791,8 @@
                                     </div>
                                 @endif
                             </div>
-                            <div class="chart tab-pane isitambahkopetensi" id="tambah-jurusan" style="{{ Auth::user()->hasRole('sekolah') ? '' : 'display:none;' }}>
-                                    <form style="
-                                {{ count($kopetensikeahlians) > 0 ? 'height: 10rem;' : 'height: 18rem;' }}"
-                                action="/kompeten" method="POST">
+                            <div class="chart tab-pane isitambahkopetensi" id="tambah-jurusan" style="{{ Auth::user()->hasRole('sekolah') ? '' : 'display:none;' }}">
+                            <form style="{{ count($kopetensikeahlians) > 0 ? 'height: 10rem;' : 'height: 18rem;' }}" action="/kompeten" method="POST">
                                 @csrf
                                 <input type="hidden" name="profil_id" value="{{ $profil->id }}">
                                 <div class="card-body p-0 ">

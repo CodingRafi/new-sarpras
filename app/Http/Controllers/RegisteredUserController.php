@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use DB;
+use App\Models\Kompeten;
 
 class RegisteredUserController extends Controller
 {

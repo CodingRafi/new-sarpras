@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PeralatanTersedia;
 use App\Http\Requests\StorePeralatanTersediaRequest;
 use App\Http\Requests\UpdatePeralatanTersediaRequest;
+use App\Models\Kompeten;
 
 class PeralatanTersediaController extends Controller
 {

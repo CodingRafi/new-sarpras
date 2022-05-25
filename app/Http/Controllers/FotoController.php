@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreFotoRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateFotoRequest;
+use App\Models\Kompeten;
 
 class FotoController extends Controller
 {

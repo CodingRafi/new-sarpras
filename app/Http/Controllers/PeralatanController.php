@@ -7,6 +7,7 @@ use App\Models\Komli;
 use App\Http\Requests\StorePeralatanRequest;
 use App\Http\Requests\UpdatePeralatanRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Kompeten;
 
 class PeralatanController extends Controller
 {
@@ -21,7 +22,8 @@ class PeralatanController extends Controller
         $peralatan = Peralatan::select('peralatans.*', 'komlis.kompetensi')->leftJoin('komlis', 'komlis.id', 'peralatans.komli_id')->paginate(40);
         return view('peralatan.index', [
             'semua_jurusan' => $komli,
-            'peralatans' => $peralatan
+            'peralatans' => $peralatan,
+            'kompils' => Kompeten::getKompeten()
         ]);
     }
 
@@ -132,6 +134,14 @@ class PeralatanController extends Controller
         } else {
             abort(403);
         }
-        
+    }
+
+    public function showPeralatan($id){
+        $kompeten = Kompeten::find($id);
+        $peralatans = Peralatan::where('komli_id', $kompeten->komli->id)->select('peralatans.*', 'komlis.kompetensi')->leftJoin('komlis', 'peralatans.komli_id', 'komlis.id')->paginate(15);
+        return view('peralatan-sekolah.index', [
+            'peraturans' => $peralatans,
+            'kompils' => Kompeten::getKompeten()
+        ]);
     }
 }

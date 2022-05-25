@@ -182,7 +182,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::patch('/bangunan/usulan-ruang-pimpinan/{id}', [UsulanBangunanController::class, 'updatePimpinan']);
     Route::resource('/jenis-pimpinan', JenisPimpinanController::class);
     Route::resource('/monev', MonevController::class);
+    Route::get('/peralatan-sekolah/{id}', [PeralatanController::class, 'showPeralatan']);
     Route::resource('/peralatan', PeralatanController::class);
+    Route::resource('/usulan-peralatan', UsulanPeralatanController::class);
     Route::resource('/riwayat-bantuan', RiwayatController::class);
     Route::resource('/usulan-bangunan', UsulanBangunanController::class);
 });

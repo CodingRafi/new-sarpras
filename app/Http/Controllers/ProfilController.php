@@ -111,7 +111,8 @@ class ProfilController extends Controller
                 'logs' => $logs,
                 'jenis_koleksis' => $semua_jenis_koleksi,
                 'jenis_koleksi_terpilih' => $jenis_koleksi_terpilih,
-                'jurusanDepos' => $jurusanDepo
+                'jurusanDepos' => $jurusanDepo,
+                'kompils' => Kompeten::getKompeten()
             ]);
         }else{
             return abort(403);
@@ -128,7 +129,8 @@ class ProfilController extends Controller
     public function edit(Profil $profil)
     {
         return view('profil.edit', [
-            'data' => $profil
+            'data' => $profil,
+            'kompils' => Kompeten::getKompeten()
         ]);
     }
 

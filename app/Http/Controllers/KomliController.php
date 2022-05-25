@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Komli;
 use App\Http\Requests\StoreKomliRequest;
 use App\Http\Requests\UpdateKomliRequest;
+use App\Models\Kompeten;
 
 class KomliController extends Controller
 {
