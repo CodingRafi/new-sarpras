@@ -6,6 +6,7 @@ use App\Models\Bangunan;
 use App\Models\Profil;
 use App\Models\Kelas;
 use App\Models\Log;
+use App\Models\UsulanBangunan   ;
 use App\Http\Requests\StoreBangunanRequest;
 use App\Http\Requests\UpdateBangunanRequest;
 use Illuminate\Http\Request;
@@ -20,7 +21,14 @@ class BangunanController extends Controller
      */
     public function index()
     {
-        //
+        $usulanBangunan = UsulanBangunan::search(request(['search']))
+                        ->leftJoin('profils', 'profils.id', '=', 'usulan_bangunans.profil_id')
+                        ->leftJoin('profil_kcds', 'profils.id', '=', 'profil_kcds.profil_id')
+                        ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi', 'usulan_bangunans.proposal', 'usulan_bangunans.id')->where('usulan_bangunans.jenis', request('jenis'))->paginate(40)->withQueryString();
+
+        return view('bangunan.showBangunan', [
+            'usulanBangunans' => $usulanBangunan,
+        ]);
     }
 
     /**

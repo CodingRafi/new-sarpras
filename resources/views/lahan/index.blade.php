@@ -79,6 +79,7 @@
                 </div>
             </div>
 
+            @if (strtolower(Auth::user()->profil->status_sekolah) != 'swasta')      
             <div class="col">
                 <div class="card" style="border-radius: 0px 20px 0px 20px !important">
                     <div class="card-header"
@@ -90,6 +91,7 @@
                     </div><!-- /.card-body -->
                 </div>
             </div>
+            @endif
         </div>
     </div>
     {{-- --------------------------------------------- End ------------------------------------------------- --}}
@@ -124,9 +126,9 @@
                                                 <th scope="col">No</th>
                                                 <th scope="col">Nama Lahan</th>
                                                 <th scope="col">No Sertifikat</th>
-                                                <th scope="col">Panjang(m)</th>
-                                                <th scope="col">Lebar(m)</th>
-                                                <th scope="col">Luas Lahan(m)</th>
+                                                <th scope="col">Panjang(m²)</th>
+                                                <th scope="col">Lebar(m²)</th>
+                                                <th scope="col">Luas Lahan(m²)</th>
                                                 <th scope="col">Alamat</th>
                                                 <th scope="col">Jenis Kepemilikan</th>
                                                 <th scope="col">Keterangan</th>
@@ -146,7 +148,7 @@
                                                     <td>{{ $lahan->lebar }} m²</td>
                                                     <td>{{ $lahan->luas }} m²</td>
                                                     <td>{{ $lahan->alamat }}</td>
-                                                    <td>{{ $lahan->jenis_kepemilikan }}</td>
+                                                    <td style="text-transform: capitalize;">{{ str_replace("_", " ", $lahan->jenis_kepemilikan) }}</td>
                                                     <td>{{ $lahan->keterangan }}</td>
                                                     <td>
                                                         <div class="card-body">
@@ -216,17 +218,17 @@
 
                             {{-- input panjang --}}
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Panjang(M)</label>
+                                <label class="col-sm-2 col-form-label">Panjang(m²)</label>
                                 <input type="number" class="form-control col-sm-9" placeholder="Masukan Panjang Lahan"
-                                    id="panjang" name="panjang" required>
+                                    id="panjang" name="panjang" required step=any>
                             </div>
                             {{-- end input panjang --}}
 
                             {{-- input lebar --}}
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Lebar(M)</label>
+                                <label class="col-sm-2 col-form-label">Lebar(m²)</label>
                                 <input type="number" class="form-control col-sm-9" placeholder="Masukan Lebar Lahan"
-                                    id="lebar" name="lebar" required>
+                                    id="lebar" name="lebar" required step=any>
                             </div>
                             {{-- end input lebar --}}
 
@@ -246,6 +248,8 @@
                                     <option value="sewa">Sewa</option>
                                     <option value="shm">SHM</option>
                                     <option value="hgb">HGB</option>
+                                    <option value="hibah">Hibah/Wakaf</option>
+                                    <option value="tanah_desa">Tanah Desa</option>
                                 </select>
                             </div>
                             {{-- end input alamat --}}
@@ -306,9 +310,9 @@
                                         <tr>
                                             <th scope="col">No</th>
                                             <th scope="col">Nama Lahan</th>
-                                            <th scope="col">Panjang(m)</th>
-                                            <th scope="col">Lebar(m)</th>
-                                            <th scope="col">Luas Lahan(m)</th>
+                                            <th scope="col">Panjang(m²)</th>
+                                            <th scope="col">Lebar(m²)</th>
+                                            <th scope="col">Luas Lahan(m²)</th>
                                             <th scope="col">Keterangan</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -371,17 +375,17 @@
 
                             {{-- input panjang --}}
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Panjang(M)</label>
+                                <label class="col-sm-2 col-form-label">Panjang(m²)</label>
                                 <input type="number" class="form-control col-sm-9" placeholder="Masukan Panjang Lahan"
-                                    id="panjang" name="panjang" required>
+                                    id="panjang" name="panjang" required step=any>
                             </div>
                             {{-- end input panjang --}}
 
                             {{-- input lebar --}}
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Lebar(M)</label>
+                                <label class="col-sm-2 col-form-label">Lebar(m²)</label>
                                 <input type="number" class="form-control col-sm-9" placeholder="Masukan Lebar Lahan"
-                                    id="lebar" name="lebar" required>
+                                    id="lebar" name="lebar" required step=any>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Keterangan</label>

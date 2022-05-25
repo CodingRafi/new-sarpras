@@ -68,25 +68,17 @@
 
                 {{-- --------------------------------------------- PANJANG --------------------------------------------- --}}
                 <div class="row input pl-5">
-                    <label class="col-2 mt-3">Panjang</label>
+                    <label class="col-2 mt-3">Panjang (m²)</label>
                     <input type="number" class="col-9 form-control mt-2" placeholder="Masukan Panjang" required
-                        value="{{ $ketersediaan->panjang }}" name="panjang">
+                        value="{{ $ketersediaan->panjang }}" name="panjang" step=any>
                 </div>
 
                 {{-- --------------------------------------------- LEBAR --------------------------------------------- --}}
                 <div class="row input pl-5">
-                    <label class="col-2 mt-3">Lebar</label>
+                    <label class="col-2 mt-3">Lebar (m²)</label>
                     <input type="number" class="col-9 form-control mt-2" placeholder="Masukan Lebar" required
-                        value="{{ $ketersediaan->lebar }}" name="lebar">
+                        value="{{ $ketersediaan->lebar }}" name="lebar" step=any>
                 </div>
-
-                {{-- --------------------------------------------- LUAS --------------------------------------------- --}}
-                <div class="row input pl-5">
-                    <label class="col-2 mt-3">Luas Lahan</label>
-                    <input type="number" class="col-9 form-control mt-2" placeholder="Masukan Luas Lahan" required
-                        value="{{ $ketersediaan->luas }}" name="luas">
-                </div>
-
                 {{-- --------------------------------------------- ALAMAT --------------------------------------------- --}}
                 <div class="row input pl-5">
                     <label class="col-2 mt-3">Alamat</label>
@@ -101,6 +93,8 @@
                         <option value="sewa" {{ $ketersediaan->jenis_kepemilikan == 'sewa' ? 'selected' : '' }}>Sewa</option>
                         <option value="shm" {{ $ketersediaan->jenis_kepemilikan == 'shm' ? 'selected' : '' }}>SHM</option>
                         <option value="hgb" {{ $ketersediaan->jenis_kepemilikan == 'hgb' ? 'selected' : '' }}>HGB</option>
+                        <option value="hibah" {{ $ketersediaan->jenis_kepemilikan == 'hibah' ? 'selected' : '' }}>Hibah/Wakaf</option>
+                        <option value="tanah_desa" {{ $ketersediaan->jenis_kepemilikan == 'tanah_desa' ? 'selected' : '' }}>Tanah Desa</option>
                     </select>
                 </div>
 

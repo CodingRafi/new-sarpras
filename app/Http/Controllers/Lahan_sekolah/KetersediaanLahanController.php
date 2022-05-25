@@ -106,12 +106,12 @@ class KetersediaanLahanController extends Controller
                 'no_sertifikat' => 'required',
                 'panjang' => 'required',
                 'lebar' => 'required',
-                'luas' => 'required',
                 'alamat' => 'required',
                 'jenis_kepemilikan' => 'required',
                 'keterangan' => 'required'
             ]);
 
+            $validatedData['luas'] = $request->panjang * $request->lebar;
             if($request->file('bukti_lahan')){
                 if($request->dokumenOld){
                     Storage::delete($request->dokumenOld);

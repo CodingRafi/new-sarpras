@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Peralatan;
+use App\Models\Komli;
 use App\Http\Requests\StorePeralatanRequest;
 use App\Http\Requests\UpdatePeralatanRequest;
 
@@ -15,7 +16,10 @@ class PeralatanController extends Controller
      */
     public function index()
     {
-        return view('peralatan.index');
+        $komli = Komli::all();
+        return view('peralatan.index', [
+            'semua_jurusan' => $komli
+        ]);
     }
 
     /**

@@ -54,13 +54,16 @@
                         <a class="nav-link text-white active" href="#data-sekolah" data-toggle="tab"><i
                                 class="bi bi-house-fill mr-1"></i>Data Sekolah</a>
                     </li>
+                    @if (Auth::user()->hasRole('sekolah'))
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#edit-data-sekolah" data-toggle="tab"><i
+                                    class="bi bi-plus-lg mr-1"></i>Edit Data Sekolah</a>
+                        </li>
+                    @endif
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#edit-data-sekolah" data-toggle="tab"><i
-                                class="bi bi-plus-lg mr-1"></i>Edit Data Sekolah</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#foto-sekolah" data-toggle="tab"><i
-                                class="bi bi-plus-lg mr-1"></i>Foto Sekolah</a>
+                        <a class="nav-link text-white" href="#foto-sekolah" data-toggle="tab">
+                            {!! Auth::user()->hasRole('sekolah') ? '<i class="bi bi-plus-lg mr-1"></i> ' : '<i class="bi bi-eye-fill mr-1"></i> ' !!}
+                            Foto Sekolah</a>
                     </li>
                 </ul>
             </div>
@@ -84,7 +87,8 @@
 
                                     {{-- ---------------------------------------------------------------------------------------- Kepala Sekolah---------------------------------------------------------------------------------------- --}}
                                     <tr>
-                                        <th>Kepala Sekolah</th>
+                                        <th>Kepala Sekolah <span style="font-size: 14px;" class="text-danger">*</span>
+                                        </th>
                                         <td class="text-wrap">:
                                             {{ $profil->nama_kepala_sekolah ?? 'Data tidak ditemukan' }}</td>
                                     </tr>
@@ -95,7 +99,7 @@
                                     </tr>
                                     {{-- ---------------------------------------------------------------------------------------- ALAMAT SEKOLAH ---------------------------------------------------------------------------------------- --}}
                                     <tr>
-                                        <th>Alamat</th>
+                                        <th>Alamat <span style="font-size: 14px;" class="text-danger">*</span></th>
                                         <td class="text-wrap">: {{ $profil->provinsi }}, {{ $profil->kabupaten }},
                                             {{ $profil->kecamatan }}, {{ $profil->alamat }}</td>
                                     </tr>
@@ -104,35 +108,71 @@
                                         <td class="text-wrap">: {{ $profil->provinsi }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Kabupaten</th>
+                                        <th>Kabupaten <span style="font-size: 14px;" class="text-danger">*</span></th>
                                         <td class="text-wrap">: {{ $profil->kabupaten }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Kecamatan</th>
+                                        <th>Kecamatan <span style="font-size: 14px;" class="text-danger">*</span></th>
                                         <td class="text-wrap">: {{ $profil->kecamatan }}</td>
                                     </tr>
                                     {{-- ---------------------------------------------------------------------------------------- KOORDINAT SEKOLAH ---------------------------------------------------------------------------------------- --}}
                                     <tr>
-                                        <th>Lintang</th>
+                                        <th>Lintang <span style="font-size: 14px;" class="text-danger">*</span></th>
                                         <td class="text-wrap">: {{ $profil->lat ?? 'Tidak ada Lintang' }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Bujur</th>
+                                        <th>Bujur <span style="font-size: 14px;" class="text-danger">*</span></th>
                                         <td class="text-wrap">: {{ $profil->long ?? 'Tidak ada Bujur' }}</td>
                                     </tr>
                                     {{-- ---------------------------------------------------------------------------------------- EMAIL SEKOLAH ---------------------------------------------------------------------------------------- --}}
                                     <tr>
-                                        <th>Email</th>
+                                        <th>Email <span style="font-size: 14px;" class="text-danger">*</span></th>
                                         <td class="text-wrap">: {{ $profil->email }}</td>
+                                    </tr>
+                                    {{-- ---------------------------------------------------------------------------------------- INSTAGRAM SEKOLAH ---------------------------------------------------------------------------------------- --}}
+                                    <tr>
+                                        <th>Link Instagram <span style="font-size: 14px;" class="text-danger">*</span>
+                                        </th>
+                                        <td a href="" class="text-wrap">:
+                                            {{ $profil->instagram ?? 'Tidak ada data ditemukan' }}</td>
+                                    </tr>
+                                    {{-- ---------------------------------------------------------------------------------------- FACEBOOK SEKOLAH ---------------------------------------------------------------------------------------- --}}
+                                    @isset($profil->facebook)
+                                        <tr>
+                                            <th>Link Facebook <span style="font-size: 14px;" class="text-danger">*</span>
+                                            </th>
+                                            <td a href="" class="text-wrap">: {{ $profil->facebook }}</td>
+                                        </tr>
+                                    @endisset
+                                    {{-- ---------------------------------------------------------------------------------------- TWITTER SEKOLAH ---------------------------------------------------------------------------------------- --}}
+                                    @isset($profil->twitter)
+                                        <tr>
+                                            <th>Link Twitter <span style="font-size: 14px;" class="text-danger">*</span></th>
+                                            <td a href="" class="text-wrap">: {{ $profil->twitter }}</td>
+                                        </tr>
+                                    @endisset
+                                    {{-- ---------------------------------------------------------------------------------------- TIKTOK SEKOLAH ---------------------------------------------------------------------------------------- --}}
+                                    @isset($profil->tiktok)
+                                        <tr>
+                                            <th>Link Tiktok <span style="font-size: 14px;" class="text-danger">*</span></th>
+                                            <td a href="" class="text-wrap">: {{ $profil->tiktok }}</td>
+                                        </tr>
+                                    @endisset
+                                    {{-- ---------------------------------------------------------------------------------------- TIKTOK SEKOLAH ---------------------------------------------------------------------------------------- --}}
+                                    <tr>
+                                        <th>Link Youtube <span style="font-size: 14px;" class="text-danger">*</span></th>
+                                        <td a href="" class="text-wrap">:
+                                            {{ $profil->youtube ?? 'Tidak ada data ditemukan' }}</td>
                                     </tr>
                                     {{-- ---------------------------------------------------------------------------------------- WEBSITE SEKOLAH ---------------------------------------------------------------------------------------- --}}
                                     <tr>
-                                        <th>Website</th>
+                                        <th>Website <span style="font-size: 14px;" class="text-danger">*</span></th>
                                         <td class="text-wrap">: {{ $profil->website }}</td>
                                     </tr>
                                     {{-- ---------------------------------------------------------------------------------------- NOMOR TELEPON SEKOLAH ---------------------------------------------------------------------------------------- --}}
                                     <tr>
-                                        <th>Nomor Telepon</th>
+                                        <th>Nomor Telepon <span style="font-size: 14px;" class="text-danger">*</span>
+                                        </th>
                                         <td class="text-wrap">: {{ $profil->nomor_telepon }}</td>
                                     </tr>
                                 </table>
@@ -152,7 +192,7 @@
 
                                                 <div class="info-box-content">
                                                     <span class="info-box-text">GTK</span>
-                                                    <span class="info-box-number">1,410</span>
+                                                    <span class="info-box-number">{{ $profil->gtk ?? 0 }}</span>
                                                 </div>
                                                 <!-- /.info-box-content -->
                                             </div>
@@ -172,83 +212,155 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="d-flex">
+                                        @isset($profil->instagram)
+                                            <a href="{{ $profil->instagram }}" class="btn btn-lg"
+                                                style="background-color: rgba(37, 181, 233, 0.1);margin-left: 8px;"
+                                                target="_blank"><i class="bi bi-instagram text-danger"></i></a>
+                                        @endisset
+                                        @isset($profil->facebook)
+                                            <a href="{{ $profil->facebook }}" class="btn btn-lg"
+                                                style="background-color: rgba(37, 181, 233, 0.1);margin-left: 15px;"
+                                                target="_blank"><i class="bi bi-facebook text-info"></i></a>
+                                        @endisset
+                                        @isset($profil->twitter)
+                                            <a href="{{ $profil->twitter }}" class="btn btn-lg"
+                                                style="background-color: rgba(37, 181, 233, 0.1);margin-left: 15px;"
+                                                target="_blank"><i class="bi bi-twitter text-info"></i></a>
+                                        @endisset
+                                        @isset($profil->tiktok)
+                                            <a href="{{ $profil->tiktok }}" class="btn btn-lg"
+                                                style="background-color: rgba(37, 181, 233, 0.1);margin-left: 15px;"
+                                                target="_blank"><i class="bi bi-tiktok text-dark"></i></a>
+                                        @endisset
+                                        @isset($profil->youtube)
+                                            <a href="{{ $profil->youtube }}" class="btn btn-lg"
+                                                style="background-color: rgba(37, 181, 233, 0.1);margin-left: 15px;"
+                                                target="_blank"><i class="bi bi-youtube text-danger"></i></a>
+                                        @endisset
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="card-footer">
+                            <p class="text-muted"><span class="text-danger">* </span>Note dapat diinput oleh sekolah
+                            </p>
+                        </div>
                     </div>
-                    <div class="chart tab-pane" id="edit-data-sekolah">
-                        {{-- ---------------------------------------------------------------------------------------- FORM PROFIL SEKOLAH ---------------------------------------------------------------------------------------- --}}
-                        <form action="/profil/{{ $profil->id }}" method="POST">
-                            @csrf
-                            @method('put')
-                            <input type="hidden" name="profil_depo_id" value="{{ $profil->id }}">
+                    @if (Auth::user()->hasRole('sekolah'))
+                        <div class="chart tab-pane" id="edit-data-sekolah">
+                            {{-- ---------------------------------------------------------------------------------------- FORM PROFIL SEKOLAH ---------------------------------------------------------------------------------------- --}}
+                            <form action="/profil/{{ $profil->id }}" method="POST">
+                                @csrf
+                                @method('put')
+                                <input type="hidden" name="profil_depo_id" value="{{ $profil->id }}">
 
-                            <div class="card-body">
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Nama Kepala Sekolah</label>
-                                    <input type="text" class="form-control col-sm-6" placeholder="Kepala Sekolah"
-                                        id="kepala" name="nama_kepala_sekolah"
-                                        value="{{ $profil->nama_kepala_sekolah, old('nama_kepala_sekolah') }}">
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Nama Kepala Sekolah</label>
+                                        <input type="text" class="form-control col-sm-6" placeholder="Kepala Sekolah"
+                                            id="kepala" name="nama_kepala_sekolah"
+                                            value="{{ $profil->nama_kepala_sekolah, old('nama_kepala_sekolah') }}">
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Jumlah Rombel</label>
+                                        <input type="number" class="form-control col-sm-6" placeholder="Jumlah Rombel"
+                                            id="jml_rombel" name="jml_rombel"
+                                            value="{{ $profil->jml_rombel, old('jml_rombel') }}">
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Jumlah Guru dan Tenaga Kependidikan</label>
+                                        <input type="number" class="form-control col-sm-6"
+                                            placeholder="Jumlah Guru dan Tenaga Kependidikan" id="jml_rombel" name="gtk"
+                                            value="{{ $profil->gtk, old('gtk') }}">
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Kabupaten</label>
+                                        <input type="text" class="form-control col-sm-6" placeholder="Kabupaten"
+                                            id="kabupaten" name="kabupaten"
+                                            value="{{ $profil->kabupaten, old('kabupaten') }}">
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Kecamatan</label>
+                                        <input type="text" class="form-control col-sm-6" placeholder="Kecamatan"
+                                            id="kecamatan" name="kecamatan"
+                                            value="{{ $profil->kecamatan, old('kecamatan') }}">
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Alamat</label>
+                                        <input type="text" class="form-control col-sm-6" placeholder="Alamat" id="alamat"
+                                            name="alamat" value="{{ $profil->alamat, old('alamat') }}">
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Lintang</label>
+                                        <input type="text" class="form-control col-sm-6" placeholder="Lintang" id="lintang"
+                                            name="lat" value="{{ $profil->lat, old('lintang') }}">
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Bujur</label>
+                                        <input type="text" class="form-control col-sm-6" placeholder="Bujur" id="bujur"
+                                            name="long" value="{{ $profil->long, old('bujur') }}">
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Email</label>
+                                        <input type="email" class="form-control col-sm-6" placeholder="Email" id="email"
+                                            name="email" value="{{ $profil->email, old('email') }}">
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Instagram</label>
+                                        <input type="text" class="form-control col-sm-6" placeholder="Instagram"
+                                            id="instagram" name="instagram"
+                                            value="{{ $profil->instagram, old('instagram') }}" required>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Facebook</label>
+                                        <input type="text" class="form-control col-sm-6" placeholder="Facebook"
+                                            id="facebook" name="facebook"
+                                            value="{{ $profil->facebook, old('facebook') }}">
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Twitter</label>
+                                        <input type="text" class="form-control col-sm-6" placeholder="Twitter" id="twitter"
+                                            name="twitter" value="{{ $profil->twitter, old('twitter') }}">
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Tiktok</label>
+                                        <input type="text" class="form-control col-sm-6" placeholder="Tiktok" id="tiktok"
+                                            name="tiktok" value="{{ $profil->tiktok, old('tiktok') }}">
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Youtube</label>
+                                        <input type="text" class="form-control col-sm-6" placeholder="Youtube" id="youtube"
+                                            name="youtube" value="{{ $profil->youtube, old('youtube') }}" required>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Website</label>
+                                        <input type="text" class="form-control col-sm-6" placeholder="Website" id="website"
+                                            name="website" value="{{ $profil->website, old('website') }}">
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Nomor Telepon</label>
+                                        <input type="text" class="form-control col-sm-6" placeholder="Nomor Telepon"
+                                            id="no_telp" name="no_telp" required
+                                            value="{{ $profil->nomor_telepon, old('no_telp') }}">
+                                    </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Jumlah Rombel</label>
-                                    <input type="number" class="form-control col-sm-6" placeholder="Jumlah Rombel"
-                                        id="jml_rombel" name="jml_rombel"
-                                        value="{{ $profil->jml_rombel, old('jml_rombel') }}">
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Kabupaten</label>
-                                    <input type="text" class="form-control col-sm-6" placeholder="Kabupaten" id="kabupaten"
-                                        name="kabupaten" value="{{ $profil->kabupaten, old('kabupaten') }}">
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Kecamatan</label>
-                                    <input type="text" class="form-control col-sm-6" placeholder="Kecamatan" id="kecamatan"
-                                        name="kecamatan" value="{{ $profil->kecamatan, old('kecamatan') }}">
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Alamat</label>
-                                    <input type="text" class="form-control col-sm-6" placeholder="Alamat" id="alamat"
-                                        name="alamat" value="{{ $profil->alamat, old('alamat') }}">
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Lintang</label>
-                                    <input type="text" class="form-control col-sm-6" placeholder="Lintang" id="lintang"
-                                        name="lat" value="{{ $profil->lat, old('lintang') }}">
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Bujur</label>
-                                    <input type="text" class="form-control col-sm-6" placeholder="Bujur" id="bujur"
-                                        name="long" value="{{ $profil->long, old('bujur') }}">
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Email</label>
-                                    <input type="email" class="form-control col-sm-6" placeholder="Email" id="email"
-                                        name="email" value="{{ $profil->email, old('email') }}">
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Website</label>
-                                    <input type="text" class="form-control col-sm-6" placeholder="Website" id="website"
-                                        name="website" value="{{ $profil->website, old('website') }}">
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Nomor Telepon</label>
-                                    <input type="text" class="form-control col-sm-6" placeholder="Nomor Telepon"
-                                        id="no_telp" name="no_telp" required
-                                        value="{{ $profil->nomor_telepon, old('no_telp') }}">
-                                </div>
-                            </div>
-                            <!-- /.card-body DATA SEKOLAH-->
+                                <!-- /.card-body DATA SEKOLAH-->
 
-                            <div class="card-footer">
-                                <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
-                            </div>
-                        </form>
-                    </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn text-white"
+                                        style="background-color: #00a65b">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
+                    @endif
                     <div class="chart tab-pane p-3" id="foto-sekolah" style="height: 40rem;overflow: auto;">
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
-                            <a href="/koleksi/create/{{ $profil->id }}" class="btn text-white" style="background-color: #00a65b" data-toggle="modal"
-                                data-target="#buat-koleksi">Buat Koleksi</a>
+                            @if (Auth::user()->hasRole('sekolah'))
+                                <a href="/koleksi/create/{{ $profil->id }}" class="btn text-white"
+                                    style="background-color: #00a65b" data-toggle="modal" data-target="#buat-koleksi">Buat
+                                    Koleksi</a>
+                            @endif
                         </div>
                         <div class="row row-cols-2">
                             {{-- ---------------------------------------------------------------------------------------- KOLEKSI ---------------------------------------------------------------------------------------- --}}
@@ -291,7 +403,8 @@
                                                             class="d-inline-block">
                                                             @csrf
                                                             @method('delete')
-                                                            <button type="submit" class="btn text-white" style="background-color: #25b5e9"
+                                                            <button type="submit" class="btn text-white"
+                                                                style="background-color: #25b5e9"
                                                                 onclick="return confirm('Apakah anda yakin akan menghapus koleksi ini?')">Hapus</button>
                                                         </form>
                                                     </div>
@@ -310,89 +423,93 @@
 
                         </div>
 
-                        <div class="modal fade" id="edit-koleksi">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <form action="/koleksi/update-koleksi" method="post">
-                                        @csrf
-                                        @method('Patch')
+                        @if (Auth::user()->hasRole('sekolah'))
+                            <div class="modal fade" id="edit-koleksi">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <form action="/koleksi/update-koleksi" method="post">
+                                            @csrf
+                                            @method('Patch')
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Edit Koleksi</h4>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <input type="hidden" name="profil_depo_id" value="{{ $profil->id }}">
+                                                <input type="hidden" name="slug" class="slug-edit-koleksi">
+                                                <div class="mb-3">
+                                                    <label for="nama" class="form-label">Nama Koleksi</label>
+                                                    <input type="text" class="form-control input-nama" id="nama"
+                                                        name="nama" placeholder="Nama Koleksi" required>
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                                <button type="button" class="btn btn-default"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                            {{-- ---------------------------------------------------------------------------------------- FORM KOLEKSI BARU ---------------------------------------------------------------------------------------- --}}
+                            <div class="modal fade" id="buat-koleksi" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
                                         <div class="modal-header">
-                                            <h4 class="modal-title">Edit Koleksi</h4>
+                                            <h5 class="modal-title" id="exampleModalLabel">Koleksi
+                                            </h5>
                                             <button type="button" class="close" data-dismiss="modal"
                                                 aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div class="modal-body">
-
-                                            <input type="hidden" name="profil_depo_id" value="{{ $profil->id }}">
-                                            <input type="hidden" name="slug" class="slug-edit-koleksi">
-                                            <div class="mb-3">
-                                                <label for="nama" class="form-label">Nama Koleksi</label>
-                                                <input type="text" class="form-control input-nama" id="nama" name="nama"
-                                                    placeholder="Nama Koleksi" required>
-                                            </div>
-
+                                            <form action="/koleksi" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="profil_depo_id" value="{{ $profil->id }}">
+                                                <div class="mb-3">
+                                                    <label for="nama" class="form-label">Nama Koleksi</label>
+                                                    <input type="text"
+                                                        class="form-control @error('nama') is-invalid @enderror" id="nama"
+                                                        name="nama" placeholder="Nama Koleksi" required
+                                                        value="{{ old('nama') }}">
+                                                    @error('nama')
+                                                        <div class="invalid-feedback d-block">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                                <div class="mb-3">
+                                                    <select class="custom-select" name="jeniskoleksi_id">
+                                                        @foreach ($jenis_koleksis as $jenis)
+                                                            @if ($jenis->nama != 'lain')
+                                                                <option value="{{ $jenis->id }}"
+                                                                    style="text-transform: capitalize;">
+                                                                    {{ str_replace('_', ' ', $jenis->nama) }}</option>
+                                                            @endif
+                                                        @endforeach
+                                                        <option value="5">Lainnya</option>
+                                                    </select>
+                                                </div>
+                                                <button type="submit" class="btn text-white"
+                                                    style="background-color: #00a65b">Simpan</button>
+                                            </form>
                                         </div>
-                                        <div class="modal-footer justify-content-between">
-                                            <button type="button" class="btn btn-default"
-                                                data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary">Save changes</button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <!-- /.modal-content -->
-                            </div>
-                            <!-- /.modal-dialog -->
-                        </div>
-
-
-                        {{-- ---------------------------------------------------------------------------------------- FORM KOLEKSI BARU ---------------------------------------------------------------------------------------- --}}
-                        <div class="modal fade" id="buat-koleksi" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Koleksi
-                                        </h5>
-                                        <button type="button" class="close" data-dismiss="modal"
-                                            aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="/koleksi" method="POST">
-                                            @csrf
-                                            <input type="hidden" name="profil_depo_id" value="{{ $profil->id }}">
-                                            <div class="mb-3">
-                                                <label for="nama" class="form-label">Nama Koleksi</label>
-                                                <input type="text" class="form-control @error('nama') is-invalid @enderror"
-                                                    id="nama" name="nama" placeholder="Nama Koleksi" required
-                                                    value="{{ old('nama') }}">
-                                                @error('nama')
-                                                    <div class="invalid-feedback d-block">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
-                                            </div>
-                                            <div class="mb-3">
-                                                <select class="custom-select" name="jeniskoleksi_id">
-                                                    @foreach ($jenis_koleksis as $jenis)
-                                                        @if ($jenis->nama != 'lain')
-                                                            <option value="{{ $jenis->id }}"
-                                                                style="text-transform: capitalize;">
-                                                                {{ str_replace('_', ' ', $jenis->nama) }}</option>
-                                                        @endif
-                                                    @endforeach
-                                                    <option value="5">Lainnya</option>
-                                                </select>
-                                            </div>
-                                            <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
-                                        </form>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @endif
+
+
                     </div>
                 </div>
             </div>
@@ -502,7 +619,8 @@
                                 <tr>
                                     <th class="text-center">Jumlah</th>
                                     <td class="text-center">{{ $profil->jml_siswa_l + $profil->jml_siswa_p }}</td>
-                                    <td class="text-center">{{ $profil_depo->depo_jml_siswa_l + $profil_depo->depo_jml_siswa_p }}
+                                    <td class="text-center">
+                                        {{ $profil_depo->depo_jml_siswa_l + $profil_depo->depo_jml_siswa_p }}
                                     </td>
                                 </tr>
                             </tbody>
@@ -525,17 +643,21 @@
                             <li class="nav-item">
                                 <a class="nav-link text-white awalKopetensi active" href="#kompetensi-keahlian"
                                     data-toggle="tab"><i class="bi bi-gear-wide-connected mr-1"></i>Kompetensi
-                                    Keahlian</a>
+                                    Keahlian Terkini</a>
                             </li>
                             <li class="nav-item dropdown" style="position: absolute; right: 0;">
                                 <a class="nav-link" data-toggle="dropdown" href="#"><i
                                         class="bi bi-three-dots-vertical text-white"></i>
                                 </a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item tambahsiswa" data-toggle="tab" href="#tambah-siswa">Tambah
+                                    <a class="dropdown-item tombol-kompeten-depo" data-toggle="tab"
+                                        href="#kopetensi-depo">Kompetensi
+                                        Keahlian Depodik</a>
+                                    <a class="dropdown-item tambahsiswa" data-toggle="tab" href="#tambah-siswa"
+                                        style="{{ Auth::user()->hasRole('sekolah') ? '' : 'display:none;' }}">Tambah
                                         Siswa</a>
-                                    <a class="dropdown-item tambahkopetensi" data-toggle="tab"
-                                        href="#tambah-jurusan">Tambah
+                                    <a class="dropdown-item tambahkopetensi" data-toggle="tab" href="#tambah-jurusan"
+                                        style="{{ Auth::user()->hasRole('sekolah') ? '' : 'display:none;' }}">Tambah
                                         Jurusan</a>
                                 </div>
                             </li>
@@ -587,7 +709,36 @@
                                     </div>
                                 @endif
                             </div>
-                            <div class="chart tab-pane isitambahsiswa" id="tambah-siswa">
+                            <div class="tab-pane kompeten-depo" id="kopetensi-depo">
+                                @if (count($jurusanDepos) > 0)
+                                    <table class="table table-bordered table-hover">
+                                        <tbody>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Kompetensi Keahlian</th>
+                                                <th>L</th>
+                                                <th>P</th>
+                                            </tr>
+
+                                            @foreach ($jurusanDepos as $key => $kopetensikeahlian)
+                                                <tr class="barisKopetensi">
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td>{{ $kopetensikeahlian->kompetensi }}</td>
+                                                    <td>{{ $kopetensikeahlian->jml_lk }}</td>
+                                                    <td>{{ $kopetensikeahlian->jml_pr }}</td>
+                                                </tr>
+                                            @endforeach
+
+                                        </tbody>
+                                    </table>
+                                @else
+                                    <div class="alert text-center text-white" role="alert" style="background: #00a65b;">
+                                        Maaf tidak ada data ditemukan
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="chart tab-pane isitambahsiswa" id="tambah-siswa"
+                                style="{{ Auth::user()->hasRole('sekolah') ? '' : 'display:none;' }}">
                                 @if (count($kopetensikeahlians) > 0)
                                     <form action="/kompeten/tambahsiswa/{{ $profil->id }}" method="POST">
                                         @csrf
@@ -639,28 +790,30 @@
                                     </div>
                                 @endif
                             </div>
-                            <div class="chart tab-pane isitambahkopetensi" id="tambah-jurusan">
-                                <form style=" {{ count($kopetensikeahlians) > 0 ? 'height: 10rem;' : 'height: 18rem;' }}"
-                                    action="/kompeten" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="profil_id" value="{{ $profil->id }}">
-                                    <div class="card-body p-0 ">
-                                        <div class="form-group">
-                                            <label>Tambah Jurusan</label>
+                            <div class="chart tab-pane isitambahkopetensi" id="tambah-jurusan" style="{{ Auth::user()->hasRole('sekolah') ? '' : 'display:none;' }}>
+                                    <form style="
+                                {{ count($kopetensikeahlians) > 0 ? 'height: 10rem;' : 'height: 18rem;' }}"
+                                action="/kompeten" method="POST">
+                                @csrf
+                                <input type="hidden" name="profil_id" value="{{ $profil->id }}">
+                                <div class="card-body p-0 ">
+                                    <div class="form-group">
+                                        <label>Tambah Jurusan</label>
 
-                                            <select class="fstdropdown-select select-jurusan" id="select" multiple
-                                                name="jurusanTerpilih[]">
-                                                @foreach ($semua_jurusan as $jurusan)
-                                                    <option value="{{ $jurusan->id }}">{{ $jurusan->kompetensi }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                        <select class="fstdropdown-select select-jurusan" id="select" multiple
+                                            name="jurusanTerpilih[]">
+                                            @foreach ($semua_jurusan as $jurusan)
+                                                <option value="{{ $jurusan->id }}">{{ $jurusan->kompetensi }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+
                                     </div>
-                                    <!-- /.card-body -->
-                                    <div class="card-footer p-0 mt-3" style="background: none;">
-                                        <button type="submit" class="btn btn-success">Simpan</button>
-                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+                                <div class="card-footer p-0 mt-3" style="background: none;">
+                                    <button type="submit" class="btn btn-success">Simpan</button>
+                                </div>
                                 </form>
 
                                 @if (count($kopetensikeahlians) > 0)
@@ -866,11 +1019,13 @@
         const buttonTambahSiswa = document.querySelector('.tambahsiswa');
         const awalKopetensi = document.querySelector('.awalKopetensi');
         const tambahkopetensi = document.querySelector('.tambahkopetensi');
+        const tombolKompetenDepo = document.querySelector('.tombol-kompeten-depo');
 
         // isi
         const isikopetensi = document.querySelector('.isikopetensi');
         const isitambahsiswa = document.querySelector('.isitambahsiswa');
         const isitambahkopetensi = document.querySelector('.isitambahkopetensi');
+        const kompetenDepo = document.querySelector('.kompeten-depo');
 
         buttonTambahSiswa.addEventListener('click', function() {
             barisKopetensi.forEach((e, i) => {
@@ -887,6 +1042,7 @@
             isikopetensi.classList.remove('active');
             isitambahkopetensi.classList.remove('active');
             awalKopetensi.classList.remove('active');
+            kompetenDepo.classList.remove('active');
         })
 
         awalKopetensi.addEventListener('click', function() {
@@ -904,6 +1060,7 @@
             awalKopetensi.classList.add('active');
             isitambahkopetensi.classList.remove('active');
             isitambahsiswa.classList.remove('active');
+            kompetenDepo.classList.remove('active');
         })
 
         tambahkopetensi.addEventListener('click', function() {
@@ -911,7 +1068,18 @@
             isikopetensi.classList.remove('active');
             awalKopetensi.classList.remove('active');
             isitambahkopetensi.classList.add('active');
+            kompetenDepo.classList.remove('active');
         })
+
+        tombolKompetenDepo.addEventListener('click', function() {
+            isitambahsiswa.classList.remove('active');
+            isikopetensi.classList.remove('active');
+            awalKopetensi.classList.remove('active');
+            isitambahkopetensi.classList.remove('active');
+            kompetenDepo.classList.add('active');
+        })
+
+
 
 
         // search tambah jurusan

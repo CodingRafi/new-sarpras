@@ -34,8 +34,8 @@ class ProfilSeeder extends Seeder
                 'nomor_telepon' => $profil['depo_nomor_telepon'],
                 'nomor_fax' => $profil['depo_nomor_fax'],
                 'akreditas' => $profil['depo_akreditas'],
-                'jml_siswa_l' => 0,
-                'jml_siswa_p' => 0,
+                'jml_siswa_l' => $profil['jml_lk'] ?? 0,
+                'jml_siswa_p' => $profil['jml_lk'] ?? 0,
             ]);
         }
     }
