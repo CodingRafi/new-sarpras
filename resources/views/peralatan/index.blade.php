@@ -32,35 +32,54 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                            <tr class="text-center">
-                                <th>No</th>
-                                <th>Kompetensi Keahlian</th>
-                                <th>Nama</th>
-                                <th>Kategori</th>
-                                <th>Rasio</th>
-                                <th>Deskripsi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="text-center">1</td>
-                                <td class="text-center">Rekayasa Perangkat Lunak</td>
-                                <td class="text-center">Access Point Indoor</td>
-                                <td class="text-center">18 unit / Ruang Praktik</td>
-                                <td class="text-center">18 unit / Ruang Praktik</td>
-                                <td class="text-center">
-                                    <div style="overflow: auto; max-height: 110px;">
-                                        Alat untuk menghubungkan antar PC menggunakan gelombang radio (dalam suatu ruangan).
-                                        Connectivity : 802.11 n/g/b wireless Operating Modes : Access Point (AP), WDS with
-                                        AP,
-                                        WDS/Bridge (No AP Broadcast), Wireless Client VLAN/SSID Support
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    @if (count($peralatans) > 0)
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>No</th>
+                                    <th>Kompetensi Keahlian</th>
+                                    <th>Nama</th>
+                                    <th>Kategori</th>
+                                    <th>Rasio</th>
+                                    <th>Deskripsi</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($peralatans as $peralatan)
+                                    <tr>
+                                        <td class="text-center">
+                                            {{ ($peralatans->currentpage() - 1) * $peralatans->perpage() + $loop->index + 1 }}
+                                        </td>
+                                        <td class="text-center">{{ $peralatan->kompetensi }}</td>
+                                        <td class="text-center">{{ $peralatan->nama }}</td>
+                                        <td class="text-center">{{ $peralatan->kategori }}</td>
+                                        <td class="text-center">{{ $peralatan->rasio }} unit / Ruang Praktik</td>
+                                        <td class="text-center">
+                                            <div style="overflow: auto; max-height: 110px;">{{ $peralatan->deskripsi }}
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="/peralatan/{{ $peralatan->id }}/edit"
+                                                class="btn btn-warning text-white">Edit</a>
+                                            <form action="/peralatan/{{ $peralatan->id }}" method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn btn-danger mt-2"
+                                                    onclick="return confirm('Apakah anda yakin akan menghapus peralatan ini?')">Hapus</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @else
+                        <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                            <div class="alert" role="alert">
+                               Maaf tidak ada data ditemukan
+                            </div>
+                        </div>
+                    @endif
                 </div>
                 {{-- {{ $variable->link() }} --}}
             </div>
@@ -77,15 +96,15 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" action="/peralatan" method="post">
+                            @csrf
                             <div class="card-body">
                                 {{-- ---------------------------------------------------------------------------------------- KOMPETENSI KEAHLIAN ---------------------------------------------------------------------------------------- --}}
                                 <div class="form-group row">
                                     <label for="kompetensi-keahlian" class="col-sm-3 col-form-label">Kompetensi
                                         Keahlian</label>
                                     <div class="col-sm-9">
-                                        <select class="fstdropdown-select select-jurusan" id="select"
-                                            name="jurusan">
+                                        <select class="fstdropdown-select select-jurusan" id="select" name="komli_id">
                                             @foreach ($semua_jurusan as $jurusan)
                                                 <option value="{{ $jurusan->id }}">{{ $jurusan->kompetensi }}
                                                 </option>
@@ -97,7 +116,7 @@
                                 <div class="form-group row">
                                     <label for="kekurangan" class="col-sm-3 col-form-label">Nama</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="kekurangan" name="nama">
+                                        <input type="text" class="form-control" id="kekurangan" name="nama" required>
                                     </div>
                                 </div>
 
@@ -105,7 +124,7 @@
                                 <div class="form-group row">
                                     <label for="kategori" class="col-sm-3 col-form-label">Kategori</label>
                                     <div class="col-sm-9">
-                                        <select name="kategori" id="" class="custom-select">
+                                        <select name="kategori" id="" class="custom-select" required>
                                             <option value="utama">Utama</option>
                                             <option value="pendukung">Pendukung</option>
                                         </select>
@@ -113,16 +132,17 @@
                                 </div>
                                 {{-- ---------------------------------------------------------------------------------------- KEKURANGAN ---------------------------------------------------------------------------------------- --}}
                                 <div class="form-group row">
-                                    <label for="kekurangan" class="col-sm-3 col-form-label">Rasio (per ruang praktik)</label>
+                                    <label for="kekurangan" class="col-sm-3 col-form-label">Rasio (per ruang
+                                        praktik)</label>
                                     <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="kekurangan">
+                                        <input type="number" class="form-control" id="kekurangan" required name="rasio">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="kekurangan" class="col-sm-3 col-form-label">Deskripsi</label>
                                     <div class="col-sm-9">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="deskripsi"></textarea>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="deskripsi" required></textarea>
                                     </div>
                                 </div>
                             </div>

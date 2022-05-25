@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Peralatan extends Model
 {
     use HasFactory;
+
+    protected $guarded =[
+        "id"
+    ];
+
+    public function komli(){
+        return $this->belongsTo(Komli::class);
+    }
 }
