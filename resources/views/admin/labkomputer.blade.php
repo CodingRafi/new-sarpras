@@ -27,12 +27,11 @@
 {{-- Table --}}
 <div class="container-fluid">
     <div class="card">
-        <div class="card-header bg-warning d-flex p-0">
+        <div class="card-header d-flex p-0" style="background-color: #25b5e9">
             <h3 class="card-title p-3 text-white">Lab Komputer</h3>
         </div>
         <div class="card-body">
             {{-- Table --}}
-            <div class="table-responsive">
                 @if (count($usulanBangunans) > 0)
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover mt-2">

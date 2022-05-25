@@ -2,14 +2,9 @@
 
 @section('tambahcss')
     <style>
-        /* .row-data .col-3 {
-                                    max-width: 15.5rem !important;
-                                } */
-
         .card-header h4 {
             font-size: 1.2rem !important
         }
-
     </style>
 @endsection
 
@@ -35,7 +30,7 @@
                 <div class="card">
                     {{-- card header --}}
                     <div class="card-header text-white" style="background-color: #00a65b">
-                        <h4 class="card-title">Jumlah Rombel</h4>
+                        <h4 class="card-title font-weight-bold">Jumlah Rombel</h4>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool text-white"></button>
                         </div>
@@ -53,7 +48,7 @@
                 <div class="card">
                     {{-- card header --}}
                     <div class="card-header text-white" style="background-color: #25b5e9">
-                        <h4 class="card-title">Kondisi Ideal</h4>
+                        <h4 class="card-title font-weight-bold">Kondisi Ideal</h4>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool text-white"></button>
                         </div>
@@ -62,7 +57,6 @@
                     {{-- card body --}}
                     <div class="card-body" style="height: 112px;">
                         <h1 class="text-center font-weight-bold pt-2">{{ $dataKelas->kondisi_ideal }}</h1>
-                        {{-- <div id="emailHelp" class="form-text text-center">{{ ($dataKelas->kondisi_ideal == $dataKelas->ketersediaan) ? 'Ideal' : 'Tidak Ideal' }}</div> --}}
                     </div>
                     {{-- end card body --}}
                 </div>
@@ -72,7 +66,7 @@
                 <div class="card">
                     {{-- card header --}}
                     <div class="card-header text-white" href="" style="background-color: #fcc12d">
-                        <h4 class="card-title">Ketersediaan</h4>
+                        <h4 class="card-title font-weight-bold">Ketersediaan</h4>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool text-white"><i class="bi bi-pencil-square" data-toggle="modal" data-target="#modal-ketersediaan"></i></button>
                         </div>
@@ -90,7 +84,7 @@
                 <div class="card">
                     {{-- card header --}}
                     <div class="card-header text-white" href="" style="background-color: #263238">
-                        <h4 class="card-title">Kekurangan</h4>
+                        <h4 class="card-title font-weight-bold">Kekurangan</h4>
                     </div>
                     {{-- end card header --}}
                     {{-- card body --}}
@@ -124,7 +118,7 @@
 
         <div class="card">
             <div class="card-header" style="background-color: #25b5e9">
-                <h3 class="card-title text-white pt-2">Usulan Ruang Kelas Baru</h3>
+                <h3 class="card-title text-white pt-2 font-weight-bold">Usulan Ruang Kelas Baru</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
                         data-target="#modal-default"><i class="bi bi-plus"></i> Tambah Usulan
@@ -132,28 +126,28 @@
                 </div>
             </div>
             <!-- /.card-header DATA SEKOLAH-->
-            <div class="card-body p-0">
+            <div class="card-body">
                 <div class="tab-content p-0">
                     <div class="tab-pane active" id="data-usulan-sekolah">
-                        <div class="col">
-                            <div class="col-lg-12">
+                        <div class="table-responsive">
+                            {{-- <div class="col-lg-12"> --}}
                                 @if (count($usulanKelas) > 0)
                                     <table class="table table-bordered mt-3">
                                         {{-- judul table --}}
                                         <thead>
                                             <tr>
-                                                <th rowspan="2" class="text-center" style="line-height: 70px">No</th>
-                                                <th rowspan="2" class="text-center" style="line-height: 70px">Jenis Ruang
+                                                <th rowspan="2" class="text-center" style="vertical-align: middle">No</th>
+                                                <th rowspan="2" class="text-center" style="vertical-align: middle">Jenis Ruang
                                                 </th>
-                                                <th rowspan="2" class="text-center" style="line-height: 70px">Jumlah
+                                                <th rowspan="2" class="text-center" style="vertical-align: middle">Jumlah
                                                     Ruang
                                                     Kelas</th>
                                                 <th colspan="2" class="text-center">Ketersediaan Lahan</th>
-                                                <th rowspan="2" class="text-center" style="line-height: 70px">Proposal
+                                                <th rowspan="2" class="text-center" style="vertical-align: middle">Proposal
                                                 </th>
-                                                <th rowspan="2" class="text-center" style="line-height: 70px">Keterangan
+                                                <th rowspan="2" class="text-center" style="vertical-align: middle">Keterangan
                                                 </th>
-                                                <th rowspan="2" class="text-center" style="line-height: 70px">Aksi</th>
+                                                <th rowspan="2" class="text-center" style="vertical-align: middle">Aksi</th>
                                             </tr>
                                             <tr>
                                                 <th scope="col" class="text-center">Luas Lahan</th>
@@ -195,7 +189,7 @@
                                                             @csrf
                                                             @method('delete')
 
-                                                            <button type="submit" class="btn text-white"
+                                                            <button type="submit" class="btn text-white mt-2"
                                                                 style="background-color: #00a65b"
                                                                 onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
 
@@ -213,7 +207,7 @@
                                         </div>
                                     </div>
                                 @endif
-                            </div>
+                            {{-- </div> --}}
                         </div>
                     </div>
                 </div>

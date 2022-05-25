@@ -14,6 +14,12 @@
              !important
         }
 
+        @media only screen and (max-width: 480px) {
+        .btn-batal {
+            margin-top: 5px;
+        }
+    }
+
     </style>
 @endsection
 
@@ -39,7 +45,7 @@
                 {{-- ---------------------------------------------------------------------------------------- JUMLAH PESERTADIDIK ---------------------------------------------------------------------------------------- --}}
                 <div class="card card-success">
                     <div class="card-header">
-                        <h3 class="card-title ">Jumlah Peserta Didik</h3>
+                        <h3 class="card-title font-weight-bold">Jumlah Peserta Didik</h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool"><i class="fas fa-minus"
                                     style="display: none"></i>
@@ -56,7 +62,7 @@
                 {{-- ---------------------------------------------------------------------------------------- KONDISI IDEAL ---------------------------------------------------------------------------------------- --}}
                 <div class="card card-info">
                     <div class="card-header" style="background-color: #25b5e9">
-                        <h3 class="card-title">Kondisi Ideal</h3>
+                        <h3 class="card-title font-weight-bold">Kondisi Ideal</h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool text-white" data-toggle="modal"
                                 data-target="#edit-ideal"><i class="bi bi-pencil-square"></i>
@@ -105,7 +111,7 @@
                 {{-- ---------------------------------------------------------------------------------------- KETERSEDIAAN ---------------------------------------------------------------------------------------- --}}
                 <div class="card card-warning">
                     <div class="card-header">
-                        <h3 class="card-title text-white">Ketersediaan</h3>
+                        <h3 class="card-title text-white font-weight-bold">Ketersediaan</h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool text-white" data-toggle="modal"
                                 data-target="#edit-ketersediaan"><i class="bi bi-pencil-square"></i>
@@ -155,7 +161,7 @@
                 {{-- ---------------------------------------------------------------------------------------- KEKURANGAN ---------------------------------------------------------------------------------------- --}}
                 <div class="card card-dark">
                     <div class="card-header">
-                        <h3 class="card-title">Kekurangan</h3>
+                        <h3 class="card-title font-weight-bold">Kekurangan</h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-toggle="modal"
                                 data-target="#edit-kekurangan"><i class="bi bi-pencil-square"></i>
@@ -204,68 +210,67 @@
         {{-- ---------------------------------------------------------------------------------------- USULAN TOILET ---------------------------------------------------------------------------------------- --}}
         <div class="card card-info">
             <div class="card-header" style="background-color: #25b5e9">
-                <h3 class="card-title">Usulan Toilet</h3>
+                <h3 class="card-title font-weight-bold">Usulan Toilet</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
                         data-target="#tambah-usulan"><i class="bi bi-plus"></i> Tambah Usulan
                     </button>
                 </div>
             </div>
-            <div class="card-body table-responsive">
+            <div class="card-body">
                 @if (count($usulans) > 0)
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                            <tr class="text-center">
-                                <th rowspan="2" style="vertical-align: middle;">No</th>
-                                <th rowspan="2" style="vertical-align: middle;">Jenis Ruang</th>
-                                <th colspan="2">Ketersedian Lahan</th>
-                                <th rowspan="2" style="vertical-align: middle;">Proposal</th>
-                                <th rowspan="2" style="vertical-align: middle;">Keterangan</th>
-                                <th rowspan="2" style="vertical-align: middle;">Aksi</th>
-                            </tr>
-                            <tr class="text-center">
-                                <th>Gambar Lahan</th>
-                                <th>Luas Lahan</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($usulans as $key => $usulan)
-                                <tr>
-                                    <th class="text-center">{{ $loop->iteration }}</th>
-                                    <td class="text-center text-capitalize">
-                                        {{ str_replace('_', ' ', $usulan->jenis) }}</td>
-                                    <td class="text-center">{{ $usulan->luas_lahan }} M</td>
-                                    <td class="text-center" style="vertical-align: middle">
-                                        @foreach ($usulanFotos[$key] as $ke => $foto)
-                                            <a href="{{ asset('storage/' . $foto->nama) }}" class="fancybox"
-                                                data-fancybox="gallery{{ $key }}">
-                                                <img src="{{ asset('storage/' . $foto->nama) }}" class="rounded"
-                                                    style="object-fit: cover; width: 150px; aspect-ratio: 1/1;{{ $ke == 0 ? '' : 'display:none;' }}">
-                                            </a>
-                                        @endforeach
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="{{ asset('storage/' . $usulan->proposal) }}" target="_blank">
-                                            <img src="/img/pdf.png" alt="image" style="width: 30px">
-                                        </a>
-                                    </td>
-                                    <td class="text-center">{{ $usulan->keterangan }}</td>
-                                    <td class="text-center">
-                                        <a href="/usulan-bangunan/{{ $usulan->id }}/edit"
-                                            class="btn btn-warning text-white">Edit</a>
-
-                                        <form action="/usulan-bangunan/{{ $usulan->id }}" method="post">
-                                            @csrf
-                                            @method('delete')
-
-                                            <button type="submit" class="btn text-white" style="background-color: #00a65b"
-                                                onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
-
-                                        </form>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr class="text-center">
+                                    <th rowspan="2" style="vertical-align: middle;">No</th>
+                                    <th rowspan="2" style="vertical-align: middle;">Jenis Ruang</th>
+                                    <th colspan="2">Ketersedian Lahan</th>
+                                    <th rowspan="2" style="vertical-align: middle;">Proposal</th>
+                                    <th rowspan="2" style="vertical-align: middle;">Keterangan</th>
+                                    <th rowspan="2" style="vertical-align: middle;">Aksi</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                                <tr class="text-center">
+                                    <th>Gambar Lahan</th>
+                                    <th>Luas Lahan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($usulans as $key => $usulan)
+                                    <tr>
+                                        <th class="text-center">{{ $loop->iteration }}</th>
+                                        <td class="text-center text-capitalize">
+                                            {{ str_replace('_', ' ', $usulan->jenis) }}</td>
+                                        <td class="text-center">{{ $usulan->luas_lahan }} M</td>
+                                        <td class="text-center" style="vertical-align: middle">
+                                            @foreach ($usulanFotos[$key] as $ke => $foto)
+                                                <a href="{{ asset('storage/' . $foto->nama) }}" class="fancybox"
+                                                    data-fancybox="gallery{{ $key }}">
+                                                    <img src="{{ asset('storage/' . $foto->nama) }}" class="rounded"
+                                                        style="object-fit: cover; width: 150px; aspect-ratio: 1/1;{{ $ke == 0 ? '' : 'display:none;' }}">
+                                                </a>
+                                            @endforeach
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="{{ asset('storage/' . $usulan->proposal) }}" target="_blank">
+                                                <img src="/img/pdf.png" alt="image" style="width: 30px">
+                                            </a>
+                                        </td>
+                                        <td class="text-center">{{ $usulan->keterangan }}</td>
+                                        <td class="text-center">
+                                            <a href="/usulan-bangunan/{{ $usulan->id }}/edit"
+                                                class="btn btn-warning text-white">Edit</a>
+                                            <form action="/usulan-bangunan/{{ $usulan->id }}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn text-white mt-2 btn-batal" style="background-color: #00a65b"
+                                                    onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
+                                            </form>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 @else
                     <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
                         <div class="alert" role="alert">

@@ -37,7 +37,7 @@
                 <div class="card" style="border-radius: 0px 20px 0px 20px !important">
                     <div class="card-header"
                         style="background-color:#00a65b; border-radius: 0px 20px 0px 20px !important">
-                        <h4 class="text-center text-white font-weight-bold">Luas Lahan</h4>
+                        <h4 class="text-center text-white font-weight-bold">Total Luas Lahan</h4>
                     </div><!-- /.card-header -->
                     <div class="card-body">
                         <h1 class="text-center font-weight-bold pt-2">20m²</h1>
@@ -59,17 +59,6 @@
 
             <div class="col">
                 <div class="card" style="border-radius: 0px 20px 0px 20px !important">
-                    <div class="card-header bg-warning" style="border-radius: 0px 20px 0px 20px !important">
-                        <h4 class="text-center text-white font-weight-bold">Ketersedian Lahan</h4>
-                    </div><!-- /.card-header -->
-                    <div class="card-body">
-                        <h1 class="text-center font-weight-bold pt-2">{{ $luasKetersediaanLahan }} m²</h1>
-                    </div><!-- /.card-body -->
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card" style="border-radius: 0px 20px 0px 20px !important">
                     <div class="card-header bg-dark" style="border-radius: 0px 20px 0px 20px !important">
                         <h4 class="text-center font-weight-bold">Kekurangan Lahan</h4>
                     </div><!-- /.card-header -->
@@ -83,7 +72,7 @@
                 <div class="card" style="border-radius: 0px 20px 0px 20px !important">
                     <div class="card-header"
                         style="background-color: #e0e0e0; border-radius: 0px 20px 0px 20px !important">
-                        <h4 class="text-center font-weight-bold">Jumlah Usulan</h4>
+                        <h4 class="text-center font-weight-bold">Jumlah Usulan Lahan</h4>
                     </div><!-- /.card-header -->
                     <div class="card-body">
                         <h1 class="text-center font-weight-bold pt-2">{{ count($usulanLahans) }}</h1>
