@@ -27,16 +27,16 @@
 
         {{-- ---------------------------------------------------------------------------------------- KONDISI IDEAL ---------------------------------------------------------------------------------------- --}}
         <div class="info-box p-0 pimpinan-infobox">
-            <span class="info-box-icon p-4" style="background-color: #25b5e9; width: auto; min-width: 207px;">
+            <span class="info-box-icon p-4" style="background-color: #25b5e9; width: auto; min-width: 300px; height:150px">
                 <img src="/assets/img/icons/flaticons/town.png"
-                    style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
+                    style="filter: invert(100%); object-fit: cover; width: 80px; aspect-ratio: 1/1;">
                 <div class="ml-4">
-                    <span class="text-white">
+                    <span class="text-white" style="font-size: 25px">
                         Kondisi Ideal
                     </span>
                     <div class="d-flex align-items-end justify-content-center">
                         <h1 class="display-4 text-white">30</h1>
-                        <p class="text-white">/ Kantor</p>
+                        <p class="text-white" style="font-size: 15px">/ Kantor</p>
                     </div>
                 </div>
             </span>
@@ -51,16 +51,16 @@
 
         {{-- ---------------------------------------------------------------------------------------- KETERSEDIAAN ---------------------------------------------------------------------------------------- --}}
         <div class="info-box p-0 pimpinan-infobox">
-            <span class="info-box-icon p-4" style="background-color: #fcc12d; width: auto; min-width: 207px;">
+            <span class="info-box-icon p-4" style="background-color: #fcc12d; width: auto; min-width: 300px;">
                 <img src="/assets/img/icons/flaticons/building.png"
-                    style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
+                    style="filter: invert(100%); object-fit: cover; width: 80px; aspect-ratio: 1/1;">
                 <div class="ml-4 text-white">
-                    <span class="text white">
+                    <span class="text white" style="font-size: 25px">
                         Ketersediaan
                     </span>
                     <div class="d-flex align-items-end justify-content-center">
                         <h1 class="display-4 text-white">11</h1>
-                        <p class="text-white">/ Kantor</p>
+                        <p class="text-white" style="font-size: 15px">/ Kantor</p>
                     </div>
                 </div>
             </span>
@@ -76,16 +76,16 @@
 
         {{-- ---------------------------------------------------------------------------------------- KEKURANGAN ---------------------------------------------------------------------------------------- --}}
         <div class="info-box p-0 pimpinan-infobox">
-            <span class="info-box-icon p-4" style="background-color: #263238; width: auto; min-width: 207px;">
+            <span class="info-box-icon p-4" style="background-color: #263238; width: auto; min-width: 300px;">
                 <img src="/assets/img/icons/flaticons/school.png"
-                    style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
+                    style="filter: invert(100%); object-fit: cover; width: 80px; aspect-ratio: 1/1;">
                 <div class="ml-4">
-                    <span class="text-white">
+                    <span class="text-white" style="font-size: 25px">
                         Kekurangan
                     </span>
                     <div class="d-flex align-items-end justify-content-center">
                         <h1 class="display-4 text-white">3</h1>
-                        <p class="text-white">/ Kantor</p>
+                        <p class="text-white" style="font-size: 15px">/ Kantor</p>
                     </div>
                 </div>
             </span>
@@ -99,7 +99,7 @@
 
         {{-- ---------------------------------------------------------------------------------------- USULAN PIMPINAN ---------------------------------------------------------------------------------------- --}}
         <div class="card">
-            <div class="card-header bg-warning">
+            <div class="card-header" style="background-color: #25b5e9">
                 <h3 class="card-title text-white">Ruang Pimpinan Tersedia</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
@@ -280,7 +280,7 @@
 
         {{-- --------------------------------------- USULAN LAB KOMPUTER --------------------------------------- --}}
         <div class="card card-info">
-            <div class="card-header" style="background-color: #25b5e9">
+            <div class="card-header" style="background-color: #fcc12d">
                 <h3 class="card-title">Usulan Lab Komputer</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
