@@ -86,7 +86,7 @@
 <div class="container-fluid mt-3">
     <div class="card">
         <div class="card-header" style="background-color: #25b5e9">
-            <h3 class="card-title text-white">Ruang Praktek Tersedia</h3>
+            <h3 class="card-title text-white font-weight-bold">Ruang Praktek Tersedia</h3>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
                     data-target="#modal-lg"><i class="bi bi-plus"></i> Tambah Ruang Tersedia
@@ -165,7 +165,7 @@
 <div class="container-fluid mt-2">
     <div class="card">
         <div class="card-header bg-warning">
-            <h3 class="card-title text-white">Usulan Ruang Praktik Baru</h3>
+            <h3 class="card-title text-white font-weight-bold">Usulan Ruang Praktik Baru</h3>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
                     data-target="#modal-default"><i class="bi bi-plus"></i> Tambah Usulan

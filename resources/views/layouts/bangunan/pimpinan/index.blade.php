@@ -30,12 +30,12 @@
                 <img src="/assets/img/icons/flaticons/town.png"
                     style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
                 <div class="ml-4">
-                    <span class="text-white">
+                    <span class="text-white font-weight-bold">
                         Kondisi Ideal
                     </span>
                     <div class="d-flex align-items-end justify-content-center">
-                        <h1 class="display-4 text-white">30</h1>
-                        <p class="text-white">/ Kantor</p>
+                        <h1 class="display-4 text-white font-weight-bold">30</h1>
+                        <p class="text-white font-weight-bold">/ Kantor</p>
                     </div>
                 </div>
             </span>
@@ -100,9 +100,9 @@
         {{-- ---------------------------------------------------------------------------------------- USULAN PIMPINAN ---------------------------------------------------------------------------------------- --}}
         <div class="card">
             <div class="card-header bg-warning">
-                <h3 class="card-title text-white">Ruang Pimpinan Tersedia</h3>
+                <h3 class="card-title text-white font-weight-bold">Ruang Pimpinan Tersedia</h3>
                 <div class="card-tools">
-                    <button type="button" class="btn border-light text-white" data-toggle="modal"
+                    <button type="button" class="btn border-light text-white mr-2" data-toggle="modal"
                         data-target="#tambah-jenis-pimpinan"><i class="bi bi-plus"></i> Tambah Jenis Pimpinan
                     </button>
                     <button type="button" class="btn border-light text-white" data-toggle="modal"
@@ -110,59 +110,60 @@
                     </button>
                 </div>
             </div>
-            <div class="card-body table-responsive">
+            <div class="card-body">
                 @if (count($datas) > 0)
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                            <tr class="text-center">
-                                <th style="vertical-align: middle;">No</th>
-                                <th style="vertical-align: middle;">Jenis Ruang</th>
-                                <th style="vertical-align: middle;">Nama</th>
-                                <th style="vertical-align: middle;">Luas</th>
-                                <th style="vertical-align: middle;">Panjang</th>
-                                <th style="vertical-align: middle;">Lebar</th>
-                                <th style="vertical-align: middle;">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($datas as $data)
-                                <tr>
-                                    <input type="hidden" class="id_pimpinan" value="{{ $data['id'] }}">
-                                    <td class="text-center" style="vertical-align: middle">{{ $loop->iteration }}</td>
-                                    <td class="text-center jenis" style="vertical-align: middle"
-                                        data-id="{{ $data['id_jenis'] }}">{{ $data['jenis'] }}</td>
-                                    <td class="text-center nama" style="vertical-align: middle">{{ $data['nama'] }}</td>
-                                    <td class="text-center luas" style="vertical-align: middle">{{ $data['luas'] }}</td>
-                                    <td class="text-center panjang" style="vertical-align: middle">{{ $data['panjang'] }}
-                                    </td>
-                                    <td class="text-center lebar" style="vertical-align: middle">{{ $data['lebar'] }}</td>
-                                    <td>
-                                        <div class="card-body">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <button type="button" class="btn" data-toggle="dropdown">
-                                                        <i class="bi bi-three-dots-vertical"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu" style="margin-left: -73px">
-                                                        <button type="button" class="btn btn-tool tombol-edit-ketersediaan"
-                                                            data-toggle="modal" data-target="#edit-tersedia"><i
-                                                                class="bi bi-plus"></i>Edit
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr class="text-center">
+                                    <th style="vertical-align: middle;">No</th>
+                                    <th style="vertical-align: middle;">Jenis Ruang</th>
+                                    <th style="vertical-align: middle;">Nama</th>
+                                    <th style="vertical-align: middle;">Luas</th>
+                                    <th style="vertical-align: middle;">Panjang</th>
+                                    <th style="vertical-align: middle;">Lebar</th>
+                                    <th style="vertical-align: middle;">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($datas as $data)
+                                    <tr>
+                                        <input type="hidden" class="id_pimpinan" value="{{ $data['id'] }}">
+                                        <td class="text-center" style="vertical-align: middle">{{ $loop->iteration }}</td>
+                                        <td class="text-center jenis" style="vertical-align: middle"
+                                            data-id="{{ $data['id_jenis'] }}">{{ $data['jenis'] }}</td>
+                                        <td class="text-center nama" style="vertical-align: middle">{{ $data['nama'] }}</td>
+                                        <td class="text-center luas" style="vertical-align: middle">{{ $data['luas'] }}</td>
+                                        <td class="text-center panjang" style="vertical-align: middle">{{ $data['panjang'] }}
+                                        </td>
+                                        <td class="text-center lebar" style="vertical-align: middle">{{ $data['lebar'] }}</td>
+                                        <td>
+                                            <div class="card-body">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <button type="button" class="btn" data-toggle="dropdown">
+                                                            <i class="bi bi-three-dots-vertical"></i>
                                                         </button>
-                                                        <form action="/bangunan/pimpinan/{{ $data['id'] }}" method="post">
-                                                            @csrf
-                                                            @method('delete')
-                                                            <button type="submit" class="dropdown-item"
-                                                                onclick="return confirm('Apakah anda yakin akan manghapus ketersediaan ruang pimpinan ini?')">Hapus</button>
-                                                        </form>
+                                                        <div class="dropdown-menu" style="margin-left: -73px">
+                                                            <button type="button" class="btn tombol-edit-ketersediaan"
+                                                                data-toggle="modal" data-target="#edit-tersedia">Edit
+                                                            </button>
+                                                            <form action="/bangunan/pimpinan/{{ $data['id'] }}" method="post">
+                                                                @csrf
+                                                                @method('delete')
+                                                                <button type="submit" class="dropdown-item"
+                                                                    onclick="return confirm('Apakah anda yakin akan manghapus ketersediaan ruang pimpinan ini?')">Hapus</button>
+                                                            </form>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 @else
                     <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
                         <div class="alert" role="alert">
@@ -226,19 +227,19 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="luas-lahan" class="col-sm-2 col-form-label">Nama Bangunan</label>
+                                    <label for="luas-lahan" class="col-sm-2 col-form-label">Nama Ruang</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="luas-lahan" name="nama" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="luas-lahan" class="col-sm-2 col-form-label">Panjang Lahan</label>
+                                    <label for="luas-lahan" class="col-sm-2 col-form-label">Panjang Ruang</label>
                                     <div class="col-sm-10">
                                         <input type="number" class="form-control" id="luas-lahan" name="panjang" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="luas-lahan" class="col-sm-2 col-form-label">Lebar Lahan</label>
+                                    <label for="luas-lahan" class="col-sm-2 col-form-label">Lebar Ruang</label>
                                     <div class="col-sm-10">
                                         <input type="number" class="form-control" id="luas-lahan" name="lebar" required>
                                     </div>
@@ -312,70 +313,69 @@
         {{-- --------------------------------------- USULAN LAB KOMPUTER --------------------------------------- --}}
         <div class="card card-info">
             <div class="card-header" style="background-color: #25b5e9">
-                <h3 class="card-title">Usulan Lab Komputer</h3>
+                <h3 class="card-title font-weight-bold">Usulan Ruang Pimpinanan</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
                         data-target="#tambah-usulan"><i class="bi bi-plus"></i> Tambah Usulan
                     </button>
                 </div>
             </div>
-            <div class="card-body table-responsive">
+            <div class="card-body">
                 @if (count($usulans) > 0)
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                            <tr class="text-center">
-                                <th rowspan="2" style="vertical-align: middle;">No</th>
-                                <th rowspan="2" style="vertical-align: middle;">Jenis Ruang</th>
-                                <th rowspan="2" style="vertical-align: middle;">Jumlah Ruang</th>
-                                <th colspan="2">Ketersedian Lahan</th>
-                                <th rowspan="2" style="vertical-align: middle;">Proposal</th>
-                                <th rowspan="2" style="vertical-align: middle;">Keterangan</th>
-                                <th rowspan="2" style="vertical-align: middle;">Aksi</th>
-                            </tr>
-                            <tr class="text-center">
-                                <th>Gambar Lahan</th>
-                                <th>Luas Lahan</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($usulans as $key => $usulan)
-                                <tr>
-                                    <th class="text-center">{{ $loop->iteration }}</th>
-                                    <td class="text-center text-capitalize">{{ $usulanJenis[$key]->nama }}
-                                    </td>
-                                    <td class="text-center">{{ $usulan->jml_ruang }}</td>
-                                    <td class="text-center">{{ $usulan->luas_lahan }} M</td>
-                                    <td class="text-center" style="vertical-align: middle">
-                                        @foreach ($usulanFotos[$key] as $ke => $foto)
-                                            <a href="{{ asset('storage/' . $foto->nama) }}" class="fancybox"
-                                                data-fancybox="gallery{{ $key }}">
-                                                <img src="{{ asset('storage/' . $foto->nama) }}" class="rounded"
-                                                    style="object-fit: cover; width: 150px; aspect-ratio: 1/1;{{ $ke == 0 ? '' : 'display:none;' }}">
-                                            </a>
-                                        @endforeach
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="{{ asset('storage/' . $usulan->proposal) }}" target="_blank">
-                                            <img src="/img/pdf.png" alt="image" style="width: 30px">
-                                        </a>
-                                    </td>
-                                    <td class="text-center">{{ $usulan->keterangan }}</td>
-                                    <td class="text-center">
-                                        <a href="/bangunan/usulan-ruang-pimpinan/{{ $usulan->id }}/edit"
-                                            class="btn btn-warning text-white">Edit</a>
-
-                                        <form action="/usulan-bangunan/{{ $usulan->id }}" method="post">
-                                            @csrf
-                                            @method('delete')
-
-                                            <button type="submit" class="btn text-white" style="background-color: #00a65b"
-                                                onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
-
-                                        </form>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr class="text-center">
+                                    <th rowspan="2" style="vertical-align: middle;">No</th>
+                                    <th rowspan="2" style="vertical-align: middle;">Jenis Ruang</th>
+                                    <th rowspan="2" style="vertical-align: middle;">Jumlah Ruang</th>
+                                    <th colspan="2">Ketersedian Lahan</th>
+                                    <th rowspan="2" style="vertical-align: middle;">Proposal</th>
+                                    <th rowspan="2" style="vertical-align: middle;">Keterangan</th>
+                                    <th rowspan="2" style="vertical-align: middle;">Aksi</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                                <tr class="text-center">
+                                    <th>Gambar Lahan</th>
+                                    <th>Luas Lahan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($usulans as $key => $usulan)
+                                    <tr>
+                                        <th class="text-center">{{ $loop->iteration }}</th>
+                                        <td class="text-center text-capitalize">{{ $usulanJenis[$key]->nama }}
+                                        </td>
+                                        <td class="text-center">{{ $usulan->jml_ruang }}</td>
+                                        <td class="text-center">{{ $usulan->luas_lahan }} M</td>
+                                        <td class="text-center" style="vertical-align: middle">
+                                            @foreach ($usulanFotos[$key] as $ke => $foto)
+                                                <a href="{{ asset('storage/' . $foto->nama) }}" class="fancybox"
+                                                    data-fancybox="gallery{{ $key }}">
+                                                    <img src="{{ asset('storage/' . $foto->nama) }}" class="rounded"
+                                                        style="object-fit: cover; width: 150px; aspect-ratio: 1/1;{{ $ke == 0 ? '' : 'display:none;' }}">
+                                                </a>
+                                            @endforeach
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="{{ asset('storage/' . $usulan->proposal) }}" target="_blank">
+                                                <img src="/img/pdf.png" alt="image" style="width: 30px">
+                                            </a>
+                                        </td>
+                                        <td class="text-center">{{ $usulan->keterangan }}</td>
+                                        <td class="text-center">
+                                            <a href="/bangunan/usulan-ruang-pimpinan/{{ $usulan->id }}/edit"
+                                                class="btn btn-warning text-white">Edit</a>
+                                            <form action="/usulan-bangunan/{{ $usulan->id }}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn text-white mt-2" style="background-color: #00a65b"
+                                                    onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
+                                            </form>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 @else
                     <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
                         <div class="alert" role="alert">

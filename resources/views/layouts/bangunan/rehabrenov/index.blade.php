@@ -27,12 +27,12 @@
             <img src="/assets/img/icons/flaticons/town.png"
                 style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
             <div class="ml-4">
-                <span class="text-white">
+                <span class="text-white font-weight-bold">
                     Kondisi Ideal
                 </span>
                 <div class="d-flex align-items-end justify-content-center">
-                    <h1 class="display-4 text-white">30</h1>
-                    <p class="text-white">/ Kantor</p>
+                    <h1 class="display-4 text-white font-weight-bold">30</h1>
+                    <p class="text-white font-weight-bold">/ Kantor</p>
                 </div>
             </div>
         </span>
@@ -49,12 +49,12 @@
             <img src="/assets/img/icons/flaticons/building.png"
                 style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
             <div class="ml-4">
-                <span class="text-white">
+                <span class="text-white font-weight-bold">
                     Ketersediaan
                 </span>
                 <div class="d-flex align-items-end justify-content-center">
-                    <h1 class="display-4 text-white">11</h1>
-                    <p class="text-white">/ Kantor</p>
+                    <h1 class="display-4 text-white font-weight-bold">11</h1>
+                    <p class="text-white font-weight-bold">/ Kantor</p>
                 </div>
             </div>
         </span>
@@ -71,12 +71,12 @@
             <img src="/assets/img/icons/flaticons/school.png"
                 style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
             <div class="ml-4">
-                <span class="text-white">
+                <span class="text-white font-weight-bold">
                     Kekurangan
                 </span>
                 <div class="d-flex align-items-end justify-content-center">
-                    <h1 class="display-4 text-white">3</h1>
-                    <p class="text-white">/ Kantor</p>
+                    <h1 class="display-4 text-white font-weight-bold">23</h1>
+                    <p class="text-white font-weight-bold">/ Kantor</p>
                 </div>
             </div>
         </span>
@@ -90,81 +90,6 @@
     </div>
 
     {{-- --------------------------------------------- end inf box --------------------------------------------- --}}
-
-    <div class="card">
-        <div class="card-header bg-warning">
-            <h3 class="card-title text-white">Ruang Pimpinan Tersedia</h3>
-            <div class="card-tools">
-                <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
-                    data-target="#tambah-jenis-pimpinan"><i class="bi bi-plus"></i> Tambah Jenis Pimpinan
-                </button>
-                <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
-                    data-target="#tambah-tersedia"><i class="bi bi-plus"></i> Tambah Ketersediaan Ruang Pimpinan
-                </button>
-            </div>
-        </div>
-        <div class="card-body table-responsive">
-            @if (count($datas) > 0)
-                <table class="table table-bordered table-hover">
-                    <thead>
-                        <tr class="text-center">
-                            <th style="vertical-align: middle;">No</th>
-                            <th style="vertical-align: middle;">Jenis Ruang</th>
-                            <th style="vertical-align: middle;">Nama</th>
-                            <th style="vertical-align: middle;">Luas</th>
-                            <th style="vertical-align: middle;">Panjang</th>
-                            <th style="vertical-align: middle;">Lebar</th>
-                            <th style="vertical-align: middle;">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($datas as $data)
-                            <tr>
-                                <input type="hidden" class="id_pimpinan" value="{{ $data['id'] }}">
-                                <td class="text-center" style="vertical-align: middle">{{ $loop->iteration }}</td>
-                                <td class="text-center jenis" style="vertical-align: middle"
-                                    data-id="{{ $data['id_jenis'] }}">{{ $data['jenis'] }}</td>
-                                <td class="text-center nama" style="vertical-align: middle">{{ $data['nama'] }}</td>
-                                <td class="text-center luas" style="vertical-align: middle">{{ $data['luas'] }}</td>
-                                <td class="text-center panjang" style="vertical-align: middle">{{ $data['panjang'] }}
-                                </td>
-                                <td class="text-center lebar" style="vertical-align: middle">{{ $data['lebar'] }}</td>
-                                <td>
-                                    <div class="card-body">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <button type="button" class="btn" data-toggle="dropdown">
-                                                    <i class="bi bi-three-dots-vertical"></i>
-                                                </button>
-                                                <div class="dropdown-menu" style="margin-left: -73px">
-                                                    <button type="button" class="btn btn-tool tombol-edit-ketersediaan"
-                                                        data-toggle="modal" data-target="#edit-tersedia"><i
-                                                            class="bi bi-plus"></i>Edit
-                                                    </button>
-                                                    <form action="/bangunan/pimpinan/{{ $data['id'] }}" method="post">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button type="submit" class="dropdown-item"
-                                                            onclick="return confirm('Apakah anda yakin akan manghapus ketersediaan ruang pimpinan ini?')">Hapus</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            @else
-                <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
-                    <div class="alert" role="alert">
-                        Data Tidak Ditemukan
-                    </div>
-                </div>
-            @endif
-        </div>
-    </div>
 
     {{-- ---------------------------------------------------------------------------------------- MODAL USULAN ---------------------------------------------------------------------------------------- --}}
     <div class="modal fade" id="tambah-jenis-pimpinan">
@@ -305,7 +230,7 @@
     {{-- --------------------------------------- USULAN LAB KOMPUTER --------------------------------------- --}}
     <div class="card card-info">
         <div class="card-header" style="background-color: #25b5e9">
-            <h3 class="card-title">Usulan Lab Komputer</h3>
+            <h3 class="card-title font-weight-bold">Usulan Rehab / Renov</h3>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
                     data-target="#tambah-usulan"><i class="bi bi-plus"></i> Tambah Usulan
@@ -361,7 +286,7 @@
                                         @csrf
                                         @method('delete')
 
-                                        <button type="submit" class="btn text-white" style="background-color: #00a65b"
+                                        <button type="submit" class="btn text-white mt-2" style="background-color: #00a65b"
                                             onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
 
                                     </form>
@@ -444,7 +369,7 @@
 
     <div class="card">
         <div class="card-header" style="background-color: #fcc12d">
-            <h3 class="card-title text-white pt-2">Rencana Rehab/ Renov</h3>
+            <h3 class="card-title text-white pt-2 font-weight-bold">Rencana Rehab/ Renov</h3>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
                     data-target="#modal-rencana-usulan"><i class="bi bi-plus"></i> Tambah Usulan
@@ -541,7 +466,7 @@
                                                                                 @csrf
                                                                                 @method('delete')
                                                                                 <button type="submit"
-                                                                                    class="dropdown-item"
+                                                                                    class="dropdown-item "
                                                                                     onclick="return confirm('Apakah anda yakin akan menghapus rehab/renov ini?')">Batalkan</button>
                                                                             </form>
                                                                         </div>

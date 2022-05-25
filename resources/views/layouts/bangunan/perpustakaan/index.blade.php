@@ -51,7 +51,7 @@
             <div class="card">
                 {{-- card header --}}
                 <div class="card-header text-white" style="background-color: #00a65b">
-                    <h4 class="card-title">Jumlah Peserta Didik</h4>
+                    <h4 class="card-title font-weight-bold">Jumlah Peserta Didik</h4>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool text-white"></button>
                     </div>
@@ -69,7 +69,7 @@
             <div class="card">
                 {{-- card header --}}
                 <div class="card-header text-white" style="background-color: #25b5e9">
-                    <h4 class="card-title">Kondisi Ideal</h4>
+                    <h4 class="card-title font-weight-bold">Kondisi Ideal</h4>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool text-white"></button>
                     </div>
@@ -88,7 +88,7 @@
             {{-- -------------------------------------- KETERSEDIAAN --------------------------------------- --}}
             <div class="card card-warning">
                 <div class="card-header">
-                    <h3 class="card-title text-white">Ketersediaan</h3>
+                    <h3 class="card-title text-white font-weight-bold">Ketersediaan</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool text-white" data-toggle="modal"
                             data-target="#edit-ketersediaan"><i class="bi bi-pencil-square"></i>
@@ -139,7 +139,7 @@
             <div class="card">
                 {{-- card header --}}
                 <div class="card-header text-white" href="" style="background-color: #263238">
-                    <h4 class="card-title">Kekurangan</h4>
+                    <h4 class="card-title font-weight-bold">Kekurangan</h4>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool text-white"></button>
                     </div>
@@ -157,7 +157,7 @@
 
     <div class="card">
         <div class="card-header" style="background-color: #25b5e9">
-            <h3 class="card-title text-white pt-2">Usulan Perpustakaan</h3>
+            <h3 class="card-title text-white pt-2 font-weight-bold">Usulan Perpustakaan</h3>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
                     data-target="#modal-usulan"><i class="bi bi-plus"></i> Tambah Usulan
