@@ -27,39 +27,41 @@
                 </li>
             </ul>
         </div>
-        <div class="card-body table-responsive">
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr class="text-center">
-                        <th style="vertical-align: middle;">No</th>
-                        <th style="vertical-align: middle;">Tahun Bantuan</th>
-                        <th style="vertical-align: middle;">Jenis Bantuan</th>
-                        <th style="vertical-align: middle;">Pemberi Bantuan</th>
-                        <th style="vertical-align: middle;">Sumber Anggaran</th>
-                        <th style="vertical-align: middle;">Nilai Bantuan</th>
-                        <th style="vertical-align: middle;">Foto Bantuan</th>
-                        <th style="vertical-align: middle;">Keterangan Bantuan</th>
-                        <th style="vertical-align: middle;">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="text-center"style="vertical-align: middle; max-height: 200px !important;">1</td>
-                        <td class="text-center"style="vertical-align: middle; max-height: 200px !important;">2022</td>
-                        <td style="vertical-align: middle">Lahan</td>
-                        <td style="vertical-align: middle">Dinas Provinsi</td>
-                        <td style="vertical-align: middle">APBN</td>
-                        <td style="vertical-align: middle">xxxxx</td>
-                        <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/assets/img/backgrounds/school.jpg" class="rounded" style="object-fit: cover; width: 100px; aspect-ratio: 1/1;"></a></td>
-                        <td style="vertical-align: middle; height: 200px !important;"><div style="overflow: auto; max-height: 200px;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat obcaecati explicabo facilis praesentium eveniet unde porro aperiam tempora corporis totam eius, harum nihil magni numquam, iure ut odit, perspiciatis molestias!</div></td>
-                        <td class="text-center" style="vertical-align: middle">
-                            <button type="button" class="btn btn-success" data-toggle="modal"
-                                data-target="#edit">Edit
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr class="text-center">
+                            <th style="vertical-align: middle;">No</th>
+                            <th style="vertical-align: middle;">Tahun Bantuan</th>
+                            <th style="vertical-align: middle;">Jenis Bantuan</th>
+                            <th style="vertical-align: middle;">Pemberi Bantuan</th>
+                            <th style="vertical-align: middle;">Sumber Anggaran</th>
+                            <th style="vertical-align: middle;">Nilai Bantuan</th>
+                            <th style="vertical-align: middle;">Foto Bantuan</th>
+                            <th style="vertical-align: middle;">Keterangan Bantuan</th>
+                            <th style="vertical-align: middle;">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-center"style="vertical-align: middle; max-height: 200px !important;">1</td>
+                            <td class="text-center"style="vertical-align: middle; max-height: 200px !important;">2022</td>
+                            <td style="vertical-align: middle">Lahan</td>
+                            <td style="vertical-align: middle">Dinas Provinsi</td>
+                            <td style="vertical-align: middle">APBN</td>
+                            <td style="vertical-align: middle">xxxxx</td>
+                            <td class="text-center" style="vertical-align: middle"><a href="/assets/img/backgrounds/school.jpg" class="fancybox" data-fancybox="gallery1"><img src="/assets/img/backgrounds/school.jpg" class="rounded" style="object-fit: cover; width: 100px; aspect-ratio: 1/1;"></a></td>
+                            <td style="vertical-align: middle; height: 200px !important;"><div style="overflow: auto; max-height: 200px;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat obcaecati explicabo facilis praesentium eveniet unde porro aperiam tempora corporis totam eius, harum nihil magni numquam, iure ut odit, perspiciatis molestias!</div></td>
+                            <td class="text-center" style="vertical-align: middle">
+                                <button type="button" class="btn btn-success" data-toggle="modal"
+                                    data-target="#edit">Edit
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
