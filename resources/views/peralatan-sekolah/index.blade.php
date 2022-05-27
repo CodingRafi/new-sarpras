@@ -426,7 +426,7 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-success float-right">Simpan</button>
+                                <button type="submit" class="btn btn-success float-right tombol-simpan">Simpan</button>
                             </div>
                         </form>
                     </div>
@@ -451,6 +451,7 @@
         const kategoriPendukung = document.querySelector('.kategori-pendukung');
         const selectKategori = document.querySelector('.select-kategori');
         const inputManualPeralatan = document.querySelector('.input-manual-peralatan');
+        const tombolSimpan = document.querySelector('.tombol-simpan');
 
         peralatanCheckbox.addEventListener('change', e => {
             if (e.target.checked === true) {
@@ -464,6 +465,10 @@
                 peralatanText.style.setProperty("display", "none")
             }
         });
+
+        tombolSimpan.addEventListener('click', function(){
+            selectKategori.removeAttribute('disabled');
+        })
 
         usulanCheckbox.addEventListener('change', a => {
             if (a.target.checked === true) {
