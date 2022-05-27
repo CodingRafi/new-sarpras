@@ -6,6 +6,7 @@ use App\Models\ProfilDepo;
 use App\Models\Profil;
 use App\Http\Requests\StoreProfilDepoRequest;
 use App\Http\Requests\UpdateProfilDepoRequest;
+use App\Models\Kompeten;
 
 class ProfilDepoController extends Controller
 {

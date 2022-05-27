@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Monev;
-use App\Http\Requests\StoreMonevRequest;
-use App\Http\Requests\UpdateMonevRequest;;
+use App\Models\PeralatanTersedia;
+use App\Http\Requests\StorePeralatanTersediaRequest;
+use App\Http\Requests\UpdatePeralatanTersediaRequest;
 use App\Models\Kompeten;
 
-
-class MonevController extends Controller
+class PeralatanTersediaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +16,7 @@ class MonevController extends Controller
      */
     public function index()
     {
-        return view("monev.index");
+        //
     }
 
     /**
@@ -33,10 +32,10 @@ class MonevController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreMonevRequest  $request
+     * @param  \App\Http\Requests\StorePeralatanTersediaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreMonevRequest $request)
+    public function store(StorePeralatanTersediaRequest $request)
     {
         //
     }
@@ -44,10 +43,10 @@ class MonevController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Monev  $monev
+     * @param  \App\Models\PeralatanTersedia  $peralatanTersedia
      * @return \Illuminate\Http\Response
      */
-    public function show(Monev $monev)
+    public function show(PeralatanTersedia $peralatanTersedia)
     {
         //
     }
@@ -55,10 +54,10 @@ class MonevController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Monev  $monev
+     * @param  \App\Models\PeralatanTersedia  $peralatanTersedia
      * @return \Illuminate\Http\Response
      */
-    public function edit(Monev $monev)
+    public function edit(PeralatanTersedia $peralatanTersedia)
     {
         //
     }
@@ -66,11 +65,11 @@ class MonevController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateMonevRequest  $request
-     * @param  \App\Models\Monev  $monev
+     * @param  \App\Http\Requests\UpdatePeralatanTersediaRequest  $request
+     * @param  \App\Models\PeralatanTersedia  $peralatanTersedia
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMonevRequest $request, Monev $monev)
+    public function update(UpdatePeralatanTersediaRequest $request, PeralatanTersedia $peralatanTersedia)
     {
         //
     }
@@ -78,10 +77,10 @@ class MonevController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Monev  $monev
+     * @param  \App\Models\PeralatanTersedia  $peralatanTersedia
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Monev $monev)
+    public function destroy(PeralatanTersedia $peralatanTersedia)
     {
         //
     }

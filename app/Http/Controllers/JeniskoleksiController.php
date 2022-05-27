@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Jeniskoleksi;
 use App\Http\Requests\StoreJeniskoleksiRequest;
 use App\Http\Requests\UpdateJeniskoleksiRequest;
+use App\Models\Kompeten;
 
 class JeniskoleksiController extends Controller
 {

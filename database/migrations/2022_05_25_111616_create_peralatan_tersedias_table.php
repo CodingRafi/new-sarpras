@@ -13,18 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ketersediaan_lahans', function (Blueprint $table) {
+        Schema::create('peralatan_tersedias', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('kompeten_id');
             $table->foreignId('profil_id');
             $table->string('nama');
-            $table->string('no_sertifikat');
-            $table->string('panjang');
-            $table->string('lebar');
-            $table->string('luas');
-            $table->string('alamat');
-            $table->enum('jenis_kepemilikan', ['sewa', 'hgb', 'shm', 'hibah', 'tanah_desa']);
-            $table->string('keterangan');
-            $table->string('bukti_lahan');
+            $table->string('kategori');
+            $table->string('katersediaan');
+            $table->string('kekurangan');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -36,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ketersediaan_lahans');
+        Schema::dropIfExists('peralatan_tersedias');
     }
 };

@@ -21,6 +21,10 @@ class Komli extends Model
         return $this->hasMany(Logo::class);
     }
 
+    public function peralatan(){
+        return $this->hasMany(Peralatan::class);
+    }
+
     public static function ambilKomli($kompetens){
         $komli = [];
 

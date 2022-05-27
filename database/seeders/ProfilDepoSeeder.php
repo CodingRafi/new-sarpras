@@ -32,8 +32,8 @@ class ProfilDepoSeeder extends Seeder
                 'depo_nomor_telepon' => $profil["nomor_telepon"],
                 'depo_nomor_fax' => $profil["nomor_fax"],
                 'depo_akreditas' => $profil['akreditasi'],
-                'depo_jml_siswa_l' => $profil['jml_siswa_l'],
-                'depo_jml_siswa_p' => $profil['jml_siswa_p'],
+                'depo_jml_siswa_l' => $profil['jml_lk'],
+                'depo_jml_siswa_p' => $profil['jml_pr'],
             ]);
         }
     }

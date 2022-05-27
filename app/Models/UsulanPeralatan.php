@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Peralatan extends Model
+class UsulanPeralatan extends Model
 {
     use HasFactory;
 
@@ -13,7 +13,11 @@ class Peralatan extends Model
         "id"
     ];
 
-    public function komli(){
-        return $this->belongsTo(Komli::class);
+    public function profil(){
+        return $this->belongsTo(Profil::class);
+    }
+
+    public function kompeten(){
+        return $this->belongsTo(Kompeten::class);
     }
 }

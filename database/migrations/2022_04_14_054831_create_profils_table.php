@@ -35,6 +35,7 @@ return new class extends Migration
             $table->string('long')->nullable();
             $table->string('jml_rombel')->nullable();
             $table->string('nama_kepala_sekolah')->nullable();
+            $table->string('gtk')->nullable();
             $table->string('instagram')->nullable();
             $table->string('facebook')->nullable();
             $table->string('tiktok')->nullable();

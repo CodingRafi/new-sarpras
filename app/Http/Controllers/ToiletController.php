@@ -45,7 +45,8 @@ class ToiletController extends Controller
             'usulanFotos' => $fotos,
             'data' => $data,
             'profil' => $profil,
-            'jml_siswa' => $jml_lk + $jml_pr
+            'jml_siswa' => $jml_lk + $jml_pr,
+            'kompils' => Kompeten::getKompeten()
         ]);
     }
 
@@ -141,6 +142,7 @@ class ToiletController extends Controller
 
         return view('admin.toilet', [
             'usulanBangunans' => $usulanBangunan,
+            'kompils' => Kompeten::getKompeten()
         ]);
     }
 }

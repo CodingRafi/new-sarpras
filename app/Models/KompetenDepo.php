@@ -38,6 +38,12 @@ class KompetenDepo extends Model
                     ]);
                 }
             }
+
+            ProfilDepo::where('id', $profil->id)
+                    ->update([
+                        'depo_jml_siswa_l' => $jml_lk,
+                        'depo_jml_siswa_p' => $jml_pr
+                    ]);
         }
     }
 }

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Peralatan;
+use App\Models\Komli;
 use App\Http\Requests\StorePeralatanRequest;
 use App\Http\Requests\UpdatePeralatanRequest;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Kompeten;
 
 class PeralatanController extends Controller
 {
@@ -15,7 +18,13 @@ class PeralatanController extends Controller
      */
     public function index()
     {
-        return view('peralatan.index');
+        $komli = Komli::all();
+        $peralatan = Peralatan::select('peralatans.*', 'komlis.kompetensi')->leftJoin('komlis', 'komlis.id', 'peralatans.komli_id')->paginate(40);
+        return view('peralatan.index', [
+            'semua_jurusan' => $komli,
+            'peralatans' => $peralatan,
+            'kompils' => Kompeten::getKompeten()
+        ]);
     }
 
     /**
@@ -36,7 +45,21 @@ class PeralatanController extends Controller
      */
     public function store(StorePeralatanRequest $request)
     {
-        //
+        if(Auth::user()->hasRole('dinas')){
+            $validatedData = $request->validate([
+                'komli_id' => 'required',
+                'nama' => 'required',
+                'rasio' => 'required',
+                'kategori' => 'required',
+                'deskripsi' => 'required'
+            ]);
+    
+            Peralatan::create($validatedData);
+    
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -58,7 +81,16 @@ class PeralatanController extends Controller
      */
     public function edit(Peralatan $peralatan)
     {
-        //
+        if (Auth::user()->hasRole('dinas')) {
+            $komli = Komli::all();
+            return view('peralatan.edit',[
+                'komlis' => $komli,
+                'peralatan' => $peralatan
+            ]);
+        } else {
+            abort(403);
+        }
+        
     }
 
     /**
@@ -70,7 +102,22 @@ class PeralatanController extends Controller
      */
     public function update(UpdatePeralatanRequest $request, Peralatan $peralatan)
     {
-        //
+        if (Auth::user()->hasRole('dinas')) {
+            $validatedData = $request->validate([
+                'komli_id' => 'required',
+                'nama' => 'required',
+                'kategori' => 'required',
+                'deskripsi' => 'required',
+                'rasio' => 'required'
+            ]);
+    
+            $peralatan->update($validatedData);
+    
+            return redirect('/peralatan');
+        } else {
+            abort(403);
+        }
+        
     }
 
     /**
@@ -81,6 +128,20 @@ class PeralatanController extends Controller
      */
     public function destroy(Peralatan $peralatan)
     {
-        //
+        if (Auth::user()->hasRole('dinas')) {
+            Peralatan::destroy($peralatan->id);
+            return redirect()->back();
+        } else {
+            abort(403);
+        }
+    }
+
+    public function showPeralatan($id){
+        $kompeten = Kompeten::find($id);
+        $peralatans = Peralatan::where('komli_id', $kompeten->komli->id)->select('peralatans.*', 'komlis.kompetensi')->leftJoin('komlis', 'peralatans.komli_id', 'komlis.id')->paginate(15);
+        return view('peralatan-sekolah.index', [
+            'peraturans' => $peralatans,
+            'kompils' => Kompeten::getKompeten()
+        ]);
     }
 }
