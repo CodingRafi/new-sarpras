@@ -38,7 +38,7 @@ class Bangunan extends Model
     public function scopeFilter($query, array $search)
     {
         $query->when($search['jenis'] ?? false, function($query, $jenis){
-            return $query->where('usulan_bangunans.jenis', $jenis);
+            return $query->where('bangunans.jenis', $jenis);
         });
 
     }

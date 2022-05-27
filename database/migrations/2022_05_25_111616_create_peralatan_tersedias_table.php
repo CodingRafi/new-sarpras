@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('kategori');
             $table->string('katersediaan');
-            $table->string('ke  kurangan');
+            $table->string('kekurangan');
             $table->string('status');
             $table->timestamps();
         });

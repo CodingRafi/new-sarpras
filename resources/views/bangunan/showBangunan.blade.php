@@ -25,6 +25,125 @@
     </div>
     {{-- End Header --}}
 
+    @if (request('jenis') == 'ruang_pimpinan')
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header" style="background-color: #25b5e9">
+                    <h3 class="card-title text-white font-weight-bold">Jenis Ruang Pimpinan</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
+                            data-target="#tambah-jenis-pimpinan"><i class="bi bi-plus"></i> Tambah Jenis Ruang Pimpinan
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        @if (count($jenisPimpinans) > 0)
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th rowspan="2" style="vertical-align: middle;">No</th>
+                                        <th rowspan="2" style="vertical-align: middle;">Nama Ruang</th>
+                                        <th rowspan="2" style="vertical-align: middle;">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($jenisPimpinans as $key => $jenis)
+                                        <tr>
+                                            <th class="text-center">{{ $loop->iteration }}</th>
+                                            <td class="text-center text-capitalize nama-jenis-pimpinan"
+                                                data-id="{{ $jenis->id }}">{{ $jenis->nama }}</td>
+                                            <td class="text-center text-capitalize">
+                                                <button type="button"
+                                                    class="btn btn-warning button-jenis-pimpinan text-white"
+                                                    data-toggle="modal" data-target="#edit-jenis-pimpinan">Edit
+                                                </button>
+                                                <form action="/jenis-pimpinan/{{ $jenis->id }}" method="post"
+                                                    class="d-inline-block">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn btn-success"
+                                                        onclick="return confirm('Apakah anda yakin akan menghapus jenis ruang pimpinan ini?')">Hapus</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @else
+                            <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                                <div class="alert" role="alert">
+                                    Data Tidak Ditemukan
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- ---------------------------------------------------------------------------------------- MODAL USULAN ---------------------------------------------------------------------------------------- --}}
+        <div class="modal fade" id="tambah-jenis-pimpinan">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Tambah Ketersediaan Ruang Pimpinan</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" action="/jenis-pimpinan" method="POST">
+                            @csrf
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label for="nama" class="col-sm-2 col-form-label">Nama Ruang</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="nama" name="nama" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-success float-right">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="edit-jenis-pimpinan">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Edit Jenis Ruang Pimpinan</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal form-jenis-pimpinan" action="/jenis-pimpinan" method="POST">
+                            @csrf
+                            @method('patch')
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label for="nama" class="col-sm-2 col-form-label">Nama Ruang</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control input-nama-jenis-pimpinan" id="nama"
+                                            name="nama" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-success float-right">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
     {{-- Table --}}
     <div class="container-fluid">
         <div class="card">
@@ -73,8 +192,7 @@
                                         </li>
                                     </ul>
                                     <div class="md-2 col-11" style="max-width: 89%;">
-                                        <form class="form-inline ml-2"
-                                            action="/bangunan-all" method="GET"
+                                        <form class="form-inline ml-2" action="/bangunan-all" method="GET"
                                             style="width: 100%;">
                                             @if (request('jenis'))
                                                 <input type="hidden" name="jenis" value="{{ request('jenis') }}">
@@ -155,6 +273,25 @@
         </div>
     </div>
     {{-- End --}}
-
-
 @endsection
+
+@if (request('jenis') == 'ruang_pimpinan')
+    @section('tambahjs')
+        <script>
+            const inputNamaJenisPimpinan = document.querySelector('.input-nama-jenis-pimpinan');
+            const buttonJenisPimpinan = document.querySelectorAll('.button-jenis-pimpinan');
+            const namaJenisPimpinan = document.querySelectorAll('.nama-jenis-pimpinan');
+            const formJenisPimpinan = document.querySelector('.form-jenis-pimpinan');
+
+            buttonJenisPimpinan.forEach((e, i) => {
+                e.addEventListener('click', function() {
+                    inputNamaJenisPimpinan.value = '';
+                    inputNamaJenisPimpinan.value = namaJenisPimpinan[i].innerHTML;
+                    formJenisPimpinan.removeAttribute('action');
+                    formJenisPimpinan.setAttribute('action', '/jenis-pimpinan/' + namaJenisPimpinan[i]
+                        .getAttribute('data-id'))
+                })
+            });
+        </script>
+    @endsection
+@endif

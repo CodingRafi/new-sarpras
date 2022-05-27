@@ -33,6 +33,7 @@ class KoleksiController extends Controller
     {
         return view('koleksi.create', [
             'profil_depo_id' => $id,
+            'kompils' => Kompeten::getKompeten()
         ]);
     }
 
@@ -75,6 +76,7 @@ class KoleksiController extends Controller
         return view('koleksi.show', [
             'koleksi' => $koleksi,
             'fotos' => $koleksi->foto,
+            'kompils' => Kompeten::getKompeten()
         ]);
     }
 
@@ -87,7 +89,8 @@ class KoleksiController extends Controller
     public function edit(Koleksi $koleksi)
     {
         return view('koleksi.edit', [
-            'koleksi' => $koleksi
+            'koleksi' => $koleksi,
+            'kompils' => Kompeten::getKompeten()
         ]);
     }
 

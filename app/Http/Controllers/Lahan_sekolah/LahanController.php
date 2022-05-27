@@ -27,6 +27,8 @@ class LahanController extends Controller
         $shm = 0;
         $hgb = 0;
         $sewa = 0;
+        $hibah = 0;
+        $tanah_desa = 0;
 
         foreach($kekuranganLahan as $lahan){
             $luasKekuranganLahan += $lahan->luas;
@@ -37,8 +39,12 @@ class LahanController extends Controller
                 $shm += 1;
             }else if($lahan->jenis_kepemilikan == 'hgb'){
                 $hgb += 1;
-            }else{
+            }else if($lahan->jenis_kepemilikan == 'sewa'){
                 $sewa += 1; 
+            }else if($lahan->jenis_kepemilikan == 'hibah'){
+                $hibah += 1;
+            }else{
+                $tanah_desa += 1;
             }
             $luasKetersediaanLahan += $lahan->luas;
         }
@@ -52,7 +58,10 @@ class LahanController extends Controller
             'shm' => $shm,
             'hgb' => $hgb,
             'sewa' => $sewa,
+            'hibah' => $hibah,
+            'tanah_desa' => $tanah_desa,
             'kompils' => Kompeten::getKompeten()
         ]);
     }
 }
+ 
