@@ -83,20 +83,31 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($peralatanTersedias as $peralatanTersedia)
                             <tr>
-                                <td class="text-center" style="vertical-align: middle">1</td>
-                                <td class="text-center" style="vertical-align: middle">Rekayasa Perangkat Lunak</td>
-                                <td class="text-center" style="vertical-align: middle">Access Point</td>
-                                <td class="text-center" style="vertical-align: middle">Utama</td>
-                                <td class="text-center" style="vertical-align: middle">4</td>
-                                <td class="text-center" style="vertical-align: middle">5</td>
-                                <td class="text-center" style="vertical-align: middle">Kekurangan</td>
+                                <td class="text-center" style="vertical-align: middle">{{ $loop->iteration }}</td>
+                                <td class="text-center" style="vertical-align: middle">{{ $peralatanTersedia->kompeten->komli->kompetensi }}</td>
+                                <td class="text-center" style="vertical-align: middle">{{ $peralatanTersedia->nama }}</td>
+                                <td class="text-center" style="vertical-align: middle">{{ $peralatanTersedia->kategori }}</td>
+                                <td class="text-center" style="vertical-align: middle">{{ $peralatanTersedia->katersediaan }}</td>
+                                <td class="text-center" style="vertical-align: middle">{{ $peralatanTersedia->kekurangan }}</td>
+                                <td class="text-center" style="vertical-align: middle">{{ $peralatanTersedia->status }}</td>
                                 <td class="text-center" style="vertical-align: middle">
-                                    <button type="button" class="btn text-white d-inline" style="background-color: #25b5e9"
-                                        data-toggle="modal" data-target="#edit">Edit</button>
-                                    <button class="btn text-white d-inline" style="background-color: #00a65b">Hapus</button>
+                                    <div class="d-sm-flex justify-content-center" style="gap: 5px;">
+                                        <a class="btn text-white d-inline" href="/peralatan-tersedia/{{ $peralatanTersedia->id }}/edit" style="background-color: #25b5e9">Edit</a>
+                                        {{-- <form action=""><a class="btn text-white d-inline" style="background-color: #00a65b">Hapus</a></form> --}}
+                                        <form action="/peralatan-tersedia/{{ $peralatanTersedia->id }} class="d-inline"
+                                            method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn text-white d-inline"
+                                                style="background-color: #00a65b"
+                                                onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Hapus</button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -115,10 +126,13 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" action="/peralatan-tersedia" method="POST">
+                            @csrf
                             <div class="card-body">
+                                <input type="hidden" name="profil_id" value="{{ Auth::user()->profil_id }}">
+                                <input type="hidden" name="kompeten_id" value="{{ $kompeten_id }}">
                                 {{-- ---------------------------------------------------------------------------------------- KOMPETENSI KEAHLIAN ---------------------------------------------------------------------------------------- --}}
-                                <div class="form-group row">
+                                {{-- <div class="form-group row">
                                     <label for="kompetensi-keahlian" class="col-sm-3 col-form-label">Kompetensi
                                         Keahlian</label>
                                     <div class="col-sm-9">
@@ -129,22 +143,19 @@
                                         </select>
                                     </div>
                                 </div>
-                                <hr>
+                                <hr> --}}
                                 {{-- ---------------------------------------------------------------------------------------- NAMA PERALATAN ---------------------------------------------------------------------------------------- --}}
                                 <div class="form-group row">
                                     <label for="nama-peralatan" class="col-sm-3 col-form-label">Nama Peralatan</label>
                                     <div class="col-sm-9">
                                         <div class="input-group peralatan-parent">
-
-                                            <select class="form-control" id="peralatan-select">
-                                                <option value="belum" selected>Pilih Peralatan</option>
-                                                <option value="#">Access Point Indoor</option>
-                                                <option value="#">Access Point Outdoor</option>
+                                            <select class="form-control" id="peralatan-select" name="nama">
+                                                <option>Pilih Peralatan</option>
+                                                @foreach ($peraturans as $peraturan)
+                                                <option value="{{ $peraturan->nama }}">{{ $peraturan->nama }}</option>
+                                                @endforeach
                                             </select>
-
-                                            <input type="text" class="form-control" style="display: none"
-                                                id="peralatan-text">
-
+                                            <input type="text" class="form-control" style="display: none" id="peralatan-text">
                                             {{-- ---------------------------------------------------------------------------------------- CHECKBOX ---------------------------------------------------------------------------------------- --}}
                                             <div class="input-group-append">
                                                 <span class="input-group-text">
@@ -159,7 +170,11 @@
                                 <div class="form-group row">
                                     <label for="kategori" class="col-sm-3 col-form-label">Kategori</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="kategori">
+                                        <select class="form-control" id="peralatan-select" name="kategori">
+                                            <option>Pilih Kategori</option>
+                                            <option value="utama">Utama</option>
+                                            <option value="pendukung">Pendukung</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <hr>
@@ -167,7 +182,7 @@
                                 <div class="form-group row">
                                     <label for="kekurangan" class="col-sm-3 col-form-label">Kekurangan</label>
                                     <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="kekurangan">
+                                        <input type="number" class="form-control" id="kekurangan" name="kekurangan">
                                     </div>
                                 </div>
                                 <hr>
@@ -175,7 +190,7 @@
                                 <div class="form-group row">
                                     <label for="ketersediaan" class="col-sm-3 col-form-label">Ketersediaan</label>
                                     <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="ketersediaan">
+                                        <input type="number" class="form-control" id="ketersediaan" name="katersediaan">
                                     </div>
                                 </div>
                             </div>
@@ -427,12 +442,16 @@
             if (e.target.checked === true) {
                 console.log("Checkbox is checked - boolean value: ", e.target.checked)
                 peralatanSelect.style.setProperty("display", "none")
+                peralatanSelect.removeAttribute("name")
                 peralatanText.style.setProperty("display", "block")
+                peralatanText.setAttribute("name", "nama")
             }
             if (e.target.checked === false) {
                 console.log("Checkbox is not checked - boolean value: ", e.target.checked)
                 peralatanSelect.style.setProperty("display", "block")
+                peralatanSelect.setAttribute("name", "nama")
                 peralatanText.style.setProperty("display", "none")
+                peralatanText.removeAttribute("name")
             }
         });
 

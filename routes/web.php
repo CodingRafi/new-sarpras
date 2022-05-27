@@ -18,6 +18,8 @@ use App\Http\Controllers\KompetenController;
 use App\Http\Controllers\KomputerController;
 use App\Http\Controllers\PimpinanController;
 use App\Http\Controllers\PeralatanController;
+use App\Http\Controllers\PeralatanTersediaController;
+use App\Http\Controllers\UsulanPeralatanController;
 use App\Http\Controllers\ProfilDepoController;
 use App\Http\Controllers\RehabRenovController;
 use App\Http\Controllers\UsulanFotoController;
@@ -184,6 +186,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/monev', MonevController::class);
     Route::get('/peralatan-sekolah/{id}', [PeralatanController::class, 'showPeralatan']);
     Route::resource('/peralatan', PeralatanController::class);
+    Route::resource('/peralatan-tersedia', PeralatanTersediaController::class);
     Route::resource('/usulan-peralatan', UsulanPeralatanController::class);
     Route::resource('/riwayat-bantuan', RiwayatController::class);
     Route::resource('/usulan-bangunan', UsulanBangunanController::class);

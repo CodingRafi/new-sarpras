@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Peralatan;
+use App\Models\PeralatanTersedia;
 use App\Models\Komli;
 use App\Http\Requests\StorePeralatanRequest;
 use App\Http\Requests\UpdatePeralatanRequest;
@@ -138,10 +139,21 @@ class PeralatanController extends Controller
 
     public function showPeralatan($id){
         $kompeten = Kompeten::find($id);
-        $peralatans = Peralatan::where('komli_id', $kompeten->komli->id)->select('peralatans.*', 'komlis.kompetensi')->leftJoin('komlis', 'peralatans.komli_id', 'komlis.id')->paginate(15);
+        $peralatans = Peralatan::where('komli_id', $kompeten->komli->id)
+            ->select('peralatans.*', 'komlis.kompetensi')
+            ->leftJoin('komlis', 'peralatans.komli_id', 'komlis.id')
+            ->paginate(15);
+        $coba = Kompeten::select('komlis.kompetensi')
+            ->leftJoin('komlis', 'kompetens.komli_id', 'komlis.id')
+            ->where('kompetens.id', $id)->first();
+        $peralatanTersedias = PeralatanTersedia::where('kompeten_id', $id)->get();
+        
         return view('peralatan-sekolah.index', [
+            'coba' => $coba,
             'peraturans' => $peralatans,
-            'kompils' => Kompeten::getKompeten()
+            'kompils' => Kompeten::getKompeten(),
+            'kompeten_id' => $id,
+            'peralatanTersedias' => $peralatanTersedias
         ]);
     }
 }
