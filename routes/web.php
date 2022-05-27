@@ -136,6 +136,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/bangunan/ruang-pimpinan-dinas', [PimpinanController::class, 'showDinas']);
     Route::get('/bangunan/rehab-renov-dinas', [RehabRenovController::class, 'showDinas']);
     Route::get('/bangunan/ruang-praktik-dinas', [PraktikController::class, 'showDinas']);
+    Route::resource('/admin/komli', KomliController::class);
     
 
 
