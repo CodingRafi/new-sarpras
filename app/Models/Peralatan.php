@@ -16,4 +16,12 @@ class Peralatan extends Model
     public function komli(){
         return $this->belongsTo(Komli::class);
     }
+
+    public function peralatanTersedia(){
+        return $this->belongsTo(PeralatanTersedia::class);
+    }
+
+    public function usulanPeralatan(){
+        return $this->hasMany(UsulanPeralatan::class);
+    }
 }

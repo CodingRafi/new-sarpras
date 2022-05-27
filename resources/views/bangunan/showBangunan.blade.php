@@ -17,7 +17,8 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark display-4" style="padding: 0 !important;text-transform: capitalize;">{{ str_replace("_", " ", request('jenis')) }}</h1>
+                    <h1 class="m-0 text-dark display-4" style="padding: 0 !important;text-transform: capitalize;">
+                        {{ str_replace('_', ' ', request('jenis')) }}</h1>
                 </div>
             </div>
         </div>
@@ -28,7 +29,8 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header bg-warning d-flex p-0">
-                <h3 class="card-title p-3 text-white" style="text-transform: capitalize;">{{ str_replace("_", " ", request('jenis')) }}</h3>
+                <h3 class="card-title p-3 text-white" style="text-transform: capitalize;">
+                    {{ str_replace('_', ' ', request('jenis')) }}</h3>
             </div>
             <div class="card-body">
                 {{-- Table --}}
@@ -43,16 +45,43 @@
                                                 Filter by ... <span class="caret"></span>
                                             </a>
                                             <div class="dropdown-menu" style="min-width: auto !important; width: 125px;">
-                                                <a class="dropdown-item text-truncate kab" tabindex="-1"
-                                                    href="/bangunan/ruang-kelas-dinas?filter=kota">Kota/ Kabupaten</a>
-                                                <a class="dropdown-item text-truncate kcd" tabindex="-1"
-                                                    href="/bangunan/ruang-kelas-dinas?filter=kcd">Kantor Cabang Dinas</a>
+                                                <form action="/bangunan-all" method="get">
+                                                    @if (request('jenis'))
+                                                        <input type="hidden" name="jenis" value="{{ request('jenis') }}">
+                                                    @endif
+                                                    @if (request('search'))
+                                                        <input type="hidden" name="search"
+                                                            value="{{ request('search') }}">
+                                                    @endif
+                                                    <input type="hidden" name="filter" value="kota">
+                                                    <button class="dropdown-item text-truncate kab" tabindex="-1"
+                                                        type="submit">Kota/Kabupaten</button>
+                                                </form>
+                                                <form action="/bangunan-all" method="get">
+                                                    @if (request('jenis'))
+                                                        <input type="hidden" name="jenis" value="{{ request('jenis') }}">
+                                                    @endif
+                                                    @if (request('search'))
+                                                        <input type="hidden" name="search"
+                                                            value="{{ request('search') }}">
+                                                    @endif
+                                                    <input type="hidden" name="filter" value="kcd">
+                                                    <button class="dropdown-item text-truncate kab" tabindex="-1"
+                                                        type="submit">Kantor Cabang Dinas</button>
+                                                </form>
                                             </div>
                                         </li>
                                     </ul>
                                     <div class="md-2 col-11" style="max-width: 89%;">
-                                        <form class="form-inline ml-2" action="/bangunan-all?jenis={{ request('jenis') }}&&" method="GET"
+                                        <form class="form-inline ml-2"
+                                            action="/bangunan-all" method="GET"
                                             style="width: 100%;">
+                                            @if (request('jenis'))
+                                                <input type="hidden" name="jenis" value="{{ request('jenis') }}">
+                                            @endif
+                                            @if (request('filter'))
+                                                <input type="hidden" name="filter" value="{{ request('filter') }}">
+                                            @endif
                                             <div class="input-group"
                                                 style="width: 100%;border: 1px solid #ced4da;border-radius: 3px;">
                                                 <input class="form-control form-control-navbar" type="search"
@@ -99,7 +128,8 @@
                                                 </a>
                                             </td>
                                             <td class="text-center" style="vertical-align: middle">
-                                                <a href="/usulan-bangunan/{{ $usulan->id }}" class="btn text-white d-inline"
+                                                <a href="/usulan-bangunan/{{ $usulan->id }}"
+                                                    class="btn text-white d-inline"
                                                     style="background-color: #25b5e9">Detail</a>
                                             </td>
                                         </tr>

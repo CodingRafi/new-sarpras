@@ -294,7 +294,7 @@
                     <form action="/bangunan/usulan-ruang-kelas" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-header">
-                            <h4 class="modal-title">Usulan</h4>
+                            <h4 class="modal-title">Usulan Kelas</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -310,7 +310,7 @@
 
                             {{-- input luas lahan --}}
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">Luas Lahan (M)</label>
+                                <label class="col-sm-4 col-form-label">Luas Lahan (m²)</label>
                                 <input type="number" class="form-control col-sm-7" placeholder="Masukan Luas Lahan"
                                     id="luas-lahan" name="luas_lahan" required>
                             </div>

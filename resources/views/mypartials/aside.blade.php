@@ -77,7 +77,7 @@
                     <ul class="nav nav-treeview">
                         {{-- ---------------------------------------------------------------------------------------- RUANG KELAS ---------------------------------------------------------------------------------------- --}}
                         <li class="nav-item">
-                            <a href="/bangunan/ruang-kelas"
+                            <a href="/bangunan?jenis=ruang_kelas"
                                 class="nav-link {{ Request::is('bangunan/ruang-kelas') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Ruang Kelas</p>

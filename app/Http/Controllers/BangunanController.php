@@ -12,6 +12,7 @@ use App\Http\Requests\UpdateBangunanRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Kompeten;
+use DB;
 
 class BangunanController extends Controller
 {
@@ -22,11 +23,13 @@ class BangunanController extends Controller
      */
     public function index()
     {
-        $usulanBangunan = UsulanBangunan::search(request(['search']))
+        DB::enableQueryLog();
+        $usulanBangunan = UsulanBangunan::search(request(['jenis', 'search', 'filter']))
                         ->leftJoin('profils', 'profils.id', '=', 'usulan_bangunans.profil_id')
                         ->leftJoin('profil_kcds', 'profils.id', '=', 'profil_kcds.profil_id')
-                        ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi', 'usulan_bangunans.proposal', 'usulan_bangunans.id')->where('usulan_bangunans.jenis', request('jenis'))->paginate(40)->withQueryString();
+                        ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi', 'usulan_bangunans.proposal', 'usulan_bangunans.id')->paginate(40)->withQueryString();
 
+                        // dd(DB::getQueryLog());
         return view('bangunan.showBangunan', [
             'usulanBangunans' => $usulanBangunan,
             'kompils' => Kompeten::getKompeten()
@@ -169,6 +172,22 @@ class BangunanController extends Controller
         }else{
             abort(403);
         }
+    }
+
+    public function bangunan(){
+        $usulanBangunan = UsulanBangunan::search(request(['jenis']))->where('profil_id', Auth::user()->profil_id)->get();
+        $koleksi = UsulanKoleksi::koleksi($usulanKelas);
+        $fotos = UsulanFoto::fotos($koleksi);
+        $data = Bangunan::filter(['jenis'])->where('profil_id', Auth::user()->profil_id)->get()[0];
+        $profil = Profil::where('id', Auth::user()->profil_id)->get()[0];
+
+        return view("bangunan.kelas.index",[
+            'usulanBangunan' => $usulanBangunan,
+            'usulanFotos' => $fotos,
+            'dataBangunan' => $data,
+            'profil' => $profil,
+            'kompils' => Kompeten::getKompeten()
+        ]);
     }
 
 }

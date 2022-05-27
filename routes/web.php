@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Profil;
+use App\Models\PeralatanTersedia;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FotoController;
@@ -25,6 +26,7 @@ use App\Http\Controllers\PerpustakaanController;
 use App\Http\Controllers\JenisPimpinanController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\UsulanBangunanController;
+use App\Http\Controllers\UsulanPeralatanController;
 use App\Http\Controllers\Lahan_sekolah\LahanController;
 use App\Http\Controllers\Lahan_sekolah\UsulanLahanController;
 use App\Http\Controllers\Bangunan\Ruang_kelas\KelasController;
@@ -163,6 +165,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::patch('/bangunan-all/update-ketersediaan/{id}', [BangunanController::class, 'ubahKetersediaan']);
     Route::patch('/bangunan-all/update-kekurangan/{id}', [BangunanController::class, 'ubahKekurangan']);
     Route::patch('/bangunan-all/update-kondisi-ideal/{id}', [BangunanController::class, 'kondisiIdeal']);
+
+
     Route::resource('/bangunan/ruang-kelas', KelasController::class);
     Route::post('/bangunan/usulan-ruang-kelas', [KelasController::class, 'createusulan']);
     Route::resource('/bangunan/ruang-praktik', PraktikController::class);
@@ -180,11 +184,14 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/bangunan/usulan-ruang-pimpinan', [PimpinanController::class, 'createusulan']);
     Route::get('/bangunan/usulan-ruang-pimpinan/{id}/edit', [UsulanBangunanController::class, 'editPimpinan']);
     Route::patch('/bangunan/usulan-ruang-pimpinan/{id}', [UsulanBangunanController::class, 'updatePimpinan']);
+
+    
     Route::resource('/jenis-pimpinan', JenisPimpinanController::class);
     Route::resource('/monev', MonevController::class);
     Route::get('/peralatan-sekolah/{id}', [PeralatanController::class, 'showPeralatan']);
     Route::resource('/peralatan', PeralatanController::class);
     Route::resource('/usulan-peralatan', UsulanPeralatanController::class);
+    Route::resource('/ketersediaan-peralatan', PeralatanTersedia::class);
     Route::resource('/riwayat-bantuan', RiwayatController::class);
     Route::resource('/usulan-bangunan', UsulanBangunanController::class);
 });

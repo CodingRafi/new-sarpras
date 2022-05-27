@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Lahan_sekolah;
 use App\Http\Controllers\Controller;
 use App\Models\UsulanLahan;
 use App\Models\Log;
+use App\Models\Kompeten;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreUsulanLahanRequest;
 use App\Http\Requests\UpdateUsulanLahanRequest;
@@ -30,7 +31,8 @@ class UsulanLahanController extends Controller
     {
         $semua_usulan = UsulanLahan::where('profil_id', Auth::user()->profil_id)->get();
         return view("lahan.usulan", [
-            'semua_usulan' => $semua_usulan
+            'semua_usulan' => $semua_usulan,
+            'kompils' => Kompeten::getKompeten(),
         ]);
     }
 
@@ -83,7 +85,8 @@ class UsulanLahanController extends Controller
     {
         return view('lahan.show', [
             'data' => $usulanLahan,
-            'profil' => $usulanLahan->profil
+            'profil' => $usulanLahan->profil,
+            'kompils' => Kompeten::getKompeten(),
         ]);
     }
 
@@ -96,7 +99,8 @@ class UsulanLahanController extends Controller
     public function edit(UsulanLahan $usulanLahan)
     {
         return view('lahan.edit', [
-            'data' => $usulanLahan
+            'data' => $usulanLahan,
+            'kompils' => Kompeten::getKompeten(),
         ]);
     }
 
@@ -148,7 +152,7 @@ class UsulanLahanController extends Controller
             Storage::delete($usulanLahan->proposal);
             UsulanLahan::destroy($usulanLahan->id);
 
-            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Membatalkan usulan');
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Membatalkan usulan lahan');
 
             return redirect()->back();
         }else{
@@ -164,7 +168,8 @@ class UsulanLahanController extends Controller
 
 
         return view('admin.lahan', [
-            'usulanLahans' => $usulanLahan
+            'usulanLahans' => $usulanLahan,
+            'kompils' => Kompeten::getKompeten(),
         ]);
     }
 }

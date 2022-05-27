@@ -1,12 +1,14 @@
 @extends('myLayouts.main')
 
 @section('container')
+    {{-- @dd($peralatanOptions) --}}
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0 text-dark display-4" style="padding: 0 !important;">Peralatan (nama jurusan)</h1>
+                <div class="col">
+                    <h1 class="m-0 text-dark display-4" style="padding: 0 !important;">Peralatan {{ $komli->kompetensi }}
+                    </h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -22,34 +24,42 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                            <tr class="text-center">
-                                <th>No</th>
-                                <th>Kompetensi Keahlian</th>
-                                <th>Jenis</th>
-                                <th>Rasio</th>
-                                <th>Deskripsi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($peraturans as $peraturan)
-                                <tr>
-                                    <td class="text-center">
-                                        {{ ($peraturans->currentpage() - 1) * $peraturans->perpage() + $loop->index + 1 }}
-                                    </td>
-                                    <td class="text-center">{{ $peraturan->kompetensi }}</td>
-                                    <td class="text-center">{{ $peraturan->nama }}</td>
-                                    <td class="text-center">{{ $peraturan->rasio }} unit / Ruang Praktik</td>
-                                    <td class="text-center">
-                                        <div style="overflow: auto; max-height: 110px;">
-                                            {{ $peraturan->deskripsi }}
-                                        </div>
-                                    </td>
+                    @if (count($peraturans) > 0)
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>No</th>
+                                    <th>Kompetensi Keahlian</th>
+                                    <th>Jenis</th>
+                                    <th>Rasio</th>
+                                    <th>Deskripsi</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach ($peraturans as $peraturan)
+                                    <tr>
+                                        <td class="text-center">
+                                            {{ ($peraturans->currentpage() - 1) * $peraturans->perpage() + $loop->index + 1 }}
+                                        </td>
+                                        <td class="text-center">{{ $peraturan->kompetensi }}</td>
+                                        <td class="text-center">{{ $peraturan->nama }}</td>
+                                        <td class="text-center">{{ $peraturan->rasio }} unit / Ruang Praktik</td>
+                                        <td class="text-center">
+                                            <div style="overflow: auto; max-height: 110px;">
+                                                {{ $peraturan->deskripsi }}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @else
+                        <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                            <div class="alert" role="alert">
+                                Data Tidak Ditemukan
+                            </div>
+                        </div>
+                    @endif
                 </div>
                 {{-- {{ $variable->link() }} --}}
             </div>
@@ -115,31 +125,20 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" action="/peralatan-tersedia" method="post">
+                            @csrf
                             <div class="card-body">
-                                {{-- ---------------------------------------------------------------------------------------- KOMPETENSI KEAHLIAN ---------------------------------------------------------------------------------------- --}}
-                                <div class="form-group row">
-                                    <label for="kompetensi-keahlian" class="col-sm-3 col-form-label">Kompetensi
-                                        Keahlian</label>
-                                    <div class="col-sm-9">
-                                        <select class="form-control" id="kompetensi-keahlian">
-                                            <option value="belum" selected>Pilih Kompetensi Keahlian</option>
-                                            <option value="#">Rekayasa Perangkat Lunak</option>
-                                            <option value="#">Ankuntasi</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <hr>
+                                <input type="hidden" name="kompetensi" value="{{ $kompeten->id }}">
                                 {{-- ---------------------------------------------------------------------------------------- NAMA PERALATAN ---------------------------------------------------------------------------------------- --}}
                                 <div class="form-group row">
                                     <label for="nama-peralatan" class="col-sm-3 col-form-label">Nama Peralatan</label>
                                     <div class="col-sm-9">
                                         <div class="input-group peralatan-parent">
 
-                                            <select class="form-control" id="peralatan-select">
-                                                <option value="belum" selected>Pilih Peralatan</option>
-                                                <option value="#">Access Point Indoor</option>
-                                                <option value="#">Access Point Outdoor</option>
+                                            <select class="form-control" id="peralatan-select" name="">
+                                                @foreach ($peralatanOptions as $options)
+                                                    <option value="{{ $options->id }}">{{ $options->nama }}</option>
+                                                @endforeach
                                             </select>
 
                                             <input type="text" class="form-control" style="display: none"
@@ -207,9 +206,9 @@
                                         Keahlian</label>
                                     <div class="col-sm-9">
                                         <select class="form-control" id="kompetensi-keahlian">
-                                            <option value="belum" selected>Pilih Kompetensi Keahlian</option>
-                                            <option value="#">Rekayasa Perangkat Lunak</option>
-                                            <option value="#">Ankuntasi</option>
+                                            @foreach ($peralatanOptions as $options)
+                                                <option value="{{ $options->id }}">{{ $options->nama }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -286,6 +285,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
+                    @if (count($usulanPeralatans) > 0)
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr class="text-center">
@@ -300,20 +300,47 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="text-center" style="vertical-align: middle">1</td>
-                                <td class="text-center" style="vertical-align: middle">Rekayasa Perangkat Lunak</td>
-                                <td class="text-center" style="vertical-align: middle">Access Point</td>
-                                <td class="text-center" style="vertical-align: middle">Utama</td>
-                                <td class="text-center" style="vertical-align: middle">10</td>
-                                <td class="text-center" style="vertical-align: middle"><img src="/img/pdf.png"
-                                        alt="image" style="width: 30px"></td>
-                                <td></td>
-                                <td class="text-center" style="vertical-align: middle"><button class="btn text-white"
-                                        style="background-color: #00a65b">Batalkan</button></td>
-                            </tr>
+                            @foreach ($usulanPeralatans as $usulanPeralatan)
+                                <tr>
+                                    <td class="text-center" style="vertical-align: middle">{{ $loop->iteration }}
+                                    </td>
+                                    <td class="text-center" style="vertical-align: middle">
+                                        {{ $usulanPeralatan->kompetensi }}
+                                    </td>
+                                    <td class="text-center" style="vertical-align: middle">
+                                        {{ $usulanPeralatan->peralatan_id != null ? $usulanPeralatan->nama : $usulanPeralatan->nama_peralatan }}
+                                    </td>
+                                    <td class="text-center" style="vertical-align: middle">
+                                        {{ $usulanPeralatan->kategori }}</td>
+                                    <td class="text-center" style="vertical-align: middle">
+                                        {{ $usulanPeralatan->jml }}</td>
+                                    <td class="text-center" style="vertical-align: middle">
+                                        <a href="/storage/{{ $usulanPeralatan->proposal }}">
+                                            <img src="/img/pdf.png" alt="image" style="width: 30px">
+                                        </a>
+                                    </td>
+                                    <td>{{ $usulanPeralatan->keterangan }}</td>
+                                    <td class="text-center" style="vertical-align: middle">
+                                        <a href="/usulan-peralatan/{{ $usulanPeralatan->id }}/edit"
+                                            class="btn btn-warning">Edit</a>
+
+                                        <form action="/usulan-peralatan/{{ $usulanPeralatan->id }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="btn text-white" style="background-color: #00a65b" type="submit" onclick="return confirm('Apakah anda yakin akan membatalkan usulan peralatan ini?')">Batalkan</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
+                    @else
+                    <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                        <div class="alert" role="alert">
+                           Maaf tidak ada data ditemukan
+                        </div>
+                    </div>
+                    @endif
                 </div>
                 {{-- {{ $variable->link() }} --}}
             </div>
@@ -330,37 +357,32 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" action="/usulan-peralatan" method="POST">
+                        <form class="form-horizontal" action="/usulan-peralatan" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
-                            @method('patch')
                             <div class="card-body">
-                                {{-- ---------------------------------------------------------------------------------------- KOPETENSI KEAHLIAN ---------------------------------------------------------------------------------------- --}}
-                                <div class="form-group row">
-                                    <label for="kompetensi-keahlian" class="col-sm-3 col-form-label">Kompetensi
-                                        Keahlian</label>
-                                    <div class="col-sm-9">
-                                        <select class="form-control" id="kompetensi-keahlian2">
-                                            <option value="belum" selected>Pilih Kompetensi Keahlian</option>
-                                            <option value="#">Rekayasa Perangkat Lunak</option>
-                                            <option value="#">Ankuntasi</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <hr>
+                                <input type="hidden" name="kompeten_id" value="{{ $kompeten->id }}">
                                 {{-- ---------------------------------------------------------------------------------------- NAMA PERALATAN ---------------------------------------------------------------------------------------- --}}
                                 <div class="form-group row">
                                     <label for="nama-peralatan" class="col-sm-3 col-form-label">Nama Peralatan</label>
                                     <div class="col-sm-9">
                                         <div class="input-group peralatan-parent">
 
-                                            <select class="form-control" id="usulan-select">
-                                                <option value="belum" selected>Pilih Peralatan</option>
-                                                <option value="#">Access Point Indoor</option>
-                                                <option value="#">Access Point Outdoor</option>
+                                            @foreach ($peralatanOptions as $options)
+                                                <input type="hidden" class="input-option-{{ $options->id }}"
+                                                    data-kategori="{{ $options->kategori }}">
+                                            @endforeach
+                                            <select class="form-control select-usulan" id="usulan-select"
+                                                name="peralatan_id">
+                                                <option value="">Pilih Peralatan</option>
+                                                @foreach ($peralatanOptions as $options)
+                                                    <option value="{{ $options->id }}">
+                                                        {{ $options->nama }}</option>
+                                                @endforeach
                                             </select>
 
-                                            <input type="text" class="form-control" style="display: none"
-                                                id="usulan-text">
+                                            <input type="text" class="form-control input-manual-peralatan"
+                                                style="display: none" id="usulan-text" name="nama_peralatan" placeholder="Masukkan Nama Peralatan">
 
                                             {{-- ---------------------------------------------------------------------------------------- CHECKBOX ---------------------------------------------------------------------------------------- --}}
                                             <div class="input-group-append">
@@ -376,7 +398,10 @@
                                 <div class="form-group row">
                                     <label for="kategori" class="col-sm-3 col-form-label">Kategori</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="kategori">
+                                        <select name="kategori" id="" class="custom-select select-kategori" disabled>
+                                            <option value="utama" class="kategori-utama">Utama</option>
+                                            <option value="pendukung" class="kategori-pendukung">Pendukung</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <hr>
@@ -384,7 +409,7 @@
                                 <div class="form-group row">
                                     <label for="jumlah" class="col-sm-3 col-form-label">Jumlah</label>
                                     <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="jumlah">
+                                        <input type="number" class="form-control" id="jumlah" name="jml">
                                     </div>
                                 </div>
                                 <hr>
@@ -394,8 +419,7 @@
                                     <div class="col-sm-9">
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="proposal">
-                                                <label class="custom-file-label" for="proposal">Pilih Proposal</label>
+                                                <input type="file" id="chooseFile" accept=".pdf" name="proposal" required>
                                             </div>
                                         </div>
                                     </div>
@@ -422,6 +446,11 @@
         const usulanCheckbox = document.getElementById('usulan-checkbox');
         const usulanSelect = document.getElementById('usulan-select');
         const usulanText = document.getElementById('usulan-text');
+        const selectUsulan = document.querySelector('.select-usulan');
+        const kategoriUtama = document.querySelector('.kategori-utama');
+        const kategoriPendukung = document.querySelector('.kategori-pendukung');
+        const selectKategori = document.querySelector('.select-kategori');
+        const inputManualPeralatan = document.querySelector('.input-manual-peralatan');
 
         peralatanCheckbox.addEventListener('change', e => {
             if (e.target.checked === true) {
@@ -441,12 +470,27 @@
                 console.log("Checkbox is checked - boolean value: ", a.target.checked)
                 usulanSelect.style.setProperty("display", "none")
                 usulanText.style.setProperty("display", "block")
+                selectKategori.removeAttribute('disabled');
+                selectUsulan.value = '';
             }
             if (a.target.checked === false) {
                 console.log("Checkbox is not checked - boolean value: ", a.target.checked)
                 usulanSelect.style.setProperty("display", "block")
                 usulanText.style.setProperty("display", "none")
+                selectKategori.setAttribute('disabled', 'disabled');
+                inputManualPeralatan.value = '';
             }
         });
+
+        selectUsulan.addEventListener('change', function() {
+            if (document.querySelector('.input-option-' + selectUsulan.value).getAttribute('data-kategori')
+                .toLowerCase() == 'utama') {
+                kategoriUtama.setAttribute('selected', 'selected');
+                kategoriPendukung.removeAttribute('selected');
+            } else {
+                kategoriPendukung.setAttribute('selected', 'selected');
+                kategoriUtama.removeAttribute('selected');
+            }
+        })
     </script>
 @endsection

@@ -34,4 +34,12 @@ class Bangunan extends Model
             'kekurangan' => $kekurangan
         ]);
     }
+
+    public function scopeFilter($query, array $search)
+    {
+        $query->when($search['jenis'] ?? false, function($query, $jenis){
+            return $query->where('usulan_bangunans.jenis', $jenis);
+        });
+
+    }
 }
