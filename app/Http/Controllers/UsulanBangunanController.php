@@ -133,11 +133,8 @@ class UsulanBangunanController extends Controller
     
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Usulan Bangunan ' . str_replace("_", " ", $usulanBangunan->jenis));
 
-            if($usulanBangunan->jenis == 'perpustakaan'){
-                return redirect('/bangunan/ruang-perpustakaan');
-            }else{
-                return redirect('/bangunan/' . str_replace("_", "-", $usulanBangunan->jenis));
-            }
+            return redirect('/bangunan?jenis=' . $usulanBangunan->jenis);
+            
         }else{
             abort(403);
         }
@@ -172,6 +169,7 @@ class UsulanBangunanController extends Controller
                 'fotos' => $data->UsulanKoleksi[0]->usulanFoto,
                 'jenis' => $data->jenisPimpinan,
                 'jenis_pimpinans' => $jenis_pimpinan,
+                'kompils' => Kompeten::getKompeten()
             ]);
         }else{
             abort(403);

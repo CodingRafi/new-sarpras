@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('kompeten_id');
             $table->foreignId('profil_id');
+            $table->foreignId('peralatan_id');
             $table->string('nama');
             $table->string('kategori');
             $table->string('katersediaan');

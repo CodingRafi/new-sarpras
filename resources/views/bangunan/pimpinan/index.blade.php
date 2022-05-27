@@ -126,14 +126,19 @@
                                 @foreach ($datas as $data)
                                     <tr>
                                         <input type="hidden" class="id_pimpinan" value="{{ $data['id'] }}">
-                                        <td class="text-center" style="vertical-align: middle">{{ $loop->iteration }}</td>
+                                        <td class="text-center" style="vertical-align: middle">{{ $loop->iteration }}
+                                        </td>
                                         <td class="text-center jenis" style="vertical-align: middle"
                                             data-id="{{ $data['id_jenis'] }}">{{ $data['jenis'] }}</td>
-                                        <td class="text-center nama" style="vertical-align: middle">{{ $data['nama'] }}</td>
-                                        <td class="text-center luas" style="vertical-align: middle">{{ $data['luas'] }}</td>
-                                        <td class="text-center panjang" style="vertical-align: middle">{{ $data['panjang'] }}
+                                        <td class="text-center nama" style="vertical-align: middle">{{ $data['nama'] }}
                                         </td>
-                                        <td class="text-center lebar" style="vertical-align: middle">{{ $data['lebar'] }}</td>
+                                        <td class="text-center luas" style="vertical-align: middle">{{ $data['luas'] }}
+                                        </td>
+                                        <td class="text-center panjang" style="vertical-align: middle">
+                                            {{ $data['panjang'] }}
+                                        </td>
+                                        <td class="text-center lebar" style="vertical-align: middle">{{ $data['lebar'] }}
+                                        </td>
                                         <td>
                                             <div class="card-body">
                                                 <div class="input-group">
@@ -142,11 +147,13 @@
                                                             <i class="bi bi-three-dots-vertical"></i>
                                                         </button>
                                                         <div class="dropdown-menu" style="margin-left: -73px">
-                                                            <button type="button" class="btn btn-tool tombol-edit-ketersediaan"
+                                                            <button type="button"
+                                                                class="btn btn-tool tombol-edit-ketersediaan"
                                                                 data-toggle="modal" data-target="#edit-tersedia"><i
                                                                     class="bi bi-plus"></i>Edit
                                                             </button>
-                                                            <form action="/bangunan/pimpinan/{{ $data['id'] }}" method="post">
+                                                            <form action="/bangunan/pimpinan/{{ $data['id'] }}"
+                                                                method="post">
                                                                 @csrf
                                                                 @method('delete')
                                                                 <button type="submit" class="dropdown-item"
@@ -183,42 +190,52 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" action="/bangunan/pimpinan" method="POST">
-                            @csrf
-                            <div class="card-body">
-                                <div class="form-group row">
-                                    <label for="jumlah-lahan" class="col-sm-2 col-form-label">Jenis Ruang</label>
-                                    <div class="col-sm-10">
-                                        <select name="jenis_pimpinan_id" id="" required class="custom-select">
-                                            @foreach ($jenis_pimpinans as $data)
-                                                <option value="{{ $data->id }}">{{ $data->nama }}</option>
-                                            @endforeach
-                                        </select>
+                        @if (count($jenis_pimpinans) > 0)
+                            <form class="form-horizontal" action="/bangunan/pimpinan" method="POST">
+                                @csrf
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label for="jumlah-lahan" class="col-sm-2 col-form-label">Jenis Ruang</label>
+                                        <div class="col-sm-10">
+                                            <select name="jenis_pimpinan_id" id="" required class="custom-select">
+                                                @foreach ($jenis_pimpinans as $data)
+                                                    <option value="{{ $data->id }}">{{ $data->nama }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="luas-lahan" class="col-sm-2 col-form-label">Nama Bangunan</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="luas-lahan" name="nama" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="luas-lahan" class="col-sm-2 col-form-label">Panjang Lahan</label>
+                                        <div class="col-sm-10">
+                                            <input type="number" class="form-control" id="luas-lahan" name="panjang"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="luas-lahan" class="col-sm-2 col-form-label">Lebar Lahan</label>
+                                        <div class="col-sm-10">
+                                            <input type="number" class="form-control" id="luas-lahan" name="lebar"
+                                                required>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="luas-lahan" class="col-sm-2 col-form-label">Nama Bangunan</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="luas-lahan" name="nama" required>
-                                    </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-success float-right">Simpan</button>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="luas-lahan" class="col-sm-2 col-form-label">Panjang Lahan</label>
-                                    <div class="col-sm-10">
-                                        <input type="number" class="form-control" id="luas-lahan" name="panjang" required>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="luas-lahan" class="col-sm-2 col-form-label">Lebar Lahan</label>
-                                    <div class="col-sm-10">
-                                        <input type="number" class="form-control" id="luas-lahan" name="lebar" required>
-                                    </div>
+                            </form>
+                        @else
+                            <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                                <div class="alert" role="alert">
+                                    Belum ada jenis ruang pimpinan
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-success float-right">Simpan</button>
-                            </div>
-                        </form>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -234,48 +251,56 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" action="/bangunan/pimpinan" method="POST">
-                            @csrf
-                            @method('patch')
-                            <div class="card-body">
-                                <div class="form-group row">
-                                    <input type="hidden" name="id_pimpinan" class="id_pimpinan_input">
-                                    <label for="jumlah-lahan" class="col-sm-2 col-form-label">Jenis Ruang</label>
-                                    <div class="col-sm-10">
-                                        <select name="jenis_pimpinan_id" id="" required class="custom-select">
-                                            @foreach ($jenis_pimpinans as $data)
-                                                <option value="{{ $data->id }}" class="option-jenis">
-                                                    {{ $data->nama }}</option>
-                                            @endforeach
-                                        </select>
+                        @if (count($jenis_pimpinans) > 0)
+                            <form class="form-horizontal" action="/bangunan/pimpinan" method="POST">
+                                @csrf
+                                @method('patch')
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <input type="hidden" name="id_pimpinan" class="id_pimpinan_input">
+                                        <label for="jumlah-lahan" class="col-sm-2 col-form-label">Jenis Ruang</label>
+                                        <div class="col-sm-10">
+                                            <select name="jenis_pimpinan_id" id="" required class="custom-select">
+                                                @foreach ($jenis_pimpinans as $data)
+                                                    <option value="{{ $data->id }}" class="option-jenis">
+                                                        {{ $data->nama }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="luas-lahan" class="col-sm-2 col-form-label">Nama Bangunan</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control input-nama" id="luas-lahan" name="nama"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="luas-lahan" class="col-sm-2 col-form-label">Panjang Lahan</label>
+                                        <div class="col-sm-10">
+                                            <input type="number" class="form-control input-panjang" id="luas-lahan"
+                                                name="panjang" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="luas-lahan" class="col-sm-2 col-form-label">Lebar Lahan</label>
+                                        <div class="col-sm-10">
+                                            <input type="number" class="form-control input-lebar" id="luas-lahan"
+                                                name="lebar" required>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="luas-lahan" class="col-sm-2 col-form-label">Nama Bangunan</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control input-nama" id="luas-lahan" name="nama"
-                                            required>
-                                    </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-success float-right">Simpan</button>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="luas-lahan" class="col-sm-2 col-form-label">Panjang Lahan</label>
-                                    <div class="col-sm-10">
-                                        <input type="number" class="form-control input-panjang" id="luas-lahan"
-                                            name="panjang" required>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="luas-lahan" class="col-sm-2 col-form-label">Lebar Lahan</label>
-                                    <div class="col-sm-10">
-                                        <input type="number" class="form-control input-lebar" id="luas-lahan" name="lebar"
-                                            required>
-                                    </div>
+                            </form>
+                        @else
+                            <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                                <div class="alert" role="alert">
+                                    Belum ada jenis ruang pimpinan
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-success float-right">Simpan</button>
-                            </div>
-                        </form>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -322,7 +347,8 @@
                                             @foreach ($usulanFotos[$key] as $ke => $foto)
                                                 <a href="{{ asset('storage/' . $foto->nama) }}" class="fancybox"
                                                     data-fancybox="gallery{{ $key }}">
-                                                    <img src="{{ asset('storage/' . $foto->nama) }}" class="rounded"
+                                                    <img src="{{ asset('storage/' . $foto->nama) }}"
+                                                        class="rounded"
                                                         style="object-fit: cover; width: 150px; aspect-ratio: 1/1;{{ $ke == 0 ? '' : 'display:none;' }}">
                                                 </a>
                                             @endforeach
@@ -339,7 +365,8 @@
                                             <form action="/usulan-bangunan/{{ $usulan->id }}" method="post">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="btn text-white mt-2" style="background-color: #00a65b"
+                                                <button type="submit" class="btn text-white mt-2"
+                                                    style="background-color: #00a65b"
                                                     onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
                                             </form>
                                     </tr>
@@ -364,56 +391,65 @@
                     <form action="/bangunan/usulan-ruang-pimpinan" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-header">
-                            <h4 class="modal-title">Usulan</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group row">
-                                <label for="jumlah-lahan" class="col-sm-4 col-form-label">Jenis Ruang</label>
-                                <div class="col-sm-7">
-                                    <select name="jenis_pimpinan_id" id="" required class="custom-select">
-                                        @foreach ($jenis_pimpinans as $data)
-                                            <option value="{{ $data->id }}">{{ $data->nama }}</option>
-                                        @endforeach
-                                    </select>
+                                <h4 class="modal-title">Usulan Ruang Pimpinan</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                @if (count($jenis_pimpinans) > 0)
+                                <div class="form-group row">
+                                    <label for="jumlah-lahan" class="col-sm-4 col-form-label">Jenis Ruang</label>
+                                    <div class="col-sm-7">
+                                        <select name="jenis_pimpinan_id" id="" required class="custom-select">
+                                            @foreach ($jenis_pimpinans as $data)
+                                                <option value="{{ $data->id }}">{{ $data->nama }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            {{-- input jumlah ruangan --}}
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">Jumlah Ruang</label>
-                                <input type="number" class="form-control col-sm-7" placeholder="Masukan Jumlah Ruangan"
-                                    id="jumlah-ruangan" name="jml_ruang" required>
-                            </div>
-                            {{-- end input jumlah ruangan --}}
+                                {{-- input jumlah ruangan --}}
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Jumlah Ruang</label>
+                                    <input type="number" class="form-control col-sm-7" placeholder="Masukan Jumlah Ruangan"
+                                        id="jumlah-ruangan" name="jml_ruang" required>
+                                </div>
+                                {{-- end input jumlah ruangan --}}
 
-                            {{-- input luas lahan --}}
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">Luas Lahan (M)</label>
-                                <input type="number" class="form-control col-sm-7" placeholder="Masukan Luas Lahan"
-                                    id="luas-lahan" name="luas_lahan" required>
-                            </div>
-                            {{-- end luas lahan --}}
+                                {{-- input luas lahan --}}
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Luas Lahan (M)</label>
+                                    <input type="number" class="form-control col-sm-7" placeholder="Masukan Luas Lahan"
+                                        id="luas-lahan" name="luas_lahan" required>
+                                </div>
+                                {{-- end luas lahan --}}
 
-                            {{-- upload gambar lokasi --}}
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan</label>
-                                <input type="file" id="gambar-lahan" required multiple accept="image/*" name="gambar[]">
+                                {{-- upload gambar lokasi --}}
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan</label>
+                                    <input type="file" id="gambar-lahan" required multiple accept="image/*" name="gambar[]">
+                                </div>
+                                {{-- end upload gambar lokasi --}}
+                                {{-- upload proposal --}}
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label pt-1" for="customFile">Proposal</label>
+                                    <input type="file" id="proposal" required accept=".pdf" name="proposal">
+                                </div>
+                                {{-- end upload proposal --}}
                             </div>
-                            {{-- end upload gambar lokasi --}}
-                            {{-- upload proposal --}}
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label pt-1" for="customFile">Proposal</label>
-                                <input type="file" id="proposal" required accept=".pdf" name="proposal">
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                                <button type="submit" class="btn text-white"
+                                    style="background-color: #00a65b">Simpan</button>
                             </div>
-                            {{-- end upload proposal --}}
+                        </form>
+                    @else
+                        <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                            <div class="alert" role="alert">
+                                Belum ada jenis ruang pimpinan
+                            </div>
                         </div>
-                        <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                            <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
-                        </div>
-                    </form>
+                    @endif
                 </div>
                 <!-- /.modal-content -->
             </div>

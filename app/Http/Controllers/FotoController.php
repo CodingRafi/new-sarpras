@@ -35,7 +35,8 @@ class FotoController extends Controller
         return view('foto.create',[
             'koleksi_id' => $data->id,
             'koleksi' => $data,
-            'jeniskoleksi' => $data->jeniskoleksi
+            'jeniskoleksi' => $data->jeniskoleksi,
+            'kompils' => Kompeten::getKompeten()
         ]);
     }
 

@@ -20,4 +20,8 @@ class UsulanPeralatan extends Model
     public function kompeten(){
         return $this->belongsTo(Kompeten::class);
     }
+
+    public function peralatan(){
+        return $this->belongsTo(Peralatan::class);
+    }
 }
