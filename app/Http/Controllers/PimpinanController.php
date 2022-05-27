@@ -15,6 +15,8 @@ use App\Models\UsulanFoto;
 use App\Models\Profil;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Kompeten;
+
 
 class PimpinanController extends Controller
 {
@@ -54,7 +56,8 @@ class PimpinanController extends Controller
             'datas' => $data,
             'usulans' => $usulans,
             'usulanFotos' => $fotos,
-            'usulanJenis' => $jenisUsulanPimpinan
+            'usulanJenis' => $jenisUsulanPimpinan,
+            'kompils' => Kompeten::getKompeten()
         ]);
     }
 
@@ -192,6 +195,7 @@ class PimpinanController extends Controller
 
         return view('admin.ruangpimpinan', [
             'usulanBangunans' => $usulanBangunan,
+            'kompils' => Kompeten::getKompeten()
         ]);
     }
 }

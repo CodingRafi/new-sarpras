@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\JenisPimpinan;
 use App\Http\Requests\StoreJenisPimpinanRequest;
 use App\Http\Requests\UpdateJenisPimpinanRequest;
+use App\Models\Kompeten;
 
 class JenisPimpinanController extends Controller
 {

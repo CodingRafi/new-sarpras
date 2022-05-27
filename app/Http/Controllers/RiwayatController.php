@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Riwayat;
 use App\Http\Requests\StoreRiwayatRequest;
 use App\Http\Requests\UpdateRiwayatRequest;
+use App\Models\Kompeten;
 
 class RiwayatController extends Controller
 {

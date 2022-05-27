@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kcd;
 use App\Http\Requests\StoreKcdRequest;
 use App\Http\Requests\UpdateKcdRequest;
+use App\Models\Kompeten;
 
 class KcdController extends Controller
 {

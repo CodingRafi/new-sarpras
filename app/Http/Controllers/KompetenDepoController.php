@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\KompetenDepo;
 use App\Http\Requests\StoreKompetenDepoRequest;
 use App\Http\Requests\UpdateKompetenDepoRequest;
+use App\Models\Kompeten;
 
 class KompetenDepoController extends Controller
 {

@@ -44,7 +44,8 @@ class PerpustakaanController extends Controller
             'usulanFotos' => $fotos,
             'data' => $data,
             'profil' => $profil,
-            'jml_siswa' => $jml_lk + $jml_pr
+            'jml_siswa' => $jml_lk + $jml_pr,
+            'kompils' => Kompeten::getKompeten()
         ]);
     }
 
@@ -140,6 +141,7 @@ class PerpustakaanController extends Controller
 
         return view('admin.ruangperpustakaan', [
             'usulanBangunans' => $usulanBangunan,
+            'kompils' => Kompeten::getKompeten()
         ]);
     }
 }

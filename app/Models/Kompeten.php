@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class Kompeten extends Model
 {
@@ -26,6 +27,10 @@ class Kompeten extends Model
         return $this->hasMany(UsulanBangunan::class);
     }
 
+    public function usulanPeralatan(){
+        return $this->hasMany(UsulanPeralatan::class);
+    }
+
     public function praktik(){
         return $this->hasMany(Praktik::class);
     }
@@ -38,5 +43,13 @@ class Kompeten extends Model
         })->whereNull('b.komli_id')->get();
     }
 
+    public static function getKompeten(){
+        if(Auth::user() != null){
+            if (Auth::user()->hasRole('sekolah')) {
+                $kompils = Kompeten::where('profil_id', Auth::user()->profil_id)->select('kompetens.*', 'komlis.kompetensi')->leftJoin('komlis', 'komlis.id' , 'kompetens.komli_id')->get();
+                return $kompils;
+            }
+        }
+    }
     
 }

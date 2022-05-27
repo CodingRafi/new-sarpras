@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ProfilKcd;
 use App\Http\Requests\StoreProfilKcdRequest;
 use App\Http\Requests\UpdateProfilKcdRequest;
+use App\Models\Kompeten;
 
 class ProfilKcdController extends Controller
 {

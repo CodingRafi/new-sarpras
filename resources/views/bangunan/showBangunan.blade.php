@@ -17,7 +17,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark display-4" style="padding: 0 !important;">Ruang Kelas</h1>
+                    <h1 class="m-0 text-dark display-4" style="padding: 0 !important;text-transform: capitalize;">{{ str_replace("_", " ", request('jenis')) }}</h1>
                 </div>
             </div>
         </div>
@@ -27,8 +27,8 @@
     {{-- Table --}}
     <div class="container-fluid">
         <div class="card">
-            <div class="card-header d-flex p-0" style="background-color: #25b5e9">
-                <h3 class="card-title p-3 text-white">Ruang Kelas</h3>
+            <div class="card-header bg-warning d-flex p-0">
+                <h3 class="card-title p-3 text-white" style="text-transform: capitalize;">{{ str_replace("_", " ", request('jenis')) }}</h3>
             </div>
             <div class="card-body">
                 {{-- Table --}}
@@ -51,7 +51,7 @@
                                         </li>
                                     </ul>
                                     <div class="md-2 col-11" style="max-width: 89%;">
-                                        <form class="form-inline ml-2" action="/bangunan/ruang-kelas-dinas" method="GET"
+                                        <form class="form-inline ml-2" action="/bangunan-all?jenis={{ request('jenis') }}&&" method="GET"
                                             style="width: 100%;">
                                             <div class="input-group"
                                                 style="width: 100%;border: 1px solid #ced4da;border-radius: 3px;">

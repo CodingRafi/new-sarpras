@@ -13,6 +13,7 @@ use App\Http\Requests\UpdateKomputerRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Log;
+use App\Models\Kompeten;
 
 class KomputerController extends Controller
 {

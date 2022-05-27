@@ -69,13 +69,13 @@
                 <div class="row input pl-5 mt-2">
                     <label class="col-2 mt-3">Panjang</label>
                     <input type="number" class="col-9 form-control mt-2" style="width: 750px" placeholder="Masukan Panjang"
-                        value="{{ $data->panjang }}" name="panjang" required>
+                        value="{{ $data->panjang }}" name="panjang" required step=any>
                 </div>
 
                 <div class="row input pl-5 mt-2">
                     <label class="col-2 mt-3">Lebar</label>
                     <input type="number" class="col-9 form-control mt-2" style="width: 750px" placeholder="Masukan Lebar"
-                        value="{{ $data->lebar }}" name="lebar" required>
+                        value="{{ $data->lebar }}" name="lebar" required step=any>
                 </div>
                 
                 <div class="row input pl-5 mt-2">

@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('bidang')->nullable();
             $table->string('program')->nullable();
             $table->string('kompetensi')->nullable();
+            $table->string('jml_lk')->nullable();
+            $table->string('jml_pr')->nullable();
             $table->timestamps();
         });
     }

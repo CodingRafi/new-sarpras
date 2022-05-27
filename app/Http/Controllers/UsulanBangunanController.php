@@ -13,6 +13,7 @@ use App\Http\Requests\StoreUsulanBangunanRequest;
 use App\Http\Requests\UpdateUsulanBangunanRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use App\Models\Kompeten;
 
 class UsulanBangunanController extends Controller
 {
@@ -60,21 +61,24 @@ class UsulanBangunanController extends Controller
                 'data' => $usulanBangunan,
                 'jurusan' => $usulanBangunan->kompeten->komli->kompetensi,
                 'usulanFoto' => $usulanBangunan->usulanKoleksi[0]->usulanFoto,
-                'profil' => $usulanBangunan->profil
+                'profil' => $usulanBangunan->profil,
+                'kompils' => Kompeten::getKompeten()
             ]);
         }else if($usulanBangunan->jenis == 'ruang_pimpinan'){
             return view('bangunan.show', [
                 'data' => $usulanBangunan,
                 'jenisPimpinan' => $usulanBangunan->jenisPimpinan->nama,
                 'usulanFoto' => $usulanBangunan->usulanKoleksi[0]->usulanFoto,
-                'profil' => $usulanBangunan->profil
+                'profil' => $usulanBangunan->profil,
+                'kompils' => Kompeten::getKompeten()
             ]);
         }
 
         return view('bangunan.show', [
             'data' => $usulanBangunan,
             'usulanFoto' => $usulanBangunan->usulanKoleksi[0]->usulanFoto,
-            'profil' => $usulanBangunan->profil
+            'profil' => $usulanBangunan->profil,
+            'kompils' => Kompeten::getKompeten()
         ]);
     }
     
@@ -90,7 +94,8 @@ class UsulanBangunanController extends Controller
         if($usulanBangunan->profil_id == Auth::user()->profil_id){
             return view('bangunan.edit', [
                 'data' => $usulanBangunan,
-                'fotos' => $usulanBangunan->UsulanKoleksi[0]->usulanFoto
+                'fotos' => $usulanBangunan->UsulanKoleksi[0]->usulanFoto,
+                'kompils' => Kompeten::getKompeten()
             ]);
         }else{
             abort(403);

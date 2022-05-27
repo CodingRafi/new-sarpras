@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call(ProfilDepoSeeder::class);
-        $this->call(ProfilSeeder::class);
         // $this->call(KompetenDepoSeeder::class);
+        $this->call(ProfilSeeder::class);
         $this->call(KcdSeeder::class);
         $this->call(ProfilKcdSeeder::class);
         $this->call(BangunanSeeder::class);

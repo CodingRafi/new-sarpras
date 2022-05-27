@@ -158,6 +158,7 @@
                 </li>
 
                 {{-- ---------------------------------------------------------------------------------------- PERALATAN SEKOLAH ---------------------------------------------------------------------------------------- --}}
+                @if (count($kompils) > 0)       
                 <li class="nav-item has-treeview {{ Request::is('peralatan/*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-collection"></i>
@@ -168,15 +169,18 @@
                     </a>
                     <ul class="nav nav-treeview">
                         {{-- ---------------------------------------------------------------------------------------- JURUSAN ---------------------------------------------------------------------------------------- --}}
-                        <li class="nav-item">
-                            <a href="/peralatan/nama-jurusan"
-                                class="nav-link {{ Request::is('peralatan/nama-jurusan') ? 'active' : '' }}">
-                                <i class="fa-regular fa-circle"></i>
-                                <p>(nama jurusan)</p>
-                            </a>
-                        </li>
+                        @foreach ($kompils as $kompil)
+                            <li class="nav-item">
+                                <a href="/peralatan-sekolah/{{ $kompil->id }}"
+                                    class="nav-link {{ Request::is('peralatan/nama-jurusan') ? 'active' : '' }}">
+                                    <i class="fa-regular fa-circle"></i>
+                                    <p>{{ $kompil->kompetensi }}</p>
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </li>
+                @endif
 
                 {{-- ---------------------------------------------------------------------------------------- RIWAYAT BANTUAN ---------------------------------------------------------------------------------------- --}}
                 <li class="nav-item">

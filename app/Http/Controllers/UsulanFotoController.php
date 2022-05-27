@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreUsulanFotoRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateUsulanFotoRequest;
+use App\Models\Kompeten;
 
 class UsulanFotoController extends Controller
 {

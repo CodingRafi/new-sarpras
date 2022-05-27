@@ -8,6 +8,7 @@ use App\Models\KekuranganLahan;
 use App\Models\UsulanLahan;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Kompeten;
 
 class LahanController extends Controller
 {
@@ -50,7 +51,8 @@ class LahanController extends Controller
             'luasKetersediaanLahan' => $luasKetersediaanLahan,
             'shm' => $shm,
             'hgb' => $hgb,
-            'sewa' => $sewa
+            'sewa' => $sewa,
+            'kompils' => Kompeten::getKompeten()
         ]);
     }
 }

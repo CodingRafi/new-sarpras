@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Kompeten;
 use App\Models\Koleksi;
 use App\Models\Bangunan;
+use App\Models\KompetenDepo;
 use App\Models\Jeniskoleksi;
 use App\Models\ProfilDepo;
 use App\Http\Requests\StoreProfilRequest;
@@ -81,6 +82,8 @@ class ProfilController extends Controller
             }
 
             $semua_jurusan = Kompeten::pilihanJurusan($profil);
+
+            $jurusanDepo = KompetenDepo::where('profil_depo_id', $profil->id)->get();
             
             DB::enableQueryLog();
 
@@ -107,7 +110,9 @@ class ProfilController extends Controller
                 'semua_jurusan' => $semua_jurusan,
                 'logs' => $logs,
                 'jenis_koleksis' => $semua_jenis_koleksi,
-                'jenis_koleksi_terpilih' => $jenis_koleksi_terpilih
+                'jenis_koleksi_terpilih' => $jenis_koleksi_terpilih,
+                'jurusanDepos' => $jurusanDepo,
+                'kompils' => Kompeten::getKompeten()
             ]);
         }else{
             return abort(403);
@@ -124,7 +129,8 @@ class ProfilController extends Controller
     public function edit(Profil $profil)
     {
         return view('profil.edit', [
-            'data' => $profil
+            'data' => $profil,
+            'kompils' => Kompeten::getKompeten()
         ]);
     }
 
@@ -148,6 +154,12 @@ class ProfilController extends Controller
                 'alamat' => 'string|nullable',
                 'email' => 'email|nullable',
                 'website' => 'string|nullable',
+                'instagram' => 'string|required',
+                'youtube' => 'string|required',
+                'gtk' => 'string|required',
+                'facebook' => 'string|nullable',
+                'twitter' => 'string|nullable',
+                'tiktok' => 'string|nullable',
                 'nomor_telepon' => 'string|nullable',
                 'jml_rombel' => 'numeric|nullable',
                 'lat' => 'string|nullable',

@@ -9,6 +9,7 @@ use App\Models\UsulanBangunan;
 use App\Models\UsulanKoleksi;
 use App\Models\UsulanFoto;
 use App\Models\Profil;
+use App\Models\Kompeten;
 use App\Models\Log;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreKelasRequest;
@@ -35,7 +36,8 @@ class KelasController extends Controller
             'usulanKelas' => $usulanKelas,
             'usulanFotos' => $fotos,
             'dataKelas' => $data,
-            'profil' => $profil
+            'profil' => $profil,
+            'kompils' => Kompeten::getKompeten()
         ]);
     }
 
@@ -132,6 +134,7 @@ class KelasController extends Controller
 
         return view('admin.ruangkelas', [
             'usulanBangunans' => $usulanBangunan,
+            'kompils' => Kompeten::getKompeten()
         ]);
     }
 
