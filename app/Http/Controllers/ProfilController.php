@@ -156,7 +156,7 @@ class ProfilController extends Controller
                 'website' => 'string|nullable',
                 'instagram' => 'string|required',
                 'youtube' => 'string|required',
-                'gtk' => 'string|required',
+                'gtk' => 'string|nullable',
                 'facebook' => 'string|nullable',
                 'twitter' => 'string|nullable',
                 'tiktok' => 'string|nullable',

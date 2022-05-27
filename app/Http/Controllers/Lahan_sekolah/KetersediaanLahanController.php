@@ -86,8 +86,8 @@ class KetersediaanLahanController extends Controller
         return($ketersediaanLahan);
         if($ketersediaanLahan->profil_id == Auth::user()->profil_id){
             return view('lahan.ketersediaan.edit', [
-                'kompils' => Kompeten::getKompeten(),
-                'ketersediaan' => $ketersediaanLahan
+                'ketersediaan' => $ketersediaanLahan,
+                'kompils' => Kompeten::getKompeten()
             ]);
         }else{
             abort(403);

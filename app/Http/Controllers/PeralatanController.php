@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Peralatan;
 use App\Models\PeralatanTersedia;
 use App\Models\Komli;
+use App\Models\UsulanPeralatan;
 use App\Http\Requests\StorePeralatanRequest;
 use App\Http\Requests\UpdatePeralatanRequest;
 use Illuminate\Support\Facades\Auth;
@@ -139,21 +140,19 @@ class PeralatanController extends Controller
 
     public function showPeralatan($id){
         $kompeten = Kompeten::find($id);
-        $peralatans = Peralatan::where('komli_id', $kompeten->komli->id)
-            ->select('peralatans.*', 'komlis.kompetensi')
-            ->leftJoin('komlis', 'peralatans.komli_id', 'komlis.id')
-            ->paginate(15);
-        $coba = Kompeten::select('komlis.kompetensi')
-            ->leftJoin('komlis', 'kompetens.komli_id', 'komlis.id')
-            ->where('kompetens.id', $id)->first();
+        $peralatans = Peralatan::where('komli_id', $kompeten->komli->id)->select('peralatans.*', 'komlis.kompetensi')->leftJoin('komlis', 'peralatans.komli_id', 'komlis.id')->paginate(15);
         $peralatanTersedias = PeralatanTersedia::where('kompeten_id', $id)->get();
-        
+        $peralatansOptions = Peralatan::where('komli_id', $kompeten->komli_id)->get();
+        $usulanPeralatan = UsulanPeralatan::where('usulan_peralatans.profil_id', Auth::user()->profil_id)->select('usulan_peralatans.*', 'komlis.kompetensi', 'peralatans.nama')->leftJoin('kompetens', 'kompetens.id', 'usulan_peralatans.kompeten_id')->leftJoin('komlis', 'komlis.id', 'kompetens.komli_id')->leftJoin('peralatans', 'usulan_peralatans.peralatan_id', 'peralatans.id')->get();
+        // dd($usulanPeralatan);
         return view('peralatan-sekolah.index', [
-            'coba' => $coba,
+            'peralatanTersedias' => $peralatanTersedias,
             'peraturans' => $peralatans,
             'kompils' => Kompeten::getKompeten(),
-            'kompeten_id' => $id,
-            'peralatanTersedias' => $peralatanTersedias
+            'peralatanOptions' => $peralatansOptions,
+            'komli' => $kompeten->komli,
+            'kompeten' => $kompeten,
+            'usulanPeralatans' => $usulanPeralatan
         ]);
     }
 }

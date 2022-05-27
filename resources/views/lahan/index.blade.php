@@ -64,7 +64,7 @@
                         <h4 class="text-center text-white font-weight-bold">Total Luas Lahan</h4>
                     </div><!-- /.card-header -->
                     <div class="card-body">
-                        <h1 class="text-center font-weight-bold pt-2">20m²</h1>
+                        <h1 class="text-center font-weight-bold pt-2">{{ $luasKetersediaanLahan }} m²</h1>
                     </div><!-- /.card-body -->
                 </div>
             </div>
@@ -76,7 +76,7 @@
                         <h4 class="text-center text-white font-weight-bold">Jenis Kepemilikan</h4>
                     </div><!-- /.card-header -->
                     <div class="card-body">
-                        <h1 class="text-center font-weight-bold pt-2" style="font-size: 18px; box-sizing:border-box">SHM: {{ $shm }} HGB: {{ $hgb }} Sewa: {{ $sewa }}</h1>
+                        <h1 class="text-center font-weight-bold pt-2" style="font-size: 18px; box-sizing:border-box">SHM: {{ $shm }} HGB: {{ $hgb }} Sewa: {{ $sewa }} Hibah/Wakaf: {{ $hibah }} Tanah Desa: {{ $tanah_desa }}</h1>
                     </div><!-- /.card-body -->
                 </div>
             </div>

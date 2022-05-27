@@ -69,7 +69,8 @@ class PraktikController extends Controller
             'usulanFotos' => $fotos,
             'kompetenPraktekTersedias' => $kompetenPraktekTersedia,
             'komliPraktekTersedias' => $komliPraktekTersedia,
-            'datas' => $data
+            'datas' => $data,
+            'kompils' => Kompeten::getKompeten()
         ]);
     }
 
@@ -210,6 +211,7 @@ class PraktikController extends Controller
 
         return view('admin.ruangpraktik', [
             'usulanBangunans' => $usulanBangunan,
+            'kompils' => Kompeten::getKompeten()
         ]);
     }
 }

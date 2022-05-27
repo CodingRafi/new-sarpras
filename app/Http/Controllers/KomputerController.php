@@ -34,7 +34,8 @@ class KomputerController extends Controller
             'usulanLabKomputers' => $usulans,
             'usulanFotos' => $fotos,
             'data' => $data,
-            'profil' => $profil
+            'profil' => $profil,
+            'kompils' => Kompeten::getKompeten(),
         ]);
     }
 
@@ -110,12 +111,13 @@ class KomputerController extends Controller
             'luas_lahan' => 'required',
             'gambar' => 'required',
             'proposal' => 'required|mimes:pdf',
-            'gambar.*' => 'mimes:jpg,jpeg,png|file|max:5120'
+            'gambar.*' => 'mimes:jpg,jpeg,png|file|max:5120',
+            'jenis' => 'required'
         ]);
 
         $validatedData['keterangan'] = 'Proses Pengajuan';
 
-        UsulanBangunan::createUsulan($request, 'lab_komputer', $validatedData);
+        UsulanBangunan::createUsulan($request, $request->jenis , $validatedData);
 
         Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan usulan Lab Komputer');
 

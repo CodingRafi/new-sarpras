@@ -92,7 +92,7 @@
     {{-- --------------------------------------------- end inf box --------------------------------------------- --}}
 
     {{-- ---------------------------------------------------------------------------------------- MODAL USULAN ---------------------------------------------------------------------------------------- --}}
-    <div class="modal fade" id="tambah-jenis-pimpinan">
+    {{-- <div class="modal fade" id="tambah-jenis-pimpinan">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -119,7 +119,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <div class="modal fade" id="tambah-tersedia">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -230,7 +230,7 @@
     {{-- --------------------------------------- USULAN LAB KOMPUTER --------------------------------------- --}}
     <div class="card card-info">
         <div class="card-header" style="background-color: #25b5e9">
-            <h3 class="card-title font-weight-bold">Usulan Rehab / Renov</h3>
+            <h3 class="card-title font-weight-bold">Usulan Ruang Pimpinan</h3>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
                     data-target="#tambah-usulan"><i class="bi bi-plus"></i> Tambah Usulan

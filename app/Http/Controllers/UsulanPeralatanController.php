@@ -6,6 +6,10 @@ use App\Models\UsulanPeralatan;
 use App\Http\Requests\StoreUsulanPeralatanRequest;
 use App\Http\Requests\UpdateUsulanPeralatanRequest;
 use App\Models\Kompeten;
+use App\Models\Peralatan;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Log;
+use Illuminate\Support\Facades\Auth;
 
 class UsulanPeralatanController extends Controller
 {
@@ -37,7 +41,28 @@ class UsulanPeralatanController extends Controller
      */
     public function store(StoreUsulanPeralatanRequest $request)
     {
-        //
+        $kompeten = Kompeten::find($request->kompeten_id);
+        return($request);
+        if($kompeten->profil_id == Auth::user()->profil_id){
+            $validatedData = $request->validate([
+                'kompeten_id' => 'required',
+                'peralatan_id' => 'nullable',
+                'nama_peralatan' => 'string|nullable',
+                'kategori' => 'required',
+                'jml' => 'required',
+                'proposal' => 'required|mimes:pdf|file|max:5120'
+            ]);
+            
+            $validatedData['keterangan'] = 'Proses Pengajuan';
+            $validatedData['proposal'] = $request->file('proposal')->store('proposal-usulan-peralatan');
+            $validatedData['profil_id'] = Auth::user()->profil_id;
+
+            UsulanPeralatan::create($validatedData);
+
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Membuat Usulan Peralatan' . $kompeten->komli->kompetensi);
+
+            return redirect()->back();
+        }
     }
 
     /**
@@ -59,7 +84,13 @@ class UsulanPeralatanController extends Controller
      */
     public function edit(UsulanPeralatan $usulanPeralatan)
     {
-        //
+        $kompeten = Kompeten::find($usulanPeralatan->kompeten_id);
+        $peralatansOptions = Peralatan::where('komli_id', $kompeten->komli_id)->get();
+        return view('peralatan-sekolah.edit', [
+            'peralatanOptions' => $peralatansOptions,
+            'data' => $usulanPeralatan,
+            'kompils' => Kompeten::getKompeten(),
+        ]);
     }
 
     /**
@@ -71,7 +102,30 @@ class UsulanPeralatanController extends Controller
      */
     public function update(UpdateUsulanPeralatanRequest $request, UsulanPeralatan $usulanPeralatan)
     {
-        //
+        if($usulanPeralatan->profil_id = Auth::user()->profil_id){
+            $validatedData = $request->validate([
+                'peralatan_id' => 'nullable',
+                'nama_peralatan' => 'string|nullable',
+                'kategori' => 'required',
+                'jml' => 'required',
+                'proposal' => 'mimes:pdf|file|max:5120'
+            ]);
+
+            if($request->file('proposal')){
+                if($usulanPeralatan->proposal){
+                    Storage::delete($usulanPeralatan->proposal);
+                }
+                $validatedData['proposal'] = $request->file('proposal')->store('proposal-usulan-peralatan');
+            }
+
+            $kompeten = Kompeten::find($usulanPeralatan->kompeten_id);  
+            
+            $usulanPeralatan->update($validatedData);
+
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Usulan Peralatan' . $kompeten->komli->kompetensi);
+
+            return redirect('/peralatan-sekolah/' . $kompeten->id);
+        }
     }
 
     /**
@@ -82,6 +136,15 @@ class UsulanPeralatanController extends Controller
      */
     public function destroy(UsulanPeralatan $usulanPeralatan)
     {
-        //
+        if($usulanPeralatan->profil_id == Auth::user()->profil_id){
+            Storage::delete($usulanPeralatan->proposal);
+            UsulanPeralatan::destroy($usulanPeralatan->id);
+
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Membatalkan usulan peralatan');
+
+            return redirect()->back();
+        }else{
+            abort(403);
+        } 
     }
 }
