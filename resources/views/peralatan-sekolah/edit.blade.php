@@ -45,128 +45,91 @@
 @endsection
 
 @section('container')
-    {{-- @dd($data->jenis) --}}
+    {{-- @dd($data) --}}
     <div class="title pt-3">
-        <h3 class="text-dark display-4 pl-3" style="font-size: 25px;text-transform: capitalize;">Edit
-            {{ str_replace('_', ' ', $data->jenis) }}</h3>
+        <h3 class="text-dark display-4 pl-3" style="font-size: 25px">Edit Usulan Lahan</h3>
     </div>
 
-    {{-- <div class="card card-info">
-        <div class="card-header">
-            <h3 class="card-title">Horizontal Form</h3>
-        </div>
-        <!-- /.card-header -->
-        <!-- form start -->
-        <form class="form-horizontal">
-            <div class="card-body">
-                <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="offset-sm-2 col-sm-10">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck2">
-                            <label class="form-check-label" for="exampleCheck2">Remember me</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- /.card-body -->
-            <div class="card-footer">
-                <button type="submit" class="btn btn-info">Sign in</button>
-                <button type="submit" class="btn btn-default float-right">Cancel</button>
-            </div>
-            <!-- /.card-footer -->
-        </form>
-    </div> --}}
+    <div class="form-edit pt-3">
 
-    <div class="card">
-        <form class="form-horizontal" action="/usulan-bangunan/{{ $data->id }}" method="post" enctype="multipart/form-data">
+        <form action="/usulan-peralatan/{{ $data->id }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('patch')
-            <div class="card-body">
-                
-                @if ($data->jenis == 'perpustakaan' || $data->jenis == 'toilet')
-                <input type="hidden" name="jml_ruang" value="{{ $data->jml_ruang }}">
-                @else
+            <div class="card pt-3" style="background-color: white; border-radius: 10px; ">
 
-                {{-- --------------------------------------------- JUMLAH RUANG --------------------------------------------- --}}
-                <div class="form-group row">
-                    <label class="col-sm-3 col-form-label" style="text-transform: capitalize;">Jumlah Ruang {{ str_replace('_', ' ', $data->jenis) }}</label>
+                {{-- ---------------------------------------------------------------------------------------- NAMA PERALATAN ---------------------------------------------------------------------------------------- --}}
+                <div class="row input pl-5 mt-3">
+                    <label for="nama-peralatan" class="col-2 mt-1">Nama Peralatan</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" placeholder="Masukan Jumlah Ruang" value="{{ $data->jml_ruang }}" name="jml_ruang">
-                    </div>
-                </div>
-                @endif
+                        <div class="input-group peralatan-parent">
 
-                {{-- --------------------------------------------- LUAS LAHAN --------------------------------------------- --}}
-                <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Luas Lahan</label>
-                    <div class="col-sm-9">
-                        <input type="number" class="form-control" placeholder="Masukan Luas Lahan" value="{{ $data->luas_lahan }}" name="luas_lahan">
-                    </div>
-                </div>
+                            @foreach ($peralatanOptions as $options)
+                                <input type="hidden" class="input-option-{{ $options->id }}"
+                                    data-kategori="{{ $options->kategori }}">
+                            @endforeach
+                            <select class="form-control select-usulan" id="usulan-select" name="peralatan_id" style="{{ ($data->peralatan_id == null) ? 'display:none' : '' }}">
+                                <option value="">Pilih Peralatan</option>
+                                @foreach ($peralatanOptions as $options)
+                                    <option value="{{ $options->id }}" {{ ($data->peralatan_id == $options->id) ? 'selected' : '' }}>
+                                        {{ $options->nama }}</option>
+                                @endforeach
+                            </select>
 
-                <input type="hidden" name="deleteImage" class="delete-image">
+                            <input type="text" class="form-control input-manual-peralatan" style="{{ ($data->peralatan_id == null) ? '' : 'display:none' }}"
+                                id="usulan-text" name="nama_peralatan" value="{{ $data->nama_peralatan }}" placeholder="Masukkan Nama Peralatan">
 
-                {{-- --------------------------------------------- GAMBAR LAHAN --------------------------------------------- --}}
-                <div class="form-group row">
-                    <label class="col-sm-3 col-form-label">Gambar Lahan</label>
-                    <div class="col-sm-9">
-                        <input type="file" id="gambar-lahan" name="gambar[]" onchange="previewImage()" multiple class="filename form-control" accept="image/*">
-                    </div>
-                </div>
-
-                <div class="d-flex flex-wrap container-preview mb-3">
-                    @foreach ($fotos as $foto)
-                    <div class="item col-sm-3 col-6 container-image ">
-                        <div class="shadow-sm rounded border">
-                            <button class="btn btn-danger shadow-sm button-hapus-image"
-                                style="position: absolute; right: 8px;" type="button"><i
-                                    class="bi bi-trash-fill"></i></button>
-                            <a href="{{ asset('storage/' . $foto->nama) }}" class="fancybox a-image"
-                                data-fancybox="gallery1" data-id="{{ $foto->id }}">
-                                <img src="{{ asset('storage/' . $foto->nama) }}" class="rounded"
-                                    style="object-fit: cover; width: 100%; aspect-ratio: 1/1;">
-                            </a>
+                            {{-- ---------------------------------------------------------------------------------------- CHECKBOX ---------------------------------------------------------------------------------------- --}}
+                            <div class="input-group-append">   
+                                <span class="input-group-text"> 
+                                    <input id="usulan-checkbox" type="checkbox" {{ ($data->peralatan_id == null) ? 'checked' : '' }} >
+                                </span>
+                            </div>
                         </div>
                     </div>
-                    @endforeach
+                </div>
+                {{-- ---------------------------------------------------------------------------------------- KATEGORI ---------------------------------------------------------------------------------------- --}}
+                <div class="row input pl-5 mt-3">
+                    <label for="kategori" class="col-2 mt-1">Kategori</label>
+                    <div class="col-sm-9">
+                        <select class="custom-select select-kategori" name="kategori" {{ ($data->peralatan_id == null) ? '' : 'disabled' }} >
+                            <option value="utama" class="kategori-utama" {{ ($data->kategori == 'utama') ? 'selected' : '' }}>Utama</option>
+                            <option value="pendukung" class="kategori-pendukung" {{ ($data->kategori == 'pendukung') ? 'selected' : '' }}>Pendukung</option>
+                        </select>
+                    </div>
+                </div>
+                {{-- ---------------------------------------------------------------------------------------- JUMLAH ---------------------------------------------------------------------------------------- --}}
+                <div class="row input pl-5 mt-3">
+                    <label for="jumlah" class="col-2 mt-1">Jumlah</label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" id="jumlah" name="jml" value="{{ $data->jml }}">
+                    </div>
                 </div>
 
                 {{-- --------------------------------------------- PROPOSAL --------------------------------------------- --}}
-                <div class="form-group row">
-                    <label class="col-sm-3 col-form-label" value="{{ $data->proposal }}">Proposal</label>
+                <div class="row input pl-5 mt-3" style="margin-top: 10px">
+                    <label class="col-2 mt-1" value="{{ $data->proposal }}">Proposal</label>
                     <div class="col-sm-9">
-                        <input class="form-control" type="file" id="proposal" name="proposal" value="{{ asset('storage/' . $data->proposal) }}" accept=".pdf">
+                        <input type="file" id="proposal" name="proposal" value="{{ asset('storage/' . $data->proposal) }}"
+                            accept=".pdf">
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-3 col-form-label"></div>
-                    <div class="col-sm-9 d-flex">
-                        <iframe class="iframe-proposal col-sm-6 border border-rounded shadow-sm p-0" src="{{ asset('storage/' . $data->proposal) }}" frameborder="0" height="400" style="display: block; border-radius: 10px !important;"></iframe>
+                    <div class="container d-flex pl-5 mt-3">
+                        <iframe class="iframe-proposal border border-rounded shadow-sm"
+                            src="{{ asset('storage/' . $data->proposal) }}" frameborder="0" width="300" height="400"
+                            style="display: block; border-radius: 10px !important;"></iframe>
                         <div id="pdf-loader">Loading Preview ..</div>
-                        <div class="col-sm-6 "><canvas id="pdf-preview" class="border border-rounded shadow-sm p-0"
-                                style="border-radius: 10px !important;"></canvas></div>
+                        <div><canvas id="pdf-preview" class="border border-rounded shadow-sm"
+                                style="width: 300px !important; border-radius: 10px !important;"></canvas></div>
                     </div>
                 </div>
 
                 {{-- --------------------------------------------- SUBMIT --------------------------------------------- --}}
                 <div class="pb-3 pl-5 mt-4">
-                    <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
+                    <button type="submit" class="btn text-white tombol-simpan" style="background-color: #00a65b">Simpan</button>
                 </div>
+
             </div>
         </form>
+
     </div>
 
     {{-- --------------------------------------------- ALERT --------------------------------------------- --}}
@@ -174,7 +137,14 @@
     <div id='alrt' style="fontWeight = 'bold'"></div>
 
     <div class="d-none input-urungkan">
+
     </div>
+
+    {{-- --------------------------------------------- HIDE --------------------------------------------- --}}
+    {{-- <button id="upload-dialog">Choose PDF</button> hide --}}
+    {{-- <span id="pdf-name"></span> hide --}}
+    {{-- <button id="upload-button">Upload</button> hide --}}
+    {{-- <button id="cancel-pdf">Cancel</button> hide --}}
 @endsection
 
 @section('tambahjs')
@@ -184,57 +154,22 @@
     <script src="/pdf.js"></script>
     <script src="/pdf.worker.js"></script>
 
+    {{-- <script>
+        function showPreview(event) {
+            if (event.target.files.length > 0) {
+                var src = URL.createObjectURL(event.target.files[0]);
+                var preview = document.getElementById("file-ip-1-preview");
+                preview.src = src;
+                preview.style.display = "block";
+                document.querySelector('.preview').style.display = "block";
+                document.getElementById("href-preview").href = src;
+            }
+        }
+    </script> --}}
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-    <script>
-        function previewImage() {
-
-            let countFiles = $('.filename')[0].files.length;
-
-            for (let x = 0; x < countFiles; x++) {
-                let imgPath = $('.filename')[0].files[x]['name'];
-                let extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
-                let image_holder = $('.container-preview');
-
-                if (extn == "png" || extn == "jpg" || extn == "jpeg") {
-                    if (typeof(FileReader) != "undefined") {
-
-                        var reader = new FileReader();
-                        reader.onload = function(e) {
-                            let div1 = document.createElement('div');
-                            div1.setAttribute('class', 'item col-sm-3 col-6 container-image');
-                            let div2 = document.createElement('div');
-                            div2.setAttribute('class', 'shadow-sm rounded border');
-                            div1.appendChild(div2);
-                            let a = document.createElement('a');
-                            a.setAttribute('href', e.target.result);
-                            a.setAttribute('class', 'fancybox a-image');
-                            a.setAttribute('data-fancybox', 'gallery1');
-                            div2.appendChild(a);
-                            let img = document.createElement('img');
-                            img.setAttribute('id', 'file-ip-1-preview');
-                            img.setAttribute('style', 'object-fit: cover; width: 100%; aspect-ratio: 1/1;');
-                            img.setAttribute('src', e.target.result);
-                            a.appendChild(img);
-                            let containerPreview = document.querySelector('.container-preview');
-                            containerPreview.appendChild(div1);
-
-                        }
-
-                        image_holder.show();
-                        reader.readAsDataURL($('.filename')[0].files[x]);
-
-                    } else {
-                        alert("This browser does not support FileReader.");
-                    }
-                } else {
-                    alert("Pls select only images");
-                }
-            }
-        }
-    </script>
 
     <script>
         var iframe = document.querySelector('.iframe-proposal');
@@ -469,5 +404,52 @@
 
             })
         });
+    </script>
+
+    <script>
+        const usulanCheckbox = document.getElementById('usulan-checkbox');
+        const usulanSelect = document.getElementById('usulan-select');
+        const usulanText = document.getElementById('usulan-text');
+        const selectUsulan = document.querySelector('.select-usulan');
+        const kategoriUtama = document.querySelector('.kategori-utama');
+        const kategoriPendukung = document.querySelector('.kategori-pendukung');
+        const selectKategori = document.querySelector('.select-kategori');
+        const inputManualPeralatan = document.querySelector('.input-manual-peralatan');
+        const tombolSimpan = document.querySelector('.tombol-simpan');
+
+        usulanCheckbox.addEventListener('change', a => {
+            if (a.target.checked === true) {
+                // console.log("Checkbox is checked - boolean value: ", a.target.checked)
+                usulanSelect.style.setProperty("display", "none")
+                usulanText.style.setProperty("display", "block")
+                selectKategori.removeAttribute('disabled');
+                selectUsulan.value = '';
+            }
+            if (a.target.checked === false) {
+                // console.log("Checkbox is not checked - boolean value: ", a.target.checked)
+                usulanSelect.style.setProperty("display", "block")
+                usulanText.style.setProperty("display", "none")
+                selectKategori.setAttribute('disabled', '');
+                inputManualPeralatan.value = '';
+            }
+        });
+
+        tombolSimpan.addEventListener('click', function(){
+            selectKategori.removeAttribute('disabled');
+        })
+
+        selectUsulan.addEventListener('change', function() {
+            let sel = document.querySelector('.input-option-' + selectUsulan.value).getAttribute('data-kategori')
+                .toLowerCase();
+            if (sel == 'utama') {
+                kategoriUtama.setAttribute('selected', 'selected');
+                kategoriPendukung.removeAttribute('selected');
+                selectKategori.value = sel
+            } else {
+                kategoriPendukung.setAttribute('selected', 'selected');
+                kategoriUtama.removeAttribute('selected');
+                selectKategori.value = sel
+            }
+        })
     </script>
 @endsection

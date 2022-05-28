@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreKetersediaanLahanRequest;
 use App\Http\Requests\UpdateKetersediaanLahanRequest;
 use App\Models\Log;
+use App\Models\Kompeten;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -82,9 +83,11 @@ class KetersediaanLahanController extends Controller
      */
     public function edit(KetersediaanLahan $ketersediaanLahan)
     {
+        return($ketersediaanLahan);
         if($ketersediaanLahan->profil_id == Auth::user()->profil_id){
             return view('lahan.ketersediaan.edit', [
-                'ketersediaan' => $ketersediaanLahan
+                'ketersediaan' => $ketersediaanLahan,
+                'kompils' => Kompeten::getKompeten()
             ]);
         }else{
             abort(403);

@@ -6,6 +6,7 @@ use App\Models\JenisPimpinan;
 use App\Http\Requests\StoreJenisPimpinanRequest;
 use App\Http\Requests\UpdateJenisPimpinanRequest;
 use App\Models\Kompeten;
+use Illuminate\Support\Facades\Auth;
 
 class JenisPimpinanController extends Controller
 {
@@ -37,15 +38,19 @@ class JenisPimpinanController extends Controller
      */
     public function store(StoreJenisPimpinanRequest $request)
     {
-        $validatedData = $request->validate([
-            'nama' => 'required'
-        ]);
-
-        JenisPimpinan::create($validatedData);
-        
-        //! belum buat log
-        
-        return redirect()->back();
+        if(Auth::user()->hasRole('dinas')){
+            $validatedData = $request->validate([
+                'nama' => 'required'
+            ]);
+    
+            JenisPimpinan::create($validatedData);
+            
+            //! belum buat log
+            
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -79,7 +84,17 @@ class JenisPimpinanController extends Controller
      */
     public function update(UpdateJenisPimpinanRequest $request, JenisPimpinan $jenisPimpinan)
     {
-        //
+        if(Auth::user()->hasRole('dinas')){
+            $validatedData = $request->validate([
+                'nama' => 'required'
+            ]);
+
+            $jenisPimpinan->update($validatedData);
+
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -90,6 +105,12 @@ class JenisPimpinanController extends Controller
      */
     public function destroy(JenisPimpinan $jenisPimpinan)
     {
-        //
+        if (Auth::user()->hasRole('dinas')) {
+            JenisPimpinan::destroy($jenisPimpinan->id);
+
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
     }
 }

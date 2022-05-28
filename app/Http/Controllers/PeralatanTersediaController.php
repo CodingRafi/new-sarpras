@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\PeralatanTersedia;
+use App\Models\Peralatan;
+use App\Models\Kompeten;
+use App\Models\Komli;
+use App\Models\Log;
 use App\Http\Requests\StorePeralatanTersediaRequest;
 use App\Http\Requests\UpdatePeralatanTersediaRequest;
-use App\Models\Kompeten;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class PeralatanTersediaController extends Controller
 {
@@ -37,7 +42,35 @@ class PeralatanTersediaController extends Controller
      */
     public function store(StorePeralatanTersediaRequest $request)
     {
-        //
+        $kompeten = Kompeten::find($request->kompeten_id);
+        $kompetensi = PeralatanTersedia::where('kompeten_id', $request->kompeten_id)->first();
+
+        if($kompeten->profil_id == Auth::user()->profil_id){
+            $validatedData = $request->validate([
+                'kompeten_id' => 'required',
+                'peralatan_id' => 'nullable',
+                'nama' => 'string|nullable',
+                'kategori' => 'required',
+                'katersediaan' => 'required',
+                'kekurangan' => 'required'
+            ]);
+            
+            if ($validatedData['kekurangan'] < 1 && $validatedData['katersediaan'] > 0) {
+                $validatedData['status'] = 'ideal';
+            }else{
+                $validatedData['status'] = 'kekurangan';
+            }
+
+            $validatedData['profil_id'] = Auth::user()->profil_id;
+            
+            PeralatanTersedia::create($validatedData);
+
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambah ketersediaan Peralatan ' . str_replace("_", " ", $kompetensi->kompeten->komli->kompetensi));
+
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -57,9 +90,20 @@ class PeralatanTersediaController extends Controller
      * @param  \App\Models\PeralatanTersedia  $peralatanTersedia
      * @return \Illuminate\Http\Response
      */
-    public function edit(PeralatanTersedia $peralatanTersedia)
+    public function edit(PeralatanTersedia $peralatan_tersedium)
     {
-        //
+        if($peralatan_tersedium->profil_id == Auth::user()->profil_id){
+            $kompeten = Kompeten::find($peralatan_tersedium->kompeten_id);
+            $peralatansOptions = Peralatan::where('komli_id', $kompeten->komli_id)->get();
+
+            return view('peralatan-sekolah.ketersediaan.edit',[
+                'peralatanOptions' => $peralatansOptions,
+                'data' => $peralatan_tersedium,
+                'kompils' => Kompeten::getKompeten()
+            ]);
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -69,9 +113,33 @@ class PeralatanTersediaController extends Controller
      * @param  \App\Models\PeralatanTersedia  $peralatanTersedia
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePeralatanTersediaRequest $request, PeralatanTersedia $peralatanTersedia)
+    public function update(UpdatePeralatanTersediaRequest $request, PeralatanTersedia $peralatan_tersedium)
     {
-        //
+        $kompetensi = PeralatanTersedia::where('kompeten_id', $request->kompeten_id)->first();
+
+        if($peralatan_tersedium->profil_id == Auth::user()->profil_id){
+            $validatedData = $request->validate([
+                'peralatan_id' => 'nullable',
+                'nama' => 'string|nullable',
+                'kategori' => 'required',
+                'katersediaan' => 'required',
+                'kekurangan' => 'required'
+            ]);
+            
+            if ($validatedData['kekurangan'] < 1 && $validatedData['katersediaan'] > 0) {
+                $validatedData['status'] = 'ideal';
+            }else{
+                $validatedData['status'] = 'kekurangan';
+            }
+
+            $peralatan_tersedium->update($validatedData);
+
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah ketersediaan Peralatan ' . str_replace("_", " ", $kompetensi->kompeten->komli->kompetensi));
+
+            return redirect('/peralatan-sekolah/'.$peralatan_tersedium->kompeten_id);
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -80,8 +148,22 @@ class PeralatanTersediaController extends Controller
      * @param  \App\Models\PeralatanTersedia  $peralatanTersedia
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PeralatanTersedia $peralatanTersedia)
+    public function destroy(PeralatanTersedia $peralatan_tersedium)
     {
-        //
+        if($peralatan_tersedium->profil_id == Auth::user()->profil_id){
+            $logJurusan = Komli::Join('kompetens', 'komlis.id', 'kompetens.komli_id')
+            ->Join('peralatan_tersedias','kompetens.id','peralatan_tersedias.kompeten_id')
+            ->where('peralatan_tersedias.kompeten_id', $peralatan_tersedium->kompeten_id)
+            ->pluck('kompetensi')
+            ->first();
+            
+            PeralatanTersedia::deletePeralatan($peralatan_tersedium);
+
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menghapus Ketersediaan Peralatan '.$logJurusan);
+
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
     }
 }

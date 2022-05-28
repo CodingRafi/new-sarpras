@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ProfilKcdSeeder::class);
         $this->call(BangunanSeeder::class);
         $this->call(JeniskoleksiSeeder::class);
-        $this->call(KomliSeeder::class);
+        // $this->call(KomliSeeder::class);
         $this->call(PermissionTableSeeder::class);
         $this->call(UserSeeder::class);
     }

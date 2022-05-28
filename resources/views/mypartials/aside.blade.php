@@ -92,8 +92,8 @@
                     <ul class="nav nav-treeview">
                         {{-- ---------------------------------------------------------------------------------------- RUANG KELAS ---------------------------------------------------------------------------------------- --}}
                         <li class="nav-item">
-                            <a href="/bangunan/ruang-kelas"
-                                class="nav-link {{ Request::is('bangunan/ruang-kelas') ? 'active' : '' }}">
+                            <a href="/bangunan?jenis=ruang_kelas"
+                                class="nav-link {{ (request('jenis') == 'ruang_kelas') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Ruang Kelas</p>
                             </a>
@@ -214,20 +214,38 @@
                                         <p>Laboratorium Komputer</p>
                                     </a>
                                 </li>
+                                <li class="nav-item {{ (request('jenis') == 'lab_kimia') ? 'active' : '' }}">
+                                    <a href="/bangunan?jenis=lab_kimia" class="nav-link {{ (request('jenis') == 'lab_kimia') ? 'active' : '' }}">
+                                        <i class="fa-regular fa-circle"></i>
+                                        <p>Laboratorium Kimia</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item {{ (request('jenis') == 'lab_ipa') ? 'active' : '' }}">
+                                    <a href="/bangunan?jenis=lab_ipa" class="nav-link {{ (request('jenis') == 'lab_ipa') ? 'active' : '' }}">
+                                        <i class="fa-regular fa-circle"></i>
+                                        <p>Laboratorium Ipa</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item {{ (request('jenis') == 'lab_bahasa') ? 'active' : '' }}">
+                                    <a href="/bangunan?jenis=lab_bahasa" class="nav-link {{ (request('jenis') == 'lab_bahasa') ? 'active' : '' }}">
+                                        <i class="fa-regular fa-circle"></i>
+                                        <p>Laboratorium Bahasa</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         {{-- ---------------------------------------------------------------------------------------- PERPUSTAKAAN ---------------------------------------------------------------------------------------- --}}
                         <li class="nav-item">
-                            <a href="/bangunan/ruang-perpustakaan"
-                                class="nav-link {{ Request::is('bangunan/ruang-perpustakaan') ? 'active' : '' }}">
+                            <a href="/bangunan?jenis=perpustakaan"
+                                class="nav-link {{ (request('jenis') == 'perpustakaan') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Perpustakaan</p>
                             </a>
                         </li>
                         {{-- ---------------------------------------------------------------------------------------- TOILET ---------------------------------------------------------------------------------------- --}}
                         <li class="nav-item">
-                            <a href="/bangunan/toilet"
-                                class="nav-link {{ Request::is('bangunan/toilet') ? 'active' : '' }}">
+                            <a href="/bangunan?jenis=toilet"
+                                class="nav-link {{ (request('jenis') == 'toilet') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Toilet</p>
                             </a>

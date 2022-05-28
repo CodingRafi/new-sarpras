@@ -67,10 +67,6 @@ class UsulanBangunan extends Model
                         ->orWhere('profils.nama', 'like', '%' . $search . '%');
         });
 
-    }
-
-    public function scopeFilter($query, array $filters){
-        // dd($filters['filter'] == 'kota');
         if(isset($filters['filter'])){
             if($filters['filter'] == 'kota'){
                 return $query->orderBy('profils.kabupaten', 'asc');
@@ -80,5 +76,10 @@ class UsulanBangunan extends Model
                 return $query->orderBy('kcds.instansi', 'asc');
             }
         }
+
+        $query->when($search['jenis'] ?? false, function($query, $jenis){
+            return $query->where('usulan_bangunans.jenis', $jenis);
+        });
+
     }
 }

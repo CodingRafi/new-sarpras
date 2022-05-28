@@ -36,9 +36,9 @@
             <div class="col-lg-3 col-6">
 
                 {{-- ------------------------------------- JUMLAH ROMBEL --------------------------------------- --}}
-                <div class="card card-success">
-                    <div class="card-header">
-                        <h3 class="card-title font-weight-bold">Jumlah Rombel</h3>
+                <div class="card">
+                    <div class="card-header" style="background-color: #00a65b">
+                        <h3 class="card-title font-weight-bold text-white">Jumlah Rombel</h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool"><i class="fas fa-minus"
                                     style="display: none"></i>
