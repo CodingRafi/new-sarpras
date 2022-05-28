@@ -39,7 +39,7 @@
                 <li class="nav-item">
                     <a href="/lahan-dinas" class="nav-link {{ Request::is('lahan-dinas') ? 'active' : '' }}">
                         <i class="nav-icon bi bi-map"></i>
-                        <p>Lahan Sekolah</p>
+                        <p>Usulan Lahan</p>
                     </a>
                 </li>
 
@@ -56,7 +56,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-building"></i>
                         <p>
-                            Bangunan Sekolah
+                            Usulan Bangunan
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -65,14 +65,14 @@
                         <li class="nav-item">
                             <a href="/bangunan-all?jenis=ruang_kelas" class="nav-link {{ (request('jenis') == 'ruang_kelas') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
-                                <p>Ruang Kelas</p>
+                                <p>Usulan Ruang Kelas</p>
                             </a>
                         </li>
                         {{------------------------------------------------------------------------------------------ RUANG PRAKTEK ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="/bangunan-all?jenis=ruang_praktek" class="nav-link {{ (request('jenis') == 'ruang_praktek') ? 'menu-open' : '' }}">
+                            <a href="/bangunan-all?jenis=ruang_praktek" class="nav-link {{ (request('jenis') == 'ruang_praktek') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
-                                <p>Ruang Praktek</p>
+                                <p>Usulan Ruang Praktek</p>
                             </a>
                         </li>
                         {{------------------------------------------------------------------------------------------ LAB KOMPUTER ------------------------------------------------------------------------------------------}}
@@ -80,7 +80,7 @@
                             <a href="#" class="nav-link">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>
-                                    Laboratorium
+                                    Usulan Laboratorium
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -88,37 +88,37 @@
                                 <li class="nav-item {{ (request('jenis') == 'lab_biologi') ? 'active' : '' }}">
                                     <a href="/bangunan-all?jenis=lab_biologi" class="nav-link {{ (request('jenis') == 'lab_biologi') ? 'active' : '' }}">
                                         <i class="fa-regular fa-circle"></i>
-                                        <p>Laboratorium Biologi</p>
+                                        <p>Usulan Laboratorium Biologi</p>
                                     </a>
                                 </li>
                                 <li class="nav-item {{ (request('jenis') == 'lab_fisika') ? 'active' : '' }}">
                                     <a href="/bangunan-all?jenis=lab_fisika" class="nav-link {{ (request('jenis') == 'lab_fisika') ? 'active' : '' }}">
                                         <i class="fa-regular fa-circle"></i>
-                                        <p>Laboratorium Fisika</p>
+                                        <p>Usulan Laboratorium Fisika</p>
                                     </a>
                                 </li>
                                 <li class="nav-item {{ (request('jenis') == 'lab_komputer') ? 'active' : '' }}">
                                     <a href="/bangunan-all?jenis=lab_komputer" class="nav-link {{ (request('jenis') == 'lab_komputer') ? 'active' : '' }}">
                                         <i class="fa-regular fa-circle"></i>
-                                        <p>Laboratorium Komputer</p>
+                                        <p>Usulan Laboratorium Komputer</p>
                                     </a>
                                 </li>
                                 <li class="nav-item {{ (request('jenis') == 'lab_kimia') ? 'active' : '' }}">
                                     <a href="/bangunan-all?jenis=lab_kimia" class="nav-link {{ (request('jenis') == 'lab_kimia') ? 'active' : '' }}">
                                         <i class="fa-regular fa-circle"></i>
-                                        <p>Laboratorium Kimia</p>
+                                        <p>Usulan Laboratorium Kimia</p>
                                     </a>
                                 </li>
                                 <li class="nav-item {{ (request('jenis') == 'lab_ipa') ? 'active' : '' }}">
                                     <a href="/bangunan-all?jenis=lab_ipa" class="nav-link {{ (request('jenis') == 'lab_ipa') ? 'active' : '' }}">
                                         <i class="fa-regular fa-circle"></i>
-                                        <p>Laboratorium Ipa</p>
+                                        <p>Usulan Laboratorium Ipa</p>
                                     </a>
                                 </li>
                                 <li class="nav-item {{ (request('jenis') == 'lab_bahasa') ? 'active' : '' }}">
                                     <a href="/bangunan-all?jenis=lab_bahasa" class="nav-link {{ (request('jenis') == 'lab_bahasa') ? 'active' : '' }}">
                                         <i class="fa-regular fa-circle"></i>
-                                        <p>Laboratorium Bahasa</p>
+                                        <p>Usulan Laboratorium Bahasa</p>
                                     </a>
                                 </li>
                             </ul>
@@ -127,28 +127,28 @@
                         <li class="nav-item">
                             <a href="/bangunan-all?jenis=perpustakaan" class="nav-link {{ (request('jenis') == 'perpustakaan') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
-                                <p>Perpustakaan</p>
+                                <p>Usulan Perpustakaan</p>
                             </a>
                         </li>
                         {{------------------------------------------------------------------------------------------ TOILET ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
                             <a href="/bangunan-all?jenis=toilet" class="nav-link {{ (request('jenis') == 'toilet') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
-                                <p>Toilet</p>
+                                <p>Usulan Toilet</p>
                             </a>
                         </li>
                         {{------------------------------------------------------------------------------------------ RUANGAN PIMPINAN ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="/bangunan-all?jenis=ruang_pimpinan" class="nav-link {{ Request::is('bangunan/ruang-pimpinan-dinas') ? 'active' : '' }}">
+                            <a href="/bangunan-all?jenis=ruang_pimpinan" class="nav-link {{ (request('jenis') == 'ruang_pimpinan') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
-                                <p>Ruangan Pimpinan</p>
+                                <p>Usulan Ruangan Pimpinan</p>
                             </a>
                         </li>
                         {{------------------------------------------------------------------------------------------ REHAB/RENOV ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
                             <a href="/bangunan/rehab-renov-dinas" class="nav-link {{ Request::is('bangunan/rehab-renov-dinas') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
-                                <p>Rehab/Renov</p>
+                                <p>Usulan Rehab/Renov</p>
                             </a>
                         </li>
                     </ul>
