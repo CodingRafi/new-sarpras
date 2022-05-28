@@ -69,7 +69,8 @@ class PraktikController extends Controller
             'usulanFotos' => $fotos,
             'kompetenPraktekTersedias' => $kompetenPraktekTersedia,
             'komliPraktekTersedias' => $komliPraktekTersedia,
-            'datas' => $data
+            'datas' => $data,
+            'kompils' => Kompeten::getKompeten()
         ]);
     }
 
