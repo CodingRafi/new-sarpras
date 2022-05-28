@@ -189,13 +189,29 @@
                 </li>
 
                 {{------------------------------------------------------------------------------------------ MONITORING & EVALUASI ------------------------------------------------------------------------------------------}}
-                <li class="nav-item has-treeview">
-                    <a href="/monev" class="nav-link">
+                <li class="nav-item has-treeview {{ Request::is('peralatan/*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-shield-check"></i>
                         <p>
                             Monitoring & Evaluasi
+                            <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        {{------------------------------------------------------------------------------------------ JURUSAN ------------------------------------------------------------------------------------------}}
+                        <li class="nav-item">
+                            <a href="/monev" class="nav-link {{ Request::is('/monev') ? 'active' : '' }}">
+                                <i class="fa-regular fa-circle"></i>
+                                <p>Monitoring</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/usulan-peralatan" class="nav-link {{ Request::is('peralatan/nama-jurusan') ? 'active' : '' }}">
+                                <i class="fa-regular fa-circle"></i>
+                                <p>Visitasi Sekolah</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>
