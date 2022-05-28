@@ -304,4 +304,23 @@ class KompetenController extends Controller
             abort(403);
         }
     }
+
+    public function updateKondisiIdeal(Request $request, $id){
+        $data = Kompeten::where('id', $id)->get()[0];
+
+        if($data->profil_id == Auth::user()->profil_id){
+            $validatedData = $request->validate([
+                'ketersediaan' => 'required'
+            ]);
+
+            $data->update($validatedData);
+
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Ketersediaan Ruang Praktik ' . $data->komli->kompetensi);
+
+            return redirect()->back();
+
+        }else{
+            abort(403);
+        }
+    }
 }

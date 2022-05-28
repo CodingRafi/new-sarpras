@@ -93,7 +93,8 @@
             <div class="modal fade" id="ubah-deskripsi">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <form class="form-horizontal" method="post" action="/kompeten/tambah-keterangan/{{ $kompeten->id }}">
+                        <form class="form-horizontal" method="post"
+                            action="/kompeten/tambah-keterangan/{{ $kompeten->id }}">
                             @csrf
                             @method('patch')
                             <div class="modal-header bg-success">
@@ -128,8 +129,8 @@
                     <div class="col-lg-5 col-12">
                         <div class="d-flex justify-content-center align-items-center flex-column p-2">
                             @if ($kompeten->logo == null)
-                                <img src="/img/Kompetensi Keahlian.png" style="width: 18rem"
-                                    class=" border float-start" alt="...">
+                                <img src="/img/Kompetensi Keahlian.png" style="width: 18rem" class=" border float-start"
+                                    alt="...">
                             @else
                                 <img src="{{ asset('storage/' . $kompeten->logo) }}" style="width: 18rem"
                                     class=" border float-start" alt="...">
