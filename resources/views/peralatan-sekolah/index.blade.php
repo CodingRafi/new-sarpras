@@ -85,7 +85,7 @@
                             <tr class="text-center">
                                 <th>No</th>
                                 <th>Kompetensi Keahlian</th>
-                                <th>Jenis Alat</th>
+                                <th>Nama Alat</th>
                                 <th>Kategori</th>
                                 <th>Ketersediaan</th>
                                 <th>Kekurangan</th>
@@ -98,7 +98,7 @@
                             <tr>
                                 <td class="text-center" style="vertical-align: middle">{{ $loop->iteration }}</td>
                                 <td class="text-center" style="vertical-align: middle">{{ $peralatanTersedia->kompeten->komli->kompetensi }}</td>
-                                <td class="text-center" style="vertical-align: middle">{{ $peralatanTersedia->nama }}</td>
+                                <td class="text-center" style="vertical-align: middle">{{ $peralatanTersedia->peralatan_id != null ? $peralatanTersedia->peralatan->nama : $peralatanTersedia->nama }}</td>
                                 <td class="text-center" style="vertical-align: middle">{{ $peralatanTersedia->kategori }}</td>
                                 <td class="text-center" style="vertical-align: middle">{{ $peralatanTersedia->katersediaan }}</td>
                                 <td class="text-center" style="vertical-align: middle">{{ $peralatanTersedia->kekurangan }}</td>
@@ -147,19 +147,24 @@
                         <form class="form-horizontal" action="/peralatan-tersedia" method="post">
                             @csrf
                             <div class="card-body">
-                                <input type="hidden" name="kompetensi" value="{{ $kompeten->id }}">
+                                <input type="hidden" name="kompeten_id" value="{{ $kompeten->id }}">
                                 {{-- ---------------------------------------------------------------------------------------- NAMA PERALATAN ---------------------------------------------------------------------------------------- --}}
                                 <div class="form-group row">
                                     <label for="nama-peralatan" class="col-sm-3 col-form-label">Nama Peralatan</label>
                                     <div class="col-sm-9">
                                         <div class="input-group peralatan-parent">
-
-                                            <select class="form-control" id="peralatan-select" name="">
+                                            @foreach ($peralatanOptions as $options)
+                                                <input type="hidden" class="input-option-{{ $options->id }}" data-kategori="{{ $options->kategori }}">
+                                            @endforeach
+                                            <select class="form-control select-peralatan" id="peralatan-select"
+                                                name="peralatan_id">
+                                                <option value="">Pilih Peralatan</option>
                                                 @foreach ($peralatanOptions as $options)
-                                                    <option value="{{ $options->id }}">{{ $options->nama }}</option>
+                                                <option value="{{ $options->id }}">{{ $options->nama }}</option>
                                                 @endforeach
                                             </select>
-                                            <input type="text" class="form-control" style="display: none" id="peralatan-text">
+                                            <input type="text" class="form-control input-manual-peralatan" style="display: none" id="peralatan-text" name="nama" placeholder="Masukkan Nama Peralatan">
+
                                             {{-- ---------------------------------------------------------------------------------------- CHECKBOX ---------------------------------------------------------------------------------------- --}}
                                             <div class="input-group-append">
                                                 <span class="input-group-text">
@@ -174,10 +179,9 @@
                                 <div class="form-group row">
                                     <label for="kategori" class="col-sm-3 col-form-label">Kategori</label>
                                     <div class="col-sm-9">
-                                        <select class="form-control" id="peralatan-select" name="kategori">
-                                            <option>Pilih Kategori</option>
-                                            <option value="utama">Utama</option>
-                                            <option value="pendukung">Pendukung</option>
+                                        <select name="kategori" id="" class="custom-select select-kategori" disabled>
+                                            <option value="utama" class="kategori-utama">Utama</option>
+                                            <option value="pendukung" class="kategori-pendukung">Pendukung</option>
                                         </select>
                                     </div>
                                 </div>
@@ -199,7 +203,7 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-success float-right">Simpan</button>
+                                <button type="submit" class="btn btn-success float-right tombol-simpan">Simpan</button>
                             </div>
                         </form>
                     </div>
@@ -207,89 +211,7 @@
             </div>
         </div>
 
-        {{-- ---------------------------------------------------------------------------------------- MODAL EDIT PERALATAN ---------------------------------------------------------------------------------------- --}}
-        <div class="modal fade" id="edit">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Edit Ketersediaan Peralatan Sekolah</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal">
-                            <div class="card-body">
-                                {{-- ---------------------------------------------------------------------------------------- KOMPETENSI KEAHLIAN ---------------------------------------------------------------------------------------- --}}
-                                <div class="form-group row">
-                                    <label for="kompetensi-keahlian" class="col-sm-3 col-form-label">Kompetensi
-                                        Keahlian</label>
-                                    <div class="col-sm-9">
-                                        <select class="form-control" id="kompetensi-keahlian">
-                                            @foreach ($peralatanOptions as $options)
-                                                <option value="{{ $options->id }}">{{ $options->nama }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <hr>
-                                {{-- ---------------------------------------------------------------------------------------- NAMA PERALATAN ---------------------------------------------------------------------------------------- --}}
-                                <div class="form-group row">
-                                    <label for="nama-peralatan" class="col-sm-3 col-form-label">Nama Peralatan</label>
-                                    <div class="col-sm-9">
-                                        <div class="input-group peralatan-parent">
-
-                                            <select class="form-control" id="peralatan-select">
-                                                <option value="belum" selected>Pilih Peralatan</option>
-                                                <option value="#">Access Point Indoor</option>
-                                                <option value="#">Access Point Outdoor</option>
-                                            </select>
-
-                                            <input type="text" class="form-control" style="display: none"
-                                                id="peralatan-text">
-
-                                            {{-- ---------------------------------------------------------------------------------------- CHECKBOX ---------------------------------------------------------------------------------------- --}}
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">
-                                                    <input id="peralatan-checkbox" type="checkbox">
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr>
-                                {{-- ---------------------------------------------------------------------------------------- KATEGORI ---------------------------------------------------------------------------------------- --}}
-                                <div class="form-group row">
-                                    <label for="kategori" class="col-sm-3 col-form-label">Kategori</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="kategori">
-                                    </div>
-                                </div>
-                                <hr>
-                                {{-- ---------------------------------------------------------------------------------------- KEKURANGAN ---------------------------------------------------------------------------------------- --}}
-                                <div class="form-group row">
-                                    <label for="kekurangan" class="col-sm-3 col-form-label">Kekurangan</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="kekurangan">
-                                    </div>
-                                </div>
-                                <hr>
-                                {{-- ---------------------------------------------------------------------------------------- KETERSEDIAAN ---------------------------------------------------------------------------------------- --}}
-                                <div class="form-group row">
-                                    <label for="ketersediaan" class="col-sm-3 col-form-label">Ketersediaan</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="ketersediaan">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-success float-right">Simpan</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
 
         {{-- ---------------------------------------------------------------------------------------- USUALAN PERALATAN ---------------------------------------------------------------------------------------- --}}
         <div class="card">
@@ -466,59 +388,72 @@
         const usulanCheckbox = document.getElementById('usulan-checkbox');
         const usulanSelect = document.getElementById('usulan-select');
         const usulanText = document.getElementById('usulan-text');
-        const selectUsulan = document.querySelector('.select-usulan');
-        const kategoriUtama = document.querySelector('.kategori-utama');
-        const kategoriPendukung = document.querySelector('.kategori-pendukung');
-        const selectKategori = document.querySelector('.select-kategori');
-        const inputManualPeralatan = document.querySelector('.input-manual-peralatan');
-        const tombolSimpan = document.querySelector('.tombol-simpan');
+        // const selectUsulan = document.querySelectorAll('.select-usulan');
+        const kategoriUtama = document.querySelectorAll('.kategori-utama');
+        const kategoriPendukung = document.querySelectorAll('.kategori-pendukung');
+        const selectKategori = document.querySelectorAll('.select-kategori');
+        const inputManualPeralatan = document.querySelectorAll('.input-manual-peralatan');
+        const tombolSimpan = document.querySelectorAll('.tombol-simpan');
 
         peralatanCheckbox.addEventListener('change', e => {
             if (e.target.checked === true) {
                 console.log("Checkbox is checked - boolean value: ", e.target.checked)
                 peralatanSelect.style.setProperty("display", "none")
-                peralatanSelect.removeAttribute("name")
                 peralatanText.style.setProperty("display", "block")
-                peralatanText.setAttribute("name", "nama")
+                selectKategori[0].removeAttribute('disabled');
+                peralatanSelect.value = '';
             }
             if (e.target.checked === false) {
                 console.log("Checkbox is not checked - boolean value: ", e.target.checked)
                 peralatanSelect.style.setProperty("display", "block")
-                peralatanSelect.setAttribute("name", "nama")
                 peralatanText.style.setProperty("display", "none")
-                peralatanText.removeAttribute("name")
+                selectKategori[0].setAttribute('disabled', 'disabled');
+                inputManualPeralatan[0].value = '';
             }
         });
 
-        tombolSimpan.addEventListener('click', function(){
-            selectKategori.removeAttribute('disabled');
-        })
+        for (let i = 0; i < tombolSimpan.length; i++) {
+            tombolSimpan[i].addEventListener('click', function(){
+                selectKategori[i].removeAttribute('disabled');
+            })
+        }
 
         usulanCheckbox.addEventListener('change', a => {
             if (a.target.checked === true) {
                 console.log("Checkbox is checked - boolean value: ", a.target.checked)
                 usulanSelect.style.setProperty("display", "none")
                 usulanText.style.setProperty("display", "block")
-                selectKategori.removeAttribute('disabled');
-                selectUsulan.value = '';
+                selectKategori[1].removeAttribute('disabled');
+                usulanSelect.value = '';
             }
             if (a.target.checked === false) {
                 console.log("Checkbox is not checked - boolean value: ", a.target.checked)
                 usulanSelect.style.setProperty("display", "block")
                 usulanText.style.setProperty("display", "none")
-                selectKategori.setAttribute('disabled', 'disabled');
-                inputManualPeralatan.value = '';
+                selectKategori[1].setAttribute('disabled', 'disabled');
+                inputManualPeralatan[1].value = '';
             }
         });
 
-        selectUsulan.addEventListener('change', function() {
-            if (document.querySelector('.input-option-' + selectUsulan.value).getAttribute('data-kategori')
+        peralatanSelect.addEventListener('change', function() {
+            if (document.querySelector('.input-option-' + peralatanSelect.value).getAttribute('data-kategori')
                 .toLowerCase() == 'utama') {
-                kategoriUtama.setAttribute('selected', 'selected');
-                kategoriPendukung.removeAttribute('selected');
+                kategoriUtama[0].setAttribute('selected', 'selected');
+                kategoriPendukung[0].removeAttribute('selected');
             } else {
-                kategoriPendukung.setAttribute('selected', 'selected');
-                kategoriUtama.removeAttribute('selected');
+                kategoriPendukung[0].setAttribute('selected', 'selected');
+                kategoriUtama[0].removeAttribute('selected');
+            }
+        })
+
+        usulanSelect.addEventListener('change', function() {
+            if (document.querySelector('.input-option-' + usulanSelect.value).getAttribute('data-kategori')
+                .toLowerCase() == 'utama') {
+                kategoriUtama[1].setAttribute('selected', 'selected');
+                kategoriPendukung[1].removeAttribute('selected');
+            } else {
+                kategoriPendukung[1].setAttribute('selected', 'selected');
+                kategoriUtama[1].removeAttribute('selected');
             }
         })
     </script>

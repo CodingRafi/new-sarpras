@@ -18,7 +18,7 @@ class Peralatan extends Model
     }
 
     public function peralatanTersedia(){
-        return $this->belongsTo(PeralatanTersedia::class);
+        return $this->hasMany(PeralatanTersedia::class);
     }
 
     public function usulanPeralatan(){

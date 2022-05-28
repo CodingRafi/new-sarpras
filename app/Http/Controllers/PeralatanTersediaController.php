@@ -42,10 +42,14 @@ class PeralatanTersediaController extends Controller
      */
     public function store(StorePeralatanTersediaRequest $request)
     {
-        if($request->profil_id == Auth::user()->profil_id){
+        $kompeten = Kompeten::find($request->kompeten_id);
+        $kompetensi = PeralatanTersedia::where('kompeten_id', $request->kompeten_id)->first();
+
+        if($kompeten->profil_id == Auth::user()->profil_id){
             $validatedData = $request->validate([
-                'profil_id' => 'required',
-                'nama' => 'required',
+                'kompeten_id' => 'required',
+                'peralatan_id' => 'nullable',
+                'nama' => 'string|nullable',
                 'kategori' => 'required',
                 'katersediaan' => 'required',
                 'kekurangan' => 'required'
@@ -56,18 +60,13 @@ class PeralatanTersediaController extends Controller
             }else{
                 $validatedData['status'] = 'kekurangan';
             }
-            $validatedData['kompeten_id'] = $request->kompeten_id;;
-    
-            $logJurusan = Komli::Join('kompetens', 'komlis.id', 'kompetens.komli_id')
-                ->Join('peralatan_tersedias','kompetens.id','peralatan_tersedias.kompeten_id')
-                ->where('peralatan_tersedias.kompeten_id', $validatedData['kompeten_id'])
-                ->pluck('kompetensi')
-                ->first();
 
+            $validatedData['profil_id'] = Auth::user()->profil_id;
+            
             PeralatanTersedia::create($validatedData);
 
-            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan Ketersediaan Peralatan '.$logJurusan);
-    
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambah ketersediaan Peralatan ' . str_replace("_", " ", $kompetensi->kompeten->komli->kompetensi));
+
             return redirect()->back();
         }else{
             abort(403);
@@ -93,15 +92,14 @@ class PeralatanTersediaController extends Controller
      */
     public function edit(PeralatanTersedia $peralatan_tersedium)
     {
-        // return($peralatan_tersedium);
         if($peralatan_tersedium->profil_id == Auth::user()->profil_id){
-            $kompeten = $peralatan_tersedium->Kompeten->komli_id;
-            $peralatans = Peralatan::where('komli_id', $kompeten)->select('peralatans.*', 'komlis.kompetensi')->leftJoin('komlis', 'peralatans.komli_id', 'komlis.id')->paginate(15);
+            $kompeten = Kompeten::find($peralatan_tersedium->kompeten_id);
+            $peralatansOptions = Peralatan::where('komli_id', $kompeten->komli_id)->get();
 
-            return view('peralatan-sekolah.edit',[
-                'peraturans' => $peralatans,
-                'kompils' => Kompeten::getKompeten(),
-                'data' => $peralatan_tersedium
+            return view('peralatan-sekolah.ketersediaan.edit',[
+                'peralatanOptions' => $peralatansOptions,
+                'data' => $peralatan_tersedium,
+                'kompils' => Kompeten::getKompeten()
             ]);
         }else{
             abort(403);
@@ -117,9 +115,12 @@ class PeralatanTersediaController extends Controller
      */
     public function update(UpdatePeralatanTersediaRequest $request, PeralatanTersedia $peralatan_tersedium)
     {
+        $kompetensi = PeralatanTersedia::where('kompeten_id', $request->kompeten_id)->first();
+
         if($peralatan_tersedium->profil_id == Auth::user()->profil_id){
             $validatedData = $request->validate([
-                'nama' => 'required',
+                'peralatan_id' => 'nullable',
+                'nama' => 'string|nullable',
                 'kategori' => 'required',
                 'katersediaan' => 'required',
                 'kekurangan' => 'required'
@@ -130,19 +131,10 @@ class PeralatanTersediaController extends Controller
             }else{
                 $validatedData['status'] = 'kekurangan';
             }
-            $validatedData['kompeten_id'] = $request->kompeten_id;
-            $validatedData['profil_id'] = Auth::user()->profil_id;
 
-            $logJurusan = Komli::Join('kompetens', 'komlis.id', 'kompetens.komli_id')
-                ->Join('peralatan_tersedias','kompetens.id','peralatan_tersedias.kompeten_id')
-                ->where('peralatan_tersedias.kompeten_id', $validatedData['kompeten_id'])
-                ->pluck('kompetensi')
-                ->first();
+            $peralatan_tersedium->update($validatedData);
 
-            PeralatanTersedia::where('id', $peralatan_tersedium->id)
-                ->update($validatedData);
-
-            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Ketersediaan Peralatan '.$logJurusan);
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah ketersediaan Peralatan ' . str_replace("_", " ", $kompetensi->kompeten->komli->kompetensi));
 
             return redirect('/peralatan-sekolah/'.$peralatan_tersedium->kompeten_id);
         }else{

@@ -17,6 +17,14 @@ class PeralatanTersedia extends Model
         return $this->belongsTo(Kompeten::class);
     }
 
+    public function profil(){
+        return $this->belongsTo(Profil::class);
+    }
+
+    public function peralatan(){
+        return $this->belongsTo(peralatan::class);
+    }
+
     public static function deletePeralatan($data){
         PeralatanTersedia::destroy($data->id);
     }
