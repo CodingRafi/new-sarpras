@@ -45,7 +45,7 @@
 
                 {{------------------------------------------------------------------------------------------ LAHAN SEKOLAH ------------------------------------------------------------------------------------------}}
                 <li class="nav-item">
-                    <a href="/admin/komli" class="nav-link {{ Request::is('komli') ? 'active' : '' }}">
+                    <a href="/komli" class="nav-link {{ Request::is('komli') ? 'active' : '' }}">
                         <i class="nav-icon bi bi-map"></i>
                         <p>Kompetensi Keahlian</p>
                     </a>

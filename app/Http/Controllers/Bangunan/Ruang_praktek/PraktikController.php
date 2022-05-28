@@ -120,7 +120,9 @@ class PraktikController extends Controller
      */
     public function show(Praktik $praktik)
     {
-        return view("bangunan.index");
+        return view("bangunan.index", [
+            'kompils' => Kompeten::getKompeten()
+        ]);
     }
 
     /**

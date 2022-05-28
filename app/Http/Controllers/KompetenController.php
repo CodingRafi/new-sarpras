@@ -107,7 +107,8 @@ class KompetenController extends Controller
         if($kompeten->profil_id == Auth::user()->profil_id){
             return view('bangunan.praktik.show', [
                 'kompeten' => $kompeten,
-                'komli' => $kompeten->komli
+                'komli' => $kompeten->komli,
+                'kompils' => Kompeten::getKompeten()
             ]);
         }else{
             abort(403);
