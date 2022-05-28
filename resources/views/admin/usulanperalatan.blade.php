@@ -3,8 +3,8 @@
 @section('tambahcss')
     <style>
         /* .row-data .col-3 {
-                            max-width: 15.5rem !important;
-                        } */
+                                        max-width: 15.5rem !important;
+                                    } */
 
         .card-header h4 {
             font-size: 1.2rem !important
@@ -19,66 +19,93 @@
 @endsection
 
 @section('container')
-<div class="container-fluid mt-3">
-    <!-- Small boxes (Stat box) -->
-    <div class="card mb-5">
-        <div class="card-header" style="display:flex; background-color: #25b5e9">
-            <div class="col-10">
-                <ul class="nav nav-pills">
-                    <li class="nav-item">
-                        <a class="nav-link text-white active font-weight-bold" href="#data-usulan-sekolah" data-toggle="tab">Peralatan</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="card-tools text-right ml-3 col-2">
-                <a class="btn text-dark dropdown-toggle mr-2" style="background-color:aliceblue; border: 1px solid #263238" data-toggle="dropdown" href="#">
-                    Filter by... 
-                <span class="caret"></span>
-                </a>
-                <div class="dropdown-menu" style="min-width: auto !important; width: 160px;">
-                    <a class="dropdown-item text-dark" tabindex="-1" href="#">Kota/ Kabupaten</a>
-                    <a class="dropdown-item text-dark" tabindex="-1" href="#">Kantor Cabang Dinas</a>
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark display-4" style="padding: 0 !important;">Usulan Peralatan</h1>
                 </div>
             </div>
         </div>
-        <!-- /.card-header DATA SEKOLAH-->
-        <div class="card-body p-0">
-            <div class="tab-content p-0">
-                <div class="tab-pane active" id="data-usulan-sekolah">
-                    <div class="row">
-                        <div class="col">
-                            <table class="table table-responsive table-bordered">
-                                <thead>
-                                  {{-- judul table --}}
-                                  <tr>
-                                    <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">No</th>
-                                    <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">Nama Sekolah</th>
-                                    <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">Kompetensi Keahlian</th>
-                                    <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">Nama Peralatan</th>
-                                    <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">Jumlah Usulan</th>
-                                    <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">Proposal</th>
-                                  </tr>
-                                  {{-- end judul table --}}
-                                </thead>
-                                <tbody>
-                                  {{-- isi table --}}
-                                  <tr>
-                                    <th class="col-1 text-center" scope="row">1</th>
-                                    <td class="col-1 text-center">SMKS TARUNA BHAKTI DEPOK</td>
-                                    <td class="col-1 text-center">Rekayasa Perangkat Lunak</td>
-                                    <td class="col-1 text-center">Laptop</td>
-                                    <td class="col-1 text-center">10</td>
-                                    <td class="col-1 text-center"><img src="/img/pdf.png" alt="image" style="width: 30px"></td>
-                                  </tr>
-                                  {{-- end isi table --}}
-                                </tbody>
-                            </table>
+    </div>
+
+    <div class="container-fluid mt-3">
+        <!-- Small boxes (Stat box) -->
+        <div class="card mb-5">
+            <div class="card-header" style="display:flex; background-color: #25b5e9">
+                <form class="form-inline ml-2" action="/usulan-peralatan" method="GET" style="width: 100%;">
+                    <div class="input-group" style="width: 100%;border: 1px solid #ced4da;border-radius: 3px;">
+                        <input class="form-control form-control-navbar" type="search"
+                            placeholder="Search Nama Sekolah, Kompetensi Keahlian, Nama peralatan" aria-label="Search"
+                            style="height: 2.5rem;font-size: 15px;padding: 0 10px;border:none;" name="search">
+                        <div class="input-group-append">
+                            <button class="btn btn-navbar" type="submit" style="width: 40px;">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-header DATA SEKOLAH-->
+            <div class="card-body p-0">
+                <div class="tab-content p-0">
+                    <div class="tab-pane active" id="data-usulan-sekolah">
+                        <div class="row">
+                            <div class="col">
+                                @if (count($usulan_peralatans) > 0)
+                                    <table class="table table-responsive table-bordered">
+                                        <thead>
+                                            {{-- judul table --}}
+                                            <tr>
+                                                <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
+                                                    No
+                                                </th>
+                                                <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
+                                                    Nama
+                                                    Sekolah</th>
+                                                <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
+                                                    Kompetensi Keahlian</th>
+                                                <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
+                                                    Nama
+                                                    Peralatan</th>
+                                                <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
+                                                    Jumlah Usulan</th>
+                                                <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
+                                                    Proposal</th>
+                                            </tr>
+                                            {{-- end judul table --}}
+                                        </thead>
+                                        <tbody>
+                                            {{-- isi table --}}
+                                            @foreach ($usulan_peralatans as $usulan)
+                                                <tr>
+                                                    <th class="col-1 text-center" scope="row">
+                                                        {{ ($usulan_peralatans->currentpage() - 1) * $usulan_peralatans->perpage() + $loop->index + 1 }}
+                                                    </th>
+                                                    <td class="col-1 text-center">SMKS TARUNA BHAKTI DEPOK</td>
+                                                    <td class="col-1 text-center">Rekayasa Perangkat Lunak</td>
+                                                    <td class="col-1 text-center">Laptop</td>
+                                                    <td class="col-1 text-center">10</td>
+                                                    <td class="col-1 text-center"><img src="/img/pdf.png" alt="image"
+                                                            style="width: 30px"></td>
+                                                </tr>
+                                            @endforeach
+                                            {{-- end isi table --}}
+                                        </tbody>
+                                    </table>
+                                @else
+                                    <div class="container d-flex justify-content-center align-items-center"
+                                        style="height: 10rem">
+                                        <div class="alert" role="alert">
+                                            Tidak ada data ditemukan
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-<!-- /.container-fluid -->
-
-@endsection
+        <!-- /.container-fluid -->
+    @endsection

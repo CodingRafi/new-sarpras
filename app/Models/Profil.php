@@ -33,9 +33,9 @@ class Profil extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function bangunan(){
-        return $this->belongsTo(Bangunan::class);
-    }
+        public function bangunan(){
+            return $this->belongsTo(Bangunan::class);
+        }
 
     public function usulanBangunan(){
         return $this->hasMany(UsulanBangunan::class);
@@ -78,10 +78,6 @@ class Profil extends Model
                         ->orWhere('profils.nama', 'like', '%' . $search . '%');
         });
 
-    }
-
-    public function scopeFilter($query, array $filters){
-        // dd($filters['filter'] == 'kota');
         if(isset($filters['filter'])){
             if($filters['filter'] == 'kota'){
                 return $query->orderBy('profils.kabupaten', 'asc');
@@ -91,5 +87,6 @@ class Profil extends Model
                 return $query->orderBy('kcds.instansi', 'asc');
             }
         }
+
     }
 }

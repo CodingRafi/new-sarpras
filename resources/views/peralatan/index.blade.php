@@ -76,7 +76,7 @@
                     @else
                         <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
                             <div class="alert" role="alert">
-                               Maaf tidak ada data ditemukan
+                                Maaf tidak ada data ditemukan
                             </div>
                         </div>
                     @endif
@@ -96,60 +96,69 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" action="/peralatan" method="post">
-                            @csrf
-                            <div class="card-body">
-                                {{-- ---------------------------------------------------------------------------------------- KOMPETENSI KEAHLIAN ---------------------------------------------------------------------------------------- --}}
-                                <div class="form-group row">
-                                    <label for="kompetensi-keahlian" class="col-sm-3 col-form-label">Kompetensi
-                                        Keahlian</label>
-                                    <div class="col-sm-9">
-                                        <select class="fstdropdown-select select-jurusan" id="select" name="komli_id">
-                                            @foreach ($semua_jurusan as $jurusan)
-                                                <option value="{{ $jurusan->id }}">{{ $jurusan->kompetensi }}
-                                                </option>
-                                            @endforeach
-                                        </select>
+                        @if (count($semua_jurusan) > 0)
+                            <form class="form-horizontal" action="/peralatan" method="post">
+                                @csrf
+                                <div class="card-body">
+                                    {{-- ---------------------------------------------------------------------------------------- KOMPETENSI KEAHLIAN ---------------------------------------------------------------------------------------- --}}
+                                    <div class="form-group row">
+                                        <label for="kompetensi-keahlian" class="col-sm-3 col-form-label">Kompetensi
+                                            Keahlian</label>
+                                        <div class="col-sm-9">
+                                            <select class="fstdropdown-select select-jurusan" id="select" name="komli_id">
+                                                @foreach ($semua_jurusan as $jurusan)
+                                                    <option value="{{ $jurusan->id }}">{{ $jurusan->kompetensi }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group row">
-                                    <label for="kekurangan" class="col-sm-3 col-form-label">Nama</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="kekurangan" name="nama" required>
+                                    <div class="form-group row">
+                                        <label for="kekurangan" class="col-sm-3 col-form-label">Nama</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="kekurangan" name="nama" required>
+                                        </div>
                                     </div>
-                                </div>
 
-                                {{-- ---------------------------------------------------------------------------------------- KATEGORI ---------------------------------------------------------------------------------------- --}}
-                                <div class="form-group row">
-                                    <label for="kategori" class="col-sm-3 col-form-label">Kategori</label>
-                                    <div class="col-sm-9">
-                                        <select name="kategori" id="" class="custom-select" required>
-                                            <option value="utama">Utama</option>
-                                            <option value="pendukung">Pendukung</option>
-                                        </select>
+                                    {{-- ---------------------------------------------------------------------------------------- KATEGORI ---------------------------------------------------------------------------------------- --}}
+                                    <div class="form-group row">
+                                        <label for="kategori" class="col-sm-3 col-form-label">Kategori</label>
+                                        <div class="col-sm-9">
+                                            <select name="kategori" id="" class="custom-select" required>
+                                                <option value="utama">Utama</option>
+                                                <option value="pendukung">Pendukung</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                {{-- ---------------------------------------------------------------------------------------- KEKURANGAN ---------------------------------------------------------------------------------------- --}}
-                                <div class="form-group row">
-                                    <label for="kekurangan" class="col-sm-3 col-form-label">Rasio (per ruang
-                                        praktik)</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="kekurangan" required name="rasio">
+                                    {{-- ---------------------------------------------------------------------------------------- KEKURANGAN ---------------------------------------------------------------------------------------- --}}
+                                    <div class="form-group row">
+                                        <label for="kekurangan" class="col-sm-3 col-form-label">Rasio (per ruang
+                                            praktik)</label>
+                                        <div class="col-sm-9">
+                                            <input type="number" class="form-control" id="kekurangan" required
+                                                name="rasio">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group row">
-                                    <label for="kekurangan" class="col-sm-3 col-form-label">Deskripsi</label>
-                                    <div class="col-sm-9">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="deskripsi" required></textarea>
+                                    <div class="form-group row">
+                                        <label for="kekurangan" class="col-sm-3 col-form-label">Deskripsi</label>
+                                        <div class="col-sm-9">
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="deskripsi" required></textarea>
+                                        </div>
                                     </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-success float-right">Simpan</button>
+                                </div>
+                            </form>
+                        @else
+                            <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                                <div class="alert" role="alert">
+                                    Tidak ada Kopetensi Keahliaan ditemukan
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-success float-right">Simpan</button>
-                            </div>
-                        </form>
+                        @endif
                     </div>
                 </div>
             </div>

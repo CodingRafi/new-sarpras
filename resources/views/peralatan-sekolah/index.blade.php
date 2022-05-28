@@ -80,53 +80,65 @@
             <div class="card-body">
                 <div class="table-responsive">
                     @if (count($peralatanTersedias) > 0)
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                            <tr class="text-center">
-                                <th>No</th>
-                                <th>Kompetensi Keahlian</th>
-                                <th>Nama Alat</th>
-                                <th>Kategori</th>
-                                <th>Ketersediaan</th>
-                                <th>Kekurangan</th>
-                                <th>Status</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($peralatanTersedias as $peralatanTersedia)
-                            <tr>
-                                <td class="text-center" style="vertical-align: middle">{{ $loop->iteration }}</td>
-                                <td class="text-center" style="vertical-align: middle">{{ $peralatanTersedia->kompeten->komli->kompetensi }}</td>
-                                <td class="text-center" style="vertical-align: middle">{{ $peralatanTersedia->peralatan_id != null ? $peralatanTersedia->peralatan->nama : $peralatanTersedia->nama }}</td>
-                                <td class="text-center" style="vertical-align: middle">{{ $peralatanTersedia->kategori }}</td>
-                                <td class="text-center" style="vertical-align: middle">{{ $peralatanTersedia->katersediaan }}</td>
-                                <td class="text-center" style="vertical-align: middle">{{ $peralatanTersedia->kekurangan }}</td>
-                                <td class="text-center" style="vertical-align: middle">{{ $peralatanTersedia->status }}</td>
-                                <td class="text-center" style="vertical-align: middle">
-                                    <div class="d-sm-flex justify-content-center" style="gap: 5px;">
-                                        <a class="btn text-white d-inline" href="/peralatan-tersedia/{{ $peralatanTersedia->id }}/edit" style="background-color: #25b5e9">Edit</a>
-                                        {{-- <form action=""><a class="btn text-white d-inline" style="background-color: #00a65b">Hapus</a></form> --}}
-                                        <form action="/peralatan-tersedia/{{ $peralatanTersedia->id }} class="d-inline"
-                                            method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn text-white d-inline"
-                                            style="background-color: #00a65b"
-                                            onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Hapus</button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>No</th>
+                                    <th>Kompetensi Keahlian</th>
+                                    <th>Nama Alat</th>
+                                    <th>Kategori</th>
+                                    <th>Ketersediaan</th>
+                                    <th>Kekurangan</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($peralatanTersedias as $peralatanTersedia)
+                                    <tr>
+                                        <td class="text-center" style="vertical-align: middle">{{ $loop->iteration }}
+                                        </td>
+                                        <td class="text-center" style="vertical-align: middle">
+                                            {{ $peralatanTersedia->kompeten->komli->kompetensi }}</td>
+                                        <td class="text-center" style="vertical-align: middle">
+                                            {{ $peralatanTersedia->peralatan_id != null ? $peralatanTersedia->peralatan->nama : $peralatanTersedia->nama }}
+                                        </td>
+                                        <td class="text-center" style="vertical-align: middle">
+                                            {{ $peralatanTersedia->kategori }}</td>
+                                        <td class="text-center" style="vertical-align: middle">
+                                            {{ $peralatanTersedia->katersediaan }}</td>
+                                        <td class="text-center" style="vertical-align: middle">
+                                            {{ $peralatanTersedia->kekurangan }}</td>
+                                        <td class="text-center" style="vertical-align: middle">
+                                            {{ $peralatanTersedia->status }}</td>
+                                        <td class="text-center" style="vertical-align: middle">
+                                            <div class="d-sm-flex justify-content-center" style="gap: 5px;">
+                                                <a class="btn text-white d-inline"
+                                                    href="/peralatan-tersedia/{{ $peralatanTersedia->id }}/edit"
+                                                    style="background-color: #25b5e9">Edit</a>
+                                                {{-- <form action=""><a class="btn text-white d-inline" style="background-color: #00a65b">Hapus</a></form> --}}
+                                                <form action="/peralatan-tersedia/{{ $peralatanTersedia->id }} class="
+                                                    
+                                                    d-inline"
+                                                    method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn text-white d-inline"
+                                                        style="background-color: #00a65b"
+                                                        onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Hapus</button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     @else
-                    <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
-                        <div class="alert" role="alert">
-                           Maaf tidak ada data ditemukan
+                        <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                            <div class="alert" role="alert">
+                                Maaf tidak ada data ditemukan
+                            </div>
                         </div>
-                    </div>
                     @endif
                 </div>
                 {{-- {{ $variable->link() }} --}}
@@ -144,6 +156,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                        @if (count($peralatanOptions) > 0)
+                            
                         <form class="form-horizontal" action="/peralatan-tersedia" method="post">
                             @csrf
                             <div class="card-body">
@@ -154,16 +168,19 @@
                                     <div class="col-sm-9">
                                         <div class="input-group peralatan-parent">
                                             @foreach ($peralatanOptions as $options)
-                                                <input type="hidden" class="input-option-{{ $options->id }}" data-kategori="{{ $options->kategori }}">
+                                                <input type="hidden" class="input-option-{{ $options->id }}"
+                                                    data-kategori="{{ $options->kategori }}">
                                             @endforeach
                                             <select class="form-control select-peralatan" id="peralatan-select"
                                                 name="peralatan_id">
                                                 <option value="">Pilih Peralatan</option>
                                                 @foreach ($peralatanOptions as $options)
-                                                <option value="{{ $options->id }}">{{ $options->nama }}</option>
+                                                    <option value="{{ $options->id }}">{{ $options->nama }}</option>
                                                 @endforeach
                                             </select>
-                                            <input type="text" class="form-control input-manual-peralatan" style="display: none" id="peralatan-text" name="nama" placeholder="Masukkan Nama Peralatan">
+                                            <input type="text" class="form-control input-manual-peralatan"
+                                                style="display: none" id="peralatan-text" name="nama"
+                                                placeholder="Masukkan Nama Peralatan">
 
                                             {{-- ---------------------------------------------------------------------------------------- CHECKBOX ---------------------------------------------------------------------------------------- --}}
                                             <div class="input-group-append">
@@ -206,12 +223,19 @@
                                 <button type="submit" class="btn btn-success float-right tombol-simpan">Simpan</button>
                             </div>
                         </form>
+                        @else
+                        <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                            <div class="alert" role="alert">
+                               Belum ada peralatan ditemukan
+                            </div>
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
 
-        
+
 
         {{-- ---------------------------------------------------------------------------------------- USUALAN PERALATAN ---------------------------------------------------------------------------------------- --}}
         <div class="card">
@@ -228,60 +252,62 @@
             <div class="card-body">
                 <div class="table-responsive">
                     @if (count($usulanPeralatans) > 0)
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                            <tr class="text-center">
-                                <th>No</th>
-                                <th>Kompetensi Keahlian</th>
-                                <th>Nama Peralatan</th>
-                                <th>Kategori</th>
-                                <th>Jumlah Usulan</th>
-                                <th>Proposal</th>
-                                <th>Keterangan</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($usulanPeralatans as $usulanPeralatan)
-                                <tr>
-                                    <td class="text-center" style="vertical-align: middle">{{ $loop->iteration }}
-                                    </td>
-                                    <td class="text-center" style="vertical-align: middle">
-                                        {{ $usulanPeralatan->kompetensi }}
-                                    </td>
-                                    <td class="text-center" style="vertical-align: middle">
-                                        {{ $usulanPeralatan->peralatan_id != null ? $usulanPeralatan->nama : $usulanPeralatan->nama_peralatan }}
-                                    </td>
-                                    <td class="text-center" style="vertical-align: middle">
-                                        {{ $usulanPeralatan->kategori }}</td>
-                                    <td class="text-center" style="vertical-align: middle">
-                                        {{ $usulanPeralatan->jml }}</td>
-                                    <td class="text-center" style="vertical-align: middle">
-                                        <a href="/storage/{{ $usulanPeralatan->proposal }}">
-                                            <img src="/img/pdf.png" alt="image" style="width: 30px">
-                                        </a>
-                                    </td>
-                                    <td>{{ $usulanPeralatan->keterangan }}</td>
-                                    <td class="text-center" style="vertical-align: middle">
-                                        <a href="/usulan-peralatan/{{ $usulanPeralatan->id }}/edit"
-                                            class="btn btn-warning">Edit</a>
-
-                                        <form action="/usulan-peralatan/{{ $usulanPeralatan->id }}" method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <button class="btn text-white" style="background-color: #00a65b" type="submit" onclick="return confirm('Apakah anda yakin akan membatalkan usulan peralatan ini?')">Batalkan</button>
-                                        </form>
-                                    </td>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>No</th>
+                                    <th>Kompetensi Keahlian</th>
+                                    <th>Nama Peralatan</th>
+                                    <th>Kategori</th>
+                                    <th>Jumlah Usulan</th>
+                                    <th>Proposal</th>
+                                    <th>Keterangan</th>
+                                    <th>Aksi</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach ($usulanPeralatans as $usulanPeralatan)
+                                    <tr>
+                                        <td class="text-center" style="vertical-align: middle">{{ $loop->iteration }}
+                                        </td>
+                                        <td class="text-center" style="vertical-align: middle">
+                                            {{ $usulanPeralatan->kompetensi }}
+                                        </td>
+                                        <td class="text-center" style="vertical-align: middle">
+                                            {{ $usulanPeralatan->peralatan_id != null ? $usulanPeralatan->nama : $usulanPeralatan->nama_peralatan }}
+                                        </td>
+                                        <td class="text-center" style="vertical-align: middle">
+                                            {{ $usulanPeralatan->kategori }}</td>
+                                        <td class="text-center" style="vertical-align: middle">
+                                            {{ $usulanPeralatan->jml }}</td>
+                                        <td class="text-center" style="vertical-align: middle">
+                                            <a href="/storage/{{ $usulanPeralatan->proposal }}">
+                                                <img src="/img/pdf.png" alt="image" style="width: 30px">
+                                            </a>
+                                        </td>
+                                        <td>{{ $usulanPeralatan->keterangan }}</td>
+                                        <td class="text-center" style="vertical-align: middle">
+                                            <a href="/usulan-peralatan/{{ $usulanPeralatan->id }}/edit"
+                                                class="btn btn-warning">Edit</a>
+
+                                            <form action="/usulan-peralatan/{{ $usulanPeralatan->id }}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="btn text-white" style="background-color: #00a65b"
+                                                    type="submit"
+                                                    onclick="return confirm('Apakah anda yakin akan membatalkan usulan peralatan ini?')">Batalkan</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     @else
-                    <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
-                        <div class="alert" role="alert">
-                           Maaf tidak ada data ditemukan
+                        <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                            <div class="alert" role="alert">
+                                Maaf tidak ada data ditemukan
+                            </div>
                         </div>
-                    </div>
                     @endif
                 </div>
                 {{-- {{ $variable->link() }} --}}
@@ -302,74 +328,87 @@
                         <form class="form-horizontal" action="/usulan-peralatan" method="POST"
                             enctype="multipart/form-data">
                             @csrf
-                            <div class="card-body">
-                                <input type="hidden" name="kompeten_id" value="{{ $kompeten->id }}">
-                                {{-- ---------------------------------------------------------------------------------------- NAMA PERALATAN ---------------------------------------------------------------------------------------- --}}
-                                <div class="form-group row">
-                                    <label for="nama-peralatan" class="col-sm-3 col-form-label">Nama Peralatan</label>
-                                    <div class="col-sm-9">
-                                        <div class="input-group peralatan-parent">
+                            @if (count($peralatanOptions) > 0)
+                                <div class="card-body">
 
-                                            @foreach ($peralatanOptions as $options)
-                                                <input type="hidden" class="input-option-{{ $options->id }}"
-                                                    data-kategori="{{ $options->kategori }}">
-                                            @endforeach
-                                            <select class="form-control select-usulan" id="usulan-select"
-                                                name="peralatan_id">
-                                                <option value="">Pilih Peralatan</option>
+                                    <input type="hidden" name="kompeten_id" value="{{ $kompeten->id }}">
+                                    {{-- ---------------------------------------------------------------------------------------- NAMA PERALATAN ---------------------------------------------------------------------------------------- --}}
+                                    <div class="form-group row">
+                                        <label for="nama-peralatan" class="col-sm-3 col-form-label">Nama Peralatan</label>
+                                        <div class="col-sm-9">
+                                            <div class="input-group peralatan-parent">
+
                                                 @foreach ($peralatanOptions as $options)
-                                                    <option value="{{ $options->id }}">
-                                                        {{ $options->nama }}</option>
+                                                    <input type="hidden" class="input-option-{{ $options->id }}"
+                                                        data-kategori="{{ $options->kategori }}">
                                                 @endforeach
+                                                <select class="form-control select-usulan" id="usulan-select"
+                                                    name="peralatan_id">
+                                                    <option value="">Pilih Peralatan</option>
+                                                    @foreach ($peralatanOptions as $options)
+                                                        <option value="{{ $options->id }}">
+                                                            {{ $options->nama }}</option>
+                                                    @endforeach
+                                                </select>
+
+                                                <input type="text" class="form-control input-manual-peralatan"
+                                                    style="display: none" id="usulan-text" name="nama_peralatan"
+                                                    placeholder="Masukkan Nama Peralatan">
+
+                                                {{-- ---------------------------------------------------------------------------------------- CHECKBOX ---------------------------------------------------------------------------------------- --}}
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">
+                                                        <input id="usulan-checkbox" type="checkbox">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    {{-- ---------------------------------------------------------------------------------------- KATEGORI ---------------------------------------------------------------------------------------- --}}
+                                    <div class="form-group row">
+                                        <label for="kategori" class="col-sm-3 col-form-label">Kategori</label>
+                                        <div class="col-sm-9">
+                                            <select name="kategori" id="" class="custom-select select-kategori" disabled>
+                                                <option value="utama" class="kategori-utama">Utama</option>
+                                                <option value="pendukung" class="kategori-pendukung">Pendukung</option>
                                             </select>
-
-                                            <input type="text" class="form-control input-manual-peralatan"
-                                                style="display: none" id="usulan-text" name="nama_peralatan" placeholder="Masukkan Nama Peralatan">
-
-                                            {{-- ---------------------------------------------------------------------------------------- CHECKBOX ---------------------------------------------------------------------------------------- --}}
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">
-                                                    <input id="usulan-checkbox" type="checkbox">
-                                                </span>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    {{-- ---------------------------------------------------------------------------------------- JUMLAH ---------------------------------------------------------------------------------------- --}}
+                                    <div class="form-group row">
+                                        <label for="jumlah" class="col-sm-3 col-form-label">Jumlah</label>
+                                        <div class="col-sm-9">
+                                            <input type="number" class="form-control" id="jumlah" name="jml">
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    {{-- ---------------------------------------------------------------------------------------- PROPOSAL ---------------------------------------------------------------------------------------- --}}
+                                    <div class="form-group row">
+                                        <label for="proposal" class="col-sm-3 col-form-label">Proposal</label>
+                                        <div class="col-sm-9">
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input type="file" id="chooseFile" accept=".pdf" name="proposal"
+                                                        required>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <hr>
-                                {{-- ---------------------------------------------------------------------------------------- KATEGORI ---------------------------------------------------------------------------------------- --}}
-                                <div class="form-group row">
-                                    <label for="kategori" class="col-sm-3 col-form-label">Kategori</label>
-                                    <div class="col-sm-9">
-                                        <select name="kategori" id="" class="custom-select select-kategori" disabled>
-                                            <option value="utama" class="kategori-utama">Utama</option>
-                                            <option value="pendukung" class="kategori-pendukung">Pendukung</option>
-                                        </select>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-success float-right tombol-simpan">Simpan</button>
+                                </div>
+                            @else
+                                <div class="container d-flex justify-content-center align-items-center"
+                                    style="height: 10rem">
+                                    <div class="alert" role="alert">
+                                        Belum ada Peralatan ditemukan
                                     </div>
                                 </div>
-                                <hr>
-                                {{-- ---------------------------------------------------------------------------------------- JUMLAH ---------------------------------------------------------------------------------------- --}}
-                                <div class="form-group row">
-                                    <label for="jumlah" class="col-sm-3 col-form-label">Jumlah</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="jumlah" name="jml">
-                                    </div>
-                                </div>
-                                <hr>
-                                {{-- ---------------------------------------------------------------------------------------- PROPOSAL ---------------------------------------------------------------------------------------- --}}
-                                <div class="form-group row">
-                                    <label for="proposal" class="col-sm-3 col-form-label">Proposal</label>
-                                    <div class="col-sm-9">
-                                        <div class="input-group">
-                                            <div class="custom-file">
-                                                <input type="file" id="chooseFile" accept=".pdf" name="proposal" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-success float-right tombol-simpan">Simpan</button>
-                            </div>
+                            @endif
+
                         </form>
                     </div>
                 </div>
@@ -413,7 +452,7 @@
         });
 
         for (let i = 0; i < tombolSimpan.length; i++) {
-            tombolSimpan[i].addEventListener('click', function(){
+            tombolSimpan[i].addEventListener('click', function() {
                 selectKategori[i].removeAttribute('disabled');
             })
         }

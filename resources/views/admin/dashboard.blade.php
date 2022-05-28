@@ -3,8 +3,8 @@
 @section('tambahcss')
     <style>
         /* .row-data .col-3 {
-                                max-width: 15.5rem !important;
-                            } */
+                                    max-width: 15.5rem !important;
+                                } */
 
         .card-header h4 {
             font-size: 1.2rem !important
@@ -138,14 +138,33 @@
                     Filter by... <span class="caret"></span>
                 </a>
                 <div class="dropdown-menu" style="min-width: auto !important; width: 160px;">
-                    <a class="dropdown-item text-truncate kab" tabindex="-1" href="?filter=kota">Kota/ Kabupaten</a>
-                    <a class="dropdown-item text-truncate kcd" tabindex="-1" href="?filter=kcd">Kantor Cabang Dinas</a>
+                    <form action="/" method="get">
+                        @if (request('search'))
+                            <input type="hidden" name="search"
+                                value="{{ request('search') }}">
+                        @endif
+                        <input type="hidden" name="filter" value="kota">
+                        <button class="dropdown-item text-truncate kab" tabindex="-1"
+                            type="submit">Kota/Kabupaten</button>
+                    </form>
+                    <form action="/" method="get">
+                        @if (request('search'))
+                            <input type="hidden" name="search"
+                                value="{{ request('search') }}">
+                        @endif
+                        <input type="hidden" name="filter" value="kcd">
+                        <button class="dropdown-item text-truncate kab" tabindex="-1"
+                            type="submit">Kantor Cabang Dinas</button>
+                    </form>
                 </div>
                 <form class="form-inline ml-2" action="/" method="GET" style="width: 100%;">
+                    @if (request('filter'))
+                        <input type="hidden" name="filter" value="{{ request('filter') }}">
+                    @endif
                     <div class="input-group" style="width: 100%;border: 1px solid #ced4da;border-radius: 3px;">
-                        <input class="form-control form-control-navbar" type="search"
-                            placeholder="Search Nama Sekolah" aria-label="Search"
-                            style="height: 2.5rem;font-size: 15px;padding: 0 10px;border:none;" name="search">
+                        <input class="form-control form-control-navbar" type="search" placeholder="Search Nama Sekolah"
+                            aria-label="Search" style="height: 2.5rem;font-size: 15px;padding: 0 10px;border:none;"
+                            name="search">
                         <div class="input-group-append">
                             <button class="btn btn-navbar" type="submit" style="width: 40px;">
                                 <i class="fas fa-search"></i>
@@ -172,7 +191,8 @@
                     <tbody>
                         @foreach ($datas as $data)
                             <tr>
-                                <th class="text-center col-1" scope="row">{{ ($profils ->currentpage()-1) * $profils ->perpage() + $loop->index + 1 }}</th>
+                                <th class="text-center col-1" scope="row">
+                                    {{ ($profils->currentpage() - 1) * $profils->perpage() + $loop->index + 1 }}</th>
                                 <td class="text-center col-1">{{ $data['nama'] }}</td>
                                 <td class="text-center col-1">{{ $data['status_sekolah'] }}</td>
                                 <td class="text-center col-1">{{ $data['kabupaten'] }}</td>
@@ -189,13 +209,21 @@
                                 </td>
                                 <td class="text-center col-2">
                                     @foreach ($data['usulanLahan'] as $usulan)
-                                        <a class="btn text-white mt-1" style="background-color: #fcc12d" href="/usulan-lahan/{{ $usulan->id }}">Usulan Lahan ({{ $usulan->nama }})</a>
+                                        <a class="btn text-white mt-1" style="background-color: #fcc12d"
+                                            href="/usulan-lahan/{{ $usulan->id }}">Usulan Lahan
+                                            ({{ $usulan->nama }})</a>
                                     @endforeach
                                     @foreach ($data['usulanBangunan'] as $usulan)
-                                        <a class="btn text-white mt-1" style="background-color: #fcc12d;text-transform: capitalize;" href="/usulan-bangunan/{{ $usulan['id'] }}">Usulan Bangunan ({{ str_replace("_", " ", $usulan->jenis) }})</a>
+                                        <a class="btn text-white mt-1"
+                                            style="background-color: #fcc12d;text-transform: capitalize;"
+                                            href="/usulan-bangunan/{{ $usulan['id'] }}">Usulan Bangunan
+                                            ({{ str_replace('_', ' ', $usulan->jenis) }})</a>
                                     @endforeach
                                     @foreach ($data['rehab'] as $usulan)
-                                        <a class="btn text-white mt-1" style="background-color: #fcc12d;text-transform: capitalize;" href="/bangunan/ruang-rehabrenov/{{ $usulan['id'] }}">Rehab Renov ({{ str_replace("_", " ", $usulan->jenis) }})</a>
+                                        <a class="btn text-white mt-1"
+                                            style="background-color: #fcc12d;text-transform: capitalize;"
+                                            href="/bangunan/ruang-rehabrenov/{{ $usulan['id'] }}">Rehab Renov
+                                            ({{ str_replace('_', ' ', $usulan->jenis) }})</a>
                                     @endforeach
                                 </td>
                                 <td class="text-center"><a class="text-center btn text-white"
@@ -221,10 +249,9 @@
         const kab = document.querySelector('.kab');
         const kcd = document.querySelector('.kcd');
 
-        kab.addEventListener('click', function(){
+        kab.addEventListener('click', function() {
 
         })
-
     </script>
 @endsection
 
