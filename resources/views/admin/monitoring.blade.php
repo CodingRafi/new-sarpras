@@ -15,15 +15,13 @@
     .btn-titik {
         position: absolute;
         margin-left: -60px;
+        
     }
-
 </style>
 @endsection
 
 @section('container')
 <div class="container-fluid mt-3">
-    <!-- Small boxes (Stat box) -->
-
     {{------------------------------------------------ pengawas ------------------------------------------------}}
     <div class="card mb-5">
         <div class="card-header" style="display:flex; background-color: #25b5e9">
@@ -40,7 +38,7 @@
                 </ul>
             </div>
         </div>
-    
+
         <div class="table-responsive">
             <div class="card-body ">
                 <div class="tab-content p-0">
@@ -95,7 +93,8 @@
                                                                 <i class="bi bi-three-dots-vertical"></i>
                                                             </button>
                                                             <div class="dropdown-menu" style="margin-left: -20px">
-                                                                <a class="dropdown-item" href="">Edit</a>
+                                                                <a class="dropdown-item" data-toggle="modal"
+                                                                    data-target="#modal-edit">Edit</a>
                                                                 <a class="dropdown-item" href="">Hapus</a>
                                                             </div>
                                                         </div>
@@ -130,7 +129,8 @@
                                                                 <i class="bi bi-three-dots-vertical"></i>
                                                             </button>
                                                             <div class="dropdown-menu" style="margin-left: -20px">
-                                                                <a class="dropdown-item" href="">Edit</a>
+                                                                <a class="dropdown-item" data-toggle="modal"
+                                                                    data-target="#modal-edit">Edit</a>
                                                                 <a class="dropdown-item" href="">Hapus</a>
                                                             </div>
                                                         </div>
@@ -165,7 +165,8 @@
                                                                 <i class="bi bi-three-dots-vertical"></i>
                                                             </button>
                                                             <div class="dropdown-menu" style="margin-left: -20px">
-                                                                <a class="dropdown-item" href="">Edit</a>
+                                                                <a class="dropdown-item" data-toggle="modal"
+                                                                    data-target="#modal-edit">Edit</a>
                                                                 <a class="dropdown-item" href="">Hapus</a>
                                                             </div>
                                                         </div>
@@ -291,7 +292,8 @@
                                                                 <i class="bi bi-three-dots-vertical"></i>
                                                             </button>
                                                             <div class="dropdown-menu" style="margin-left: -20px">
-                                                                <a class="dropdown-item" href="">Edit</a>
+                                                                <a class="dropdown-item" data-toggle="modal"
+                                                                    data-target="#modal-edit-vertifikator">Edit</a>
                                                                 <a class="dropdown-item" href="">Hapus</a>
                                                             </div>
                                                         </div>
@@ -325,7 +327,8 @@
                                                                 <i class="bi bi-three-dots-vertical"></i>
                                                             </button>
                                                             <div class="dropdown-menu" style="margin-left: -20px">
-                                                                <a class="dropdown-item" href="">Edit</a>
+                                                                <a class="dropdown-item" data-toggle="modal"
+                                                                    data-target="#modal-edit-vertifikator">Edit</a>
                                                                 <a class="dropdown-item" href="">Hapus</a>
                                                             </div>
                                                         </div>
@@ -359,7 +362,8 @@
                                                                 <i class="bi bi-three-dots-vertical"></i>
                                                             </button>
                                                             <div class="dropdown-menu" style="margin-left: -20px">
-                                                                <a class="dropdown-item" href="">Edit</a>
+                                                                <a class="dropdown-item" data-toggle="modal"
+                                                                    data-target="#modal-edit-vertifikator">Edit</a>
                                                                 <a class="dropdown-item" href="">Hapus</a>
                                                             </div>
                                                         </div>
@@ -559,6 +563,149 @@
     </div>
     {{-----------------------------------------end unsur yg diverifikasi-----------------------------------------}}
 </div>
-<!-- /.container-fluid -->
+
+{{-- Tab Pengawas--}}
+<div class="modal fade" id="modal-edit">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form action="/kekurangan-lahan/update-kekurangan" method="post">
+                @csrf
+                @method('PATCH')
+                <div class="modal-header">
+                    <h3 class="modal-title">Edit Pengawas</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+
+                        <input type="hidden" name="pengawas" class="pengawas">
+                        <div class="row mt-2">
+                            <div class="col-3">
+                                <label for="col-sm-4 col-form-label">Nama Pengawas :</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control col-sm-7 input-nama-edit"
+                                    placeholder="Masukan Nama Pengawas" id="nmapg" name="nama" required>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-3">
+                                <label for="col-sm-4 col-form-label">Instansi :</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control col-sm-7 panjang-nama-edit"
+                                    placeholder="Masukan Nama Instansi" id="nmains" name="instansi" required>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-3">
+                                <label for="col-sm-4 col-form-label">Kabupaten / Kota :</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control col-sm-7 lebar-nama-edit"
+                                    placeholder="Masukan Kabupaten / Kota" id="kota" name="kota" required>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-3">
+                                <label for="col-sm-4 col-form-label">Provinsi :</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control col-sm-7 keterangan-nama-edit"
+                                    placeholder="Provinsi" id="provinsi" name="provinsi" required>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-warning text-white">Edit</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+{{-- End Tab --}}
+
+
+
+{{-- Tab Vertifikator--}}
+<div class="modal fade" id="modal-edit-vertifikator">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form action="/kekurangan-lahan/update-kekurangan" method="post">
+                @csrf
+                @method('PATCH')
+                <div class="modal-header">
+                    <h3 class="modal-title">Edit Vertifikator</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+
+                        <input type="hidden" name="pengawas" class="pengawas">
+                        <div class="row mt-2">
+                            <div class="col-3">
+                                <label for="col-sm-4 col-form-label">Nama Pengawas :</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control col-sm-7 input-nama-edit"
+                                    placeholder="Masukan Nama Pengawas" id="nmapg" name="nama" required>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-3">
+                                <label for="col-sm-4 col-form-label">Instansi :</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control col-sm-7 panjang-nama-edit"
+                                    placeholder="Masukan Nama Instansi" id="nmains" name="instansi" required>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-3">
+                                <label for="col-sm-4 col-form-label">Kabupaten / Kota :</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control col-sm-7 lebar-nama-edit"
+                                    placeholder="Masukan Kabupaten / Kota" id="kota" name="kota" required>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-3">
+                                <label for="col-sm-4 col-form-label">Provinsi :</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control col-sm-7 keterangan-nama-edit"
+                                    placeholder="Provinsi" id="provinsi" name="provinsi" required>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-warning text-white">Edit</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+{{-- End Tab --}}
 
 @endsection
