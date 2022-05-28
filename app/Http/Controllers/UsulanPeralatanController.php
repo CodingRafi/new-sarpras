@@ -42,6 +42,7 @@ class UsulanPeralatanController extends Controller
     public function store(StoreUsulanPeralatanRequest $request)
     {
         $kompeten = Kompeten::find($request->kompeten_id);
+        // return($request);
         if($kompeten->profil_id == Auth::user()->profil_id){
             $validatedData = $request->validate([
                 'kompeten_id' => 'required',
