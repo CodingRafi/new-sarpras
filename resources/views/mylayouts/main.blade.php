@@ -41,6 +41,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
             color: black !important;
         }
 
+        ::-webkit-scrollbar{
+            display: none;
+        }
+
         @media (max-width:768px) {
             .nama-sekolah {
                 display: none;
@@ -49,7 +53,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             .pimpinan-infobox {
                 flex-direction: column;
             }
-        }
         }
 
     </style>

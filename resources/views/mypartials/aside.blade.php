@@ -196,39 +196,21 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="bi bi-caret-right"></i>
-                                        <p>Laboratorium Biologi</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="bi bi-caret-right"></i>
-                                        <p>Laboratorium Fisika</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/bangunan/lab-komputer" class="nav-link {{ Request::is('bangunan/lab-komputer') ? 'active' : '' }}">
-                                        <i class="bi bi-caret-right"></i>
-                                        <p>Laboratorium Komputer</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item {{ (request('jenis') == 'lab_kimia') ? 'active' : '' }}">
+                               <li class="nav-item {{ (request('jenis') == 'lab_kimia') ? 'active' : '' }}">
                                     <a href="/bangunan?jenis=lab_kimia" class="nav-link {{ (request('jenis') == 'lab_kimia') ? 'active' : '' }}">
-                                        <i class="fa-regular fa-circle"></i>
+                                       <i class="bi bi-caret-right"></i>
                                         <p>Laboratorium Kimia</p>
                                     </a>
                                 </li>
                                 <li class="nav-item {{ (request('jenis') == 'lab_ipa') ? 'active' : '' }}">
                                     <a href="/bangunan?jenis=lab_ipa" class="nav-link {{ (request('jenis') == 'lab_ipa') ? 'active' : '' }}">
-                                        <i class="fa-regular fa-circle"></i>
+                                        <i class="bi bi-caret-right"></i>
                                         <p>Laboratorium Ipa</p>
                                     </a>
                                 </li>
                                 <li class="nav-item {{ (request('jenis') == 'lab_bahasa') ? 'active' : '' }}">
                                     <a href="/bangunan?jenis=lab_bahasa" class="nav-link {{ (request('jenis') == 'lab_bahasa') ? 'active' : '' }}">
-                                        <i class="fa-regular fa-circle"></i>
+                                        <i class="bi bi-caret-right"></i>
                                         <p>Laboratorium Bahasa</p>
                                     </a>
                                 </li>
