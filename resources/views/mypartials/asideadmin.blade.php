@@ -1,5 +1,5 @@
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-light-success elevation-4" style="position: fixed;">
+<aside class="main-sidebar sidebar-light-success elevation-4" style="position: fixed; height: 100vh; min-height: 0; top: 0;">
     <!-- Brand Logo -->
     <a href="/" class="brand-link bg-success" style="background-color: #00A65B !important; display: flex; align-items: center;padding: 9px 11px;">
         <div class="bungkusGambar bg-white p-2" style="border-radius: 50%;">
@@ -15,7 +15,7 @@
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" style="margin-bottom: 5rem">
 
                 {{------------------------------------------------------------------------------------------ DASHBOARD ------------------------------------------------------------------------------------------}}
                 <li class="nav-item">
@@ -189,13 +189,29 @@
                 </li>
 
                 {{------------------------------------------------------------------------------------------ MONITORING & EVALUASI ------------------------------------------------------------------------------------------}}
-                <li class="nav-item has-treeview">
-                    <a href="/monev" class="nav-link">
+                <li class="nav-item has-treeview {{ Request::is('peralatan/*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-shield-check"></i>
                         <p>
                             Monitoring & Evaluasi
+                            <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        {{------------------------------------------------------------------------------------------ JURUSAN ------------------------------------------------------------------------------------------}}
+                        <li class="nav-item">
+                            <a href="/monev" class="nav-link {{ Request::is('/monev') ? 'active' : '' }}">
+                                <i class="fa-regular fa-circle"></i>
+                                <p>Monitoring</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/usulan-peralatan" class="nav-link {{ Request::is('peralatan/nama-jurusan') ? 'active' : '' }}">
+                                <i class="fa-regular fa-circle"></i>
+                                <p>Visitasi Sekolah</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>
