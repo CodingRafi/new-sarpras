@@ -61,6 +61,10 @@ class Profil extends Model
         return $this->hasMany(RehabRenov::class);
     }
 
+    public function peralatanTersedia(){
+        return $this->hasMany(peralatanTersedia::class);
+    }
+
     public function usulanPeralatan(){
         return $this->hasMany(UsulanPeralatan::class);
     }

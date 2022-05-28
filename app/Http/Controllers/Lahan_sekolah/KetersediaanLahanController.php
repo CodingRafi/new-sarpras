@@ -83,6 +83,7 @@ class KetersediaanLahanController extends Controller
      */
     public function edit(KetersediaanLahan $ketersediaanLahan)
     {
+        return($ketersediaanLahan);
         if($ketersediaanLahan->profil_id == Auth::user()->profil_id){
             return view('lahan.ketersediaan.edit', [
                 'ketersediaan' => $ketersediaanLahan,
