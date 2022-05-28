@@ -24,4 +24,14 @@ class UsulanPeralatan extends Model
     public function peralatan(){
         return $this->belongsTo(Peralatan::class);
     }
+
+    public function scopeFilter($query, array $search){
+        $query->when($search['search'] ?? false, function($query, $search){
+            return $query->where('profils.nama', 'like', '%' . $search . '%')
+                        ->orWhere('komlis.kompetensi', 'like', '%' . $search . '%')
+                        ->orWhere('peralatans.nama', 'like', '%' . $search . '%')
+                        ->orWhere('usulan_peralatans.nama_peralatan', 'like', '%' . $search . '%');
+        });
+
+    }
 }

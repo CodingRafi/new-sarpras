@@ -20,7 +20,15 @@ class UsulanPeralatanController extends Controller
      */
     public function index()
     {
-        //
+        $usulanPeralatan = UsulanPeralatan::filter(request(['search']))->select('usulan_peralatans.*', 'komlis.kompetensi')
+                        ->leftJoin('peralatans', 'peralatans.id', 'usulan_peralatans.peralatan_id')
+                        ->leftJoin('profils', 'profils.id', 'usulan_peralatans.profil_id')
+                        ->leftJoin('kompetens', 'kompetens.id', 'usulan_peralatans.kompeten_id')
+                        ->leftJoin('komlis', 'komlis.id', 'kompetens.id')->paginate(40);
+        
+        return view('admin.usulanperalatan', [
+            'usulan_peralatans' => $usulanPeralatan
+        ]);
     }
 
     /**

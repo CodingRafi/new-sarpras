@@ -27,7 +27,7 @@ class AdminController extends Controller
         $usulanPeralatan = 0;
         $datas = [];
         DB::enableQueryLog();
-        $profils = Profil::search(request(['search']))->filter(request(['filter']))
+        $profils = Profil::search(request(['search', 'filter']))
                             ->leftJoin('profil_kcds', 'profils.id', '=', 'profil_kcds.profil_id')
                             ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi')->paginate(40)->withQueryString();
                             // dd(DB::getQueryLog());
