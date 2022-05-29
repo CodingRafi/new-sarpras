@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Monev;
-use App\Http\Requests\StoreMonevRequest;
-use App\Http\Requests\UpdateMonevRequest;;
-use App\Models\Kompeten;
-use App\Models\UnsurVerifikasi;
+use App\Models\BidangKompetensi;
+use App\Http\Requests\StoreBidangKompetensiRequest;
+use App\Http\Requests\UpdateBidangKompetensiRequest;
 
-class MonevController extends Controller
+class BidangKompetensiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +15,7 @@ class MonevController extends Controller
      */
     public function index()
     {
-        $unsurVerifikasis = UnsurVerifikasi::all();
-        return view("admin.monitoring", [
-            'unsurs' => $unsurVerifikasis
-        ]);
+        //
     }
 
     /**
@@ -36,10 +31,10 @@ class MonevController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreMonevRequest  $request
+     * @param  \App\Http\Requests\StoreBidangKompetensiRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreMonevRequest $request)
+    public function store(StoreBidangKompetensiRequest $request)
     {
         //
     }
@@ -47,10 +42,10 @@ class MonevController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Monev  $monev
+     * @param  \App\Models\BidangKompetensi  $bidangKompetensi
      * @return \Illuminate\Http\Response
      */
-    public function show(Monev $monev)
+    public function show(BidangKompetensi $bidangKompetensi)
     {
         //
     }
@@ -58,10 +53,10 @@ class MonevController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Monev  $monev
+     * @param  \App\Models\BidangKompetensi  $bidangKompetensi
      * @return \Illuminate\Http\Response
      */
-    public function edit(Monev $monev)
+    public function edit(BidangKompetensi $bidangKompetensi)
     {
         //
     }
@@ -69,11 +64,11 @@ class MonevController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateMonevRequest  $request
-     * @param  \App\Models\Monev  $monev
+     * @param  \App\Http\Requests\UpdateBidangKompetensiRequest  $request
+     * @param  \App\Models\BidangKompetensi  $bidangKompetensi
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMonevRequest $request, Monev $monev)
+    public function update(UpdateBidangKompetensiRequest $request, BidangKompetensi $bidangKompetensi)
     {
         //
     }
@@ -81,10 +76,10 @@ class MonevController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Monev  $monev
+     * @param  \App\Models\BidangKompetensi  $bidangKompetensi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Monev $monev)
+    public function destroy(BidangKompetensi $bidangKompetensi)
     {
         //
     }

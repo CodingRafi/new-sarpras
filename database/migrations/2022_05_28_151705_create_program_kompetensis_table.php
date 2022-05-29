@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('komlis', function (Blueprint $table) {
+        Schema::create('program_kompetensis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('bidang_kompetensi_id');
-            $table->foreignId('program_kompetensi_id');
-            $table->foreignId('spektrum_id');
-            $table->string('kompetensi');
+            $table->string('nama');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('komlis');
+        Schema::dropIfExists('program_kompetensis');
     }
 };

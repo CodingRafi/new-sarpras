@@ -19,8 +19,6 @@ use App\Http\Controllers\KompetenController;
 use App\Http\Controllers\KomputerController;
 use App\Http\Controllers\PimpinanController;
 use App\Http\Controllers\PeralatanController;
-use App\Http\Controllers\PeralatanTersediaController;
-use App\Http\Controllers\UsulanPeralatanController;
 use App\Http\Controllers\ProfilDepoController;
 use App\Http\Controllers\RehabRenovController;
 use App\Http\Controllers\UsulanFotoController;
@@ -28,6 +26,9 @@ use App\Http\Controllers\PerpustakaanController;
 use App\Http\Controllers\JenisPimpinanController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\UsulanBangunanController;
+use App\Http\Controllers\UnsurVerifikasiController;
+use App\Http\Controllers\UsulanPeralatanController;
+use App\Http\Controllers\PeralatanTersediaController;
 use App\Http\Controllers\Lahan_sekolah\LahanController;
 use App\Http\Controllers\Lahan_sekolah\UsulanLahanController;
 use App\Http\Controllers\Bangunan\Ruang_kelas\KelasController;
@@ -89,6 +90,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/bangunan/rehab-renov-dinas', [RehabRenovController::class, 'showDinas']);
     Route::get('/bangunan/ruang-praktik-dinas', [PraktikController::class, 'showDinas']);
     Route::resource('/komli', KomliController::class);
+    Route::resource('/unsur-verifikasi', UnsurVerifikasiController::class);
     
 
 
