@@ -334,13 +334,13 @@
 
         {{-- modal ketersediaan --}}
         <div class="modal fade" id="modal-ketersediaan">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <form action="/bangunan-all/update-ketersediaan/{{ $dataBangunan->id }}" method="post">
                         @csrf
                         @method('patch')
-                        <div class="modal-header">
-                            <h4 class="modal-title">Masukan Ketersediaan</h4>
+                        <div class="modal-header bg-warning" style="margin-left: -1px">
+                            <h4 class="modal-title text-white">Masukan Ketersediaan</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -356,9 +356,8 @@
                             {{-- end input jumlah ruangan --}}
                         </div>
                         <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn text-white" style="background-color: #00a65b">Save
-                                changes</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
                         </div>
                     </form>
                 </div>

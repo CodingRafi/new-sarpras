@@ -318,7 +318,7 @@
                     <div class="modal-body">
                         <div class="form-group row">
                             <label for="jumlah-lahan" class="col-sm-4 col-form-label">Jenis Ruang</label>
-                            <div class="col-sm-7">
+                            <div class="col-sm-7 m-0 p-0">
                                 <select name="jenis_pimpinan_id" id="" required class="custom-select">
                                     @foreach ($jenis_pimpinans as $data)
                                         <option value="{{ $data->id }}">{{ $data->nama }}</option>
