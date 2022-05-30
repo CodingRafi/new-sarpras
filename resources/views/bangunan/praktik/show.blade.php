@@ -93,7 +93,8 @@
             <div class="modal fade" id="ubah-deskripsi">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <form class="form-horizontal" method="post" action="/kompeten/tambah-keterangan/{{ $kompeten->id }}">
+                        <form class="form-horizontal" method="post"
+                            action="/kompeten/tambah-keterangan/{{ $kompeten->id }}">
                             @csrf
                             @method('patch')
                             <div class="modal-header bg-success">
@@ -128,8 +129,8 @@
                     <div class="col-lg-5 col-12">
                         <div class="d-flex justify-content-center align-items-center flex-column p-2">
                             @if ($kompeten->logo == null)
-                                <img src="/img/Kompetensi Keahlian.png" style="width: 18rem"
-                                    class=" border float-start" alt="...">
+                                <img src="/img/Kompetensi Keahlian.png" style="width: 18rem" class=" border float-start"
+                                    alt="...">
                             @else
                                 <img src="{{ asset('storage/' . $kompeten->logo) }}" style="width: 18rem"
                                     class=" border float-start" alt="...">
@@ -156,9 +157,8 @@
                     <div class="card-header">
                         <h3 class="card-title font-weight-bold">Kondisi Ideal</h3>
                         <div class="card-tools">
-                            <button type="button" class="btn btn-tool"><i class="fas fa-minus"
-                                    style="display: none"></i>
-                            </button>
+                            <button type="button" class="btn btn-tool text-white"><i class="bi bi-pencil-square"
+                                    data-toggle="modal" data-target="#modal-kondisi-ideal"></i></button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -188,7 +188,7 @@
                         <h3 class="card-title font-weight-bold text-white">Kekurangan</h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool text-white"><i class="bi bi-pencil-square"
-                                    data-toggle="modal" data-target="#modal-kekurangan"></i></button>
+                                    data-toggle="modal" data-target="#modal-kondisi-ideal"></i></button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -197,6 +197,38 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="modal fade" id="modal-kondisi-ideal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="/kompeten/update-kondisi-ideal/{{ $kompeten->id }}" method="post">
+                    @csrf
+                    @method('patch')
+                    <div class="modal-header">
+                        <h4 class="modal-title">Masukan Kondisi Ideal</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {{-- input jumlah ruangan --}}
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Kondisi Ideal</label>
+                            <input type="number" class="form-control col-sm-7" placeholder="Masukan Kondisi Ideal"
+                                id="jumlah-ruangan" name="kondisi_ideal" required value="{{ $kompeten->kondisi_ideal }}">
+                        </div>
+                        {{-- end input jumlah ruangan --}}
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn text-white" style="background-color: #00a65b">Save changes</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
     </div>
 
     <div class="container-fluid pt-4">
@@ -255,7 +287,8 @@
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn text-white" style="background-color: #00a65b">Save changes</button>
+                        <button type="submit" class="btn text-white" style="background-color: #00a65b">Save
+                            changes</button>
                     </div>
                 </form>
             </div>

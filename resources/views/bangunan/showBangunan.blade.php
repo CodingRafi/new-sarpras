@@ -159,9 +159,9 @@
                             <table class="table table-bordered table-hover mt-2">
                                 <div class="search" style="display: flex">
                                     <ul class="nav nav-pills ml-auto p-2 col-1" style="max-width: 11%;">
-                                        <li class="nav-item dropdown">
+                                        <li class="nav-item dropdown mb-3">
                                             <a class="btn btn-light dropdown-toggle" data-toggle="dropdown" href="#">
-                                                Filter by ... <span class="caret"></span>
+                                                Order by ... <span class="caret"></span>
                                             </a>
                                             <div class="dropdown-menu" style="min-width: auto !important; width: 125px;">
                                                 <form action="/bangunan-all" method="get">
@@ -191,7 +191,7 @@
                                             </div>
                                         </li>
                                     </ul>
-                                    <div class="md-2 col-11" style="max-width: 89%;">
+                                    <div class="md-2 col-11 mt-2" style="max-width: 89%;">
                                         <form class="form-inline ml-2" action="/bangunan-all" method="GET"
                                             style="width: 100%;">
                                             @if (request('jenis'))
@@ -248,7 +248,7 @@
                                             <td class="text-center" style="vertical-align: middle">
                                                 <a href="/usulan-bangunan/{{ $usulan->id }}"
                                                     class="btn text-white d-inline"
-                                                    style="background-color: #25b5e9">Detail</a>
+                                                    style="background-color: #00a65b">Detail</a>
                                             </td>
                                         </tr>
                                     @endforeach

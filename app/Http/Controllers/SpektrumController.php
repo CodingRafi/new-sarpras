@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Monev;
-use App\Http\Requests\StoreMonevRequest;
-use App\Http\Requests\UpdateMonevRequest;;
-use App\Models\Kompeten;
-use App\Models\UnsurVerifikasi;
+use App\Models\Spektrum;
+use App\Http\Requests\StoreSpektrumRequest;
+use App\Http\Requests\UpdateSpektrumRequest;
 
-class MonevController extends Controller
+class SpektrumController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +15,7 @@ class MonevController extends Controller
      */
     public function index()
     {
-        $unsurVerifikasis = UnsurVerifikasi::all();
-        return view("admin.monitoring", [
-            'unsurs' => $unsurVerifikasis
-        ]);
+        //
     }
 
     /**
@@ -36,10 +31,10 @@ class MonevController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreMonevRequest  $request
+     * @param  \App\Http\Requests\StoreSpektrumRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreMonevRequest $request)
+    public function store(StoreSpektrumRequest $request)
     {
         //
     }
@@ -47,10 +42,10 @@ class MonevController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Monev  $monev
+     * @param  \App\Models\Spektrum  $spektrum
      * @return \Illuminate\Http\Response
      */
-    public function show(Monev $monev)
+    public function show(Spektrum $spektrum)
     {
         //
     }
@@ -58,10 +53,10 @@ class MonevController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Monev  $monev
+     * @param  \App\Models\Spektrum  $spektrum
      * @return \Illuminate\Http\Response
      */
-    public function edit(Monev $monev)
+    public function edit(Spektrum $spektrum)
     {
         //
     }
@@ -69,11 +64,11 @@ class MonevController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateMonevRequest  $request
-     * @param  \App\Models\Monev  $monev
+     * @param  \App\Http\Requests\UpdateSpektrumRequest  $request
+     * @param  \App\Models\Spektrum  $spektrum
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMonevRequest $request, Monev $monev)
+    public function update(UpdateSpektrumRequest $request, Spektrum $spektrum)
     {
         //
     }
@@ -81,10 +76,10 @@ class MonevController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Monev  $monev
+     * @param  \App\Models\Spektrum  $spektrum
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Monev $monev)
+    public function destroy(Spektrum $spektrum)
     {
         //
     }

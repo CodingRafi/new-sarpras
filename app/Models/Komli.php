@@ -17,6 +17,18 @@ class Komli extends Model
         return $this->hasMany(Kompeten::class);
     }
 
+    public function bidangKompetensi(){
+        return $this->belongsTo(BidangKompetensi::class);
+    }
+
+    public function programKompetensi(){
+        return $this->belongsTo(ProgramKompetensi::class);
+    }
+
+    public function spektrum(){
+        return $this->belongsTo(Spektrum::class);
+    }
+
     public function logo(){
         return $this->hasMany(Logo::class);
     }

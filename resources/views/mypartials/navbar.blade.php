@@ -59,14 +59,13 @@
                     class="brand-image img-circle bg-white" width="33" style="opacity: .8">
             </a>
             <div class="dropdown-menu float-right">
-                <a class="dropdown-item" tabindex="-1" href="#"><i class="bi bi-pencil-square"></i> Ubah Password</a>
-                <a class="dropdown-item" tabindex="-1" href="/upload-logo"><i class="bi bi-image"></i> Upload
-                    Logo</a>
+                <a class="dropdown-item" tabindex="-1" href="#" style="color: grey"><i class="bi bi-pencil-square" style="width: 20px"></i> Ubah Password</a>
+                <a class="dropdown-item" tabindex="-1" href="/upload-logo" style="color: grey"><i class="bi bi-image" style="width: 20px"></i> Tambah Logo</a>
                 <div class="dropdown-divider"></div>
                 <form action="/logout" method="post">
                     @csrf
                     <button class="dropdown-item" tabindex="-1" type="submit"
-                        style="border: none; background: none;"><i class="bi bi-box-arrow-left"></i> Logout</button>
+                        style="border: none; background: none; color: grey;"><i class="bi bi-box-arrow-left" style="width: 20px"></i> Keluar</button>
                 </form>
             </div>
         </li>
