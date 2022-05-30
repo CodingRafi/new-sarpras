@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('kondisi_ideal');
             $table->string('ketersediaan');
             $table->string('kekurangan');
+            $table->string('ket_kondisi_ideal')->nullable();
+            $table->string('ket_ketersediaan')->nullable();
+            $table->string('ket_kekurangan')->nullable();
             $table->timestamps();
         });
     }

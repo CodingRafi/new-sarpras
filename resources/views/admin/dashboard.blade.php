@@ -135,7 +135,7 @@
         <div class="card-body table-responsive">
             <div class="search" style="display: flex">
                 <a class="btn btn-light dropdown-toggle" style="border: 1px solid #263238" data-toggle="dropdown" href="#">
-                    Filter by... <span class="caret"></span>
+                    Order by... <span class="caret"></span>
                 </a>
                 <div class="dropdown-menu" style="min-width: auto !important; width: 160px;">
                     <form action="/" method="get">
