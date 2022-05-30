@@ -42,10 +42,43 @@
             </span>
             <div class="info-box-content">
                 <label>Keterangan:</label>
+                <button type="button" class="btn btn-tool text-dark" style="position: absolute; right:0%; padding-top:8px" data-toggle="modal"
+                data-target="#edit-kondisi-ideal"><i class="bi bi-pencil-square"></i>
+                </button>
                 <p>Ruang guru jga bisa di pakai untuk menyimpan dokumn dokumen penting tentang anak didik mereka,Ruang guru
                     juga sangat berfungsi untuk para guru guru atau staf sekolah lain nya,dapat dimanfaatkan untuk tempat
                     peristirahatan para guru ketika selesai mengajar,tempat berkumpulnya para guru ketika ingin melakukan
-                    rapat.</p>
+                    rapat.
+                </p>
+
+                {{-- modal --}}
+                <div class="modal fade" id="edit-kondisi-ideal">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color: #25b5e9; margin-left:-1px">
+                                <h4 class="modal-title text-white">Kondisi Ideal</h4>
+                                <button type="button" class="close" style="color: aliceblue" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                    <div class="card-body">
+                                        <div class="form-group row">
+                                            <label for="ideal" class="col-sm-2 col-form-label">Kondisi Ideal</label>
+                                            <div class="col-sm-10">
+                                                <input type="number" class="form-control" id="ideal" name="kondisi_ideal">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn text-white float-right"
+                                            style="background-color: #00a65b">Simpan</button>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{-- modal --}}
             </div>
         </div>
 
@@ -66,11 +99,43 @@
             </span>
             <div class="info-box-content">
                 <label>Keterangan:</label>
+                <button type="button" class="btn btn-tool text-dark" style="position: absolute; right:0%; padding-top:8px" data-toggle="modal" data-target="#edit-ketersediaan"><i class="bi bi-pencil-square"></i>
+                </button>
                 <p>Ruang guru jga bisa di pakai untuk menyimpan dokumn dokumen penting tentang anak didik mereka,Ruang guru
                     juga sRuang guru jga bisa di pakai untuk menyimpan dokumn dokumen penting tentang anak didik
                     mereka,Ruang guru juga sangat berfungsi untuk para guru guru atau staf sekolah lain nya,dapat
                     dimanfaatkan untuk tempat peristirahatan para guru ketika selesai mengajar,tempat berkumpulnya para guru
-                    ketika ingin melakukan rapat.</p>
+                    ketika ingin melakukan rapat.
+                </p>
+
+                {{-- modal --}}
+                <div class="modal fade" id="edit-ketersediaan">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color: #fcc12d; margin-left:-1px">
+                                <h4 class="modal-title text-white">Ketersediaan</h4>
+                                <button type="button" class="close" style="color: aliceblue" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                    <div class="card-body">
+                                        <div class="form-group row">
+                                            <label for="ideal" class="col-sm-2 col-form-label">Ketersediaan</label>
+                                            <div class="col-sm-10">
+                                                <input type="number" class="form-control" id="ideal" name="kondisi_ideal">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn text-white float-right"
+                                            style="background-color: #00a65b">Simpan</button>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{-- modal --}}
             </div>
         </div>
 
@@ -91,9 +156,41 @@
             </span>
             <div class="info-box-content">
                 <label>Keterangan:</label>
+                <button type="button" class="btn btn-tool text-dark" style="position: absolute; right:0%; padding-top:8px" data-toggle="modal" data-target="#edit-kekurangan"><i class="bi bi-pencil-square"></i>
+                </button>
                 <p>Ruang guru jga bisa di pakai untuk menyimpan dokumn dokumen penting tentang anak didik mereka,Ruang guru
                     juga sangat berfungsi untuk para guru guru atau staf sekolah lain nya,dapat dimanfaatkan untuk tempat
-                    peristirahatan para guru ketika selesai m</p>
+                    peristirahatan para guru ketika selesai
+                </p>
+
+                {{-- modal --}}
+                <div class="modal fade" id="edit-kekurangan">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color: #263238; margin-left:-1px">
+                                <h4 class="modal-title text-white">Kekurangan</h4>
+                                <button type="button" class="close" style="color: aliceblue" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                    <div class="card-body">
+                                        <div class="form-group row">
+                                            <label for="ideal" class="col-sm-2 col-form-label">Kekurangan</label>
+                                            <div class="col-sm-10">
+                                                <input type="number" class="form-control" id="ideal" name="kondisi_ideal">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn text-white float-right"
+                                            style="background-color: #00a65b">Simpan</button>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{-- modal --}}
             </div>
         </div>
 
