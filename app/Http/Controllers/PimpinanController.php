@@ -33,6 +33,7 @@ class PimpinanController extends Controller
         $koleksi = UsulanKoleksi::koleksi($usulans);
         $fotos = UsulanFoto::fotos($koleksi);
         $jenisUsulanPimpinan = [];
+        $bangunan = Bangunan::where('profil_id', Auth::user()->profil_id)->where('jenis', 'ruang_pimpinan')->get()[0];
 
         foreach($usulans as $usulan){
             $jenisUsulanPimpinan[] = $usulan->jenisPimpinan;
@@ -47,7 +48,7 @@ class PimpinanController extends Controller
                 'nama' => $pim->nama,
                 'lebar' => $pim->lebar,
                 'panjang' => $pim->panjang,
-                'luas' => $pim->luas
+                'luas' => $pim->luas,
             ];
         }
 
@@ -57,7 +58,8 @@ class PimpinanController extends Controller
             'usulans' => $usulans,
             'usulanFotos' => $fotos,
             'usulanJenis' => $jenisUsulanPimpinan,
-            'kompils' => Kompeten::getKompeten()
+            'kompils' => Kompeten::getKompeten(),
+            'bangunan' => $bangunan
         ]);
     }
 

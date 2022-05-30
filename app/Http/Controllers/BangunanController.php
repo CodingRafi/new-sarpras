@@ -120,6 +120,10 @@ class BangunanController extends Controller
             $validatedData = $request->validate([
                 'ketersediaan' => 'required|numeric',
             ]);
+
+            if($request->ket_ketersediaan){
+                $validatedData['ket_ketersediaan'] = $request->ket_ketersediaan;
+            }
             
             $data->update($validatedData);
             
@@ -154,6 +158,10 @@ class BangunanController extends Controller
                 'kekurangan' => 'required|numeric',
             ]);
 
+            if($request->ket_kekurangan){
+                $validatedData['ket_kekurangan'] = $request->ket_kekurangan;
+            }
+
             $data->update($validatedData);
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah jumlah kekurangan ' . str_replace("_", " ", $data->jenis));
@@ -167,10 +175,14 @@ class BangunanController extends Controller
     public function kondisiIdeal(Request $request, $id){
         $data = Bangunan::where('id', $id)->get()[0];
         if($data->profil_id == Auth::user()->profil_id){
-            if($data->jenis == 'toilet' || $data->jenis == 'lab_komputer' || $data->jenis == 'lab_biologi' || $data->jenis == 'lab_fisika' || $data->jenis == 'lab_ipa' || $data->jenis == 'lab_kimia' || $data->jenis == 'lab_bahasa'){
+            if($data->jenis == 'toilet' || $data->jenis == 'lab_komputer' || $data->jenis == 'lab_biologi' || $data->jenis == 'lab_fisika' || $data->jenis == 'lab_ipa' || $data->jenis == 'lab_kimia' || $data->jenis == 'lab_bahasa' || $data->jenis == 'ruang_pimpinan'){
                 $validatedData = $request->validate([
                     'kondisi_ideal' => 'required|numeric',
                 ]);
+
+                if($request->ket_kondisi_ideal){
+                    $validatedData['ket_kondisi_ideal'] = $request->ket_kondisi_ideal;
+                }
     
                 $data->update($validatedData);
     

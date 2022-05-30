@@ -12,93 +12,126 @@
             margin-left: 40px;
         }
 
-        .btn-titik {
-            position: absolute;
-            margin-left: -60px;
-        }
-
-    </style>
+    .btn-titik {
+        position: absolute;
+        margin-left: -60px;
+        
+    }
+</style>
 @endsection
 
 @section('container')
-    <div class="container-fluid mt-3">
-        <!-- Small boxes (Stat box) -->
-
-        {{-- ---------------------------------------------- pengawas ---------------------------------------------- --}}
-        <div class="card mb-5">
-            <div class="card-header" style="display:flex; background-color: #25b5e9">
-                <div class="col-10">
-                    <ul class="nav nav-pills">
-                        <li class="nav-item">
-                            <a class="nav-link text-white active font-weight-bold" href="#data-pengawas"
-                                data-toggle="tab">Pengawas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white font-weight-bold" href="#tambah-pengawas"
-                                data-toggle="tab">Tambah</a>
-                        </li>
-                    </ul>
-                </div>
+<div class="container-fluid mt-3">
+    {{------------------------------------------------ pengawas ------------------------------------------------}}
+    <div class="card mb-5">
+        <div class="card-header" style="display:flex; background-color: #25b5e9">
+            <div class="col-10">
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link text-white active font-weight-bold" href="#data-pengawas"
+                            data-toggle="tab">Pengawas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white font-weight-bold" href="#tambah-pengawas"
+                            data-toggle="tab">Tambah</a>
+                    </li>
+                </ul>
             </div>
+        </div>
 
-            <div class="table-responsive">
-                <div class="card-body ">
-                    <div class="tab-content p-0">
-                        <div class="tab-pane active" id="data-pengawas">
-                            <div class="row">
-                                <div class="col">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
-                                                    No
-                                                </th>
-                                                <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
-                                                    Nama
-                                                </th>
-                                                <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
-                                                    Instansi
-                                                </th>
-                                                <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
-                                                    Kabupaten/ Kota
-                                                </th>
-                                                <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
-                                                    Provinsi
-                                                </th>
-                                                <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
-                                                    Aksi
-                                                </th>
-                                        </thead>
-                                        <tbody>
-                                            {{-- row 1 --}}
-                                            <tr>
-                                                <th class="col-1 text-center" scope="row">
-                                                    1
-                                                </th>
-                                                <td class="col-1 text-center">
-                                                    ADE ROMLAH
-                                                </td>
-                                                <td class="col-1 text-center">
-                                                    -
-                                                </td>
-                                                <td class="col-1 text-center">
-                                                    Kab. Kuningan
-                                                </td>
-                                                <td class="col-1 text-center">
-                                                    Jawa Barat
-                                                </td>
-                                                <td>
-                                                    <div class="card-body">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <button type="button" class="btn"
-                                                                    data-toggle="dropdown">
-                                                                    <i class="bi bi-three-dots-vertical"></i>
-                                                                </button>
-                                                                <div class="dropdown-menu" style="margin-left: -20px">
-                                                                    <a class="dropdown-item" href="">Edit</a>
-                                                                    <a class="dropdown-item" href="">Hapus</a>
-                                                                </div>
+        <div class="table-responsive">
+            <div class="card-body ">
+                <div class="tab-content p-0">
+                    <div class="tab-pane active" id="data-pengawas">
+                        <div class="row">
+                            <div class="col">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
+                                                No
+                                            </th>
+                                            <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
+                                                Nama
+                                            </th>
+                                            <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
+                                                Instansi
+                                            </th>
+                                            <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
+                                                Kabupaten/ Kota
+                                            </th>
+                                            <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
+                                                Provinsi
+                                            </th>
+                                            <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
+                                                Aksi
+                                            </th>
+                                    </thead>
+                                    <tbody>
+                                        {{-- row 1 --}}
+                                        <tr>
+                                            <th class="col-1 text-center" scope="row">
+                                                1
+                                            </th>
+                                            <td class="col-1 text-center">
+                                                ADE ROMLAH
+                                            </td>
+                                            <td class="col-1 text-center">
+                                                -
+                                            </td>
+                                            <td class="col-1 text-center">
+                                                Kab. Kuningan
+                                            </td>
+                                            <td class="col-1 text-center">
+                                                Jawa Barat
+                                            </td>
+                                            <td>
+                                                <div class="card-body">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <button type="button" class="btn" data-toggle="dropdown">
+                                                                <i class="bi bi-three-dots-vertical"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu" style="margin-left: -20px">
+                                                                <a class="dropdown-item" data-toggle="modal"
+                                                                    data-target="#modal-edit">Edit</a>
+                                                                <a class="dropdown-item" href="">Hapus</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {{-- end row 1 --}}
+
+                                        {{-- row 2 --}}
+                                        <tr>
+                                            <th class="col-1 text-center" scope="row">
+                                                2
+                                            </th>
+                                            <td class="col-1 text-center">
+                                                AGUS HERMAWAN, S.PD M.SI
+                                            </td>
+                                            <td class="col-1 text-center">
+                                                Cabang Dinas Pendidikan Wilayah XI
+                                            </td>
+                                            <td class="col-1 text-center">
+                                                Kab. Majalengka
+                                            </td>
+                                            <td class="col-1 text-center">
+                                                Jawa Barat
+                                            </td>
+                                            <td>
+                                                <div class="card-body">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <button type="button" class="btn" data-toggle="dropdown">
+                                                                <i class="bi bi-three-dots-vertical"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu" style="margin-left: -20px">
+                                                                <a class="dropdown-item" data-toggle="modal"
+                                                                    data-target="#modal-edit">Edit</a>
+                                                                <a class="dropdown-item" href="">Hapus</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -106,35 +139,34 @@
                                             </tr>
                                             {{-- end row 1 --}}
 
-                                            {{-- row 2 --}}
-                                            <tr>
-                                                <th class="col-1 text-center" scope="row">
-                                                    2
-                                                </th>
-                                                <td class="col-1 text-center">
-                                                    AGUS HERMAWAN, S.PD M.SI
-                                                </td>
-                                                <td class="col-1 text-center">
-                                                    Cabang Dinas Pendidikan Wilayah XI
-                                                </td>
-                                                <td class="col-1 text-center">
-                                                    Kab. Majalengka
-                                                </td>
-                                                <td class="col-1 text-center">
-                                                    Jawa Barat
-                                                </td>
-                                                <td>
-                                                    <div class="card-body">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <button type="button" class="btn"
-                                                                    data-toggle="dropdown">
-                                                                    <i class="bi bi-three-dots-vertical"></i>
-                                                                </button>
-                                                                <div class="dropdown-menu" style="margin-left: -20px">
-                                                                    <a class="dropdown-item" href="">Edit</a>
-                                                                    <a class="dropdown-item" href="">Hapus</a>
-                                                                </div>
+                                        {{-- row 3 --}}
+                                        <tr>
+                                            <th class="col-1 text-center" scope="row">
+                                                3
+                                            </th>
+                                            <td class="col-1 text-center">
+                                                ASEP SUHENDI, S.PD, MM
+                                            </td>
+                                            <td class="col-1 text-center">
+                                                Cadisdik Wi.X Jawa Barat
+                                            </td>
+                                            <td class="col-1 text-center">
+                                                Cirebon
+                                            </td>
+                                            <td class="col-1 text-center">
+                                                Jawa Barat
+                                            </td>
+                                            <td>
+                                                <div class="card-body">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <button type="button" class="btn" data-toggle="dropdown">
+                                                                <i class="bi bi-three-dots-vertical"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu" style="margin-left: -20px">
+                                                                <a class="dropdown-item" data-toggle="modal"
+                                                                    data-target="#modal-edit">Edit</a>
+                                                                <a class="dropdown-item" href="">Hapus</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -239,135 +271,133 @@
                     </ul>
                 </div>
             </div>
-            <!-- /.card-header DATA SEKOLAH-->
             <div class="table-responsive">
-                <div class="card-body">
-                    <div class="tab-content p-0">
-                        <div class="tab-pane active" id="data-verifikator">
-                            <div class="row">
-                                <div class="col">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
-                                                    No
-                                                </th>
-                                                <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
-                                                    Nama
-                                                </th>
-                                                <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
-                                                    Instansi
-                                                </th>
-                                                <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
-                                                    Kabupaten/ Kota
-                                                </th>
-                                                <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
-                                                    Provinsi
-                                                </th>
-                                                <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
-                                                    Aksi
-                                                </th>
-                                        </thead>
-                                        <tbody>
-                                            {{-- row 1 --}}
-                                            <tr>
-                                                <th class="col-1 text-center" scope="row">
-                                                    1
-                                                </th>
-                                                <td class="col-1 text-center">
-                                                    ADE ROMLAH
-                                                </td>
-                                                <td class="col-1 text-center">
-                                                    -
-                                                </td>
-                                                <td class="col-1 text-center">
-                                                    Kab. Kuningan
-                                                </td>
-                                                <td class="col-1 text-center">
-                                                    Jawa Barat
-                                                </td>
-                                                <td>
-                                                    <div class="card-body">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <button type="button" class="btn"
-                                                                    data-toggle="dropdown">
-                                                                    <i class="bi bi-three-dots-vertical"></i>
-                                                                </button>
-                                                                <div class="dropdown-menu" style="margin-left: -20px">
-                                                                    <a class="dropdown-item" href="">Edit</a>
-                                                                    <a class="dropdown-item" href="">Hapus</a>
-                                                                </div>
+            <div class="card-body">
+                <div class="tab-content p-0">
+                    <div class="tab-pane active" id="data-verifikator">
+                        <div class="row">
+                            <div class="col">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
+                                                No
+                                            </th>
+                                            <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
+                                                Nama
+                                            </th>
+                                            <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
+                                                Instansi
+                                            </th>
+                                            <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
+                                                Kabupaten/ Kota
+                                            </th>
+                                            <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
+                                                Provinsi
+                                            </th>
+                                            <th class="col-1 text-center" style="background-color: #eeeeee" scope="col">
+                                                Aksi
+                                            </th>
+                                    </thead>
+                                    <tbody>
+                                        {{-- row 1 --}}
+                                        <tr>
+                                            <th class="col-1 text-center" scope="row">
+                                                1
+                                            </th>
+                                            <td class="col-1 text-center">
+                                                ADE ROMLAH
+                                            </td>
+                                            <td class="col-1 text-center">
+                                                -
+                                            </td>
+                                            <td class="col-1 text-center">
+                                                Kab. Kuningan
+                                            </td>
+                                            <td class="col-1 text-center">
+                                                Jawa Barat
+                                            </td>
+                                            <td>
+                                                <div class="card-body">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <button type="button" class="btn" data-toggle="dropdown">
+                                                                <i class="bi bi-three-dots-vertical"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu" style="margin-left: -20px">
+                                                                <a class="dropdown-item" data-toggle="modal"
+                                                                    data-target="#modal-edit-vertifikator">Edit</a>
+                                                                <a class="dropdown-item" href="">Hapus</a>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </td>
-                                            </tr>
-                                            {{-- end row 1 --}}
-                                            {{-- row 2 --}}
-                                            <tr>
-                                                <th class="col-1 text-center" scope="row">
-                                                    2
-                                                </th>
-                                                <td class="col-1 text-center">
-                                                    AGUS HERMAWAN, S.PD M.SI
-                                                </td>
-                                                <td class="col-1 text-center">
-                                                    Cabang Dinas Pendidikan Wilayah XI
-                                                </td>
-                                                <td class="col-1 text-center">
-                                                    Kab. Majalengka
-                                                </td>
-                                                <td class="col-1 text-center">
-                                                    Jawa Barat
-                                                </td>
-                                                <td>
-                                                    <div class="card-body">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <button type="button" class="btn"
-                                                                    data-toggle="dropdown">
-                                                                    <i class="bi bi-three-dots-vertical"></i>
-                                                                </button>
-                                                                <div class="dropdown-menu" style="margin-left: -20px">
-                                                                    <a class="dropdown-item" href="">Edit</a>
-                                                                    <a class="dropdown-item" href="">Hapus</a>
-                                                                </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {{-- end row 1 --}}
+                                        {{-- row 2 --}}
+                                        <tr>
+                                            <th class="col-1 text-center" scope="row">
+                                                2
+                                            </th>
+                                            <td class="col-1 text-center">
+                                                AGUS HERMAWAN, S.PD M.SI
+                                            </td>
+                                            <td class="col-1 text-center">
+                                                Cabang Dinas Pendidikan Wilayah XI
+                                            </td>
+                                            <td class="col-1 text-center">
+                                                Kab. Majalengka
+                                            </td>
+                                            <td class="col-1 text-center">
+                                                Jawa Barat
+                                            </td>
+                                            <td>
+                                                <div class="card-body">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <button type="button" class="btn" data-toggle="dropdown">
+                                                                <i class="bi bi-three-dots-vertical"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu" style="margin-left: -20px">
+                                                                <a class="dropdown-item" data-toggle="modal"
+                                                                    data-target="#modal-edit-vertifikator">Edit</a>
+                                                                <a class="dropdown-item" href="">Hapus</a>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </td>
-                                            </tr>
-                                            {{-- end row 2 --}}
-                                            {{-- row 3 --}}
-                                            <tr>
-                                                <th class="col-1 text-center" scope="row">
-                                                    3
-                                                </th>
-                                                <td class="col-1 text-center">
-                                                    ASEP SUHENDI, S.PD, MM
-                                                </td>
-                                                <td class="col-1 text-center">
-                                                    Cadisdik Wi.X Jawa Barat
-                                                </td>
-                                                <td class="col-1 text-center">
-                                                    Cirebon
-                                                </td>
-                                                <td class="col-1 text-center">
-                                                    Jawa Barat
-                                                </td>
-                                                <td>
-                                                    <div class="card-body">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <button type="button" class="btn"
-                                                                    data-toggle="dropdown">
-                                                                    <i class="bi bi-three-dots-vertical"></i>
-                                                                </button>
-                                                                <div class="dropdown-menu" style="margin-left: -20px">
-                                                                    <a class="dropdown-item" href="">Edit</a>
-                                                                    <a class="dropdown-item" href="">Hapus</a>
-                                                                </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {{-- end row 2 --}}
+                                        {{-- row 3 --}}
+                                        <tr>
+                                            <th class="col-1 text-center" scope="row">
+                                                3
+                                            </th>
+                                            <td class="col-1 text-center">
+                                                ASEP SUHENDI, S.PD, MM
+                                            </td>
+                                            <td class="col-1 text-center">
+                                                Cadisdik Wi.X Jawa Barat
+                                            </td>
+                                            <td class="col-1 text-center">
+                                                Cirebon
+                                            </td>
+                                            <td class="col-1 text-center">
+                                                Jawa Barat
+                                            </td>
+                                            <td>
+                                                <div class="card-body">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <button type="button" class="btn" data-toggle="dropdown">
+                                                                <i class="bi bi-three-dots-vertical"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu" style="margin-left: -20px">
+                                                                <a class="dropdown-item" data-toggle="modal"
+                                                                    data-target="#modal-edit-vertifikator">Edit</a>
+                                                                <a class="dropdown-item" href="">Hapus</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -417,6 +447,8 @@
                 </div>
             </div>
         </div>
+        </div>
+        <!-- /.card-header DATA SEKOLAH-->
         {{-- ------------------------------------------- end verifikator ------------------------------------------- --}}
 
         {{-- ---------------------------------------- unsur yg diverifikasi ---------------------------------------- --}}
@@ -554,6 +586,154 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    {{-----------------------------------------end unsur yg diverifikasi-----------------------------------------}}
+</div>
+
+{{-- Tab Pengawas--}}
+<div class="modal fade" id="modal-edit">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form action="/kekurangan-lahan/update-kekurangan" method="post">
+                @csrf
+                @method('PATCH')
+                <div class="modal-header">
+                    <h3 class="modal-title">Edit Pengawas</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+
+                        <input type="hidden" name="pengawas" class="pengawas">
+                        <div class="row mt-2">
+                            <div class="col-3">
+                                <label for="col-sm-4 col-form-label">Nama Pengawas :</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control col-sm-7 input-nama-edit"
+                                    placeholder="Masukan Nama Pengawas" id="nmapg" name="nama" required>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-3">
+                                <label for="col-sm-4 col-form-label">Instansi :</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control col-sm-7 panjang-nama-edit"
+                                    placeholder="Masukan Nama Instansi" id="nmains" name="instansi" required>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-3">
+                                <label for="col-sm-4 col-form-label">Kabupaten / Kota :</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control col-sm-7 lebar-nama-edit"
+                                    placeholder="Masukan Kabupaten / Kota" id="kota" name="kota" required>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-3">
+                                <label for="col-sm-4 col-form-label">Provinsi :</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control col-sm-7 keterangan-nama-edit"
+                                    placeholder="Provinsi" id="provinsi" name="provinsi" required>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-warning text-white">Edit</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+{{-- End Tab --}}
+
+
+
+{{-- Tab Vertifikator--}}
+<div class="modal fade" id="modal-edit-vertifikator">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form action="/kekurangan-lahan/update-kekurangan" method="post">
+                @csrf
+                @method('PATCH')
+                <div class="modal-header">
+                    <h3 class="modal-title">Edit Vertifikator</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+
+                        <input type="hidden" name="pengawas" class="pengawas">
+                        <div class="row mt-2">
+                            <div class="col-3">
+                                <label for="col-sm-4 col-form-label">Nama Pengawas :</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control col-sm-7 input-nama-edit"
+                                    placeholder="Masukan Nama Pengawas" id="nmapg" name="nama" required>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-3">
+                                <label for="col-sm-4 col-form-label">Instansi :</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control col-sm-7 panjang-nama-edit"
+                                    placeholder="Masukan Nama Instansi" id="nmains" name="instansi" required>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-3">
+                                <label for="col-sm-4 col-form-label">Kabupaten / Kota :</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control col-sm-7 lebar-nama-edit"
+                                    placeholder="Masukan Kabupaten / Kota" id="kota" name="kota" required>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-3">
+                                <label for="col-sm-4 col-form-label">Provinsi :</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control col-sm-7 keterangan-nama-edit"
+                                    placeholder="Provinsi" id="provinsi" name="provinsi" required>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-warning text-white">Edit</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+{{-- End Tab --}}
 
         </div>
         {{-- ---------------------------------------end unsur yg diverifikasi--------------------------------------- --}}

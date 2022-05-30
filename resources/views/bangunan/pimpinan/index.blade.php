@@ -35,21 +35,17 @@
                         Kondisi Ideal
                     </span>
                     <div class="d-flex align-items-end justify-content-center">
-                        <h1 class="display-4 text-white font-weight-bold">30</h1>
+                        <h1 class="display-4 text-white font-weight-bold">{{ $bangunan->kondisi_ideal }}</h1>
                         <p class="text-white font-weight-bold" style="font-size: 15px">/ Kantor</p>
                     </div>
                 </div>
             </span>
             <div class="info-box-content">
                 <label>Keterangan:</label>
-                <button type="button" class="btn btn-tool text-dark" style="position: absolute; right:0%; padding-top:8px" data-toggle="modal"
-                data-target="#edit-kondisi-ideal"><i class="bi bi-pencil-square"></i>
+                <button type="button" class="btn btn-tool text-dark" style="position: absolute; right:0%; padding-top:8px"
+                    data-toggle="modal" data-target="#edit-kondisi-ideal"><i class="bi bi-pencil-square"></i>
                 </button>
-                <p>Ruang guru jga bisa di pakai untuk menyimpan dokumn dokumen penting tentang anak didik mereka,Ruang guru
-                    juga sangat berfungsi untuk para guru guru atau staf sekolah lain nya,dapat dimanfaatkan untuk tempat
-                    peristirahatan para guru ketika selesai mengajar,tempat berkumpulnya para guru ketika ingin melakukan
-                    rapat.
-                </p>
+                <p>{{ $bangunan->ket_kondisi_ideal }}</p>
 
                 {{-- modal --}}
                 <div class="modal fade" id="edit-kondisi-ideal">
@@ -57,24 +53,38 @@
                         <div class="modal-content">
                             <div class="modal-header" style="background-color: #25b5e9; margin-left:-1px">
                                 <h4 class="modal-title text-white">Kondisi Ideal</h4>
-                                <button type="button" class="close" style="color: aliceblue" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="close" style="color: aliceblue" data-dismiss="modal"
+                                    aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
+                            <form action="/bangunan-all/update-kondisi-ideal/{{ $bangunan->id }}" method="post">
+                                @csrf
+                                @method('patch')
+                                <div class="modal-body">
                                     <div class="card-body">
                                         <div class="form-group row">
                                             <label for="ideal" class="col-sm-2 col-form-label">Kondisi Ideal</label>
                                             <div class="col-sm-10">
-                                                <input type="number" class="form-control" id="ideal" name="kondisi_ideal">
+                                                <input type="number" class="form-control" id="ideal" name="kondisi_ideal"
+                                                    value="{{ $bangunan->kondisi_ideal }}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="ideal" class="col-sm-2 col-form-label">Keterangan kondisi
+                                                ideal</label>
+                                            <div class="col-sm-10">
+                                                <textarea name="ket_kondisi_ideal" id="ideal" rows="5" class="form-control"
+                                                    placeholder="Keterangan Kondisi Ideal">{{ $bangunan->ket_kondisi_ideal }}</textarea>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn text-white float-right"
-                                            style="background-color: #00a65b">Simpan</button>
-                                    </div>
-                            </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn text-white float-right"
+                                        style="background-color: #00a65b">Simpan</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -92,21 +102,17 @@
                         Ketersediaan
                     </span>
                     <div class="d-flex align-items-end justify-content-center">
-                        <h1 class="display-4 text-white font-weight-bold">11</h1>
+                        <h1 class="display-4 text-white font-weight-bold">{{ $bangunan->ketersediaan }}</h1>
                         <p class="text-white font-weight-bold" style="font-size: 15px">/ Kantor</p>
                     </div>
                 </div>
             </span>
             <div class="info-box-content">
                 <label>Keterangan:</label>
-                <button type="button" class="btn btn-tool text-dark" style="position: absolute; right:0%; padding-top:8px" data-toggle="modal" data-target="#edit-ketersediaan"><i class="bi bi-pencil-square"></i>
+                <button type="button" class="btn btn-tool text-dark" style="position: absolute; right:0%; padding-top:8px"
+                    data-toggle="modal" data-target="#edit-ketersediaan"><i class="bi bi-pencil-square"></i>
                 </button>
-                <p>Ruang guru jga bisa di pakai untuk menyimpan dokumn dokumen penting tentang anak didik mereka,Ruang guru
-                    juga sRuang guru jga bisa di pakai untuk menyimpan dokumn dokumen penting tentang anak didik
-                    mereka,Ruang guru juga sangat berfungsi untuk para guru guru atau staf sekolah lain nya,dapat
-                    dimanfaatkan untuk tempat peristirahatan para guru ketika selesai mengajar,tempat berkumpulnya para guru
-                    ketika ingin melakukan rapat.
-                </p>
+                <p>{{ $bangunan->ket_ketersediaan }}</p>
 
                 {{-- modal --}}
                 <div class="modal fade" id="edit-ketersediaan">
@@ -114,24 +120,37 @@
                         <div class="modal-content">
                             <div class="modal-header" style="background-color: #fcc12d; margin-left:-1px">
                                 <h4 class="modal-title text-white">Ketersediaan</h4>
-                                <button type="button" class="close" style="color: aliceblue" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="close" style="color: aliceblue" data-dismiss="modal"
+                                    aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
+                            <form action="/bangunan-all/update-ketersediaan/{{ $bangunan->id }}" method="post">
+                                @csrf
+                                @method('patch')
+                                <div class="modal-body">
                                     <div class="card-body">
                                         <div class="form-group row">
                                             <label for="ideal" class="col-sm-2 col-form-label">Ketersediaan</label>
                                             <div class="col-sm-10">
-                                                <input type="number" class="form-control" id="ideal" name="kondisi_ideal">
+                                                <input type="number" class="form-control" id="ideal" name="ketersediaan"
+                                                    value="{{ $bangunan->ketersediaan }}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="ideal" class="col-sm-2 col-form-label">Keterangan Ketersediaan</label>
+                                            <div class="col-sm-10">
+                                                <textarea name="ket_ketersediaan" id="ideal" rows="5" class="form-control"
+                                                    placeholder="Keterangan Ketersediaan">{{ $bangunan->ket_ketersediaan }}</textarea>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn text-white float-right"
-                                            style="background-color: #00a65b">Simpan</button>
-                                    </div>
-                            </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn text-white float-right"
+                                        style="background-color: #00a65b">Simpan</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -149,19 +168,17 @@
                         Kekurangan
                     </span>
                     <div class="d-flex align-items-end justify-content-center">
-                        <h1 class="display-4 text-white font-weight-bold">13</h1>
+                        <h1 class="display-4 text-white font-weight-bold">{{ $bangunan->kekurangan }}</h1>
                         <p class="text-white font-weight-bold" style="font-size: 15px">/ Kantor</p>
                     </div>
                 </div>
             </span>
             <div class="info-box-content">
                 <label>Keterangan:</label>
-                <button type="button" class="btn btn-tool text-dark" style="position: absolute; right:0%; padding-top:8px" data-toggle="modal" data-target="#edit-kekurangan"><i class="bi bi-pencil-square"></i>
+                <button type="button" class="btn btn-tool text-dark" style="position: absolute; right:0%; padding-top:8px"
+                    data-toggle="modal" data-target="#edit-kekurangan"><i class="bi bi-pencil-square"></i>
                 </button>
-                <p>Ruang guru jga bisa di pakai untuk menyimpan dokumn dokumen penting tentang anak didik mereka,Ruang guru
-                    juga sangat berfungsi untuk para guru guru atau staf sekolah lain nya,dapat dimanfaatkan untuk tempat
-                    peristirahatan para guru ketika selesai
-                </p>
+                <p>{{ $bangunan->ket_kekurangan }}</p>
 
                 {{-- modal --}}
                 <div class="modal fade" id="edit-kekurangan">
@@ -169,24 +186,37 @@
                         <div class="modal-content">
                             <div class="modal-header" style="background-color: #263238; margin-left:-1px">
                                 <h4 class="modal-title text-white">Kekurangan</h4>
-                                <button type="button" class="close" style="color: aliceblue" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="close" style="color: aliceblue" data-dismiss="modal"
+                                    aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
+                            <form action="/bangunan-all/update-kekurangan/{{ $bangunan->id }}" method="post">
+                                @csrf
+                                @method('patch')
+                                <div class="modal-body">
                                     <div class="card-body">
                                         <div class="form-group row">
                                             <label for="ideal" class="col-sm-2 col-form-label">Kekurangan</label>
                                             <div class="col-sm-10">
-                                                <input type="number" class="form-control" id="ideal" name="kondisi_ideal">
+                                                <input type="number" class="form-control" id="ideal" name="kekurangan"
+                                                    value="{{ $bangunan->kekurangan }}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="ideal" class="col-sm-2 col-form-label">Keterangan Kekurangan</label>
+                                            <div class="col-sm-10">
+                                                <textarea name="ket_kekurangan" id="ideal" rows="5" class="form-control"
+                                                    placeholder="Keterangan Kekurangan">{{ $bangunan->ket_kekurangan }}</textarea>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn text-white float-right"
-                                            style="background-color: #00a65b">Simpan</button>
-                                    </div>
-                            </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn text-white float-right"
+                                        style="background-color: #00a65b">Simpan</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -234,13 +264,15 @@
                                         <td class="text-center panjang" style="vertical-align: middle">
                                             {{ $data['panjang'] }}
                                         </td>
-                                        <td class="text-center lebar" style="vertical-align: middle">{{ $data['lebar'] }}
+                                        <td class="text-center lebar" style="vertical-align: middle">
+                                            {{ $data['lebar'] }}
                                         </td>
                                         <td>
                                             <div class="card-body">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
-                                                        <button type="button" class="btn" data-toggle="dropdown">
+                                                        <button type="button" class="btn"
+                                                            data-toggle="dropdown">
                                                             <i class="bi bi-three-dots-vertical"></i>
                                                         </button>
                                                         <div class="dropdown-menu" style="margin-left: -73px">
@@ -337,7 +369,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="modal fade" id="edit-tersedia">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -488,13 +520,13 @@
                     <form action="/bangunan/usulan-ruang-pimpinan" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-header">
-                                <h4 class="modal-title">Usulan Ruang Pimpinan</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                @if (count($jenis_pimpinans) > 0)
+                            <h4 class="modal-title">Usulan Ruang Pimpinan</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            @if (count($jenis_pimpinans) > 0)
                                 <div class="form-group row">
                                     <label for="jumlah-lahan" class="col-sm-4 col-form-label">Jenis Ruang</label>
                                     <div class="col-sm-7">
@@ -533,19 +565,18 @@
                                     <input type="file" id="proposal" required accept=".pdf" name="proposal">
                                 </div>
                                 {{-- end upload proposal --}}
-                            </div>
-                            <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                                <button type="submit" class="btn text-white"
-                                    style="background-color: #00a65b">Simpan</button>
-                            </div>
-                        </form>
-                    @else
-                        <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
-                            <div class="alert" role="alert">
-                                Belum ada jenis ruang pimpinan
-                            </div>
                         </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
+                        </div>
+                    </form>
+                @else
+                    <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                        <div class="alert" role="alert">
+                            Belum ada jenis ruang pimpinan
+                        </div>
+                    </div>
                     @endif
                 </div>
                 <!-- /.modal-content -->
