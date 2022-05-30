@@ -73,6 +73,13 @@ Route::get('admin-detailmonitoring', function () {
     return view('admin.monitoring');
 });
 
+Route::get('cadisdik', function () {
+    return view('admin.cadisdik');
+});
+Route::get('cadisdik/1', function () {
+    return view('admin.cadisdikDetil');
+});
+
 // |-------------------------------------------------------------------------- /SEMENTARA |--------------------------------------------------------------------------
 
 Route::group(['middleware' => ['auth']], function() {

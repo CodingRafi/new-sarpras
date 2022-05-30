@@ -9,19 +9,29 @@
           <span class="brand-text h6" style="margin: 0;font-size: 17px;">SISTEM SARPRAS</span>
         </div>
     </a>
-
+    
     <!-- Sidebar -->
     <div class="sidebar bg-white">
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
+                
                 {{------------------------------------------------------------------------------------------ DASHBOARD ------------------------------------------------------------------------------------------}}
                 <li class="nav-item">
                     <a href="/" class="nav-link {{ Request::is('/') ? 'active' : '' }}">
                         <i class="nav-icon bi bi-house"></i>
                         <p>Dashboard</p>
+                    </a>
+                </li>
+
+                {{------------------------------------------------------------------------------------------ CABANG DINAS PENDIDIKAN ------------------------------------------------------------------------------------------}}
+                <li class="nav-item has-treeview">
+                    <a href="/cadisdik" class="nav-link {{ Request::is('cadisdik*') ? 'active' : '' }}">
+                        <i class="nav-icon bi bi-bank"></i>
+                        <p>
+                            Cabang Dinas Pendidikan
+                        </p>
                     </a>
                 </li>
 
@@ -43,10 +53,10 @@
                     </a>
                 </li>
 
-                {{------------------------------------------------------------------------------------------ LAHAN SEKOLAH ------------------------------------------------------------------------------------------}}
+                {{------------------------------------------------------------------------------------------ KOMPETENSI KEAHLIAN ------------------------------------------------------------------------------------------}}
                 <li class="nav-item">
                     <a href="/komli" class="nav-link {{ Request::is('komli') ? 'active' : '' }}">
-                        <i class="nav-icon bi bi-map"></i>
+                        <i class="nav-icon bi bi-award"></i>
                         <p>Kompetensi Keahlian</p>
                     </a>
                 </li>
@@ -197,6 +207,7 @@
                         </p>
                     </a>
                 </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
