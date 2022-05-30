@@ -310,12 +310,12 @@ class KompetenController extends Controller
 
         if($data->profil_id == Auth::user()->profil_id){
             $validatedData = $request->validate([
-                'ketersediaan' => 'required'
+                'kondisi_ideal' => 'required'
             ]);
 
             $data->update($validatedData);
 
-            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Ketersediaan Ruang Praktik ' . $data->komli->kompetensi);
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Kondisi Ideal Ruang Praktik ' . $data->komli->kompetensi);
 
             return redirect()->back();
 

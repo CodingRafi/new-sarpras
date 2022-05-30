@@ -103,7 +103,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/kompeten/create/{id:profil}', [KompetenController::class, 'create']);
     Route::patch('/kompeten/update-ketersediaan/{id}', [KompetenController::class, 'updateKetersediaan']);
     Route::patch('/kompeten/update-kekurangan/{id}', [KompetenController::class, 'updateKekurangan']);
-    Route::patch('/kompeten/update-kondisi-ideal/{id}', [KompetenController::class, 'updateKekurangan']);
+    Route::patch('/kompeten/update-kondisi-ideal/{id}', [KompetenController::class, 'updateKondisiIdeal']);
     Route::patch('/kompeten/upload-logo/{id}', [KompetenController::class, 'uploadLogo']);
     Route::patch('/kompeten/tambah-keterangan/{id}', [KompetenController::class, 'tambahKeterangan']);
     Route::resource('/koleksi', KoleksiController::class);
