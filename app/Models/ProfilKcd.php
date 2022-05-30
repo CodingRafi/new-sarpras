@@ -9,11 +9,26 @@ class ProfilKcd extends Model
 {
     use HasFactory;
 
+    protected $guarded =[
+        "id"
+    ];
+
     public function profil(){
         return $this->belongsTo(Profil::class);
     }
 
     public function kcd(){
         return $this->belongsTo(Kcd::class);
+    }
+
+    public static function createProfilKcd($kcd, $sekolah){
+        if(count($sekolah) > 0){
+            foreach ($sekolah as $key => $profil_id) {
+                ProfilKcd::create([
+                    'profil_id' => $profil_id,
+                    'kcd_id' => $kcd
+                ]);
+            }
+        }
     }
 }

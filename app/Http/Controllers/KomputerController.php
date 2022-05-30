@@ -105,7 +105,7 @@ class KomputerController extends Controller
         //
     }
 
-    public function createusulan(Request $request){
+    public function createusulan(Request $request){ 
         $validatedData = $request->validate([
             'jml_ruang' => 'required',
             'luas_lahan' => 'required',

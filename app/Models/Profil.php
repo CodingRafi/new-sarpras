@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Profil extends Model
 {
@@ -33,9 +34,9 @@ class Profil extends Model
         return $this->belongsTo(User::class);
     }
 
-        public function bangunan(){
-            return $this->belongsTo(Bangunan::class);
-        }
+    public function bangunan(){
+        return $this->belongsTo(Bangunan::class);
+    }
 
     public function usulanBangunan(){
         return $this->hasMany(UsulanBangunan::class);
@@ -78,15 +79,22 @@ class Profil extends Model
                         ->orWhere('profils.nama', 'like', '%' . $search . '%');
         });
 
-        if(isset($filters['filter'])){
-            if($filters['filter'] == 'kota'){
+        if(isset($search['filter'])){
+            if($search['filter'] == 'kota'){
                 return $query->orderBy('profils.kabupaten', 'asc');
             }
     
-            if($filters['filter'] == 'kcd'){
+            if($search['filter'] == 'kcd'){
                 return $query->orderBy('kcds.instansi', 'asc');
             }
         }
 
+    }
+
+    public static function noKcd(){
+        return DB::table('profils as a')->select('a.*')
+                ->leftJoin('profil_kcds as b', function($join){
+                        $join->on('a.id', '=', 'b.profil_id');
+                })->whereNull('b.profil_id')->get();
     }
 }

@@ -6,6 +6,7 @@ use App\Models\ProfilKcd;
 use App\Http\Requests\StoreProfilKcdRequest;
 use App\Http\Requests\UpdateProfilKcdRequest;
 use App\Models\Kompeten;
+use Illuminate\Support\Facades\Auth;
 
 class ProfilKcdController extends Controller
 {
@@ -37,7 +38,18 @@ class ProfilKcdController extends Controller
      */
     public function store(StoreProfilKcdRequest $request)
     {
-        //
+        if (Auth::user()->hasRole('dinas')) {
+            $validatedData = $request->validate([
+                'sekolah' => 'required',
+                'kcd_id' => 'required'
+            ]);
+    
+            ProfilKcd::createProfilKcd($request->kcd_id, $request->sekolah);
+    
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -82,6 +94,11 @@ class ProfilKcdController extends Controller
      */
     public function destroy(ProfilKcd $profilKcd)
     {
-        //
+        if (Auth::user()->hasRole('dinas')) {
+            ProfilKcd::destroy($profilKcd->id);
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
     }
 }

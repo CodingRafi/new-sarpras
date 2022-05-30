@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\BidangKompetensi;
+use App\Models\Komli; 
+use App\Models\Kompeten; 
 use App\Http\Requests\StoreBidangKompetensiRequest;
 use App\Http\Requests\UpdateBidangKompetensiRequest;
+use Illuminate\Support\Facades\Auth;
 
 class BidangKompetensiController extends Controller
 {
@@ -15,7 +18,10 @@ class BidangKompetensiController extends Controller
      */
     public function index()
     {
-        //
+        $bidang = BidangKompetensi::paginate(40);
+        return view("admin.bidang", [
+            'bidangs' => $bidang
+        ]);
     }
 
     /**
@@ -36,7 +42,17 @@ class BidangKompetensiController extends Controller
      */
     public function store(StoreBidangKompetensiRequest $request)
     {
-        //
+        if (Auth::user()->hasRole('dinas')) {
+            $validatedData = $request->validate([
+                'nama' => 'required'
+            ]);
+    
+            BidangKompetensi::create($validatedData);
+    
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -70,7 +86,17 @@ class BidangKompetensiController extends Controller
      */
     public function update(UpdateBidangKompetensiRequest $request, BidangKompetensi $bidangKompetensi)
     {
-        //
+        if (Auth::user()->hasRole('dinas')) {
+            $validatedData = $request->validate([
+                'nama' => 'required'
+            ]);
+    
+            $bidangKompetensi->update($validatedData);
+    
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -81,6 +107,12 @@ class BidangKompetensiController extends Controller
      */
     public function destroy(BidangKompetensi $bidangKompetensi)
     {
-        //
+        foreach ($bidangKompetensi->komli as $key => $komli) {
+            Kompeten::hapusKompeten($komli->kompeten);
+            Komli::destroy($komli->id);
+        }
+        BidangKompetensi::destroy($bidangKompetensi->id);
+
+        return redirect()->back();
     }
 }
