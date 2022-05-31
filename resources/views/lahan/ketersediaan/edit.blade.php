@@ -68,14 +68,14 @@
 
                 {{-- --------------------------------------------- PANJANG --------------------------------------------- --}}
                 <div class="row input pl-5">
-                    <label class="col-2 mt-3">Panjang (m²)</label>
+                    <label class="col-2 mt-3">Panjang (m)</label>
                     <input type="number" class="col-9 form-control mt-2" placeholder="Masukan Panjang" required
                         value="{{ $ketersediaan->panjang }}" name="panjang" step=any>
                 </div>
 
                 {{-- --------------------------------------------- LEBAR --------------------------------------------- --}}
                 <div class="row input pl-5">
-                    <label class="col-2 mt-3">Lebar (m²)</label>
+                    <label class="col-2 mt-3">Lebar (m)</label>
                     <input type="number" class="col-9 form-control mt-2" placeholder="Masukan Lebar" required
                         value="{{ $ketersediaan->lebar }}" name="lebar" step=any>
                 </div>
@@ -151,7 +151,7 @@
 
                 {{-- --------------------------------------------- KEMBALI/SUBMIT --------------------------------------------- --}}
                 <div class="pb-3 pl-5 pt-3">
-                    <a href="/lahan" class="btn btn-danger">Kembali</a>
+                    <a href="/lahan" class="btn btn-default">Kembali</a>
                     <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
                 </div>
             </form>

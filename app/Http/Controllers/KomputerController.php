@@ -114,7 +114,7 @@ class KomputerController extends Controller
             'gambar.*' => 'mimes:jpg,jpeg,png|file|max:5120',
             'jenis' => 'required'
         ]);
-
+        
         $validatedData['keterangan'] = 'Proses Pengajuan';
 
         UsulanBangunan::createUsulan($request, $request->jenis , $validatedData);
