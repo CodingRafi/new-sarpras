@@ -33,8 +33,12 @@
         <!-- Small boxes (Stat box) -->
         <div class="card mb-5">
             <div class="card-header" style="display:flex; background-color: #25b5e9">
-                <form class="form-inline ml-2" action="/usulan-peralatan" method="GET" style="width: 100%;">
-                    <div class="input-group" style="width: 100%;border: 1px solid #ced4da;border-radius: 3px;">
+                <h3 class="card-title text-white">Data Usulan Peralatan</h3>
+            </div>
+            <!-- /.card-header DATA SEKOLAH-->
+            <div class="card-body p-0">
+                <form class="form-inline mt-2" action="/usulan-peralatan" method="GET" style="margin-left:10px; width: 98%;">
+                    <div class="input-group m-0 p-0" style="width: 100%;border: 1px solid #ced4da;border-radius: 3px;">
                         <input class="form-control form-control-navbar" type="search"
                             placeholder="Search Nama Sekolah, Kompetensi Keahlian, Nama peralatan" aria-label="Search"
                             style="height: 2.5rem;font-size: 15px;padding: 0 10px;border:none;" name="search">
@@ -45,9 +49,6 @@
                         </div>
                     </div>
                 </form>
-            </div>
-            <!-- /.card-header DATA SEKOLAH-->
-            <div class="card-body p-0">
                 <div class="tab-content p-0">
                     <div class="tab-pane active" id="data-usulan-sekolah">
                         <div class="row">
