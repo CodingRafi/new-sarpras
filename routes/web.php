@@ -101,6 +101,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/profil-kcd', ProfilKcdController::class);
     Route::resource('/cadisdik', KcdController::class);
     Route::resource('/spektrum', SpektrumController::class);
+    Route::resource('/profil-kcd', ProfilKcdController::class);
     
 
 

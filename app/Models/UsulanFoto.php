@@ -47,6 +47,20 @@ class UsulanFoto extends Model
         }
     }
 
+    public static function uploadFotoRiwayat($gambar, $koleksi){
+        if(count($gambar) > 0){ // mengecek lagi bener bener ada gak isinya
+            $files = [];
+            foreach($gambar as $file){
+                $nama = $file->store('riwayat');
+                ImageOptimizer::optimize('storage/' . $nama);
+                UsulanFoto::create([
+                    'usulan_koleksi_id' => $koleksi->id,
+                    'nama' => $nama
+                ]);
+            }
+        }
+    }
+
     public static function deleteFoto($fotos){
         foreach ($fotos as $key => $foto) {
             Storage::delete($foto->nama);

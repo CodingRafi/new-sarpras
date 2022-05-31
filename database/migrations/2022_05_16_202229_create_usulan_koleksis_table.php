@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('usulan_bangunan_id')->nullable();
             $table->foreignId('rehab_renov_id')->nullable();
+            $table->foreignId('riwayat_id')->nullable();
             $table->timestamps();
         });
     }

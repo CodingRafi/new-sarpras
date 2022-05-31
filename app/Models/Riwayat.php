@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Riwayat extends Model
 {
     use HasFactory;
+
+    protected $guarded =[
+        "id"
+    ];
+
+    public function usulanKoleksi(){
+        return $this->hasMany(UsulanKoleksi::class);
+    }
 }
