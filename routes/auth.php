@@ -14,6 +14,7 @@ Route::middleware('guest')->group(function () {
     //             ->name('register')->middleware(['auth']);
 
     // Route::post('register', [RegisteredUserController::class, 'store'])->middleware('auth');
+    Route::post('/create-pengawas', [RegisteredUserController::class, 'createPengawas'])->middleware('auth');
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
                 ->name('login');

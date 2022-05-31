@@ -46,6 +46,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         $validatedData = $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users',
@@ -123,5 +124,9 @@ class RegisteredUserController extends Controller
         $user->delete();
         return redirect()->route('users.index')
         ->with('success','User deleted successfully');
+    }
+
+    public function createPengawas(Request $request){
+        dd($request);
     }
 }

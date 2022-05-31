@@ -26,7 +26,8 @@ class KcdController extends Controller
             $profil_kcd[] = $kcd->profilKcd;
         }
 
-        $profils = Profil::noKcd();
+        // $profils = Profil::noKcd();
+        $profils = Profil::all();
 
         return view('admin.cadisdik.cadisdik', [
             'profils' => $profils,

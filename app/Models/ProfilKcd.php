@@ -13,8 +13,8 @@ class ProfilKcd extends Model
         "id"
     ];
 
-    public function profil(){
-        return $this->belongsTo(Profil::class);
+    public function kotaKabupaten(){
+        return $this->belongsTo(KotaKabupaten::class);
     }
 
     public function kcd(){

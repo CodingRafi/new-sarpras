@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('profils', function (Blueprint $table) {
             $table->id();
             $table->foreignId('profil_depo_id');
+            $table->foreignId('kota_kabupaten_id');
             $table->string('npsn');
             $table->string('sekolah_id');
             $table->string('nama');

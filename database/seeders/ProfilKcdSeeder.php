@@ -113,7 +113,7 @@ class ProfilKcdSeeder extends Seeder
             ]);
         }
 
-        $profilWilayah13 = Profil::where('kabupaten', 'KOTA BANJAR')->orWhere('kabupaten', 'KAB. CIAMIS')->orWhere('kabupaten', 'KAB. PANGANDARAN');
+        $profilWilayah13 = Profil::where('kabupaten', 'KOTA BANJAR')->orWhere('kabupaten', 'KAB. CIAMIS')->orWhere('kabupaten', 'KAB. PANGANDARAN')->get();
         foreach($profilWilayah13 as $profil){
             ProfilKcd::create([
                 'profil_id' => $profil->id,

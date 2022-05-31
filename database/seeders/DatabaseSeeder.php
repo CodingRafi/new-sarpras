@@ -15,16 +15,21 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        $this->call(KotaKabupatenSeeder::class);
         $this->call(ProfilDepoSeeder::class);
         // $this->call(KompetenDepoSeeder::class);
         $this->call(ProfilSeeder::class);
-        // $this->call(KcdSeeder::class);
+        $this->call(KcdSeeder::class);
         // $this->call(ProfilKcdSeeder::class);
+
+        $this->call(SpektrumSeeder::class);
         $this->call(BangunanSeeder::class);
         $this->call(ProgramKompetensiSeeder::class);
         $this->call(BidangKompetensiSeeder::class);
         $this->call(JeniskoleksiSeeder::class);
+
         // $this->call(KomliSeeder::class);
+        
         $this->call(PermissionTableSeeder::class);
         $this->call(UserSeeder::class);
     }

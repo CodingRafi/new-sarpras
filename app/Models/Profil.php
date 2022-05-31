@@ -38,6 +38,10 @@ class Profil extends Model
         return $this->belongsTo(Bangunan::class);
     }
 
+    public function kotaKabupaten(){
+        return $this->belongsTo(KotaKabupaten::class);
+    }
+
     public function usulanBangunan(){
         return $this->hasMany(UsulanBangunan::class);
     }
@@ -91,10 +95,25 @@ class Profil extends Model
 
     }
 
-    public static function noKcd(){
-        return DB::table('profils as a')->select('a.*')
-                ->leftJoin('profil_kcds as b', function($join){
-                        $join->on('a.id', '=', 'b.profil_id');
-                })->whereNull('b.profil_id')->get();
+    public static function createProfilSeeder($profil, $kota){
+        Profil::create([
+            'profil_depo_id' => $profil['id'],
+            'kota_kabupaten_id' => $kota->id,
+            'npsn' => $profil["depo_npsn"],
+            'sekolah_id' => $profil["depo_sekolah_id"],
+            'nama' => $profil["depo_nama"],
+            'status_sekolah' => $profil["depo_status_sekolah"],
+            'alamat' => $profil['depo_alamat'],
+            'provinsi' => $profil['depo_provinsi'],
+            'kabupaten' => $profil['depo_kabupaten'],
+            'kecamatan' => $profil['depo_kecamatan'],
+            'email' => $profil['depo_email'],
+            'website' => $profil['depo_website'],
+            'nomor_telepon' => $profil['depo_nomor_telepon'],
+            'nomor_fax' => $profil['depo_nomor_fax'],
+            'akreditas' => $profil['depo_akreditas'],
+            'jml_siswa_l' => $profil['jml_lk'] ?? 0,
+            'jml_siswa_p' => $profil['jml_lk'] ?? 0,
+        ]);
     }
 }

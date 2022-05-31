@@ -21,6 +21,9 @@ return new class extends Migration
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('instansi')->nullable();
+            $table->foreignId('kota_kabupaten_id')->nullable();
+            $table->string('provinsi')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

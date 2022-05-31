@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kcds', function (Blueprint $table) {
+        Schema::create('kota_kabupatens', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('instansi')->nullable();
-            $table->string('provinsi');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kcds');
+        Schema::dropIfExists('kota_kabupatens');
     }
 };
