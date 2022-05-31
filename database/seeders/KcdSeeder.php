@@ -16,93 +16,80 @@ class KcdSeeder extends Seeder
     public function run()
     {
         Kcd::create([
-            'nama'=>'Asep Sudarsono',
+            'nama'=>'Suzanto Aribowo, S.Si.',
             'instansi'=> "KCD WILAYAH I",
-            'kab'=> 'KABUPATEN BOGOR',
             'provinsi'=>'Jawa Barat'		
         ]);
 
         Kcd::create([
-            'nama'=>'Asep Sudarsono',
+            'nama'=>'I Made Supriatna, SPd,M.',
             'instansi'=> "KCD WILAYAH II",
-            'kab'=> 'KOTA BOGOR, KOTA DEPOK',
             'provinsi'=>'Jawa Barat'		
         ]);
 
         Kcd::create([
             'nama'=>'Asep Sudarsono',
             'instansi'=> "KCD WILAYAH III",
-            'kab'=> 'KAB. BEKASI, KOTA BEKASI',
             'provinsi'=>'Jawa Barat'		
         ]);
 
         Kcd::create([
-            'nama'=>'Asep Sudarsono',
+            'nama'=>'Ai Nurhasan',
             'instansi'=> "KCD WILAYAH IV",
-            'kab'=> 'KAB. KARAWANG, KAB, SUBANG, KAB. PURWAKARTA',
             'provinsi'=>'Jawa Barat'		
         ]);
 
         Kcd::create([
-            'nama'=>'Asep Sudarsono',
+            'nama'=>'Nonong Winarti',
             'instansi'=> "KCD WILAYAH V",
-            'kab'=> 'KOTA SUKABUMI, KAB. SUKABUMI',
             'provinsi'=>'Jawa Barat'		
         ]);
 
         Kcd::create([
-            'nama'=>'Asep Sudarsono',
+            'nama'=>'Endang Susilastuti',
             'instansi'=> "KCD WILAYAH VI",
-            'kab'=> 'KAB. CIANJUR, KAB. BANDUNG BARAT',
             'provinsi'=>'Jawa Barat'		
         ]);
 
         Kcd::create([
-            'nama'=>'Asep Sudarsono',
+            'nama'=>'Dr. Firman Oktora',
             'instansi'=> "KCD WILAYAH VII",
-            'kab'=> 'KOTA BANDUNG, KOTA CIMAHI',
             'provinsi'=>'Jawa Barat'		
         ]);
 
         Kcd::create([
-            'nama'=>'Asep Sudarsono',
+            'nama'=>'Dra. Hi Otin Martini, M.Pd.',
             'instansi'=> "KCD WILAYAH VIII",
-            'kab'=> 'KAB. BANDUNG, KAB. SUMEDANG',
             'provinsi'=>'Jawa Barat'		
         ]);
 
         Kcd::create([
-            'nama'=>'Asep Sudarsono',
+            'nama'=>'Dra. Hj. Dewi Nurhulaela, M.Pd',
             'instansi'=> "KCD WILAYAH IX",
-            'kab'=> 'KAB. INDRAMAYU, KAB. MAJALENGKA',
             'provinsi'=>'Jawa Barat'		
         ]);
 
         Kcd::create([
-            'nama'=>'Asep Sudarsono',
+            'nama'=>'Ambar Triwidodo',
             'instansi'=> "KCD WILAYAH X",
-            'kab'=> 'KOTA CIREBON, KAB, CIREBON, KAB. KUNINGAN',
             'provinsi'=>'Jawa Barat'		
         ]);
 
         Kcd::create([
-            'nama'=>'Asep Sudarsono',
+            'nama'=>'H. Aang Karyana, M.Pd',
             'instansi'=> "KCD WILAYAH XI",
-            'kab'=> 'KAB. GARUT',
             'provinsi'=>'Jawa Barat'		
         ]);
 
         Kcd::create([
-            'nama'=>'Asep Sudarsono',
+            'nama'=>'Abur Mustikawanto',
             'instansi'=> "KCD WILAYAH XII",
-            'kab'=> 'KOTA TASIKMALAYA, KAB. TASIKMALAYA',
             'provinsi'=>'Jawa Barat'		
         ]);
 
         Kcd::create([
-            'nama'=>'Asep Sudarsono',
+            'nama'=>'Ir. HERRY PANSILA, M.Sc.',
             'instansi'=> "KCD WILAYAH XIII",
-            'kab'=> 'KOTA BANJAR, KAB. CIAMIS, KAB. PANGANDARAN',
             'provinsi'=>'Jawa Barat'		
         ]);
 

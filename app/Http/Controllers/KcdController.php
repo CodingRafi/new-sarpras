@@ -6,6 +6,10 @@ use App\Models\Kcd;
 use App\Http\Requests\StoreKcdRequest;
 use App\Http\Requests\UpdateKcdRequest;
 use App\Models\Kompeten;
+use App\Models\Profil;
+use App\Models\ProfilKcd;
+use Illuminate\Support\Facades\Auth;
+
 
 class KcdController extends Controller
 {
@@ -16,7 +20,20 @@ class KcdController extends Controller
      */
     public function index()
     {
-        //
+        $kcds = Kcd::all();
+        $profil_kcd = [];
+        foreach ($kcds as $key => $kcd) {
+            $profil_kcd[] = $kcd->profilKcd;
+        }
+
+        // $profils = Profil::noKcd();
+        $profils = Profil::all();
+
+        return view('admin.cadisdik.cadisdik', [
+            'profils' => $profils,
+            'kcds' => $kcds,
+            'profil_kcds' => $profil_kcd
+        ]);
     }
 
     /**
@@ -37,7 +54,24 @@ class KcdController extends Controller
      */
     public function store(StoreKcdRequest $request)
     {
-        //
+        if (Auth::user()->hasRole('dinas')) {
+            $validatedData = $request->validate([
+                'nama' => 'required',
+                'instansi' => 'required',
+                'kab' => 'required'
+            ]);
+    
+            $validatedData['provinsi'] = 'Jawa Barat';
+    
+            $kcd = Kcd::create($validatedData);
+
+            ProfilKcd::createProfilKcd($kcd->id, $request->sekolah);
+
+            return redirect('/cadisdik/' . $kcd->id);
+
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -46,9 +80,16 @@ class KcdController extends Controller
      * @param  \App\Models\Kcd  $kcd
      * @return \Illuminate\Http\Response
      */
-    public function show(Kcd $kcd)
+    public function show(Kcd $kcd, $id)
     {
-        //
+        $profils = ProfilKcd::where('kcd_id', $id)->select('profils.*', 'profil_kcds.id as id_profil_kcds')->leftJoin('profils', 'profils.id', 'profil_kcds.profil_id')->get();
+        $kcd = Kcd::where('id', $id)->get()[0];
+        $sekolahNoKcd = Profil::noKcd();
+        return view('admin.cadisdik.cadisdikDetil', [
+            'profils' => $profils,
+            'kcd' => $kcd,
+            'sekolahNoKcds' => $sekolahNoKcd
+        ]);
     }
 
     /**
@@ -69,9 +110,21 @@ class KcdController extends Controller
      * @param  \App\Models\Kcd  $kcd
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateKcdRequest $request, Kcd $kcd)
+    public function update(UpdateKcdRequest $request, Kcd $kcd, $id)
     {
-        //
+        if(Auth::user()->hasRole('dinas')){
+            $validatedData = $request->validate([
+                'nama' => 'required',
+                'instansi' => 'required',
+                'kab' => 'required'
+            ]);
+
+            $kcd = Kcd::where('id', $id)->get()[0];
+            $kcd->update($validatedData);
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -80,8 +133,17 @@ class KcdController extends Controller
      * @param  \App\Models\Kcd  $kcd
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kcd $kcd)
+    public function destroy(Kcd $kcd, $id)
     {
-        //
+        if(Auth::user()->hasRole('dinas')){
+            $profilKcds = ProfilKcd::where('kcd_id', $id)->get();
+            foreach ($profilKcds as $key => $profilKcd) {
+                ProfilKcd::destroy($profilKcd->id);
+            }
+            Kcd::destroy($id);
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
     }
 }

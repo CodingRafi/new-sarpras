@@ -28,8 +28,10 @@ class AdminController extends Controller
         $datas = [];
         DB::enableQueryLog();
         $profils = Profil::search(request(['search', 'filter']))
-                            ->leftJoin('profil_kcds', 'profils.id', '=', 'profil_kcds.profil_id')
-                            ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi')->paginate(40)->withQueryString();
+                            ->leftJoin('kota_kabupatens', 'kota_kabupatens.id', 'profils.kota_kabupaten_id')
+                            ->leftJoin('profil_kcds', 'profil_kcds.kota_kabupaten_id', 'kota_kabupatens.id')
+                            ->leftJoin('kcds', 'kcds.id', 'profil_kcds.kcd_id')
+                            ->select('profils.*', 'kcds.instansi')->paginate(40)->withQueryString();
                             // dd(DB::getQueryLog());
 
         // dd($profils[0]);
