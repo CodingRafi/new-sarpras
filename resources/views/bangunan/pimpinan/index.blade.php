@@ -41,56 +41,65 @@
                 </div>
             </span>
             <div class="info-box-content">
-                <label>Keterangan:</label>
+                @if ($bangunan->ket_kondisi_ideal != null)
+                    <label>Keterangan:</label>
+                @endif
                 <button type="button" class="btn btn-tool text-dark" style="position: absolute; right:0%; padding-top:8px"
                     data-toggle="modal" data-target="#edit-kondisi-ideal"><i class="bi bi-pencil-square"></i>
                 </button>
                 <p>{{ $bangunan->ket_kondisi_ideal }}</p>
-
-                {{-- modal --}}
-                <div class="modal fade" id="edit-kondisi-ideal">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header" style="background-color: #25b5e9; margin-left:-1px">
-                                <h4 class="modal-title text-white">Kondisi Ideal</h4>
-                                <button type="button" class="close" style="color: aliceblue" data-dismiss="modal"
-                                    aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <form action="/bangunan-all/update-kondisi-ideal/{{ $bangunan->id }}" method="post">
-                                @csrf
-                                @method('patch')
-                                <div class="modal-body">
-                                    <div class="card-body">
-                                        <div class="form-group row">
-                                            <label for="ideal" class="col-sm-2 col-form-label">Kondisi Ideal</label>
-                                            <div class="col-sm-10">
-                                                <input type="number" class="form-control" id="ideal" name="kondisi_ideal"
-                                                    value="{{ $bangunan->kondisi_ideal }}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="ideal" class="col-sm-2 col-form-label">Keterangan kondisi
-                                                ideal</label>
-                                            <div class="col-sm-10">
-                                                <textarea name="ket_kondisi_ideal" id="ideal" rows="5" class="form-control"
-                                                    placeholder="Keterangan Kondisi Ideal">{{ $bangunan->ket_kondisi_ideal }}</textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <button type="submit" class="btn text-white float-right"
-                                        style="background-color: #00a65b">Simpan</button>
-                                </div>
-                            </form>
+                @if ($bangunan->ket_kondisi_ideal == null)
+                    <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                        <div class="alert" role="alert">
+                            Data Tidak Ditemukan
                         </div>
                     </div>
-                </div>
-                {{-- modal --}}
+                @endif
+
             </div>
         </div>
+        {{-- modal --}}
+        <div class="modal fade" id="edit-kondisi-ideal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #25b5e9; margin-left:-1px">
+                        <h4 class="modal-title text-white">Kondisi Ideal</h4>
+                        <button type="button" class="close" style="color: aliceblue" data-dismiss="modal"
+                            aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="/bangunan-all/update-kondisi-ideal/{{ $bangunan->id }}" method="post">
+                        @csrf
+                        @method('patch')
+                        <div class="modal-body">
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label for="ideal" class="col-sm-2 col-form-label">Kondisi Ideal</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="ideal" name="kondisi_ideal"
+                                            value="{{ $bangunan->kondisi_ideal }}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="ideal" class="col-sm-2 col-form-label">Keterangan kondisi
+                                        ideal</label>
+                                    <div class="col-sm-10">
+                                        <textarea name="ket_kondisi_ideal" id="ideal" rows="5" class="form-control"
+                                            placeholder="Keterangan Kondisi Ideal">{{ $bangunan->ket_kondisi_ideal }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn text-white float-right"
+                                style="background-color: #00a65b">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {{-- modal --}}
 
         {{-- ---------------------------------------------------------------------------------------- KETERSEDIAAN ---------------------------------------------------------------------------------------- --}}
         <div class="info-box p-0 pimpinan-infobox">
@@ -108,55 +117,65 @@
                 </div>
             </span>
             <div class="info-box-content">
-                <label>Keterangan:</label>
+            @if ($bangunan->ket_ketersediaan != null)
+                    <label>Keterangan:</label>
+                @endif
                 <button type="button" class="btn btn-tool text-dark" style="position: absolute; right:0%; padding-top:8px"
                     data-toggle="modal" data-target="#edit-ketersediaan"><i class="bi bi-pencil-square"></i>
                 </button>
-                <p>{{ $bangunan->ket_ketersediaan }}</p>
-
-                {{-- modal --}}
-                <div class="modal fade" id="edit-ketersediaan">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header" style="background-color: #fcc12d; margin-left:-1px">
-                                <h4 class="modal-title text-white">Ketersediaan</h4>
-                                <button type="button" class="close" style="color: aliceblue" data-dismiss="modal"
-                                    aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <form action="/bangunan-all/update-ketersediaan/{{ $bangunan->id }}" method="post">
-                                @csrf
-                                @method('patch')
-                                <div class="modal-body">
-                                    <div class="card-body">
-                                        <div class="form-group row">
-                                            <label for="ideal" class="col-sm-2 col-form-label">Ketersediaan</label>
-                                            <div class="col-sm-10">
-                                                <input type="number" class="form-control" id="ideal" name="ketersediaan"
-                                                    value="{{ $bangunan->ketersediaan }}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="ideal" class="col-sm-2 col-form-label">Keterangan Ketersediaan</label>
-                                            <div class="col-sm-10">
-                                                <textarea name="ket_ketersediaan" id="ideal" rows="5" class="form-control"
-                                                    placeholder="Keterangan Ketersediaan">{{ $bangunan->ket_ketersediaan }}</textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <button type="submit" class="btn text-white float-right"
-                                        style="background-color: #00a65b">Simpan</button>
-                                </div>
-                            </form>
+                @if ($bangunan->ket_ketersediaan == null)
+                    <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                        <div class="alert" role="alert">
+                            Data Tidak Ditemukan
                         </div>
                     </div>
-                </div>
-                {{-- modal --}}
+                @endif
+                <p>{{ $bangunan->ket_ketersediaan }}</p>
+
             </div>
         </div>
+        {{-- modal --}}
+        <div class="modal fade" id="edit-ketersediaan">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #fcc12d; margin-left:-1px">
+                        <h4 class="modal-title text-white">Ketersediaan</h4>
+                        <button type="button" class="close" style="color: aliceblue" data-dismiss="modal"
+                            aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="/bangunan-all/update-ketersediaan/{{ $bangunan->id }}" method="post">
+                        @csrf
+                        @method('patch')
+                        <div class="modal-body">
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label for="ideal" class="col-sm-2 col-form-label">Ketersediaan</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="ideal" name="ketersediaan"
+                                            value="{{ $bangunan->ketersediaan }}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="ideal" class="col-sm-2 col-form-label">Keterangan
+                                        Ketersediaan</label>
+                                    <div class="col-sm-10">
+                                        <textarea name="ket_ketersediaan" id="ideal" rows="5" class="form-control"
+                                            placeholder="Keterangan Ketersediaan">{{ $bangunan->ket_ketersediaan }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn text-white float-right"
+                                style="background-color: #00a65b">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {{-- modal --}}
 
         {{-- ---------------------------------------------------------------------------------------- KEKURANGAN ---------------------------------------------------------------------------------------- --}}
         <div class="info-box p-0 pimpinan-infobox">
@@ -174,55 +193,64 @@
                 </div>
             </span>
             <div class="info-box-content">
-                <label>Keterangan:</label>
+                @if ($bangunan->ket_kekurangan != null)
+                    <label>Keterangan:</label>
+                @endif
                 <button type="button" class="btn btn-tool text-dark" style="position: absolute; right:0%; padding-top:8px"
                     data-toggle="modal" data-target="#edit-kekurangan"><i class="bi bi-pencil-square"></i>
                 </button>
-                <p>{{ $bangunan->ket_kekurangan }}</p>
-
-                {{-- modal --}}
-                <div class="modal fade" id="edit-kekurangan">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header" style="background-color: #263238; margin-left:-1px">
-                                <h4 class="modal-title text-white">Kekurangan</h4>
-                                <button type="button" class="close" style="color: aliceblue" data-dismiss="modal"
-                                    aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <form action="/bangunan-all/update-kekurangan/{{ $bangunan->id }}" method="post">
-                                @csrf
-                                @method('patch')
-                                <div class="modal-body">
-                                    <div class="card-body">
-                                        <div class="form-group row">
-                                            <label for="ideal" class="col-sm-2 col-form-label">Kekurangan</label>
-                                            <div class="col-sm-10">
-                                                <input type="number" class="form-control" id="ideal" name="kekurangan"
-                                                    value="{{ $bangunan->kekurangan }}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="ideal" class="col-sm-2 col-form-label">Keterangan Kekurangan</label>
-                                            <div class="col-sm-10">
-                                                <textarea name="ket_kekurangan" id="ideal" rows="5" class="form-control"
-                                                    placeholder="Keterangan Kekurangan">{{ $bangunan->ket_kekurangan }}</textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <button type="submit" class="btn text-white float-right"
-                                        style="background-color: #00a65b">Simpan</button>
-                                </div>
-                            </form>
+                @if ($bangunan->ket_kekurangan == null)
+                    <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                        <div class="alert" role="alert">
+                            Data Tidak Ditemukan
                         </div>
                     </div>
-                </div>
-                {{-- modal --}}
+                @endif
+                <p>{{ $bangunan->ket_kekurangan }}</p>
+
             </div>
         </div>
+        {{-- modal --}}
+        <div class="modal fade" id="edit-kekurangan">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #263238; margin-left:-1px">
+                        <h4 class="modal-title text-white">Kekurangan</h4>
+                        <button type="button" class="close" style="color: aliceblue" data-dismiss="modal"
+                            aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="/bangunan-all/update-kekurangan/{{ $bangunan->id }}" method="post">
+                        @csrf
+                        @method('patch')
+                        <div class="modal-body">
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label for="ideal" class="col-sm-2 col-form-label">Kekurangan</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="ideal" name="kekurangan"
+                                            value="{{ $bangunan->kekurangan }}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="ideal" class="col-sm-2 col-form-label">Keterangan Kekurangan</label>
+                                    <div class="col-sm-10">
+                                        <textarea name="ket_kekurangan" id="ideal" rows="5" class="form-control"
+                                            placeholder="Keterangan Kekurangan">{{ $bangunan->ket_kekurangan }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn text-white float-right"
+                                style="background-color: #00a65b">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {{-- modal --}}
 
         {{-- ---------------------------------------------------------------------------------------- USULAN PIMPINAN ---------------------------------------------------------------------------------------- --}}
         <div class="card">

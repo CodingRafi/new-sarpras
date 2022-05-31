@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\BidangKompetensi;
 
 class BidangKompetensiSeeder extends Seeder
 {
@@ -14,43 +15,43 @@ class BidangKompetensiSeeder extends Seeder
      */
     public function run()
     {
-        BidangKompetensi:create([
+        BidangKompetensi::create([
             'nama' => 'Teknologi Konstruksi dan Bangunan'
         ]);
 
-        BidangKompetensi:create([
+        BidangKompetensi::create([
             'nama' => 'Teknologi Manufaktur dan Rekayasa'
         ]);
 
-        BidangKompetensi:create([
+        BidangKompetensi::create([
             'nama' => 'Energi dan Pertambangan'
         ]);
 
-        BidangKompetensi:create([
+        BidangKompetensi::create([
             'nama' => 'Teknologi Informasi'
         ]);
 
-        BidangKompetensi:create([
+        BidangKompetensi::create([
             'nama' => 'Kesehatan dan Pekerjaan Sosial'
         ]);
 
-        BidangKompetensi:create([
+        BidangKompetensi::create([
             'nama' => 'Agribisnis dan Agriteknologi'
         ]);
 
-        BidangKompetensi:create([
+        BidangKompetensi::create([
             'nama' => 'Kemaritiman'
         ]);
 
-        BidangKompetensi:create([
+        BidangKompetensi::create([
             'nama' => 'Bisnis dan Manajemen'
         ]);
 
-        BidangKompetensi:create([
+        BidangKompetensi::create([
             'nama' => 'Pariwisata'
         ]);
 
-        BidangKompetensi:create([
+        BidangKompetensi::create([
             'nama' => 'Seni dan Ekonomi Kreatif'
         ]);
     }
