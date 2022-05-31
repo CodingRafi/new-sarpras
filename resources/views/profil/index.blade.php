@@ -405,7 +405,7 @@
                                                             @csrf
                                                             @method('delete')
                                                             <button type="submit" class="btn text-white"
-                                                                style="background-color: #25b5e9"
+                                                                style="background-color: #00a65b"
                                                                 onclick="return confirm('Apakah anda yakin akan menghapus koleksi ini?')">Hapus</button>
                                                         </form>
                                                     </div>
@@ -451,8 +451,8 @@
                                             </div>
                                             <div class="modal-footer justify-content-between">
                                                 <button type="button" class="btn btn-default"
-                                                    data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                                    data-dismiss="modal">Tutup</button>
+                                                <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
                                             </div>
                                         </form>
                                     </div>

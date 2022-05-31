@@ -44,7 +44,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark display-4" style="padding: 0 !important;">Lahan Sekolah/ Ketersediaan Lahan
+                    <h1 class="m-0 text-dark display-4" style="padding: 0 !important;">Lahan/ Ketersediaan Lahan
                         Sekolah</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -139,8 +139,8 @@
                                                 <th scope="col">No</th>
                                                 <th scope="col">Nama Lahan</th>
                                                 <th scope="col">No Sertifikat</th>
-                                                <th scope="col">Panjang(m²)</th>
-                                                <th scope="col">Lebar(m²)</th>
+                                                <th scope="col">Panjang(m)</th>
+                                                <th scope="col">Lebar(m)</th>
                                                 <th scope="col">Luas Lahan(m²)</th>
                                                 <th scope="col">Alamat</th>
                                                 <th scope="col">Jenis Kepemilikan</th>
@@ -157,8 +157,8 @@
                                                     <th scope="row">{{ $loop->iteration }}</th>
                                                     <td>{{ $lahan->nama }}</td>
                                                     <td>{{ $lahan->no_sertifikat }}</td>
-                                                    <td>{{ $lahan->panjang }} m²</td>
-                                                    <td>{{ $lahan->lebar }} m²</td>
+                                                    <td>{{ $lahan->panjang }} m</td>
+                                                    <td>{{ $lahan->lebar }} m</td>
                                                     <td>{{ $lahan->luas }} m²</td>
                                                     <td>{{ $lahan->alamat }}</td>
                                                     <td style="text-transform: capitalize;">{{ str_replace("_", " ", $lahan->jenis_kepemilikan) }}</td>
@@ -231,7 +231,7 @@
 
                             {{-- input panjang --}}
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Panjang(m²)</label>
+                                <label class="col-sm-2 col-form-label">Panjang(m)</label>
                                 <input type="number" class="form-control col-sm-9" placeholder="Masukan Panjang Lahan"
                                     id="panjang" name="panjang" required step=any>
                             </div>
@@ -239,7 +239,7 @@
 
                             {{-- input lebar --}}
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Lebar(m²)</label>
+                                <label class="col-sm-2 col-form-label">Lebar(m)</label>
                                 <input type="number" class="form-control col-sm-9" placeholder="Masukan Lebar Lahan"
                                     id="lebar" name="lebar" required step=any>
                             </div>
@@ -328,8 +328,8 @@
                                         <tr>
                                             <th scope="col">No</th>
                                             <th scope="col">Nama Lahan</th>
-                                            <th scope="col">Panjang(m²)</th>
-                                            <th scope="col">Lebar(m²)</th>
+                                            <th scope="col">Panjang(m)</th>
+                                            <th scope="col">Lebar(m)</th>
                                             <th scope="col">Luas Lahan(m²)</th>
                                             <th scope="col">Keterangan</th>
                                             <th scope="col">Action</th>
@@ -345,12 +345,12 @@
                                                     value="{{ $lahan->id }}">
                                                 <th scope="row">{{ $loop->iteration }}</th>
                                                 <td class="nama">{{ $lahan->nama }}</td>
-                                                <td class="panjang">{{ $lahan->panjang }} m²</td>
-                                                <td class="lebar">{{ $lahan->lebar }} m²</td>
+                                                <td class="panjang">{{ $lahan->panjang }} m</td>
+                                                <td class="lebar">{{ $lahan->lebar }} m</td>
                                                 <td>{{ $lahan->luas }} m²</td>
                                                 <td class="keterangan">{{ $lahan->keterangan }}</td>
                                                 <td>
-                                                    <button type="button" class="btn btn-info tombol-edit"
+                                                    <button type="button" class="btn text-white tombol-edit" style="background-color: #25b5e9"
                                                         data-toggle="modal" data-target="#modal-edit">
                                                         Edit
                                                     </button>
@@ -393,7 +393,7 @@
 
                             {{-- input panjang --}}
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Panjang(m²)</label>
+                                <label class="col-sm-2 col-form-label">Panjang(m)</label>
                                 <input type="number" class="form-control col-sm-9" placeholder="Masukan Panjang Lahan"
                                     id="panjang" name="panjang" required step=any>
                             </div>
@@ -401,7 +401,7 @@
 
                             {{-- input lebar --}}
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Lebar(m²)</label>
+                                <label class="col-sm-2 col-form-label">Lebar(m)</label>
                                 <input type="number" class="form-control col-sm-9" placeholder="Masukan Lebar Lahan"
                                     id="lebar" name="lebar" required step=any>
                             </div>
@@ -485,7 +485,7 @@
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-warning text-white">Edit</button>
+                        <button type="submit" class="btn text-white" style="background-color: #00a65b">Edit</button>
                     </div>
                 </form>
             </div>

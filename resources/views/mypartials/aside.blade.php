@@ -49,7 +49,7 @@
 
                 @if (strtolower(Auth::user()->profil->status_sekolah) == 'swasta')
                     <li class="nav-item">
-                        <a href="/lahan" class="nav-link {{ Request::is('/lahan') ? 'active' : '' }}">
+                        <a href="/lahan" class="nav-link {{ Request::is('lahan') ? 'active' : '' }}">
                             <i class="nav-icon bi bi-map"></i>
                             <p>Ketersediaan & Analisi Lahan</p>
                         </a>
@@ -250,7 +250,7 @@
                             <a href="/bangunan?jenis=perpustakaan"
                                 class="nav-link {{ request('jenis') == 'perpustakaan' ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
-                                <p>Perpustakaan</p>
+                                <p>Ruang Perpustakaan</p>
                             </a>
                         </li>
                         {{-- ---------------------------------------------------------------------------------------- TOILET ---------------------------------------------------------------------------------------- --}}
@@ -258,7 +258,7 @@
                             <a href="/bangunan?jenis=toilet"
                                 class="nav-link {{ request('jenis') == 'toilet' ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
-                                <p>Toilet</p>
+                                <p>Ruang Toilet</p>
                             </a>
                         </li>
                         {{-- ---------------------------------------------------------------------------------------- RUANGAN PIMPINAN ---------------------------------------------------------------------------------------- --}}
@@ -266,7 +266,7 @@
                             <a href="/bangunan/pimpinan"
                                 class="nav-link {{ Request::is('bangunan/pimpinan') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
-                                <p>Ruangan Pimpinan</p>
+                                <p>Ruang Pimpinan</p>
                             </a>
                         </li>
                         {{-- ---------------------------------------------------------------------------------------- REHAB/RENOV ---------------------------------------------------------------------------------------- --}}
@@ -281,28 +281,28 @@
                 </li>
 
                 {{-- ---------------------------------------------------------------------------------------- PERALATAN SEKOLAH ---------------------------------------------------------------------------------------- --}}
-                @if (count($kompils) > 0)
-                    <li class="nav-item has-treeview {{ Request::is('peralatan/*') ? 'menu-open' : '' }}">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon bi bi-collection"></i>
-                            <p>
-                                Peralatan Sekolah
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            {{-- ---------------------------------------------------------------------------------------- JURUSAN ---------------------------------------------------------------------------------------- --}}
-                            @foreach ($kompils as $kompil)
-                                <li class="nav-item">
-                                    <a href="/peralatan-sekolah/{{ $kompil->id }}"
-                                        class="nav-link {{ Request::is('peralatan/nama-jurusan') ? 'active' : '' }} d-flex align-items-center">
-                                        <i class="fa-regular fa-circle"></i>
-                                        <p class="text-truncate ml-2" style="max-width: 13rem;">{{ $kompil->kompetensi }}</p>
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </li>
+                @if (count($kompils) > 0)       
+                <li class="nav-item has-treeview {{ Request::is('peralatan/*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon bi bi-collection"></i>
+                        <p>
+                            Peralatan Sekolah
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        {{-- ---------------------------------------------------------------------------------------- JURUSAN ---------------------------------------------------------------------------------------- --}}
+                        @foreach ($kompils as $kompil)
+                            <li class="nav-item">
+                                <a href="/peralatan-sekolah/{{ $kompil->id }}"
+                                    class="nav-link {{ Request::is('peralatan-sekolah/1') ? 'active' : '' }}">
+                                    <i class="fa-regular fa-circle"></i>
+                                    <p>{{ $kompil->kompetensi }}</p>
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
                 @endif
 
                 {{-- ---------------------------------------------------------------------------------------- RIWAYAT BANTUAN ---------------------------------------------------------------------------------------- --}}
