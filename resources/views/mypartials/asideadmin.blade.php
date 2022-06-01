@@ -221,7 +221,7 @@
 
                 {{------------------------------------------------------------------------------------------ RIWAYAT BANTUAN ------------------------------------------------------------------------------------------}}
                 <li class="nav-item">
-                    <a href="/riwayat-bantuan" class="nav-link {{ Request::is('riwayat-bantuan') ? 'active' : '' }}">
+                    <a href="/riwayat-bantuan-dinas" class="nav-link {{ Request::is('riwayat-bantuan') ? 'active' : '' }}">
                         <i class="nav-icon bi bi-card-text"></i>
                         <p>Riwayat Bantuan</p>
                     </a>
@@ -239,13 +239,13 @@
                     <ul class="nav nav-treeview">
                         {{------------------------------------------------------------------------------------------ JURUSAN ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="/monev" class="nav-link {{ Request::is('/monev') ? 'active' : '' }}">
+                            <a href="/monitoring" class="nav-link {{ Request::is('/monev') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Monitoring</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/usulan-peralatan" class="nav-link {{ Request::is('peralatan/nama-jurusan') ? 'active' : '' }}">
+                            <a href="/visitasi" class="nav-link {{ Request::is('peralatan/nama-jurusan') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Visitasi Sekolah</p>
                             </a>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Monev;
+use App\Models\User;
 use App\Http\Requests\StoreMonevRequest;
 use App\Http\Requests\UpdateMonevRequest;;
 use App\Models\Kompeten;
@@ -20,9 +21,23 @@ class MonevController extends Controller
     {
         $unsurVerifikasis = UnsurVerifikasi::all();
         $kotaKabupaten = KotaKabupaten::all();
-        // dd($kotaKabupaten);
+        $users = User::whereNotNull('instansi')->select('users.*', 'kota_kabupatens.nama as nama_kota_kabupaten', 'kota_kabupatens.id as id_kota_kabupatens')->leftJoin('kota_kabupatens', 'users.kota_kabupaten_id', 'kota_kabupatens.id')->get();
+        $pengawas = [];
+        $verifikator = [];
+
+        foreach ($users as $key => $user) {
+            if($user->hasRole('pengawas')){
+                $pengawas[] = $user;
+            }else if($user->hasRole('verifikator')){
+                $verifikator[] = $user;
+            }
+        }
+
         return view("admin.monitoring", [
-            'unsurs' => $unsurVerifikasis
+            'unsurs' => $unsurVerifikasis,
+            'pengawases' => $pengawas,
+            'verifikators' => $verifikator,
+            'kota_kabupatens' => $kotaKabupaten
         ]);
     }
 

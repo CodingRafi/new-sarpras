@@ -106,7 +106,8 @@ class UserSeeder extends Seeder
                 'profil_id' => $profil['id'],
                 'name' => $profil['depo_nama'],
                 'npsn' => $profil["depo_npsn"],
-                'password' => bcrypt('12345678')
+                'password' => bcrypt('12345678'),
+                // 'email' => $profil['depo_email']
             ]);
             $user->assignRole('sekolah');
         }

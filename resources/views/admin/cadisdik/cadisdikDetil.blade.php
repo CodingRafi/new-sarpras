@@ -64,30 +64,39 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive">
-                <table class="table table-head-fixed text-nowrap text-center">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Kota/Kabupaten</th>
-                            <th style="width: 70px;">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($kabupatens as $kabupaten)
+                @if (count($kabupatens) > 0)
+                    <table class="table table-head-fixed text-nowrap text-center">
+                        <thead>
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $kabupaten->nama }}</td>
-                                <td>
-                                    <form action="/profil-kcd/{{ $kabupaten->id_profil_kcds }}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn btn-danger" onclick="return confirm('apakah anda yakin akan mengahapus wilayah ini?')">Hapus</button>
-                                    </form>
-                                </td>
+                                <th>#</th>
+                                <th>Kota/Kabupaten</th>
+                                <th style="width: 70px;">Aksi</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach ($kabupatens as $kabupaten)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $kabupaten->nama }}</td>
+                                    <td>
+                                        <form action="/profil-kcd/{{ $kabupaten->id_profil_kcds }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-danger"
+                                                onclick="return confirm('apakah anda yakin akan mengahapus wilayah ini?')">Hapus</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @else
+                    <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                        <div class="alert" role="alert">
+                            Data Tidak Ditemukan
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
@@ -95,36 +104,44 @@
     <div class="container">
         <div class="card card-default">
             <div class="card-header bg-warning d-flex p-0">
-                <h3 class="card-title p-3 text-white">Kantor Cabang Dinas</h3>  
+                <h3 class="card-title p-3 text-white">Kantor Cabang Dinas</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive">
-                <table class="table table-head-fixed text-nowrap text-center">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Petugas</th>
-                            <th>Sekolah</th>
-                            <th>NPSN</th>
-                            <th>Status</th>
-                            <th style="width: 70px;">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($profils as $profil)
+                @if (count($profils) > 0)
+                    <table class="table table-head-fixed text-nowrap text-center">
+                        <thead>
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $kcd->nama }}</td>
-                                <td>{{ $profil->nama }}</td>
-                                <td>{{ $profil->npsn }}</td>
-                                <td>{{ $profil->status_sekolah }}</td>
-                                <td>
-                                    <a href="/profil/{{ $profil->id }}" class="btn btn-success">Detail</a>
-                                </td>
+                                <th>#</th>
+                                <th>Petugas</th>
+                                <th>Sekolah</th>
+                                <th>NPSN</th>
+                                <th>Status</th>
+                                <th style="width: 70px;">Aksi</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach ($profils as $profil)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $kcd->nama }}</td>
+                                    <td>{{ $profil->nama }}</td>
+                                    <td>{{ $profil->npsn }}</td>
+                                    <td>{{ $profil->status_sekolah }}</td>
+                                    <td>
+                                        <a href="/profil/{{ $profil->id }}" class="btn btn-success">Detail</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @else
+                    <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                        <div class="alert" role="alert">
+                            Data Tidak Ditemukan
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

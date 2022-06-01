@@ -161,4 +161,26 @@ class RiwayatController extends Controller
             abort(403);
         }
     }
+
+    public function showDinas(){
+        if (Auth::user()->hasRole('dinas')) {
+            $riwayats = Riwayat::search(request(['search']))
+                    ->leftJoin('profils', 'profils.id', 'riwayats.profil_id')
+                    ->leftJoin('kota_kabupatens', 'kota_kabupatens.id', 'profils.kota_kabupaten_id')
+                    ->leftJoin('profil_kcds', 'kota_kabupatens.id', 'profil_kcds.kota_kabupaten_id')
+                    ->leftJoin('kcds', 'kcds.id', 'profil_kcds.kcd_id')
+                    ->select('profils.nama', 'riwayats.*')
+                    ->paginate(40)->withQueryString();
+
+            $koleksi = UsulanKoleksi::koleksi($riwayats);
+            $fotos = UsulanFoto::fotos($koleksi);
+
+            return view('admin.riwayat', [
+                'riwayats' => $riwayats,
+                'fotos' => $fotos
+            ]);
+        }else{
+            abort(403);
+        }
+    }
 }

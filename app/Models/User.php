@@ -53,4 +53,8 @@ class User extends Authenticatable
     public function kotaKabupaten(){
         return $this->belongsTo(KotaKabupaten::class);
     }
+
+    public function visitasi(){
+        return $this->hasMany(Visitasi::class);
+    }
 }
