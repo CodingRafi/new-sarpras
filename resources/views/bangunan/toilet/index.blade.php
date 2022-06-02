@@ -298,7 +298,7 @@
                             {{-- input luas lahan --}}
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Luas Lahan (M)</label>
-                                <input type="number" class="form-control col-sm-7" placeholder="Masukan Luas Lahan"
+                                <input type="number" class="form-control col-sm-7"  placeholder="Masukan Luas Lahan"
                                     id="luas-lahan" name="luas_lahan" required>
                             </div>
                             {{-- end luas lahan --}}
@@ -306,7 +306,7 @@
                             {{-- upload gambar lokasi --}}
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan</label>
-                                <input type="file" id="gambar-lahan" required multiple accept="image/*" name="gambar[]">
+                                <input type="file" id="gambar-lahan" class="form-control is-invalid" required multiple accept="image/*" name="gambar[]">
                             </div>
                             {{-- end upload gambar lokasi --}}
                             {{-- upload proposal --}}
