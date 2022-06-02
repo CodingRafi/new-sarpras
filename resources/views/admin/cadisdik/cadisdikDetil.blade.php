@@ -54,6 +54,51 @@
                     </div>
                 </div>
             </div>
+            
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card card-default">
+            <div class="card-header bg-success d-flex p-0">
+                <h3 class="card-title p-3 text-white">Kantor Cabang Dinas</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive">
+                @if (count($kabupatens) > 0)
+                    <table class="table table-head-fixed text-nowrap text-center">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Kota/Kabupaten</th>
+                                <th style="width: 70px;">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($kabupatens as $kabupaten)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $kabupaten->nama }}</td>
+                                    <td>
+                                        <form action="/profil-kcd/{{ $kabupaten->id_profil_kcds }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-danger"
+                                                onclick="return confirm('apakah anda yakin akan mengahapus wilayah ini?')">Hapus</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @else
+                    <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                        <div class="alert" role="alert">
+                            Data Tidak Ditemukan
+                        </div>
+                    </div>
+                @endif
+            </div>
         </div>
     </div>
 
@@ -61,84 +106,47 @@
         <div class="card card-default">
             <div class="card-header bg-warning d-flex p-0">
                 <h3 class="card-title p-3 text-white">Kantor Cabang Dinas</h3>
-                <ul class="nav nav-pills ml-auto p-2">
-                    <li class="nav-item"><button class="nav-link btn border border-white text-white"
-                            data-toggle="modal" data-target="#tambah-cadisdik"><i class="bi bi-plus-lg"></i>
-                            Tambah Sekolah</button></li>
-                </ul>
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive">
-                <table class="table table-head-fixed text-nowrap text-center">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Petugas</th>
-                            <th>Sekolah</th>
-                            <th>NPSN</th>
-                            <th>Status</th>
-                            <th style="width: 70px;">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($profils as $profil)
+                @if (count($profils) > 0)
+                    <table class="table table-head-fixed text-nowrap text-center">
+                        <thead>
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $kcd->nama }}</td>
-                                <td>{{ $profil->nama }}</td>
-                                <td>{{ $profil->npsn }}</td>
-                                <td>{{ $profil->status_sekolah }}</td>
-                                <td>
-                                    <form action="/profil-kcd/{{ $profil->id_profil_kcds }}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <button class="btn btn-danger" type="submit" onclick="return confirm('apakah anda yakin akan mengahapus sekolah ini?')">Hapus</button>
-                                    </form>
-                                </td>
+                                <th>#</th>
+                                <th>Petugas</th>
+                                <th>Sekolah</th>
+                                <th>NPSN</th>
+                                <th>Status</th>
+                                <th style="width: 70px;">Aksi</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach ($profils as $profil)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $kcd->nama }}</td>
+                                    <td>{{ $profil->nama }}</td>
+                                    <td>{{ $profil->npsn }}</td>
+                                    <td>{{ $profil->status_sekolah }}</td>
+                                    <td>
+                                        <a href="/profil/{{ $profil->id }}" class="btn btn-success">Detail</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @else
+                    <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                        <div class="alert" role="alert">
+                            Data Tidak Ditemukan
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
 
-    {{-- -------------------------------------------------------------------------------------------------- MODAL TAMBAH -------------------------------------------------------------------------------------------------- --}}
-    <div class="modal fade" id="tambah-cadisdik">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Tambah Petugas</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal" action="/profil-kcd" method="post">
-                        @csrf
-                        <input type="hidden" name="kcd_id" value="{{ $kcd->id }}">
-                        <div class="card-body">
-                            <div class="form-group row">
-                                <label for="kab" class="col-sm-2 col-form-label">Sekolah</label>
-                                <div class="col-sm-10">
-                                    <select class="fstdropdown-select select-jurusan" id="select" multiple name="sekolah[]">
-                                        @foreach ($sekolahNoKcds as $profil)
-                                            <option value="{{ $profil->id }}">{{ $profil->nama }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn text-white float-right"
-                                style="background-color: #00a65b">Simpan</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
 
 @section('tambahjs')

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Kcd extends Model
+class Visitasi extends Model
 {
     use HasFactory;
 
@@ -13,8 +13,8 @@ class Kcd extends Model
         "id"
     ];
 
-    public function profilkcd(){
-        return $this->hasMany(ProfilKcd::class);
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 
     public function profil(){

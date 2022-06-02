@@ -21,14 +21,27 @@ class ProfilKcd extends Model
         return $this->belongsTo(Kcd::class);
     }
 
-    public static function createProfilKcd($kcd, $sekolah){
-        if(count($sekolah) > 0){
-            foreach ($sekolah as $key => $profil_id) {
+    public static function createProfilKcd($kcd, $kotas){
+        if(count($kotas) > 0){
+            foreach ($kotas as $key => $kota_id) {
                 ProfilKcd::create([
-                    'profil_id' => $profil_id,
+                    'kota_kabupaten_id' => $kota_id,
                     'kcd_id' => $kcd
                 ]);
             }
         }
+    }
+
+    public static function ambil($kcd_id){
+        return ProfilKcd::where('kcd_id', $kcd_id)->select('profils.*', 'profil_kcds.id as id_profil_kcds')
+        ->leftJoin('kota_kabupatens', 'kota_kabupatens.id', 'profil_kcds.kota_kabupaten_id')
+        ->leftJoin('profils', 'profils.kota_kabupaten_id', 'kota_kabupatens.id')
+        ->get();
+    }
+
+    public static function getKabupaten($kcd_id){
+        return ProfilKcd::where('kcd_id', $kcd_id)->select('profil_kcds.id as id_profil_kcds', 'kota_kabupatens.*')
+        ->leftJoin('kota_kabupatens', 'kota_kabupatens.id', 'profil_kcds.kota_kabupaten_id')
+        ->get();
     }
 }

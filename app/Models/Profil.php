@@ -18,6 +18,10 @@ class Profil extends Model
         return $this->belongsTo(ProfilDepo::class);
     }
 
+    public function kcd(){
+        return $this->belongsTo(Kcd::class);
+    }
+
     public function kompeten(){
         return $this->hasMany(Kompeten::class);
     }
@@ -72,6 +76,10 @@ class Profil extends Model
 
     public function usulanPeralatan(){
         return $this->hasMany(UsulanPeralatan::class);
+    }
+
+    public function visitasi(){
+        return $this->hasMany(Visitasi::class);
     }
 
     public function scopeSearch($query, array $search)

@@ -9,7 +9,7 @@ use App\Models\Kompeten;
 use App\Models\Profil;
 use App\Models\ProfilKcd;
 use Illuminate\Support\Facades\Auth;
-
+use DB;
 
 class KcdController extends Controller
 {
@@ -21,18 +21,23 @@ class KcdController extends Controller
     public function index()
     {
         $kcds = Kcd::all();
-        $profil_kcd = [];
+        $kotas = DB::table('kota_kabupatens as a')->select('a.*')
+                ->leftJoin('profil_kcds as b', function($join) {
+                        $join->on('a.id', '=', 'b.kota_kabupaten_id');
+                })->whereNull('b.kota_kabupaten_id')->get();
+        
+        $profils = [];
+        $profil_kcd_kab = [];
         foreach ($kcds as $key => $kcd) {
-            $profil_kcd[] = $kcd->profilKcd;
+            $profils[] = ProfilKcd::ambil($kcd->id);
+            $profil_kcd_kab[] = ProfilKcd::getKabupaten($kcd->id);
         }
 
-        // $profils = Profil::noKcd();
-        $profils = Profil::all();
-
         return view('admin.cadisdik.cadisdik', [
-            'profils' => $profils,
             'kcds' => $kcds,
-            'profil_kcds' => $profil_kcd
+            'kotas' => $kotas,
+            'profil_kcd_kabs' => $profil_kcd_kab,
+            'profils' => $profils
         ]);
     }
 
@@ -82,13 +87,14 @@ class KcdController extends Controller
      */
     public function show(Kcd $kcd, $id)
     {
-        $profils = ProfilKcd::where('kcd_id', $id)->select('profils.*', 'profil_kcds.id as id_profil_kcds')->leftJoin('profils', 'profils.id', 'profil_kcds.profil_id')->get();
+        $profils = ProfilKcd::ambil($id);
         $kcd = Kcd::where('id', $id)->get()[0];
-        $sekolahNoKcd = Profil::noKcd();
+        $kabupatens = ProfilKcd::getKabupaten($id);
+
         return view('admin.cadisdik.cadisdikDetil', [
             'profils' => $profils,
             'kcd' => $kcd,
-            'sekolahNoKcds' => $sekolahNoKcd
+            'kabupatens' => $kabupatens
         ]);
     }
 

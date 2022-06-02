@@ -40,11 +40,10 @@ class ProfilKcdController extends Controller
     {
         if (Auth::user()->hasRole('dinas')) {
             $validatedData = $request->validate([
-                'sekolah' => 'required',
-                'kcd_id' => 'required'
+                'id_kota_kabupaten' => 'required'
             ]);
-    
-            ProfilKcd::createProfilKcd($request->kcd_id, $request->sekolah);
+
+            ProfilKcd::createProfilKcd($request->kcd_id, $request->id_kota_kabupaten);
     
             return redirect()->back();
         }else{
@@ -94,7 +93,7 @@ class ProfilKcdController extends Controller
      */
     public function destroy(ProfilKcd $profilKcd)
     {
-        if (Auth::user()->hasRole('dinas')) {
+        if (Auth::user()->hasRole('dinas')) {   
             ProfilKcd::destroy($profilKcd->id);
             return redirect()->back();
         }else{
