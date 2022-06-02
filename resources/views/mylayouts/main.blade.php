@@ -41,7 +41,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             color: black !important;
         }
 
-        ::-webkit-scrollbar{
+        ::-webkit-scrollbar {
             display: none;
         }
 
@@ -52,6 +52,72 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             .pimpinan-infobox {
                 flex-direction: column;
+            }
+        }
+
+        .loading-container {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            margin: auto;
+        }
+
+        .loading-container .item {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 5px solid #fff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            border-bottom-color: transparent;
+            animation: spin 2s ease infinite;
+        }
+
+        .loading-container .logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border-top-color: transparent;
+            border-bottom-color: transparent;
+        }
+
+        .loading-container .item:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            border-inline-color: rgba(0, 166, 91, 1);
+        }
+
+        .loading-container .item:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            animation-delay: 0.1s;
+            border-inline-color: rgba(37, 181, 233, 1);
+        }
+
+        .loading-container .item:nth-child(3) {
+            width: 140px;
+            height: 140px;
+            animation-delay: 0.2s;
+            border-inline-color: rgba(252, 193, 45, 1);
+        }
+
+        .loading-container .item:nth-child(4) {
+            width: 110px;
+            height: 110px;
+            animation-delay: 0.3s;
+            opacity: 0;
+        }
+
+        @keyframes spin {
+            50% {
+                transform: translate(-50%, -50%) rotate(180deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(0deg);
             }
         }
 
@@ -69,9 +135,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         {{-- /NAVBAR --}}
 
         @if (Auth::user()->hasRole('dinas'))
-            @include('mypartials.asideadmin')
+        @include('mypartials.asideadmin')
         @elseif(Auth::user()->hasRole('sekolah'))
-            @include('mypartials.aside')
+        @include('mypartials.aside')
         @endif
 
         {{-- SIDEBAR --}}
@@ -98,7 +164,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Control sidebar content goes here -->
         </aside>
         <!-- /.control-sidebar -->
+
+        {{-- Loading --}}
+        <div
+            style="position: fixed; background: rgba(0, 0, 0, 0.1); width: 100%; height: 100vh; z-index: 9999; display: flex; justify-content: center; align-items: center;">
+            <div class="loading-container">
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <img src="/assets/img/avatars/logo-jawa-barat.png" alt="TarunaBhakti Logo" width="50" class="logo">
+            </div>
+        </div>
+        {{-- End Loading --}}
     </div>
+
     <!-- ./wrapper -->
 
     <!-- REQUIRED SCRIPTS -->
@@ -116,5 +196,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     @yield('peralatanjs')
 </body>
+
+
+
 
 </html>

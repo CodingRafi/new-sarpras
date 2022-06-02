@@ -127,6 +127,7 @@
                 </div>
 
                 <div class="d-flex flex-wrap container-preview mb-3">
+                    <div class="col-sm-3"></div>
                     @foreach ($fotos as $foto)
                     <div class="item col-sm-3 col-6 container-image ">
                         <div class="shadow-sm rounded border">

@@ -342,12 +342,12 @@
     <div class="card-header" style="background-color: #FCC12D">
         <ul class="nav nav-pills ml-auto">
             <li class="nav-item">
-                <a class="nav-link text-white {{ $errors->any() ? '' : 'active' }} font-weight-bold" href="#data-kekurangan-lahan-sekolah"
+                <a class="nav-link text-white font-weight-bold" href="#data-kekurangan-lahan-sekolah"
                     data-toggle="tab">
                     <i class="bi bi-house-fill mr-1"></i>Kekurangan Lahan</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white font-weight-bold {{ $errors->any() ? 'active' : '' }}" href="#tambah-kekurangan-lahan" data-toggle="tab">
+                <a class="nav-link text-white font-weight-bold" href="#tambah-kekurangan-lahan" data-toggle="tab">
                     <i class="bi bi-plus-lg mr-1"></i>Tambah Kekurangan Lahan</a>
             </li>
         </ul>
@@ -356,7 +356,7 @@
 
     <div class="card-body p-0">
         <div class="tab-content p-0">
-            <div class="tab-pane {{ $errors->any() ? '' : 'active' }}" id="data-kekurangan-lahan-sekolah" style="min-height: 10rem;">
+            <div class="tab-pane" id="data-kekurangan-lahan-sekolah" style="min-height: 10rem;">
                 <div class="row">
                     <div class="col">
                         @if (count($kekuranganLahans) > 0)
@@ -423,47 +423,25 @@
                         {{-- input nama lahan --}}
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Nama Lahan</label>
-                            <input type="text" class="form-control col-sm-9  @error('nama') is-invalid @enderror" placeholder="Masukan Nama Lahan" id="nama-lahan" name="nama" value="{{ old('nama') }}">
-                            @error('nama')
-                            <div class="invalid-feedback d-block" style="margin-left: 13vw">
-                                {{ $message }}
-                            </div>
-                            @enderror
+                            <input type="text" class="form-control col-sm-9" placeholder="Masukan Nama Lahan" id="nama-lahan" name="nama" required>
                         </div>
                         {{-- end input nama lahan --}}
 
                         {{-- input panjang --}}
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Panjang(m)</label>
-                            <input type="number" class="form-control col-sm-9  @error('panjang') is-invalid @enderror" placeholder="Masukan Panjang Lahan" id="panjang" name="panjang" value="{{ old('panjang') }}" required step=any>
-                            @error('panjang')
-                            <div class="invalid-feedback d-block" style="margin-left: 13vw">
-                                {{ $message }}
-                            </div>
-                            @enderror    
+                            <input type="number" class="form-control col-sm-9" placeholder="Masukan Panjang Lahan" id="panjang" name="panjang" required step=any>
                         </div>
                         {{-- end input panjang --}}
 
                         {{-- input lebar --}}
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Lebar(m)</label>
-                            <input type="number" class="form-control col-sm-9 @error('lebar') is-invalid @enderror" 
-                            placeholder="Masukan Lebar Lahan" id="lebar" name="lebar" value="{{ old('lebar') }}" step=any>
-                            @error('lebar')
-                            <div class="invalid-feedback d-block" style="margin-left: 13vw">
-                                {{ $message }}
-                            </div>
-                            @enderror    
+                            <input type="number" class="form-control col-sm-9" placeholder="Masukan Lebar Lahan" id="lebar" name="lebar" required step=any>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Keterangan</label>
-                            <input type="text" class="form-control col-sm-9 @error('keterangan') is-invalid @enderror" 
-                            placeholder="Keterangan" id="keterangan" name="keterangan" value="{{ old('keterangan') }}">
-                            @error('keterangan')
-                            <div class="invalid-feedback d-block" style="margin-left: 13vw">
-                                {{ $message }}
-                            </div>
-                            @enderror    
+                            <input type="text" class="form-control col-sm-9" placeholder="Keterangan" id="keterangan" name="keterangan" required>
                         </div>
                         {{-- end input lebar --}}
 
