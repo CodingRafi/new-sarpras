@@ -40,7 +40,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="row child-noneborder shadow-sm">
-                    <div class="alert alert-info col-12 col-lg-8 d-flex flex-column justify-content-between">
+                    <div class="alert text-white col-12 col-lg-8 d-flex flex-column justify-content-between" style="background-color: #25b5e9">
                         <h5 class="h6"><i class="icon bi bi-bank2"></i> Instansi</h5>
                         <div>
                             <h3>{{ $kcd->instansi }}</h3>
@@ -49,7 +49,11 @@
                         </div>
                     </div>
                     <div class="callout callout-secondary col-7 col-lg-4 d-flex flex-column justify-content-between">
-                        <h5>Total Sekolah</h5>
+                        <div class="d-flex">
+                            <h5>Total Sekolah</h5>
+                            <button type="button" class="btn btn-tool text-dark mr-1" style="position: absolute; right:0%; padding-top:10px" data-toggle="modal" data-target="#edit-kcd"><i class="icon bi bi-pencil-square mr-2" style="position: absolute; right:0"></i>
+                            </button>
+                        </div>
                         <h1 class="display-4">{{ count($profils) }}</h1>
                     </div>
                 </div>
@@ -60,7 +64,7 @@
 
     <div class="container">
         <div class="card card-default">
-            <div class="card-header bg-success d-flex p-0">
+            <div class="card-header d-flex p-0" style="background-color: #00a65b">
                 <h3 class="card-title p-3 text-white">Kantor Cabang Dinas</h3>
             </div>
             <!-- /.card-header -->
@@ -146,6 +150,54 @@
             </div>
         </div>
     </div>
+
+{{-------------------------------------------------- modal kcd --------------------------------------------------}}
+<div class="modal fade {{ $errors->any() ? 'show' : '' }}" id="edit-kcd" {{ $errors->any() ? 'show' : '' }}>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #25b5e9; margin-left:-1px">
+                <h4 class="modal-title text-white">Edit Data Cabang Dinas Pendidikan</h4>
+                <button type="button" class="close" data-dismiss="modal"
+                    aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="#" method="#">
+                <div class="modal-body">
+                    <div class="card-body">
+{{--------------------------------------------- input nama pemimpin ---------------------------------------------}}
+                        <div class="form-group row">
+                            <label for="pemimpin" class="col-sm-2 col-form-label">Nama Pemimpin</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control @error('pemimpin') is-invalid @enderror" id="pemimpin" name="pemimpin" placeholder="Masukan Nama Pemimpin" value="{{ old('pemimpin') }}" required>
+                                @error('pemimpin')
+                                    <div class="invalid-feedback d-block" style="margin-left: 21vw">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+{{------------------------------------------- end input nama pemimpin -------------------------------------------}}
+
+{{------------------------------------------------- input email -------------------------------------------------}}
+                        <div class="form-group row">
+                            <label for="email" class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-10"> 
+                                <input type="text" class="form-control" id="email" name="email" placeholder="Masukan Email" value="" required>
+                            </div>
+                        </div>
+{{----------------------------------------------- end input email -----------------------------------------------}}
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn text-white float-right" style="background-color: #00a65b">Simpan
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{{------------------------------------------------- end modal kcd -------------------------------------------------}}
 
 @endsection
 
