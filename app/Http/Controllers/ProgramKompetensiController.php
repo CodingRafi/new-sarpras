@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProgramKompetensi;
+use App\Models\Komli;
+use App\Models\Kompeten;
 use App\Http\Requests\StoreProgramKompetensiRequest;
 use App\Http\Requests\UpdateProgramKompetensiRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ProgramKompetensiController extends Controller
 {
@@ -15,7 +18,10 @@ class ProgramKompetensiController extends Controller
      */
     public function index()
     {
-        //
+        $program = ProgramKompetensi::paginate(40);
+        return view("admin.program", [
+            'programs' => $program
+        ]);
     }
 
     /**
@@ -36,7 +42,17 @@ class ProgramKompetensiController extends Controller
      */
     public function store(StoreProgramKompetensiRequest $request)
     {
-        //
+        if (Auth::user()->hasRole('dinas')) {
+            $validatedData = $request->validate([
+                'nama' => 'required'
+            ]);
+    
+            ProgramKompetensi::create($validatedData);
+    
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -70,7 +86,17 @@ class ProgramKompetensiController extends Controller
      */
     public function update(UpdateProgramKompetensiRequest $request, ProgramKompetensi $programKompetensi)
     {
-        //
+        if (Auth::user()->hasRole('dinas')) {
+            $validatedData = $request->validate([
+                'nama' => 'required'
+            ]);
+    
+            $programKompetensi->update($validatedData);
+    
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -81,6 +107,12 @@ class ProgramKompetensiController extends Controller
      */
     public function destroy(ProgramKompetensi $programKompetensi)
     {
-        //
+        foreach ($programKompetensi->komli as $key => $komli) {
+            Kompeten::hapusKompeten($komli->kompeten);
+            Komli::destroy($komli->id);
+        }
+        ProgramKompetensi::destroy($programKompetensi->id);
+
+        return redirect()->back();
     }
 }

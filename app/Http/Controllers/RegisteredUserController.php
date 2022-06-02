@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use DB;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Kompeten;
 
 class RegisteredUserController extends Controller
@@ -46,20 +47,31 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:8|max:255',
-            'roles' => 'required'
-        ]);
-
-        $validatedData['password'] = Hash::make($request->password);
-
-        $user = User::create($validatedData);
-        $user->assignRole($request->roles);
+        // dd($request);
+        if (Auth::user()->hasRole('dinas')) {
+            $validatedData = $request->validate([
+                'role' => 'required',
+                'name' => 'required',
+                'email' => 'required|email|unique:users',
+                'instansi' => 'required',
+                'kota_kabupaten_id' => 'required'
+            ]);
+            
+            $validatedData['password'] = Hash::make('12345678');
+            $validatedData['provinsi'] = 'Jawa Barat';
     
-        return redirect()->route('users.index')
-                        ->with('success','User created successfully');
+            $user = User::create($validatedData);
+            
+            if($request->role == 1){
+                $user->assignRole('pengawas');
+            }else if($request->role == 2){
+                $user->assignRole('verifikator');
+            }
+        
+            return redirect('/monitoring');
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -98,18 +110,13 @@ class RegisteredUserController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$user->id,
-            'roles' => 'required'
+            'instansi' => 'required',
+            'kota_kabupaten_id' => 'required',
         ]);
 
-        $validatedData['password'] = $user->password;
-
         $user->update($validatedData);
-        DB::table('model_has_roles')->where('model_id',$user->id)->delete();
     
-        $user->assignRole($request->roles);
-    
-        return redirect()->route('users.index')
-                        ->with('success','User updated successfully');
+        return redirect('/monitoring');
     }
 
     /**
@@ -121,7 +128,10 @@ class RegisteredUserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('users.index')
-        ->with('success','User deleted successfully');
+        return redirect('/monitoring');
+    }
+
+    public function create_pengawas(Request $request){
+        dd($request);
     }
 }

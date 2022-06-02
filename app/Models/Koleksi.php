@@ -28,6 +28,10 @@ class Koleksi extends Model
         return $this->belongsTo(Jeniskoleksi::class);
     }
 
+    public function riwayat(){
+        return $this->belongsTo(Riwayat::class);
+    }
+
     public function sluggable(): array
     {
         return [

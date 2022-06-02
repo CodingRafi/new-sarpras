@@ -162,9 +162,12 @@ class UsulanLahanController extends Controller
 
     public function lahanDinas(){
         $usulanLahan = UsulanLahan::search(request(['search']))
-                        ->leftJoin('profils', 'profils.id', '=', 'usulan_lahans.profil_id')
-                        ->leftJoin('profil_kcds', 'profils.id', '=', 'profil_kcds.profil_id')
-                        ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi', 'usulan_lahans.proposal')->paginate(40)->withQueryString();
+                        ->leftJoin('profils', 'profils.id', 'usulan_lahans.profil_id')
+                        ->leftJoin('kota_kabupatens', 'kota_kabupatens.id', 'profils.kota_kabupaten_id')
+                        ->leftJoin('profil_kcds', 'kota_kabupatens.id', 'profil_kcds.kota_kabupaten_id')
+                        ->leftJoin('kcds', 'kcds.id', 'profil_kcds.kcd_id')
+                        ->select('profils.*', 'kcds.instansi', 'usulan_lahans.proposal')
+                        ->paginate(40)->withQueryString();
 
 
         return view('admin.lahan', [

@@ -19,11 +19,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'npsn',
-        'password',
+    protected $guarded =[
+        "id"
     ];
 
     /**
@@ -51,5 +48,13 @@ class User extends Authenticatable
 
     public function profil(){
         return $this->belongsTo(Profil::class);
+    }
+
+    public function kotaKabupaten(){
+        return $this->belongsTo(KotaKabupaten::class);
+    }
+
+    public function visitasi(){
+        return $this->hasMany(Visitasi::class);
     }
 }

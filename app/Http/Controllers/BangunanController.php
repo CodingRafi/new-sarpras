@@ -28,9 +28,12 @@ class BangunanController extends Controller
     {
         DB::enableQueryLog();
         $usulanBangunan = UsulanBangunan::search(request(['jenis', 'search', 'filter']))
-                        ->leftJoin('profils', 'profils.id', '=', 'usulan_bangunans.profil_id')
-                        ->leftJoin('profil_kcds', 'profils.id', '=', 'profil_kcds.profil_id')
-                        ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi', 'usulan_bangunans.proposal', 'usulan_bangunans.id')->paginate(40)->withQueryString();
+                        ->leftJoin('profils', 'profils.id', 'usulan_bangunans.profil_id')
+                        ->leftJoin('kota_kabupatens', 'kota_kabupatens.id', 'profils.kota_kabupaten_id')
+                        ->leftJoin('profil_kcds', 'kota_kabupatens.id', 'profil_kcds.kota_kabupaten_id')
+                        ->leftJoin('kcds', 'kcds.id', 'profil_kcds.kcd_id')
+                        ->select('profils.*', 'kcds.instansi', 'usulan_bangunans.proposal', 'usulan_bangunans.id')
+                        ->paginate(40)->withQueryString();
 
         if(request('jenis') == 'ruang_pimpinan'){
             $jenisPimpinan = JenisPimpinan::all();

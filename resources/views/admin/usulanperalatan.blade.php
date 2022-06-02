@@ -3,8 +3,8 @@
 @section('tambahcss')
     <style>
         /* .row-data .col-3 {
-                                        max-width: 15.5rem !important;
-                                    } */
+                                            max-width: 15.5rem !important;
+                                        } */
 
         .card-header h4 {
             font-size: 1.2rem !important
@@ -37,18 +37,21 @@
             </div>
             <!-- /.card-header DATA SEKOLAH-->
             <div class="card-body p-0">
-                <form class="form-inline mt-2" action="/usulan-peralatan" method="GET" style="margin-left:10px; width: 98%;">
-                    <div class="input-group m-0 p-0" style="width: 100%;border: 1px solid #ced4da;border-radius: 3px;">
-                        <input class="form-control form-control-navbar" type="search"
-                            placeholder="Search Nama Sekolah, Kompetensi Keahlian, Nama peralatan" aria-label="Search"
-                            style="height: 2.5rem;font-size: 15px;padding: 0 10px;border:none;" name="search">
-                        <div class="input-group-append">
-                            <button class="btn btn-navbar" type="submit" style="width: 40px;">
-                                <i class="fas fa-search"></i>
-                            </button>
+                @if (count($usulan_peralatans) > 0)
+                    <form class="form-inline mt-2" action="/usulan-peralatan" method="GET"
+                        style="margin-left:10px; width: 98%;">
+                        <div class="input-group m-0 p-0" style="width: 100%;border: 1px solid #ced4da;border-radius: 3px;">
+                            <input class="form-control form-control-navbar" type="search"
+                                placeholder="Search Nama Sekolah, Kompetensi Keahlian, Nama peralatan" aria-label="Search"
+                                style="height: 2.5rem;font-size: 15px;padding: 0 10px;border:none;" name="search">
+                            <div class="input-group-append">
+                                <button class="btn btn-navbar" type="submit" style="width: 40px;">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                @endif
                 <div class="tab-content p-0">
                     <div class="tab-pane active" id="data-usulan-sekolah">
                         <div class="row">

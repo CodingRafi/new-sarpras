@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('instansi')->nullable();
-            $table->string('kab');
             $table->string('provinsi');
             $table->timestamps();
         });

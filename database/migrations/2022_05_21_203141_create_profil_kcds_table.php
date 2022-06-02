@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('profil_kcds', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('profil_id');
+            $table->foreignId('kota_kabupaten_id');
             $table->foreignId('kcd_id');
             $table->timestamps();
         });

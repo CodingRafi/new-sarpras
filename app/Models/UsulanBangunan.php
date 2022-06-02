@@ -50,12 +50,12 @@ class UsulanBangunan extends Model
     }
 
     public static function deleteUsulan($data){
-    $koleksi = $data->usulanKoleksi[0];
-    $fotos = $koleksi->usulanFoto;
-    UsulanFoto::deleteFoto($fotos);
-    UsulanKoleksi::destroy($koleksi->id);
-    Storage::delete($data->proposal);
-    UsulanBangunan::destroy($data->id);
+        $koleksi = $data->usulanKoleksi[0];
+        $fotos = $koleksi->usulanFoto;
+        UsulanFoto::deleteFoto($fotos);
+        UsulanKoleksi::destroy($koleksi->id);
+        Storage::delete($data->proposal);
+        UsulanBangunan::destroy($data->id);
     }
 
     public function scopeSearch($query, array $search)

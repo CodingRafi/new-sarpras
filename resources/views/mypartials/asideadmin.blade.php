@@ -35,7 +35,6 @@
                     </a>
                 </li>
 
-                @can('view_profiladmin')     
                 {{------------------------------------------------------------------------------------------ LIST SEKOLAH & PROFIL SEKOLAH ------------------------------------------------------------------------------------------}}
                 <li class="nav-item">
                     <a href="/profil/admin" class="nav-link {{ Request::is('profil/*') ? 'active' : '' }}">
@@ -43,21 +42,51 @@
                         <p>Profil Sekolah</p>
                     </a>
                 </li>
-                @endcan
+
+                {{------------------------------------------------------------------------------------------ KOMPETENSI KEAHLIAN ------------------------------------------------------------------------------------------}}
+
+                <li class="nav-item has-treeview {{ Request::is('/komli') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon bi bi-award"></i>
+                        <p>
+                            Kompetensi Keahlian
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        {{------------------------------------------------------------------------------------------ JURUSAN ------------------------------------------------------------------------------------------}}
+                        <li class="nav-item">
+                            <a href="/bidang-kompetensi" class="nav-link {{ Request::is('bidang-kompetensi') ? 'active' : '' }}">
+                                <i class="fa-regular fa-circle"></i>
+                                <p>Bidang Keahlian</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/program-kompetensi" class="nav-link {{ Request::is('program-kompetensi') ? 'active' : '' }}">
+                                <i class="fa-regular fa-circle"></i>
+                                <p>Program Keahlian</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/spektrum" class="nav-link {{ Request::is('spektrum') ? 'active' : '' }}">
+                                <i class="fa-regular fa-circle"></i>
+                                <p>Spektrum</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/komli" class="nav-link {{ Request::is('komli') ? 'active' : '' }}">
+                                <i class="fa-regular fa-circle"></i>
+                                <p>Kompetensi Keahlian</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
                 {{------------------------------------------------------------------------------------------ LAHAN SEKOLAH ------------------------------------------------------------------------------------------}}
                 <li class="nav-item">
                     <a href="/lahan-dinas" class="nav-link {{ Request::is('lahan-dinas') ? 'active' : '' }}">
                         <i class="nav-icon bi bi-map"></i>
                         <p>Usulan Lahan</p>
-                    </a>
-                </li>
-
-                {{------------------------------------------------------------------------------------------ KOMPETENSI KEAHLIAN ------------------------------------------------------------------------------------------}}
-                <li class="nav-item">
-                    <a href="/komli" class="nav-link {{ Request::is('komli') ? 'active' : '' }}">
-                        <i class="nav-icon bi bi-award"></i>
-                        <p>Kompetensi Keahlian</p>
                     </a>
                 </li>
 
@@ -192,7 +221,7 @@
 
                 {{------------------------------------------------------------------------------------------ RIWAYAT BANTUAN ------------------------------------------------------------------------------------------}}
                 <li class="nav-item">
-                    <a href="/riwayat-bantuan" class="nav-link {{ Request::is('riwayat-bantuan') ? 'active' : '' }}">
+                    <a href="/riwayat-bantuan-dinas" class="nav-link {{ Request::is('riwayat-bantuan') ? 'active' : '' }}">
                         <i class="nav-icon bi bi-card-text"></i>
                         <p>Riwayat Bantuan</p>
                     </a>
@@ -210,13 +239,13 @@
                     <ul class="nav nav-treeview">
                         {{------------------------------------------------------------------------------------------ JURUSAN ------------------------------------------------------------------------------------------}}
                         <li class="nav-item">
-                            <a href="/monev" class="nav-link {{ Request::is('/monev') ? 'active' : '' }}">
+                            <a href="/monitoring" class="nav-link {{ Request::is('/monev') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Monitoring</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/usulan-peralatan" class="nav-link {{ Request::is('peralatan/nama-jurusan') ? 'active' : '' }}">
+                            <a href="/visitasi" class="nav-link {{ Request::is('peralatan/nama-jurusan') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
                                 <p>Visitasi Sekolah</p>
                             </a>

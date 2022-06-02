@@ -55,5 +55,52 @@ class Kompeten extends Model
             }
         }
     }
+
+    public static function hapusKompeten($kompetens){
+        foreach ($kompetens as $key => $kompeten) {
+
+            // Profil
+            $jml_lk = 0;
+            $jml_pr = 0;
+            if(count($kompeten->profil->kompeten) == 0){
+                Profil::where('id', $kompeten->profil->id)->update([
+                    'jml_siswa_l' => 0,
+                    'jml_siswa_p' => 0,
+                ]);
+            }else{
+                foreach($kompeten->profil->kompeten as $kopetensi){
+                     $jml_lk += $kopetensi->jml_lk;
+                     $jml_pr += $kopetensi->jml_pr;
+                }
+                Profil::where('id', $kompeten->profil->id)->update([
+                    'jml_siswa_l' => $jml_lk,
+                    'jml_siswa_p' => $jml_pr,
+                ]);
+    
+                $jml_lk = 0;
+                $jml_pr = 0;
+            }
+
+            // Usulan Bangunan
+            $usulanBangunans = UsulanBangunan::where('kompeten_id', $kompeten->id)->get();
+            foreach ($usulanBangunans as $usulan) {
+                UsulanBangunan::deleteUsulan($usulan);
+            }
+
+            $usulanPeralatans = UsulanPeralatan::where('kompeten_id', $kompeten->id)->get();
+            foreach ($usulanPeralatans as $usulan) {
+                Storage::delete($usulan->proposal);
+                UsulanPeralatan::destroy($usulan->id);
+            }
+
+            $praktiks = Praktik::where('kompeten_id', $kompeten->id)->get();
+            foreach ($praktiks as $praktik) {
+                Praktik::destroy($data->id);
+            }
+
+            Kompeten::destroy($kompeten->id);
+
+        }
+    }
     
 }

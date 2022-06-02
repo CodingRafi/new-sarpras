@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Spektrum;
 use App\Http\Requests\StoreSpektrumRequest;
 use App\Http\Requests\UpdateSpektrumRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class SpektrumController extends Controller
 {
@@ -15,7 +17,10 @@ class SpektrumController extends Controller
      */
     public function index()
     {
-        //
+        $spektrum = Spektrum::paginate(40);
+        return view("admin.spektrum.spektrum", [
+            'spektrums' => $spektrum
+        ]);
     }
 
     /**
@@ -36,7 +41,22 @@ class SpektrumController extends Controller
      */
     public function store(StoreSpektrumRequest $request)
     {
-        //
+        if (Auth::user()->hasRole('dinas')) {
+            $validatedData = $request->validate([
+                'nama' => 'required',
+                'aturan' => 'required',
+                'tanggal' => 'required',
+                'lampiran' => 'required|mimes:pdf|file|max:5120'
+            ]);
+
+            $validatedData['lampiran'] = $request->file('lampiran')->store('lampiran-spektrum');
+
+            Spektrum::create($validatedData);
+
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -58,7 +78,9 @@ class SpektrumController extends Controller
      */
     public function edit(Spektrum $spektrum)
     {
-        //
+        return view('admin.spektrum.edit', [
+            'data' => $spektrum
+        ]);
     }
 
     /**
@@ -70,7 +92,27 @@ class SpektrumController extends Controller
      */
     public function update(UpdateSpektrumRequest $request, Spektrum $spektrum)
     {
-        //
+        if (Auth::user()->hasRole('dinas')) {
+            $validatedData = $request->validate([
+                'nama' => 'required',
+                'aturan' => 'required',
+                'tanggal' => 'required',
+                'lampiran' => 'mimes:pdf|file|max:5120'
+            ]);
+
+            if($request->file('lampiran')){
+                if($spektrum->lampiran){
+                    Storage::delete($spektrum->lampiran);
+                }
+                $validatedData['lampiran'] = $request->file('lampiran')->store('lampiran-spektrum');
+            }
+
+            $spektrum->update($validatedData);
+
+            return redirect('/spektrum');
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -81,6 +123,12 @@ class SpektrumController extends Controller
      */
     public function destroy(Spektrum $spektrum)
     {
-        //
+        foreach ($spektrum->komli as $key => $komli) {
+            Kompeten::hapusKompeten($komli->kompeten);
+            Komli::destroy($komli->id);
+        }
+        Spektrum::destroy($spektrum->id);
+
+        return redirect()->back();
     }
 }

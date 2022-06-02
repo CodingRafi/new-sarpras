@@ -16,4 +16,8 @@ class Kcd extends Model
     public function profilkcd(){
         return $this->hasMany(ProfilKcd::class);
     }
+
+    public function profil(){
+        return $this->belongsTo(Profil::class);
+    }
 }

@@ -4,6 +4,7 @@ use App\Models\Profil;
 use App\Models\PeralatanTersedia;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KcdController;
 use App\Http\Controllers\FotoController;
 use App\Http\Controllers\RoleController;
 use Spatie\Permission\Models\Permission;
@@ -18,7 +19,10 @@ use App\Http\Controllers\BangunanController;
 use App\Http\Controllers\KompetenController;
 use App\Http\Controllers\KomputerController;
 use App\Http\Controllers\PimpinanController;
+use App\Http\Controllers\SpektrumController;
+use App\Http\Controllers\VisitasiController;
 use App\Http\Controllers\PeralatanController;
+use App\Http\Controllers\ProfilKcdController;
 use App\Http\Controllers\ProfilDepoController;
 use App\Http\Controllers\RehabRenovController;
 use App\Http\Controllers\UsulanFotoController;
@@ -28,7 +32,9 @@ use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\UsulanBangunanController;
 use App\Http\Controllers\UnsurVerifikasiController;
 use App\Http\Controllers\UsulanPeralatanController;
+use App\Http\Controllers\BidangKompetensiController;
 use App\Http\Controllers\PeralatanTersediaController;
+use App\Http\Controllers\ProgramKompetensiController;
 use App\Http\Controllers\Lahan_sekolah\LahanController;
 use App\Http\Controllers\Lahan_sekolah\UsulanLahanController;
 use App\Http\Controllers\Bangunan\Ruang_kelas\KelasController;
@@ -74,13 +80,6 @@ Route::get('admin-detailmonitoring', function () {
     return view('admin.monitoring');
 });
 
-Route::get('cadisdik', function () {
-    return view('admin.cadisdik');
-});
-Route::get('cadisdik/1', function () {
-    return view('admin.cadisdikDetil');
-});
-
 // |-------------------------------------------------------------------------- /SEMENTARA |--------------------------------------------------------------------------
 
 Route::group(['middleware' => ['auth']], function() {
@@ -89,22 +88,31 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/profil/admin', [AdminController::class, 'search']);
     Route::resource('/profil', ProfilController::class);
     Route::get('/lahan-dinas', [UsulanLahanController::class, 'lahanDinas']);
-    Route::get('/bangunan/ruang-kelas-dinas', [KelasController::class, 'showDinas']);
-    Route::get('/bangunan/lab-komputer-dinas', [KomputerController::class, 'showDinas']);
-    Route::get('/bangunan/perpustakaan-dinas', [PerpustakaanController::class, 'showDinas']);
-    Route::get('/bangunan/toilet-dinas', [ToiletController::class, 'showDinas']);
-    Route::get('/bangunan/ruang-pimpinan-dinas', [PimpinanController::class, 'showDinas']);
-    Route::get('/bangunan/rehab-renov-dinas', [RehabRenovController::class, 'showDinas']);
-    Route::get('/bangunan/ruang-praktik-dinas', [PraktikController::class, 'showDinas']);
+    // Route::get('/bangunan/ruang-kelas-dinas', [KelasController::class, 'showDinas']);
+    // Route::get('/bangunan/lab-komputer-dinas', [KomputerController::class, 'showDinas']);
+    // Route::get('/bangunan/perpustakaan-dinas', [PerpustakaanController::class, 'showDinas']);
+    // Route::get('/bangunan/toilet-dinas', [ToiletController::class, 'showDinas']);
+    // Route::get('/bangunan/ruang-pimpinan-dinas', [PimpinanController::class, 'showDinas']);
+    // Route::get('/bangunan/rehab-renov-dinas', [RehabRenovController::class, 'showDinas']);
+    // Route::get('/bangunan/ruang-praktik-dinas', [PraktikController::class, 'showDinas']);
+    Route::get('/riwayat-bantuan-dinas', [RiwayatController::class, 'showDinas']);
     Route::resource('/komli', KomliController::class);
     Route::resource('/unsur-verifikasi', UnsurVerifikasiController::class);
+    Route::resource('/bidang-kompetensi', BidangKompetensiController::class);
+    Route::resource('/program-kompetensi', ProgramKompetensiController::class);
+    Route::resource('/profil-kcd', ProfilKcdController::class);
+    Route::resource('/cadisdik', KcdController::class);
+    Route::resource('/spektrum', SpektrumController::class);
+    Route::resource('/profil-kcd', ProfilKcdController::class);
+    Route::resource('/visitasi', VisitasiController::class);
+    // Route::resource('/visitasi', VisitasiController::class);
+    Route::resource('roles', RoleController::class); 
+    Route::resource('users', RegisteredUserController::class);
     
 
 
 
     // sekolah
-    Route::resource('roles', RoleController::class);
-    Route::resource('users', RegisteredUserController::class);
     Route::patch('/kompeten/tambahsiswa/{id:profil}', [KompetenController::class, 'update']);
     Route::resource('/kompeten', KompetenController::class);
     Route::get('/kompeten/create/{id:profil}', [KompetenController::class, 'create']);
@@ -152,7 +160,7 @@ Route::group(['middleware' => ['auth']], function() {
 
 
     Route::resource('/jenis-pimpinan', JenisPimpinanController::class);
-    Route::resource('/monev', MonevController::class);
+    Route::resource('/monitoring', MonevController::class);
     Route::get('/peralatan-sekolah/{id}', [PeralatanController::class, 'showPeralatan']);
     Route::resource('/peralatan', PeralatanController::class);
     Route::resource('/peralatan-tersedia', PeralatanTersediaController::class);

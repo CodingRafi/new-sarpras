@@ -223,7 +223,7 @@
 
         {{-- End Row --}}
 
-        <div class="card">
+        <div class="card" style="margin-bottom: 10rem !important">
             <div class="card-header" style="background-color: #25b5e9">
                 <h3 class="card-title text-white pt-2 font-weight-bold" style="text-transform: capitalize">Usulan
                     {{ str_replace('_', ' ', request('jenis')) }}</h3>
@@ -403,7 +403,7 @@
         {{-- end modal kekurangan --}}
 
         <!-- modal tambah usulan -->
-        <div class="modal fade" id="modal-default">
+        <div class=" modal fade modal-bangunan {{ $errors->any() ? 'show' : '' }}" id="modal-default"  style="{{ $errors->any() ? 'display: block;background: rgba(69,90,100, .5);' : '' }}">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     @if (request('jenis') == 'ruang_kelas')
@@ -411,7 +411,8 @@
                         @elseif(request('jenis') == 'toilet')
                             <form action="/bangunan/usulan-toilet" method="post" enctype="multipart/form-data">
                             @elseif(request('jenis') == 'perpustakaan')
-                                <form action="/bangunan/usulan-ruang-perpustakaan" method="post" enctype="multipart/form-data">
+                                <form action="/bangunan/usulan-ruang-perpustakaan" method="post"
+                                    enctype="multipart/form-data">
                                 @else
                                     <form action="/bangunan/usulan-lab-komputer" method="post"
                                         enctype="multipart/form-data">
@@ -424,45 +425,66 @@
                     <div class="modal-header">
                         <h4 class="modal-title" style="text-transform: capitalize;">Usulan
                             {{ str_replace('_', ' ', request('jenis')) }}</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close tombol-exnya" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
+                        {{-- input jumlah ruangan --}}
                         @if (request('jenis') == 'toilet')
                         @else
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Jumlah Ruang</label>
-                                <input type="number" class="form-control col-sm-7" placeholder="Masukan Jumlah Ruangan"
-                                    id="jumlah-ruangan" name="jml_ruang" required>
+                                <input type="number" class="form-control col-sm-7 @error('jml_ruang') is-invalid @enderror" placeholder="Masukan Jumlah Ruangan" id="jumlah-ruangan" name="jml_ruang" value="{{ old('jml_ruang') }}" required>
+                                @error('jml_ruang')
+                                    <div class="invalid-feedback d-block" style="margin-left: 21vw">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                         @endif
-                        {{-- input jumlah ruangan --}}
                         {{-- end input jumlah ruangan --}}
 
                         {{-- input luas lahan --}}
                         <div class="form-group row">
                             <label class="col-sm-4 col-form-label">Luas Lahan (m²)</label>
-                            <input type="number" class="form-control col-sm-7" placeholder="Masukan Luas Lahan"
-                                id="luas-lahan" name="luas_lahan" required>
+                            <input type="number" class="form-control col-sm-7 @error('luas_lahan') is-invalid @enderror"  placeholder="Masukan Luas Lahan"
+                                id="luas-lahan" name="luas_lahan" value="{{ old('luas_lahan') }}" required>
+                            @error('luas_lahan')
+                                <div class="invalid-feedback d-block" style="margin-left: 21vw">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         {{-- end luas lahan --}}
 
                         {{-- upload gambar lokasi --}}
                         <div class="form-group row">
-                            <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan</label>
-                            <input type="file" id="gambar-lahan" required multiple accept="image/*" name="gambar[]">
+                            <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan <br><small class="text-danger">*Note Max 5mb</small></label>
+                            <input type="file" id="gambar-lahan" multiple accept="image/*" name="gambar[]" class="gambar-lahan mt-2 @error('gambar') is-invalid @enderror" value="{{ old('gambar') }}" required>
+                            @error('gambar.*')
+                                <div class="invalid-feedback d-block" style="margin-left: 21vw">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         {{-- end upload gambar lokasi --}}
+
                         {{-- upload proposal --}}
                         <div class="form-group row">
-                            <label class="col-sm-4 col-form-label pt-1" for="customFile">Proposal</label>
-                            <input type="file" id="proposal" required accept=".pdf" name="proposal">
+                            <label class="col-sm-4 col-form-label pt-1 @error('proposal') is-invalid @enderror" value="{{ old('proposal') }}" for="customFile">Proposal</label>
+                            <input type="file" id="proposal" accept=".pdf" name="proposal" required>
+                            @error('proposal')
+                                <div class="invalid-feedback d-block" style="margin-left: 21vw">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         {{-- end upload proposal --}}
+
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                        <button type="button" class="btn btn-default tombol-Close" data-dismiss="modal">Tutup</button>
                         <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
                     </div>
                     </form>
@@ -473,8 +495,28 @@
         </div>
         <div class="content-backdrop fade"></div>
 
-        {{-- Tab --}}
-        {{-- <div class="modal fade" id="modal-edit">
+
+    @section('tambahjs')
+        <script>
+            const close = document.querySelector('.tombol-exnya');
+            const modal = document.querySelector('.modal-bangunan');
+            const tombolClose = document.querySelector('.tombol-Close');
+
+            close.addEventListener('click', function() {
+                modal.classList.remove('show');
+                modal.style.display = 'none';
+                modal.style.background = 'none';
+            })
+            tombolClose.addEventListener('click', function() {
+                modal.classList.remove('show');
+                modal.style.display = 'none';
+                modal.style.background = 'none';
+            })
+        </script>
+    @endsection
+
+    {{-- Tab --}}
+    {{-- <div class="modal fade" id="modal-edit">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <form action="/bangunan/usulan-ruang-kelas" method="post">
@@ -541,7 +583,7 @@
             </div>
             <!-- /.modal-dialog -->
         </div> --}}
-        {{-- End Tab --}}
+    {{-- End Tab --}}
 
-        {{-- End Main --}}
-    @endsection
+    {{-- End Main --}}
+@endsection

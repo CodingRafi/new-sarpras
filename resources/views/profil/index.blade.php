@@ -452,7 +452,8 @@
                                             <div class="modal-footer justify-content-between">
                                                 <button type="button" class="btn btn-default"
                                                     data-dismiss="modal">Tutup</button>
-                                                <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
+                                                <button type="submit" class="btn text-white"
+                                                    style="background-color: #00a65b">Simpan</button>
                                             </div>
                                         </form>
                                     </div>
@@ -791,29 +792,38 @@
                                     </div>
                                 @endif
                             </div>
-                            <div class="chart tab-pane isitambahkopetensi" id="tambah-jurusan" style="{{ Auth::user()->hasRole('sekolah') ? '' : 'display:none;' }}">
-                            <form style="{{ count($kopetensikeahlians) > 0 ? 'height: 10rem;' : 'height: 18rem;' }}" action="/kompeten" method="POST">
-                                @csrf
-                                <input type="hidden" name="profil_id" value="{{ $profil->id }}">
-                                <div class="card-body p-0 ">
-                                    <div class="form-group">
-                                        <label>Tambah Jurusan</label>
+                            <div class="chart tab-pane isitambahkopetensi" id="tambah-jurusan"
+                                style="{{ Auth::user()->hasRole('sekolah') ? '' : 'display:none;' }}">
+                                @if (count($semua_jurusan) > 0)
+                                    <form
+                                        style="{{ count($kopetensikeahlians) > 0 ? 'height: 10rem;' : 'height: 18rem;' }}"
+                                        action="/kompeten" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="profil_id" value="{{ $profil->id }}">
+                                        <div class="card-body p-0 ">
+                                            <div class="form-group">
+                                                <label>Tambah Jurusan</label>
 
-                                        <select class="fstdropdown-select select-jurusan" id="select" multiple
-                                            name="jurusanTerpilih[]">
-                                            @foreach ($semua_jurusan as $jurusan)
-                                                <option value="{{ $jurusan->id }}">{{ $jurusan->kompetensi }}
-                                                </option>
-                                            @endforeach
-                                        </select>
+                                                <select class="fstdropdown-select select-jurusan" id="select" multiple
+                                                    name="jurusanTerpilih[]">
+                                                    @foreach ($semua_jurusan as $jurusan)
+                                                        <option value="{{ $jurusan->id }}">{{ $jurusan->kompetensi }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
 
+                                            </div>
+                                        </div>
+                                        <!-- /.card-body -->
+                                        <div class="card-footer p-0 mt-3" style="background: none;">
+                                            <button type="submit" class="btn btn-success">Simpan</button>
+                                        </div>
+                                    </form>
+                                @else
+                                    <div class="alert text-center text-white" role="alert" style="background: #00a65b;">
+                                        Maaf belum ada jurusan
                                     </div>
-                                </div>
-                                <!-- /.card-body -->
-                                <div class="card-footer p-0 mt-3" style="background: none;">
-                                    <button type="submit" class="btn btn-success">Simpan</button>
-                                </div>
-                                </form>
+                                @endif
 
                                 @if (count($kopetensikeahlians) > 0)
                                     <table class="table table-bordered text-center">
