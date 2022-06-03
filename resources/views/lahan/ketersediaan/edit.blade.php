@@ -55,34 +55,34 @@
                 {{-- --------------------------------------------- NAMA LAHAN --------------------------------------------- --}}
                 <div class="row input pl-5">
                     <label class="col-2 mt-3">Nama Lahan</label>
-                    <input type="text" class="col-9 form-control mt-2" placeholder="Masukan Nama Lahan" required
+                    <input type="text" class="col-9 form-control mt-2 loading-tambah" placeholder="Masukan Nama Lahan" required
                         value="{{ $ketersediaan->nama }}" name="nama">
                 </div>
 
                 {{-- --------------------------------------------- NO SERTIFIKAT --------------------------------------------- --}}
                 <div class="row input pl-5">
                     <label class="col-2 mt-3">No Sertifikat</label>
-                    <input type="number" class="col-9 form-control mt-2" placeholder="Masukan No Sertifikat" required
+                    <input type="number" class="col-9 form-control mt-2 loading-tambah" placeholder="Masukan No Sertifikat" required
                         value="{{ $ketersediaan->no_sertifikat }}" name="no_sertifikat">
                 </div>
 
                 {{-- --------------------------------------------- PANJANG --------------------------------------------- --}}
                 <div class="row input pl-5">
                     <label class="col-2 mt-3">Panjang (m)</label>
-                    <input type="number" class="col-9 form-control mt-2" placeholder="Masukan Panjang" required
+                    <input type="number" class="col-9 form-control mt-2 loading-tambah" placeholder="Masukan Panjang" required
                         value="{{ $ketersediaan->panjang }}" name="panjang" step=any>
                 </div>
 
                 {{-- --------------------------------------------- LEBAR --------------------------------------------- --}}
                 <div class="row input pl-5">
                     <label class="col-2 mt-3">Lebar (m)</label>
-                    <input type="number" class="col-9 form-control mt-2" placeholder="Masukan Lebar" required
+                    <input type="number" class="col-9 form-control mt-2 loading-tambah" placeholder="Masukan Lebar" required
                         value="{{ $ketersediaan->lebar }}" name="lebar" step=any>
                 </div>
                 {{-- --------------------------------------------- ALAMAT --------------------------------------------- --}}
                 <div class="row input pl-5">
                     <label class="col-2 mt-3">Alamat</label>
-                    <input type="text" class="col-9 form-control mt-2" placeholder="Masukan Alamat" required
+                    <input type="text" class="col-9 form-control mt-2 loading-tambah" placeholder="Masukan Alamat" required
                         value="{{ $ketersediaan->alamat }}" name="alamat">
                 </div>
 
@@ -101,7 +101,7 @@
                 {{-- --------------------------------------------- KETERANGAN --------------------------------------------- --}}
                 <div class="row input pb-3 pl-5">
                     <label class="col-2 mt-3">Keterangan</label>
-                    <input type="text" class="col-9 form-control mt-2" placeholder="Masukan Keterangan" required
+                    <input type="text" class="col-9 form-control mt-2 loading-tambah" placeholder="Masukan Keterangan" required
                         value="{{ $ketersediaan->keterangan }}" name="keterangan">
                 </div>
 
@@ -152,7 +152,7 @@
                 {{-- --------------------------------------------- KEMBALI/SUBMIT --------------------------------------------- --}}
                 <div class="pb-3 pl-5 pt-3">
                     <a href="/lahan" class="btn btn-default">Kembali</a>
-                    <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
+                    <button type="submit" class="btn text-white loading-simpan" style="background-color: #00a65b">Simpan</button>
                 </div>
             </form>
 

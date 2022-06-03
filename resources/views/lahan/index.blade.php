@@ -215,8 +215,8 @@
                         {{-- input nama lahan --}}
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Nama Lahan</label>
-                            <input type="text" class="form-control col-sm-9  @error('nama') is-invalid @enderror" 
-                            placeholder="Masukan Nama Lahan" id="nama-lahan" name="nama" value="{{ old('nama') }}">
+                            <input type="text" class="form-control col-sm-9  @error('nama') is-invalid @enderror loading-tambah" 
+                            placeholder="Masukan Nama Lahan" id="nama-lahan" name="nama" value="{{ old('nama') }}" required>
                             @error('nama')
                             <div class="invalid-feedback d-block" style="margin-left: 13vw">
                                 {{ $message }}
@@ -228,8 +228,8 @@
                         {{-- input sertifikat --}}
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">No Sertifikat</label>
-                            <input type="text" class="form-control col-sm-9 @error('no_sertifikat') is-invalid @enderror" 
-                            placeholder="Masukan No Sertifikat" id="sert" name="no_sertifikat" value="{{ old('no_sertifikat') }}">
+                            <input type="text" class="form-control col-sm-9 @error('no_sertifikat') is-invalid @enderror loading-tambah" 
+                            placeholder="Masukan No Sertifikat" id="sert" name="no_sertifikat" value="{{ old('no_sertifikat') }}" required>
                             @error('no_sertifikat')
                             <div class="invalid-feedback d-block" style="margin-left: 13vw">
                                 {{ $message }}
@@ -241,8 +241,8 @@
                         {{-- input panjang --}}
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Panjang(m)</label>
-                            <input type="number" class="form-control col-sm-9 @error('panjang') is-invalid @enderror" 
-                            placeholder="Masukan Panjang Lahan" id="panjang" name="panjang" value="{{ old('panjang') }}" step=any>
+                            <input type="number" class="form-control col-sm-9 @error('panjang') is-invalid @enderror loading-tambah" 
+                            placeholder="Masukan Panjang Lahan" id="panjang" name="panjang" value="{{ old('panjang') }}" step=any required>
                             @error('panjang')
                             <div class="invalid-feedback d-block" style="margin-left: 13vw">
                                 {{ $message }}
@@ -254,8 +254,8 @@
                         {{-- input lebar --}}
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Lebar(m)</label>
-                            <input type="number" class="form-control col-sm-9 @error('lebar') is-invalid @enderror" 
-                            placeholder="Masukan Lebar Lahan" id="lebar" name="lebar" value="{{ old('lebar') }}" step=any>
+                            <input type="number" class="form-control col-sm-9 @error('lebar') is-invalid @enderror loading-tambah" 
+                            placeholder="Masukan Lebar Lahan" id="lebar" name="lebar" value="{{ old('lebar') }}" step=any required>
                             @error('lebar')
                             <div class="invalid-feedback d-block" style="margin-left: 13vw">
                                 {{ $message }}
@@ -267,8 +267,8 @@
                         {{-- input alamat --}}
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Alamat</label>
-                            <input type="text" class="form-control col-sm-9 @error('alamat') is-invalid @enderror" 
-                            placeholder="Masukan Alamat" id="alamat" name="alamat" value="{{ old('alamat') }}">
+                            <input type="text" class="form-control col-sm-9 @error('alamat') is-invalid @enderror loading-tambah" 
+                            placeholder="Masukan Alamat" id="alamat" name="alamat" value="{{ old('alamat') }}" required>
                             @error('alamat')
                             <div class="invalid-feedback d-block" style="margin-left: 13vw">
                                 {{ $message }}
@@ -295,8 +295,8 @@
                         {{-- input jenis keterangan --}}
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Keterangan</label>
-                            <input type="text" class="form-control col-sm-9 @error('keterangan') is-invalid @enderror" 
-                            placeholder="Masukan Keterangan" id="Masukan Keterangan" name="keterangan" value="{{ old('keterangan') }}">
+                            <input type="text" class="form-control col-sm-9 @error('keterangan') is-invalid @enderror loading-tambah" 
+                            placeholder="Masukan Keterangan" id="Masukan Keterangan" name="keterangan" value="{{ old('keterangan') }}" required>
                              @error('keterangan')
                             <div class="invalid-feedback d-block" style="margin-left: 13vw">
                                 {{ $message }}
@@ -309,7 +309,7 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label pt-1" for="customFile">Dokumen Bukti Lahan (PDF /
                                 Foto)</label>
-                            <input type="file" class="pilih @error('chooseFile') is-invalid @enderror" id="chooseFile" name="bukti_lahan" accept="image/*, .pdf" required onchange="previewImage()" value="{{ old('keterangan') }}">
+                            <input type="file" class="pilih @error('chooseFile') is-invalid @enderror loading-tambah" id="chooseFile" name="bukti_lahan" accept="image/*, .pdf" required onchange="previewImage()" value="{{ old('keterangan') }}" required>
                              @error('chooseFile')
                             <div class="invalid-feedback d-block" style="margin-left: 13vw">
                                 {{ $message }}
@@ -325,7 +325,7 @@
                         {{-- end upload file(pdf) --}}
 
                         {{-- button simpan --}}
-                        <button type="submit" class="btn text-white col-sm-1"
+                        <button type="submit" class="btn text-white col-sm-1 loading-simpan"
                             style="background-color: #00a65b">Simpan</button>
                         {{-- end button simpan --}}
                     </form>
