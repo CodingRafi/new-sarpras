@@ -460,7 +460,7 @@
 
                         {{-- upload gambar lokasi --}}
                         <div class="form-group row">
-                            <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan <br><small class="text-danger">*Note Max 5mb</small></label>
+                            <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan <br><small class="text-danger">*Note Max 1 Gambar 5MB</small></label>
                             <input type="file" id="gambar-lahan" multiple accept="image/*" name="gambar[]" class="gambar-lahan mt-2 @error('gambar') is-invalid @enderror loading-tambah" value="{{ old('gambar') }}" required>
                             @error('gambar.*')
                                 <div class="invalid-feedback d-block" style="margin-left: 21vw">
