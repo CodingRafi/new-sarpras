@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\Kcd;
 use App\Models\ProfilDepo;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -107,9 +108,19 @@ class UserSeeder extends Seeder
                 'name' => $profil['depo_nama'],
                 'npsn' => $profil["depo_npsn"],
                 'password' => bcrypt('12345678'),
-                // 'email' => $profil['depo_email']
+                'email' => $profil['depo_email']
             ]);
             $user->assignRole('sekolah');
+        }
+
+        //? Membuat user kcd
+        $kcds = Kcd::all();
+        foreach ($kcds as $ke => $kcd) {
+            $user = User::create([
+                'kcd_id' => $kcd->id,
+                'name' => $kcd->nama,
+            ]);
+            $user->assignRole('kcd');
         }
 
     }

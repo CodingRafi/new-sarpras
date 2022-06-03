@@ -108,14 +108,18 @@ class RegisteredUserController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:users,email,'.$user->id,
-            'instansi' => 'required',
-            'kota_kabupaten_id' => 'required',
+            'email' => 'required|email|unique:users',
         ]);
+
+        $validatedData['password'] = bcrypt('12345678');
 
         $user->update($validatedData);
     
-        return redirect('/monitoring');
+        if ($user->hasRole('kcd')) {
+            return redirect('/cadisdik/'    . $user->kcd->id);
+        }else{
+            return redirect('/monitoring');
+        }
     }
 
     /**

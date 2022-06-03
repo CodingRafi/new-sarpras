@@ -57,4 +57,8 @@ class User extends Authenticatable
     public function visitasi(){
         return $this->hasMany(Visitasi::class);
     }
+
+    public function kcd(){
+        return $this->belongsTo(Kcd::class);
+    }
 }

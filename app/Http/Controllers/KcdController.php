@@ -88,7 +88,7 @@ class KcdController extends Controller
     public function show(Kcd $kcd, $id)
     {
         $profils = ProfilKcd::ambil($id);
-        $kcd = Kcd::where('id', $id)->get()[0];
+        $kcd = Kcd::select('kcds.*', 'users.email', 'users.password', 'users.id as id_user')->where('kcds.id', $id)->leftJoin('users', 'users.kcd_id', 'kcds.id')->get()->first();
         $kabupatens = ProfilKcd::getKabupaten($id);
 
         return view('admin.cadisdik.cadisdikDetil', [
