@@ -58,40 +58,39 @@
 {{-- --------------------------------------------- Row ------------------------------------------------- --}}
 <div class="container-fluid">
     <div class="row">
-        <div class="col">
-            <div class="card" style="border-radius: 0px 20px 0px 20px !important">
-                <div class="card-header" style="background-color:#00a65b; border-radius: 0px 20px 0px 20px !important">
-                    <h4 class="text-center text-white font-weight-bold">Total Luas Lahan</h4>
-                </div><!-- /.card-header -->
-                <div class="card-body">
-                    <h1 class="text-center font-weight-bold pt-2">{{ $luasKetersediaanLahan }} m²</h1>
-                </div><!-- /.card-body -->
+            <div class="col">
+                <div class="card" style="border-radius: 0px 20px 0px 20px !important">
+                    <div class="card-header" style="background-color:#00a65b; border-radius: 0px 20px 0px 20px !important">
+                        <h4 class="text-center text-white font-weight-bold">Total Luas Lahan</h4>
+                    </div><!-- /.card-header -->
+                    <div class="card-body">
+                        <h1 class="text-center font-weight-bold pt-2">{{ $luasKetersediaanLahan }} m²</h1>
+                    </div><!-- /.card-body -->
+                </div>
             </div>
-        </div>
 
-        <div class="col">
-            <div class="card" style="border-radius: 0px 20px 0px 20px !important">
-                <div class="card-header" style="background-color: #25b5e9; border-radius: 0px 20px 0px 20px !important">
-                    <h4 class="text-center text-white font-weight-bold">Jenis Kepemilikan</h4>
-                </div><!-- /.card-header -->
-                <div class="card-body">
-                    <h1 class="text-center font-weight-bold pt-2" style="font-size: 18px; box-sizing:border-box">SHM:
-                        {{ $shm }} HGB: {{ $hgb }} Sewa: {{ $sewa }} Hibah/Wakaf: {{ $hibah }} Tanah Desa:
-                        {{ $tanah_desa }}</h1>
-                </div><!-- /.card-body -->
+            <div class="col">
+                <div class="card" style="border-radius: 0px 20px 0px 20px !important">
+                    <div class="card-header" style="background-color:#25b5e9; border-radius: 0px 20px 0px 20px !important">
+                        <h4 class="text-center font-weight-bold text-white">Kekurangan Lahan</h4>
+                    </div><!-- /.card-header -->
+                    <div class="card-body">
+                        <h1 class="text-center font-weight-bold pt-2">{{ $luasKekuranganLahan }} m²</h1>
+                    </div><!-- /.card-body -->
+                </div>
             </div>
-        </div>
 
-        <div class="col">
-            <div class="card" style="border-radius: 0px 20px 0px 20px !important">
-                <div class="card-header bg-dark" style="border-radius: 0px 20px 0px 20px !important">
-                    <h4 class="text-center font-weight-bold">Kekurangan Lahan</h4>
-                </div><!-- /.card-header -->
-                <div class="card-body">
-                    <h1 class="text-center font-weight-bold pt-2">{{ $luasKekuranganLahan }} m²</h1>
-                </div><!-- /.card-body -->
+            <div class="col">
+                <div class="card" style="border-radius: 0px 20px 0px 20px !important">
+                    <div class="card-header"
+                        style="background-color: #263238; border-radius: 0px 20px 0px 20px !important">
+                        <h4 class="text-center text-white font-weight-bold">Jenis Kepemilikan</h4>
+                    </div><!-- /.card-header -->
+                    <div class="card-body kepemilikan">
+                        <h1 class="text-center font-weight-bold pt-2" style="font-size:18px; box-sizing:border-box">SHM: {{ $shm }} HGB: {{ $hgb }} Sewa: {{ $sewa }} Hibah/Wakaf: {{ $hibah }} Tanah Desa: {{ $tanah_desa }}</h1>
+                    </div><!-- /.card-body -->
+                </div>
             </div>
-        </div>
 
         @if (strtolower(Auth::user()->profil->status_sekolah) != 'swasta')
         <div class="col">
@@ -107,10 +106,10 @@
         @endif
     </div>
 </div>
-{{-- --------------------------------------------- End ------------------------------------------------- --}}
+{{------------------------------------------------ End -----------------------------------------------------------}}
 
 
-{{-- ------------------------------------------- Lahan Sekolah ---------------------------------------- --}}
+{{---------------------------------------------- Lahan Sekolah ---------------------------------------------------}}
 <div class="card mt-3 mb-5">
     <div class="card-header" style="background-color: #25b5e9">
         <ul class="nav nav-pills ml-auto">

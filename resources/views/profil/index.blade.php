@@ -905,30 +905,32 @@
                 </h3>
             </div><!-- /.card-header -->
             <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th class="text-center">No</th>
-                            <th class="text-center">Kategori</th>
-                            <th class="text-center">Nama</th>
-                            <th class="text-center">Kondisi</th>
-                            <th class="text-center">Keterangan</th>
-                            <th class="text-center">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="text-center">1.</td>
-                            <td class="text-center">Lahan</td>
-                            <td class="text-center">Tanah 1</td>
-                            <td class="text-center">SHM</td>
-                            <td class="text-center">Ideal</td>
-                            <td class="text-center">
-                                <div class="btn text-white" style="background-color: #00a65b">Detail</div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th class="text-center">No</th>
+                                <th class="text-center">Kategori</th>
+                                <th class="text-center">Nama</th>
+                                <th class="text-center">Kondisi</th>
+                                <th class="text-center">Keterangan</th>
+                                <th class="text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center">1.</td>
+                                <td class="text-center">Lahan</td>
+                                <td class="text-center">Tanah 1</td>
+                                <td class="text-center">SHM</td>
+                                <td class="text-center">Ideal</td>
+                                <td class="text-center">
+                                    <div class="btn text-white" style="background-color: #00a65b">Detail</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div><!-- /.card-body -->
         </div>
     </div><!-- /.container-fluid -->
