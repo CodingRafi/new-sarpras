@@ -101,9 +101,9 @@
 
                 {{-- --------------------------------------------- JUMLAH RUANG --------------------------------------------- --}}
                 <div class="form-group row">
-                    <label class="col-sm-3 col-form-label" style="text-transform: capitalize;">Jumlah Ruang {{ str_replace('_', ' ', $data->jenis) }}</label>
+                    <label class="col-sm-3 col-form-label" style="text-transform: capitalize;">Jumlah {{ str_replace('_', ' ', $data->jenis) }}</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" placeholder="Masukan Jumlah Ruang" value="{{ $data->jml_ruang }}" name="jml_ruang">
+                        <input type="number" class="form-control loading-tambah" placeholder="Masukan Jumlah Ruang" value="{{ $data->jml_ruang }}" name="jml_ruang">
                     </div>
                 </div>
                 @endif
@@ -112,7 +112,7 @@
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Luas Lahan</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" placeholder="Masukan Luas Lahan" value="{{ $data->luas_lahan }}" name="luas_lahan">
+                        <input type="number" class="form-control loading-tambah" placeholder="Masukan Luas Lahan" value="{{ $data->luas_lahan }}" name="luas_lahan">
                     </div>
                 </div>
 
@@ -163,7 +163,7 @@
 
                 {{-- --------------------------------------------- SUBMIT --------------------------------------------- --}}
                 <div class="pb-3 pl-5 mt-4">
-                    <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
+                    <button type="submit" class="btn text-white loading-simpan" style="background-color: #00a65b">Simpan</button>
                 </div>
             </div>
         </form>

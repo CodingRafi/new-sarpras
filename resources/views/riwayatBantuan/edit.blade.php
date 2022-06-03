@@ -46,11 +46,12 @@
 
 @section('container')
     {{-- @dd($data->jenis) --}}
-    <div class="title pt-3">
-        <h3 class="text-dark display-4 pl-3" style="font-size: 25px;text-transform: capitalize;">Edit Riwayat Bantuan</h3>
-    </div>
-
-    <div class="card">
+    
+    <div class="card mt-2">
+        <div class="title pt-3">
+            <h3 class="text-dark display-4 pl-3" style="font-size: 25px;text-transform: capitalize;">Edit Riwayat Bantuan</h3>
+        </div>
+        <hr style="color: rgb(189, 189, 189)">
         <form class="form-horizontal" action="/riwayat-bantuan/{{ $data->id }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('patch')
@@ -117,7 +118,7 @@
                     </div>
                 </div>
 
-                <div class="d-flex flex-wrap container-preview mb-3">
+                <div class="d-flex flex-wrap container-preview mb-3" style="margin-left: 245px">
                     @foreach ($fotos as $foto)
                     <div class="item col-sm-3 col-6 container-image ">
                         <div class="shadow-sm rounded border">
@@ -134,7 +135,7 @@
                     @endforeach
                 </div>
                 {{-- --------------------------------------------- SUBMIT --------------------------------------------- --}}
-                <div class="pb-3 pl-5 mt-4">
+                <div class="pb-3 pl-2 mt-4">
                     <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
                 </div>
             </div>
