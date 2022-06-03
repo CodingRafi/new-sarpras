@@ -18,13 +18,15 @@
         {{-- ---------------------------------------------------------------------------------------- RIWAYAT BANTUAN ---------------------------------------------------------------------------------------- --}}
         <div class="card mb-5">
             <div class="card-header" style="background-color: #25b5e9">
-                <ul class="nav nav-pills ml-auto">
-                    <li class="nav-item mr-1">
-                        <button type="button" class="btn text-white border pr-4 pl-4" data-toggle="modal"
-                            data-target="#tambah"><i class="bi bi-plus-lg"></i> Tambah
-                        </button>
-                    </li>
-                </ul>
+                <div class="container row p-0">
+                    <ul class="nav nav-pills ml-auto">
+                        <li class="nav-item mr-1">
+                            <button type="button" class="btn text-white border pr-4 pl-4" data-toggle="modal"
+                                data-target="#tambah"><i class="bi bi-plus-lg"></i> Tambah
+                            </button>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -76,7 +78,7 @@
                                             <form action="/riwayat-bantuan/{{ $riwayat->id }}" method="post" class="mt-2">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="btn btn-success" onclick="return confirm('Apakah anda yakin akan menghapus riwayat bantuan ini?')">Hapus</button>
+                                                <button type="submit" class="btn text-white" onclick="return confirm('Apakah anda yakin akan menghapus riwayat bantuan ini?')" style="background-color: #00a65b">Hapus</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -116,7 +118,6 @@
                                             required>
                                     </div>
                                 </div>
-                                <hr>
                                 {{-- ---------------------------------------------------------------------------------------- JENIS BANTUAN ---------------------------------------------------------------------------------------- --}}
                                 <div class="form-group row">
                                     <label for="jenis-bantuan" class="col-sm-3 col-form-label">Jenis Bantuan</label>
@@ -125,7 +126,6 @@
                                             required>
                                     </div>
                                 </div>
-                                <hr>
                                 {{-- ---------------------------------------------------------------------------------------- PEMBERI BANTUAN ---------------------------------------------------------------------------------------- --}}
                                 <div class="form-group row">
                                     <label for="pemberi-bantuan" class="col-sm-3 col-form-label">Pemberi Bantuan</label>
@@ -134,7 +134,6 @@
                                             name="pemberian_bantuan" required>
                                     </div>
                                 </div>
-                                <hr>
                                 {{-- ---------------------------------------------------------------------------------------- SUMBER ANGGARAN ---------------------------------------------------------------------------------------- --}}
                                 <div class="form-group row">
                                     <label for="sumber-anggaran" class="col-sm-3 col-form-label">Sumber Anggaran</label>
@@ -147,7 +146,6 @@
                                         </select>
                                     </div>
                                 </div>
-                                <hr>
                                 {{-- ---------------------------------------------------------------------------------------- NILAI BANTUAN ---------------------------------------------------------------------------------------- --}}
                                 <div class="form-group row">
                                     <label for="nilai-bantuan" class="col-sm-3 col-form-label">Nilai Bantuan</label>
@@ -156,20 +154,17 @@
                                             required>
                                     </div>
                                 </div>
-                                <hr>
                                 {{-- ---------------------------------------------------------------------------------------- MANFAAT BANTUAN ---------------------------------------------------------------------------------------- --}}
                                 <div class="form-group row">
                                     <label for="foto-bantuan" class="col-sm-3 col-form-label">Foto Manfaat Bantuan</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
                                             <div class="">
-                                                <input type="file" id="foto-bantuan" name="gambar[]" multiple
-                                                    accept="image/*" required>
+                                                <input type="file" id="foto-bantuan" name="gambar[]" multiple accept="image/*" class="mt-1" required>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <hr>
                                 {{-- ---------------------------------------------------------------------------------------- KETERAGAN BANTUAN ---------------------------------------------------------------------------------------- --}}
                                 <div class="form-group row">
                                     <label for="keterangan-bantuan" class="col-sm-3 col-form-label">Keterangan
@@ -181,7 +176,7 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-success float-right">Simpan</button>
+                                <button type="submit" class="btn text-white float-right" style="background-color: #00a65b">Simpan</button>
                             </div>
                         </form>
                     </div>
@@ -273,7 +268,7 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-success float-right">Simpan</button>
+                                <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
                             </div>
                         </form>
                     </div>

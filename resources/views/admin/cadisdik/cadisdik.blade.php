@@ -115,8 +115,8 @@
     <!-- body -->
     <div class="container">
         <div class="card card-default">
-            <div class="card-header bg-success d-flex p-0">
-                <h3 class="card-title p-3">Kantor Cabang Dinas</h3>
+            <div class="card-header d-flex p-0" style="background-color: #00a65b">
+                <h3 class="card-title p-3 text-white">Kantor Cabang Dinas</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -124,7 +124,7 @@
                 @if (count($kcds) > 0)
                     @foreach ($kcds as $ke => $kcd)
                         <div class="row child-noneborder shadow-sm">
-                            <div class="alert alert-info col-12 col-lg-6 d-flex flex-column justify-content-between">
+                            <div class="alert text-white col-12 col-lg-6 d-flex flex-column justify-content-between" style="background-color: #25b5e9">
                                 <h5 class="h6"><i class="icon bi bi-bank2"></i> Instansi</h5>
                                 <div>
                                     <h3 class="instansi">{{ $kcd->instansi }}</h3>
@@ -143,8 +143,8 @@
                             </div>
                             <div class="callout callout-secondary col-5 col-lg-2 d-flex flex-column justify-content-between"
                                 style="gap: 0.5rem;">
-                                <a class="btn btn-info text-white" href="/cadisdik/{{ $kcd->id }}"
-                                    style="text-decoration: none">Detail</a>
+                                <a class="btn text-white" href="/cadisdik/{{ $kcd->id }}"
+                                    style="background-color:#00a65b; text-decoration: none">Detail</a>
                                 <button class="btn btn-warning text-white tombol-edit-cadisdik" data-toggle="modal"
                                     data-target="#edit-cadisdik" data-id="{{ $kcd->id }}">Tambah Wilayah</button>
                             </div>

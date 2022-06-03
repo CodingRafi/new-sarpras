@@ -265,10 +265,6 @@
                                                     </th>
                                                     <th class="col-1 text-center" style="background-color: #eeeeee"
                                                         scope="col">
-                                                        Kabupaten/ Kota
-                                                    </th>
-                                                    <th class="col-1 text-center" style="background-color: #eeeeee"
-                                                        scope="col">
                                                         Provinsi
                                                     </th>
                                                     <th class="col-1 text-center" style="background-color: #eeeeee"
@@ -291,10 +287,6 @@
                                                         </td>
                                                         <td class="col-1 text-center instansi_pengawas">
                                                             {{ $verifikator->instansi }}
-                                                        </td>
-                                                        <td class="col-1 text-center kota_kabupaten_pengawas"
-                                                            data-kab="{{ $verifikator->id_kota_kabupatens }}">
-                                                            {{ $verifikator->nama_kota_kabupaten }}
                                                         </td>
                                                         <td class="col-1 text-center">
                                                             {{ $verifikator->provinsi }}
@@ -362,17 +354,6 @@
                                             id="nama" name="name">
                                     </div>
                                     {{-- end input nama --}}
-                                    {{-- input Kabupaten/ Kota --}}
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Kabupaten/ Kota</label>
-                                        <select class="form-control col-9 fstdropdown-select" id="kompetensi-keahlian"
-                                            name="kota_kabupaten_id">
-                                            @foreach ($kota_kabupatens as $kota)
-                                                <option value="{{ $kota->id }}">{{ $kota->nama }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    {{-- end input Kabupaten/ Kota --}}
                                     {{-- input nama instansi --}}
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Instansi</label>

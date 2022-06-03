@@ -47,14 +47,13 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         if (Auth::user()->hasRole('dinas')) {
             $validatedData = $request->validate([
                 'role' => 'required',
                 'name' => 'required',
                 'email' => 'required|email|unique:users',
                 'instansi' => 'required',
-                'kota_kabupaten_id' => 'required'
+                'kota_kabupaten_id' => 'nullable'
             ]);
             
             $validatedData['password'] = Hash::make('12345678');
