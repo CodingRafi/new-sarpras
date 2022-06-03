@@ -22,6 +22,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <!-- Loading Screen -->
+    <link rel="stylesheet" href="/assets/css/loadingScreen.css">
     <!-- Font-Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
@@ -63,23 +65,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
+        {{-- LOADING SCREEN --}}
+        @include('mypartials.loadingScreen')
+        {{-- /LOADING SCREEN --}}
 
         {{-- NAVBAR --}}
         @include('mypartials.navbar')
         {{-- /NAVBAR --}}
 
+        {{-- SIDEBAR --}}
         @if (Auth::user()->hasRole('dinas'))
             @include('mypartials.asideadmin')
         @elseif(Auth::user()->hasRole('sekolah'))
             @include('mypartials.aside')
         @endif
-
-        {{-- SIDEBAR --}}
         {{-- /SIDEBAR --}}
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-
 
             <!-- Main content -->
             <section class="content pl-2 pr-2">
@@ -87,7 +90,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 {{-- CONTAINER --}}
                 @yield('container')
                 {{-- /CONTAINER --}}
-
             </section>
             <!-- /.content -->
         </div>
@@ -115,6 +117,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     @yield('tambahjs')
 
     @yield('peralatanjs')
+    <script src="/assets/js/loadingScreen.js"></script>
 </body>
 
 </html>

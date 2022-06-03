@@ -334,7 +334,7 @@
                     {{-- input luas lahan --}}
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label">Jumlah Ruang</label>
-                        <input type="number" class="form-control col-sm-7" placeholder="Masukan Jumlah Ruang"
+                        <input type="number" class="form-control col-sm-7 loading-tambah" placeholder="Masukan Jumlah Ruang"
                             id="jumlah-ruang" name="jml_ruang" required>
                     </div>
                     {{-- end luas lahan --}}
@@ -342,14 +342,14 @@
                     {{-- upload gambar lokasi --}}
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan</label>
-                        <input type="file" id="gambar-lahan" name="gambar[]" multiple accept="image/*" required>
+                        <input type="file" class="loading-tambah" id="gambar-lahan" name="gambar[]" multiple accept="image/*" required>
                     </div>
                     {{-- end upload gambar lokasi --}}
 
                     {{-- input luas lahan --}}
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label">Luas Lahan</label>
-                        <input type="number" class="form-control col-sm-7" placeholder="Masukan Luas Lahan"
+                        <input type="number" class="form-control col-sm-7 loading-tambah" placeholder="Masukan Luas Lahan"
                             id="luas-lahan" name="luas_lahan" required value="">
                     </div>
                     {{-- end luas lahan --}}
@@ -357,7 +357,7 @@
                     {{-- upload proposal --}}
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label pt-1" for="customFile">Proposal</label>
-                        <input type="file" id="proposal" name="proposal" accept=".pdf" required>
+                        <input type="file" class="loading-tambah" id="proposal" name="proposal" accept=".pdf" required>
                     </div>
                     {{-- end upload proposal --}}
                     @else
@@ -370,7 +370,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
+                    <button type="submit" class="btn text-white loading-simpan" style="background-color: #00a65b">Simpan</button>
                 </div>
             </form>
         </div>

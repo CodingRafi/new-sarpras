@@ -58,7 +58,7 @@
             <div class="card pt-3" style="background-color: white; border-radius: 10px; ">
 
 
-                {{-- --------------------------------------------- JUMLAH RUANG KELAS --------------------------------------------- --}}
+                {{-- --------------------------------------------- JENIS RUANG PIMPINAN --------------------------------------------- --}}
                 <div class="row input pl-5 mt-2">
                     <label class="col-2 mt-3">Jenis Ruang</label>
                     <select name="jenis_pimpinan_id" id="" required class="custom-select col-9" style="width: 77%;">
@@ -75,7 +75,7 @@
                 {{-- --------------------------------------------- LUAS LAHAN --------------------------------------------- --}}
                 <div class="row input pl-5 mt-2">
                     <label class="col-2 mt-3">Luas Lahan</label>
-                    <input type="number" class="col-9 form-control mt-2" style="width: 750px"
+                    <input type="number" class="col-9 form-control mt-2 loading-tambah" style="width: 750px"
                         placeholder="Masukan Luas Lahan" value="{{ $data->luas_lahan }}" name="luas_lahan">
                 </div>
 
@@ -128,7 +128,7 @@
 
                 {{-- --------------------------------------------- SUBMIT --------------------------------------------- --}}
                 <div class="pb-3 pl-5 mt-4">
-                    <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
+                    <button type="submit" class="btn text-white loading-simpan" style="background-color: #00a65b">Simpan</button>
                 </div>
 
             </div>

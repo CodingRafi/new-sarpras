@@ -216,7 +216,7 @@
                             {{-- input nama lahan --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nama Lahan</label>
-                                <input type="text" class="form-control col-sm-9" placeholder="Masukan Nama Lahan"
+                                <input type="text" class="form-control col-sm-9 loading-tambah" placeholder="Masukan Nama Lahan"
                                     id="nama-lahan" name="nama" required>
                             </div>
                             {{-- end input nama lahan --}}
@@ -224,7 +224,7 @@
                             {{-- input panjang --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">No Sertifikat</label>
-                                <input type="text" class="form-control col-sm-9" placeholder="Masukan No Sertifikat"
+                                <input type="text" class="form-control col-sm-9 loading-tambah" placeholder="Masukan No Sertifikat"
                                     id="sert" name="no_sertifikat" required>
                             </div>
                             {{-- end input panjang --}}
@@ -232,7 +232,7 @@
                             {{-- input panjang --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Panjang(m)</label>
-                                <input type="number" class="form-control col-sm-9" placeholder="Masukan Panjang Lahan"
+                                <input type="number" class="form-control col-sm-9 loading-tambah" placeholder="Masukan Panjang Lahan"
                                     id="panjang" name="panjang" required step=any>
                             </div>
                             {{-- end input panjang --}}
@@ -240,7 +240,7 @@
                             {{-- input lebar --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Lebar(m)</label>
-                                <input type="number" class="form-control col-sm-9" placeholder="Masukan Lebar Lahan"
+                                <input type="number" class="form-control col-sm-9 loading-tambah" placeholder="Masukan Lebar Lahan"
                                     id="lebar" name="lebar" required step=any>
                             </div>
                             {{-- end input lebar --}}
@@ -248,7 +248,7 @@
                             {{-- input alamat --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Alamat</label>
-                                <input type="text" class="form-control col-sm-9" placeholder="Masukan Alamat" id="alamat"
+                                <input type="text" class="form-control col-sm-9 loading-tambah" placeholder="Masukan Alamat" id="alamat"
                                     name="alamat" required>
                             </div>
                             {{-- end input alamat --}}
@@ -270,7 +270,7 @@
                             {{-- input jenis keterangan --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Keterangan</label>
-                                <input type="text" class="form-control col-sm-9" placeholder="Masukan Keterangan"
+                                <input type="text" class="form-control col-sm-9 loading-tambah" placeholder="Masukan Keterangan"
                                     id="Masukan Keterangan" name="keterangan" required>
                             </div>
                             {{-- end input alamat --}}
@@ -278,7 +278,7 @@
                             {{-- upload file(pdf) --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label pt-1" for="customFile">Dokumen Bukti Lahan (PDF / Foto)</label>
-                                <input type="file" id="chooseFile" name="bukti_lahan" accept="image/*, .pdf" required onchange="previewImage()">
+                                <input type="file" class="loading-tambah" id="chooseFile" name="bukti_lahan" accept="image/*, .pdf" required onchange="previewImage()">
                             </div>
                             <img class="img-preview col-sm-3 img-thumbnail mb-3" style="display: none">
                             <div id="pdf-loader">Loading Preview ..</div>
@@ -288,7 +288,7 @@
                             {{-- end upload file(pdf) --}}
 
                             {{-- button simpan --}}
-                            <button type="submit" class="btn text-white col-sm-1"
+                            <button type="submit" class="btn text-white col-sm-1 loading-simpan"
                                 style="background-color: #00a65b">Simpan</button>
                             {{-- end button simpan --}}
                         </form>

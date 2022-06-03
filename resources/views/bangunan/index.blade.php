@@ -435,7 +435,7 @@
                         @else
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Jumlah Ruang</label>
-                                <input type="number" class="form-control col-sm-7 @error('jml_ruang') is-invalid @enderror" placeholder="Masukan Jumlah Ruangan" id="jumlah-ruangan" name="jml_ruang" value="{{ old('jml_ruang') }}" required>
+                                <input type="number" class="form-control col-sm-7 @error('jml_ruang') is-invalid @enderror loading-tambah" placeholder="Masukan Jumlah Ruangan" id="jumlah-ruangan" name="jml_ruang" value="{{ old('jml_ruang') }}" required>
                                 @error('jml_ruang')
                                     <div class="invalid-feedback d-block" style="margin-left: 21vw">
                                         {{ $message }}
@@ -448,7 +448,7 @@
                         {{-- input luas lahan --}}
                         <div class="form-group row">
                             <label class="col-sm-4 col-form-label">Luas Lahan (m²)</label>
-                            <input type="number" class="form-control col-sm-7 @error('luas_lahan') is-invalid @enderror"  placeholder="Masukan Luas Lahan"
+                            <input type="number" class="form-control col-sm-7 @error('luas_lahan') is-invalid @enderror loading-tambah"  placeholder="Masukan Luas Lahan"
                                 id="luas-lahan" name="luas_lahan" value="{{ old('luas_lahan') }}" required>
                             @error('luas_lahan')
                                 <div class="invalid-feedback d-block" style="margin-left: 21vw">
@@ -461,7 +461,7 @@
                         {{-- upload gambar lokasi --}}
                         <div class="form-group row">
                             <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan <br><small class="text-danger">*Note Max 5mb</small></label>
-                            <input type="file" id="gambar-lahan" multiple accept="image/*" name="gambar[]" class="gambar-lahan mt-2 @error('gambar') is-invalid @enderror" value="{{ old('gambar') }}" required>
+                            <input type="file" id="gambar-lahan" multiple accept="image/*" name="gambar[]" class="gambar-lahan mt-2 @error('gambar') is-invalid @enderror loading-tambah" value="{{ old('gambar') }}" required>
                             @error('gambar.*')
                                 <div class="invalid-feedback d-block" style="margin-left: 21vw">
                                     {{ $message }}
@@ -473,7 +473,7 @@
                         {{-- upload proposal --}}
                         <div class="form-group row">
                             <label class="col-sm-4 col-form-label pt-1 @error('proposal') is-invalid @enderror" value="{{ old('proposal') }}" for="customFile">Proposal</label>
-                            <input type="file" id="proposal" accept=".pdf" name="proposal" required>
+                            <input type="file" class="loading-tambah" id="proposal" accept=".pdf" name="proposal" required>
                             @error('proposal')
                                 <div class="invalid-feedback d-block" style="margin-left: 21vw">
                                     {{ $message }}
@@ -485,7 +485,7 @@
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default tombol-Close" data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
+                        <button type="submit" class="btn text-white loading-simpan" style="background-color: #00a65b">Simpan</button>
                     </div>
                     </form>
                 </div>
