@@ -15,6 +15,19 @@
 @endsection
 
 @section('container')
+
+    <!-- title -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark display-4" style="padding: 0 !important;">Spektrum
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="card mt-2">
         <div class="card-header" style="background-color: #25b5e9">
             <h3 class="text-white card-title">Data Spektrum</h3>

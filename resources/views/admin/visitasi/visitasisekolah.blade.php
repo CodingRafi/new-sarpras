@@ -24,6 +24,19 @@
 @endsection
 
 @section('container')
+
+    <!-- title -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark display-4" style="padding: 0 !important;">Visitasi Sekolah
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid mt-3">
         <!-- Small boxes (Stat box) -->
         <div class="card mb-5">

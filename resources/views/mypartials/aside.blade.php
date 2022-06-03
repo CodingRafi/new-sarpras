@@ -26,7 +26,7 @@
                 style="opacity: .8">
         </div>
         <div style="display: flex; flex-direction: column;" class="ml-2">
-            <span class="brand-text h6" style="margin: 0;font-size: 17px;">SISTEM SARPRAS</span>
+            <span class="brand-text h6 font-weight-bold" style="margin: 0;font-size: 17px;">SISTEM SARPRAS</span>
         </div>
     </a>
 
@@ -85,7 +85,7 @@
                 @endif
 
                 {{-- ---------------------------------------------------------------------------------------- BANGUNAN SEKOLAH ---------------------------------------------------------------------------------------- --}}
-                <li class="nav-item has-treeview {{ Request::is('bangunan/*') ? 'menu-open' : '' }}">
+                <li class="nav-item has-treeview {{ Request::is('bangunan/*') ? 'menu-open' : (Request::is('bangunan*') ? 'menu-open': '') }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-building"></i>
                         <p>
@@ -112,7 +112,7 @@
                         </li>
                         {{-- ---------------------------------------------------------------------------------------- LAB ---------------------------------------------------------------------------------------- --}}
 
-                        <li class="nav-item has-treeview {{ Request::is('bangunan/lab*') ? 'menu-open' : '' }}">
+                        <li class="nav-item has-treeview @if (strpos(request('jenis'), 'lab_') == 0) menu-open  @endif">
                             <a href="#" class="nav-link">
                                 <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
@@ -196,8 +196,8 @@
                                     </g>
                                 </svg>
                                 <p>
-                                    Laboratorium
-                                    <i class="right fas fa-angle-left"></i>
+                                  Laboratorium
+                                  <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
