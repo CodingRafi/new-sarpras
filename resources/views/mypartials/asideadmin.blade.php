@@ -6,7 +6,7 @@
             <img src="/assets/img/avatars/logo-jawa-barat.png" alt="TarunaBhakti Logo" class="brand-image m-auto" style="opacity: .8">
         </div>
         <div style="display: flex; flex-direction: column;" class="ml-2">
-          <span class="brand-text h6" style="margin: 0;font-size: 17px;">SISTEM SARPRAS</span>
+          <span class="brand-text h6 font-weight-bold" style="margin: 0;font-size: 17px;">SISTEM SARPRAS</span>
         </div>
     </a>
     
