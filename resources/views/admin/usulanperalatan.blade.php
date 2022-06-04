@@ -3,8 +3,8 @@
 @section('tambahcss')
     <style>
         /* .row-data .col-3 {
-                                            max-width: 15.5rem !important;
-                                        } */
+                                                max-width: 15.5rem !important;
+                                            } */
 
         .card-header h4 {
             font-size: 1.2rem !important
@@ -82,16 +82,21 @@
                                         <tbody>
                                             {{-- isi table --}}
                                             @foreach ($usulan_peralatans as $usulan)
+                                                {{-- @dd($usulan) --}}
                                                 <tr>
                                                     <th class="col-1 text-center" scope="row">
-                                                        {{ ($usulan_peralatans->currentpage() - 1) * $usulan_peralatans->perpage() + $loop->index + 1 }}
+                                                        {{ $loop->iteration }}
                                                     </th>
-                                                    <td class="col-1 text-center">SMKS TARUNA BHAKTI DEPOK</td>
-                                                    <td class="col-1 text-center">Rekayasa Perangkat Lunak</td>
-                                                    <td class="col-1 text-center">Laptop</td>
-                                                    <td class="col-1 text-center">10</td>
-                                                    <td class="col-1 text-center"><img src="/img/pdf.png" alt="image"
-                                                            style="width: 30px"></td>
+                                                    <td class="col-1 text-center">{{ $usulan->nama }}</td>
+                                                    <td class="col-1 text-center">{{ $usulan->kompetensi }}</td>
+                                                    <td class="col-1 text-center">{{ $usulan->nama_peralatan_relasi }}
+                                                    </td>
+                                                    <td class="col-1 text-center">{{ $usulan->jml }}</td>
+                                                    <td class="col-1 text-center">
+                                                        <a href="{{ asset('storage/' . $usulan->proposal) }}" target="_blank">
+                                                            <img src="/img/pdf.png" alt="image" style="width: 30px">
+                                                        </a>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                             {{-- end isi table --}}

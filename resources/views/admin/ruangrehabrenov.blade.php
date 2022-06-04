@@ -37,19 +37,44 @@
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover mt-2">
                                 <div class="search" style="display: flex">
-                                    <ul class="nav nav-pills ml-auto p-2 col-1" style="max-width: 11%;">
-                                        <li class="nav-item dropdown">
-                                            <a class="btn btn-light dropdown-toggle" data-toggle="dropdown" href="#">
-                                                Filter by ... <span class="caret"></span>
-                                            </a>
-                                            <div class="dropdown-menu" style="min-width: auto !important; width: 125px;">
-                                                <a class="dropdown-item text-truncate kab" tabindex="-1"
-                                                    href="/bangunan/rehab-renov-dinas?filter=kota">Kota/ Kabupaten</a>
-                                                <a class="dropdown-item text-truncate kcd" tabindex="-1"
-                                                    href="/bangunan/rehab-renov-dinas?filter=kcd">Kantor Cabang Dinas</a>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                    @if (!Auth::user()->hasRole('kcd'))
+                                        <ul class="nav nav-pills ml-auto p-2 col-1" style="max-width: 11%;">
+                                            <li class="nav-item dropdown">
+                                                <a class="btn btn-light dropdown-toggle" data-toggle="dropdown" href="#">
+                                                    Order by ... <span class="caret"></span>
+                                                </a>
+                                                <div class="dropdown-menu"
+                                                    style="min-width: auto !important; width: 125px;">
+                                                    <form action="/bangunan/rehab-renov-dinas" method="get">
+                                                        @if (request('jenis'))
+                                                            <input type="hidden" name="jenis"
+                                                                value="{{ request('jenis') }}">
+                                                        @endif
+                                                        @if (request('search'))
+                                                            <input type="hidden" name="search"
+                                                                value="{{ request('search') }}">
+                                                        @endif
+                                                        <input type="hidden" name="filter" value="kota">
+                                                        <button class="dropdown-item text-truncate kab" tabindex="-1"
+                                                            type="submit">Kota/Kabupaten</button>
+                                                    </form>
+                                                    <form action="/bangunan/rehab-renov-dinas" method="get">
+                                                        @if (request('jenis'))
+                                                            <input type="hidden" name="jenis"
+                                                                value="{{ request('jenis') }}">
+                                                        @endif
+                                                        @if (request('search'))
+                                                            <input type="hidden" name="search"
+                                                                value="{{ request('search') }}">
+                                                        @endif
+                                                        <input type="hidden" name="filter" value="kcd">
+                                                        <button class="dropdown-item text-truncate kab" tabindex="-1"
+                                                            type="submit">Kantor Cabang Dinas</button>
+                                                    </form>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    @endif
                                     <div class="md-2 col-11" style="max-width: 89%;">
                                         <form class="form-inline ml-2" action="/bangunan/rehab-renov-dinas" method="GET"
                                             style="width: 100%;">
@@ -81,9 +106,10 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($usulanBangunans as $key => $usulan)
+                                        {{-- @dd($usulan) --}}
                                         <tr>
                                             <td class="text-center" style="vertical-align: middle">
-                                                {{ ($usulanBangunans->currentpage() - 1) * $usulanBangunans->perpage() + $loop->index + 1 }}
+                                                {{ $loop->iteration }}
                                             </td>
                                             <td class="text-center" style="vertical-align: middle">
                                                 {{ $usulan->nama }}</td>
@@ -99,7 +125,8 @@
                                                 </a>
                                             </td>
                                             <td class="text-center" style="vertical-align: middle">
-                                                <a href="/usulan-bangunan/{{ $usulan->id }}" class="btn text-white d-inline"
+                                                <a href="/bangunan/ruang-rehabrenov/{{ $usulan->id }}"
+                                                    class="btn text-white d-inline"
                                                     style="background-color: #25b5e9">Detail</a>
                                             </td>
                                         </tr>
@@ -117,9 +144,9 @@
                 </div>
                 {{-- End --}}
                 {{-- Pagination --}}
-                <div class="float-right">
+                {{-- <div class="float-right">
                     {{ $usulanBangunans->links() }}
-                </div>
+                </div> --}}
                 {{-- End --}}
             </div>
         </div>

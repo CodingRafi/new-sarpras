@@ -7,6 +7,7 @@ use App\Models\UsulanKoleksi;
 use App\Models\JenisPimpinan;
 use App\Models\Pimpinan;
 use App\Models\Bangunan;
+use App\Models\ProfilKcd;
 use App\Models\UsulanBangunan;
 use App\Models\UsulanFoto;
 use App\Http\Requests\StoreRehabRenovRequest;
@@ -128,6 +129,7 @@ class RehabRenovController extends Controller
     public function show(RehabRenov $rehabRenov, $id)
     {
         $rehabRenov = RehabRenov::find($id);
+        // dd($rehabRenov);
         return view('bangunan.rehabrenov.show', [
             'data' => $rehabRenov,
             'usulanFoto' => $rehabRenov->usulanKoleksi[0]->usulanFoto,
@@ -221,10 +223,34 @@ class RehabRenovController extends Controller
     }
 
     public function showDinas(){
-        $usulanBangunan = RehabRenov::search(request(['search']))
-        ->leftJoin('profils', 'profils.id', '=', 'rehab_renovs.profil_id')
-        ->leftJoin('profil_kcds', 'profils.id', '=', 'profil_kcds.profil_id')
-        ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi', 'rehab_renovs.proposal', 'rehab_renovs.id')->paginate(40)->withQueryString();
+        if (Auth::user()->hasRole('kcd')) {
+            $profils = ProfilKcd::ambil(Auth::user()->kcd_id);
+            $usulanBangunan = [];
+            foreach ($profils as $key => $profil) {
+                $usulans = RehabRenov::where('profil_id', $profil->id)
+                                ->leftJoin('profils', function($join) use ($profil){
+                                    $join->where('profils.id', $profil->id);
+                                })
+                                ->leftJoin('kota_kabupatens', 'kota_kabupatens.id', 'profils.kota_kabupaten_id')
+                                ->leftJoin('profil_kcds', 'kota_kabupatens.id', 'profil_kcds.kota_kabupaten_id')
+                                ->leftJoin('kcds', 'kcds.id', 'profil_kcds.kcd_id')
+                                ->select('profils.*', 'kcds.instansi', 'rehab_renovs.proposal', 'rehab_renovs.id')
+                                ->get();
+                if (count($usulans) > 0) {
+                    foreach ($usulans as $usulan) {
+                        $usulanBangunan[] = $usulan;
+                    }
+                }
+            }
+        }else{
+            $usulanBangunan = RehabRenov::search(request(['search', 'filter']))
+                            ->leftJoin('profils', 'profils.id', 'rehab_renovs.profil_id')
+                            ->leftJoin('kota_kabupatens', 'kota_kabupatens.id', 'profils.kota_kabupaten_id')
+                            ->leftJoin('profil_kcds', 'kota_kabupatens.id', 'profil_kcds.kota_kabupaten_id')
+                            ->leftJoin('kcds', 'kcds.id', 'profil_kcds.kcd_id')
+                            ->select('profils.*', 'kcds.instansi', 'rehab_renovs.proposal', 'rehab_renovs.id')
+                            ->get();
+        }
 
         return view('admin.ruangrehabrenov', [
             'usulanBangunans' => $usulanBangunan,

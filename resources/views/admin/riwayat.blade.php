@@ -76,14 +76,14 @@
                                     @foreach ($riwayats as $key => $riwayat)
                                         <tr>
                                             <td class="text-center">
-                                                {{ ($riwayats->currentpage() - 1) * $riwayats->perpage() + $loop->index + 1 }}
+                                                {{ $loop->iteration }}
                                             </td>
-                                            <th class="text-center">{{ $riwayat->nama }}</th>
-                                            <th class="text-center">{{ $riwayat->tahun_bantuan }}</th>
-                                            <th class="text-center">{{ $riwayat->jenis }}</th>
-                                            <th class="text-center">{{ $riwayat->pemberian_bantuan }}</th>
-                                            <th class="text-center">{{ $riwayat->sumber_anggaran }}</th>
-                                            <th class="text-center">{{ $riwayat->nilai_bantuan }}</th>
+                                            <td class="text-center">{{ $riwayat->nama }}</td>
+                                            <td class="text-center">{{ $riwayat->tahun_bantuan }}</td>
+                                            <td class="text-center">{{ $riwayat->jenis }}</td>
+                                            <td class="text-center">{{ $riwayat->pemberian_bantuan }}</td>
+                                            <td class="text-center">{{ $riwayat->sumber_anggaran }}</td>
+                                            <td class="text-center">{{ $riwayat->nilai_bantuan }}</td>
                                             <td class="text-center" style="vertical-align: middle">
                                                 @foreach ($fotos[$key] as $ke => $foto)
                                                     <a href="{{ asset('storage/' . $foto->nama) }}" class="fancybox"

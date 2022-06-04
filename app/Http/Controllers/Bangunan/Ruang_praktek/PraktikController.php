@@ -202,11 +202,12 @@ class PraktikController extends Controller
             'gambar.*' => 'mimes:jpg,jpeg,png|file|max:5120',
             'kompeten_id' => 'required'
         ]);
-
-        $validatedData['kompeten_id'] = $request->kompeten_id;
+        
+        // $validatedData['kompeten_id'] = $request->kompeten_id;
         $validatedData['keterangan'] = "Proses Pengajuan";
-
+        
         UsulanBangunan::createUsulan($request, 'ruang_praktek', $validatedData);
+        // dd($validatedData);
 
         $kompeten = Kompeten::where('id', $request->kompeten_id)->get()[0]->komli->kompetensi;
 

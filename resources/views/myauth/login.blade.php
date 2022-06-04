@@ -197,7 +197,7 @@
                                             </div>
                                         </div>
                                         <div class="col-6 d-flex justify-content-end align-items-center">
-                                          <a href="#" class="text-success" style="font-size: 12.5px; text-decoration: none; font-weight: 600;">Lupa Password?</a>
+                                          <a href="{{ route('password.request') }}" class="text-success" style="font-size: 12.5px; text-decoration: none; font-weight: 600;">Lupa Password?</a>
                                         </div>
                                     </div>
                                 </div>

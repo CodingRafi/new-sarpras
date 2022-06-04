@@ -134,7 +134,7 @@ class RegisteredUserController extends Controller
         return redirect('/monitoring');
     }
 
-    public function create_pengawas(Request $request){
+    public function ubah_foto(Request $request){
         dd($request);
     }
 }
