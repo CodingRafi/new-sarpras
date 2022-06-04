@@ -17,6 +17,15 @@ use App\Models\Kompeten;
 
 class KomputerController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_komputer|add_komputer|edit_komputer|delete_komputer', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_komputer', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_komputer', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_komputer', ['only' => ['destroy']]);
+         $this->middleware('permission:komputer_create_usulan', ['only' => ['createusulan']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -124,15 +133,15 @@ class KomputerController extends Controller
         return redirect()->back();
     }
 
-    public function showDinas(){
-        $usulanBangunan = UsulanBangunan::search(request(['search']))
-        ->leftJoin('profils', 'profils.id', '=', 'usulan_bangunans.profil_id')
-        ->leftJoin('profil_kcds', 'profils.id', '=', 'profil_kcds.profil_id')
-        ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi', 'usulan_bangunans.proposal', 'usulan_bangunans.id')->where('usulan_bangunans.jenis', 'lab_komputer')->paginate(40)->withQueryString();
+    // public function showDinas(){
+    //     $usulanBangunan = UsulanBangunan::search(request(['search']))
+    //     ->leftJoin('profils', 'profils.id', '=', 'usulan_bangunans.profil_id')
+    //     ->leftJoin('profil_kcds', 'profils.id', '=', 'profil_kcds.profil_id')
+    //     ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi', 'usulan_bangunans.proposal', 'usulan_bangunans.id')->where('usulan_bangunans.jenis', 'lab_komputer')->paginate(40)->withQueryString();
 
-        return view('admin.labkomputer', [
-            'usulanBangunans' => $usulanBangunan,
-        ]);
-    }
+    //     return view('admin.labkomputer', [
+    //         'usulanBangunans' => $usulanBangunan,
+    //     ]);
+    // }
 
 }

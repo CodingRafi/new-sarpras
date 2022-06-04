@@ -10,6 +10,14 @@ use Illuminate\Support\Facades\Storage;
 
 class SpektrumController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_spektrums|add_spektrums|edit_spektrums|delete_spektrums', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_spektrums', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_spektrums', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_spektrums', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

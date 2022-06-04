@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\Auth;
 
 class UnsurVerifikasiController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_unsur_verifikasi|add_unsur_verifikasi|edit_unsur_verifikasi|delete_unsur_verifikasi', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_unsur_verifikasi', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_unsur_verifikasi', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_unsur_verifikasi', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Auth;
 
 class RiwayatController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_riwayats|add_riwayats|edit_riwayats|delete_riwayats', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_riwayats', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_riwayats', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_riwayats', ['only' => ['destroy']]);
+         $this->middleware('permission:riwayats_show_dinas', ['only' => ['showDinas']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

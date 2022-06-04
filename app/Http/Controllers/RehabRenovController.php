@@ -6,6 +6,7 @@ use App\Models\RehabRenov;
 use App\Models\UsulanKoleksi;
 use App\Models\JenisPimpinan;
 use App\Models\Pimpinan;
+use App\Models\Bangunan;
 use App\Models\UsulanBangunan;
 use App\Models\UsulanFoto;
 use App\Http\Requests\StoreRehabRenovRequest;
@@ -16,6 +17,16 @@ use App\Models\Kompeten;
 
 class RehabRenovController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_rehab_renov|add_rehab_renov|edit_rehab_renov|delete_rehab_renov', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_rehab_renov', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_rehab_renov', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_rehab_renov', ['only' => ['destroy']]);
+         $this->middleware('permission:rehab_renov_create_usulan', ['only' => ['cretaeusulan']]);
+         $this->middleware('permission:rehab_renov_show_dinas', ['only' => ['showDinas']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,14 +35,15 @@ class RehabRenovController extends Controller
     public function index()
     {
         $rehab = RehabRenov::where('profil_id', Auth::user()->profil_id)->get();
-        $koleksi = UsulanKoleksi::koleksi($rehab);
-        $fotos = UsulanFoto::fotos($koleksi);
+        $koleksi_rehab = UsulanKoleksi::koleksi($rehab);
+        $fotos_rehab = UsulanFoto::fotos($koleksi_rehab);
 
         $jenis_pimpinan = JenisPimpinan::all();
         $pimpinan = Pimpinan::where('profil_id', Auth::user()->profil_id)->get();
         $usulans = UsulanBangunan::where('profil_id', Auth::user()->profil_id)->where('jenis', 'ruang_pimpinan')->get();
         $koleksi = UsulanKoleksi::koleksi($usulans);
         $fotos = UsulanFoto::fotos($koleksi);
+        $bangunan = Bangunan::where('profil_id', Auth::user()->profil_id)->where('jenis', 'ruang_pimpinan')->get()[0];
         $jenisUsulanPimpinan = [];
 
         foreach($usulans as $usulan){
@@ -58,9 +70,10 @@ class RehabRenovController extends Controller
             'jenis_pimpinans' => $jenis_pimpinan,
             'datas' => $data,
             'usulans' => $usulans,
-            'usulanFotos' => $fotos,
+            'usulanFotos_rehab' => $fotos_rehab,
             'usulanJenis' => $jenisUsulanPimpinan,
-            'kompils' => Kompeten::getKompeten()
+            'kompils' => Kompeten::getKompeten(),
+            'bangunan' => $bangunan
         ]);
     }
 
@@ -93,14 +106,15 @@ class RehabRenovController extends Controller
             'proposal' => 'required|file|max:5120',
             'keterangan' => 'required'
         ]);
-
+        
         $validatedData['profil_id'] = Auth::user()->profil_id;
         $validatedData['proposal'] = $request->file('proposal')->store('proposal-usulan-bangunan');
-
+        
         $rehab = RehabRenov::create($validatedData); 
-
+        
         $usulanKoleksi = UsulanKoleksi::create(['rehab_renov_id' => $rehab->id]);
         UsulanFoto::uploadFoto($request->gambar, $usulanKoleksi);
+        // dd($validatedData);
 
         return redirect()->back();
     }

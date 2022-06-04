@@ -19,6 +19,18 @@ use DB;
 
 class BangunanController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_bangunans|add_bangunans|edit_bangunans|delete_bangunans', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_bangunans', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_bangunans', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_bangunans', ['only' => ['destroy']]);
+         $this->middleware('permission:ubah_ketersediaan', ['only' => ['ubahKetersediaan']]);
+         $this->middleware('permission:ubah_kekurangan', ['only' => ['ubahKekurangan']]);
+         $this->middleware('permission:kondisi_ideal', ['only' => ['kondisiIdeal']]);
+         $this->middleware('permission:bangunan', ['only' => ['bangunan']]);
+    }
+    
     /**
      * Display a listing of the resource.
      *

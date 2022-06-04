@@ -22,8 +22,9 @@
     </div>
 
     {{-- --------------------------------------------- info box ------------------------------------------------ --}}
+    {{-- ---------------------------------------------------------------------------------------- KONDISI IDEAL ---------------------------------------------------------------------------------------- --}}
     <div class="info-box p-0 pimpinan-infobox">
-        <span class="info-box-icon p-4" style="background-color:#25b5e9; width: auto; min-width: 300px;">
+        <span class="info-box-icon p-4" style="background-color: #25b5e9; width: auto; min-width: 300px;">
             <img src="/assets/img/icons/flaticons/town.png"
                 style="filter: invert(100%); object-fit: cover; width: 80px; aspect-ratio: 1/1;">
             <div class="ml-4">
@@ -31,201 +32,224 @@
                     Kondisi Ideal
                 </span>
                 <div class="d-flex align-items-end justify-content-center">
-                    <h1 class="display-4 text-white font-weight-bold">30</h1>
+                    <h1 class="display-4 text-white font-weight-bold">{{ $bangunan->kondisi_ideal }}</h1>
                     <p class="text-white font-weight-bold" style="font-size: 15px">/ Kantor</p>
                 </div>
             </div>
         </span>
         <div class="info-box-content">
-            <label>Keterangan:</label>
-            <p>Ruang guru jga bisa di pakai untuk menyimpan dokumen dokumen penting tentang anak didik mereka, Ruang guru
-                juga sangat berfungsi untuk para guru guru atau staf sekolah lain nya, dapat dimanfaatkan untuk tempat
-                peristirahatan para guru ketika selesai mengajar, tempat berkumpulnya para guru ketika ingin melakukan
-                rapat.</p>
+            @if ($bangunan->ket_kondisi_ideal != null)
+                <label>Keterangan:</label>
+            @endif
+            <button type="button" class="btn btn-tool text-dark" style="position: absolute; right:0%; padding-top:8px"
+                data-toggle="modal" data-target="#edit-kondisi-ideal"><i class="bi bi-pencil-square"></i>
+            </button>
+            <p>{{ $bangunan->ket_kondisi_ideal }}</p>
+            @if ($bangunan->ket_kondisi_ideal == null)
+                <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                    <div class="alert" role="alert">
+                        Data Tidak Ditemukan
+                    </div>
+                </div>
+            @endif
+
         </div>
     </div>
+    {{-- modal --}}
+    <div class="modal fade" id="edit-kondisi-ideal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #25b5e9; margin-left:-1px">
+                    <h4 class="modal-title text-white">Kondisi Ideal</h4>
+                    <button type="button" class="close" style="color: aliceblue" data-dismiss="modal"
+                        aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="/bangunan-all/update-kondisi-ideal/{{ $bangunan->id }}" method="post">
+                    @csrf
+                    @method('patch')
+                    <div class="modal-body">
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label for="ideal" class="col-sm-2 col-form-label">Kondisi Ideal</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" id="ideal" name="kondisi_ideal"
+                                        value="{{ $bangunan->kondisi_ideal }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="ideal" class="col-sm-2 col-form-label">Keterangan kondisi
+                                    ideal</label>
+                                <div class="col-sm-10">
+                                    <textarea name="ket_kondisi_ideal" id="ideal" rows="5" class="form-control"
+                                        placeholder="Keterangan Kondisi Ideal">{{ $bangunan->ket_kondisi_ideal }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn text-white float-right"
+                            style="background-color: #00a65b">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{-- modal --}}
+
+    {{-- ---------------------------------------------------------------------------------------- KETERSEDIAAN ---------------------------------------------------------------------------------------- --}}
     <div class="info-box p-0 pimpinan-infobox">
-        <span class="info-box-icon p-4" style="background-color:#fcc12d; width: auto; min-width: 300px;">
+        <span class="info-box-icon p-4" style="background-color: #fcc12d; width: auto; min-width: 300px;">
             <img src="/assets/img/icons/flaticons/building.png"
                 style="filter: invert(100%); object-fit: cover; width: 80px; aspect-ratio: 1/1;">
-            <div class="ml-4">
-                <span class="text-white font-weight-bold" style="font-size: 25px">
+            <div class="ml-4 text-white font-weight-bold">
+                <span class="text white font-weight-bold" style="font-size: 25px">
                     Ketersediaan
                 </span>
                 <div class="d-flex align-items-end justify-content-center">
-                    <h1 class="display-4 text-white font-weight-bold">11</h1>
+                    <h1 class="display-4 text-white font-weight-bold">{{ $bangunan->ketersediaan }}</h1>
                     <p class="text-white font-weight-bold" style="font-size: 15px">/ Kantor</p>
                 </div>
             </div>
         </span>
         <div class="info-box-content">
-            <label>Keterangan:</label>
-            <p>Ruang guru jga bisa di pakai untuk menyimpan dokumen dokumen penting tentang anak didik mereka, Ruang guru
-                juga sangat berfungsi untuk para guru guru atau staf sekolah lain nya, dapat dimanfaatkan untuk tempat
-                peristirahatan para guru ketika selesai mengajar, tempat berkumpulnya para guru ketika ingin melakukan
-                rapat.</p>
+            @if ($bangunan->ket_ketersediaan != null)
+                <label>Keterangan:</label>
+            @endif
+            <button type="button" class="btn btn-tool text-dark" style="position: absolute; right:0%; padding-top:8px"
+                data-toggle="modal" data-target="#edit-ketersediaan"><i class="bi bi-pencil-square"></i>
+            </button>
+            @if ($bangunan->ket_ketersediaan == null)
+                <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                    <div class="alert" role="alert">
+                        Data Tidak Ditemukan
+                    </div>
+                </div>
+            @endif
+            <p>{{ $bangunan->ket_ketersediaan }}</p>
+
         </div>
     </div>
+    {{-- modal --}}
+    <div class="modal fade" id="edit-ketersediaan">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #fcc12d; margin-left:-1px">
+                    <h4 class="modal-title text-white">Ketersediaan</h4>
+                    <button type="button" class="close" style="color: aliceblue" data-dismiss="modal"
+                        aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="/bangunan-all/update-ketersediaan/{{ $bangunan->id }}" method="post">
+                    @csrf
+                    @method('patch')
+                    <div class="modal-body">
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label for="ideal" class="col-sm-2 col-form-label">Ketersediaan</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" id="ideal" name="ketersediaan"
+                                        value="{{ $bangunan->ketersediaan }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="ideal" class="col-sm-2 col-form-label">Keterangan
+                                    Ketersediaan</label>
+                                <div class="col-sm-10">
+                                    <textarea name="ket_ketersediaan" id="ideal" rows="5" class="form-control"
+                                        placeholder="Keterangan Ketersediaan">{{ $bangunan->ket_ketersediaan }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn text-white float-right"
+                            style="background-color: #00a65b">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{-- modal --}}
+
+    {{-- ---------------------------------------------------------------------------------------- KEKURANGAN ---------------------------------------------------------------------------------------- --}}
     <div class="info-box p-0 pimpinan-infobox">
-        <span class="info-box-icon p-4" style="background-color:#263238; width: auto; min-width: 300px;">
+        <span class="info-box-icon p-4" style="background-color: #263238; width: auto; min-width: 300px;">
             <img src="/assets/img/icons/flaticons/school.png"
-                style="filter: invert(100%); object-fit: cover; width: 80px; aspect-ratio: 1/1;">
+                style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
             <div class="ml-4">
                 <span class="text-white font-weight-bold" style="font-size: 25px">
                     Kekurangan
                 </span>
                 <div class="d-flex align-items-end justify-content-center">
-                    <h1 class="display-4 text-white font-weight-bold">23</h1>
+                    <h1 class="display-4 text-white font-weight-bold">{{ $bangunan->kekurangan }}</h1>
                     <p class="text-white font-weight-bold" style="font-size: 15px">/ Kantor</p>
                 </div>
             </div>
         </span>
         <div class="info-box-content">
-            <label>Keterangan:</label>
-            <p>Ruang guru jga bisa di pakai untuk menyimpan dokumen dokumen penting tentang anak didik mereka, Ruang guru
-                juga sangat berfungsi untuk para guru guru atau staf sekolah lain nya, dapat dimanfaatkan untuk tempat
-                peristirahatan para guru ketika selesai mengajar, tempat berkumpulnya para guru ketika ingin melakukan
-                rapat.</p>
+            @if ($bangunan->ket_kekurangan != null)
+                <label>Keterangan:</label>
+            @endif
+            <button type="button" class="btn btn-tool text-dark" style="position: absolute; right:0%; padding-top:8px"
+                data-toggle="modal" data-target="#edit-kekurangan"><i class="bi bi-pencil-square"></i>
+            </button>
+            @if ($bangunan->ket_kekurangan == null)
+                <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                    <div class="alert" role="alert">
+                        Data Tidak Ditemukan
+                    </div>
+                </div>
+            @endif
+            <p>{{ $bangunan->ket_kekurangan }}</p>
+
         </div>
     </div>
+    {{-- modal --}}
+    <div class="modal fade" id="edit-kekurangan">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #263238; margin-left:-1px">
+                    <h4 class="modal-title text-white">Kekurangan</h4>
+                    <button type="button" class="close" style="color: aliceblue" data-dismiss="modal"
+                        aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="/bangunan-all/update-kekurangan/{{ $bangunan->id }}" method="post">
+                    @csrf
+                    @method('patch')
+                    <div class="modal-body">
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label for="ideal" class="col-sm-2 col-form-label">Kekurangan</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" id="ideal" name="kekurangan"
+                                        value="{{ $bangunan->kekurangan }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="ideal" class="col-sm-2 col-form-label">Keterangan Kekurangan</label>
+                                <div class="col-sm-10">
+                                    <textarea name="ket_kekurangan" id="ideal" rows="5" class="form-control"
+                                        placeholder="Keterangan Kekurangan">{{ $bangunan->ket_kekurangan }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn text-white float-right"
+                            style="background-color: #00a65b">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{-- modal --}}
 
     {{-- --------------------------------------------- end inf box --------------------------------------------- --}}
-
-    {{-- ---------------------------------------------------------------------------------------- MODAL USULAN ---------------------------------------------------------------------------------------- --}}
-    {{-- <div class="modal fade" id="tambah-jenis-pimpinan">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Tambah Usulan</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal" action="/jenis-pimpinan" method="post">
-                        @csrf
-                        <div class="card-body">
-                            <div class="form-group row">
-                                <label for="jumlah-lahan" class="col-sm-2 col-form-label">Nama Ruang</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="jumlah-lahan" name="nama" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-success float-right">Simpan</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    <div class="modal fade" id="tambah-tersedia">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Tambah Ketersediaan Ruang Pimpinan</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal" action="/bangunan/pimpinan" method="POST">
-                        @csrf
-                        <div class="card-body">
-                            <div class="form-group row">
-                                <label for="jumlah-lahan" class="col-sm-2 col-form-label">Jenis Ruang</label>
-                                <div class="col-sm-10">
-                                    <select name="jenis_pimpinan_id" id="" required class="custom-select">
-                                        @foreach ($jenis_pimpinans as $data)
-                                            <option value="{{ $data->id }}">{{ $data->nama }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="luas-lahan" class="col-sm-2 col-form-label">Nama Bangunan</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="luas-lahan" name="nama" required>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="luas-lahan" class="col-sm-2 col-form-label">Panjang Lahan</label>
-                                <div class="col-sm-10">
-                                    <input type="number" class="form-control" id="luas-lahan" name="panjang" required>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="luas-lahan" class="col-sm-2 col-form-label">Lebar Lahan</label>
-                                <div class="col-sm-10">
-                                    <input type="number" class="form-control" id="luas-lahan" name="lebar" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-success float-right">Simpan</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="edit-tersedia">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Ketersediaan Ruang Pimpinan</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal" action="/bangunan/pimpinan" method="POST">
-                        @csrf
-                        @method('patch')
-                        <div class="card-body">
-                            <div class="form-group row">
-                                <input type="hidden" name="id_pimpinan" class="id_pimpinan_input">
-                                <label for="jumlah-lahan" class="col-sm-2 col-form-label">Jenis Ruang</label>
-                                <div class="col-sm-10">
-                                    <select name="jenis_pimpinan_id" id="" required class="custom-select">
-                                        @foreach ($jenis_pimpinans as $data)
-                                            <option value="{{ $data->id }}" class="option-jenis">
-                                                {{ $data->nama }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="luas-lahan" class="col-sm-2 col-form-label">Nama Bangunan</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control input-nama" id="luas-lahan" name="nama"
-                                        required>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="luas-lahan" class="col-sm-2 col-form-label">Panjang Lahan</label>
-                                <div class="col-sm-10">
-                                    <input type="number" class="form-control input-panjang" id="luas-lahan" name="panjang"
-                                        required>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="luas-lahan" class="col-sm-2 col-form-label">Lebar Lahan</label>
-                                <div class="col-sm-10">
-                                    <input type="number" class="form-control input-lebar" id="luas-lahan" name="lebar"
-                                        required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-success float-right">Simpan</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
     {{-- --------------------------------------- USULAN LAB KOMPUTER --------------------------------------- --}}
     <div class="card card-info">
@@ -285,7 +309,8 @@
                                         <form action="/usulan-bangunan/{{ $usulan->id }}" method="post">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class="btn text-white mt-2" style="background-color: #00a65b"
+                                            <button type="submit" class="btn text-white mt-2"
+                                                style="background-color: #00a65b"
                                                 onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
                                         </form>
                                 </tr>
@@ -307,58 +332,67 @@
     <div class="modal fade" id="tambah-usulan">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
+
                 <form action="/bangunan/usulan-ruang-pimpinan" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-header">
-                        <h4 class="modal-title">Usulan</h4>
+                        <h4 class="modal-title">Usulan Ruang Pimpinan</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <div class="form-group row">
-                            <label for="jumlah-lahan" class="col-sm-4 col-form-label">Jenis Ruang</label>
-                            <div class="col-sm-7 m-0 p-0">
-                                <select name="jenis_pimpinan_id" id="" required class="custom-select">
-                                    @foreach ($jenis_pimpinans as $data)
-                                        <option value="{{ $data->id }}">{{ $data->nama }}</option>
-                                    @endforeach
-                                </select>
+                    @if (count($jenis_pimpinans) > 0)
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <label for="jumlah-lahan" class="col-sm-4 col-form-label">Jenis Ruang</label>
+                                <div class="col-sm-7 m-0 p-0">
+                                    <select name="jenis_pimpinan_id" id="" required class="custom-select">
+                                        @foreach ($jenis_pimpinans as $data)
+                                            <option value="{{ $data->id }}">{{ $data->nama }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            {{-- input jumlah ruangan --}}
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Jumlah Ruang</label>
+                                <input type="number" class="form-control col-sm-7" placeholder="Masukan Jumlah Ruangan"
+                                    id="jumlah-ruangan" name="jml_ruang" required>
+                            </div>
+                            {{-- end input jumlah ruangan --}}
+
+                            {{-- input luas lahan --}}
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Luas Lahan (M)</label>
+                                <input type="number" class="form-control col-sm-7" placeholder="Masukan Luas Lahan"
+                                    id="luas-lahan" name="luas_lahan" required>
+                            </div>
+                            {{-- end luas lahan --}}
+
+                            {{-- upload gambar lokasi --}}
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan</label>
+                                <input type="file" id="gambar-lahan" required multiple accept="image/*" name="gambar[]">
+                            </div>
+                            {{-- end upload gambar lokasi --}}
+                            {{-- upload proposal --}}
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label pt-1" for="customFile">Proposal</label>
+                                <input type="file" id="proposal" required accept=".pdf" name="proposal">
+                            </div>
+                            {{-- end upload proposal --}}
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
+                        </div>
+                    @else
+                        <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                            <div class="alert" role="alert">
+                                Tidak ada jenis ruang pimpinan
                             </div>
                         </div>
-                        {{-- input jumlah ruangan --}}
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Jumlah Ruang</label>
-                            <input type="number" class="form-control col-sm-7" placeholder="Masukan Jumlah Ruangan"
-                                id="jumlah-ruangan" name="jml_ruang" required>
-                        </div>
-                        {{-- end input jumlah ruangan --}}
-
-                        {{-- input luas lahan --}}
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Luas Lahan (M)</label>
-                            <input type="number" class="form-control col-sm-7" placeholder="Masukan Luas Lahan"
-                                id="luas-lahan" name="luas_lahan" required>
-                        </div>
-                        {{-- end luas lahan --}}
-
-                        {{-- upload gambar lokasi --}}
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan</label>
-                            <input type="file" id="gambar-lahan" required multiple accept="image/*" name="gambar[]">
-                        </div>
-                        {{-- end upload gambar lokasi --}}
-                        {{-- upload proposal --}}
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label pt-1" for="customFile">Proposal</label>
-                            <input type="file" id="proposal" required accept=".pdf" name="proposal">
-                        </div>
-                        {{-- end upload proposal --}}
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
-                    </div>
+                    @endif
                 </form>
             </div>
             <!-- /.modal-content -->
@@ -428,12 +462,12 @@
                                                         <td class="text-center">{{ $rehab->objek }}</td>
                                                         <td class="text-center">{{ $rehab->luas_lahan }} m²</td>
                                                         <td class="text-center" style="vertical-align: middle">
-                                                            @foreach ($usulanFotos[$key] as $ke => $foto)
-                                                                @if ($foto != null)
-                                                                    <a href="{{ asset('storage/' . $foto->nama) }}"
+                                                            @foreach ($usulanFotos_rehab[$key] as $ke => $foto_rehab)
+                                                                @if ($foto_rehab != null)
+                                                                    <a href="{{ asset('storage/' . $foto_rehab->nama) }}"
                                                                         class="fancybox"
-                                                                        data-fancybox="gallery{{ $key }}">
-                                                                        <img src="{{ asset('storage/' . $foto->nama) }}"
+                                                                        data-fancybox="gallery-rehab{{ $key }}">
+                                                                        <img src="{{ asset('storage/' . $foto_rehab->nama) }}"
                                                                             class="rounded"
                                                                             style="object-fit: cover; width: 150px; aspect-ratio: 1/1;{{ $ke == 0 ? '' : 'display:none;' }}">
                                                                     </a>

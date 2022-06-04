@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Auth;
 
 class UsulanPeralatanController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_usulan_peralatan|add_usulan_peralatan|edit_usulan_peralatan|delete_usulan_peralatan', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_usulan_peralatan', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_usulan_peralatan', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_usulan_peralatan', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

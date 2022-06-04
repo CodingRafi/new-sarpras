@@ -11,6 +11,14 @@ use Illuminate\Support\Facades\Auth;
 
 class ProgramKompetensiController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_program_kompetensis|add_program_kompetensis|edit_program_kompetensis|delete_program_kompetensis', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_program_kompetensis', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_program_kompetensis', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_program_kompetensis', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

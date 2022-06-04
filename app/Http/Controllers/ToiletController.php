@@ -18,6 +18,15 @@ use App\Http\Requests\UpdateToiletRequest;
 
 class ToiletController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_toilet|add_toilet|edit_toilet|delete_toilet', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_toilet', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_toilet', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_toilet', ['only' => ['destroy']]);
+         $this->middleware('permission:toilet_create_usulan', ['only' => ['createusulan']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -134,15 +143,15 @@ class ToiletController extends Controller
         return redirect()->back();
     }
 
-    public function showDinas(){
-        $usulanBangunan = UsulanBangunan::search(request(['search']))
-        ->leftJoin('profils', 'profils.id', '=', 'usulan_bangunans.profil_id')
-        ->leftJoin('profil_kcds', 'profils.id', '=', 'profil_kcds.profil_id')
-        ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi', 'usulan_bangunans.proposal', 'usulan_bangunans.id')->where('usulan_bangunans.jenis', 'toilet')->paginate(40)->withQueryString();
+    // public function showDinas(){
+    //     $usulanBangunan = UsulanBangunan::search(request(['search']))
+    //     ->leftJoin('profils', 'profils.id', '=', 'usulan_bangunans.profil_id')
+    //     ->leftJoin('profil_kcds', 'profils.id', '=', 'profil_kcds.profil_id')
+    //     ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi', 'usulan_bangunans.proposal', 'usulan_bangunans.id')->where('usulan_bangunans.jenis', 'toilet')->paginate(40)->withQueryString();
 
-        return view('admin.toilet', [
-            'usulanBangunans' => $usulanBangunan,
-            'kompils' => Kompeten::getKompeten()
-        ]);
-    }
+    //     return view('admin.toilet', [
+    //         'usulanBangunans' => $usulanBangunan,
+    //         'kompils' => Kompeten::getKompeten()
+    //     ]);
+    // }
 }

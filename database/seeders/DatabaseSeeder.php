@@ -21,14 +21,14 @@ class DatabaseSeeder extends Seeder
         $this->call(ProfilSeeder::class);
         $this->call(KcdSeeder::class);
         // $this->call(ProfilKcdSeeder::class);
-        $this->call(PermissionTableSeeder::class);
-        $this->call(UserSeeder::class);
         
         $this->call(SpektrumSeeder::class);
         $this->call(BangunanSeeder::class);
         $this->call(ProgramKompetensiSeeder::class);
         $this->call(BidangKompetensiSeeder::class);
         $this->call(JeniskoleksiSeeder::class);
+        $this->call(PermissionTableSeeder::class);
+        $this->call(UserSeeder::class);
         
         // $this->call(KomliSeeder::class);
         

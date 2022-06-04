@@ -14,6 +14,14 @@ use Illuminate\Http\Request;
 
 class PeralatanTersediaController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_peralatan_tersedia|add_peralatan_tersedia|edit_peralatan_tersedia|delete_peralatan_tersedia', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_peralatan_tersedia', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_peralatan_tersedia', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_peralatan_tersedia', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

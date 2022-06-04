@@ -35,7 +35,7 @@ class AuthenticatedSessionController extends Controller
 
         $user = Auth::user();
         
-        if($user->hasRole('dinas')){
+        if($user->hasRole('dinas') || $user->hasRole('kcd')){
             return redirect('/')->with([
                 'route' => '/'
             ]);

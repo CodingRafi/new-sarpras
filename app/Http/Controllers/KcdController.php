@@ -13,6 +13,13 @@ use DB;
 
 class KcdController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_kcds|add_kcds|edit_kcds|delete_kcds', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_kcds', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_kcds', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_kcds', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

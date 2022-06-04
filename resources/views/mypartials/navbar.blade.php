@@ -29,7 +29,7 @@
     </form> --}}
 
 
-    @if (Auth::user()->hasRole('dinas'))
+    @if (!Auth::user()->hasRole('sekolah'))
         <form class="form-inline ml-2" action="/profil/admin" method="GET">
             <div class="input-group" style="width: 50vw">
                 <input class="form-control form-control-navbar" type="search"

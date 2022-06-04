@@ -12,6 +12,14 @@ use Illuminate\Support\Facades\Auth;
 
 class VisitasiController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_visitasi|add_visitasi|edit_visitasi|delete_visitasi', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_visitasi', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_visitasi', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_visitasi', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
