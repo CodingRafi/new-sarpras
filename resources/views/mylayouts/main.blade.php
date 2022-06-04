@@ -167,6 +167,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </aside>
         <!-- /.control-sidebar -->
 
+        <!-- FLASH MESSAGE -->
+        @if (session()->has('success'))
+        <div class="alert text-white alert-dismissible fade show m-0 temp-alert-success" role="alert" style="background: #00a65bb7; z-index: 99; position: fixed; bottom: 2vh; right: 2vh;">
+            <i class="bi bi-check-lg"></i> {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+        <!-- /FLASH MESSAGE -->
+
         {{-- Loading --}}
         <div
             style="position: fixed; background: rgba(0, 0, 0, 0.1); width: 100%; height: 100vh; z-index: 9999; display: flex; justify-content: center; align-items: center;">
@@ -198,6 +209,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     @yield('peralatanjs')
     <script src="/assets/js/loadingScreen.js"></script>
+
+    <script>
+        const tempAlertSuccess = document.querySelector('.temp-alert-success');
+        const myTimeout = setTimeout(myGreeting, 5000);
+    
+        function myGreeting() {
+            if (tempAlertSuccess) {
+                tempAlertSuccess.classList.remove('show');
+            }
+        }
+    </script>
 </body>
 
 
