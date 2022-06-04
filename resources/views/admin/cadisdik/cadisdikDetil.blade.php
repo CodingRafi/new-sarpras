@@ -36,81 +36,87 @@
 
     <!-- body -->
     {{-- -------------------------------------------------------------------------------------------------- INSTANSI CARD -------------------------------------------------------------------------------------------------- --}}
-    <div class="container-fluid">
-        <div class="card">
-            <div class="card-body">
-                <div class="row child-noneborder shadow-sm">
-                    <div class="alert text-white col-12 col-lg-8 d-flex flex-column justify-content-between"
-                        style="background-color: #25b5e9">
-                        <h5 class="h6"><i class="icon bi bi-bank2"></i> Instansi</h5>
-                        <div>
-                            <h3>{{ $kcd->instansi }}</h3>
-                            <p class="disabled">{{ $kcd->kab }}</p>
-                            <small>{{ $kcd->nama }} <span class="email">{{ $kcd->email }}</span> </small>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card card-default">
+                    <div class="card-body">
+                        <div class="child-noneborder shadow-sm">
+                            <div class="alert text-white d-flex flex-column justify-content-between"
+                                style="background-color: #25b5e9">
+                                <button type="button" class="btn btn-tool text-dark mr-1 text-white"
+                                    style="position: absolute; right:3px;" data-toggle="modal"
+                                    data-target="#edit-kcd"><i class="icon bi bi-pencil-square m-0"
+                                        style="position: absolute; right:0;color: white"></i>
+                                </button>
+                                <h5 class="h6"><i class="icon bi bi-bank2"></i> Instansi</h5>
+                                <div>
+                                    <h3>{{ $kcd->instansi }}</h3>
+                                    <p class="disabled">{{ $kcd->kab }}</p>
+                                    <small>{{ $kcd->nama }}</small>
+                                    <span class="email float-right"><i class="bi bi-postcard-fill"></i>
+                                        {{ $kcd->email }}</span>
+                                </div>
+
+                            </div>
+
+                            <div class="callout callout-secondary d-flex flex-column justify-content-between">
+                                <div class="d-flex">
+                                    <h5>Total Sekolah</h5>
+
+                                </div>
+                                <h1 class="display-4">{{ count($profils) }}</h1>
+                            </div>
                         </div>
-                    </div>
-                    <div class="callout callout-secondary col-7 col-lg-4 d-flex flex-column justify-content-between">
-                        <div class="d-flex">
-                            <h5>Total Sekolah</h5>
-                            <button type="button" class="btn btn-tool text-dark mr-1"
-                                style="position: absolute; right:0%; padding-top:10px" data-toggle="modal"
-                                data-target="#edit-kcd"><i class="icon bi bi-pencil-square mr-2"
-                                    style="position: absolute; right:0"></i>
-                            </button>
-                        </div>
-                        <h1 class="display-4">{{ count($profils) }}</h1>
                     </div>
                 </div>
             </div>
 
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="card card-default">
-            <div class="card-header d-flex p-0" style="background-color: #00a65b">
-                <h3 class="card-title p-3 text-white">Wilayah</h3>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body table-responsive">
-                @if (count($kabupatens) > 0)
-                    <table class="table table-head-fixed text-nowrap text-center">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Kota/Kabupaten</th>
-                                <th style="width: 70px;">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($kabupatens as $kabupaten)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $kabupaten->nama }}</td>
-                                    <td>
-                                        <form action="/profil-kcd/{{ $kabupaten->id_profil_kcds }}" method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn btn-danger"
-                                                onclick="return confirm('apakah anda yakin akan mengahapus wilayah ini?')">Hapus</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                @else
-                    <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
-                        <div class="alert" role="alert">
-                            Data Tidak Ditemukan
-                        </div>
+            <div class="col-lg-6">
+                <div class="card card-default">
+                    <div class="card-header d-flex p-0" style="background-color: #00a65b">
+                        <h3 class="card-title p-3 text-white">Kantor Cabang Dinas</h3>
                     </div>
-                @endif
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive pt-0" style="height: 220px">
+                        @if (count($kabupatens) > 0)
+                            <table class="table table-head-fixed text-nowrap text-center">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Kota/Kabupaten</th>
+                                        <th style="width: 70px;">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($kabupatens as $kabupaten)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $kabupaten->nama }}</td>
+                                            <td>
+                                                <form action="/profil-kcd/{{ $kabupaten->id_profil_kcds }}" method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn btn-danger"
+                                                        onclick="return confirm('apakah anda yakin akan mengahapus wilayah ini?')">Hapus</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @else
+                            <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                                <div class="alert" role="alert">
+                                    Data Tidak Ditemukan
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="container">
         <div class="card card-default">
             <div class="card-header bg-warning d-flex p-0">
                 <h3 class="card-title p-3 text-white">Kantor Cabang Dinas</h3>
@@ -177,7 +183,7 @@
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                                         name="name" placeholder="Masukan Nama Pimpinan"
-                                        value="{{  old('name', $kcd->nama) }}" required>
+                                        value="{{ old('name', $kcd->nama) }}" required>
                                     @error('name')
                                         <div class="invalid-feedback d-block" style="margin-left: 21vw">
                                             {{ $message }}

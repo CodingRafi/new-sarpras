@@ -68,7 +68,7 @@ class KetersediaanLahanController extends Controller
 
         Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan Ketersediaan lahan');
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menyimpan ketersediaan lahan!');
 
     }
 
@@ -133,7 +133,7 @@ class KetersediaanLahanController extends Controller
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Ketersediaan lahan ' . $request->nama);
 
-            return redirect('/lahan');
+            return redirect('/lahan')->with('success', 'Berhasil mengubah ketersediaan lahan!');
         }else{
             abort(403);
         }
@@ -153,7 +153,7 @@ class KetersediaanLahanController extends Controller
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menghapus Ketersediaan lahan');
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menghapus ketersediaan lahan!');
         }else{
             abort(403);
         }
