@@ -55,18 +55,17 @@
     <ul class="navbar-nav ml-auto">
         <div class="nav-item container d-block">
             <div class="container p-0 d-flex justify-content-end">
-                <span class="text-white text-right"
+                <span class="text-white"
                     style="font-size: 20px;font-weight: 600;">{{ Auth::user()->name }}</span>
-                </div>
-                <span class="text-white text-right badge badge-warning"
-                style="font-weight: 600;">Masuk Sebagai {{ Auth::user()->getRoleNames()->first() }}</span>
-
-
+            </div>
+            <span class="text-white text-right badge float-right"
+                style="background-color:#fcc12d53; border:1.5px solid #fcc12d; font-weight: 600; display:flex;justify-content:center; width:fit-content !important"><i class="bi bi-info-circle mr-2"></i><span style="font-size: 12px; margin-top:1px;">Masuk Sebagai {{ Auth::user()->getRoleNames()->first() }}</span>
+            </span>
         </div>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" style="margin-top: 7px">
             <a class="nav-link mr-2" data-toggle="dropdown" href="#" style="padding: 0;">
                 <img src="/assets/img/avatars/TarunaBhaktiLogo.png" alt="TarunaBhakti Logo"
-                    class="brand-image img-circle bg-white" width="33" style="opacity: .8">
+                    class="brand-image img-circle bg-white" width="45" style="opacity: .8">
             </a>
             <div class="dropdown-menu float-right">
                 <a class="dropdown-item" tabindex="-1" href="#" style="color: grey"><i class="bi bi-pencil-square"
