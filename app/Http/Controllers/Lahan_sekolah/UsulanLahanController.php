@@ -72,7 +72,7 @@ class UsulanLahanController extends Controller
 
         Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Membuat Usulan Lahan');
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menyimpan usulan!');
     }
     
     /**
