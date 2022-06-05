@@ -294,6 +294,16 @@
                     </li>
                 @endif
 
+                @if (Auth::user()->hasRole('verifikator'))
+                    <li class="nav-item">
+                        <a href="/visitasi-list"
+                            class="nav-link {{ Request::is('visitasi-list') ? 'active' : '' }}">
+                            <i class="nav-icon bi bi-shield-check"></i>
+                            <p>Visitasi</p>
+                        </a>
+                    </li>
+                @endif
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

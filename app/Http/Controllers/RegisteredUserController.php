@@ -56,6 +56,7 @@ class RegisteredUserController extends Controller
                 'kota_kabupaten_id' => 'nullable'
             ]);
             
+            $validatedData['foto_profil'] = '/img/logo_navbar.png';
             $validatedData['password'] = Hash::make('12345678');
             $validatedData['provinsi'] = 'Jawa Barat';
     
@@ -118,7 +119,7 @@ class RegisteredUserController extends Controller
         if ($user->hasRole('kcd')) {
             return redirect('/cadisdik/'    . $user->kcd->id);
         }else{
-            return redirect('/monitoring');
+            return redirect('/monitoring'); 
         }
     }
 

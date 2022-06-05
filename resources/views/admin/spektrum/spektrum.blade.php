@@ -66,7 +66,7 @@
                                     <td class="text-center">
                                         <div>
                                             <a href="/spektrum/{{ $spektrum->id }}/edit" class="btn btn-warning text-white">Edit</a>
-                                            <form action="/spektrum-kompetensi/{{ $spektrum->id }}" method="post"
+                                            <form action="/spektrum/{{ $spektrum->id }}" method="post"
                                                 class="d-inline-block">
                                                 @csrf
                                                 @method('delete')

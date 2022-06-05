@@ -4,8 +4,8 @@
     <link rel="stylesheet" href="/css/fstdropdown.css">
     <style>
         /* .row-data .col-3 {
-                                                                            max-width: 15.5rem !important;
-                                                                        } */
+                                                                                        max-width: 15.5rem !important;
+                                                                                    } */
 
         .card-header h4 {
             font-size: 1.2rem !important
@@ -95,18 +95,23 @@
                                                     <td class="col-1 text-center">{{ $visitasi->nama_sekolah }}</td>
                                                     <td class="col-1 text-center">{{ $visitasi->keperluan }}</td>
                                                     <td class="col-1 text-center">
-                                                        <a href="{{ asset('storage/' . $visitasi->surat_tugas) }}" target="_blank">
+                                                        <a href="{{ asset('storage/' . $visitasi->surat_tugas) }}"
+                                                            target="_blank">
                                                             <img src="/img/pdf.png" alt="image" style="width: 30px">
                                                         </a>
                                                     </td>
                                                     <td class="col-1 text-center">{{ $visitasi->tanggal_visitasi }}</td>
                                                     <td class="col-1 text-center">
                                                         <a class="btn text-white" style="background-color: #00a65b"
-                                                            href="/visitasi/{{ $visitasi->id }}/edit">Edit</a>
-                                                        <form action="/visitasi/{{ $visitasi->id }}" method="post" style="display: inline-block">
+                                                            href="{{ ($visitasi->status == 'proses_visitasi') ? 'visitasi/' . $visitasi->id . '/edit' : '#' }}"
+                                                            {{ $visitasi->status == 'proses_visitasi' ? 'disabled' : '' }}>Edit</a>
+                                                        <form action="/visitasi/{{ $visitasi->id }}" method="post"
+                                                            style="display: inline-block">
                                                             @csrf
                                                             @method('delete')
-                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus visitasi ini?')">Hapus</button>
+                                                            <button type="submit" class="btn btn-danger"
+                                                                onclick="return confirm('Apakah anda yakin akan menghapus visitasi ini?')"
+                                                                {{ $visitasi->status == 'proses_visitasi' ? '' : 'disabled' }}>Hapus</button>
                                                         </form>
                                                     </td>
                                                 </tr>
@@ -118,7 +123,8 @@
                                     <div class="container d-flex justify-content-center align-items-center"
                                         style="height: 10rem">
                                         <div class="alert" role="alert">
-                                            Tidak ada {{ count($verifikators) > 0 ? 'sekolah' : 'verifikator' }} ditemukan
+                                            Tidak ada {{ count($verifikators) > 0 ? 'sekolah' : 'verifikator' }}
+                                            ditemukan
                                         </div>
                                     </div>
                                 @endif

@@ -452,9 +452,8 @@
                                                                             @csrf
                                                                             @method('delete')
                                                                             <button type="submit"
-                                                                                onclick="return confirm('apakah anda yakin akan mengahapus unsur verifikasi ini?')">Hapus</button>
+                                                                                onclick="return confirm('apakah anda yakin akan mengahapus unsur verifikasi ini?')" class="dropdown-item">Hapus</button>
                                                                         </form>
-                                                                        <a class="dropdown-item" href="">Hapus</a>
                                                                     </div>
                                                                 </div>
                                                             </div>

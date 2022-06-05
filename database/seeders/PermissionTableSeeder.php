@@ -224,7 +224,9 @@ class PermissionTableSeeder extends Seeder
             'delete_usulan_lahan',
             'usulan_lahan_dinas',
 
-            'view_profil_search'
+            'view_profil_search',
+            'all_visitasi',
+            'visitasi_publish'
         ];
 
         foreach ($permissions as $permission) {
