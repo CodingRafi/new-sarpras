@@ -105,7 +105,7 @@ class PimpinanController extends Controller
 
         Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambah Ketersediaan Ruang Pimpinan');
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menambah ketersediaan ruang pimpinan!');
     }
 
     /**
@@ -155,7 +155,7 @@ class PimpinanController extends Controller
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah data ketersediaan Ruang Pimpinan');
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil mengubah ketersediaan ruang pimpinan!');
 
         }else{
             abort(403);
@@ -174,7 +174,7 @@ class PimpinanController extends Controller
     {
         if($pimpinan->profil_id == Auth::user()->profil_id){
             Pimpinan::destroy($pimpinan->id);
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menghapus ketersediaan ruang pimpinan!');
         }else{
             abort(403);
         }
@@ -196,7 +196,7 @@ class PimpinanController extends Controller
 
         Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan usulan ruang pimpinan');
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menambah usulan ruang pimpinan!');
     }
 
     public function showDinas(){

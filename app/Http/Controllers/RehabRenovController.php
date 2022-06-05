@@ -117,7 +117,7 @@ class RehabRenovController extends Controller
         UsulanFoto::uploadFoto($request->gambar, $usulanKoleksi);
         // dd($validatedData);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menambah rencana rehab & renov!');
     }
 
     /**
@@ -191,7 +191,7 @@ class RehabRenovController extends Controller
             
             $data->update($validatedData);
 
-            return redirect('/bangunan/ruang-rehabrenov');
+            return redirect('/bangunan/ruang-rehabrenov')->with('success', 'Berhasil mengubah rencana rehab & renov!');
         }else{
             abort(403);
         }
@@ -216,7 +216,7 @@ class RehabRenovController extends Controller
             Storage::delete($data->proposal);
             RehabRenov::destroy($data->id);
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil membatalkan rencana rehab & renov!');
         }else{
             abort(403);
         }
