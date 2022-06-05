@@ -135,7 +135,7 @@ class UsulanLahanController extends Controller
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Usulan Lahan');
 
-            return redirect('/usulan-lahan');
+            return redirect('/usulan-lahan')->with('success', 'Berhasil mengubah usulan lahan !');
 
         }else{
             abort(403);
@@ -156,7 +156,7 @@ class UsulanLahanController extends Controller
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Membatalkan usulan lahan');
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menghapus usulan lahan !');
         }else{
             abort(403);
         }        

@@ -53,7 +53,7 @@ class ProfilKcdController extends Controller
 
             ProfilKcd::createProfilKcd($request->kcd_id, $request->id_kota_kabupaten);
     
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menambah wilayah!');
         }else{
             abort(403);
         }
@@ -103,7 +103,7 @@ class ProfilKcdController extends Controller
     {
         if (Auth::user()->hasRole('dinas')) {   
             ProfilKcd::destroy($profilKcd->id);
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menghapus wilayah!');
         }else{
             abort(403);
         }

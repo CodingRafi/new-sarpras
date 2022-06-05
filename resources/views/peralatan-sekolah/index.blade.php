@@ -398,7 +398,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-success float-right tombol-simpan">Simpan</button>
+                                    <button type="submit" class="btn btn-success float-right tombol-simpan loading-simpan">Simpan</button>
                                 </div>
                             @else
                                 <div class="container d-flex justify-content-center align-items-center"

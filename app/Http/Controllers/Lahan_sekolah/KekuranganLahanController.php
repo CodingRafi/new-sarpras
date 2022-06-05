@@ -61,7 +61,7 @@ class KekuranganLahanController extends Controller
 
         Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan Kekurangan Lahan');
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menyimpan kekurangan lahan!');
     }
 
     /**
@@ -110,7 +110,7 @@ class KekuranganLahanController extends Controller
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Kekurangan Lahan');
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil mengubah kekurangan lahan!');
         }else{
             abort(403);
         }
@@ -126,7 +126,7 @@ class KekuranganLahanController extends Controller
     {
         if($kekuranganLahan->profil_id == Auth::user()->profil_id){
             KekuranganLahan::destroy($kekuranganLahan->id);
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menghapus kekurangan lahan!');
         }else{
             abort(403);
         }

@@ -77,7 +77,7 @@ class UsulanPeralatanController extends Controller
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Membuat Usulan Peralatan' . $kompeten->komli->kompetensi);
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menyimpan usulan peralatan ' . $kompeten->komli->kompetensi . '!');
         }
     }
 
@@ -140,7 +140,7 @@ class UsulanPeralatanController extends Controller
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Usulan Peralatan' . $kompeten->komli->kompetensi);
 
-            return redirect('/peralatan-sekolah/' . $kompeten->id);
+            return redirect('/peralatan-sekolah/' . $kompeten->id)->with('success', 'Berhasil mengubah usulan peralatan ' . $kompeten->komli->kompetensi . '!');
         }
     }
 
@@ -158,7 +158,7 @@ class UsulanPeralatanController extends Controller
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Membatalkan usulan peralatan');
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil membatalkan usulan peralatan!');
         }else{
             abort(403);
         } 

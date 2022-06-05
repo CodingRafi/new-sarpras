@@ -97,7 +97,7 @@ class KompetenController extends Controller
     
             Log::createLog($request->profil_id, Auth::user()->id, 'Menambahkan ' . count($request->jurusanTerpilih) . ' jurusan');
     
-            return redirect('/profil/' . $request->profil_id);
+            return redirect('/profil/' . $request->profil_id)->with('success', 'Berhasil menambah jurusan!');
         }else{
             abort(403);
         }
@@ -189,7 +189,7 @@ class KompetenController extends Controller
             $jml_pr = 0;
             Log::createLog($request->profil_id, Auth::user()->id, 'Mengubah jumlah siswa');
     
-            return redirect('/profil/' . $request->profil_id);
+            return redirect('/profil/' . $request->profil_id)->with('success', 'Berhasil mengubah jumlah siswa');
         }else{
             abort(403);
         }
@@ -229,7 +229,7 @@ class KompetenController extends Controller
     
             Log::createLog($kompeten->profil_id, Auth::user()->id, 'Menghapus jurusan ' . $komli->kompetensi);
     
-            return redirect('/profil/' . $kompeten->profil_id);
+            return redirect('/profil/' . $kompeten->profil_id)->with('success', 'Berhasil menghapus jurusan!');
         }else{
             abort(403);
         }

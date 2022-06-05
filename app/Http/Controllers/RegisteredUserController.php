@@ -116,7 +116,7 @@ class RegisteredUserController extends Controller
         $user->update($validatedData);
     
         if ($user->hasRole('kcd')) {
-            return redirect('/cadisdik/'    . $user->kcd->id);
+            return redirect('/cadisdik/'    . $user->kcd->id)->with('success', 'Berhasil mengubah cadisdik!');
         }else{
             return redirect('/monitoring');
         }

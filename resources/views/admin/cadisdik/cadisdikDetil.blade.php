@@ -54,8 +54,8 @@
                                     <h3>{{ $kcd->instansi }}</h3>
                                     <p class="disabled">{{ $kcd->kab }}</p>
                                     <small>{{ $kcd->nama }}</small>
-                                    <span class="email float-right"><i class="bi bi-postcard-fill"></i>
-                                        {{ $kcd->email }}</span>
+                                    <span class="email float-right">@if($kcd->email)<i class="bi bi-postcard-fill"></i> 
+                                        {{ ' ' . $kcd->email }}@endif</span>
                                 </div>
 
                             </div>

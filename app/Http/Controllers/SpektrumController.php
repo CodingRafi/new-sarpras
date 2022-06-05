@@ -61,7 +61,7 @@ class SpektrumController extends Controller
 
             Spektrum::create($validatedData);
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menambah spektrum!');
         }else{
             abort(403);
         }
@@ -117,7 +117,7 @@ class SpektrumController extends Controller
 
             $spektrum->update($validatedData);
 
-            return redirect('/spektrum');
+            return redirect('/spektrum')->with('success', 'Berhasil mengubah spektrum!');
         }else{
             abort(403);
         }
@@ -137,6 +137,6 @@ class SpektrumController extends Controller
         }
         Spektrum::destroy($spektrum->id);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menghapus spektrum!');
     }
 }
