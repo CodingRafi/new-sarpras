@@ -1,134 +1,51 @@
-<!DOCTYPE html>
+<html>
 
-<!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
-==============================================================
+<head>
+    <title>SISTEM SARPRAS | Forgot Password</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    
 
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
-* Created by: ThemeSelection
-* License: You must have a valid license purchased in order to legally use the theme for your project.
-* Copyright ThemeSelection (https://themeselection.com)
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
+</head>
 
-=========================================================
- -->
-<!-- beautify ignore:start -->
-<html
-  lang="en"
-  class="light-style customizer-hide"
-  dir="ltr"
-  data-theme="theme-default"
-  data-assets-path="../assets/"
-  data-template="vertical-menu-template-free"
->
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
-    />
+<body>
+    <div class="container-fluid text-center" style="background-color: rgba(238, 238, 238, 1); height: 100vh;">
 
-    <title>Forgot Password Basic - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+        <img class="my-4" src="/assets/img/logoJabar.png" width="115">
 
-    <meta name="description" content="" />
+        <div class="card text-center col-md-8 col-12 p-0 mx-auto mt-4">
+            {{-- <h5 class="card-header bg-dark text-light">Reset Password</h5> --}}
+            <div class="card-body d-flex flex-column justify-content-center align-items-center text-left py-4"
+                style="min-height:40vh;">
+                <form style="width: 90%;">
+                    <div class="form-group pb-2">
+                        <label class="font-weight-bold" for="exampleInputEmail1">Lupa Password?</label>
+                        <p style="font-size: 12px; color:rgb(125, 125, 125);">Masukan email anda, kami akan kirimkan kode verifikasi ke email anda</p>
+                    </div>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
+                    <div class="form-group pb-2">
+                        <label class="font-weight-bold" for="exampleInputPassword1">Email</label>
+                        <input type="email" class="form-control bg-light border rounded-pill px-4" placeholder="Masukan email anda" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
-
-    <!-- Core CSS -->
-    <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="../assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="../assets/css/demo.css" />
-
-    <!-- Vendors CSS -->
-    <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-
-    <!-- Page CSS -->
-    <!-- Page -->
-    <link rel="stylesheet" href="../assets/vendor/css/pages/page-auth.css" />
-    <!-- Helpers -->
-    <script src="../assets/vendor/js/helpers.js"></script>
-
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="../assets/js/config.js"></script>
-  </head>
-
-  <body>
-    <!-- Content -->
-
-    <div class="container-xxl">
-      <div class="authentication-wrapper authentication-basic container-p-y">
-        <div class="authentication-inner py-4">
-          <!-- Forgot Password -->
-          <div class="card">
-            <div class="card-body">
-              <h4 class="mb-2">Forgot Password? 🔒</h4>
-              <p class="mb-4">Enter your email and we'll send you instructions to reset your password</p>
-              <!-- Session Status -->
-                <x-auth-session-status class="mb-4" style="color: red" :status="session('status')" />
-
-                <!-- Validation Errors -->
-                <x-auth-validation-errors class="mb-4" :errors="$errors" />
-              <form id="formAuthentication" class="mb-3" action="{{ route('password.email') }}" method="POST">
-                  @csrf
-                <div class="mb-3">
-                  <label for="email" class="form-label">Email</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="email"
-                    name="email"
-                    placeholder="Enter your email"
-                    value="{{ old('email') }}"
-                    autofocus
-                    required
-                  />
-                </div>
-                <button class="btn btn-primary d-grid w-100">Send Reset Link</button>
-              </form>
-              <div class="text-center">
-                <a href="/login" class="d-flex align-items-center justify-content-center">
-                  <i class="bx bx-chevron-left scaleX-n1-rtl bx-sm"></i>
-                  Back to login
-                </a>
-              </div>
+                    <button type="submit" class="btn btn-dark text-center rounded-pill mt-3" style="width: 100%;">Lanjut
+                    </button>
+                    
+                    <div class="text-center mt-2">
+                      <a href="/login"><i class="bi bi-arrow-left">Kembali ke login</i></a>
+                    </div>
+                </form>
             </div>
-          </div>
-          <!-- /Forgot Password -->
         </div>
-      </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
+    </script>
+</body>
 
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="../assets/vendor/libs/popper/popper.js"></script>
-    <script src="../assets/vendor/js/bootstrap.js"></script>
-    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-
-    <script src="../assets/vendor/js/menu.js"></script>
-    <!-- endbuild -->
-
-    <!-- Vendors JS -->
-
-    <!-- Main JS -->
-    <script src="../assets/js/main.js"></script>
-
-    <!-- Page JS -->
-
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-  </body>
 </html>
