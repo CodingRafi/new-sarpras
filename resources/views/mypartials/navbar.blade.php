@@ -29,7 +29,7 @@
     </form> --}}
 
 
-    @if (Auth::user()->hasRole('dinas'))
+    @if (!Auth::user()->hasRole('sekolah'))
         <form class="form-inline ml-2" action="/profil/admin" method="GET">
             <div class="input-group" style="width: 50vw">
                 <input class="form-control form-control-navbar" type="search"
@@ -55,16 +55,31 @@
     <ul class="navbar-nav ml-auto">
         <div class="nav-item container d-block">
             <div class="container p-0 d-flex justify-content-end">
-                <span class="text-white"
-                    style="font-size: 20px;font-weight: 600;">{{ Auth::user()->name }}</span>
+                <span class="text-white" style="font-size: 20px;font-weight: 600;">{{ Auth::user()->name }}</span>
             </div>
-            <span class="text-white text-right badge float-right"
-                style="background-color:#fcc12d53; border:1.5px solid #fcc12d; font-weight: 600; display:flex;justify-content:center; width:fit-content !important"><i class="bi bi-info-circle mr-2"></i><span style="font-size: 12px; margin-top:1px;">Masuk Sebagai {{ Auth::user()->getRoleNames()->first() }}</span>
-            </span>
+            @if (Auth::user()->hasRole('dinas'))
+                <span class="text-white text-right badge float-right"
+                    style="background-color:#fcc12d53; border:1.5px solid #fcc12d; font-weight: 600; display:flex;justify-content:center; width:fit-content !important"><i
+                        class="bi bi-info-circle mr-2"></i><span style="font-size: 12px; margin-top:1px;">Masuk Sebagai
+                        Dinas Pendidikan</span>
+                </span>
+            @elseif(Auth::user()->hasRole('kcd'))
+                <span class="text-white text-right badge float-right"
+                    style="background-color:#fcc12d53; border:1.5px solid #fcc12d; font-weight: 600; display:flex;justify-content:center; width:fit-content !important"><i
+                        class="bi bi-info-circle mr-2"></i><span style="font-size: 12px; margin-top:1px;">Masuk Sebagai
+                        Cadisdik</span>
+                </span>
+            @else
+                <span class="text-white text-right badge float-right"
+                    style="background-color:#fcc12d53; border:1.5px solid #fcc12d; font-weight: 600; display:flex;justify-content:center; width:fit-content !important"><i
+                        class="bi bi-info-circle mr-2"></i><span style="font-size: 12px; margin-top:1px;">Masuk Sebagai
+                        {{ Auth::user()->getRoleNames()->first() }}</span>
+                </span>
+            @endif
         </div>
         <li class="nav-item dropdown" style="margin-top: 7px">
             <a class="nav-link mr-2" data-toggle="dropdown" href="#" style="padding: 0;">
-                <img src="/assets/img/avatars/TarunaBhaktiLogo.png" alt="TarunaBhakti Logo"
+                <img src="{{ Auth::user()->foto_profil }}" alt="TarunaBhakti Logo"
                     class="brand-image img-circle bg-white" width="45" style="opacity: .8">
             </a>
             <div class="dropdown-menu float-right">

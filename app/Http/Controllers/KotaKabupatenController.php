@@ -8,6 +8,15 @@ use App\Http\Requests\UpdateKotaKabupatenRequest;
 
 class KotaKabupatenController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_kota_kabupatens|add_kota_kabupatens|edit_kota_kabupatens|delete_kota_kabupatens', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_kota_kabupatens', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_kota_kabupatens', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_kota_kabupatens', ['only' => ['destroy']]);
+    }
+
+
     /**
      * Display a listing of the resource.
      *

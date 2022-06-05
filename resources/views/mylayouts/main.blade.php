@@ -43,7 +43,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             color: black !important;
         }
 
-        ::-webkit-scrollbar {
+        .sidebar::-webkit-scrollbar {
             display: none;
         }
 
@@ -140,11 +140,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
         {{-- /NAVBAR --}}
 
         {{-- SIDEBAR --}}
-        @if (Auth::user()->hasRole('dinas'))
-        @include('mypartials.asideadmin')
-        @elseif(Auth::user()->hasRole('sekolah'))
-        @include('mypartials.aside')
-        @endif
+        @can('view_profiladmin')
+            @include('mypartials.asideadmin')
+        @else
+            @include('mypartials.aside')
+        @endcan
+
         {{-- /SIDEBAR --}}
 
         <!-- Content Wrapper. Contains page content -->
@@ -186,7 +187,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="item"></div>
                 <div class="item"></div>
                 <div class="item"></div>
-                <img src="/assets/img/avatars/logo-jawa-barat.png" alt="TarunaBhakti Logo" width="50" class="logo">
+                <img src="/assets/img/avatars/logo-jawa-barat.png" alt="TarunaBhakti Logo" width="50"
+                    class="logo">
             </div>
         </div>
         {{-- End Loading --}}

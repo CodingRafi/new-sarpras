@@ -20,6 +20,16 @@ use App\Models\Kompeten;
 
 class PimpinanController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_pimpinan|add_pimpinan|edit_pimpinan|delete_pimpinan', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_pimpinan', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_pimpinan', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_pimpinan', ['only' => ['destroy']]);
+         $this->middleware('permission:pimpinan_create_usulan', ['only' => ['cretaeusulan']]);
+         $this->middleware('permission:pimpinan_show_dinas', ['only' => ['showDinas']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

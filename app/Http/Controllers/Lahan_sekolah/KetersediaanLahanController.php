@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Storage;
 
 class KetersediaanLahanController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_ketersediaan_lahan|add_ketersediaan_lahan|edit_ketersediaan_lahan|delete_ketersediaan_lahan', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_ketersediaan_lahan', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_ketersediaan_lahan', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_ketersediaan_lahan', ['only' => ['destroy']]);
+    }
+    
     /**
      * Display a listing of the resource.
      *

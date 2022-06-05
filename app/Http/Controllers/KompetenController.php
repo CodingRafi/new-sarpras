@@ -13,6 +13,14 @@ use Illuminate\Http\Request;
 
 class KompetenController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_kompetens|add_kompetens|edit_kompetens|delete_kompetens', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_kompetens', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_kompetens', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_kompetens', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

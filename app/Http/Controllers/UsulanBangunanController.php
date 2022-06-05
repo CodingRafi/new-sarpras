@@ -17,6 +17,16 @@ use App\Models\Kompeten;
 
 class UsulanBangunanController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_usulan_bangunans|add_usulan_bangunans|edit_usulan_bangunans|delete_usulan_bangunans', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_usulan_bangunans', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_usulan_bangunans', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_usulan_bangunans', ['only' => ['destroy']]);
+         $this->middleware('permission:usulan_bangunan_edit_pimpinan', ['only' => ['destroy']]);
+         $this->middleware('permission:usulan_bangunan_update_pimpinan', ['only' => ['destroy']]);
+    }
+    
     /**
      * Display a listing of the resource.
      *

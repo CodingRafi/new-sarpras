@@ -32,8 +32,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark display-4" style="padding: 0 !important;text-transform: capitalize;">Usulan
-                        {{ str_replace('_', ' ', $data->jenis) }}</h1>
+                    <h1 class="m-0 text-dark display-4" style="padding: 0 !important;text-transform: capitalize;">Rehab Renov</h1>
                 </div>
             </div>
         </div>
@@ -101,36 +100,24 @@
                         <table class="table table-hover table-bordered text-center">
                             <thead class="bg-light text-center">
                                 <tr>
-                                    @if ($data->jenis != 'ruang_pimpinan')
-                                        <th rowspan="2" style="vertical-align: middle;">Jenis Ruang</th>
-                                    @endif
-                                    @if ($data->jenis == 'ruang_praktek')
-                                        <th rowspan="2" style="vertical-align: middle;">Jurusan</th>
-                                    @endif
-                                    @if ($data->jenis == 'ruang_pimpinan')
-                                        <th rowspan="2" style="vertical-align: middle;">Jenis Ruang</th>
-                                    @endif
-                                    <th colspan="2" style="vertical-align: middle;">Ketersedian Lahan</th>
-                                    <th rowspan="2" style="vertical-align: middle;">Keterangan</th>
-                                </tr>
-                                <tr>
-                                    <th class="text-center">Gambar Lahan</th>
-                                    <th class="text-center">Luas Lahan</th>
+                                    <th style="vertical-align: middle;">Jenis Usulan</th>
+                                    <th style="vertical-align: middle;">Persentase</th>
+                                    <th style="vertical-align: middle;">Usia</th>
+                                    <th style="vertical-align: middle;">Objek</th>
+                                    <th style="vertical-align: middle;">Luas Lahan</th>
+                                    <th style="vertical-align: middle;">Keterangan</th>
+                                    <th style="vertical-align: middle;">Gambar</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    @if ($data->jenis != 'ruang_pimpinan')
-                                        <td style="vertical-align: middle;text-transform: capitalize;">
-                                            {{ str_replace('_', ' ', $data->jenis) }}</td>
-                                    @endif
-                                    @if ($data->jenis == 'ruang_praktek')
-                                        <td style="vertical-align: middle;">{{ $jurusan }}</td>
-                                    @endif
-                                    @if ($data->jenis == 'ruang_pimpinan')
-                                        <td style="vertical-align: middle;">{{ $jenisPimpinan }}</td>
-                                    @endif
+                                    <td style="vertical-align: middle;text-transform: capitalize">{{ $data->jenis }}</td>
+                                    <td style="vertical-align: middle;">{{ $data->persentase }}</td>
+                                    <td style="vertical-align: middle;">{{ $data->usia }}</td>
+                                    <td style="vertical-align: middle;">{{ $data->objek }}</td>
+                                    <td class="text-center" style="vertical-align: middle;">{{ $data->luas_lahan }} m²
                                     </td>
+                                    <td style="vertical-align: middle;">{{ $data->keterangan }}</td>
                                     <td style="vertical-align: middle">
                                         @foreach ($usulanFoto as $key => $foto)
                                             <a href="{{ asset('storage/' . $foto->nama) }}" class="fancybox"
@@ -140,9 +127,6 @@
                                             </a>
                                         @endforeach
                                     </td>
-                                    <td class="text-center" style="vertical-align: middle;">{{ $data->luas_lahan }} m²
-                                    </td>
-                                    <td style="vertical-align: middle;">{{ $data->keterangan }}</td>
                                 </tr>
                             </tbody>
                         </table>

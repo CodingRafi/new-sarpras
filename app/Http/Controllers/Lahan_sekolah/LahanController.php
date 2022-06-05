@@ -14,7 +14,7 @@ class LahanController extends Controller
 {
     function __construct()
     {
-         $this->middleware('permission:view_lahan|add_lahan|edit_lahan|delete_lahan', ['only' => ['index']]);
+         $this->middleware('permission:view_lahan', ['only' => ['index']]);
     }
 
     public function index(){

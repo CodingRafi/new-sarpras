@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\UsulanLahan;
 use App\Models\Log;
 use App\Models\Kompeten;
+use App\Models\ProfilKcd;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreUsulanLahanRequest;
 use App\Http\Requests\UpdateUsulanLahanRequest;
@@ -20,6 +21,7 @@ class UsulanLahanController extends Controller
          $this->middleware('permission:add_usulan_lahan', ['only' => ['create','store']]);
          $this->middleware('permission:edit_usulan_lahan', ['only' => ['edit','update']]);
          $this->middleware('permission:delete_usulan_lahan', ['only' => ['destroy']]);
+         $this->middleware('permission:usulan_lahan_dinas', ['only' => ['lahanDinas']]);
     }   
 
     /**
@@ -29,11 +31,15 @@ class UsulanLahanController extends Controller
      */
     public function index()
     {
-        $semua_usulan = UsulanLahan::where('profil_id', Auth::user()->profil_id)->get();
-        return view("lahan.usulan", [
-            'semua_usulan' => $semua_usulan,
-            'kompils' => Kompeten::getKompeten(),
-        ]);
+        if (strtolower(Auth::user()->profil->status_sekolah) == 'negeri') {
+            $semua_usulan = UsulanLahan::where('profil_id', Auth::user()->profil_id)->get();
+            return view("lahan.usulan", [
+                'semua_usulan' => $semua_usulan,
+                'kompils' => Kompeten::getKompeten(),
+            ]);
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -54,25 +60,29 @@ class UsulanLahanController extends Controller
      */
     public function store(StoreUsulanLahanRequest $request)
     {
-        $validatedData = $request->validate([
-            'nama' => 'required',
-            'panjang' => 'required',
-            'lebar' => 'required',
-            'alamat' => 'required',
-            'proposal' => 'required|mimes:pdf|file|max:5120'
-        ]);
-        
-        $validatedData['status'] = 'Proses Pengajuan';
-        $validatedData['proposal'] = $request->file('proposal')->store('proposal-lahan');
-        $validatedData['jenis_usulan'] = 'lahan';
-        $validatedData['luas'] = $request->panjang * $request->lebar;
-        $validatedData['profil_id'] = Auth::user()->profil_id;
-
-        UsulanLahan::create($validatedData);
-
-        Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Membuat Usulan Lahan');
-
-        return redirect()->back()->with('success', 'Berhasil menyimpan usulan!');
+        if (strtolower(Auth::user()->profil->status_sekolah) == 'negeri') {
+            $validatedData = $request->validate([
+                'nama' => 'required',
+                'panjang' => 'required',
+                'lebar' => 'required',
+                'alamat' => 'required',
+                'proposal' => 'required|mimes:pdf|file|max:5120'
+            ]);
+            
+            $validatedData['status'] = 'Proses Pengajuan';
+            $validatedData['proposal'] = $request->file('proposal')->store('proposal-lahan');
+            $validatedData['jenis_usulan'] = 'lahan';
+            $validatedData['luas'] = $request->panjang * $request->lebar;
+            $validatedData['profil_id'] = Auth::user()->profil_id;
+    
+            UsulanLahan::create($validatedData);
+    
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Membuat Usulan Lahan');
+    
+            return redirect()->back()->with('success', 'Berhasil menyimpan usulan!');
+        }else{
+            abort(403);
+        }
     }
     
     /**
@@ -83,11 +93,15 @@ class UsulanLahanController extends Controller
      */
     public function show(UsulanLahan $usulanLahan)
     {
-        return view('lahan.show', [
-            'data' => $usulanLahan,
-            'profil' => $usulanLahan->profil,
-            'kompils' => Kompeten::getKompeten(),
-        ]);
+        if (strtolower(Auth::user()->profil->status_sekolah) == 'negeri') {
+            return view('lahan.show', [
+                'data' => $usulanLahan,
+                'profil' => $usulanLahan->profil,
+                'kompils' => Kompeten::getKompeten(),
+            ]);
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -98,10 +112,14 @@ class UsulanLahanController extends Controller
      */
     public function edit(UsulanLahan $usulanLahan)
     {
-        return view('lahan.edit', [
-            'data' => $usulanLahan,
-            'kompils' => Kompeten::getKompeten(),
-        ]);
+        if (strtolower(Auth::user()->profil->status_sekolah) == 'negeri') {
+            return view('lahan.edit', [
+                'data' => $usulanLahan,
+                'kompils' => Kompeten::getKompeten(),
+            ]);
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -113,7 +131,7 @@ class UsulanLahanController extends Controller
      */
     public function update(UpdateUsulanLahanRequest $request, UsulanLahan $usulanLahan)
     {
-        if($usulanLahan->profil_id == Auth::user()->profil_id){
+        if($usulanLahan->profil_id == Auth::user()->profil_id && strtolower(Auth::user()->profil->status_sekolah) == 'negeri'){
             $validatedData = $request->validate([
                 'nama' => 'required',
                 'panjang' => 'required',
@@ -148,7 +166,7 @@ class UsulanLahanController extends Controller
      */
     public function destroy(UsulanLahan $usulanLahan)
     {
-        if($usulanLahan->profil_id == Auth::user()->profil_id){
+        if($usulanLahan->profil_id == Auth::user()->profil_id && strtolower(Auth::user()->profil->status_sekolah) == 'negeri'){
             Storage::delete($usulanLahan->proposal);
             UsulanLahan::destroy($usulanLahan->id);
 
@@ -161,18 +179,37 @@ class UsulanLahanController extends Controller
     }
 
     public function lahanDinas(){
-        $usulanLahan = UsulanLahan::search(request(['search']))
-                        ->leftJoin('profils', 'profils.id', 'usulan_lahans.profil_id')
-                        ->leftJoin('kota_kabupatens', 'kota_kabupatens.id', 'profils.kota_kabupaten_id')
-                        ->leftJoin('profil_kcds', 'kota_kabupatens.id', 'profil_kcds.kota_kabupaten_id')
-                        ->leftJoin('kcds', 'kcds.id', 'profil_kcds.kcd_id')
-                        ->select('profils.*', 'kcds.instansi', 'usulan_lahans.proposal')
-                        ->paginate(40)->withQueryString();
+        if (Auth::user()->hasRole('kcd')) {
+            $profils = ProfilKcd::ambil(Auth::user()->kcd_id);
+            $usulanLahan = [];
+            foreach ($profils as $key => $profil) {
+                $usulans = UsulanLahan::where('profil_id', $profil->id)
+                                ->leftJoin('profils', function($join) use ($profil){
+                                    $join->where('profils.id', $profil->id);
+                                })
+                                ->leftJoin('kota_kabupatens', 'kota_kabupatens.id', 'profils.kota_kabupaten_id')
+                                ->leftJoin('profil_kcds', 'kota_kabupatens.id', 'profil_kcds.kota_kabupaten_id')
+                                ->leftJoin('kcds', 'kcds.id', 'profil_kcds.kcd_id')
+                                ->select('profils.*', 'kcds.instansi', 'usulan_lahans.proposal')->get();
+                if (count($usulans) > 0) {
+                    foreach ($usulans as $usulan) {
+                        $usulanLahan[] = $usulan;
+                    }
+                }
+            }
+        }else{
+            $usulanLahan = UsulanLahan::search(request(['search']))
+                            ->leftJoin('profils', 'profils.id', 'usulan_lahans.profil_id')
+                            ->leftJoin('kota_kabupatens', 'kota_kabupatens.id', 'profils.kota_kabupaten_id')
+                            ->leftJoin('profil_kcds', 'kota_kabupatens.id', 'profil_kcds.kota_kabupaten_id')
+                            ->leftJoin('kcds', 'kcds.id', 'profil_kcds.kcd_id')
+                            ->select('profils.*', 'kcds.instansi', 'usulan_lahans.proposal')
+                            ->get();
+        }
 
 
         return view('admin.lahan', [
             'usulanLahans' => $usulanLahan,
-            'kompils' => Kompeten::getKompeten(),
         ]);
     }
 }

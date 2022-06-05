@@ -14,6 +14,14 @@ use App\Models\Kompeten;
 
 class KoleksiController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_koleksis|add_koleksis|edit_koleksis|delete_koleksis', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_koleksis', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_koleksis', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_koleksis', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -18,6 +18,14 @@ use Illuminate\Support\Facades\Storage;
 
 class KomliController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_komlis|add_komlis|edit_komlis|delete_komlis', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_komlis', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_komlis', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_komlis', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -11,6 +11,14 @@ use Illuminate\Support\Facades\Auth;
 
 class BidangKompetensiController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_bidang_kompetensis|add_bidang_kompetensis|edit_bidang_kompetensis|delete_bidang_kompetensis', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_bidang_kompetensis', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_bidang_kompetensis', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_bidang_kompetensis', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

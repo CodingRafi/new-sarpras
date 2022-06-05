@@ -13,6 +13,14 @@ use App\Models\Kompeten;
 
 class PeralatanController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_peralatan|add_peralatan|edit_peralatan|delete_peralatan', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_peralatan', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_peralatan', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_peralatan', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -10,6 +10,14 @@ use Illuminate\Support\Facades\Auth;
 
 class JenisPimpinanController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_jenis_pimpinan|add_jenis_pimpinan|edit_jenis_pimpinan|delete_jenis_pimpinan', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_jenis_pimpinan', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_jenis_pimpinan', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_jenis_pimpinan', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

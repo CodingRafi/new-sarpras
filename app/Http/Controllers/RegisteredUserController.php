@@ -15,7 +15,7 @@ class RegisteredUserController extends Controller
 
     function __construct()
     {
-         $this->middleware('permission:view_users|add_users|edit_users|delete_users', ['only' => ['index','store']]);
+         $this->middleware('permission:view_users|add_users|edit_users|delete_users', ['only' => ['index','show']]);
          $this->middleware('permission:add_users', ['only' => ['create','store']]);
          $this->middleware('permission:edit_users', ['only' => ['edit','update']]);
          $this->middleware('permission:delete_users', ['only' => ['destroy']]);
@@ -134,7 +134,7 @@ class RegisteredUserController extends Controller
         return redirect('/monitoring');
     }
 
-    public function create_pengawas(Request $request){
+    public function ubah_foto(Request $request){
         dd($request);
     }
 }

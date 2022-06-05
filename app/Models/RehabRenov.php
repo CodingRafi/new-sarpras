@@ -30,10 +30,6 @@ class RehabRenov extends Model
                         ->orWhere('profils.nama', 'like', '%' . $search . '%');
         });
 
-    }
-
-    public function scopeFilter($query, array $filters){
-        // dd($filters['filter'] == 'kota');
         if(isset($filters['filter'])){
             if($filters['filter'] == 'kota'){
                 return $query->orderBy('profils.kabupaten', 'asc');

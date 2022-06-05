@@ -12,6 +12,16 @@ use App\Models\Kompeten;
 
 class UsulanFotoController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_usulan_foto|add_usulan_foto|edit_usulan_foto|delete_usulan_foto', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_usulan_foto', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_usulan_foto', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_usulan_foto', ['only' => ['destroy']]);
+         $this->middleware('permission:foto_sigle_delete', ['only' => ['sigleDelete']]);
+         $this->middleware('permission:foto_sigle_delete_rehab', ['only' => ['sigleDeleteRehab']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
