@@ -15,6 +15,7 @@ use App\Http\Requests\UpdateBangunanRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Kompeten;
+use App\Models\ProfilKcd;
 use DB;
 
 class BangunanController extends Controller
@@ -39,26 +40,46 @@ class BangunanController extends Controller
     public function index()
     {
         DB::enableQueryLog();
-        $usulanBangunan = UsulanBangunan::search(request(['jenis', 'search', 'filter']))
-                        ->leftJoin('profils', 'profils.id', 'usulan_bangunans.profil_id')
-                        ->leftJoin('kota_kabupatens', 'kota_kabupatens.id', 'profils.kota_kabupaten_id')
-                        ->leftJoin('profil_kcds', 'kota_kabupatens.id', 'profil_kcds.kota_kabupaten_id')
-                        ->leftJoin('kcds', 'kcds.id', 'profil_kcds.kcd_id')
-                        ->select('profils.*', 'kcds.instansi', 'usulan_bangunans.proposal', 'usulan_bangunans.id')
-                        ->paginate(40)->withQueryString();
+        $jenisPimpinan = JenisPimpinan::all();
 
-        if(request('jenis') == 'ruang_pimpinan'){
-            $jenisPimpinan = JenisPimpinan::all();
-            return view('bangunan.showBangunan', [
-                'usulanBangunans' => $usulanBangunan,
-                'kompils' => Kompeten::getKompeten(),
-                'jenisPimpinans' => $jenisPimpinan
-            ]);
+        if (Auth::user()->hasRole('kcd')) {
+            if (request('jenis')) {
+                $profils = ProfilKcd::ambil(Auth::user()->kcd_id);
+                $usulanBangunan = [];
+                foreach ($profils as $key => $profil) {
+                    $usulans = UsulanBangunan::where('profil_id', $profil->id)
+                                    ->leftJoin('profils', function($join) use ($profil){
+                                        $join->where('profils.id', $profil->id);
+                                    })
+                                    ->leftJoin('kota_kabupatens', 'kota_kabupatens.id', 'profils.kota_kabupaten_id')
+                                    ->leftJoin('profil_kcds', 'kota_kabupatens.id', 'profil_kcds.kota_kabupaten_id')
+                                    ->leftJoin('kcds', 'kcds.id', 'profil_kcds.kcd_id')
+                                    ->where('usulan_bangunans.jenis', request('jenis'))
+                                    ->select('profils.*', 'kcds.instansi', 'usulan_bangunans.proposal', 'usulan_bangunans.id')->get();
+                    if (count($usulans) > 0) {
+                        foreach ($usulans as $usulan) {
+                            $usulanBangunan[] = $usulan;
+                        }
+                    }
+                }
+            }else{
+                abort(403);
+            }
+        }else{
+            $usulanBangunan = UsulanBangunan::search(request(['jenis', 'search', 'filter']))
+                            ->leftJoin('profils', 'profils.id', 'usulan_bangunans.profil_id')
+                            ->leftJoin('kota_kabupatens', 'kota_kabupatens.id', 'profils.kota_kabupaten_id')
+                            ->leftJoin('profil_kcds', 'kota_kabupatens.id', 'profil_kcds.kota_kabupaten_id')
+                            ->leftJoin('kcds', 'kcds.id', 'profil_kcds.kcd_id')
+                            ->select('profils.*', 'kcds.instansi', 'usulan_bangunans.proposal', 'usulan_bangunans.id')->get();
         }
-                        // dd(DB::getQueryLog());
+
+
+
         return view('bangunan.showBangunan', [
             'usulanBangunans' => $usulanBangunan,
-            'kompils' => Kompeten::getKompeten()
+            'kompils' => Kompeten::getKompeten(),
+            'jenisPimpinans' => $jenisPimpinan
         ]);
     }
 

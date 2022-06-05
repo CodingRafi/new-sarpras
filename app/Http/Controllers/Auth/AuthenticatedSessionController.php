@@ -35,12 +35,12 @@ class AuthenticatedSessionController extends Controller
 
         $user = Auth::user();
         
-        if($user->hasRole('dinas') || $user->hasRole('kcd')){
+        if(!$user->hasRole('sekolah')){
             return redirect('/')->with([
                 'route' => '/'
             ]);
-        }else if($user->hasRole('sekolah')){
-            $profil = Profil::where('npsn', $user->npsn)->get()[0];
+        }else{
+            $profil = Profil::where('npsn', $user->npsn)->get()->first();
             return redirect('/profil/' . $profil->id)->with([
                 'route' => '/profil/' . $profil->id
             ]);

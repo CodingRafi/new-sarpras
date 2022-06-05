@@ -60,29 +60,34 @@ Route::get('gallery', function () {
     return view('profil.gallery');
 });
 
-Route::get('detail', function () {
-    return view('bangunan.praktik.show');
+Route::get('forgot', function () {
+    return view('myauth.resetPassword');
 });
 
-Route::get('upload-logo', function () {
-    return view('myauth.uploadLogo');
-});
+// Route::get('detail', function () {
+//     return view('bangunan.praktik.show');
+// });
 
 Route::get('reset-password', function () {
     return view('myauth.resetPassword');
 });
 
-Route::get('admin-monitoringvertifikator', function () {
-    return view('admin.monitoringvertif');
-});
+// Route::get('admin-monitoringvertifikator', function () {
+//     return view('admin.monitoringvertif');
+// });
 
-Route::get('admin-detailmonitoring', function () {
-    return view('admin.monitoring');
-});
+// Route::get('admin-detailmonitoring', function () {
+//     return view('admin.monitoring');
+// });
 
 // |-------------------------------------------------------------------------- /SEMENTARA |--------------------------------------------------------------------------
 
 Route::group(['middleware' => ['auth']], function() {
+    Route::get('upload-logo', function () {
+        return view('myauth.uploadLogo');
+    });
+    Route::patch('/update-foto', [RegisteredUserController::class, 'ubah_foto']);
+
     // admin
     Route::get('/', [AdminController::class, 'index']);
     Route::get('/profil/admin', [AdminController::class, 'search']);
@@ -93,7 +98,7 @@ Route::group(['middleware' => ['auth']], function() {
     // Route::get('/bangunan/perpustakaan-dinas', [PerpustakaanController::class, 'showDinas']);
     // Route::get('/bangunan/toilet-dinas', [ToiletController::class, 'showDinas']);
     // Route::get('/bangunan/ruang-pimpinan-dinas', [PimpinanController::class, 'showDinas']);
-    // Route::get('/bangunan/rehab-renov-dinas', [RehabRenovController::class, 'showDinas']);
+    Route::get('/bangunan/rehab-renov-dinas', [RehabRenovController::class, 'showDinas']);
     // Route::get('/bangunan/ruang-praktik-dinas', [PraktikController::class, 'showDinas']);
     Route::get('/riwayat-bantuan-dinas', [RiwayatController::class, 'showDinas']);
     Route::resource('/komli', KomliController::class);
