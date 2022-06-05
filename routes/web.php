@@ -72,6 +72,10 @@ Route::get('reset-password', function () {
     return view('myauth.resetPassword');
 });
 
+Route::get('forgot', function () {
+    return view('myauth.forgot-password');
+});
+
 Route::get('admin-monitoringvertifikator', function () {
     return view('admin.monitoringvertif');
 });
