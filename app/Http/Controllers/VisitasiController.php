@@ -15,15 +15,15 @@ use Illuminate\Http\Request;
 
 class VisitasiController extends Controller
 {
-    // function __construct()
-    // {
-    //      $this->middleware('permission:view_visitasi|add_visitasi|edit_visitasi|delete_visitasi', ['only' => ['index','show ']]);
-    //      $this->middleware('permission:add_visitasi', ['only' => ['create','store']]);
-    //      $this->middleware('permission:edit_visitasi', ['only' => ['edit','update']]);
-    //      $this->middleware('permission:delete_visitasi', ['only' => ['destroy']]);
-    //      $this->middleware('permission:all_visitasi', ['only' => ['allVisitasi']]);
-    //      $this->middleware('permission:visitasi_publish', ['only' => ['visitasiPublish']]);
-    // }
+    function __construct()
+    {
+         $this->middleware('permission:view_visitasi|add_visitasi|edit_visitasi|delete_visitasi', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_visitasi', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_visitasi', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_visitasi', ['only' => ['destroy']]);
+         $this->middleware('permission:all_visitasi', ['only' => ['allVisitasi']]);
+         $this->middleware('permission:visitasi_publish', ['only' => ['visitasiPublish']]);
+    }
 
     /**
      * Display a listing of the resource.
