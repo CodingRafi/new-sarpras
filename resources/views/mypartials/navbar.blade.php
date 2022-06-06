@@ -83,7 +83,7 @@
                     class="brand-image img-circle bg-white" width="45" style="opacity: .8">
             </a>
             <div class="dropdown-menu float-right">
-                <a class="dropdown-item" tabindex="-1" href="#" style="color: grey"><i class="bi bi-pencil-square"
+                <a class="dropdown-item" tabindex="-1" href="{{ route('password.ubah') }}" style="color: grey"><i class="bi bi-pencil-square"
                         style="width: 20px"></i> Ubah Password</a>
                 <a class="dropdown-item" tabindex="-1" href="/upload-logo" style="color: grey"><i
                         class="bi bi-image" style="width: 20px"></i> Tambah Logo</a>

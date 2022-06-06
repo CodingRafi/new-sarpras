@@ -154,7 +154,7 @@ class ProfilController extends Controller
                 'kabupaten' => 'string|nullable',
                 'kecamatan' => 'string|nullable',
                 'alamat' => 'string|nullable',
-                'email' => 'email|nullable',
+                'email' => 'email|nullable|unique:users',
                 'website' => 'string|nullable',
                 'instagram' => 'string|required',
                 'youtube' => 'string|required',

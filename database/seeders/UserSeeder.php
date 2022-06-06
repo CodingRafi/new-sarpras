@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Kcd;
 use App\Models\ProfilDepo;
+use App\Models\Profil;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -102,14 +103,14 @@ class UserSeeder extends Seeder
 
 
         //? Membuat user sekolah
-        $profils = ProfilDepo::all();
+        $profils = Profil::all();
         foreach ($profils as $key => $profil) {
             $user = User::create([
                 'profil_id' => $profil['id'],
-                'name' => $profil['depo_nama'],
-                'npsn' => $profil["depo_npsn"],
+                'name' => $profil['nama'],
+                'npsn' => $profil["npsn"],
                 'password' => bcrypt('12345678'),
-                'email' => $profil['depo_email'],
+                'email' => $profil['email'],
                 'foto_profil' => '/img/logo_navbar.png'
             ]);
             $user->assignRole('sekolah');

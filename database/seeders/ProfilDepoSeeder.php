@@ -18,23 +18,46 @@ class ProfilDepoSeeder extends Seeder
         $profils = ProfilDepo::DataProfilSekolah();
 
         foreach($profils as $profil){
-            ProfilDepo::create([
-                'depo_npsn' => $profil["npsn"],
-                'depo_sekolah_id' => $profil["sekolah_id"],
-                'depo_nama' => $profil["nama"],
-                'depo_status_sekolah' => $profil["status_sekolah"],
-                'depo_alamat' => $profil["alamat"],
-                'depo_provinsi' => $profil["provinsi"],
-                'depo_kabupaten' => $profil["kabupaten"],
-                'depo_kecamatan' => $profil["kecamatan"],
-                'depo_email' => $profil["email"],
-                'depo_website' => $profil["website"],
-                'depo_nomor_telepon' => $profil["nomor_telepon"],
-                'depo_nomor_fax' => $profil["nomor_fax"],
-                'depo_akreditas' => $profil['akreditasi'],
-                'depo_jml_siswa_l' => $profil['jml_lk'],
-                'depo_jml_siswa_p' => $profil['jml_pr'],
-            ]);
+            $emailProfilDepo = ProfilDepo::where('depo_email', $profil['email'])->get()->first();
+            // dd($emailProfilDepo);
+
+            if ($emailProfilDepo != null) {
+                ProfilDepo::create([
+                    'depo_npsn' => $profil["npsn"],
+                    'depo_sekolah_id' => $profil["sekolah_id"],
+                    'depo_nama' => $profil["nama"],
+                    'depo_status_sekolah' => $profil["status_sekolah"],
+                    'depo_alamat' => $profil["alamat"],
+                    'depo_provinsi' => $profil["provinsi"],
+                    'depo_kabupaten' => $profil["kabupaten"],
+                    'depo_kecamatan' => $profil["kecamatan"],
+                    'depo_email' => null,
+                    'depo_website' => $profil["website"],
+                    'depo_nomor_telepon' => $profil["nomor_telepon"],
+                    'depo_nomor_fax' => $profil["nomor_fax"],
+                    'depo_akreditas' => $profil['akreditasi'],
+                    'depo_jml_siswa_l' => $profil['jml_lk'],
+                    'depo_jml_siswa_p' => $profil['jml_pr'],
+                ]);
+            }else{
+                ProfilDepo::create([
+                    'depo_npsn' => $profil["npsn"],
+                    'depo_sekolah_id' => $profil["sekolah_id"],
+                    'depo_nama' => $profil["nama"],
+                    'depo_status_sekolah' => $profil["status_sekolah"],
+                    'depo_alamat' => $profil["alamat"],
+                    'depo_provinsi' => $profil["provinsi"],
+                    'depo_kabupaten' => $profil["kabupaten"],
+                    'depo_kecamatan' => $profil["kecamatan"],
+                    'depo_email' => $profil["email"],
+                    'depo_website' => $profil["website"],
+                    'depo_nomor_telepon' => $profil["nomor_telepon"],
+                    'depo_nomor_fax' => $profil["nomor_fax"],
+                    'depo_akreditas' => $profil['akreditasi'],
+                    'depo_jml_siswa_l' => $profil['jml_lk'],
+                    'depo_jml_siswa_p' => $profil['jml_pr'],
+                ]);
+            }
         }
     }
 }

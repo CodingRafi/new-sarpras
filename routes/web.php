@@ -61,21 +61,21 @@ Route::get('gallery', function () {
     return view('profil.gallery');
 });
 
-Route::get('forgot', function () {
-    return view('myauth.resetPassword');
-});
+// Route::get('forgot', function () {
+//     return view('myauth.resetPassword');
+// });
 
 // Route::get('detail', function () {
 //     return view('bangunan.praktik.show');
 // });
 
-Route::get('reset-password', function () {
-    return view('myauth.resetPassword');
-});
+// Route::get('reset-password', function () {
+//     return view('myauth.resetPassword');
+// });
 
-Route::get('forgot', function () {
-    return view('myauth.forgot-password');
-});
+// Route::get('forgot', function () {
+//     return view('myauth.forgot-password');
+// });
 
 // Route::get('admin-monitoringvertifikator', function () {
 //     return view('admin.monitoringvertif');
@@ -91,7 +91,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('upload-logo', function () {
         return view('myauth.uploadLogo');
     });
-    Route::patch('/update-foto', [RegisteredUserController::class, 'ubah_foto']);
+    Route::patch('/ubah-logo', [RegisteredUserController::class, 'ubah_foto']);
 
     // admin
     Route::get('/', [AdminController::class, 'index']);
