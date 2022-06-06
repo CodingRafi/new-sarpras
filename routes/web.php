@@ -61,6 +61,10 @@ Route::get('gallery', function () {
     return view('profil.gallery');
 });
 
+Route::get('user-settings', function () {
+    return view('userSettings');
+});
+
 Route::get('forgot', function () {
     return view('myauth.resetPassword');
 });
