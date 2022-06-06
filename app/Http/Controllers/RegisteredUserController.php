@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Kompeten;
+use Illuminate\Support\Facades\File;
 
 class RegisteredUserController extends Controller
 {
@@ -136,6 +137,40 @@ class RegisteredUserController extends Controller
     }
 
     public function ubah_foto(Request $request){
-        dd($request);
+        if(Auth::user()->logo != '/img/logo_navbar.png'){
+            $videoLama = public_path('logo/' . Auth::user()->logo);
+            File::delete($videoLama);
+        }
+
+        $data = $request->logo;
+        $folderPath = "logo/";
+        $image_array_1 = explode(";", $data);
+        $image_array_2 = explode(",", $image_array_1[1]);
+        $data = base64_decode($image_array_2[1]);
+        $imageName = uniqid() . '.png';
+        $file = $folderPath . $imageName;
+        file_put_contents($file, $data);
+        
+        $user = Auth::user()->update([
+            'foto_profil' => $imageName
+        ]);
+
+        return redirect('/user-settings');
+    }
+
+    public function ubah_email(Request $request){
+        $validatedData = $request->validate([
+            'email' => 'required|unique:users'
+        ]);
+
+        Auth::user()->update($validatedData);
+
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }

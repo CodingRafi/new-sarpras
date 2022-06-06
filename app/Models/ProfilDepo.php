@@ -31,6 +31,8 @@ class ProfilDepo extends Model
         $jml_pr = 0;
 
         $data = [];
+        // dd($hasilJsons[0][41]->email == $hasilJsons[0][108]->email);
+        // dd($hasilJsons[0][108]->email);
         foreach ($hasilJsons[0] as $key => $hasil){
             foreach ($hasilJsons[2] as $kompeten) {
                 if($hasil->No == $kompeten->No){

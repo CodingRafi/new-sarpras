@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('kcd_id')->nullable();
             $table->foreignId('profil_id')->unique()->nullable();
             $table->string('npsn')->unique()->nullable();
-            $table->string('email')->nullable();
+            $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->string('instansi')->nullable();
