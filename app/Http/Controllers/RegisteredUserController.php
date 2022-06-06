@@ -160,7 +160,7 @@ class RegisteredUserController extends Controller
 
     public function ubah_email(Request $request){
         $validatedData = $request->validate([
-            'email' => 'required|unique:users'
+            'email' => 'required|unique:users   '
         ]);
 
         Auth::user()->update($validatedData);
@@ -172,5 +172,11 @@ class RegisteredUserController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    public function userSettings(){
+        return view('userSettings', [
+            'kompils' => Kompeten::getKompeten(),
+        ]);
     }
 }
