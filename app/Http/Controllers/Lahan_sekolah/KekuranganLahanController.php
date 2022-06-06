@@ -11,6 +11,14 @@ use App\Http\Requests\UpdateKekuranganLahanRequest;
 
 class KekuranganLahanController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_kekurangan_lahan|add_kekurangan_lahan|edit_kekurangan_lahan|delete_kekurangan_lahan', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_kekurangan_lahan', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_kekurangan_lahan', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_kekurangan_lahan', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -53,7 +61,7 @@ class KekuranganLahanController extends Controller
 
         Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan Kekurangan Lahan');
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menyimpan kekurangan lahan!');
     }
 
     /**
@@ -102,7 +110,7 @@ class KekuranganLahanController extends Controller
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Kekurangan Lahan');
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil mengubah kekurangan lahan!');
         }else{
             abort(403);
         }
@@ -118,7 +126,7 @@ class KekuranganLahanController extends Controller
     {
         if($kekuranganLahan->profil_id == Auth::user()->profil_id){
             KekuranganLahan::destroy($kekuranganLahan->id);
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menghapus kekurangan lahan!');
         }else{
             abort(403);
         }

@@ -5,13 +5,26 @@ namespace App\Http\Controllers;
 use App\Models\Visitasi;
 use App\Models\Profil;
 use App\Models\User;
+use App\Models\Kompeten;
+use App\Models\UnsurVerifikasi;
 use App\Http\Requests\StoreVisitasiRequest;
 use App\Http\Requests\UpdateVisitasiRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class VisitasiController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_visitasi|add_visitasi|edit_visitasi|delete_visitasi', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_visitasi', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_visitasi', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_visitasi', ['only' => ['destroy']]);
+         $this->middleware('permission:all_visitasi', ['only' => ['allVisitasi']]);
+         $this->middleware('permission:visitasi_publish', ['only' => ['visitasiPublish']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -66,7 +79,8 @@ class VisitasiController extends Controller
                 'tanggal_visitasi' => 'required',
                 'surat_tugas' => 'required|mimes:pdf|file|max:5120'
             ]);
-    
+            
+            $validatedData['status'] = 'proses_visitasi';
             $validatedData['surat_tugas'] = $request->file('surat_tugas')->store('surat_kerja_visitasi');
     
             Visitasi::create($validatedData);
@@ -85,7 +99,27 @@ class VisitasiController extends Controller
      */
     public function show(Visitasi $visitasi)
     {
-        //
+        if ( Auth::user()->profil_id == $visitasi->profil_id || Auth::user()->hasRole('verifikator')) {
+            $hasil = Visitasi::select('hasil_visitasis.*', 'unsur_verifikasis.*', 'hasil_visitasis.id as id_hasil')
+                        ->where('visitasis.id', $visitasi->id)
+                        ->leftJoin('hasil_visitasis', 'hasil_visitasis.visitasi_id', 'visitasis.id')
+                        ->leftJoin('unsur_verifikasis', 'unsur_verifikasis.id', 'hasil_visitasis.unsur_verifikasi_id')
+                        ->get();
+    
+            // $visitasi = Visitasi::where('visitasis.id', $visitasi->id)->with('user')->get();
+    
+                        // dd($hasil);
+            return view('verifikator.detailmonitoring',[
+                'visitasi' => $visitasi,
+                'profil' => $visitasi->profil,
+                'user' => $visitasi->user,
+                'unsurs' => UnsurVerifikasi::all(),
+                'kompils' => Kompeten::getKompeten(),
+                'hasils' => $hasil
+            ]);
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -163,5 +197,33 @@ class VisitasiController extends Controller
         }else{
             abort(403);
         }
+    }
+
+    public function allVisitasi(Request $request){
+        if (Auth::user()->hasRole('verifikator')) {
+            $visitasi = Visitasi::select('visitasis.*', 'profils.nama as nama_sekolah')
+                            ->where('user_id', Auth::user()->id)
+                            ->leftJoin('profils', 'profils.id', 'visitasis.profil_id')
+                            ->get();
+        }else{
+            $visitasi = Visitasi::where('profil_id', Auth::user()->profil_id)->where('visitasis.status', 'unggah')->get();
+            // dd($visitasi);
+            // $visitasi = ->visitasi;
+        }
+
+        return view('verifikator.monitoringvertif', [
+            'visitasis' => $visitasi,
+            'kompils' => Kompeten::getKompeten(),
+        ]);
+    }
+
+    public function visitasiPublish(Request $request){
+        $visitasi = Visitasi::where('id', $request->visitasi_id)->get()->first();
+        
+        $visitasi->update([
+            'status' => 'unggah'
+        ]);
+
+        return redirect()->back();
     }
 }

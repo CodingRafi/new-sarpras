@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('keperluan');
             $table->string('surat_tugas');
             $table->date('tanggal_visitasi');
+            $table->enum('status', ['proses_visitasi', 'simpan', 'unggah']);
             $table->timestamps();
         });
     }

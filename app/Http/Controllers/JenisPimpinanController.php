@@ -10,6 +10,14 @@ use Illuminate\Support\Facades\Auth;
 
 class JenisPimpinanController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_jenis_pimpinan|add_jenis_pimpinan|edit_jenis_pimpinan|delete_jenis_pimpinan', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_jenis_pimpinan', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_jenis_pimpinan', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_jenis_pimpinan', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -47,7 +55,7 @@ class JenisPimpinanController extends Controller
             
             //! belum buat log
             
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menambah jenis ruang pimpinan!');
         }else{
             abort(403);
         }
@@ -91,7 +99,7 @@ class JenisPimpinanController extends Controller
 
             $jenisPimpinan->update($validatedData);
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil mengubah jenis ruang pimpinan!');
         }else{
             abort(403);
         }
@@ -108,7 +116,7 @@ class JenisPimpinanController extends Controller
         if (Auth::user()->hasRole('dinas')) {
             JenisPimpinan::destroy($jenisPimpinan->id);
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menghapus jenis ruang pimpinan!');
         }else{
             abort(403);
         }

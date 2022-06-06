@@ -12,4 +12,8 @@ class UnsurVerifikasi extends Model
     protected $guarded =[
         "id"
     ];
+
+    public function hasilVisitasi(){
+        return $this->hasMany(HasilVisitasi::class);
+    }
 }

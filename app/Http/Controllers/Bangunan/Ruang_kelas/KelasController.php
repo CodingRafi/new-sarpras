@@ -19,6 +19,15 @@ use Illuminate\Http\Request;
 
 class KelasController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_kelas|add_kelas|edit_kelas|delete_kelas', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_kelas', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_kelas', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_kelas', ['only' => ['destroy']]);
+         $this->middleware('permission:kelas_create_usulan', ['only' => ['createusulan']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -123,19 +132,19 @@ class KelasController extends Controller
 
         Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan usulan bangunan kelas');
 
-        return redirect()->back();
+        return redirect()->back()->with('success','Berhasil menambah usulan ruang kelas!');
     }
 
-    public function showDinas(){
-        $usulanBangunan = UsulanBangunan::search(request(['search']))
-                        ->leftJoin('profils', 'profils.id', '=', 'usulan_bangunans.profil_id')
-                        ->leftJoin('profil_kcds', 'profils.id', '=', 'profil_kcds.profil_id')
-                        ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi', 'usulan_bangunans.proposal', 'usulan_bangunans.id')->where('usulan_bangunans.jenis', 'ruang_kelas')->paginate(40)->withQueryString();
+    // public function showDinas(){
+    //     $usulanBangunan = UsulanBangunan::search(request(['search']))
+    //                     ->leftJoin('profils', 'profils.id', '=', 'usulan_bangunans.profil_id')
+    //                     ->leftJoin('profil_kcds', 'profils.id', '=', 'profil_kcds.profil_id')
+    //                     ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi', 'usulan_bangunans.proposal', 'usulan_bangunans.id')->where('usulan_bangunans.jenis', 'ruang_kelas')->paginate(40)->withQueryString();
 
-        return view('admin.ruangkelas', [
-            'usulanBangunans' => $usulanBangunan,
-            'kompils' => Kompeten::getKompeten()
-        ]);
-    }
+    //     return view('admin.ruangkelas', [
+    //         'usulanBangunans' => $usulanBangunan,
+    //         'kompils' => Kompeten::getKompeten()
+    //     ]);
+    // }
 
 }

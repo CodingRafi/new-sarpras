@@ -27,6 +27,7 @@ use App\Http\Controllers\ProfilDepoController;
 use App\Http\Controllers\RehabRenovController;
 use App\Http\Controllers\UsulanFotoController;
 use App\Http\Controllers\PerpustakaanController;
+use App\Http\Controllers\HasilVisitasiController;
 use App\Http\Controllers\JenisPimpinanController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\UsulanBangunanController;
@@ -60,29 +61,38 @@ Route::get('gallery', function () {
     return view('profil.gallery');
 });
 
-Route::get('detail', function () {
-    return view('bangunan.praktik.show');
+Route::get('forgot', function () {
+    return view('myauth.resetPassword');
 });
 
-Route::get('upload-logo', function () {
-    return view('myauth.uploadLogo');
-});
+// Route::get('detail', function () {
+//     return view('bangunan.praktik.show');
+// });
 
 Route::get('reset-password', function () {
     return view('myauth.resetPassword');
 });
 
-Route::get('admin-monitoringvertifikator', function () {
-    return view('admin.monitoringvertif');
+Route::get('forgot', function () {
+    return view('myauth.forgot-password');
 });
 
-Route::get('admin-detailmonitoring', function () {
-    return view('admin.monitoring');
-});
+// Route::get('admin-monitoringvertifikator', function () {
+//     return view('admin.monitoringvertif');
+// });
+
+// Route::get('admin-detailmonitoring', function () {
+//     return view('admin.monitoring');
+// });
 
 // |-------------------------------------------------------------------------- /SEMENTARA |--------------------------------------------------------------------------
 
 Route::group(['middleware' => ['auth']], function() {
+    Route::get('upload-logo', function () {
+        return view('myauth.uploadLogo');
+    });
+    Route::patch('/update-foto', [RegisteredUserController::class, 'ubah_foto']);
+
     // admin
     Route::get('/', [AdminController::class, 'index']);
     Route::get('/profil/admin', [AdminController::class, 'search']);
@@ -93,9 +103,10 @@ Route::group(['middleware' => ['auth']], function() {
     // Route::get('/bangunan/perpustakaan-dinas', [PerpustakaanController::class, 'showDinas']);
     // Route::get('/bangunan/toilet-dinas', [ToiletController::class, 'showDinas']);
     // Route::get('/bangunan/ruang-pimpinan-dinas', [PimpinanController::class, 'showDinas']);
-    // Route::get('/bangunan/rehab-renov-dinas', [RehabRenovController::class, 'showDinas']);
+    Route::get('/bangunan/rehab-renov-dinas', [RehabRenovController::class, 'showDinas']);
     // Route::get('/bangunan/ruang-praktik-dinas', [PraktikController::class, 'showDinas']);
     Route::get('/riwayat-bantuan-dinas', [RiwayatController::class, 'showDinas']);
+    Route::get('/visitasi-list', [VisitasiController::class, 'allVisitasi']);
     Route::resource('/komli', KomliController::class);
     Route::resource('/unsur-verifikasi', UnsurVerifikasiController::class);
     Route::resource('/bidang-kompetensi', BidangKompetensiController::class);
@@ -105,6 +116,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/spektrum', SpektrumController::class);
     Route::resource('/profil-kcd', ProfilKcdController::class);
     Route::resource('/visitasi', VisitasiController::class);
+    Route::patch('/visitasi-publish', [VisitasiController::class, 'visitasiPublish']);
+    Route::get('/visitasi-sekolah', [VisitasiController::class, 'visitasiSekolah']);
+    Route::resource('/hasil-visitasi', HasilVisitasiController::class);
+    Route::patch('/hasil-visitasi-update', [HasilVisitasiController::class, 'update']);
     // Route::resource('/visitasi', VisitasiController::class);
     Route::resource('roles', RoleController::class); 
     Route::resource('users', RegisteredUserController::class);

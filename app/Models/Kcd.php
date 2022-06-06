@@ -20,4 +20,9 @@ class Kcd extends Model
     public function profil(){
         return $this->belongsTo(Profil::class);
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+    
 }

@@ -82,7 +82,7 @@
                                 @foreach ($usulanLahans as $key => $usulan)
                                     <tr>
                                         <td class="text-center" style="vertical-align: middle">
-                                            {{ ($usulanLahans->currentpage() - 1) * $usulanLahans->perpage() + $loop->index + 1 }}
+                                            {{ $loop->iteration }}
                                         </td>
                                         <td class="text-center" style="vertical-align: middle">
                                             {{ $usulan->nama }}</td>
@@ -116,9 +116,9 @@
                 @endif
                 {{-- End --}}
                 {{-- Pagination --}}
-                <div class="float-right">
+                {{-- <div class="float-right">
                     {{ $usulanLahans->links() }}
-                </div>
+                </div> --}}
                 {{-- End --}}
             </div>
         </div>

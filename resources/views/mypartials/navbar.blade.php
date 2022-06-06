@@ -11,7 +11,8 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars text-light"></i></a>
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+                    class="fas fa-bars text-light"></i></a>
         </li>
     </ul>
 
@@ -28,19 +29,19 @@
     </form> --}}
 
 
-    @if (Auth::user()->hasRole('dinas'))
-    <form class="form-inline ml-2" action="/profil/admin" method="GET">
-        <div class="input-group" style="width: 50vw">
-            <input class="form-control form-control-navbar" type="search"
-                placeholder="Search NPSN, sekolah id, nama sekolah" aria-label="Search"
-                style="height: 2.5rem;font-size: 15px;padding: 0 10px;" name="search">
-            <div class="input-group-append">
-                <button class="btn btn-navbar" type="submit" style="width: 40px;">
-                    <i class="fas fa-search"></i>
-                </button>
+    @if (!Auth::user()->hasRole('sekolah'))
+        <form class="form-inline ml-2" action="/profil/admin" method="GET">
+            <div class="input-group" style="width: 50vw">
+                <input class="form-control form-control-navbar" type="search"
+                    placeholder="Search NPSN, sekolah id, nama sekolah" aria-label="Search"
+                    style="height: 2.5rem;font-size: 15px;padding: 0 10px;" name="search">
+                <div class="input-group-append">
+                    <button class="btn btn-navbar" type="submit" style="width: 40px;">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
     @endif
 
 
@@ -54,21 +55,38 @@
     <ul class="navbar-nav ml-auto">
         <div class="nav-item container d-block">
             <div class="container p-0 d-flex justify-content-end">
-                <span class="text-white text-right font-weight-bold" style="font-size: 20px">{{ Auth::user()->name }}</span>
+                <span class="text-white" style="font-size: 20px;font-weight: 600;">{{ Auth::user()->name }}</span>
             </div>
-
-
+            @if (Auth::user()->hasRole('dinas'))
+                <span class="text-white text-right badge float-right"
+                    style="background-color:#fcc12d53; border:1.5px solid #fcc12d; font-weight: 600; display:flex;justify-content:center; width:fit-content !important"><i
+                        class="bi bi-info-circle mr-2"></i><span style="font-size: 12px; margin-top:1px;">Masuk Sebagai
+                        Dinas Pendidikan</span>
+                </span>
+            @elseif(Auth::user()->hasRole('kcd'))
+                <span class="text-white text-right badge float-right"
+                    style="background-color:#fcc12d53; border:1.5px solid #fcc12d; font-weight: 600; display:flex;justify-content:center; width:fit-content !important"><i
+                        class="bi bi-info-circle mr-2"></i><span style="font-size: 12px; margin-top:1px;">Masuk Sebagai
+                        Cadisdik</span>
+                </span>
+            @else
+                <span class="text-white text-right badge float-right"
+                    style="background-color:#fcc12d53; border:1.5px solid #fcc12d; font-weight: 600; display:flex;justify-content:center; width:fit-content !important"><i
+                        class="bi bi-info-circle mr-2"></i><span style="font-size: 12px; margin-top:1px;">Masuk Sebagai
+                        {{ Auth::user()->getRoleNames()->first() }}</span>
+                </span>
+            @endif
         </div>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" style="margin-top: 7px">
             <a class="nav-link mr-2" data-toggle="dropdown" href="#" style="padding: 0;">
-                <img src="/assets/img/avatars/TarunaBhaktiLogo.png" alt="TarunaBhakti Logo"
-                    class="brand-image img-circle bg-white" width="33" style="opacity: .8">
+                <img src="{{ Auth::user()->foto_profil }}" alt="TarunaBhakti Logo"
+                    class="brand-image img-circle bg-white" width="45" style="opacity: .8">
             </a>
             <div class="dropdown-menu float-right">
                 <a class="dropdown-item" tabindex="-1" href="#" style="color: grey"><i class="bi bi-pencil-square"
                         style="width: 20px"></i> Ubah Password</a>
-                <a class="dropdown-item" tabindex="-1" href="/upload-logo" style="color: grey"><i class="bi bi-image"
-                        style="width: 20px"></i> Tambah Logo</a>
+                <a class="dropdown-item" tabindex="-1" href="/upload-logo" style="color: grey"><i
+                        class="bi bi-image" style="width: 20px"></i> Tambah Logo</a>
                 <div class="dropdown-divider"></div>
                 <form action="/logout" method="post">
                     @csrf
@@ -80,13 +98,14 @@
         </li>
     </ul>
 
-    <div class="alert alert-warning d-flex align-items-center" role="alert" style="position: absolute; top: 13vh; right: 1vw; border-radius: 30px; height: 40px;">
+    {{-- <div class="alert d-flex align-items-center" role="alert" style="    position: absolute;top: 13vh;right: 1vw;border-radius: 30px;background: rgba(255, 193, 7, .67);padding: 6px 38px 6px 15px;">
         <svg class="bi flex-shrink-0 me-2 mr-2" width="15" height="15" role="img" aria-label="Warning:"
             style="color: white">
-            <use xlink:href="#exclamation-triangle-fill" /></svg>
+            <use xlink:href="#exclamation-triangle-fill" />
+        </svg>
         <div class="text-white" style="font-size: 14px">
-            Masuk Sebagai {{ Auth::user()->getRoleNames()[0] }}
+            Masuk Sebagai {{ Auth::user()->getRoleNames()->first() }}
         </div>
-    </div>
+    </div> --}}
 </nav>
 <!-- /.navbar -->

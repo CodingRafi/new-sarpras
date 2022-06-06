@@ -14,6 +14,14 @@ use App\Models\Kompeten;
 
 class KoleksiController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_koleksis|add_koleksis|edit_koleksis|delete_koleksis', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_koleksis', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_koleksis', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_koleksis', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -58,7 +66,7 @@ class KoleksiController extends Controller
     
             Log::createLog($request->profil_depo_id, Auth::user()->id, 'Membuat Koleksi ' . $request->nama);
     
-            return redirect('/foto/create/'.$validatedData['slug']);
+            return redirect('/foto/create/'.$validatedData['slug'])->with('success', 'Berhasil menambah koleksi foto!');
         }else{
             abort(403);
         }
@@ -112,7 +120,7 @@ class KoleksiController extends Controller
     
             Koleksi::where('slug', $request->slug)->update($validatedData);
     
-            return redirect('profil/'.$koleksi->profil_depo_id);
+            return redirect('profil/'.$koleksi->profil_depo_id)->with('success', 'Berhasil mengubah koleksi foto!');
         }else{
             abort(403);
         }
@@ -144,7 +152,7 @@ class KoleksiController extends Controller
                 'keterangan' => 'Menghapus Koleksi ' . $koleksi->nama
             ]);
     
-            return redirect('profil/'.$koleksi->profil_depo_id);
+            return redirect('profil/'.$koleksi->profil_depo_id)->with('success', 'Berhasil menghapus koleksi foto!');
         }else{
             abort(403);
         }

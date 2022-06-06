@@ -20,6 +20,16 @@ use DB;
 
 class PraktikController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_praktik|add_praktik|edit_praktik|delete_praktik', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_praktik', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_praktik', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_praktik', ['only' => ['destroy']]);
+         $this->middleware('permission:praktik_create_usulan', ['only' => ['createusulan']]);
+         $this->middleware('permission:praktik_show_dinas', ['only' => ['showDinas']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -108,7 +118,7 @@ class PraktikController extends Controller
 
         Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan Ketersedian ruang praktek' . $kompeten->kompetensi);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menambah ketersediaan ruang praktik!');
 
     }
 
@@ -157,7 +167,7 @@ class PraktikController extends Controller
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Merubah Jumlah Ketersediaan Ruang Praktek ' . $kompeten);
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil mengubah ketersediaan ruang praktik!');
 
         }else{  
             abort(403);
@@ -177,7 +187,7 @@ class PraktikController extends Controller
             Praktik::destroy($data->id);
             $kompeten = Kompeten::where('id', $data->kompeten_id)->get()[0]->komli->kompetensi;
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menghapus Ketersediaan Ruang Praktek ' . $kompeten);
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menghapus ketersediaan ruang praktik!');
         }else{
             abort(403);
         }
@@ -192,17 +202,18 @@ class PraktikController extends Controller
             'gambar.*' => 'mimes:jpg,jpeg,png|file|max:5120',
             'kompeten_id' => 'required'
         ]);
-
-        $validatedData['kompeten_id'] = $request->kompeten_id;
+        
+        // $validatedData['kompeten_id'] = $request->kompeten_id;
         $validatedData['keterangan'] = "Proses Pengajuan";
-
+        
         UsulanBangunan::createUsulan($request, 'ruang_praktek', $validatedData);
+        // dd($validatedData);
 
         $kompeten = Kompeten::where('id', $request->kompeten_id)->get()[0]->komli->kompetensi;
 
         Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan usulan ruang praktek' . $kompeten);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menambah usulan ruang praktik!');
     }
 
     public function showDinas(){

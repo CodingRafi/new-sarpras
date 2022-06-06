@@ -20,4 +20,8 @@ class Visitasi extends Model
     public function profil(){
         return $this->belongsTo(Profil::class);
     }
+
+    public function hasilVisitasi(){
+        return $this->hasMany(HasilVisitasi::class);
+    }
 }

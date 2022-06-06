@@ -6,6 +6,8 @@ use App\Models\RehabRenov;
 use App\Models\UsulanKoleksi;
 use App\Models\JenisPimpinan;
 use App\Models\Pimpinan;
+use App\Models\Bangunan;
+use App\Models\ProfilKcd;
 use App\Models\UsulanBangunan;
 use App\Models\UsulanFoto;
 use App\Http\Requests\StoreRehabRenovRequest;
@@ -16,6 +18,16 @@ use App\Models\Kompeten;
 
 class RehabRenovController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_rehab_renov|add_rehab_renov|edit_rehab_renov|delete_rehab_renov', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_rehab_renov', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_rehab_renov', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_rehab_renov', ['only' => ['destroy']]);
+         $this->middleware('permission:rehab_renov_create_usulan', ['only' => ['cretaeusulan']]);
+         $this->middleware('permission:rehab_renov_show_dinas', ['only' => ['showDinas']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,14 +36,15 @@ class RehabRenovController extends Controller
     public function index()
     {
         $rehab = RehabRenov::where('profil_id', Auth::user()->profil_id)->get();
-        $koleksi = UsulanKoleksi::koleksi($rehab);
-        $fotos = UsulanFoto::fotos($koleksi);
+        $koleksi_rehab = UsulanKoleksi::koleksi($rehab);
+        $fotos_rehab = UsulanFoto::fotos($koleksi_rehab);
 
         $jenis_pimpinan = JenisPimpinan::all();
         $pimpinan = Pimpinan::where('profil_id', Auth::user()->profil_id)->get();
         $usulans = UsulanBangunan::where('profil_id', Auth::user()->profil_id)->where('jenis', 'ruang_pimpinan')->get();
         $koleksi = UsulanKoleksi::koleksi($usulans);
         $fotos = UsulanFoto::fotos($koleksi);
+        $bangunan = Bangunan::where('profil_id', Auth::user()->profil_id)->where('jenis', 'ruang_pimpinan')->get()[0];
         $jenisUsulanPimpinan = [];
 
         foreach($usulans as $usulan){
@@ -58,9 +71,10 @@ class RehabRenovController extends Controller
             'jenis_pimpinans' => $jenis_pimpinan,
             'datas' => $data,
             'usulans' => $usulans,
-            'usulanFotos' => $fotos,
+            'usulanFotos_rehab' => $fotos_rehab,
             'usulanJenis' => $jenisUsulanPimpinan,
-            'kompils' => Kompeten::getKompeten()
+            'kompils' => Kompeten::getKompeten(),
+            'bangunan' => $bangunan
         ]);
     }
 
@@ -93,16 +107,17 @@ class RehabRenovController extends Controller
             'proposal' => 'required|file|max:5120',
             'keterangan' => 'required'
         ]);
-
+        
         $validatedData['profil_id'] = Auth::user()->profil_id;
         $validatedData['proposal'] = $request->file('proposal')->store('proposal-usulan-bangunan');
-
+        
         $rehab = RehabRenov::create($validatedData); 
-
+        
         $usulanKoleksi = UsulanKoleksi::create(['rehab_renov_id' => $rehab->id]);
         UsulanFoto::uploadFoto($request->gambar, $usulanKoleksi);
+        // dd($validatedData);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menambah rencana rehab & renov!');
     }
 
     /**
@@ -114,6 +129,7 @@ class RehabRenovController extends Controller
     public function show(RehabRenov $rehabRenov, $id)
     {
         $rehabRenov = RehabRenov::find($id);
+        // dd($rehabRenov);
         return view('bangunan.rehabrenov.show', [
             'data' => $rehabRenov,
             'usulanFoto' => $rehabRenov->usulanKoleksi[0]->usulanFoto,
@@ -175,7 +191,7 @@ class RehabRenovController extends Controller
             
             $data->update($validatedData);
 
-            return redirect('/bangunan/ruang-rehabrenov');
+            return redirect('/bangunan/ruang-rehabrenov')->with('success', 'Berhasil mengubah rencana rehab & renov!');
         }else{
             abort(403);
         }
@@ -200,17 +216,41 @@ class RehabRenovController extends Controller
             Storage::delete($data->proposal);
             RehabRenov::destroy($data->id);
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil membatalkan rencana rehab & renov!');
         }else{
             abort(403);
         }
     }
 
     public function showDinas(){
-        $usulanBangunan = RehabRenov::search(request(['search']))
-        ->leftJoin('profils', 'profils.id', '=', 'rehab_renovs.profil_id')
-        ->leftJoin('profil_kcds', 'profils.id', '=', 'profil_kcds.profil_id')
-        ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi', 'rehab_renovs.proposal', 'rehab_renovs.id')->paginate(40)->withQueryString();
+        if (Auth::user()->hasRole('kcd')) {
+            $profils = ProfilKcd::ambil(Auth::user()->kcd_id);
+            $usulanBangunan = [];
+            foreach ($profils as $key => $profil) {
+                $usulans = RehabRenov::where('profil_id', $profil->id)
+                                ->leftJoin('profils', function($join) use ($profil){
+                                    $join->where('profils.id', $profil->id);
+                                })
+                                ->leftJoin('kota_kabupatens', 'kota_kabupatens.id', 'profils.kota_kabupaten_id')
+                                ->leftJoin('profil_kcds', 'kota_kabupatens.id', 'profil_kcds.kota_kabupaten_id')
+                                ->leftJoin('kcds', 'kcds.id', 'profil_kcds.kcd_id')
+                                ->select('profils.*', 'kcds.instansi', 'rehab_renovs.proposal', 'rehab_renovs.id')
+                                ->get();
+                if (count($usulans) > 0) {
+                    foreach ($usulans as $usulan) {
+                        $usulanBangunan[] = $usulan;
+                    }
+                }
+            }
+        }else{
+            $usulanBangunan = RehabRenov::search(request(['search', 'filter']))
+                            ->leftJoin('profils', 'profils.id', 'rehab_renovs.profil_id')
+                            ->leftJoin('kota_kabupatens', 'kota_kabupatens.id', 'profils.kota_kabupaten_id')
+                            ->leftJoin('profil_kcds', 'kota_kabupatens.id', 'profil_kcds.kota_kabupaten_id')
+                            ->leftJoin('kcds', 'kcds.id', 'profil_kcds.kcd_id')
+                            ->select('profils.*', 'kcds.instansi', 'rehab_renovs.proposal', 'rehab_renovs.id')
+                            ->get();
+        }
 
         return view('admin.ruangrehabrenov', [
             'usulanBangunans' => $usulanBangunan,

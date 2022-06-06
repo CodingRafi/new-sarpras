@@ -11,6 +11,14 @@ use Illuminate\Support\Facades\Auth;
 
 class ProgramKompetensiController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_program_kompetensis|add_program_kompetensis|edit_program_kompetensis|delete_program_kompetensis', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_program_kompetensis', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_program_kompetensis', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_program_kompetensis', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -49,7 +57,7 @@ class ProgramKompetensiController extends Controller
     
             ProgramKompetensi::create($validatedData);
     
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menambah program keahlian!');
         }else{
             abort(403);
         }
@@ -93,7 +101,7 @@ class ProgramKompetensiController extends Controller
     
             $programKompetensi->update($validatedData);
     
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil mengubah program keahlian!');
         }else{
             abort(403);
         }
@@ -113,6 +121,6 @@ class ProgramKompetensiController extends Controller
         }
         ProgramKompetensi::destroy($programKompetensi->id);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menghapus program keahlian!');
     }
 }

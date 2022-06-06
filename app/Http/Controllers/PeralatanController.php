@@ -13,6 +13,14 @@ use App\Models\Kompeten;
 
 class PeralatanController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_peralatan|add_peralatan|edit_peralatan|delete_peralatan', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_peralatan', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_peralatan', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_peralatan', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -58,7 +66,7 @@ class PeralatanController extends Controller
     
             Peralatan::create($validatedData);
     
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menambah peralatan!');
         }else{
             abort(403);
         }
@@ -115,7 +123,7 @@ class PeralatanController extends Controller
     
             $peralatan->update($validatedData);
     
-            return redirect('/peralatan');
+            return redirect('/peralatan')->with('success', 'Berhasil mengubah peralatan!');
         } else {
             abort(403);
         }
@@ -132,7 +140,7 @@ class PeralatanController extends Controller
     {
         if (Auth::user()->hasRole('dinas')) {
             Peralatan::destroy($peralatan->id);
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menghapus peralatan!');
         } else {
             abort(403);
         }

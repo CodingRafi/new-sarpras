@@ -10,6 +10,14 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfilKcdController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_profil_kcds|add_profil_kcds|edit_profil_kcds|delete_profil_kcds', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_profil_kcds', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_profil_kcds', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_profil_kcds', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -45,7 +53,7 @@ class ProfilKcdController extends Controller
 
             ProfilKcd::createProfilKcd($request->kcd_id, $request->id_kota_kabupaten);
     
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menambah wilayah!');
         }else{
             abort(403);
         }
@@ -95,7 +103,7 @@ class ProfilKcdController extends Controller
     {
         if (Auth::user()->hasRole('dinas')) {   
             ProfilKcd::destroy($profilKcd->id);
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menghapus wilayah!');
         }else{
             abort(403);
         }

@@ -9,6 +9,14 @@ use App\Models\Kompeten;
 
 class JeniskoleksiController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_jenis_koleksis|add_jenis_koleksis|edit_jenis_koleksis|delete_jenis_koleksis', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_jenis_koleksis', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_jenis_koleksis', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_jenis_koleksis', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

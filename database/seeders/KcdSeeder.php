@@ -17,79 +17,79 @@ class KcdSeeder extends Seeder
     {
         Kcd::create([
             'nama'=>'Suzanto Aribowo, S.Si.',
-            'instansi'=> "KCD WILAYAH I",
+            'instansi'=> "Cadisdik WILAYAH I",
             'provinsi'=>'Jawa Barat'		
         ]);
 
         Kcd::create([
             'nama'=>'I Made Supriatna, SPd,M.',
-            'instansi'=> "KCD WILAYAH II",
+            'instansi'=> "Cadisdik WILAYAH II",
             'provinsi'=>'Jawa Barat'		
         ]);
 
         Kcd::create([
             'nama'=>'Asep Sudarsono',
-            'instansi'=> "KCD WILAYAH III",
+            'instansi'=> "Cadisdik WILAYAH III",
             'provinsi'=>'Jawa Barat'		
         ]);
 
         Kcd::create([
             'nama'=>'Ai Nurhasan',
-            'instansi'=> "KCD WILAYAH IV",
+            'instansi'=> "Cadisdik WILAYAH IV",
             'provinsi'=>'Jawa Barat'		
         ]);
 
         Kcd::create([
             'nama'=>'Nonong Winarti',
-            'instansi'=> "KCD WILAYAH V",
+            'instansi'=> "Cadisdik WILAYAH V",
             'provinsi'=>'Jawa Barat'		
         ]);
 
         Kcd::create([
             'nama'=>'Endang Susilastuti',
-            'instansi'=> "KCD WILAYAH VI",
+            'instansi'=> "Cadisdik WILAYAH VI",
             'provinsi'=>'Jawa Barat'		
         ]);
 
         Kcd::create([
             'nama'=>'Dr. Firman Oktora',
-            'instansi'=> "KCD WILAYAH VII",
+            'instansi'=> "Cadisdik WILAYAH VII",
             'provinsi'=>'Jawa Barat'		
         ]);
 
         Kcd::create([
             'nama'=>'Dra. Hi Otin Martini, M.Pd.',
-            'instansi'=> "KCD WILAYAH VIII",
+            'instansi'=> "Cadisdik WILAYAH VIII",
             'provinsi'=>'Jawa Barat'		
         ]);
 
         Kcd::create([
             'nama'=>'Dra. Hj. Dewi Nurhulaela, M.Pd',
-            'instansi'=> "KCD WILAYAH IX",
+            'instansi'=> "Cadisdik WILAYAH IX",
             'provinsi'=>'Jawa Barat'		
         ]);
 
         Kcd::create([
             'nama'=>'Ambar Triwidodo',
-            'instansi'=> "KCD WILAYAH X",
+            'instansi'=> "Cadisdik WILAYAH X",
             'provinsi'=>'Jawa Barat'		
         ]);
 
         Kcd::create([
             'nama'=>'H. Aang Karyana, M.Pd',
-            'instansi'=> "KCD WILAYAH XI",
+            'instansi'=> "Cadisdik WILAYAH XI",
             'provinsi'=>'Jawa Barat'		
         ]);
 
         Kcd::create([
             'nama'=>'Abur Mustikawanto',
-            'instansi'=> "KCD WILAYAH XII",
+            'instansi'=> "Cadisdik WILAYAH XII",
             'provinsi'=>'Jawa Barat'		
         ]);
 
         Kcd::create([
             'nama'=>'Ir. HERRY PANSILA, M.Sc.',
-            'instansi'=> "KCD WILAYAH XIII",
+            'instansi'=> "Cadisdik WILAYAH XIII",
             'provinsi'=>'Jawa Barat'		
         ]);
 

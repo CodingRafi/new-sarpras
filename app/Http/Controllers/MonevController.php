@@ -12,6 +12,14 @@ use App\Models\UnsurVerifikasi;
 
 class MonevController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_monev|add_monev|edit_monev|delete_monev', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_monev', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_monev', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_monev', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      * 
@@ -29,7 +37,7 @@ class MonevController extends Controller
         foreach ($users as $key => $user) {
             if($user->hasRole('pengawas')){
                 $pengawas[] = $user;
-            }else if($user->hasRole('verifikator')){
+        }else if($user->hasRole('verifikator')){
                 $verifikator[] = $user;
             }
         }

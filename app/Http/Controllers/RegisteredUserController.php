@@ -15,7 +15,7 @@ class RegisteredUserController extends Controller
 
     function __construct()
     {
-         $this->middleware('permission:view_users|add_users|edit_users|delete_users', ['only' => ['index','store']]);
+         $this->middleware('permission:view_users|add_users|edit_users|delete_users', ['only' => ['index','show']]);
          $this->middleware('permission:add_users', ['only' => ['create','store']]);
          $this->middleware('permission:edit_users', ['only' => ['edit','update']]);
          $this->middleware('permission:delete_users', ['only' => ['destroy']]);
@@ -56,6 +56,7 @@ class RegisteredUserController extends Controller
                 'kota_kabupaten_id' => 'nullable'
             ]);
             
+            $validatedData['foto_profil'] = '/img/logo_navbar.png';
             $validatedData['password'] = Hash::make('12345678');
             $validatedData['provinsi'] = 'Jawa Barat';
     
@@ -108,14 +109,18 @@ class RegisteredUserController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:users,email,'.$user->id,
-            'instansi' => 'required',
-            'kota_kabupaten_id' => 'required',
+            'email' => 'required|email|unique:users',
         ]);
+
+        $validatedData['password'] = bcrypt('12345678');
 
         $user->update($validatedData);
     
-        return redirect('/monitoring');
+        if ($user->hasRole('kcd')) {
+            return redirect('/cadisdik/'    . $user->kcd->id)->with('success', 'Berhasil mengubah cadisdik!');
+        }else{
+            return redirect('/monitoring'); 
+        }
     }
 
     /**
@@ -130,7 +135,7 @@ class RegisteredUserController extends Controller
         return redirect('/monitoring');
     }
 
-    public function create_pengawas(Request $request){
+    public function ubah_foto(Request $request){
         dd($request);
     }
 }

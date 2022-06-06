@@ -20,6 +20,16 @@ use App\Models\Kompeten;
 
 class PimpinanController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_pimpinan|add_pimpinan|edit_pimpinan|delete_pimpinan', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_pimpinan', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_pimpinan', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_pimpinan', ['only' => ['destroy']]);
+         $this->middleware('permission:pimpinan_create_usulan', ['only' => ['cretaeusulan']]);
+         $this->middleware('permission:pimpinan_show_dinas', ['only' => ['showDinas']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -95,7 +105,7 @@ class PimpinanController extends Controller
 
         Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambah Ketersediaan Ruang Pimpinan');
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menambah ketersediaan ruang pimpinan!');
     }
 
     /**
@@ -145,7 +155,7 @@ class PimpinanController extends Controller
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah data ketersediaan Ruang Pimpinan');
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil mengubah ketersediaan ruang pimpinan!');
 
         }else{
             abort(403);
@@ -164,7 +174,7 @@ class PimpinanController extends Controller
     {
         if($pimpinan->profil_id == Auth::user()->profil_id){
             Pimpinan::destroy($pimpinan->id);
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menghapus ketersediaan ruang pimpinan!');
         }else{
             abort(403);
         }
@@ -186,7 +196,7 @@ class PimpinanController extends Controller
 
         Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan usulan ruang pimpinan');
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menambah usulan ruang pimpinan!');
     }
 
     public function showDinas(){

@@ -9,6 +9,14 @@ use App\Models\Kompeten;
 
 class UsulanKoleksiController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_usulan_koleksi|add_usulan_koleksi|edit_usulan_koleksi|delete_usulan_koleksi', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_usulan_koleksi', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_usulan_koleksi', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_usulan_koleksi', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

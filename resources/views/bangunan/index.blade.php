@@ -252,7 +252,7 @@
                                                 <th rowspan="2" class="text-center" style="vertical-align: middle">
                                                     Jumlah
                                                     Ruang
-                                                    Kelas</th>
+                                                    {{ str_replace('_', ' ', request('jenis')) }}</th>
                                             @endif
                                             <th colspan="2" class="text-center">Ketersediaan Lahan</th>
                                             <th rowspan="2" class="text-center" style="vertical-align: middle">Proposal

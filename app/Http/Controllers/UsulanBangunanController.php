@@ -17,6 +17,16 @@ use App\Models\Kompeten;
 
 class UsulanBangunanController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_usulan_bangunans|add_usulan_bangunans|edit_usulan_bangunans|delete_usulan_bangunans', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_usulan_bangunans', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_usulan_bangunans', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_usulan_bangunans', ['only' => ['destroy']]);
+         $this->middleware('permission:usulan_bangunan_edit_pimpinan', ['only' => ['destroy']]);
+         $this->middleware('permission:usulan_bangunan_update_pimpinan', ['only' => ['destroy']]);
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -133,7 +143,7 @@ class UsulanBangunanController extends Controller
     
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Usulan Bangunan ' . str_replace("_", " ", $usulanBangunan->jenis));
 
-            return redirect('/bangunan?jenis=' . $usulanBangunan->jenis);
+            return redirect('/bangunan?jenis=' . $usulanBangunan->jenis)->with('success','Berhasil mengubah usulan ' . str_replace("_", " ", $usulanBangunan->jenis) . '!');
             
         }else{
             abort(403);
@@ -154,7 +164,7 @@ class UsulanBangunanController extends Controller
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Membatalkan Usulan bangunan ' . str_replace("_", " ", $usulanBangunan->jenis));
 
-            return redirect()->back();
+            return redirect()->back()->with('success','Berhasil membatalkan usulan ' . str_replace("_", " ", $usulanBangunan->jenis) . '!');
         }else{
             abort(403);
         }
@@ -201,7 +211,7 @@ class UsulanBangunanController extends Controller
     
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Usulan Bangunan ' . str_replace("_", " ", $usulanBangunan->jenis));
 
-            return redirect('/bangunan/pimpinan');
+            return redirect('/bangunan/pimpinan')->with('success', 'Berhasil mengubah usulan ruang pimpinan!');
         }else{
             abort(403);
         }

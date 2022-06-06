@@ -11,6 +11,14 @@ use Illuminate\Support\Facades\Auth;
 
 class BidangKompetensiController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_bidang_kompetensis|add_bidang_kompetensis|edit_bidang_kompetensis|delete_bidang_kompetensis', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_bidang_kompetensis', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_bidang_kompetensis', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_bidang_kompetensis', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -49,7 +57,7 @@ class BidangKompetensiController extends Controller
     
             BidangKompetensi::create($validatedData);
     
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menambah bidang keahlian!');
         }else{
             abort(403);
         }
@@ -93,7 +101,7 @@ class BidangKompetensiController extends Controller
     
             $bidangKompetensi->update($validatedData);
     
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil mengubah bidang keahlian!');
         }else{
             abort(403);
         }
@@ -113,6 +121,6 @@ class BidangKompetensiController extends Controller
         }
         BidangKompetensi::destroy($bidangKompetensi->id);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menghapus bidang keahlian!');
     }
 }

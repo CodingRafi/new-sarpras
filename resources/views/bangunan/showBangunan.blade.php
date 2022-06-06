@@ -25,7 +25,7 @@
     </div>
     {{-- End Header --}}
 
-    @if (request('jenis') == 'ruang_pimpinan')
+    @if (request('jenis') == 'ruang_pimpinan' && Auth::user()->hasRole('dinas'))
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header" style="background-color: #25b5e9">
@@ -158,39 +158,44 @@
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover mt-2">
                                 <div class="search" style="display: flex">
-                                    <ul class="nav nav-pills ml-auto p-2 col-1" style="max-width: 11%;">
-                                        <li class="nav-item dropdown mb-3">
-                                            <a class="btn btn-light dropdown-toggle" data-toggle="dropdown" href="#">
-                                                Order by ... <span class="caret"></span>
-                                            </a>
-                                            <div class="dropdown-menu" style="min-width: auto !important; width: 125px;">
-                                                <form action="/bangunan-all" method="get">
-                                                    @if (request('jenis'))
-                                                        <input type="hidden" name="jenis" value="{{ request('jenis') }}">
-                                                    @endif
-                                                    @if (request('search'))
-                                                        <input type="hidden" name="search"
-                                                            value="{{ request('search') }}">
-                                                    @endif
-                                                    <input type="hidden" name="filter" value="kota">
-                                                    <button class="dropdown-item text-truncate kab" tabindex="-1"
-                                                        type="submit">Kota/Kabupaten</button>
-                                                </form>
-                                                <form action="/bangunan-all" method="get">
-                                                    @if (request('jenis'))
-                                                        <input type="hidden" name="jenis" value="{{ request('jenis') }}">
-                                                    @endif
-                                                    @if (request('search'))
-                                                        <input type="hidden" name="search"
-                                                            value="{{ request('search') }}">
-                                                    @endif
-                                                    <input type="hidden" name="filter" value="kcd">
-                                                    <button class="dropdown-item text-truncate kab" tabindex="-1"
-                                                        type="submit">Kantor Cabang Dinas</button>
-                                                </form>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                    @if (!Auth::user()->hasRole('kcd'))
+                                        <ul class="nav nav-pills ml-auto p-2 col-1" style="max-width: 11%;">
+                                            <li class="nav-item dropdown mb-3">
+                                                <a class="btn btn-light dropdown-toggle" data-toggle="dropdown" href="#">
+                                                    Order by ... <span class="caret"></span>
+                                                </a>
+                                                <div class="dropdown-menu"
+                                                    style="min-width: auto !important; width: 125px;">
+                                                    <form action="/bangunan-all" method="get">
+                                                        @if (request('jenis'))
+                                                            <input type="hidden" name="jenis"
+                                                                value="{{ request('jenis') }}">
+                                                        @endif
+                                                        @if (request('search'))
+                                                            <input type="hidden" name="search"
+                                                                value="{{ request('search') }}">
+                                                        @endif
+                                                        <input type="hidden" name="filter" value="kota">
+                                                        <button class="dropdown-item text-truncate kab" tabindex="-1"
+                                                            type="submit">Kota/Kabupaten</button>
+                                                    </form>
+                                                    <form action="/bangunan-all" method="get">
+                                                        @if (request('jenis'))
+                                                            <input type="hidden" name="jenis"
+                                                                value="{{ request('jenis') }}">
+                                                        @endif
+                                                        @if (request('search'))
+                                                            <input type="hidden" name="search"
+                                                                value="{{ request('search') }}">
+                                                        @endif
+                                                        <input type="hidden" name="filter" value="kcd">
+                                                        <button class="dropdown-item text-truncate kab" tabindex="-1"
+                                                            type="submit">Kantor Cabang Dinas</button>
+                                                    </form>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    @endif
                                     <div class="md-2 col-11 mt-2" style="max-width: 89%;">
                                         <form class="form-inline ml-2" action="/bangunan-all" method="GET"
                                             style="width: 100%;">
@@ -230,7 +235,7 @@
                                     @foreach ($usulanBangunans as $key => $usulan)
                                         <tr>
                                             <td class="text-center" style="vertical-align: middle">
-                                                {{ ($usulanBangunans->currentpage() - 1) * $usulanBangunans->perpage() + $loop->index + 1 }}
+                                                {{ $loop->iteration }}
                                             </td>
                                             <td class="text-center" style="vertical-align: middle">
                                                 {{ $usulan->nama }}</td>
@@ -265,9 +270,9 @@
                 </div>
                 {{-- End --}}
                 {{-- Pagination --}}
-                <div class="float-right">
+                {{-- <div class="float-right">
                     {{ $usulanBangunans->links() }}
-                </div>
+                </div> --}}
                 {{-- End --}}
             </div>
         </div>

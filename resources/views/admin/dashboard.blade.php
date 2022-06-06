@@ -3,8 +3,8 @@
 @section('tambahcss')
     <style>
         /* .row-data .col-3 {
-                                    max-width: 15.5rem !important;
-                                } */
+                                                max-width: 15.5rem !important;
+                                            } */
 
         .card-header h4 {
             font-size: 1.2rem !important
@@ -19,6 +19,7 @@
 @endsection
 
 @section('container')
+
     <!-- title -->
     <div class="content-header">
         <div class="container-fluid">
@@ -133,110 +134,131 @@
             <h3 class="card-title">Status Sarana Pra sarana Sekolah</h3>
         </div>
         <div class="card-body table-responsive">
-            <div class="search" style="display: flex">
-                <a class="btn btn-light dropdown-toggle" style="border: 1px solid #263238" data-toggle="dropdown" href="#">
-                    Order by... <span class="caret"></span>
-                </a>
-                <div class="dropdown-menu" style="min-width: auto !important; width: 160px;">
-                    <form action="/" method="get">
-                        @if (request('search'))
-                            <input type="hidden" name="search"
-                                value="{{ request('search') }}">
+            @if (count($datas) > 0)
+                <div class="search" style="display: flex">
+                    @if (!Auth::user()->hasRole('kcd'))
+                        <a class="btn btn-light dropdown-toggle" style="border: 1px solid #263238" data-toggle="dropdown"
+                            href="#">
+                            Order by... <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu" style="min-width: auto !important; width: 160px;">
+                            <form action="/" method="get">
+                                @if (request('search'))
+                                    <input type="hidden" name="search" value="{{ request('search') }}">
+                                @endif
+                                <input type="hidden" name="filter" value="kota">
+                                <button class="dropdown-item text-truncate kab" tabindex="-1"
+                                    type="submit">Kota/Kabupaten</button>
+                            </form>
+                            <form action="/" method="get">
+                                @if (request('search'))
+                                    <input type="hidden" name="search" value="{{ request('search') }}">
+                                @endif
+                                <input type="hidden" name="filter" value="kcd">
+                                <button class="dropdown-item text-truncate kab" tabindex="-1" type="submit">Kantor Cabang
+                                    Dinas</button>
+                            </form>
+                        </div>
+                    @endif
+                    <form class="form-inline ml-2" action="/" method="GET" style="width: 100%;">
+                        @if (request('filter'))
+                            <input type="hidden" name="filter" value="{{ request('filter') }}">
                         @endif
-                        <input type="hidden" name="filter" value="kota">
-                        <button class="dropdown-item text-truncate kab" tabindex="-1"
-                            type="submit">Kota/Kabupaten</button>
-                    </form>
-                    <form action="/" method="get">
-                        @if (request('search'))
-                            <input type="hidden" name="search"
-                                value="{{ request('search') }}">
-                        @endif
-                        <input type="hidden" name="filter" value="kcd">
-                        <button class="dropdown-item text-truncate kab" tabindex="-1"
-                            type="submit">Kantor Cabang Dinas</button>
+                        <div class="input-group" style="width: 100%;border: 1px solid #ced4da;border-radius: 3px;">
+                            <input class="form-control form-control-navbar" type="search" placeholder="Search Nama Sekolah"
+                                aria-label="Search" style="height: 2.5rem;font-size: 15px;padding: 0 10px;border:none;"
+                                name="search">
+                            <div class="input-group-append">
+                                <button class="btn btn-navbar" type="submit" style="width: 40px;">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
                     </form>
                 </div>
-                <form class="form-inline ml-2" action="/" method="GET" style="width: 100%;">
-                    @if (request('filter'))
-                        <input type="hidden" name="filter" value="{{ request('filter') }}">
-                    @endif
-                    <div class="input-group" style="width: 100%;border: 1px solid #ced4da;border-radius: 3px;">
-                        <input class="form-control form-control-navbar" type="search" placeholder="Search Nama Sekolah"
-                            aria-label="Search" style="height: 2.5rem;font-size: 15px;padding: 0 10px;border:none;"
-                            name="search">
-                        <div class="input-group-append">
-                            <button class="btn btn-navbar" type="submit" style="width: 40px;">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="card mt-3">
-                <table class="table table-responsive table-bordered mb-0">
-                    <thead>
-                        <tr>
-                            <th class="text-center col-1" style="background-color: #eeeeee" scope="col">No</th>
-                            <th class="text-center col-1" style="background-color: #eeeeee" scope="col">Nama Sekolah</th>
-                            <th class="text-center col-1" style="background-color: #eeeeee" scope="col">Status Sekolah</th>
-                            <th class="text-center col-1" style="background-color: #eeeeee" scope="col">Kabupaten/ Kota</th>
-                            <th class="text-center col-2" style="background-color: #eeeeee" scope="col">Kantor Cabang Dinas
-                            </th>
-                            <th class="text-center col-2" style="background-color: #eeeeee" scope="col">Status Sarpras</th>
-                            <th class="text-center col-2" style="background-color: #eeeeee" scope="col">Usulan</th>
-                            <th class="text-center col-2" style="background-color: #eeeeee" scope="col">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($datas as $data)
+
+                <div class="card mt-3">
+                    <table class="table table-responsive table-bordered mb-0">
+                        <thead>
                             <tr>
-                                <th class="text-center col-1" scope="row">
-                                    {{ ($profils->currentpage() - 1) * $profils->perpage() + $loop->index + 1 }}</th>
-                                <td class="text-center col-1">{{ $data['nama'] }}</td>
-                                <td class="text-center col-1">{{ $data['status_sekolah'] }}</td>
-                                <td class="text-center col-1">{{ $data['kabupaten'] }}</td>
-                                <td class="text-center col-2">{{ $data['instansi'] }}</td>
-                                <td class="text-center col-2">
-                                    <div class="text-white mt-1" style="background-color: #00a65b; border-radius:5px">Lahan
-                                        ideal</div>
-                                    <div class="text-white mt-1" style="background-color: #25b5e9; border-radius:5px">
-                                        Peralatan ideal</div>
-                                    <div class="text-white mt-1" style="background-color: #fcc12d; border-radius:5px">Belum
-                                        ideal, kurang ruang praktik TKJ</div>
-                                    <div class="text-white mt-1" style="background-color: #fcc12d; border-radius:5px">Belum
-                                        ideal, kurang ruang kelas</div>
-                                </td>
-                                <td class="text-center col-2">
-                                    @foreach ($data['usulanLahan'] as $usulan)
-                                        <a class="btn text-white mt-1" style="background-color: #fcc12d"
-                                            href="/usulan-lahan/{{ $usulan->id }}">Usulan Lahan
-                                            ({{ $usulan->nama }})</a>
-                                    @endforeach
-                                    @foreach ($data['usulanBangunan'] as $usulan)
-                                        <a class="btn text-white mt-1"
-                                            style="background-color: #fcc12d;text-transform: capitalize;"
-                                            href="/usulan-bangunan/{{ $usulan['id'] }}">Usulan Bangunan
-                                            ({{ str_replace('_', ' ', $usulan->jenis) }})</a>
-                                    @endforeach
-                                    @foreach ($data['rehab'] as $usulan)
-                                        <a class="btn text-white mt-1"
-                                            style="background-color: #fcc12d;text-transform: capitalize;"
-                                            href="/bangunan/ruang-rehabrenov/{{ $usulan['id'] }}">Rehab Renov
-                                            ({{ str_replace('_', ' ', $usulan->jenis) }})</a>
-                                    @endforeach
-                                </td>
-                                <td class="text-center"><a class="text-center btn text-white"
-                                        style="background-color: #263238" href="/profil/{{ $data['id'] }}">Detail</a>
-                                </td>
+                                <th class="text-center col-1" style="background-color: #eeeeee" scope="col">No</th>
+                                <th class="text-center col-1" style="background-color: #eeeeee" scope="col">Nama Sekolah
+                                </th>
+                                <th class="text-center col-1" style="background-color: #eeeeee" scope="col">Status Sekolah
+                                </th>
+                                <th class="text-center col-1" style="background-color: #eeeeee" scope="col">Kabupaten/ Kota
+                                </th>
+                                <th class="text-center col-2" style="background-color: #eeeeee" scope="col">Kantor Cabang
+                                    Dinas
+                                </th>
+                                <th class="text-center col-2" style="background-color: #eeeeee" scope="col">Status Sarpras
+                                </th>
+                                <th class="text-center col-2" style="background-color: #eeeeee" scope="col">Usulan</th>
+                                <th class="text-center col-2" style="background-color: #eeeeee" scope="col">Aksi</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-            <div class="container d-flex justify-content-end">
-                {{ $profils->links() }}
-            </div>
+                        </thead>
+                        <tbody>
+                            @foreach ($datas as $data)
+                                <tr>
+                                    <th class="text-center col-1" scope="row">
+                                        {{ ($profils->currentpage() - 1) * $profils->perpage() + $loop->index + 1 }}</th>
+                                    <td class="text-center col-1">{{ $data['nama'] }}</td>
+                                    <td class="text-center col-1">{{ $data['status_sekolah'] }}</td>
+                                    <td class="text-center col-1">{{ $data['kabupaten'] }}</td>
+                                    <td class="text-center col-2">{{ $data['instansi'] }}</td>
+                                    <td class="text-center col-2">
+                                        <div class="text-white mt-1" style="background-color: #00a65b; border-radius:5px">
+                                            Lahan
+                                            ideal</div>
+                                        <div class="text-white mt-1" style="background-color: #25b5e9; border-radius:5px">
+                                            Peralatan ideal</div>
+                                        <div class="text-white mt-1" style="background-color: #fcc12d; border-radius:5px">
+                                            Belum
+                                            ideal, kurang ruang praktik TKJ</div>
+                                        <div class="text-white mt-1" style="background-color: #fcc12d; border-radius:5px">
+                                            Belum
+                                            ideal, kurang ruang kelas</div>
+                                    </td>
+                                    <td class="text-center col-2">
+                                        @foreach ($data['usulanLahan'] as $usulan)
+                                            <a class="btn text-white mt-1" style="background-color: #fcc12d"
+                                                href="/usulan-lahan/{{ $usulan->id }}">Usulan Lahan
+                                                ({{ $usulan->nama }})
+                                            </a>
+                                        @endforeach
+                                        @foreach ($data['usulanBangunan'] as $usulan)
+                                            <a class="btn text-white mt-1"
+                                                style="background-color: #fcc12d;text-transform: capitalize;"
+                                                href="/usulan-bangunan/{{ $usulan['id'] }}">Usulan Bangunan
+                                                ({{ str_replace('_', ' ', $usulan->jenis) }})
+                                            </a>
+                                        @endforeach
+                                        @foreach ($data['rehab'] as $usulan)
+                                            <a class="btn text-white mt-1"
+                                                style="background-color: #fcc12d;text-transform: capitalize;"
+                                                href="/bangunan/ruang-rehabrenov/{{ $usulan['id'] }}">Rehab Renov
+                                                ({{ str_replace('_', ' ', $usulan->jenis) }})
+                                            </a>
+                                        @endforeach
+                                    </td>
+                                    <td class="text-center"><a class="text-center btn text-white"
+                                            style="background-color: #263238" href="/profil/{{ $data['id'] }}">Detail</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <div class="container d-flex justify-content-end">
+                    {{ $profils->links() }}
+                </div>
+            @else
+                <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                    <div class="alert" role="alert">
+                        Data Tidak Ditemukan
+                    </div>
+                </div>
+            @endif
             {{-- {{ $variable->link() }} --}}
         </div>
     </div>

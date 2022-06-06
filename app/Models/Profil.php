@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\usulanBangunan;
+use App\Models\usulanLahan;
+use App\Models\usulanPeralatan;
+use App\Models\RehabRenov;
 use DB;
 
 class Profil extends Model
@@ -123,5 +127,50 @@ class Profil extends Model
             'jml_siswa_l' => $profil['jml_lk'] ?? 0,
             'jml_siswa_p' => $profil['jml_lk'] ?? 0,
         ]);
+    }
+
+    public static function show_profil_admin($profils){
+        $datas = [];
+        
+        $usulanLahan = 0;
+        $usulanBangunan = 0;
+        $usulanPeralatan = 0;
+
+        foreach ($profils as $key => $profil) {
+            $lahan = UsulanLahan::where('profil_id', $profil->id)->get();
+            $bangunan = UsulanBangunan::where('profil_id', $profil->id)->get();
+            $peralatan = UsulanPeralatan::where('profil_id', $profil->id)->get();
+
+            $usulanLahan += count($lahan);
+            $usulanBangunan += count($bangunan);
+            $usulanPeralatan += count($peralatan);
+            // dd(UsulanLahan::where('profil_id', $profil->id)->get());
+            $datas[] = [
+                'id' => $profil->id,
+                'profil_depo_id' => $profil->profil_depo_id,
+                'npsn' => $profil->npsn,
+                'sekolah_id' => $profil->sekolah_id,
+                'nama' => $profil->nama,
+                'status_sekolah' => $profil->status_sekolah,
+                'alamat' => $profil->alamat,
+                'provinsi' => $profil->provinsi,
+                'kabupaten' => $profil->kabupaten,
+                'kecamatan' => $profil->kecamatan,
+                'email' => $profil->email,
+                'website' => $profil->website,
+                'nomor_telepon' => $profil->nomor_telepon,
+                'nomor_fax' => $profil->nomor_fax,
+                'akreditas' => $profil->akreditas,
+                'jml_siswa_l' => $profil->jml_siswa_l,
+                'jml_siswa_p' => $profil->jml_siswa_p,
+                'usulanLahan' => $lahan,
+                'usulanBangunan' => $bangunan,
+                'usulanPeralatan' => $peralatan,
+                'instansi' => $profil->instansi,
+                'rehab' => RehabRenov::where('profil_id', $profil->id)->get()
+            ];
+        }
+
+        return [$datas, $usulanLahan, $usulanBangunan, $usulanPeralatan];
     }
 }

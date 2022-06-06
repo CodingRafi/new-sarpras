@@ -22,8 +22,10 @@ class ProfilController extends Controller
 
     function __construct()
     {
-         $this->middleware('permission:view_profil|edit_profil', ['only' => ['index','show',]]);
-         $this->middleware('permission:edit_profil', ['only' => ['edit','update']]);
+         $this->middleware('permission:view_profils|add_profils|edit_profils|delete_profils', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_profils', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_profils', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_profils', ['only' => ['destroy']]);
     }
 
     /**
@@ -189,7 +191,7 @@ class ProfilController extends Controller
                 $jml_pr = 0;
             }
     
-            return redirect('/profil/' . $request->profil_depo_id);
+            return redirect('/profil/' . $request->profil_depo_id)->with('success', 'Berhasil mengubah profil sekolah!');
         }else{
             abort(403);
         }

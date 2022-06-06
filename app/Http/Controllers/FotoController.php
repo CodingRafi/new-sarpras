@@ -14,6 +14,14 @@ use App\Models\Kompeten;
 
 class FotoController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_fotos|add_fotos|edit_fotos|delete_fotos', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_fotos', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_fotos', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_fotos', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -70,7 +78,7 @@ class FotoController extends Controller
 
         Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan ' . count($request->nama) . ' foto');
 
-        return redirect('/koleksi/' . $koleksi->slug);
+        return redirect('/koleksi/' . $koleksi->slug)->with('success', 'Berhasil menambah foto!');
     }
 
     /**
@@ -121,6 +129,6 @@ class FotoController extends Controller
 
         Log::createLog($koleksi->profil_depo_id, Auth::user()->id, 'Menghapus 1 foto dari koleksi' . $koleksi->nama);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menghapus foto!');
     }
 }

@@ -18,6 +18,14 @@ use Illuminate\Support\Facades\Storage;
 
 class KomliController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_komlis|add_komlis|edit_komlis|delete_komlis', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_komlis', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_komlis', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_komlis', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -66,7 +74,7 @@ class KomliController extends Controller
     
             Komli::create($validatedData);
     
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menambah kompetensi keahlian!');
         }else{
             abort(403);
         }
@@ -121,7 +129,7 @@ class KomliController extends Controller
             ]);
 
             $komli->update($validatedData);
-            return redirect('/komli');
+            return redirect('/komli')->with('success', 'Berhasil mengubah kompetensi keahlian!');
         }else{
             abort(403);
         }
@@ -138,7 +146,7 @@ class KomliController extends Controller
         $kompetens = Kompeten::where('komli_id', $komli->id)->get();
         Kompeten::hapusKompeten($kompetens);
         Komli::destroy($komli->id);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menghapus kompetensi keahlian!');
 
     }
 }

@@ -17,6 +17,15 @@ use Illuminate\Http\Request;
 
 class PerpustakaanController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_perpustakaan|add_perpustakaan|edit_perpustakaan|delete_perpustakaan', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_perpustakaan', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_perpustakaan', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_perpustakaan', ['only' => ['destroy']]);
+         $this->middleware('permission:perpustakaan_create_usulan', ['only' => ['createusulan']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -130,7 +139,7 @@ class PerpustakaanController extends Controller
 
         Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan usulan bangunan perpustakaan');
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menambah usulan perpustakaan');
     }
 
     public function showDinas(){

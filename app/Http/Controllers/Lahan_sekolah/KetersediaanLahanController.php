@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Storage;
 
 class KetersediaanLahanController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_ketersediaan_lahan|add_ketersediaan_lahan|edit_ketersediaan_lahan|delete_ketersediaan_lahan', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_ketersediaan_lahan', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_ketersediaan_lahan', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_ketersediaan_lahan', ['only' => ['destroy']]);
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -60,7 +68,7 @@ class KetersediaanLahanController extends Controller
 
         Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan Ketersediaan lahan');
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menyimpan ketersediaan lahan!');
 
     }
 
@@ -125,7 +133,7 @@ class KetersediaanLahanController extends Controller
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Ketersediaan lahan ' . $request->nama);
 
-            return redirect('/lahan');
+            return redirect('/lahan')->with('success', 'Berhasil mengubah ketersediaan lahan!');
         }else{
             abort(403);
         }
@@ -145,7 +153,7 @@ class KetersediaanLahanController extends Controller
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menghapus Ketersediaan lahan');
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menghapus ketersediaan lahan!');
         }else{
             abort(403);
         }

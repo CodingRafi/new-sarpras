@@ -7,12 +7,21 @@ use App\Http\Requests\StoreUsulanPeralatanRequest;
 use App\Http\Requests\UpdateUsulanPeralatanRequest;
 use App\Models\Kompeten;
 use App\Models\Peralatan;
+use App\Models\ProfilKcd;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Log;
 use Illuminate\Support\Facades\Auth;
 
 class UsulanPeralatanController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_usulan_peralatan|add_usulan_peralatan|edit_usulan_peralatan|delete_usulan_peralatan', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_usulan_peralatan', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_usulan_peralatan', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_usulan_peralatan', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,11 +29,38 @@ class UsulanPeralatanController extends Controller
      */
     public function index()
     {
-        $usulanPeralatan = UsulanPeralatan::filter(request(['search']))->select('usulan_peralatans.*', 'komlis.kompetensi')
-                        ->leftJoin('peralatans', 'peralatans.id', 'usulan_peralatans.peralatan_id')
-                        ->leftJoin('profils', 'profils.id', 'usulan_peralatans.profil_id')
-                        ->leftJoin('kompetens', 'kompetens.id', 'usulan_peralatans.kompeten_id')
-                        ->leftJoin('komlis', 'komlis.id', 'kompetens.id')->paginate(40);
+        if (Auth::user()->hasRole('kcd')) {
+            $profils = ProfilKcd::ambil(Auth::user()->kcd_id);
+            $usulanPeralatan = [];
+            foreach ($profils as $key => $profil) {
+                $usulans = UsulanPeralatan::where('usulan_peralatans.profil_id', $profil->id)
+                                ->leftJoin('profils', function($join) use ($profil){
+                                    $join->where('profils.id', $profil->id);
+                                })
+                                ->leftJoin('kota_kabupatens', 'kota_kabupatens.id', 'profils.kota_kabupaten_id')
+                                ->leftJoin('profil_kcds', 'kota_kabupatens.id', 'profil_kcds.kota_kabupaten_id')
+                                ->leftJoin('kcds', 'kcds.id', 'profil_kcds.kcd_id')
+                                ->leftJoin('kompetens', 'kompetens.id', 'usulan_peralatans.kompeten_id')
+                                ->leftJoin('komlis', 'komlis.id', 'kompetens.id')
+                                ->leftJoin('peralatans', 'peralatans.id', 'usulan_peralatans.peralatan_id')
+                                ->select('usulan_peralatans.*', 'komlis.kompetensi', 'profils.nama', 'peralatans.nama as nama_peralatan_relasi')
+                                ->get();
+                if (count($usulans) > 0) {
+                    foreach ($usulans as $usulan) {
+                        $usulanPeralatan[] = $usulan;
+                    }
+                }
+            }
+
+        }else{
+            $usulanPeralatan = UsulanPeralatan::filter(request(['search']))
+                            ->select('usulan_peralatans.*', 'komlis.kompetensi')
+                            ->leftJoin('peralatans', 'peralatans.id', 'usulan_peralatans.peralatan_id')
+                            ->leftJoin('profils', 'profils.id', 'usulan_peralatans.profil_id')
+                            ->leftJoin('kompetens', 'kompetens.id', 'usulan_peralatans.kompeten_id')
+                            ->leftJoin('komlis', 'komlis.id', 'kompetens.id')
+                            ->get();
+        }
         
         return view('admin.usulanperalatan', [
             'usulan_peralatans' => $usulanPeralatan
@@ -69,7 +105,7 @@ class UsulanPeralatanController extends Controller
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Membuat Usulan Peralatan' . $kompeten->komli->kompetensi);
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menyimpan usulan peralatan ' . $kompeten->komli->kompetensi . '!');
         }
     }
 
@@ -132,7 +168,7 @@ class UsulanPeralatanController extends Controller
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Usulan Peralatan' . $kompeten->komli->kompetensi);
 
-            return redirect('/peralatan-sekolah/' . $kompeten->id);
+            return redirect('/peralatan-sekolah/' . $kompeten->id)->with('success', 'Berhasil mengubah usulan peralatan ' . $kompeten->komli->kompetensi . '!');
         }
     }
 
@@ -150,7 +186,7 @@ class UsulanPeralatanController extends Controller
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Membatalkan usulan peralatan');
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil membatalkan usulan peralatan!');
         }else{
             abort(403);
         } 
