@@ -341,7 +341,7 @@
     <div class="card-header" style="background-color: #FCC12D">
         <ul class="nav nav-pills ml-auto">
             <li class="nav-item">
-                <a class="nav-link text-white font-weight-bold" href="#data-kekurangan-lahan-sekolah"
+                <a class="nav-link text-white font-weight-bold active" href="#data-kekurangan-lahan-sekolah"
                     data-toggle="tab">
                     <i class="bi bi-house-fill mr-1"></i>Kekurangan Lahan</a>
             </li>
@@ -355,7 +355,7 @@
 
     <div class="card-body p-0">
         <div class="tab-content p-0">
-            <div class="tab-pane" id="data-kekurangan-lahan-sekolah" style="min-height: 10rem;">
+            <div class="tab-pane active" id="data-kekurangan-lahan-sekolah" style="min-height: 10rem;">
                 <div class="row">
                     <div class="col">
                         @if (count($kekuranganLahans) > 0)
