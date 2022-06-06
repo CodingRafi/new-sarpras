@@ -95,9 +95,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('upload-logo', function () {
         return view('myauth.uploadLogo');
     });
-    Route::get('user-settings', function () {
-        return view('userSettings');
-    });
+    Route::get('user-settings', [RegisteredUserController::class, 'userSettings']);
     Route::patch('/ubah-logo', [RegisteredUserController::class, 'ubah_foto']);
     Route::patch('/ubah-email-admin', [RegisteredUserController::class, 'ubah_email']);
 
