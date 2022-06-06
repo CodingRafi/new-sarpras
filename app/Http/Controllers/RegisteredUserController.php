@@ -157,4 +157,20 @@ class RegisteredUserController extends Controller
 
         return redirect('/user-settings');
     }
+
+    public function ubah_email(Request $request){
+        $validatedData = $request->validate([
+            'email' => 'required|unique:users'
+        ]);
+
+        Auth::user()->update($validatedData);
+
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
 }

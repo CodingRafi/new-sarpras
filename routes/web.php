@@ -99,6 +99,7 @@ Route::group(['middleware' => ['auth']], function() {
         return view('userSettings');
     });
     Route::patch('/ubah-logo', [RegisteredUserController::class, 'ubah_foto']);
+    Route::patch('/ubah-email-admin', [RegisteredUserController::class, 'ubah_email']);
 
     // admin
     Route::get('/', [AdminController::class, 'index']);
