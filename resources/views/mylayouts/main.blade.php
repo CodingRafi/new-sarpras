@@ -12,6 +12,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <title>SISTEM SARPRAS | Starter</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/icons/favicon_io/favicon-16x16.png">
+
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="/css/all.min.css">
     <!-- Bootstrap Icons -->
@@ -121,6 +124,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
             100% {
                 transform: translate(-50%, -50%) rotate(0deg);
             }
+        }
+
+        li.hover-dropdown:hover > .dropdown-menu.hover-dropdown{
+            display: block!important;
+        }
+
+        .rotate-arrow{
+            font-size: 1.4rem;
+            transition: ease-in-out 250ms;
+            transform-origin: center;            
+        }
+
+        li.hover-dropdown:hover .rotate-arrow{
+            transform: rotate(180deg)
         }
 
     </style>

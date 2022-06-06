@@ -65,6 +65,10 @@ Route::get('gallery', function () {
 //     return view('myauth.resetPassword');
 // });
 
+
+// Route::get('forgot', function () {
+//     return view('myauth.resetPassword');
+
 // Route::get('detail', function () {
 //     return view('bangunan.praktik.show');
 // });
@@ -90,6 +94,9 @@ Route::get('gallery', function () {
 Route::group(['middleware' => ['auth']], function() {
     Route::get('upload-logo', function () {
         return view('myauth.uploadLogo');
+    });
+    Route::get('user-settings', function () {
+        return view('userSettings');
     });
     Route::patch('/ubah-logo', [RegisteredUserController::class, 'ubah_foto']);
 

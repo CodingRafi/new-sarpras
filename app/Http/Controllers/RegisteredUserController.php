@@ -155,11 +155,6 @@ class RegisteredUserController extends Controller
             'foto_profil' => $imageName
         ]);
 
-
-        if (Auth::user()->hasRole('sekolah')) {
-            return redirect('/profil/' . Auth::user()->profil_id);
-        }else{
-            return redirect('/');
-        }
+        return redirect('/user-settings');
     }
 }

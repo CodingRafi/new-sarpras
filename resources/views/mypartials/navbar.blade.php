@@ -77,21 +77,31 @@
                 </span>
             @endif
         </div>
-        <li class="nav-item dropdown" style="margin-top: 7px">
-            <a class="nav-link mr-2" data-toggle="dropdown" href="#" style="padding: 0;">
-                <img src="{{ Auth::user()->foto_profil }}" alt="TarunaBhakti Logo"
-                    class="brand-image img-circle bg-white" width="45" style="opacity: .8">
+        <li class="nav-item dropdown hover-dropdown" style="margin-top: 7px">
+            <a class="nav-link mr-2 d-flex align-items-center" href="#" style="padding: 0; height: auto !important;">
+                @if (Auth::user()->foto_profil != '/img/logo_navbar.png')
+                    <img src="/logo/{{ Auth::user()->foto_profil }}" class="brand-image img-circle bg-white"
+                        style="width: 45px; height: 45px; aspect-ratio: 1/1; cursor: auto;">
+                @else
+                    <img src="{{ Auth::user()->foto_profil }}" class="brand-image img-circle bg-white"
+                        style="width: 45px; height: 45px; aspect-ratio: 1/1; cursor: auto;">
+                @endif
+                <i class="bi bi-caret-down-fill ml-2 rotate-arrow text-light"></i>
             </a>
-            <div class="dropdown-menu float-right">
-                <a class="dropdown-item" tabindex="-1" href="{{ route('password.ubah') }}" style="color: grey"><i class="bi bi-pencil-square"
+
+            <div class="dropdown-menu float-right border-0 hover-dropdown"
+                style="right: 0px!important; left: auto!important;">
+                {{-- <a class="dropdown-item" tabindex="-1" href="#" style="color: grey"><i class="bi bi-pencil-square"
                         style="width: 20px"></i> Ubah Password</a>
                 <a class="dropdown-item" tabindex="-1" href="/upload-logo" style="color: grey"><i
-                        class="bi bi-image" style="width: 20px"></i> Tambah Logo</a>
+                        class="bi bi-image" style="width: 20px"></i> Tambah Logo</a> --}}
+                <a class="dropdown-item" tabindex="-1" href="/user-settings" style="color: grey"><i
+                        class="bi bi-person-fill mr-2" style="width: 20px"></i> Profil</a>
                 <div class="dropdown-divider"></div>
                 <form action="/logout" method="post">
                     @csrf
-                    <button class="dropdown-item" tabindex="-1" type="submit"
-                        style="border: none; background: none; color: grey;"><i class="bi bi-box-arrow-left"
+                    <button class="dropdown-item text-danger" tabindex="-1" type="submit"
+                        style="border: none; background: none; color: grey;"><i class="bi bi-box-arrow-left mr-2"
                             style="width: 20px"></i> Keluar</button>
                 </form>
             </div>
