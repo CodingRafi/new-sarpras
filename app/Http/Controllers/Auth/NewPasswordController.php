@@ -20,7 +20,7 @@ class NewPasswordController extends Controller
      */
     public function create(Request $request)
     {
-        return view('auth.reset-password', ['request' => $request]);
+        return view('myauth.resetPassword', ['request' => $request]);
     }
 
     /**
@@ -33,6 +33,7 @@ class NewPasswordController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $request->validate([
             'token' => ['required'],
             'email' => ['required', 'email'],

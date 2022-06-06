@@ -167,6 +167,12 @@ class ProfilController extends Controller
                 'lat' => 'string|nullable',
                 'long' => 'string|nullable'
             ]);
+
+            if ($request->email) {
+                $user = Auth::user()->update([
+                    'email' => $request->email
+                ]);
+            }
     
             Log::createLog($profil->id, Auth::user()->id, 'Mengubah Data Sekolah');
     
