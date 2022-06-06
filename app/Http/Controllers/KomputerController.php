@@ -130,7 +130,7 @@ class KomputerController extends Controller
 
         Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan usulan Lab Komputer');
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menambah usulan ' . Str_replace('_', ' ', $request->jenis) . '!');
     }
 
     // public function showDinas(){

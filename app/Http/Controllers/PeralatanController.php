@@ -66,7 +66,7 @@ class PeralatanController extends Controller
     
             Peralatan::create($validatedData);
     
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menambah peralatan!');
         }else{
             abort(403);
         }
@@ -123,7 +123,7 @@ class PeralatanController extends Controller
     
             $peralatan->update($validatedData);
     
-            return redirect('/peralatan');
+            return redirect('/peralatan')->with('success', 'Berhasil mengubah peralatan!');
         } else {
             abort(403);
         }
@@ -140,7 +140,7 @@ class PeralatanController extends Controller
     {
         if (Auth::user()->hasRole('dinas')) {
             Peralatan::destroy($peralatan->id);
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menghapus peralatan!');
         } else {
             abort(403);
         }

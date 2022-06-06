@@ -191,7 +191,7 @@ class ProfilController extends Controller
                 $jml_pr = 0;
             }
     
-            return redirect('/profil/' . $request->profil_depo_id);
+            return redirect('/profil/' . $request->profil_depo_id)->with('success', 'Berhasil mengubah profil sekolah!');
         }else{
             abort(403);
         }

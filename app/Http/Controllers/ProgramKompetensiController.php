@@ -57,7 +57,7 @@ class ProgramKompetensiController extends Controller
     
             ProgramKompetensi::create($validatedData);
     
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menambah program keahlian!');
         }else{
             abort(403);
         }
@@ -101,7 +101,7 @@ class ProgramKompetensiController extends Controller
     
             $programKompetensi->update($validatedData);
     
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil mengubah program keahlian!');
         }else{
             abort(403);
         }
@@ -121,6 +121,6 @@ class ProgramKompetensiController extends Controller
         }
         ProgramKompetensi::destroy($programKompetensi->id);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menghapus program keahlian!');
     }
 }

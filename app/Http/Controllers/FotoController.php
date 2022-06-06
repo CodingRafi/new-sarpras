@@ -78,7 +78,7 @@ class FotoController extends Controller
 
         Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan ' . count($request->nama) . ' foto');
 
-        return redirect('/koleksi/' . $koleksi->slug);
+        return redirect('/koleksi/' . $koleksi->slug)->with('success', 'Berhasil menambah foto!');
     }
 
     /**
@@ -129,6 +129,6 @@ class FotoController extends Controller
 
         Log::createLog($koleksi->profil_depo_id, Auth::user()->id, 'Menghapus 1 foto dari koleksi' . $koleksi->nama);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menghapus foto!');
     }
 }

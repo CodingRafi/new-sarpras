@@ -118,7 +118,7 @@ class PraktikController extends Controller
 
         Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan Ketersedian ruang praktek' . $kompeten->kompetensi);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menambah ketersediaan ruang praktik!');
 
     }
 
@@ -167,7 +167,7 @@ class PraktikController extends Controller
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Merubah Jumlah Ketersediaan Ruang Praktek ' . $kompeten);
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil mengubah ketersediaan ruang praktik!');
 
         }else{  
             abort(403);
@@ -187,7 +187,7 @@ class PraktikController extends Controller
             Praktik::destroy($data->id);
             $kompeten = Kompeten::where('id', $data->kompeten_id)->get()[0]->komli->kompetensi;
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menghapus Ketersediaan Ruang Praktek ' . $kompeten);
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menghapus ketersediaan ruang praktik!');
         }else{
             abort(403);
         }
@@ -213,7 +213,7 @@ class PraktikController extends Controller
 
         Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan usulan ruang praktek' . $kompeten);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menambah usulan ruang praktik!');
     }
 
     public function showDinas(){

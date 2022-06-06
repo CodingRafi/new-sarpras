@@ -143,7 +143,7 @@ class UsulanBangunanController extends Controller
     
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Usulan Bangunan ' . str_replace("_", " ", $usulanBangunan->jenis));
 
-            return redirect('/bangunan?jenis=' . $usulanBangunan->jenis);
+            return redirect('/bangunan?jenis=' . $usulanBangunan->jenis)->with('success','Berhasil mengubah usulan ' . str_replace("_", " ", $usulanBangunan->jenis) . '!');
             
         }else{
             abort(403);
@@ -164,7 +164,7 @@ class UsulanBangunanController extends Controller
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Membatalkan Usulan bangunan ' . str_replace("_", " ", $usulanBangunan->jenis));
 
-            return redirect()->back();
+            return redirect()->back()->with('success','Berhasil membatalkan usulan ' . str_replace("_", " ", $usulanBangunan->jenis) . '!');
         }else{
             abort(403);
         }
@@ -211,7 +211,7 @@ class UsulanBangunanController extends Controller
     
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Usulan Bangunan ' . str_replace("_", " ", $usulanBangunan->jenis));
 
-            return redirect('/bangunan/pimpinan');
+            return redirect('/bangunan/pimpinan')->with('success', 'Berhasil mengubah usulan ruang pimpinan!');
         }else{
             abort(403);
         }

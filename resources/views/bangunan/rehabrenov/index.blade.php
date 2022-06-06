@@ -422,30 +422,30 @@
                                             {{-- judul table --}}
                                             <thead>
                                                 <tr>
-                                                    <th rowspan="2" class="text-center" style="line-height: 170px">No
+                                                    <th rowspan="2" class="text-center" style="vertical-align: middle">No
                                                     </th>
-                                                    <th rowspan="2" class="text-center" style="line-height: 170px">Jenis
+                                                    <th rowspan="2" class="text-center" style="vertical-align: middle">Jenis
                                                         Usulan</th>
-                                                    <th colspan="2" class="text-center" style="line-height: 70px">
+                                                    <th colspan="2" class="text-center" style="vertical-align: middle">
                                                         Tingkat
                                                         Kerusakan</th>
-                                                    <th colspan="3" class="text-center" style="line-height: 70px">Objek
+                                                    <th colspan="3" class="text-center" style="vertical-align: middle">Objek
                                                         Rehab/ Renov
                                                     </th>
-                                                    <th rowspan="2" class="text-center" style="line-height: 170px">
+                                                    <th rowspan="2" class="text-center" style="vertical-align: middle">
                                                         Proposal
                                                     </th>
-                                                    <th rowspan="2" class="text-center" style="line-height: 170px">
+                                                    <th rowspan="2" class="text-center" style="vertical-align: middle">
                                                         Keterangan</th>
-                                                    <th rowspan="2" class="text-center" style="line-height: 170px">Aksi
+                                                    <th rowspan="2" class="text-center" style="vertical-align: middle">Aksi
                                                     </th>
                                                 </tr>
                                                 <tr>
-                                                    <th class="text-center" style="line-height: 70px">Persentase</th>
-                                                    <th class="text-center" style="line-height: 70px">Usia</th>
-                                                    <th class="text-center" style="line-height: 70px">Objek</th>
-                                                    <th class="text-center" style="line-height: 70px">Luas Lahan</th>
-                                                    <th class="text-center" style="line-height: 70px">Gambar</th>
+                                                    <th class="text-center">Persentase</th>
+                                                    <th class="text-center">Usia</th>
+                                                    <th class="text-center">Objek</th>
+                                                    <th class="text-center">Luas Lahan</th>
+                                                    <th class="text-center">Gambar</th>
                                                 </tr>
                                             </thead>
                                             {{-- end judul table --}}

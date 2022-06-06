@@ -181,7 +181,7 @@ class BangunanController extends Controller
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah jumlah ketersediaan ' . str_replace("_", " ", $data->jenis));
 
-            return redirect()->back();
+            return redirect()->back()->with('success','Berhasil mengubah ketersediaan!');
         }else{
             abort(403);
         }
@@ -202,7 +202,7 @@ class BangunanController extends Controller
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah jumlah kekurangan ' . str_replace("_", " ", $data->jenis));
 
-            return redirect()->back();
+            return redirect()->back()->with('success','Berhasil mengubah kekurangan!');
         }else{
             abort(403);
         }
@@ -224,7 +224,7 @@ class BangunanController extends Controller
     
                 Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah kondisi ideal ' . str_replace("_", " ", $data->jenis));
     
-                return redirect()->back();
+                return redirect()->back()->with('success','Berhasil mengubah kondisi ideal!');
             }else{
                 abort(403);
             }

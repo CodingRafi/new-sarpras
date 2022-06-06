@@ -139,7 +139,7 @@ class PerpustakaanController extends Controller
 
         Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan usulan bangunan perpustakaan');
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menambah usulan perpustakaan');
     }
 
     public function showDinas(){

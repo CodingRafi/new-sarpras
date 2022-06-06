@@ -140,7 +140,7 @@ class ToiletController extends Controller
 
         Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan usulan bangunan toilet');
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menambah usulan toilet!');
     }
 
     // public function showDinas(){

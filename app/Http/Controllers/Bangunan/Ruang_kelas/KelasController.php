@@ -132,7 +132,7 @@ class KelasController extends Controller
 
         Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan usulan bangunan kelas');
 
-        return redirect()->back();
+        return redirect()->back()->with('success','Berhasil menambah usulan ruang kelas!');
     }
 
     // public function showDinas(){

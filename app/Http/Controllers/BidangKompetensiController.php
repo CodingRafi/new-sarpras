@@ -57,7 +57,7 @@ class BidangKompetensiController extends Controller
     
             BidangKompetensi::create($validatedData);
     
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menambah bidang keahlian!');
         }else{
             abort(403);
         }
@@ -101,7 +101,7 @@ class BidangKompetensiController extends Controller
     
             $bidangKompetensi->update($validatedData);
     
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil mengubah bidang keahlian!');
         }else{
             abort(403);
         }
@@ -121,6 +121,6 @@ class BidangKompetensiController extends Controller
         }
         BidangKompetensi::destroy($bidangKompetensi->id);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Berhasil menghapus bidang keahlian!');
     }
 }

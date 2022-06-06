@@ -55,7 +55,7 @@ class JenisPimpinanController extends Controller
             
             //! belum buat log
             
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menambah jenis ruang pimpinan!');
         }else{
             abort(403);
         }
@@ -99,7 +99,7 @@ class JenisPimpinanController extends Controller
 
             $jenisPimpinan->update($validatedData);
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil mengubah jenis ruang pimpinan!');
         }else{
             abort(403);
         }
@@ -116,7 +116,7 @@ class JenisPimpinanController extends Controller
         if (Auth::user()->hasRole('dinas')) {
             JenisPimpinan::destroy($jenisPimpinan->id);
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menghapus jenis ruang pimpinan!');
         }else{
             abort(403);
         }

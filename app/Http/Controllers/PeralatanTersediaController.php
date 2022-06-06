@@ -73,9 +73,9 @@ class PeralatanTersediaController extends Controller
             
             PeralatanTersedia::create($validatedData);
 
-            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambah ketersediaan Peralatan ' . str_replace("_", " ", $kompetensi->kompeten->komli->kompetensi));
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Membuat Ketersediaan Peralatan' . $kompeten->komli->kompetensi);
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menyimpan ketersediaan peralatan '.$kompeten->komli->kompetensi.'!');
         }else{
             abort(403);
         }
@@ -123,6 +123,7 @@ class PeralatanTersediaController extends Controller
      */
     public function update(UpdatePeralatanTersediaRequest $request, PeralatanTersedia $peralatan_tersedium)
     {
+        $kompeten = Kompeten::find($request->kompeten_id);
         $kompetensi = PeralatanTersedia::where('kompeten_id', $request->kompeten_id)->first();
 
         if($peralatan_tersedium->profil_id == Auth::user()->profil_id){
@@ -142,9 +143,11 @@ class PeralatanTersediaController extends Controller
 
             $peralatan_tersedium->update($validatedData);
 
-            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah ketersediaan Peralatan ' . str_replace("_", " ", $kompetensi->kompeten->komli->kompetensi));
+            // Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah ketersediaan Peralatan ' . str_replace("_", " ", $kompetensi->kompeten->komli->kompetensi));
 
-            return redirect('/peralatan-sekolah/'.$peralatan_tersedium->kompeten_id);
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Ketersediaan Peralatan' . $kompeten->komli->kompetensi);
+
+            return redirect('/peralatan-sekolah/'.$peralatan_tersedium->kompeten_id)->with('success', 'Berhasil mengubah ketersediaan peralatan ' . $kompeten->komli->kompetensi . '!');
         }else{
             abort(403);
         }
@@ -169,7 +172,7 @@ class PeralatanTersediaController extends Controller
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menghapus Ketersediaan Peralatan '.$logJurusan);
 
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Berhasil menghapus ketersediaan peralatan ' . $logJurusan . '!');
         }else{
             abort(403);
         }
