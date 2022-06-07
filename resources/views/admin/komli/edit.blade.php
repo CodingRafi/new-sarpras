@@ -46,9 +46,9 @@
 @endsection
 
 @section('container')
-    {{-- @dd($data) --}}
+
     <div class="title pt-3">
-        <h3 class="text-dark display-4 pl-3" style="font-size: 25px">Edit Spektrum</h3>
+        <h3 class="text-dark display-4 pl-3" style="font-size: 25px">Edit Kompetensi Keahlian</h3>
     </div>
 
     <div class="form-edit pt-3">
@@ -56,69 +56,69 @@
         <form action="/komli/{{ $data->id }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('patch')
-            <div class="card pt-3" style="background-color: white; border-radius: 10px; ">
-
-
-                {{-- --------------------------------------------- JUMLAH RUANG KELAS --------------------------------------------- --}}
-                <div class="form-group row">
-                    <label for="bidang" class="col-sm-2 col-form-label">Bidang</label>
-                    <div class="col-sm-10">
-                        <select class="fstdropdown-select select-jurusan" id="select" name="bidang_kompetensi_id">
-                            @foreach ($bidangs as $bidang)
-                                @if ($data->bidang_kompetensi_id == $bidang->id)
-                                    <option value="{{ $bidang->id }}" selected>{{ $bidang->nama }}
-                                    </option>
-                                @else
-                                    <option value="{{ $bidang->id }}">{{ $bidang->nama }}
-                                    </option>
-                                @endif
-                            @endforeach
-                        </select>
+            <div class="container">
+                <div class="card pt-3" style="background-color: white; border-radius: 10px; ">
+                    {{-- --------------------------------------------- JUMLAH RUANG KELAS --------------------------------------------- --}}
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label for="bidang" class="col-sm-2 col-form-label">Bidang</label>
+                            <div class="col-sm-10">
+                                <select class="fstdropdown-select select-jurusan" id="select" name="bidang_kompetensi_id">
+                                    @foreach ($bidangs as $bidang)
+                                        @if ($data->bidang_kompetensi_id == $bidang->id)
+                                            <option value="{{ $bidang->id }}" selected>{{ $bidang->nama }}
+                                            </option>
+                                        @else
+                                            <option value="{{ $bidang->id }}">{{ $bidang->nama }}
+                                            </option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="program" class="col-sm-2 col-form-label">Program</label>
+                            <div class="col-sm-10">
+                                <select class="fstdropdown-select select-jurusan" id="select" name="program_kompetensi_id">
+                                    @foreach ($programs as $program)
+                                        @if ($program->id == $data->program_kompetensi_id)
+                                            <option value="{{ $program->id }}" selected>{{ $program->nama }}
+                                            </option>
+                                        @else
+                                            <option value="{{ $program->id }}">{{ $program->nama }}
+                                            </option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="kompetensi" class="col-sm-2 col-form-label">Kompetensi</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="kompetensi" name="kompetensi" required
+                                    placeholder="Masukkan Nama Kompetensi" value="{{ $data->kompetensi }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="spektrum" class="col-sm-2 col-form-label">Spektrum</label>
+                            <div class="col-sm-10">
+                                <select name="spektrum_id" id="" class="custom-select">
+                                    @foreach ($spektrums as $spektrum)
+                                        @if ($spektrum->id == $data->spektrum_id)
+                                            <option value="{{ $spektrum->id }}" selected>{{ $spektrum->nama }}</option>
+                                        @else
+                                            <option value="{{ $spektrum->id }}">{{ $spektrum->nama }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mt-5">
+                        <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label for="program" class="col-sm-2 col-form-label">Program</label>
-                    <div class="col-sm-10">
-                        <select class="fstdropdown-select select-jurusan" id="select" name="program_kompetensi_id">
-                            @foreach ($programs as $program)
-                                @if ($program->id == $data->program_kompetensi_id)
-                                    <option value="{{ $program->id }}" selected>{{ $program->nama }}
-                                    </option>
-                                @else
-                                    <option value="{{ $program->id }}">{{ $program->nama }}
-                                    </option>
-                                @endif
-                            @endforeach
-                        </select>
                     </div>
+                    {{-- --------------------------------------------- SUBMIT --------------------------------------------- --}}
                 </div>
-                <div class="form-group row">
-                    <label for="kompetensi" class="col-sm-2 col-form-label">Kompetensi</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="kompetensi" name="kompetensi" required
-                            placeholder="Masukkan Nama Kompetensi" value="{{ $data->kompetensi }}">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="spektrum" class="col-sm-2 col-form-label">Spektrum</label>
-                    <div class="col-sm-10">
-                        <select name="spektrum_id" id="" class="custom-select">
-                            @foreach ($spektrums as $spektrum)
-                                @if ($spektrum->id == $data->spektrum_id)
-                                    <option value="{{ $spektrum->id }}" selected>{{ $spektrum->nama }}</option>
-                                @else
-                                    <option value="{{ $spektrum->id }}">{{ $spektrum->nama }}</option>
-                                @endif
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-
-                {{-- --------------------------------------------- SUBMIT --------------------------------------------- --}}
-                <div class="pb-3 pl-5 mt-4">
-                    <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
-                </div>
-
             </div>
         </form>
 
