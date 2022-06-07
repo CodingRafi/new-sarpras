@@ -114,13 +114,18 @@ class KoleksiController extends Controller
         if($request->profil_depo_id == Auth::user()->profil_id){
             $validatedData = $request->validate([
                 'profil_depo_id' => 'required',
-                'slug' => 'required',
+                'id_koleksi' => 'required',
                 'nama' => 'required',
             ]);
+
+            $validatedData['slug'] = SlugService::createSlug(Koleksi::class, 'slug', $request->nama);
     
-            Koleksi::where('slug', $request->slug)->update($validatedData);
+            Koleksi::where('id', $request->id_koleksi)->update([
+                'nama' => $request->nama,
+                'slug' => $validatedData['slug']
+            ]);
     
-            return redirect('profil/'.$koleksi->profil_depo_id)->with('success', 'Berhasil mengubah koleksi foto!');
+            return redirect('profil/'. Auth::user()->profil_id)->with('success', 'Berhasil mengubah koleksi foto!');
         }else{
             abort(403);
         }

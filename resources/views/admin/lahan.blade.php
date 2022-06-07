@@ -98,9 +98,7 @@
                                             </a>
                                         </td>
                                         <td class="text-center" style="vertical-align: middle">
-                                            <button type="button" class="btn text-white d-inline"
-                                                style="background-color: #25b5e9" data-toggle="modal"
-                                                data-target="#edit">Detail</button>
+                                            <a href="/usulan-lahan/{{ $usulan->id_usulan_lahan }}" class="btn btn-info">Detail</a>
                                         </td>
                                     </tr>
                                 @endforeach

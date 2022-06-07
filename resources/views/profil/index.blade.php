@@ -28,7 +28,6 @@
         .fstAll {
             display: none !important;
         }
-
     </style>
 @endsection
 
@@ -367,7 +366,6 @@
                             {{-- ---------------------------------------------------------------------------------------- KOLEKSI ---------------------------------------------------------------------------------------- --}}
                             @if ($koleksis->count())
                                 @foreach ($koleksis as $key => $koleksi)
-                                    <input type="hidden" class="slug-koleksi" value="{{ $koleksi->slug }}">
                                     <div class="col-md-6">
                                         <div class="card mb-3" style="max-width: 540px;">
                                             <div class="row no-gutters">
@@ -396,7 +394,7 @@
                                                         @endif
                                                         <button type="button"
                                                             class="btn btn-warning text-white tombol-edit-koleksi"
-                                                            data-toggle="modal" data-target="#edit-koleksi">
+                                                            data-toggle="modal" data-target="#edit-koleksi" data-id="{{ $koleksi->id }}">
                                                             Edit
                                                         </button>
 
@@ -430,7 +428,7 @@
                                     <div class="modal-content">
                                         <form action="/koleksi/update-koleksi" method="post">
                                             @csrf
-                                            @method('Patch')
+                                            @method('patch')
                                             <div class="modal-header">
                                                 <h4 class="modal-title">Edit Koleksi</h4>
                                                 <button type="button" class="close" data-dismiss="modal"
@@ -441,7 +439,7 @@
                                             <div class="modal-body">
 
                                                 <input type="hidden" name="profil_depo_id" value="{{ $profil->id }}">
-                                                <input type="hidden" name="slug" class="slug-edit-koleksi">
+                                                <input type="hidden" name="id_koleksi" class="id-koleksi">
                                                 <div class="mb-3">
                                                     <label for="nama" class="form-label">Nama Koleksi</label>
                                                     <input type="text" class="form-control input-nama" id="nama"
@@ -1090,31 +1088,26 @@
             kompetenDepo.classList.add('active');
         })
 
+        // koleksi
+        const tombolEditKoleksi = document.querySelectorAll('.tombol-edit-koleksi');
+        const namaKoleksi = document.querySelectorAll('.nama-koleksi');
+        const inputNama = document.querySelector('.input-nama')
+        const idKoleksi = document.querySelector('.id-koleksi');
 
-
+        tombolEditKoleksi.forEach((e, i) => {
+            e.addEventListener('click', function() {
+                inputNama.value = '';
+                inputNama.value = namaKoleksi[i].innerHTML;
+                idKoleksi.value = '';
+                idKoleksi.value = e.getAttribute('data-id');
+            })
+        })
 
         // search tambah jurusan
         const selectjurusan = document.querySelector('.select-jurusan');
 
         selectjurusan.addEventListener('change', function() {
             console.log(selectjurusan.value)
-        })
-
-
-        // koleksi
-        const tombolEditKoleksi = document.querySelectorAll('.tombol-edit-koleksi');
-        const namaKoleksi = document.querySelectorAll('.nama-koleksi');
-        const inputNama = document.querySelector('.input-nama');
-        const slugKoleksi = document.querySelectorAll('.slug-koleksi');
-        const slugEditKoleksi = document.querySelector('.slug-edit-koleksi');
-
-        tombolEditKoleksi.forEach((e, i) => {
-            e.addEventListener('click', function() {
-                inputNama.value = '';
-                inputNama.value = namaKoleksi[i].innerHTML;
-                slugEditKoleksi.value = '';
-                slugEditKoleksi.value = slugKoleksi[i].value
-            })
         })
     </script>
 @endsection

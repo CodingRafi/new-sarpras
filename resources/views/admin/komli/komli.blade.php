@@ -53,6 +53,7 @@
                         </thead>
                         <tbody>
                             @foreach ($komlis as $komli)
+                            {{-- @dd($komli) --}}
                                 <tr>
                                     <th class="text-center" scope="row">
                                         {{ ($komlis->currentpage() - 1) * $komlis->perpage() + $loop->index + 1 }}</th>
@@ -67,8 +68,8 @@
                                     </td>
                                     <td class="text-center">
                                         <div>
-                                            <a href="/komli/{{ $komli->id }}/edit" class="btn btn-warning text-white">Edit</a>
-                                            <form action="/komli/{{ $komli->id }}" method="post" class="d-inline-block">
+                                            <a href="/komli/{{ $komli->id_komlis }}/edit" class="btn btn-warning text-white">Edit</a>
+                                            <form action="/komli/{{ $komli->id_komlis }}" method="post" class="d-inline-block">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn btn-success"

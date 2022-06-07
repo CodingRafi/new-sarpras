@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Kcd;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
@@ -10,6 +11,7 @@ use DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Kompeten;
 use Illuminate\Support\Facades\File;
+use Illuminate\Validation\Rule;
 
 class RegisteredUserController extends Controller
 {
@@ -56,11 +58,12 @@ class RegisteredUserController extends Controller
                 'instansi' => 'required',
                 'kota_kabupaten_id' => 'nullable'
             ]);
+            // dd($request);
             
             $validatedData['foto_profil'] = '/img/logo_navbar.png';
             $validatedData['password'] = Hash::make('12345678');
             $validatedData['provinsi'] = 'Jawa Barat';
-    
+            
             $user = User::create($validatedData);
             
             if($request->role == 1){
@@ -107,13 +110,19 @@ class RegisteredUserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $user)
-    {
+    {   
         $validatedData = $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:users',
+            'email' => ['required', 'email', Rule::unique('users')->ignore($user->id)],
         ]);
 
-        $validatedData['password'] = bcrypt('12345678');
+        if(Hash::check('12345678', $user->password)){
+            $validatedData['password'] = bcrypt('12345678');
+        }
+
+        $user->kcd->update([
+            'nama' => $request->name
+        ]);
 
         $user->update($validatedData);
     
@@ -160,7 +169,7 @@ class RegisteredUserController extends Controller
 
     public function ubah_email(Request $request){
         $validatedData = $request->validate([
-            'email' => 'required|unique:users   '
+            'email' => 'required|email|unique:users'
         ]);
 
         Auth::user()->update($validatedData);

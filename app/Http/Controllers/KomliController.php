@@ -33,7 +33,7 @@ class KomliController extends Controller
      */
     public function index()
     {
-        $komli = Komli::select('komlis.kompetensi', 'bidang_kompetensis.nama as nama_bidang', 'program_kompetensis.nama as nama_program', 'spektrums.*')->leftJoin('bidang_kompetensis', 'bidang_kompetensis.id', 'komlis.bidang_kompetensi_id')->leftJoin('program_kompetensis', 'program_kompetensis.id', 'komlis.program_kompetensi_id')->leftJoin('spektrums', 'spektrums.id', 'komlis.spektrum_id')->paginate(40);
+        $komli = Komli::select('komlis.kompetensi', 'bidang_kompetensis.nama as nama_bidang', 'program_kompetensis.nama as nama_program', 'spektrums.*', 'komlis.id as id_komlis')->leftJoin('bidang_kompetensis', 'bidang_kompetensis.id', 'komlis.bidang_kompetensi_id')->leftJoin('program_kompetensis', 'program_kompetensis.id', 'komlis.program_kompetensi_id')->leftJoin('spektrums', 'spektrums.id', 'komlis.spektrum_id')->paginate(40);
         $bidang = BidangKompetensi::all();
         $program = ProgramKompetensi::all();
         $spektrum = Spektrum::all();
