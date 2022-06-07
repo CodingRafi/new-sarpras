@@ -441,7 +441,7 @@
                             {{-- input nama lahan --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nama Lahan</label>
-                                <input type="text" class="form-control col-sm-9" placeholder="Masukan Nama Lahan"
+                                <input type="text" class="form-control col-sm-9 loading-tambah2" placeholder="Masukan Nama Lahan"
                                     id="nama-lahan" name="nama" required>
                             </div>
                             {{-- end input nama lahan --}}
@@ -449,7 +449,7 @@
                             {{-- input panjang --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Panjang(m)</label>
-                                <input type="number" class="form-control col-sm-9" placeholder="Masukan Panjang Lahan"
+                                <input type="number" class="form-control col-sm-9 loading-tambah2" placeholder="Masukan Panjang Lahan"
                                     id="panjang" name="panjang" required step=any>
                             </div>
                             {{-- end input panjang --}}
@@ -457,18 +457,18 @@
                             {{-- input lebar --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Lebar(m)</label>
-                                <input type="number" class="form-control col-sm-9" placeholder="Masukan Lebar Lahan"
+                                <input type="number" class="form-control col-sm-9 loading-tambah2" placeholder="Masukan Lebar Lahan"
                                     id="lebar" name="lebar" required step=any>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Keterangan</label>
-                                <input type="text" class="form-control col-sm-9" placeholder="Keterangan"
-                                    id="keterangan" name="keterangan" required>
+                                <input type="text" class="form-control col-sm-9 loading-tambah" placeholder="Keterangan"
+                                    id="keterangan" name="keterangan" required>git
                             </div>
                             {{-- end input lebar --}}
 
                             {{-- button simpan --}}
-                            <button type="submit" class="btn text-white col-sm-1"
+                            <button type="submit" class="btn text-white col-sm-1 loading-simpan2"
                                 style="background-color: #00a65b">Simpan</button>
                         </form>
                         {{-- end button simpan --}}

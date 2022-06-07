@@ -147,7 +147,7 @@ class RegisteredUserController extends Controller
 
     public function ubah_foto(Request $request){
         if(Auth::user()->logo != '/img/logo_navbar.png'){
-            $videoLama = public_path('logo/' . Auth::user()->logo);
+            $videoLama = public_path('logo/' . Auth::user()->foto_profil);
             File::delete($videoLama);
         }
 
