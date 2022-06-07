@@ -207,7 +207,7 @@
                                 <div class="form-group row">
                                     <label for="kekurangan" class="col-sm-3 col-form-label">Kekurangan</label>
                                     <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="kekurangan" name="kekurangan">
+                                        <input type="number" class="form-control loading-tambah" id="kekurangan" name="kekurangan" required>
                                     </div>
                                 </div>
                                 <hr>
@@ -215,12 +215,12 @@
                                 <div class="form-group row">
                                     <label for="ketersediaan" class="col-sm-3 col-form-label">Ketersediaan</label>
                                     <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="ketersediaan" name="katersediaan">
+                                        <input type="number" class="form-control loading-tambah" id="ketersediaan" name="katersediaan" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-success float-right tombol-simpan">Simpan</button>
+                                <button type="submit" class="btn btn-success float-right tombol-simpan loading-simpan">Simpan</button>
                             </div>
                         </form>
                         @else
@@ -380,7 +380,7 @@
                                     <div class="form-group row">
                                         <label for="jumlah" class="col-sm-3 col-form-label">Jumlah</label>
                                         <div class="col-sm-9">
-                                            <input type="number" class="form-control" id="jumlah" name="jml">
+                                            <input type="number" class="form-control loading-tambah2" id="jumlah" name="jml">
                                         </div>
                                     </div>
                                     <hr>
@@ -390,7 +390,7 @@
                                         <div class="col-sm-9">
                                             <div class="input-group">
                                                 <div class="custom-file">
-                                                    <input type="file" id="chooseFile" accept=".pdf" name="proposal"
+                                                    <input class="loading-tambah2" type="file" id="chooseFile" accept=".pdf" name="proposal"
                                                         required>
                                                 </div>
                                             </div>
@@ -398,7 +398,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-success float-right tombol-simpan loading-simpan">Simpan</button>
+                                    <button type="submit" class="btn btn-success float-right tombol-simpan loading-simpan2">Simpan</button>
                                 </div>
                             @else
                                 <div class="container d-flex justify-content-center align-items-center"

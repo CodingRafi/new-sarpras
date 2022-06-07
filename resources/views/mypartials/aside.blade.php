@@ -112,7 +112,7 @@
                         </li>
                         {{-- ---------------------------------------------------------------------------------------- LAB ---------------------------------------------------------------------------------------- --}}
 
-                        <li class="nav-item has-treeview @if (strpos(request('jenis'), 'lab_') == 0) menu-open  @endif">
+                        <li class="nav-item has-treeview @if (strpos(request('jenis'), 'lab_') === false) '' @else menu-open  @endif">
                             <a href="#" class="nav-link">
                                 <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
@@ -282,7 +282,7 @@
 
                 {{-- ---------------------------------------------------------------------------------------- PERALATAN SEKOLAH ---------------------------------------------------------------------------------------- --}}
                 @if (count($kompils) > 0)       
-                <li class="nav-item has-treeview {{ Request::is('peralatan/*') ? 'menu-open' : '' }}">
+                <li class="nav-item has-treeview {{ Request::is('*peralatan*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-collection"></i>
                         <p>
