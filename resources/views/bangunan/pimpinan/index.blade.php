@@ -271,9 +271,9 @@
                                     <th style="vertical-align: middle;">No</th>
                                     <th style="vertical-align: middle;">Jenis Ruang</th>
                                     <th style="vertical-align: middle;">Nama</th>
-                                    <th style="vertical-align: middle;">Luas</th>
-                                    <th style="vertical-align: middle;">Panjang</th>
-                                    <th style="vertical-align: middle;">Lebar</th>
+                                    <th style="vertical-align: middle;">Panjang(M)</th>
+                                    <th style="vertical-align: middle;">Lebar(M)</th>
+                                    <th style="vertical-align: middle;">Luas (M²)</th>
                                     <th style="vertical-align: middle;">Aksi</th>
                                 </tr>
                             </thead>
@@ -287,13 +287,13 @@
                                             data-id="{{ $data['id_jenis'] }}">{{ $data['jenis'] }}</td>
                                         <td class="text-center nama" style="vertical-align: middle">{{ $data['nama'] }}
                                         </td>
-                                        <td class="text-center luas" style="vertical-align: middle">{{ $data['luas'] }}
-                                        </td>
                                         <td class="text-center panjang" style="vertical-align: middle">
                                             {{ $data['panjang'] }}
                                         </td>
                                         <td class="text-center lebar" style="vertical-align: middle">
                                             {{ $data['lebar'] }}
+                                        </td>
+                                        <td class="text-center luas" style="vertical-align: middle">{{ $data['luas'] }}
                                         </td>
                                         <td>
                                             <div class="card-body">
@@ -368,14 +368,14 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="luas-lahan" class="col-sm-2 col-form-label">Panjang Lahan</label>
+                                        <label for="luas-lahan" class="col-sm-2 col-form-label">Panjang(M)</label>
                                         <div class="col-sm-10">
                                             <input type="number" class="form-control" id="luas-lahan" name="panjang"
                                                 required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="luas-lahan" class="col-sm-2 col-form-label">Lebar Lahan</label>
+                                        <label for="luas-lahan" class="col-sm-2 col-form-label">Lebar(M)</label>
                                         <div class="col-sm-10">
                                             <input type="number" class="form-control" id="luas-lahan" name="lebar"
                                                 required>
@@ -433,14 +433,14 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="luas-lahan" class="col-sm-2 col-form-label">Panjang Lahan</label>
+                                        <label for="luas-lahan" class="col-sm-2 col-form-label">Panjang(M)</label>
                                         <div class="col-sm-10">
                                             <input type="number" class="form-control input-panjang" id="luas-lahan"
                                                 name="panjang" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="luas-lahan" class="col-sm-2 col-form-label">Lebar Lahan</label>
+                                        <label for="luas-lahan" class="col-sm-2 col-form-label">Lebar(M)</label>
                                         <div class="col-sm-10">
                                             <input type="number" class="form-control input-lebar" id="luas-lahan"
                                                 name="lebar" required>
@@ -488,8 +488,8 @@
                                     <th rowspan="2" style="vertical-align: middle;">Aksi</th>
                                 </tr>
                                 <tr class="text-center">
-                                    <th>Gambar Lahan</th>
                                     <th>Luas Lahan</th>
+                                    <th>Gambar Lahan</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -499,7 +499,7 @@
                                         <td class="text-center text-capitalize">{{ $usulanJenis[$key]->nama }}
                                         </td>
                                         <td class="text-center">{{ $usulan->jml_ruang }}</td>
-                                        <td class="text-center">{{ $usulan->luas_lahan }} M</td>
+                                        <td class="text-center">{{ $usulan->luas_lahan }} M²</td>
                                         <td class="text-center" style="vertical-align: middle">
                                             @foreach ($usulanFotos[$key] as $ke => $foto)
                                                 <a href="{{ asset('storage/' . $foto->nama) }}" class="fancybox"
@@ -575,7 +575,7 @@
 
                                 {{-- input luas lahan --}}
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Luas Lahan (M)</label>
+                                    <label class="col-sm-4 col-form-label">Luas Lahan (M²)</label>
                                     <input type="number" class="form-control col-sm-7 loading-tambah" placeholder="Masukan Luas Lahan"
                                         id="luas-lahan" name="luas_lahan" required>
                                 </div>

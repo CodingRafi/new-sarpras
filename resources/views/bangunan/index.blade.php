@@ -5,7 +5,6 @@
         .card-header h4 {
             font-size: 1.2rem !important
         }
-
     </style>
 @endsection
 
@@ -67,7 +66,7 @@
                     </div>
                 </div>
             @endif
-
+            {{-- ---------------------------------------------- kondisi ideal ---------------------------------------------- --}}
             <div class="col-lg-3 col-6">
                 <div class="card">
                     {{-- card header --}}
@@ -95,7 +94,7 @@
             <div class="modal fade" id="edit-ideal">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <div class="modal-header" style="background-color: #25b5e9">
+                        <div class="modal-header" style="background-color: #25b5e9; margin-left: -0.5px;">
                             <h4 class="modal-title text-white">Kondisi Ideal</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -124,7 +123,9 @@
                     </div>
                 </div>
             </div>
+            {{-- --------------------------------------------- end kondisi ideal ------------------------------------------- --}}
 
+            {{-- ----------------------------------------------- ketersediaan ----------------------------------------------- --}}
             <div class="col-lg-3 col-6">
                 <div class="card">
                     {{-- card header --}}
@@ -144,6 +145,42 @@
                 </div>
             </div>
 
+            <div class="modal fade" id="modal-ketersediaan">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <form action="/bangunan-all/update-ketersediaan/{{ $dataBangunan->id }}" method="post">
+                            @csrf
+                            @method('patch')
+                            <div class="modal-header bg-warning" style="margin-left: -0.5px">
+                                <h4 class="modal-title text-white">Ketersediaan</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                {{-- input jumlah ruangan --}}
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Ketersediaan</label>
+                                    <input type="number" class="form-control col-sm-7" placeholder="Masukan Ketersediaan"
+                                        id="ketersediaan" name="ketersediaan" required
+                                        value="{{ $dataBangunan->ketersediaan }}">
+                                </div>
+                                {{-- end input jumlah ruangan --}}
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                                <button type="submit" class="btn text-white"
+                                    style="background-color: #00a65b">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            {{-- --------------------------------------------- end ketersediaan --------------------------------------------- --}}
+
+            {{-- ------------------------------------------------ kekurangan ------------------------------------------------ --}}
             <div class="col-lg-3 col-6">
                 <div class="card">
                     {{-- card header --}}
@@ -165,40 +202,42 @@
                     {{-- end card body --}}
                 </div>
             </div>
-        </div>
 
-        <div class="modal fade" id="edit-kekurangan">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header bg-dark">
-                        <h4 class="modal-title">Kekurangan</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal" action="/bangunan-all/update-kekurangan/{{ $dataBangunan->id }}"
-                            method="POST">
-                            @csrf
-                            @method('patch')
-                            <div class="card-body">
-                                <div class="form-group row">
-                                    <label for="kekurangan" class="col-sm-2 col-form-label">Kekurangan</label>
-                                    <div class="col-sm-10">
-                                        <input type="number" class="form-control" id="kekurangan" name="kekurangan"
-                                            value="{{ $dataBangunan->kekurangan }}">
+            <div class="modal fade" id="edit-kekurangan">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-dark" style="margin-left: -0.5px">
+                            <h4 class="modal-title">Kekurangan</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal"
+                                action="/bangunan-all/update-kekurangan/{{ $dataBangunan->id }}" method="POST">
+                                @csrf
+                                @method('patch')
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label for="kekurangan" class="col-sm-2 col-form-label">Kekurangan</label>
+                                        <div class="col-sm-10">
+                                            <input type="number" class="form-control" id="kekurangan" name="kekurangan"
+                                                value="{{ $dataBangunan->kekurangan }}">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card-footer">
-                                <button type="submit" class="btn text-white float-right"
-                                    style="background-color: #00a65b">Simpan</button>
-                            </div>
-                        </form>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn text-white float-right"
+                                        style="background-color: #00a65b">Simpan</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
+            {{-- ---------------------------------------------- end kekurangan ---------------------------------------------- --}}
         </div>
+
 
         {{-- <div class="alert alert-warning text-white" role="alert">
             Kekurangan didapatkan dari selisih kondisi ideal dan ketersediaan 
@@ -332,78 +371,9 @@
         </div>
         {{-- End Main-Content --}}
 
-        {{-- modal ketersediaan --}}
-        <div class="modal fade" id="modal-ketersediaan">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <form action="/bangunan-all/update-ketersediaan/{{ $dataBangunan->id }}" method="post">
-                        @csrf
-                        @method('patch')
-                        <div class="modal-header bg-warning" style="margin-left: -0.5px">
-                            <h4 class="modal-title text-white">Masukan Ketersediaan</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            {{-- input jumlah ruangan --}}
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">Ketersediaan</label>
-                                <input type="number" class="form-control col-sm-7" placeholder="Masukan Ketersediaan"
-                                    id="ketersediaan" name="ketersediaan" required
-                                    value="{{ $dataBangunan->ketersediaan }}">
-                            </div>
-                            {{-- end input jumlah ruangan --}}
-                        </div>
-                        <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                            <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
-                        </div>
-                    </form>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
-        {{-- end modal ketersediaan --}}
-
-        {{-- modal kekurangan --}}
-        <div class="modal fade" id="modal-kekurangan">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form action="/bangunan-all/{{ $dataBangunan->id }}" method="post">
-                        @csrf
-                        @method('patch')
-                        <div class="modal-header">
-                            <h4 class="modal-title">Masukan Kekurangan</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            {{-- input jumlah ruangan --}}
-                            <input type="hidden" name="id_ruangKelas" value="{{ $dataBangunan->id }}">
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">Kekurangan</label>
-                                <input type="number" class="form-control col-sm-7" placeholder="Masukan Kekurangan"
-                                    id="kekurangan" name="kekurangan" required value="{{ $dataBangunan->kekurangan }}">
-                            </div>
-                            {{-- end input jumlah ruangan --}}
-                        </div>
-                        <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                            <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
-                        </div>
-                    </form>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
-        {{-- end modal kekurangan --}}
-
         <!-- modal tambah usulan -->
-        <div class=" modal fade modal-bangunan {{ $errors->any() ? 'show' : '' }}" id="modal-default"  style="{{ $errors->any() ? 'display: block;background: rgba(69,90,100, .5);' : '' }}">
+        <div class=" modal fade modal-bangunan {{ $errors->any() ? 'show' : '' }}" id="modal-default"
+            style="{{ $errors->any() ? 'display: block;background: rgba(69,90,100, .5);' : '' }}">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     @if (request('jenis') == 'ruang_kelas')
@@ -435,7 +405,10 @@
                         @else
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Jumlah Ruang</label>
-                                <input type="number" class="form-control col-sm-7 @error('jml_ruang') is-invalid @enderror loading-tambah" placeholder="Masukan Jumlah Ruangan" id="jumlah-ruangan" name="jml_ruang" value="{{ old('jml_ruang') }}" required>
+                                <input type="number"
+                                    class="form-control col-sm-7 @error('jml_ruang') is-invalid @enderror loading-tambah"
+                                    placeholder="Masukan Jumlah Ruangan" id="jumlah-ruangan" name="jml_ruang"
+                                    value="{{ old('jml_ruang') }}" required>
                                 @error('jml_ruang')
                                     <div class="invalid-feedback d-block" style="margin-left: 21vw">
                                         {{ $message }}
@@ -448,8 +421,10 @@
                         {{-- input luas lahan --}}
                         <div class="form-group row">
                             <label class="col-sm-4 col-form-label">Luas Lahan (m²)</label>
-                            <input type="number" class="form-control col-sm-7 @error('luas_lahan') is-invalid @enderror loading-tambah"  placeholder="Masukan Luas Lahan"
-                                id="luas-lahan" name="luas_lahan" value="{{ old('luas_lahan') }}" required>
+                            <input type="number"
+                                class="form-control col-sm-7 @error('luas_lahan') is-invalid @enderror loading-tambah"
+                                placeholder="Masukan Luas Lahan" id="luas-lahan" name="luas_lahan"
+                                value="{{ old('luas_lahan') }}" required>
                             @error('luas_lahan')
                                 <div class="invalid-feedback d-block" style="margin-left: 21vw">
                                     {{ $message }}
@@ -460,8 +435,11 @@
 
                         {{-- upload gambar lokasi --}}
                         <div class="form-group row">
-                            <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan <br><small class="text-danger">*Note Max 1 Gambar 5MB</small></label>
-                            <input type="file" id="gambar-lahan" multiple accept="image/*" name="gambar[]" class="gambar-lahan mt-2 @error('gambar') is-invalid @enderror loading-tambah" value="{{ old('gambar') }}" required>
+                            <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan <br><small
+                                    class="text-danger">*Note Max 1 Gambar 5MB</small></label>
+                            <input type="file" id="gambar-lahan" multiple accept="image/*" name="gambar[]"
+                                class="gambar-lahan mt-2 @error('gambar') is-invalid @enderror loading-tambah"
+                                value="{{ old('gambar') }}" required>
                             @error('gambar.*')
                                 <div class="invalid-feedback d-block" style="margin-left: 21vw">
                                     {{ $message }}
@@ -472,7 +450,8 @@
 
                         {{-- upload proposal --}}
                         <div class="form-group row">
-                            <label class="col-sm-4 col-form-label pt-1 @error('proposal') is-invalid @enderror" value="{{ old('proposal') }}" for="customFile">Proposal</label>
+                            <label class="col-sm-4 col-form-label pt-1 @error('proposal') is-invalid @enderror"
+                                value="{{ old('proposal') }}" for="customFile">Proposal</label>
                             <input type="file" class="loading-tambah" id="proposal" accept=".pdf" name="proposal" required>
                             @error('proposal')
                                 <div class="invalid-feedback d-block" style="margin-left: 21vw">
@@ -485,7 +464,8 @@
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default tombol-Close" data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn text-white loading-simpan" style="background-color: #00a65b">Simpan</button>
+                        <button type="submit" class="btn text-white loading-simpan"
+                            style="background-color: #00a65b">Simpan</button>
                     </div>
                     </form>
                 </div>
@@ -494,6 +474,43 @@
             <!-- /.modal-dialog -->
         </div>
         <div class="content-backdrop fade"></div>
+
+        {{-- ////////////////////////////////////////////////////////////////////////////////////////////////////////// --}}
+
+        {{-- modal kekurangan --}}
+        <div class="modal fade" id="modal-kekurangan">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="/bangunan-all/{{ $dataBangunan->id }}" method="post">
+                        @csrf
+                        @method('patch')
+                        <div class="modal-header" style="margin-left: -0.5px">
+                            <h4 class="modal-title">Masukan Kekuranganxsadcv</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            {{-- input jumlah ruangan --}}
+                            <input type="hidden" name="id_ruangKelas" value="{{ $dataBangunan->id }}">
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Kekurangan</label>
+                                <input type="number" class="form-control col-sm-7" placeholder="Masukan Kekurangan"
+                                    id="kekurangan" name="kekurangan" required value="{{ $dataBangunan->kekurangan }}">
+                            </div>
+                            {{-- end input jumlah ruangan --}}
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        {{-- end modal kekurangan --}}
 
 
     @section('tambahjs')

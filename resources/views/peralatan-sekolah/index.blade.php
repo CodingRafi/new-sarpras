@@ -288,7 +288,7 @@
                                         <td>{{ $usulanPeralatan->keterangan }}</td>
                                         <td class="text-center" style="vertical-align: middle">
                                             <a href="/usulan-peralatan/{{ $usulanPeralatan->id }}/edit"
-                                                class="btn btn-warning">Edit</a>
+                                                class="btn btn-warning text-white mb-2">Edit</a>
 
                                             <form action="/usulan-peralatan/{{ $usulanPeralatan->id }}" method="post">
                                                 @csrf
