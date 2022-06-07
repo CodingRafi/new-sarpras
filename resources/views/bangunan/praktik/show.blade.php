@@ -188,7 +188,7 @@
                         <h3 class="card-title font-weight-bold text-white">Kekurangan</h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool text-white"><i class="bi bi-pencil-square"
-                                    data-toggle="modal" data-target="#modal-kondisi-ideal"></i></button>
+                                    data-toggle="modal" data-target="#modal-kekurangan"></i></button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -322,7 +322,7 @@
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn text-white" style="background-color: #00a65b">Save
+                        <button type="submit" class="btn text-white" style="background-color: #00a65b">Save
                             changes</button>
                     </div>
                 </form>

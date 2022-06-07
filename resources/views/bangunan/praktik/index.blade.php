@@ -24,7 +24,6 @@
                 margin-top: -19px;
             }
         }
-
     </style>
 @endsection
 
@@ -65,7 +64,9 @@
                 <a href="/kompeten/{{ $kompeten->id }}" class="col-md-4 col-12">
                     <div class="info-box">
                         @if ($kompeten->logo)
-                            <h1>ada</h1>
+                            <img src="{{ asset('storage/' . $kompeten->logo) }}" alt=""
+                                style="width: 9.5rem; margin-top: 10px; margin-bottom: 10px;object-fit: cover;"
+                                class="card-img-top border rounded-circle">
                         @else
                             <img src="/img/Kompetensi Keahlian.png" alt=""
                                 style="width: 9.5rem; margin-top: 10px; margin-bottom: 10px;"
