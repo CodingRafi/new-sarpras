@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('depo_provinsi');
             $table->string('depo_kabupaten');
             $table->string('depo_kecamatan');
-            $table->string('depo_email')->nullable();
+            $table->string('depo_email')->unique()->nullable();
             $table->string('depo_website')->nullable();
             $table->string('depo_nomor_telepon')->nullable();
             $table->string('depo_nomor_fax')->nullable();

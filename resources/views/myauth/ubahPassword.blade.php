@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="container-fluid text-center pb-5" style="background-color: rgba(238, 238, 238, 1); min-height: 100vh;">
+    <div class="container-fluid text-center" style="background-color: rgba(238, 238, 238, 1); height: 100vh;">
 
         <img class="my-4" src="/assets/img/logoJabar.png" width="115">
 
@@ -24,14 +24,13 @@
 
                 <x-auth-validation-errors class="mb-4 text-danger" :errors="$errors" />
 
-                <form style="width: 90%;" action="{{ route('password.update') }}" method="POST">
+                <form style="width: 90%;" action="{{ route('password.updateReset') }}" method="POST">
                     @csrf
-                    <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
                     <div class="form-group pb-2">
                         <label class="font-weight-bold" for="exampleInputEmail1">Email</label>
                         <input type="email" class="form-control bg-light border rounded-pill px-4" placeholder="email"
-                            name="email" value="{{ old('email', $request->email) }}" required>
+                            name="email" value="{{ Auth::user()->email }}" required>
                     </div>
                     <div class="form-group pb-2">
                         <label class="font-weight-bold" for="exampleInputPassword1">Password</label>

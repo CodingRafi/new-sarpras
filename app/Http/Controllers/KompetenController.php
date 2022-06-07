@@ -10,6 +10,7 @@ use App\Http\Requests\StoreKompetenRequest;
 use App\Http\Requests\UpdateKompetenRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class KompetenController extends Controller
 {
@@ -243,7 +244,9 @@ class KompetenController extends Controller
                 'ketersediaan' => 'required'
             ]);
 
-            $data->update($validatedData);
+            $data->update([
+                'ketersediaan' =>  ($request->ketersediaan == 0) ? 0 : ltrim($request->ketersediaan, '0')
+            ]);
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Ketersediaan Ruang Praktik ' . $data->komli->kompetensi);
 
@@ -263,7 +266,9 @@ class KompetenController extends Controller
                 'kekurangan' => 'required'
             ]);
 
-            $data->update($validatedData);
+            $data->update([
+                'kekurangan' =>  ($request->kekurangan == 0) ? 0 : ltrim($request->kekurangan, '0')
+            ]);
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah kekurangan Ruang Praktik ' . $data->komli->kompetensi);
 
@@ -321,7 +326,9 @@ class KompetenController extends Controller
                 'kondisi_ideal' => 'required'
             ]);
 
-            $data->update($validatedData);
+            $data->update([
+                'kondisi_ideal' =>  ($request->kondisi_ideal == 0) ? 0 : ltrim($request->kondisi_ideal, '0')
+            ]);
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Kondisi Ideal Ruang Praktik ' . $data->komli->kompetensi);
 

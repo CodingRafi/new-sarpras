@@ -16,6 +16,7 @@ use App\Http\Requests\StoreProfilRequest;
 use App\Http\Requests\UpdateProfilRequest;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use Illuminate\Validation\Rule;
 
 class ProfilController extends Controller
 {
@@ -154,7 +155,7 @@ class ProfilController extends Controller
                 'kabupaten' => 'string|nullable',
                 'kecamatan' => 'string|nullable',
                 'alamat' => 'string|nullable',
-                'email' => 'email|nullable',
+                'email' => ['required', 'email', Rule::unique('users')->ignore( Auth::user()->id )],
                 'website' => 'string|nullable',
                 'instagram' => 'string|required',
                 'youtube' => 'string|required',
@@ -167,13 +168,14 @@ class ProfilController extends Controller
                 'lat' => 'string|nullable',
                 'long' => 'string|nullable'
             ]);
-    
+
+            
             Log::createLog($profil->id, Auth::user()->id, 'Mengubah Data Sekolah');
-    
+            
             Profil::where('id' , $profil->id)->update($validatedData);
-
+            
             $ketersediaan = Bangunan::where('profil_id', Auth::user()->profil_id)->where('jenis', 'ruang_kelas')->get()[0]->ketersediaan;
-
+            
             Bangunan::kondisi_ideal($request->jml_rombel, $ketersediaan, 'ruang_kelas');
     
             if(count($profil->kompeten) == 0){
@@ -189,6 +191,20 @@ class ProfilController extends Controller
     
                 $jml_lk = 0;
                 $jml_pr = 0;
+            }
+
+            if ($request->email != $profil->email) {
+                $user = Auth::user()->update([
+                    'email' => $request->email
+                ]);
+
+                Auth::logout();
+
+                $request->session()->invalidate();
+
+                $request->session()->regenerateToken();
+
+                return redirect('/');
             }
     
             return redirect('/profil/' . $request->profil_depo_id)->with('success', 'Berhasil mengubah profil sekolah!');

@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Kcd;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Kompeten;
+use Illuminate\Support\Facades\File;
+use Illuminate\Validation\Rule;
 
 class RegisteredUserController extends Controller
 {
@@ -55,11 +58,12 @@ class RegisteredUserController extends Controller
                 'instansi' => 'required',
                 'kota_kabupaten_id' => 'nullable'
             ]);
+            // dd($request);
             
             $validatedData['foto_profil'] = '/img/logo_navbar.png';
             $validatedData['password'] = Hash::make('12345678');
             $validatedData['provinsi'] = 'Jawa Barat';
-    
+            
             $user = User::create($validatedData);
             
             if($request->role == 1){
@@ -106,13 +110,19 @@ class RegisteredUserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $user)
-    {
+    {   
         $validatedData = $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:users',
+            'email' => ['required', 'email', Rule::unique('users')->ignore($user->id)],
         ]);
 
-        $validatedData['password'] = bcrypt('12345678');
+        if(Hash::check('12345678', $user->password)){
+            $validatedData['password'] = bcrypt('12345678');
+        }
+
+        $user->kcd->update([
+            'nama' => $request->name
+        ]);
 
         $user->update($validatedData);
     
@@ -136,6 +146,46 @@ class RegisteredUserController extends Controller
     }
 
     public function ubah_foto(Request $request){
-        dd($request);
+        if(Auth::user()->logo != '/img/logo_navbar.png'){
+            $videoLama = public_path('logo/' . Auth::user()->logo);
+            File::delete($videoLama);
+        }
+
+        $data = $request->logo;
+        $folderPath = "logo/";
+        $image_array_1 = explode(";", $data);
+        $image_array_2 = explode(",", $image_array_1[1]);
+        $data = base64_decode($image_array_2[1]);
+        $imageName = uniqid() . '.png';
+        $file = $folderPath . $imageName;
+        file_put_contents($file, $data);
+        
+        $user = Auth::user()->update([
+            'foto_profil' => $imageName
+        ]);
+
+        return redirect('/user-settings');
+    }
+
+    public function ubah_email(Request $request){
+        $validatedData = $request->validate([
+            'email' => 'required|email|unique:users'
+        ]);
+
+        Auth::user()->update($validatedData);
+
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
+
+    public function userSettings(){
+        return view('userSettings', [
+            'kompils' => Kompeten::getKompeten(),
+        ]);
     }
 }

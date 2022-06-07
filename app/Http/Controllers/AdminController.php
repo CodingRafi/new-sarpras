@@ -30,19 +30,30 @@ class AdminController extends Controller
             $profils = ProfilKcd::get_data_for_kcd(Auth::user()->kcd_id);
         }else{
             $profils = Profil::search(request(['search', 'filter']))
-                                ->leftJoin('kota_kabupatens', 'kota_kabupatens.id', 'profils.kota_kabupaten_id')
-                                ->leftJoin('profil_kcds', 'profil_kcds.kota_kabupaten_id', 'kota_kabupatens.id')
-                                ->leftJoin('kcds', 'kcds.id', 'profil_kcds.kcd_id')
-                                ->select('profils.*', 'kcds.instansi')->paginate(40)->withQueryString();
+            ->leftJoin('kota_kabupatens', 'kota_kabupatens.id', 'profils.kota_kabupaten_id')
+            ->leftJoin('profil_kcds', 'profil_kcds.kota_kabupaten_id', 'kota_kabupatens.id')
+            ->leftJoin('kcds', 'kcds.id', 'profil_kcds.kcd_id')
+            ->select('profils.*', 'kcds.instansi')->paginate(40)->withQueryString();
+        }
+            
+        $datas = Profil::show_profil_admin($profils);
+        $dats = $datas[0];
+        
+        if (Auth::user()->hasRole('kcd')) {
+            $jml_lahan = $datas[1];
+            $jml_bangunan = $datas[2];
+            $jml_peralatan = $datas[3];
+        }else{
+            $jml_lahan = count(UsulanLahan::all());
+            $jml_bangunan = count(UsulanBangunan::all());
+            $jml_peralatan = count(UsulanPeralatan::all());
         }
 
-        $datas = Profil::show_profil_admin($profils);
-
         return view('admin.dashboard',[
-            'jml_usulan_lahan' => $datas[1],
-            'jml_usulan_bangunan' => $datas[2],
-            'jml_usulan_peralatan' => $datas[3],
-            'datas' => $datas[0],
+            'jml_usulan_lahan' => $jml_lahan,
+            'jml_usulan_bangunan' => $jml_bangunan,
+            'jml_usulan_peralatan' => $jml_peralatan,
+            'datas' => $dats,
             'profils' => $profils
         ]);
     }

@@ -61,21 +61,25 @@ Route::get('gallery', function () {
     return view('profil.gallery');
 });
 
-Route::get('forgot', function () {
-    return view('myauth.resetPassword');
-});
+// Route::get('forgot', function () {
+//     return view('myauth.resetPassword');
+// });
+
+
+// Route::get('forgot', function () {
+//     return view('myauth.resetPassword');
 
 // Route::get('detail', function () {
 //     return view('bangunan.praktik.show');
 // });
 
-Route::get('reset-password', function () {
-    return view('myauth.resetPassword');
-});
+// Route::get('reset-password', function () {
+//     return view('myauth.resetPassword');
+// });
 
-Route::get('forgot', function () {
-    return view('myauth.forgot-password');
-});
+// Route::get('forgot', function () {
+//     return view('myauth.forgot-password');
+// });
 
 // Route::get('admin-monitoringvertifikator', function () {
 //     return view('admin.monitoringvertif');
@@ -91,7 +95,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('upload-logo', function () {
         return view('myauth.uploadLogo');
     });
-    Route::patch('/update-foto', [RegisteredUserController::class, 'ubah_foto']);
+    Route::get('user-settings', [RegisteredUserController::class, 'userSettings']);
+    Route::patch('/ubah-logo', [RegisteredUserController::class, 'ubah_foto']);
+    Route::patch('/ubah-email-admin', [RegisteredUserController::class, 'ubah_email']);
 
     // admin
     Route::get('/', [AdminController::class, 'index']);
@@ -133,12 +139,12 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/kompeten/create/{id:profil}', [KompetenController::class, 'create']);
     Route::patch('/kompeten/update-ketersediaan/{id}', [KompetenController::class, 'updateKetersediaan']);
     Route::patch('/kompeten/update-kekurangan/{id}', [KompetenController::class, 'updateKekurangan']);
-    Route::patch('/kompeten/update-kondisi-ideal/{id}', [KompetenController::class, 'updateKondisiIdeal     ']);
+    Route::patch('/kompeten/update-kondisi-ideal/{id}', [KompetenController::class, 'updateKondisiIdeal']);
     Route::patch('/kompeten/upload-logo/{id}', [KompetenController::class, 'uploadLogo']);
     Route::patch('/kompeten/tambah-keterangan/{id}', [KompetenController::class, 'tambahKeterangan']);
-    Route::resource('/koleksi', KoleksiController::class);
-    Route::get('/koleksi/create/{id:profil}', [KoleksiController::class, 'create']);
     Route::patch('/koleksi/update-koleksi', [KoleksiController::class, 'update']);
+    Route::get('/koleksi/create/{id:profil}', [KoleksiController::class, 'create']);
+    Route::resource('/koleksi', KoleksiController::class);
     Route::resource('/foto', FotoController::class);
     Route::get('/foto/create/{koleksi:slug}', [FotoController::class, 'create']);
     Route::delete('/foto/delete-sigle-foto/{id}', [UsulanFotoController::class, 'sigleDelete']);
