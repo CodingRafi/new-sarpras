@@ -62,7 +62,7 @@
                 {{-- --------------------------------------------- NO SERTIFIKAT --------------------------------------------- --}}
                 <div class="row input pl-5">
                     <label class="col-2 mt-3">No Sertifikat</label>
-                    <input type="number" class="col-9 form-control mt-2 loading-tambah" placeholder="Masukan No Sertifikat" required
+                    <input type="text" class="col-9 form-control mt-2 loading-tambah" placeholder="Masukan No Sertifikat" required
                         value="{{ $ketersediaan->no_sertifikat }}" name="no_sertifikat">
                 </div>
 
