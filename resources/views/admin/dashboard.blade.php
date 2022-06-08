@@ -191,7 +191,7 @@
                                 <th class="text-center col-2" style="background-color: #eeeeee" scope="col">Kantor Cabang
                                     Dinas
                                 </th>
-                                <th class="text-center col-2" style="background-color: #eeeeee" scope="col">Status Sarpras
+                                <th class="text-center col-2" style="background-color: #eeeeee" scope="col" colspan="2">Status Sarpras
                                 </th>
                                 <th class="text-center col-2" style="background-color: #eeeeee" scope="col">Usulan</th>
                                 <th class="text-center col-2" style="background-color: #eeeeee" scope="col">Aksi</th>
@@ -218,6 +218,11 @@
                                         <div class="text-white mt-1" style="background-color: #fcc12d; border-radius:5px">
                                             Belum
                                             ideal, kurang ruang kelas</div>
+                                    </td>
+                                    <td class="text-center col-2">
+                                        <div class="text-white mt-1" style="background-color: #00a65b; border-radius:5px">
+                                            Peralatan Rekayasa Perangkat Lunak kekurangan 36 laptop
+                                        </div>
                                     </td>
                                     <td class="text-center col-2">
                                         @foreach ($data['usulanLahan'] as $usulan)
