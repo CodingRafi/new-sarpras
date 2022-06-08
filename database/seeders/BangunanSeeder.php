@@ -17,7 +17,7 @@ class BangunanSeeder extends Seeder
     public function run()
     {
         $datas = Profil::all();
-        $jenis = ['ruang_kelas', 'lab_komputer', 'toilet', 'ruang_pimpinan', 'lab_biologi', 'lab_fisika', 'lab_kimia', 'lab_ipa', 'lab_bahasa'];
+        $jenis = ['ruang_kelas', 'lab', 'toilet', 'ruang_pimpinan', 'perpustakaan'];
         foreach ($jenis as $key => $jen) {
             foreach($datas as $data){
                 Bangunan::create([
@@ -30,15 +30,15 @@ class BangunanSeeder extends Seeder
             }
         }
 
-        foreach($datas as $data){
-            Bangunan::create([
-                'jenis' => 'perpustakaan',
-                'profil_id' => $data->id,
-                'kondisi_ideal' => 30,
-                'ketersediaan' => 0,
-                'kekurangan' => 0
-            ]);
-        }
+        // foreach($datas as $data){
+        //     Bangunan::create([
+        //         'jenis' => 'perpustakaan',
+        //         'profil_id' => $data->id,
+        //         'kondisi_ideal' => 30,
+        //         'ketersediaan' => 0,
+        //         'kekurangan' => 0
+        //     ]);
+        // }
 
     }
 }

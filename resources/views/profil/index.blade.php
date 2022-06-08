@@ -394,7 +394,8 @@
                                                         @endif
                                                         <button type="button"
                                                             class="btn btn-warning text-white tombol-edit-koleksi"
-                                                            data-toggle="modal" data-target="#edit-koleksi" data-id="{{ $koleksi->id }}">
+                                                            data-toggle="modal" data-target="#edit-koleksi"
+                                                            data-id="{{ $koleksi->id }}">
                                                             Edit
                                                         </button>
 
@@ -553,7 +554,7 @@
 
                     {{-- ---------------------------------------------------------------------------------------- AKREDITASI ---------------------------------------------------------------------------------------- --}}
                     <div class="info-box-content">
-                        <span class="info-box-text text-white">Kategori</span>
+                        <span class="info-box-text text-white">Akreditasi</span>
                         <span class="info-box-number h1 text-white">{{ $profil->akreditas }}</span>
                     </div>
                     <!-- /.info-box-content -->
@@ -894,6 +895,7 @@
         </div>
         <!-- /.row (main row) -->
 
+        {{-- @dd($status_peralatan) --}}
         <!-- Riwayat Update Data card -->
         <div class="card">
             <div class="card-header" style="background-color: #263238">
@@ -912,20 +914,44 @@
                                 <th class="text-center">Nama</th>
                                 <th class="text-center">Kondisi</th>
                                 <th class="text-center">Keterangan</th>
-                                <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $no = 1;
+                            @endphp
                             <tr>
-                                <td class="text-center">1.</td>
+                                <td class="text-center">{{ $no++ }}</td>
                                 <td class="text-center">Lahan</td>
-                                <td class="text-center">Tanah 1</td>
-                                <td class="text-center">SHM</td>
-                                <td class="text-center">Ideal</td>
-                                <td class="text-center">
-                                    <div class="btn text-white" style="background-color: #00a65b">Detail</div>
-                                </td>
+                                <td class="text-center"> - </td>
+                                <td class="text-center">{{ $status_lahan['kondisi'] }}</td>
+                                <td class="text-center">Kekurangan Lahan {{ $status_lahan['kekurangan'] }} m²</td>
                             </tr>
+                            @foreach ($status_peralatan as $peralatan)
+                                <tr>
+                                    <td class="text-center">{{ $no++ }}</td>
+                                    <td class="text-center">Peralatan</td>
+                                    <td class="text-center">{{ $peralatan['nama'] }}</td>
+                                    <td class="text-center">{{ $peralatan['kondisi'] }}</td>
+                                    <td class="text-center">Kekurangan {{ $peralatan['kekurangan'] }} peralatan,
+                                        pada jurusan {{ $peralatan['jurusan'] }}</td>
+                                </tr>
+                            @endforeach
+                            @foreach ($status_bangunan as $bangunan)
+                                {{-- @dd($bangunan['jenis']) --}}
+                                <tr>
+                                    <td class="text-center">{{ $no++ }}</td>
+                                    <td class="text-center">Bangunan</td>
+                                    <td class="text-center">{{ str_replace('_', ' ', $bangunan['jenis']) }}</td>
+                                    <td class="text-center">{{ $bangunan['kondisi'] }}</td>
+                                    @if ($bangunan['jenis'] == 'ruang_kelas')
+                                        <td class="text-center">Kekurangan {{ $bangunan['kekurangan'] }} ruang</td>
+                                    @else
+                                        {{-- <td class="text-center">Kekurangan {{ $bangunan['kekurangan'] }} bangunan,
+                                            pada jurusan {{ $bangunan['jurusan'] }}</td> --}}
+                                    @endif
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

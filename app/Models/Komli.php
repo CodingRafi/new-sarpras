@@ -37,6 +37,10 @@ class Komli extends Model
         return $this->hasMany(Peralatan::class);
     }
 
+    public function jenisLaboratoriumKomlis(){
+        return $this->hasMany(JenisLaboratoriumKomlis::class);
+    }
+
     public static function ambilKomli($kompetens){
         $komli = [];
 

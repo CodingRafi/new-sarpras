@@ -199,6 +199,7 @@
                         </thead>
                         <tbody>
                             @foreach ($datas as $data)
+                            {{-- @dd($data) --}}
                                 <tr>
                                     <th class="text-center col-1" scope="row">
                                         {{ ($profils->currentpage() - 1) * $profils->perpage() + $loop->index + 1 }}</th>
@@ -208,8 +209,7 @@
                                     <td class="text-center col-2">{{ $data['instansi'] }}</td>
                                     <td class="text-center col-2">
                                         <div class="text-white mt-1" style="background-color: #00a65b; border-radius:5px">
-                                            Lahan
-                                            ideal</div>
+                                            Lahan {{ $data['status_lahan']['kondisi'] }}</div>
                                         <div class="text-white mt-1" style="background-color: #25b5e9; border-radius:5px">
                                             Peralatan ideal</div>
                                         <div class="text-white mt-1" style="background-color: #fcc12d; border-radius:5px">

@@ -11,7 +11,6 @@
         ::-webkit-scrollbar {
             display: none;
         }
-
     </style>
 @endsection
 
@@ -85,7 +84,8 @@
                 @endif
 
                 {{-- ---------------------------------------------------------------------------------------- BANGUNAN SEKOLAH ---------------------------------------------------------------------------------------- --}}
-                <li class="nav-item has-treeview {{ Request::is('bangunan/*') ? 'menu-open' : (Request::is('bangunan*') ? 'menu-open': '') }}">
+                <li
+                    class="nav-item has-treeview {{ Request::is('bangunan/*') ? 'menu-open' : (Request::is('bangunan*') ? 'menu-open' : '') }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-building"></i>
                         <p>
@@ -112,7 +112,7 @@
                         </li>
                         {{-- ---------------------------------------------------------------------------------------- LAB ---------------------------------------------------------------------------------------- --}}
 
-                        <li class="nav-item has-treeview @if (strpos(request('jenis'), 'lab_') === false) '' @else menu-open  @endif">
+                        <li class="nav-item has-treeview @if (strpos(request('jenis'), 'lab_') === false) '' @else menu-open @endif">
                             <a href="#" class="nav-link">
                                 <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
@@ -196,50 +196,50 @@
                                     </g>
                                 </svg>
                                 <p>
-                                  Laboratorium
-                                  <i class="right fas fa-angle-left"></i>
+                                    Laboratorium
+                                    <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item {{ request('jenis') == 'lab_biologi' ? 'active' : '' }}">
                                     <a href="/bangunan?jenis=lab_biologi"
                                         class="nav-link {{ request('jenis') == 'lab_biologi' ? 'active' : '' }}">
-                                       <i class="bi bi-caret-right"></i>
+                                        <i class="bi bi-caret-right"></i>
                                         <p>Laboratorium Biologi</p>
                                     </a>
                                 </li>
                                 <li class="nav-item {{ request('jenis') == 'lab_fisika' ? 'active' : '' }}">
                                     <a href="/bangunan?jenis=lab_fisika"
                                         class="nav-link {{ request('jenis') == 'lab_fisika' ? 'active' : '' }}">
-                                       <i class="bi bi-caret-right"></i>
+                                        <i class="bi bi-caret-right"></i>
                                         <p>Laboratorium Fisika</p>
                                     </a>
                                 </li>
                                 <li class="nav-item {{ request('jenis') == 'lab_komputer' ? 'active' : '' }}">
                                     <a href="/bangunan?jenis=lab_komputer"
                                         class="nav-link {{ request('jenis') == 'lab_komputer' ? 'active' : '' }}">
-                                       <i class="bi bi-caret-right"></i>
+                                        <i class="bi bi-caret-right"></i>
                                         <p>Laboratorium Komputer</p>
                                     </a>
                                 </li>
                                 <li class="nav-item {{ request('jenis') == 'lab_kimia' ? 'active' : '' }}">
                                     <a href="/bangunan?jenis=lab_kimia"
                                         class="nav-link {{ request('jenis') == 'lab_kimia' ? 'active' : '' }}">
-                                       <i class="bi bi-caret-right"></i>
+                                        <i class="bi bi-caret-right"></i>
                                         <p>Laboratorium Kimia</p>
                                     </a>
                                 </li>
                                 <li class="nav-item {{ request('jenis') == 'lab_ipa' ? 'active' : '' }}">
                                     <a href="/bangunan?jenis=lab_ipa"
                                         class="nav-link {{ request('jenis') == 'lab_ipa' ? 'active' : '' }}">
-                                       <i class="bi bi-caret-right"></i>
+                                        <i class="bi bi-caret-right"></i>
                                         <p>Laboratorium Ipa</p>
                                     </a>
                                 </li>
                                 <li class="nav-item {{ request('jenis') == 'lab_bahasa' ? 'active' : '' }}">
                                     <a href="/bangunan?jenis=lab_bahasa"
                                         class="nav-link {{ request('jenis') == 'lab_bahasa' ? 'active' : '' }}">
-                                       <i class="bi bi-caret-right"></i>
+                                        <i class="bi bi-caret-right"></i>
                                         <p>Laboratorium Bahasa</p>
                                     </a>
                                 </li>
@@ -281,28 +281,28 @@
                 </li>
 
                 {{-- ---------------------------------------------------------------------------------------- PERALATAN SEKOLAH ---------------------------------------------------------------------------------------- --}}
-                @if (count($kompils) > 0)       
-                <li class="nav-item has-treeview {{ Request::is('*peralatan*') ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon bi bi-collection"></i>
-                        <p>
-                            Peralatan Sekolah
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        {{-- ---------------------------------------------------------------------------------------- JURUSAN ---------------------------------------------------------------------------------------- --}}
-                        @foreach ($kompils as $kompil)
-                            <li class="nav-item">
-                                <a href="/peralatan-sekolah/{{ $kompil->id }}"
-                                    class="nav-link {{ Request::is('peralatan-sekolah/1') ? 'active' : '' }}">
-                                    <i class="fa-regular fa-circle"></i>
-                                    <p>{{ $kompil->kompetensi }}</p>
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </li>
+                @if (count($kompils) > 0)
+                    <li class="nav-item has-treeview {{ Request::is('*peralatan*') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon bi bi-collection"></i>
+                            <p>
+                                Peralatan Sekolah
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            {{-- ---------------------------------------------------------------------------------------- JURUSAN ---------------------------------------------------------------------------------------- --}}
+                            @foreach ($kompils as $kompil)
+                                <li class="nav-item">
+                                    <a href="/peralatan-sekolah/{{ $kompil->id }}"
+                                        class="nav-link {{ Request::is('peralatan-sekolah/1') ? 'active' : '' }}">
+                                        <i class="fa-regular fa-circle"></i>
+                                        <p>{{ $kompil->kompetensi }}</p>
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
                 @endif
 
                 {{-- ---------------------------------------------------------------------------------------- RIWAYAT BANTUAN ---------------------------------------------------------------------------------------- --}}

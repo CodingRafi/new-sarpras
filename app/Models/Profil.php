@@ -8,6 +8,8 @@ use App\Models\usulanBangunan;
 use App\Models\usulanLahan;
 use App\Models\usulanPeralatan;
 use App\Models\RehabRenov;
+use App\Models\KekuranganLahan;
+use App\Models\PeralatanTersedia;
 use DB;
 
 class Profil extends Model
@@ -43,7 +45,7 @@ class Profil extends Model
     }
 
     public function bangunan(){
-        return $this->belongsTo(Bangunan::class);
+        return $this->hasMany(Bangunan::class);
     }
 
     public function kotaKabupaten(){
@@ -85,6 +87,15 @@ class Profil extends Model
     public function visitasi(){
         return $this->hasMany(Visitasi::class);
     }
+
+    public function kekuranganLahan(){
+        return $this->hasMany(KekuranganLahan::class);
+    }
+
+    public function ketersediaanLahan(){
+        return $this->hasMany(KetersediaanLahan::class);
+    }
+
 
     public function scopeSearch($query, array $search)
     {
@@ -137,6 +148,7 @@ class Profil extends Model
         $usulanPeralatan = 0;
 
         foreach ($profils as $key => $profil) {
+            // dd($profil->peralatanTersedia);
             $lahan = UsulanLahan::where('profil_id', $profil->id)->get();
             $bangunan = UsulanBangunan::where('profil_id', $profil->id)->get();
             $peralatan = UsulanPeralatan::where('profil_id', $profil->id)->get();
@@ -144,7 +156,9 @@ class Profil extends Model
             $usulanLahan += count($lahan);
             $usulanBangunan += count($bangunan);
             $usulanPeralatan += count($peralatan);
+            // dd($profil->peralatanTersedia);
             // dd(UsulanLahan::where('profil_id', $profil->id)->get());
+
             $datas[] = [
                 'id' => $profil->id,
                 'profil_depo_id' => $profil->profil_depo_id,
@@ -167,7 +181,10 @@ class Profil extends Model
                 'usulanBangunan' => $bangunan,
                 'usulanPeralatan' => $peralatan,
                 'instansi' => $profil->instansi,
-                'rehab' => RehabRenov::where('profil_id', $profil->id)->get()
+                'rehab' => $profil->rehab,
+                'status_lahan' => KekuranganLahan::status_kekurangan($profil),
+
+
             ];
         }
 

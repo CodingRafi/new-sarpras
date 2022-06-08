@@ -40,6 +40,25 @@ class Bangunan extends Model
         $query->when($search['jenis'] ?? false, function($query, $jenis){
             return $query->where('bangunans.jenis', $jenis);
         });
+    }
 
+    public static function status_bangunan($profil){
+        $status_bangunan = [];
+
+        foreach ($profil->bangunan as $key => $bangunan) {
+            if ($bangunan->kekurangan > 0) {
+                $kondisi = 'Tidak Ideal';
+            }else{
+                $kondisi = 'Ideal';
+            }
+
+            $status_bangunan[] = [
+                'jenis' => $bangunan->jenis,
+                'kondisi' => $kondisi,
+                'kekurangan' => $bangunan->kekurangan
+            ];
+        }
+
+        return $status_bangunan;
     }
 }
