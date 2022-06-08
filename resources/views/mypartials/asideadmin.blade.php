@@ -134,60 +134,13 @@
                                 <p>Usulan Ruang Praktek</p>
                             </a>
                         </li>
-                        {{-- ---------------------------------------------------------------------------------------- LAB KOMPUTER ---------------------------------------------------------------------------------------- --}}
-                        <li
-                            class="nav-item has-treeview {{ request('jenis') == 'lab_komputer' ? 'menu-open' : '' }}{{ request('jenis') == 'lab_biologi' ? 'menu-open' : '' }} {{ request('jenis') == 'lab_fisika' ? 'menu-open' : '' }} {{ request('jenis') == 'lab_kimia' ? 'menu-open' : '' }} {{ request('jenis') == 'lab_ipa' ? 'menu-open' : '' }} {{ request('jenis') == 'lab_bahasa' ? 'menu-open' : '' }}">
-                            <a href="#" class="nav-link">
+                        {{-- ---------------------------------------------------------------------------------------- LABORATORIUM ---------------------------------------------------------------------------------------- --}}
+                        <li class="nav-item">
+                            <a href="/bangunan-all?jenis=laboratorium"
+                                class="nav-link {{ request('jenis') == 'laboratorium' ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
-                                <p>
-                                    Usulan Laboratorium
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
+                                <p>Usulan Laboratorium</p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item {{ request('jenis') == 'lab_biologi' ? 'active' : '' }}">
-                                    <a href="/bangunan-all?jenis=lab_biologi"
-                                        class="nav-link {{ request('jenis') == 'lab_biologi' ? 'active' : '' }}">
-                                        <i class="fa-regular fa-circle"></i>
-                                        <p>Usulan Laboratorium Biologi</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item {{ request('jenis') == 'lab_fisika' ? 'active' : '' }}">
-                                    <a href="/bangunan-all?jenis=lab_fisika"
-                                        class="nav-link {{ request('jenis') == 'lab_fisika' ? 'active' : '' }}">
-                                        <i class="fa-regular fa-circle"></i>
-                                        <p>Usulan Laboratorium Fisika</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item {{ request('jenis') == 'lab_komputer' ? 'active' : '' }}">
-                                    <a href="/bangunan-all?jenis=lab_komputer"
-                                        class="nav-link {{ request('jenis') == 'lab_komputer' ? 'active' : '' }}">
-                                        <i class="fa-regular fa-circle"></i>
-                                        <p>Usulan Laboratorium Komputer</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item {{ request('jenis') == 'lab_kimia' ? 'active' : '' }}">
-                                    <a href="/bangunan-all?jenis=lab_kimia"
-                                        class="nav-link {{ request('jenis') == 'lab_kimia' ? 'active' : '' }}">
-                                        <i class="fa-regular fa-circle"></i>
-                                        <p>Usulan Laboratorium Kimia</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item {{ request('jenis') == 'lab_ipa' ? 'active' : '' }}">
-                                    <a href="/bangunan-all?jenis=lab_ipa"
-                                        class="nav-link {{ request('jenis') == 'lab_ipa' ? 'active' : '' }}">
-                                        <i class="fa-regular fa-circle"></i>
-                                        <p>Usulan Laboratorium Ipa</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item {{ request('jenis') == 'lab_bahasa' ? 'active' : '' }}">
-                                    <a href="/bangunan-all?jenis=lab_bahasa"
-                                        class="nav-link {{ request('jenis') == 'lab_bahasa' ? 'active' : '' }}">
-                                        <i class="fa-regular fa-circle"></i>
-                                        <p>Usulan Laboratorium Bahasa</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                         {{-- ---------------------------------------------------------------------------------------- PERPUSTAKAAN ---------------------------------------------------------------------------------------- --}}
                         <li class="nav-item">
