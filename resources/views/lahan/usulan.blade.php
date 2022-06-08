@@ -13,6 +13,46 @@
 
 @section('container')
     <div class="container-fluid mt-3">
+        {{------------------------------------------------ LAMPIRAN -----------------------------------------------------------}}
+        <div class="container">
+            <div class="card card-info card-outline">
+
+                <div class="ribbon-wrapper ribbon-xl">
+                    <div class="ribbon bg-info text-lg">
+                    <span style="font-size: .8rem;">Permendiknas No.40 2008</span>
+                    </div>
+                </div>
+
+                <div class="card-header">
+                    <h3 class="card-title">Lampiran Lahan</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body p-0">
+                    <div class="mailbox-read-message px-4">
+                        <ol type="I">
+                            <li class="pb-4">
+                                Luas lahan minimum dapat menampung sarana dan prasarana unuk melayani 3 rombongan belajar.
+                            </li>
+                            <li class="pb-4">
+                                Lahan efektif adalah lahan yang digunakan untuk mendirikan bangunan, infrastruktur, tampat bermain/berolahraga/upacara, dan praktik.
+                            </li>
+                            <li>
+                                Luas lahan efektif adalah seratus per tiga puluh (100/30) dikalikan luas lantai dasar bangunan ditambah infrastruktur, tempat bermain/berolahraga/upacara dan luas lahan praktik.
+                            </li>
+                        </ol>
+                    </div>
+                    <!-- /.mailbox-read-message -->
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <div class="float-right">
+                        <a href="https://luk.staff.ugm.ac.id/atur/bsnp/Permendiknas40-2008SarprasSMK.pdf" target="_blank"><button type="button" class="btn btn-default"><i class="fas fa-share"></i> Dokumen</button></a>
+                    </div>
+                </div>
+                <!-- /.card-footer -->
+            </div>
+        </div>
+
         <!-- Small boxes (Stat box) -->
         <div class="card mb-5">
             <div class="card-header" style="background-color: #25b5e9">
