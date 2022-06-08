@@ -31,13 +31,14 @@
             <div class="tab-content p-0">
                 <div class="tab-pane active" id="data-usulan-sekolah">
                     @if (count($riwayats) > 0)
-                        <form class="form-inline ml-2" action="/riwayat-bantuan-dinas" method="GET">
-                            <div class="input-group" style="width: 50vw">
+                        <form class="form-inline ml-1" action="/riwayat-bantuan-dinas" method="GET">
+                            <div class="input-group mt-2" style="width: 100%;border: 1px solid #ced4da;border-radius: 3px;">
                                 <input class="form-control form-control-navbar" type="search"
                                     placeholder="Search NPSN, sekolah id, nama sekolah" aria-label="Search"
-                                    style="height: 2.5rem;font-size: 15px;padding: 0 10px;" name="search">
+                                    style="height: 2.5rem;font-size: 15px;padding: 0 10px;border:none;"
+                                    name="search">
                                 <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit" style="width: 40px;">
+                                    <button class="btn btn-navbar" type="submit" style="width: 40px ">
                                         <i class="fas fa-search"></i>
                                     </button>
                                 </div>

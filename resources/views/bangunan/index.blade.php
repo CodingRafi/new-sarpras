@@ -97,7 +97,7 @@
         <div class="modal fade" id="edit-ideal">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
-                    <div class="modal-header" style="background-color: #25b5e9">
+                    <div class="modal-header" style="background-color: #25b5e9; margin-left:-0.5px">
                         <h4 class="modal-title text-white">Kondisi Ideal</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -174,7 +174,7 @@
     <div class="modal fade" id="edit-kekurangan">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header bg-dark">
+                <div class="modal-header bg-dark" style="margin-left: -0.5px">
                     <h4 class="modal-title">Kekurangan</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -302,8 +302,8 @@
                                         <a href="/usulan-bangunan/{{ $usulan->id }}/edit"
                                             class="btn btn-warning text-white">Edit</a>
 
-                                        <button type="button" class="btn btn-primary tombolHapus" data-toggle="modal"
-                                            data-target="#confirmhapus" data-id="{{ $usulan->id }}">
+                                        <button type="button" class="btn text-white tombolHapus" data-toggle="modal"
+                                            data-target="#confirmhapus" data-id="{{ $usulan->id }}" style="background-color: #00a65b">
                                             Hapus
                                         </button>
                                 </tr>
@@ -368,7 +368,7 @@
                 <form action="/bangunan-all/{{ $dataBangunan->id }}" method="post">
                     @csrf
                     @method('patch')
-                    <div class="modal-header">
+                    <div class="modal-header" style="margin-left: -0.5px">
                         <h4 class="modal-title">Masukan Kekurangan</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
