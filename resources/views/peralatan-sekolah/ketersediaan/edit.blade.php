@@ -68,19 +68,19 @@
                 <div class="row input pl-5 mt-3">
                     <label class="col-2 mt-1">Ketersediaan</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" name="katersediaan" value="{{ $data->katersediaan }}">
+                        <input type="number" class="form-control loading-tambah" name="katersediaan" value="{{ $data->katersediaan }}">
                     </div>
                 </div>
                 {{-- ---------------------------------------------------------------------------------------- KEKURANGAN ---------------------------------------------------------------------------------------- --}}
                 <div class="row input pl-5 mt-3">
                     <label class="col-2 mt-1">Kekurangan</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" name="kekurangan" value="{{ $data->kekurangan }}">
+                        <input type="number" class="form-control loading-tambah" name="kekurangan" value="{{ $data->kekurangan }}">
                     </div>
                 </div>
                 {{-- --------------------------------------------- SUBMIT --------------------------------------------- --}}
                 <div class="pb-3 pl-5 mt-4">
-                    <button type="submit" class="btn text-white tombol-simpan" style="background-color: #00a65b">Simpan</button>
+                    <button type="submit" class="btn text-white tombol-simpan loading-simpan" style="background-color: #00a65b">Simpan</button>
                 </div>
             </div>
         </form>

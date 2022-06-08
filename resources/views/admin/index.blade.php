@@ -46,7 +46,7 @@
                                     <td>{{ $profil->nama }}</td>
                                     <td>{{ $profil->status_sekolah }}</td>
                                     <td>
-                                        <a href="/profil/{{ $profil->id }}" class="btn btn-primary">Show</a>
+                                        <a href="/profil/{{ $profil->id }}" class="btn text-white" style="background-color: #25b5e9">Show</a>
                                     </td>
                                 </tr>
                             @endforeach

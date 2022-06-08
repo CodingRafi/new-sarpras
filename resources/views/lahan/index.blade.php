@@ -57,7 +57,7 @@
 
 {{-- --------------------------------------------- Row ------------------------------------------------- --}}
 <div class="container-fluid">
-    
+
     <div class="row">
         <div class="col">
             <div class="card" style="border-radius: 0px 20px 0px 20px !important">
@@ -179,13 +179,9 @@
                                                             <div class="dropdown-menu" style="margin-left: -56px">
                                                                 <a class="dropdown-item"
                                                                     href="/ketersediaan-lahan/{{ $lahan->id }}/edit">Edit</a>
-                                                                <form action="/ketersediaan-lahan/{{ $lahan->id }}"
-                                                                    method="post">
-                                                                    @csrf
-                                                                    @method('delete')
-                                                                    <button type="submit" class="dropdown-item"
-                                                                        onclick="return confirm('Apakah anda yakin akan menghapus ketersediaan lahan ini?')">Hapus</button>
-                                                                </form>
+                                                                <a class="dropdown-item tombolHapus" data-toggle="modal"
+                                                                    data-target="#confirmhapus"
+                                                                    data-id="{{ $lahan->id }}">Hapus</a>
                                                                 <a class="dropdown-item"
                                                                     href="{{ asset('storage/' . $lahan->bukti_lahan) }}"
                                                                     target="_blank">Lihat
@@ -202,7 +198,8 @@
                                 </table>
                             </div>
                             @else
-                            <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                            <div class="container d-flex justify-content-center align-items-center"
+                                style="height: 10rem">
                                 <div class="alert" role="alert">
                                     Data Tidak Ditemukan
                                 </div>
@@ -211,20 +208,20 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="chart tab-pane {{ $errors->any() ? 'active' : '' }}" id="tambah-usulan-lahan"
                     style="min-height: 10rem;">
                     <div class="card-body">
                         <form action="/ketersediaan-lahan/" method="post" enctype="multipart/form-data">
                             @csrf
-    
+
                             {{-- input nama lahan --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nama Lahan</label>
                                 <input type="text"
                                     class="form-control col-sm-9  @error('nama') is-invalid @enderror loading-tambah"
-                                    placeholder="Masukan Nama Lahan" id="nama-lahan" name="nama" value="{{ old('nama') }}"
-                                    required>
+                                    placeholder="Masukan Nama Lahan" id="nama-lahan" name="nama"
+                                    value="{{ old('nama') }}" required>
                                 @error('nama')
                                 <div class="invalid-feedback d-block" style="margin-left: 13vw">
                                     {{ $message }}
@@ -232,7 +229,7 @@
                                 @enderror
                             </div>
                             {{-- end input nama lahan --}}
-    
+
                             {{-- input sertifikat --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">No Sertifikat</label>
@@ -247,7 +244,7 @@
                                 @enderror
                             </div>
                             {{-- end input sertifikat --}}
-    
+
                             {{-- input panjang --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Panjang(m)</label>
@@ -262,7 +259,7 @@
                                 @enderror
                             </div>
                             {{-- end input panjang --}}
-    
+
                             {{-- input lebar --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Lebar(m)</label>
@@ -277,7 +274,7 @@
                                 @enderror
                             </div>
                             {{-- end input lebar --}}
-    
+
                             {{-- input alamat --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Alamat</label>
@@ -292,8 +289,8 @@
                                 @enderror
                             </div>
                             {{-- end input alamat --}}
-    
-    
+
+
                             {{-- input jenis kepemilikan --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Jenis Kepemilikan</label>
@@ -307,7 +304,7 @@
                                 </select>
                             </div>
                             {{-- end input alamat --}}
-    
+
                             {{-- input jenis keterangan --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Keterangan</label>
@@ -322,12 +319,13 @@
                                 @enderror
                             </div>
                             {{-- end input alamat --}}
-    
+
                             {{-- upload file(pdf) --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label pt-1" for="customFile">Dokumen Bukti Lahan (PDF /
                                     Foto)</label>
-                                <input type="file" class="pilih @error('chooseFile') is-invalid @enderror loading-tambah"
+                                <input type="file"
+                                    class="pilih @error('chooseFile') is-invalid @enderror loading-tambah"
                                     id="chooseFile" name="bukti_lahan" accept="image/*, .pdf" required
                                     onchange="previewImage()" value="{{ old('keterangan') }}" required>
                                 @error('chooseFile')
@@ -343,7 +341,7 @@
                                     style="width: 300px !important; border-radius: 10px !important;"></canvas>
                             </div>
                             {{-- end upload file(pdf) --}}
-    
+
                             {{-- button simpan --}}
                             <button type="submit" class="btn text-white col-sm-1 loading-simpan"
                                 style="background-color: #00a65b">Simpan</button>
@@ -355,14 +353,15 @@
         </div>
     </div>
     {{-- ---------------------------------------------- End ------------------------------------------------- --}}
-    
-    
+
+
     {{-- -------------------------------------------- Kekurangan Lahan ------------------------------------ --}}
     <div class="card mb-5">
         <div class="card-header" style="background-color: #FCC12D">
             <ul class="nav nav-pills ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link text-white font-weight-bold active" href="#data-kekurangan-lahan-sekolah" data-toggle="tab">
+                    <a class="nav-link text-white font-weight-bold active" href="#data-kekurangan-lahan-sekolah"
+                        data-toggle="tab">
                         <i class="bi bi-house-fill mr-1"></i>Kekurangan Lahan</a>
                 </li>
                 <li class="nav-item">
@@ -372,7 +371,7 @@
             </ul>
         </div>
         <!-- /.card-header DATA SEKOLAH-->
-    
+
         <div class="card-body p-0">
             <div class="tab-content p-0">
                 <div class="tab-pane active" id="data-kekurangan-lahan-sekolah" style="min-height: 10rem;">
@@ -393,7 +392,7 @@
                                     </tr>
                                 </thead>
                                 {{-- end judul table --}}
-    
+
                                 {{-- isi table --}}
                                 <tbody>
                                     @foreach ($kekuranganLahans as $lahan)
@@ -411,13 +410,11 @@
                                                 data-target="#modal-edit">
                                                 Edit
                                             </button>
-                                            <form action="/kekurangan-lahan/{{ $lahan->id }}" method="post"
-                                                class="d-inline-block">
-                                                @csrf
-                                                @method('delete')
-                                                <button type="submit" class="btn btn-success"
-                                                    onclick="return confirm('Apakah anda yakin akan menghapus kekurangan lahan ini?')">Hapus</button>
-                                            </form>
+                                            <button type="button" class="btn btn-danger tombolHapus2"
+                                                data-toggle="modal" data-target="#confirmHapus"
+                                                data-id="{{ $lahan->id }}">
+                                                Hapus
+                                            </button>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -425,7 +422,8 @@
                                 {{-- end isi table --}}
                             </table>
                             @else
-                            <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                            <div class="container d-flex justify-content-center align-items-center"
+                                style="height: 10rem">
                                 <div class="alert" role="alert">
                                     Data Tidak Ditemukan
                                 </div>
@@ -434,7 +432,7 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="chart tab-pane {{ $errors->any() ? 'active' : '' }}" id="tambah-kekurangan-lahan"
                     style="min-height: 10rem;">
                     <div class="card-body">
@@ -443,34 +441,34 @@
                             {{-- input nama lahan --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nama Lahan</label>
-                                <input type="text" class="form-control col-sm-9" placeholder="Masukan Nama Lahan"
+                                <input type="text" class="form-control col-sm-9 loading-tambah2" placeholder="Masukan Nama Lahan"
                                     id="nama-lahan" name="nama" required>
                             </div>
                             {{-- end input nama lahan --}}
-    
+
                             {{-- input panjang --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Panjang(m)</label>
-                                <input type="number" class="form-control col-sm-9" placeholder="Masukan Panjang Lahan"
+                                <input type="number" class="form-control col-sm-9 loading-tambah2" placeholder="Masukan Panjang Lahan"
                                     id="panjang" name="panjang" required step=any>
                             </div>
                             {{-- end input panjang --}}
-    
+
                             {{-- input lebar --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Lebar(m)</label>
-                                <input type="number" class="form-control col-sm-9" placeholder="Masukan Lebar Lahan"
+                                <input type="number" class="form-control col-sm-9 loading-tambah2" placeholder="Masukan Lebar Lahan"
                                     id="lebar" name="lebar" required step=any>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Keterangan</label>
-                                <input type="text" class="form-control col-sm-9" placeholder="Keterangan" id="keterangan"
-                                    name="keterangan" required>
+                                <input type="text" class="form-control col-sm-9 loading-tambah" placeholder="Keterangan"
+                                    id="keterangan" name="keterangan" required>git
                             </div>
                             {{-- end input lebar --}}
-    
+
                             {{-- button simpan --}}
-                            <button type="submit" class="btn text-white col-sm-1"
+                            <button type="submit" class="btn text-white col-sm-1 loading-simpan2"
                                 style="background-color: #00a65b">Simpan</button>
                         </form>
                         {{-- end button simpan --}}
@@ -480,7 +478,7 @@
         </div>
     </div>
     {{-- ---------------------------------------------------- End ----------------------------------------- --}}
-    
+
     {{-- --------------------------------------------------- Tab ------------------------------------------ --}}
     <div class="modal fade" id="modal-edit">
         <div class="modal-dialog modal-lg">
@@ -496,7 +494,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="container">
-    
+
                             <input type="hidden" name="id_kekurangan" class="inputIdKekurangan">
                             <div class="row mt-2">
                                 <div class="col-3">
@@ -507,7 +505,7 @@
                                         placeholder="Masukan Nama Lahan" id="nmalhn" name="nama" required>
                                 </div>
                             </div>
-    
+
                             <div class="row mt-4">
                                 <div class="col-3">
                                     <label for="col-sm-4 col-form-label">Panjang :</label>
@@ -517,7 +515,7 @@
                                         placeholder="Masukan Panjang" id="jmlpanjang" name="panjang" required>
                                 </div>
                             </div>
-    
+
                             <div class="row mt-4">
                                 <div class="col-3">
                                     <label for="col-sm-4 col-form-label">Lebar :</label>
@@ -527,7 +525,7 @@
                                         placeholder="Masukan Lebar" id="jmllebar" name="lebar" required>
                                 </div>
                             </div>
-    
+
                             <div class="row mt-4">
                                 <div class="col-3">
                                     <label for="col-sm-4 col-form-label">Keterangan :</label>
@@ -537,7 +535,7 @@
                                         placeholder="Keterangan" id="ketereangan" name="keterangan" required>
                                 </div>
                             </div>
-    
+
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
@@ -555,6 +553,56 @@
 {{-- End Main-Content --}}
 
 <div class="content-backdrop fade"></div>
+
+{{-- Modal Confirm Hapus --}}
+<div class="modal fade" id="confirmhapus" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="110" height="90" color="red" fill="currentColor"
+                    class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img"
+                    aria-label="Warning:">
+                    <path
+                        d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                </svg>
+                <h4 class="text mt-3">Apakah anda yakin ingin menghapus data ini?</h3>
+            </div>
+            <div class="row p-3">
+                <button type="button" class="col-6 btn btn-dark py-1" data-dismiss="modal">Batal</button>
+                <form action="/ketersediaan-lahan/" method="post" class="col-6 form-hapus">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" class="btn btn-danger py-1" style="width: 100%">Hapus</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- Modal Confirm Hapus 2 --}}
+<div class="modal fade" id="confirmHapus" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="110" height="90" color="red" fill="currentColor"
+                    class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img"
+                    aria-label="Warning:">
+                    <path
+                        d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                </svg>
+                <h4 class="text mt-3">Apakah anda yakin ingin menghapus data ini?</h3>
+            </div>
+            <div class="row p-3">
+                <button type="button" class="col-6 btn btn-dark py-1" data-dismiss="modal">Batal</button>
+                <form action="/kekurangan-lahan/" method="post" class="col-6 formHapus">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" class="btn btn-danger py-1" style="width: 100%">Hapus</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 
@@ -625,6 +673,29 @@
             }
         }
     }
+
+</script>
+
+<script>
+    
+    const form = document.querySelector('.form-hapus');
+    const tombolHapus = document.querySelectorAll('.tombolHapus');
+    const form2 = document.querySelector('.formHapus');
+    const tombolHapus2 = document.querySelectorAll('.tombolHapus2');
+
+    tombolHapus.forEach((e, i) => {
+        e.addEventListener('click', function () {
+            form.removeAttribute('action');
+            form.setAttribute('action', '/ketersediaan-lahan/' + e.getAttribute('data-id'));
+        })
+    });
+
+    tombolHapus2.forEach((e, i) => {
+        e.addEventListener('click', function () {
+            form2.removeAttribute('action');
+            form2.setAttribute('action', '/kekurangan-lahan/' + e.getAttribute('data-id'));
+        })
+    });
 
 </script>
 

@@ -101,7 +101,7 @@
                 <div class="row input pl-5 mt-3">
                     <label for="jumlah" class="col-2 mt-1">Jumlah</label>
                     <div class="col-sm-9">
-                        <input type="number" class="form-control" id="jumlah" name="jml" value="{{ $data->jml }}">
+                        <input type="number" class="form-control loading-tambah" id="jumlah" name="jml" value="{{ $data->jml }}">
                     </div>
                 </div>
 
@@ -124,7 +124,7 @@
 
                 {{-- --------------------------------------------- SUBMIT --------------------------------------------- --}}
                 <div class="pb-3 pl-5 mt-4">
-                    <button type="submit" class="btn text-white tombol-simpan" style="background-color: #00a65b">Simpan</button>
+                    <button type="submit" class="btn text-white tombol-simpan loading-simpan" style="background-color: #00a65b">Simpan</button>
                 </div>
 
             </div>

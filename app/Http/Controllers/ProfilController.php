@@ -16,6 +16,7 @@ use App\Http\Requests\StoreProfilRequest;
 use App\Http\Requests\UpdateProfilRequest;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use Illuminate\Validation\Rule;
 
 class ProfilController extends Controller
 {
@@ -154,7 +155,7 @@ class ProfilController extends Controller
                 'kabupaten' => 'string|nullable',
                 'kecamatan' => 'string|nullable',
                 'alamat' => 'string|nullable',
-                'email' => 'email|nullable|unique:users',
+                'email' => ['required', 'email', Rule::unique('users')->ignore( Auth::user()->id )],
                 'website' => 'string|nullable',
                 'instagram' => 'string|required',
                 'youtube' => 'string|required',
@@ -192,7 +193,7 @@ class ProfilController extends Controller
                 $jml_pr = 0;
             }
 
-            if ($request->email) {
+            if ($request->email != $profil->email) {
                 $user = Auth::user()->update([
                     'email' => $request->email
                 ]);

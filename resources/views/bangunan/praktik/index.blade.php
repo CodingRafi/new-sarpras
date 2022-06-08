@@ -24,7 +24,6 @@
                 margin-top: -19px;
             }
         }
-
     </style>
 @endsection
 
@@ -65,7 +64,9 @@
                 <a href="/kompeten/{{ $kompeten->id }}" class="col-md-4 col-12">
                     <div class="info-box">
                         @if ($kompeten->logo)
-                            <h1>ada</h1>
+                            <img src="{{ asset('storage/' . $kompeten->logo) }}" alt=""
+                                style="width: 9.5rem; height: 9.5rem; margin-top: 10px; margin-bottom: 10px;object-fit: cover;"
+                                class="card-img-top border rounded-circle">
                         @else
                             <img src="/img/Kompetensi Keahlian.png" alt=""
                                 style="width: 9.5rem; margin-top: 10px; margin-bottom: 10px;"
@@ -355,7 +356,7 @@
 
                             {{-- input luas lahan --}}
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">Luas Lahan</label>
+                                <label class="col-sm-4 col-form-label">Luas Lahan(M²)</label>
                                 <input type="number" class="form-control col-sm-7 loading-tambah"
                                     placeholder="Masukan Luas Lahan" id="luas-lahan" name="luas_lahan" required value="">
                             </div>

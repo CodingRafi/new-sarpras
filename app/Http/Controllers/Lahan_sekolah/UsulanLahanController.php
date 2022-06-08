@@ -93,7 +93,7 @@ class UsulanLahanController extends Controller
      */
     public function show(UsulanLahan $usulanLahan)
     {
-        if (strtolower(Auth::user()->profil->status_sekolah) == 'negeri') {
+        if (!Auth::user()->hasRole('sekolah')) {
             return view('lahan.show', [
                 'data' => $usulanLahan,
                 'profil' => $usulanLahan->profil,
@@ -190,7 +190,7 @@ class UsulanLahanController extends Controller
                                 ->leftJoin('kota_kabupatens', 'kota_kabupatens.id', 'profils.kota_kabupaten_id')
                                 ->leftJoin('profil_kcds', 'kota_kabupatens.id', 'profil_kcds.kota_kabupaten_id')
                                 ->leftJoin('kcds', 'kcds.id', 'profil_kcds.kcd_id')
-                                ->select('profils.*', 'kcds.instansi', 'usulan_lahans.proposal')->get();
+                                ->select('profils.*', 'kcds.instansi', 'usulan_lahans.proposal', 'usulan_lahans.id as id_usulan_lahan')->get();
                 if (count($usulans) > 0) {
                     foreach ($usulans as $usulan) {
                         $usulanLahan[] = $usulan;
@@ -203,7 +203,7 @@ class UsulanLahanController extends Controller
                             ->leftJoin('kota_kabupatens', 'kota_kabupatens.id', 'profils.kota_kabupaten_id')
                             ->leftJoin('profil_kcds', 'kota_kabupatens.id', 'profil_kcds.kota_kabupaten_id')
                             ->leftJoin('kcds', 'kcds.id', 'profil_kcds.kcd_id')
-                            ->select('profils.*', 'kcds.instansi', 'usulan_lahans.proposal')
+                            ->select('profils.*', 'kcds.instansi', 'usulan_lahans.proposal', 'usulan_lahans.id as id_usulan_lahan')
                             ->get();
         }
 

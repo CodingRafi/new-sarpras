@@ -304,11 +304,7 @@
                                                             <i class="bi bi-three-dots-vertical"></i>
                                                         </button>
                                                         <div class="dropdown-menu" style="margin-left: -73px">
-                                                            <button type="button"
-                                                                class="btn btn-tool tombol-edit-ketersediaan"
-                                                                data-toggle="modal" data-target="#edit-tersedia"><i
-                                                                    class="bi bi-plus"></i>Edit
-                                                            </button>
+                                                            <button type="submit" class="dropdown-item tombol-edit-ketersediaan" data-toggle="modal" data-target="#edit-tersedia">Edit</button>
                                                             <form action="/bangunan/pimpinan/{{ $data['id'] }}"
                                                                 method="post">
                                                                 @csrf
@@ -557,13 +553,11 @@
                             @if (count($jenis_pimpinans) > 0)
                                 <div class="form-group row">
                                     <label for="jumlah-lahan" class="col-sm-4 col-form-label">Jenis Ruang</label>
-                                    <div class="col-sm-7">
-                                        <select name="jenis_pimpinan_id" id="" required class="custom-select">
+                                        <select name="jenis_pimpinan_id" id="" required class="custom-select col-sm-7">
                                             @foreach ($jenis_pimpinans as $data)
                                                 <option value="{{ $data->id }}">{{ $data->nama }}</option>
                                             @endforeach
                                         </select>
-                                    </div>
                                 </div>
                                 {{-- input jumlah ruangan --}}
                                 <div class="form-group row">

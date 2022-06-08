@@ -2,6 +2,10 @@
 
 <head>
     <title>SISTEM SARPRAS | Upload Logo</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/icons/favicon_io/favicon-16x16.png">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
         integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.css" />
@@ -13,7 +17,7 @@
 </head>
 
 <body>
-    <div class="container-fluid text-center" style="background-color: rgba(238, 238, 238, 1); height: 100vh;">
+    <div class="container-fluid text-center pb-5" style="background-color: rgba(238, 238, 238, 1); min-height: 100vh;">
 
         <img class="my-4" src="/assets/img/logoJabar.png" width="115">
 
