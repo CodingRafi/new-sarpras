@@ -87,7 +87,12 @@ class LaboratoriumController extends Controller
      */
     public function show(Laboratorium $laboratorium)
     {
-        //
+        return view('lab.show', [
+            'laboratorium' => $laboratorium,
+            'jenis_laboratorium' => $laboratorium->jenis_laboratorium,
+            'komlis' => JenisLaboratorium::getJenis($laboratorium->jenis_laboratorium->id),
+            'kompils' => Kompeten::getKompeten(),
+        ]);
     }
 
     /**

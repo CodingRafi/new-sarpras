@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\JenisLaboratoriumKomlis;
 use App\Http\Requests\StoreJenisLaboratoriumKomlisRequest;
 use App\Http\Requests\UpdateJenisLaboratoriumKomlisRequest;
+use Illuminate\Http\Request;
 
 class JenisLaboratoriumKomlisController extends Controller
 {
@@ -36,7 +37,19 @@ class JenisLaboratoriumKomlisController extends Controller
      */
     public function store(StoreJenisLaboratoriumKomlisRequest $request)
     {
-        //
+        $validatedData = $request->validate([
+            'jenis_laboratorium_id' => 'required',
+            'komlis' => 'required'
+        ]);
+
+        foreach ($request->komlis as $key => $komli) {
+            JenisLaboratoriumKomlis::create([
+                'jenis_laboratorium_id' => $request->jenis_laboratorium_id,
+                'komli_id' => $komli
+            ]);
+        }
+
+        return redirect()->back();
     }
 
     /**
@@ -79,8 +92,19 @@ class JenisLaboratoriumKomlisController extends Controller
      * @param  \App\Models\JenisLaboratoriumKomlis  $jenisLaboratoriumKomlis
      * @return \Illuminate\Http\Response
      */
-    public function destroy(JenisLaboratoriumKomlis $jenisLaboratoriumKomlis)
+    public function destroy(JenisLaboratoriumKomlis $jenisLaboratoriumKomlis, Request $request)
     {
-        //
+        if (Auth::user()->hasRole('dinas')) {
+            $validatedData = $request->validate([
+                'id_jenis_laboratorium_komlis' => 'required'
+            ]);
+            foreach ($request->id_jenis_laboratorium_komlis as $key => $id_jenis) {
+                JenisLaboratoriumKomlis::destroy($id_jenis);
+            }
+    
+            return redirect()->back();
+        }else{
+            abort(403);
+        }
     }
 }

@@ -47,7 +47,7 @@
                                         {{ $lab->kekurangan }}
                                     </td>
                                     <td class="text-center">
-                                        <a href="/detail" class="btn btn-info btn-block">Detail</a>
+                                        <a href="/bangunan/laboratorium/{{ $lab->id_lab }}" class="btn btn-info btn-block">Detail</a>
                                         <a href="#" class="btn text-white tombol-edit btn-block" data-toggle="modal"
                                             data-target="#modal-edit" style="background-color: #00a65b"
                                             data-id="{{ $lab->id_lab }}">
@@ -63,7 +63,6 @@
                                     </td>
                                 </tr>
                             @endforeach
-
                         </tbody>
                     </table>
                 @else

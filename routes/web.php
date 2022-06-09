@@ -39,6 +39,7 @@ use App\Http\Controllers\JenisLaboratoriumController;
 use App\Http\Controllers\PeralatanTersediaController;
 use App\Http\Controllers\ProgramKompetensiController;
 use App\Http\Controllers\Lahan_sekolah\LahanController;
+use App\Http\Controllers\JenisLaboratoriumKomlisController;
 use App\Http\Controllers\Lahan_sekolah\UsulanLahanController;
 use App\Http\Controllers\Bangunan\Ruang_kelas\KelasController;
 use App\Http\Controllers\Lahan_sekolah\KekuranganLahanController;
@@ -67,12 +68,12 @@ Route::get('/lab', function () {
     return view('lab.index');
 });
 Route::get('/detail', function () {
-    return view('lab.show');
+    
 });
 
-Route::get('/detail-lab', function () {
-    return view('admin.detail-lab');
-});
+// Route::get('/detail-lab', function () {
+    
+// });
 
 // Route::get('forgot', function () {
 //     return view('myauth.resetPassword');
@@ -139,6 +140,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/visitasi-sekolah', [VisitasiController::class, 'visitasiSekolah']);
     Route::resource('/hasil-visitasi', HasilVisitasiController::class);
     Route::resource('/jenis-laboratorium', JenisLaboratoriumController::class);
+    Route::resource('/jenis-laboratorium-komli', JenisLaboratoriumKomlisController::class);
+    Route::delete('/jenis-laboratorium-komli-delete', [JenisLaboratoriumKomlisController::class, 'destroy']);
     Route::patch('/hasil-visitasi-update', [HasilVisitasiController::class, 'update']);
     // Route::resource('/visitasi', VisitasiController::class);
     Route::resource('roles', RoleController::class); 
