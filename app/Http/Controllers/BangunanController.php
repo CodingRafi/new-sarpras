@@ -81,7 +81,7 @@ class BangunanController extends Controller
         $jenis_laboratorium = JenisLaboratorium::all();
         $datas = [];
         foreach ($jenis_laboratorium as $key => $jenis) {
-            $jenis = JenisLaboratoriumKomlis::select('komlis.*',)
+            $jenis = JenisLaboratoriumKomlis::select('komlis.*')
                                         ->where('jenis_laboratorium_komlis.jenis_laboratorium_id', $jenis->id)
                                         ->leftJoin('komlis', 'jenis_laboratorium_komlis.komli_id', 'komlis.id')
                                         ->get();

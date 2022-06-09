@@ -7,6 +7,7 @@ use App\Models\Log;
 use App\Models\UsulanKoleksi;
 use App\Models\UsulanFoto;
 use App\Models\JenisPimpinan;
+use App\Models\laboratorium;
 use ImageOptimizer;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreUsulanBangunanRequest;
@@ -173,12 +174,34 @@ class UsulanBangunanController extends Controller
     public function editPimpinan(Request $request, $id){
         $data = UsulanBangunan::find($id);
         if($data->profil_id == Auth::user()->profil_id){
-            $jenis_pimpinan = JenisPimpinan::all();
-            return view('bangunan.editPimpinan', [
-                'data' => $data,
+            if ($data->jenis == 'ruang_pimpinan') {
+                $datadetail = UsulanBangunan::select('usulan_bangunans.*', 'jenis_pimpinans.*', 'usulan_bangunans.id as id_usulan_bangunan', 'jenis_pimpinans.id as id_jenis_pimpinan')
+                                            ->where('usulan_bangunans.id', $id)
+                                            ->leftJoin('jenis_pimpinans', 'jenis_pimpinans.id', 'usulan_bangunans.jenis_pimpinan_id')
+                                            ->get()->first();
+                $jenis = JenisPimpinan::all();
+            }else if($data->jenis == 'laboratorium'){
+                $datadetail = UsulanBangunan::select('usulan_bangunans.*', 'laboratoria.*', 'usulan_bangunans.id as id_usulan_bangunan', 'laboratoria.id as id_laboratorium')
+                                            ->where('usulan_bangunans.id', $id)
+                                            ->leftJoin('laboratoria', 'laboratoria.id', 'usulan_bangunans.laboratorium_id')
+                                            ->get()->first();
+                $jenis =  Laboratorium::select('laboratoria.*', 'jenis_laboratoria.jenis as nama_jenis_laboratorium', 'laboratoria.id as id_laboratorium')
+                                            ->where('profil_id', Auth::user()->profil_id)
+                                            ->leftJoin('jenis_laboratoria', 'jenis_laboratoria.id', 'laboratoria.jenis_laboratorium_id')->get();
+            }else{
+                $datadetail = UsulanBangunan::select('usulan_bangunans.*', 'kompetens.*', 'usulan_bangunans.id as id_usulan_bangunan')
+                                            ->where('usulan_bangunans.id', $id)
+                                            ->leftJoin('kompetens', 'kompetens.id', 'usulan_bangunans.kompeten_id')
+                                            ->get()->first();
+                $jenis = Kompeten::select('kompetens.*', 'komlis.kompetensi as nama_kompetensi', 'kompetens.id as id_kompeten')
+                                            ->where('profil_id', Auth::user()->profil_id)
+                                            ->leftJoin('komlis', 'kompetens.komli_id', 'komlis.id')->get();
+            }
+
+            return view('bangunan.editLebih', [
+                'data' => $datadetail,
+                'jenis' => $jenis,
                 'fotos' => $data->UsulanKoleksi[0]->usulanFoto,
-                'jenis' => $data->jenisPimpinan,
-                'jenis_pimpinans' => $jenis_pimpinan,
                 'kompils' => Kompeten::getKompeten()
             ]);
         }else{
@@ -190,10 +213,22 @@ class UsulanBangunanController extends Controller
     {
         $usulanBangunan = UsulanBangunan::find($id);
         if($usulanBangunan->profil_id == Auth::user()->profil_id){
-            $validatedData = $request->validate([
-                'jenis_pimpinan_id' => 'required',
-                'luas_lahan' => 'required'
-            ]);
+            if ($usulanBangunan->jenis == 'ruang_pimpinan') {
+                $validatedData = $request->validate([
+                    'jenis_pimpinan_id' => 'required',
+                    'luas_lahan' => 'required'
+                ]);
+            }elseif($usulanBangunan->jenis == 'laboratorium'){
+                $validatedData = $request->validate([
+                    'laboratorium_id' => 'required',
+                    'luas_lahan' => 'required'
+                ]);
+            }else{
+                $validatedData = $request->validate([
+                    'kompeten_id' => 'required',
+                    'luas_lahan' => 'required'
+                ]);
+            }
     
             if($request->file('gambar')){
                 UsulanFoto::uploadFoto($request->gambar, $usulanBangunan->usulanKoleksi[0]);
@@ -211,7 +246,13 @@ class UsulanBangunanController extends Controller
     
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Usulan Bangunan ' . str_replace("_", " ", $usulanBangunan->jenis));
 
-            return redirect('/bangunan/pimpinan')->with('success', 'Berhasil mengubah usulan ruang pimpinan!');
+            if ($usulanBangunan->jenis == 'ruang_pimpinan') {
+                return redirect('/bangunan/pimpinan')->with('success', 'Berhasil mengubah usulan ruang pimpinan!');
+            }elseif($usulanBangunan->jenis == 'laboratorium'){
+                return redirect('/bangunan/laboratorium')->with('success', 'Berhasil mengubah usulan ruang pimpinan!');
+            }else{
+                return redirect('/bangunan/ruang-praktik')->with('success', 'Berhasil mengubah usulan ruang pimpinan!');
+            }
         }else{
             abort(403);
         }

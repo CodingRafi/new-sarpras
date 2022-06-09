@@ -26,6 +26,7 @@ use App\Http\Controllers\ProfilKcdController;
 use App\Http\Controllers\ProfilDepoController;
 use App\Http\Controllers\RehabRenovController;
 use App\Http\Controllers\UsulanFotoController;
+use App\Http\Controllers\LaboratoriumController;
 use App\Http\Controllers\PerpustakaanController;
 use App\Http\Controllers\HasilVisitasiController;
 use App\Http\Controllers\JenisPimpinanController;
@@ -180,10 +181,13 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/bangunan/usulan-toilet', [ToiletController::class, 'createusulan']);
     Route::resource('/bangunan/ruang-rehabrenov', RehabRenovController::class);
     Route::resource('/bangunan/pimpinan', PimpinanController::class);
-    Route::patch('/bangunan/pimpinan', [PimpinanController::class, 'update']);
     Route::post('/bangunan/usulan-ruang-pimpinan', [PimpinanController::class, 'createusulan']);
-    Route::get('/bangunan/usulan-ruang-pimpinan/{id}/edit', [UsulanBangunanController::class, 'editPimpinan']);
-    Route::patch('/bangunan/usulan-ruang-pimpinan/{id}', [UsulanBangunanController::class, 'updatePimpinan']);
+    Route::patch('/bangunan/pimpinan', [PimpinanController::class, 'update']);
+    Route::get('/bangunan/usulan/{id}/edit', [UsulanBangunanController::class, 'editPimpinan']);
+    Route::patch('/bangunan/usulan/{id}', [UsulanBangunanController::class, 'updatePimpinan']);
+    Route::resource('/bangunan/laboratorium', LaboratoriumController::class);
+    Route::post('/bangunan/usulan-laboratorium', [LaboratoriumController::class, 'createusulan']);
+
 
 
     Route::resource('/jenis-pimpinan', JenisPimpinanController::class);

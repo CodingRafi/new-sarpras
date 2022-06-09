@@ -96,6 +96,10 @@ class Profil extends Model
         return $this->hasMany(KetersediaanLahan::class);
     }
 
+    public function laboratorium(){
+        return $this->hasMany(Laboratorium::class);
+    }
+
 
     public function scopeSearch($query, array $search)
     {

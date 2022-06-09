@@ -222,6 +222,8 @@
                                                 </td>
                                                 <td>{{ $usulan->keterangan }}</td>
                                                 <td>
+                                                    <a href="/bangunan/usulan/{{ $usulan->id }}/edit"
+                                                        class="btn btn-warning text-white">Edit</a>
                                                     <form action="/usulan-bangunan/{{ $usulan->id }}" method="post">
                                                         @csrf
                                                         @method('delete')
