@@ -14,6 +14,10 @@ class JenisLaboratorium extends Model
     ];
 
     public function jenisLaboratoriumKomli(){
-        return $this->hasMany(JeniLaboratoriumKomli::class);
+        return $this->hasMany(JenisLaboratoriumKomlis::class);
+    }
+
+    public function usulanBangunan(){
+        return $this->hasMany(UsulanBangunan::class);
     }
 }

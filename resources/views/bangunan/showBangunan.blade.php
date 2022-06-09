@@ -1,12 +1,12 @@
 @extends('myLayouts.main')
 
 @section('tambahcss')
+    <link rel="stylesheet" href="/css/fstdropdown.css">
     <style>
         .input-group-prepend button i {
             position: absolute;
             left: 35px;
         }
-
     </style>
 @endsection
 
@@ -142,7 +142,6 @@
                 </div>
             </div>
         </div>
-        
     @elseif(request('jenis') == 'laboratorium' && Auth::user()->hasRole('dinas'))
         <div class="container-fluid">
             <div class="card">
@@ -156,22 +155,22 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        @if (count($jenisPimpinans) > 0)
+                        @if (count($jenis_labolatoriums) > 0)
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr class="text-center">
                                         <th rowspan="2" style="vertical-align: middle;">No</th>
-                                        <th rowspan="2" style="vertical-align: middle;">Jenis</th>
+                                        <th rowspan="2" style="vertical-align: middle;">Jenis Laboratorium</th>
                                         <th rowspan="2" style="vertical-align: middle;">Kompetensi Keahlian</th>
                                         <th rowspan="2" style="vertical-align: middle;">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($jenisPimpinans as $key => $jenis)
+                                    @foreach ($jenis_labolatoriums as $i => $jenis)
                                         <tr>
                                             <th class="text-center">{{ $loop->iteration }}</th>
                                             <td class="text-center text-capitalize nama-jenis-pimpinan"
-                                                data-id="{{ $jenis->id }}">{{ $jenis->nama }}</td>
+                                                data-id="{{ $jenis->id }}">{{ $jenis->jenis }}</td>
                                             <td class="text-center text-capitalize nama-jenis-pimpinan"
                                                 data-id="{{ $jenis->id }}">Rekayasa Perangkat Lunak</td>
                                             <td class="text-center text-capitalize">
@@ -179,12 +178,12 @@
                                                     class="btn btn-warning button-jenis-pimpinan text-white"
                                                     data-toggle="modal" data-target="#edit-jenis-pimpinan">Edit
                                                 </button>
-                                                <form action="/jenis-pimpinan/{{ $jenis->id }}" method="post"
+                                                <form action="/jenis-laboratorium/{{ $jenis->id }}" method="post"
                                                     class="d-inline-block">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-success"
-                                                        onclick="return confirm('Apakah anda yakin akan menghapus jenis ruang pimpinan ini?')">Hapus</button>
+                                                        onclick="return confirm('Apakah anda yakin akan menghapus jenis laboratorium ini?')">Hapus</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -214,21 +213,25 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" action="/jenis-pimpinan" method="POST">
+                        <form class="form-horizontal" action="/jenis-laboratorium" method="POST">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group row">
                                     <label for="nama" class="col-sm-3 col-form-label">Jenis Laboratorium</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="nama" name="nama" required>
+                                       <input type="text" name="jenis" id="" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="nama" class="col-sm-3 col-form-label">Kompetensi Keahlian</label>
                                     <div class="col-sm-9">
-                                        <select name="" id="" class="form-control">
-                                            <option value=""></option>
-                                        </select>
+                                        <select class="fstdropdown-select" id="select"
+                                        name="komli_id[]" multiple>
+                                        @foreach ($komlis as $komli)
+                                            <option value="{{ $komli->id }}">{{ $komli->kompetensi }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                     </div>
                                 </div>
                             </div>
@@ -437,3 +440,10 @@
         </script>
     @endsection
 @endif
+
+@section('tambahjs')
+    <script src="/js/fstdropdown.js"></script>
+    <script>
+        setFstDropdown();
+    </script>
+@endsection

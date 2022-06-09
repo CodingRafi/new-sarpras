@@ -9,6 +9,10 @@ class JenisLaboratoriumKomlis extends Model
 {
     use HasFactory;
 
+    protected $guarded =[
+        "id"
+    ];
+
     public function jenisLaboratorium(){
         return $this->belongsTo(JeniLaboratorium::class);
     }

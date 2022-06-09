@@ -38,6 +38,10 @@ class UsulanBangunan extends Model
         return $this->belongsTo(JenisPimpinan::class);
     }
 
+    public function jenisLaboratorium(){
+        return $this->belongsTo(JenisLaboratorium::class);
+    }
+
     public static function createUsulan($request, $jenis, $validatedData){
         $validatedData['proposal'] = $request->file('proposal')->store('proposal-usulan-bangunan');
         $validatedData['profil_id'] = Auth::user()->profil_id;

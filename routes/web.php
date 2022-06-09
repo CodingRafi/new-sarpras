@@ -34,6 +34,7 @@ use App\Http\Controllers\UsulanBangunanController;
 use App\Http\Controllers\UnsurVerifikasiController;
 use App\Http\Controllers\UsulanPeralatanController;
 use App\Http\Controllers\BidangKompetensiController;
+use App\Http\Controllers\JenisLaboratoriumController;
 use App\Http\Controllers\PeralatanTersediaController;
 use App\Http\Controllers\ProgramKompetensiController;
 use App\Http\Controllers\Lahan_sekolah\LahanController;
@@ -125,6 +126,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::patch('/visitasi-publish', [VisitasiController::class, 'visitasiPublish']);
     Route::get('/visitasi-sekolah', [VisitasiController::class, 'visitasiSekolah']);
     Route::resource('/hasil-visitasi', HasilVisitasiController::class);
+    Route::resource('/jenis-laboratorium', JenisLaboratoriumController::class);
     Route::patch('/hasil-visitasi-update', [HasilVisitasiController::class, 'update']);
     // Route::resource('/visitasi', VisitasiController::class);
     Route::resource('roles', RoleController::class); 
