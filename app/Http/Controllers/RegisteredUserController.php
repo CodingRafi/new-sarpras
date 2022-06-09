@@ -116,7 +116,7 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'email', Rule::unique('users')->ignore($user->id)],
         ]);
 
-        if(Hash::check('12345678', $user->password)){
+        if($user->password == null){
             $validatedData['password'] = bcrypt('12345678');
         }
 
