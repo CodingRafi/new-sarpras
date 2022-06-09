@@ -76,7 +76,7 @@
             </div>
         </div>
     </div>
-
+    
     {{-- modal tambah --}}
     <div class="modal fade" id="modal-tambah">
         <div class="modal-dialog modal-lg">
@@ -142,7 +142,7 @@
         </div>
     </div>
     {{-- modal tambah --}}
-
+    
     {{-- modal edit --}}
     <div class="modal fade" id="modal-edit">
         <div class="modal-dialog modal-lg">

@@ -124,7 +124,7 @@
                 @if (count($kcds) > 0)
                     @foreach ($kcds as $ke => $kcd)
                         <div class="row child-noneborder shadow-sm">
-                            <div class="alert text-white col-12 col-lg-6 d-flex flex-column justify-content-between" style="background-color: #25b5e9">
+                            <div class="alert text-white col-12 col-lg-6 d-flex flex-column justify-content-between" style="background-image: url(/assets/img/backgrounds/lab-pattern.png)">
                                 <h5 class="h6"><i class="icon bi bi-bank2"></i> Instansi</h5>
                                 <div>
                                     <h3 class="instansi">{{ $kcd->instansi }}</h3>

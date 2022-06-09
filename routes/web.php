@@ -66,6 +66,9 @@ Route::get('gallery', function () {
 Route::get('/lab', function () {
     return view('lab.index');
 });
+Route::get('/detail', function () {
+    return view('lab.show');
+});
 
 Route::get('/detail-lab', function () {
     return view('admin.detail-lab');
