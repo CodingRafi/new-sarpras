@@ -119,9 +119,11 @@ class RegisteredUserController extends Controller
             $validatedData['password'] = bcrypt('12345678');
         }
 
-        $user->kcd->update([
-            'nama' => $request->name
-        ]);
+        if ($user->hasRole('kcd')) {
+            $user->kcd->update([
+                'nama' => $request->name
+            ]);
+        }
         
         $user->update($validatedData);
     
