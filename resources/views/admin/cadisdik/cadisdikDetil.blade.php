@@ -43,7 +43,7 @@
                     <div class="card-body">
                         <div class="child-noneborder shadow-sm">
                             <div class="alert text-white d-flex flex-column justify-content-between"
-                                style="background-color: #25b5e9">
+                                style="background-image: url(/assets/img/backgrounds/lab-pattern.png)">
                                 <button type="button" class="btn btn-tool text-dark mr-1 text-white"
                                     style="position: absolute; right:3px;" data-toggle="modal"
                                     data-target="#edit-kcd"><i class="icon bi bi-pencil-square m-0"

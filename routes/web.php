@@ -64,6 +64,9 @@ Route::get('gallery', function () {
 Route::get('/lab', function () {
     return view('lab.index');
 });
+Route::get('/detail', function () {
+    return view('lab.show');
+});
 
 // Route::get('forgot', function () {
 //     return view('myauth.resetPassword');
