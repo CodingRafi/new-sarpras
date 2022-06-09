@@ -29,12 +29,12 @@
                     <table class="table" style="text-align: center;">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">NPSN</th>
-                                <th scope="col">Sekolah id</th>
-                                <th scope="col">Nama Sekolah</th>
-                                <th scope="col">Status Sekolah</th>
-                                <th scope="col">Action</th>
+                                <th scope="col" style="background-color: #eeeeee">No</th>
+                                <th scope="col" style="background-color: #eeeeee">NPSN</th>
+                                <th scope="col" style="background-color: #eeeeee">Sekolah id</th>
+                                <th scope="col" style="background-color: #eeeeee">Nama Sekolah</th>
+                                <th scope="col" style="background-color: #eeeeee">Status Sekolah</th>
+                                <th scope="col" style="background-color: #eeeeee">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -46,7 +46,7 @@
                                     <td>{{ $profil->nama }}</td>
                                     <td>{{ $profil->status_sekolah }}</td>
                                     <td>
-                                        <a href="/profil/{{ $profil->id }}" class="btn btn-primary">Show</a>
+                                        <a href="/profil/{{ $profil->id }}" class="btn text-white" style="background-color: #25b5e9">Show</a>
                                     </td>
                                 </tr>
                             @endforeach

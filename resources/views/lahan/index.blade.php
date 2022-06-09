@@ -110,6 +110,45 @@
 </div>
 {{------------------------------------------------ End -----------------------------------------------------------}}
 
+{{------------------------------------------------ LAMPIRAN -----------------------------------------------------------}}
+<div class="container">
+    <div class="card card-info card-outline">
+
+        <div class="ribbon-wrapper ribbon-xl">
+            <div class="ribbon bg-info text-lg">
+              <span style="font-size: .8rem;">Permendiknas No.40 2008</span>
+            </div>
+        </div>
+
+        <div class="card-header">
+            <h3 class="card-title">Lampiran Lahan</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body p-0">
+            <div class="mailbox-read-message px-4">
+                <ol type="I">
+                    <li class="pb-4">
+                        Luas lahan minimum dapat menampung sarana dan prasarana unuk melayani 3 rombongan belajar.
+                    </li>
+                    <li class="pb-4">
+                        Lahan efektif adalah lahan yang digunakan untuk mendirikan bangunan, infrastruktur, tampat bermain/berolahraga/upacara, dan praktik.
+                    </li>
+                    <li>
+                        Luas lahan efektif adalah seratus per tiga puluh (100/30) dikalikan luas lantai dasar bangunan ditambah infrastruktur, tempat bermain/berolahraga/upacara dan luas lahan praktik.
+                    </li>
+                </ol>
+            </div>
+            <!-- /.mailbox-read-message -->
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+            <div class="float-right">
+                <a href="https://luk.staff.ugm.ac.id/atur/bsnp/Permendiknas40-2008SarprasSMK.pdf" target="_blank"><button type="button" class="btn btn-default"><i class="fas fa-share"></i> Dokumen</button></a>
+            </div>
+        </div>
+        <!-- /.card-footer -->
+    </div>
+</div>
 
 <div class="container">
     {{---------------------------------------------- Lahan Sekolah ---------------------------------------------------}}
@@ -441,7 +480,7 @@
                             {{-- input nama lahan --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nama Lahan</label>
-                                <input type="text" class="form-control col-sm-9" placeholder="Masukan Nama Lahan"
+                                <input type="text" class="form-control col-sm-9 loading-tambah2" placeholder="Masukan Nama Lahan"
                                     id="nama-lahan" name="nama" required>
                             </div>
                             {{-- end input nama lahan --}}
@@ -449,7 +488,7 @@
                             {{-- input panjang --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Panjang(m)</label>
-                                <input type="number" class="form-control col-sm-9" placeholder="Masukan Panjang Lahan"
+                                <input type="number" class="form-control col-sm-9 loading-tambah2" placeholder="Masukan Panjang Lahan"
                                     id="panjang" name="panjang" required step=any>
                             </div>
                             {{-- end input panjang --}}
@@ -457,18 +496,18 @@
                             {{-- input lebar --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Lebar(m)</label>
-                                <input type="number" class="form-control col-sm-9" placeholder="Masukan Lebar Lahan"
+                                <input type="number" class="form-control col-sm-9 loading-tambah2" placeholder="Masukan Lebar Lahan"
                                     id="lebar" name="lebar" required step=any>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Keterangan</label>
-                                <input type="text" class="form-control col-sm-9" placeholder="Keterangan"
-                                    id="keterangan" name="keterangan" required>
+                                <input type="text" class="form-control col-sm-9 loading-tambah" placeholder="Keterangan"
+                                    id="keterangan" name="keterangan" required>git
                             </div>
                             {{-- end input lebar --}}
 
                             {{-- button simpan --}}
-                            <button type="submit" class="btn text-white col-sm-1"
+                            <button type="submit" class="btn text-white col-sm-1 loading-simpan2"
                                 style="background-color: #00a65b">Simpan</button>
                         </form>
                         {{-- end button simpan --}}

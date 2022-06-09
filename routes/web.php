@@ -61,6 +61,14 @@ Route::get('gallery', function () {
     return view('profil.gallery');
 });
 
+Route::get('/lab', function () {
+    return view('lab.index');
+});
+
+Route::get('/detail-lab', function () {
+    return view('admin.detail-lab');
+});
+
 // Route::get('forgot', function () {
 //     return view('myauth.resetPassword');
 // });

@@ -56,7 +56,7 @@
             </div>
             <!-- /.card-header DATA SEKOLAH-->
             <div class="card-body p-0">
-                <div class="tab-content p-0">
+                <div class="tab-content p-3">
                     <div class="tab-pane active" id="data-usulan-sekolah">
                         <div class="row">
                             <div class="col">
@@ -109,7 +109,7 @@
                                                             style="display: inline-block">
                                                             @csrf
                                                             @method('delete')
-                                                            <button type="submit" class="btn btn-danger"
+                                                            <button type="submit" class="btn text-white" style="background-color: #263238"
                                                                 onclick="return confirm('Apakah anda yakin akan menghapus visitasi ini?')"
                                                                 {{ $visitasi->status == 'proses_visitasi' ? '' : 'disabled' }}>Hapus</button>
                                                         </form>

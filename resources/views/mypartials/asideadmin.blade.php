@@ -51,8 +51,12 @@
 
                 @if (Auth::user()->hasRole('dinas'))
                     {{-- ---------------------------------------------------------------------------------------- KOMPETENSI KEAHLIAN ---------------------------------------------------------------------------------------- --}}
-
-                    <li class="nav-item has-treeview {{ Request::is('/komli') ? 'menu-open' : '' }}">
+                    <li class="nav-item has-treeview {{
+                        Request::is('bidang-kompetensi') ? 'menu-open' : 
+                        (Request::is('program-kompetensi') ? 'menu-open' : 
+                        (Request::is('spektrum') ? 'menu-open' : 
+                        (Request::is('komli') ? 'menu-open' : '' )))
+                    }}">
                         <a href="#" class="nav-link">
                             <i class="nav-icon bi bi-award"></i>
                             <p>
@@ -61,14 +65,15 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            {{-- ---------------------------------------------------------------------------------------- JURUSAN ---------------------------------------------------------------------------------------- --}}
+                            {{-- ---------------------------------------------------------------------------------------- BIDANG KEAHLIAN ---------------------------------------------------------------------------------------- --}}
                             <li class="nav-item">
                                 <a href="/bidang-kompetensi"
-                                    class="nav-link {{ Request::is('bidang-kompetensi') ? 'active' : '' }}">
-                                    <i class="fa-regular fa-circle"></i>
+                                class="nav-link {{ Request::is('bidang-kompetensi') ? 'active' : '' }}">
+                                <i class="fa-regular fa-circle"></i>
                                     <p>Bidang Keahlian</p>
                                 </a>
                             </li>
+                            {{-- ---------------------------------------------------------------------------------------- PROGRAM KOMPETENSI ---------------------------------------------------------------------------------------- --}}
                             <li class="nav-item">
                                 <a href="/program-kompetensi"
                                     class="nav-link {{ Request::is('program-kompetensi') ? 'active' : '' }}">
@@ -76,12 +81,14 @@
                                     <p>Program Keahlian</p>
                                 </a>
                             </li>
+                            {{-- ---------------------------------------------------------------------------------------- SPEKTRUM ---------------------------------------------------------------------------------------- --}}
                             <li class="nav-item">
                                 <a href="/spektrum" class="nav-link {{ Request::is('spektrum') ? 'active' : '' }}">
                                     <i class="fa-regular fa-circle"></i>
                                     <p>Spektrum</p>
                                 </a>
                             </li>
+                            {{-- ---------------------------------------------------------------------------------------- KOMPETENSI KEAHLIAN ---------------------------------------------------------------------------------------- --}}
                             <li class="nav-item">
                                 <a href="/komli" class="nav-link {{ Request::is('komli') ? 'active' : '' }}">
                                     <i class="fa-regular fa-circle"></i>
@@ -102,7 +109,7 @@
 
                 {{-- ---------------------------------------------------------------------------------------- BANGUNAN SEKOLAH ---------------------------------------------------------------------------------------- --}}
                 <li
-                    class="nav-item has-treeview {{ Request::is('bangunan-all/*') ? 'menu-open' : '' }} {{ Request::is('bangunan/*') ? 'menu-open' : '' }}">
+                    class="nav-item has-treeview {{ Request::is('bangunan/*') ? 'menu-open' : (Request::is('bangunan*') ? 'menu-open': '') }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-building"></i>
                         <p>
@@ -127,60 +134,13 @@
                                 <p>Usulan Ruang Praktek</p>
                             </a>
                         </li>
-                        {{-- ---------------------------------------------------------------------------------------- LAB KOMPUTER ---------------------------------------------------------------------------------------- --}}
-                        <li
-                            class="nav-item has-treeview {{ request('jenis') == 'lab_komputer' ? 'menu-open' : '' }}{{ request('jenis') == 'lab_biologi' ? 'menu-open' : '' }} {{ request('jenis') == 'lab_fisika' ? 'menu-open' : '' }} {{ request('jenis') == 'lab_kimia' ? 'menu-open' : '' }} {{ request('jenis') == 'lab_ipa' ? 'menu-open' : '' }} {{ request('jenis') == 'lab_bahasa' ? 'menu-open' : '' }}">
-                            <a href="#" class="nav-link">
+                        {{-- ---------------------------------------------------------------------------------------- LABORATORIUM ---------------------------------------------------------------------------------------- --}}
+                        <li class="nav-item">
+                            <a href="/bangunan-all?jenis=laboratorium"
+                                class="nav-link {{ request('jenis') == 'laboratorium' ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
-                                <p>
-                                    Usulan Laboratorium
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
+                                <p>Usulan Laboratorium</p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item {{ request('jenis') == 'lab_biologi' ? 'active' : '' }}">
-                                    <a href="/bangunan-all?jenis=lab_biologi"
-                                        class="nav-link {{ request('jenis') == 'lab_biologi' ? 'active' : '' }}">
-                                        <i class="fa-regular fa-circle"></i>
-                                        <p>Usulan Laboratorium Biologi</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item {{ request('jenis') == 'lab_fisika' ? 'active' : '' }}">
-                                    <a href="/bangunan-all?jenis=lab_fisika"
-                                        class="nav-link {{ request('jenis') == 'lab_fisika' ? 'active' : '' }}">
-                                        <i class="fa-regular fa-circle"></i>
-                                        <p>Usulan Laboratorium Fisika</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item {{ request('jenis') == 'lab_komputer' ? 'active' : '' }}">
-                                    <a href="/bangunan-all?jenis=lab_komputer"
-                                        class="nav-link {{ request('jenis') == 'lab_komputer' ? 'active' : '' }}">
-                                        <i class="fa-regular fa-circle"></i>
-                                        <p>Usulan Laboratorium Komputer</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item {{ request('jenis') == 'lab_kimia' ? 'active' : '' }}">
-                                    <a href="/bangunan-all?jenis=lab_kimia"
-                                        class="nav-link {{ request('jenis') == 'lab_kimia' ? 'active' : '' }}">
-                                        <i class="fa-regular fa-circle"></i>
-                                        <p>Usulan Laboratorium Kimia</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item {{ request('jenis') == 'lab_ipa' ? 'active' : '' }}">
-                                    <a href="/bangunan-all?jenis=lab_ipa"
-                                        class="nav-link {{ request('jenis') == 'lab_ipa' ? 'active' : '' }}">
-                                        <i class="fa-regular fa-circle"></i>
-                                        <p>Usulan Laboratorium Ipa</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item {{ request('jenis') == 'lab_bahasa' ? 'active' : '' }}">
-                                    <a href="/bangunan-all?jenis=lab_bahasa"
-                                        class="nav-link {{ request('jenis') == 'lab_bahasa' ? 'active' : '' }}">
-                                        <i class="fa-regular fa-circle"></i>
-                                        <p>Usulan Laboratorium Bahasa</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                         {{-- ---------------------------------------------------------------------------------------- PERPUSTAKAAN ---------------------------------------------------------------------------------------- --}}
                         <li class="nav-item">
@@ -219,7 +179,7 @@
 
                 @if (Auth::user()->hasRole('dinas'))
                     {{-- ---------------------------------------------------------------------------------------- PERALATAN SEKOLAH ---------------------------------------------------------------------------------------- --}}
-                    <li class="nav-item has-treeview {{ Request::is('peralatan/*') ? 'menu-open' : '' }}">
+                    <li class="nav-item has-treeview {{ Request::is('*peralatan') ? 'menu-open' : '' }}">
                         <a href="#" class="nav-link">
                             <i class="nav-icon bi bi-collection"></i>
                             <p>
@@ -231,14 +191,14 @@
                             {{-- ---------------------------------------------------------------------------------------- JURUSAN ---------------------------------------------------------------------------------------- --}}
                             <li class="nav-item">
                                 <a href="/peralatan"
-                                    class="nav-link {{ Request::is('peralatan/nama-jurusan') ? 'active' : '' }}">
+                                    class="nav-link {{ Request::is('peralatan') ? 'active' : '' }}">
                                     <i class="fa-regular fa-circle"></i>
                                     <p>Peralatan Sekolah</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="/usulan-peralatan"
-                                    class="nav-link {{ Request::is('peralatan/nama-jurusan') ? 'active' : '' }}">
+                                    class="nav-link {{ Request::is('usulan-peralatan') ? 'active' : '' }}">
                                     <i class="fa-regular fa-circle"></i>
                                     <p>Usulan Peralatan</p>
                                 </a>
@@ -259,7 +219,7 @@
                 {{-- ---------------------------------------------------------------------------------------- RIWAYAT BANTUAN ---------------------------------------------------------------------------------------- --}}
                 <li class="nav-item">
                     <a href="/riwayat-bantuan-dinas"
-                        class="nav-link {{ Request::is('riwayat-bantuan') ? 'active' : '' }}">
+                        class="nav-link {{ Request::is('riwayat-bantuan-dinas') ? 'active' : '' }}">
                         <i class="nav-icon bi bi-card-text"></i>
                         <p>Riwayat Bantuan</p>
                     </a>
@@ -267,7 +227,7 @@
 
                 @if (Auth::user()->hasRole('dinas'))
                     {{-- ---------------------------------------------------------------------------------------- MONITORING & EVALUASI ---------------------------------------------------------------------------------------- --}}
-                    <li class="nav-item has-treeview {{ Request::is('peralatan/*') ? 'menu-open' : '' }}">
+                    <li class="nav-item has-treeview {{ Request::is('monitoring') ? 'menu-open' : (Request::is('visitasi') ? 'menu-open' : '') }}">
                         <a href="#" class="nav-link">
                             <i class="nav-icon bi bi-shield-check"></i>
                             <p>
@@ -278,14 +238,14 @@
                         <ul class="nav nav-treeview">
                             {{-- ---------------------------------------------------------------------------------------- JURUSAN ---------------------------------------------------------------------------------------- --}}
                             <li class="nav-item">
-                                <a href="/monitoring" class="nav-link {{ Request::is('/monev') ? 'active' : '' }}">
+                                <a href="/monitoring" class="nav-link {{ Request::is('monitoring') ? 'active' : '' }}">
                                     <i class="fa-regular fa-circle"></i>
                                     <p>Monitoring</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="/visitasi"
-                                    class="nav-link {{ Request::is('peralatan/nama-jurusan') ? 'active' : '' }}">
+                                    class="nav-link {{ Request::is('visitasi') ? 'active' : '' }}">
                                     <i class="fa-regular fa-circle"></i>
                                     <p>Visitasi Sekolah</p>
                                 </a>

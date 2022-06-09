@@ -78,14 +78,13 @@
                                     <div class="md-2 col-11" style="max-width: 89%;">
                                         <form class="form-inline ml-2" action="/bangunan/rehab-renov-dinas" method="GET"
                                             style="width: 100%;">
-                                            <div class="input-group"
-                                                style="width: 100%;border: 1px solid #ced4da;border-radius: 3px;">
+                                            <div class="input-group mt-2" style="width: 100%;border: 1px solid #ced4da;border-radius: 3px;">
                                                 <input class="form-control form-control-navbar" type="search"
                                                     placeholder="Search Nama Sekolah" aria-label="Search"
                                                     style="height: 2.5rem;font-size: 15px;padding: 0 10px;border:none;"
                                                     name="search">
                                                 <div class="input-group-append">
-                                                    <button class="btn btn-navbar" type="submit" style="width: 40px;">
+                                                    <button class="btn btn-navbar" type="submit" style="width: 40px ">
                                                         <i class="fas fa-search"></i>
                                                     </button>
                                                 </div>
@@ -95,13 +94,13 @@
                                 </div>
                                 <thead>
                                     <tr class="text-center">
-                                        <th>No</th>
-                                        <th>Nama Sekolah</th>
-                                        <th>Status Sekolah</th>
-                                        <th>Kabupaten / Kota</th>
-                                        <th>Kantor Cabang Dinas</th>
-                                        <th>Proposal</th>
-                                        <th>Aksi</th>
+                                        <th style="background-color: #eeeeee">No</th>
+                                        <th style="background-color: #eeeeee">Nama Sekolah</th>
+                                        <th style="background-color: #eeeeee">Status Sekolah</th>
+                                        <th style="background-color: #eeeeee">Kabupaten / Kota</th>
+                                        <th style="background-color: #eeeeee">Kantor Cabang Dinas</th>
+                                        <th style="background-color: #eeeeee">Proposal</th>
+                                        <th style="background-color: #eeeeee">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -127,7 +126,7 @@
                                             <td class="text-center" style="vertical-align: middle">
                                                 <a href="/bangunan/ruang-rehabrenov/{{ $usulan->id }}"
                                                     class="btn text-white d-inline"
-                                                    style="background-color: #25b5e9">Detail</a>
+                                                    style="background-color: #00a65b">Detail</a>
                                             </td>
                                         </tr>
                                     @endforeach

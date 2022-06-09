@@ -31,13 +31,14 @@
             <div class="tab-content p-0">
                 <div class="tab-pane active" id="data-usulan-sekolah">
                     @if (count($riwayats) > 0)
-                        <form class="form-inline ml-2" action="/riwayat-bantuan-dinas" method="GET">
-                            <div class="input-group" style="width: 50vw">
+                        <form class="form-inline ml-1" action="/riwayat-bantuan-dinas" method="GET">
+                            <div class="input-group mt-2" style="width: 100%;border: 1px solid #ced4da;border-radius: 3px;">
                                 <input class="form-control form-control-navbar" type="search"
                                     placeholder="Search NPSN, sekolah id, nama sekolah" aria-label="Search"
-                                    style="height: 2.5rem;font-size: 15px;padding: 0 10px;" name="search">
+                                    style="height: 2.5rem;font-size: 15px;padding: 0 10px;border:none;"
+                                    name="search">
                                 <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit" style="width: 40px;">
+                                    <button class="btn btn-navbar" type="submit" style="width: 40px ">
                                         <i class="fas fa-search"></i>
                                     </button>
                                 </div>
@@ -51,21 +52,21 @@
                                 {{-- judul table --}}
                                 <thead>
                                     <tr>
-                                        <th rowspan="2" class="text-center" style="vertical-align: middle">No</th>
-                                        <th rowspan="2" class="text-center" style="vertical-align: middle">Nama Sekolah
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">No</th>
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">Nama Sekolah
                                         </th>
-                                        <th class="text-center">Tahun Bantuan</th>
-                                        <th rowspan="2" class="text-center" style="vertical-align: middle">Jenis Bantuan
+                                        <th class="text-center" style="background-color: #eeeeee">Tahun Bantuan</th>
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">Jenis Bantuan
                                         </th>
-                                        <th rowspan="2" class="text-center" style="vertical-align: middle">Pemberi
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">Pemberi
                                             Bantuan</th>
-                                        <th rowspan="2" class="text-center" style="vertical-align: middle">Sumber
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">Sumber
                                             Anggaran</th>
-                                        <th rowspan="2" class="text-center" style="vertical-align: middle">Nilai Bantuan
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">Nilai Bantuan
                                         </th>
-                                        <th rowspan="2" class="text-center" style="vertical-align: middle">Foto Manfaat
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">Foto Manfaat
                                             bantuan</th>
-                                        <th rowspan="2" class="text-center" style="vertical-align: middle">Keterangan
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">Keterangan
                                         </th>
                                     </tr>
                                 </thead>
