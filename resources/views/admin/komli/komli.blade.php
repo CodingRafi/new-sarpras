@@ -33,7 +33,7 @@
         <div class="card-header" style="background-color: #25b5e9">
             <h3 class="text-white card-title">Data Kompetensi Keahlian</h3>
             <button type="button" class="btn btn-tool border border-light text-white ml-3" data-toggle="modal"
-                data-target="#tambah-kompetensi"><i class="bi bi-plus"></i> Tambah Kompetensi Keahlian
+                data-target="#tambah-kompetensi"><i class="bi bi-plus"></i> Tambah Komli
             </button>
         </div>
         <div class="card-body">
