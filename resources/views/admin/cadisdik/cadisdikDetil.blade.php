@@ -80,12 +80,12 @@
                     <!-- /.card-header -->
                     <div class="card-body table-responsive pt-0" style="height: 220px">
                         @if (count($kabupatens) > 0)
-                            <table class="table table-head-fixed text-nowrap text-center">
+                            <table class="table table-head-fixed table-bordered text-nowrap text-center mt-3">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Kota/Kabupaten</th>
-                                        <th style="width: 70px;">Aksi</th>
+                                        <th style="background-color: #eeeeee">No</th>
+                                        <th style="background-color: #eeeeee">Kota/Kabupaten</th>
+                                        <th style="width: 70px; background-color:#eeeeee">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -97,7 +97,7 @@
                                                 <form action="/profil-kcd/{{ $kabupaten->id_profil_kcds }}" method="post">
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="submit" class="btn btn-danger"
+                                                    <button type="submit" class="btn text-white" style="background-color: #263238"
                                                         onclick="return confirm('apakah anda yakin akan mengahapus wilayah ini?')">Hapus</button>
                                                 </form>
                                             </td>
@@ -124,15 +124,15 @@
             <!-- /.card-header -->
             <div class="card-body table-responsive">
                 @if (count($profils) > 0)
-                    <table class="table table-head-fixed text-nowrap text-center">
+                    <table class="table table-head-fixed table-bordered text-nowrap text-center">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Petugas</th>
-                                <th>Sekolah</th>
-                                <th>NPSN</th>
-                                <th>Status</th>
-                                <th style="width: 70px;">Aksi</th>
+                                <th style="background-color: #eeeeee">No</th>
+                                <th style="background-color: #eeeeee">Petugas</th>
+                                <th style="background-color: #eeeeee">Sekolah</th>
+                                <th style="background-color: #eeeeee">NPSN</th>
+                                <th style="background-color: #eeeeee">Status</th>
+                                <th style="width: 70px; background-color:#eeeeee">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>

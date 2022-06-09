@@ -32,16 +32,16 @@
             <div class="card-body">
                 <div class="table-responsive">
                     @if (count($peralatans) > 0)
-                        <table class="table table-bordered table-hover">
+                        <table class="table table-bordered">
                             <thead>
                                 <tr class="text-center">
-                                    <th>No</th>
-                                    <th>Kompetensi Keahlian</th>
-                                    <th>Nama</th>
-                                    <th>Kategori</th>
-                                    <th>Rasio</th>
-                                    <th>Deskripsi</th>
-                                    <th>Aksi</th>
+                                    <th style="background-color: #eeeeee">No</th>
+                                    <th style="background-color: #eeeeee">Kompetensi Keahlian</th>
+                                    <th style="background-color: #eeeeee">Nama</th>
+                                    <th style="background-color: #eeeeee">Kategori</th>
+                                    <th style="background-color: #eeeeee">Rasio</th>
+                                    <th style="background-color: #eeeeee">Deskripsi</th>
+                                    <th style="background-color: #eeeeee">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -64,7 +64,7 @@
                                             <form action="/peralatan/{{ $peralatan->id }}" method="POST">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="btn btn-danger mt-2"
+                                                <button type="submit" class="btn text-white mt-2" style="background-color: #263238"
                                                     onclick="return confirm('Apakah anda yakin akan menghapus peralatan ini?')">Hapus</button>
                                             </form>
                                         </td>

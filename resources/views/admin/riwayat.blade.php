@@ -52,21 +52,21 @@
                                 {{-- judul table --}}
                                 <thead>
                                     <tr>
-                                        <th rowspan="2" class="text-center" style="vertical-align: middle">No</th>
-                                        <th rowspan="2" class="text-center" style="vertical-align: middle">Nama Sekolah
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">No</th>
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">Nama Sekolah
                                         </th>
-                                        <th class="text-center">Tahun Bantuan</th>
-                                        <th rowspan="2" class="text-center" style="vertical-align: middle">Jenis Bantuan
+                                        <th class="text-center" style="background-color: #eeeeee">Tahun Bantuan</th>
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">Jenis Bantuan
                                         </th>
-                                        <th rowspan="2" class="text-center" style="vertical-align: middle">Pemberi
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">Pemberi
                                             Bantuan</th>
-                                        <th rowspan="2" class="text-center" style="vertical-align: middle">Sumber
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">Sumber
                                             Anggaran</th>
-                                        <th rowspan="2" class="text-center" style="vertical-align: middle">Nilai Bantuan
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">Nilai Bantuan
                                         </th>
-                                        <th rowspan="2" class="text-center" style="vertical-align: middle">Foto Manfaat
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">Foto Manfaat
                                             bantuan</th>
-                                        <th rowspan="2" class="text-center" style="vertical-align: middle">Keterangan
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">Keterangan
                                         </th>
                                     </tr>
                                 </thead>
