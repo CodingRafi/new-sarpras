@@ -94,13 +94,13 @@
                                 </div>
                                 <thead>
                                     <tr class="text-center">
-                                        <th>No</th>
-                                        <th>Nama Sekolah</th>
-                                        <th>Status Sekolah</th>
-                                        <th>Kabupaten / Kota</th>
-                                        <th>Kantor Cabang Dinas</th>
-                                        <th>Proposal</th>
-                                        <th>Aksi</th>
+                                        <th style="background-color: #eeeeee">No</th>
+                                        <th style="background-color: #eeeeee">Nama Sekolah</th>
+                                        <th style="background-color: #eeeeee">Status Sekolah</th>
+                                        <th style="background-color: #eeeeee">Kabupaten / Kota</th>
+                                        <th style="background-color: #eeeeee">Kantor Cabang Dinas</th>
+                                        <th style="background-color: #eeeeee">Proposal</th>
+                                        <th style="background-color: #eeeeee">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -126,7 +126,7 @@
                                             <td class="text-center" style="vertical-align: middle">
                                                 <a href="/bangunan/ruang-rehabrenov/{{ $usulan->id }}"
                                                     class="btn text-white d-inline"
-                                                    style="background-color: #25b5e9">Detail</a>
+                                                    style="background-color: #00a65b">Detail</a>
                                             </td>
                                         </tr>
                                     @endforeach

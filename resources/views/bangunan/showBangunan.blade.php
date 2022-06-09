@@ -42,9 +42,9 @@
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr class="text-center">
-                                        <th rowspan="2" style="vertical-align: middle;">No</th>
-                                        <th rowspan="2" style="vertical-align: middle;">Nama Ruang</th>
-                                        <th rowspan="2" style="vertical-align: middle;">Aksi</th>
+                                        <th rowspan="2" style="vertical-align: middle; background-color:#eeeeee;">No</th>
+                                        <th rowspan="2" style="vertical-align: middle; background-color:#eeeeee;">Nama Ruang</th>
+                                        <th rowspan="2" style="vertical-align: middle; background-color:#eeeeee;">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -159,10 +159,10 @@
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr class="text-center">
-                                        <th rowspan="2" style="vertical-align: middle;">No</th>
-                                        <th rowspan="2" style="vertical-align: middle;">Jenis Laboratorium</th>
-                                        <th rowspan="2" style="vertical-align: middle;">Kompetensi Keahlian</th>
-                                        <th rowspan="2" style="vertical-align: middle;">Aksi</th>
+                                        <th rowspan="2" style="vertical-align: middle; background-color:#eeeeee;">No</th>
+                                        <th rowspan="2" style="vertical-align: middle; background-color:#eeeeee;">Jenis</th>
+                                        <th rowspan="2" style="vertical-align: middle; background-color:#eeeeee;">Kompetensi Keahlian</th>
+                                        <th rowspan="2" style="vertical-align: middle; background-color:#eeeeee;">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -362,13 +362,13 @@
                                 </div>
                                 <thead>
                                     <tr class="text-center">
-                                        <th>No</th>
-                                        <th>Nama Sekolah</th>
-                                        <th>Status Sekolah</th>
-                                        <th>Kabupaten / Kota</th>
-                                        <th>Kantor Cabang Dinas</th>
-                                        <th>Proposal</th>
-                                        <th>Aksi</th>
+                                        <th style="background-color: #eeeeee">No</th>
+                                        <th style="background-color: #eeeeee">Nama Sekolah</th>
+                                        <th style="background-color: #eeeeee">Status Sekolah</th>
+                                        <th style="background-color: #eeeeee">Kabupaten / Kota</th>
+                                        <th style="background-color: #eeeeee">Kantor Cabang Dinas</th>
+                                        <th style="background-color: #eeeeee">Proposal</th>
+                                        <th style="background-color: #eeeeee">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>

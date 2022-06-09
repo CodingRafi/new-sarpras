@@ -52,7 +52,7 @@
                         </div>
                     </form>
                 @endif
-                <div class="tab-content p-0">
+                <div class="tab-content p-3">
                     <div class="tab-pane active" id="data-usulan-sekolah">
                         <div class="row">
                             <div class="col">
