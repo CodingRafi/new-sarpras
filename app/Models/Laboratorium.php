@@ -20,4 +20,24 @@ class Laboratorium extends Model
     public function profil(){
         return $this->belongsTo(profil::class);
     }
+
+    public static function status_laboratorium($profil){
+        $status_laboratorium = [];
+
+        foreach ($profil->laboratorium as $key => $laboratorium) {
+            if ($laboratorium->kekurangan > 0) {
+                $kondisi = 'Tidak Ideal';
+            }else{
+                $kondisi = 'Ideal';
+            }
+
+            $status_laboratorium[] = [
+                'jenis' => $laboratorium->jenis_laboratorium->jenis,
+                'kondisi' => $kondisi,
+                'kekurangan' => $laboratorium->kekurangan
+            ];
+        }
+
+        return $status_laboratorium;
+    }
 }

@@ -927,6 +927,43 @@
                                 <td class="text-center">{{ $status_lahan['kondisi'] }}</td>
                                 <td class="text-center">Kekurangan Lahan {{ $status_lahan['kekurangan'] }} m²</td>
                             </tr>
+                            @foreach ($status_praktik as $kompeten)
+                                {{-- @dd($bangunan['jenis']) --}}
+                                <tr>
+                                    <td class="text-center">{{ $no++ }}</td>
+                                    <td class="text-center">Bangunan</td>
+                                    <td class="text-center" style="text-transform: capitalize">
+                                        Ruang Praktik {{ $kompeten['jenis'] }}</td>
+                                    <td class="text-center">{{ $kompeten['kondisi'] }}</td>
+                                    <td class="text-center">Kekurangan {{ $kompeten['kekurangan'] }} m²</td>
+                                </tr>
+                            @endforeach
+                            @foreach ($status_laboratorium as $lab)
+                                {{-- @dd($bangunan['jenis']) --}}
+                                <tr>
+                                    <td class="text-center">{{ $no++ }}</td>
+                                    <td class="text-center">Bangunan</td>
+                                    <td class="text-center" style="text-transform: capitalize">
+                                        {{ $lab['jenis'] }}</td>
+                                    <td class="text-center">{{ $lab['kondisi'] }}</td>
+                                    <td class="text-center">Kekurangan {{ $lab['kekurangan'] }} m²</td>
+                                </tr>
+                            @endforeach
+                            @foreach ($status_bangunan as $bangunan)
+                                {{-- @dd($bangunan['jenis']) --}}
+                                <tr>
+                                    <td class="text-center">{{ $no++ }}</td>
+                                    <td class="text-center">Bangunan</td>
+                                    <td class="text-center" style="text-transform: capitalize">
+                                        {{ str_replace('_', ' ', $bangunan['jenis']) }}</td>
+                                    <td class="text-center">{{ $bangunan['kondisi'] }}</td>
+                                    @if ($bangunan['jenis'] == 'ruang_kelas' || $bangunan['jenis'] == 'toilet')
+                                        <td class="text-center">Kekurangan {{ $bangunan['kekurangan'] }} ruang</td>
+                                    @else
+                                        <td class="text-center">Kekurangan {{ $bangunan['kekurangan'] }} m²</td>
+                                    @endif
+                                </tr>
+                            @endforeach
                             @foreach ($status_peralatan as $peralatan)
                                 <tr>
                                     <td class="text-center">{{ $no++ }}</td>
@@ -935,21 +972,6 @@
                                     <td class="text-center">{{ $peralatan['kondisi'] }}</td>
                                     <td class="text-center">Kekurangan {{ $peralatan['kekurangan'] }} peralatan,
                                         pada jurusan {{ $peralatan['jurusan'] }}</td>
-                                </tr>
-                            @endforeach
-                            @foreach ($status_bangunan as $bangunan)
-                                {{-- @dd($bangunan['jenis']) --}}
-                                <tr>
-                                    <td class="text-center">{{ $no++ }}</td>
-                                    <td class="text-center">Bangunan</td>
-                                    <td class="text-center">{{ str_replace('_', ' ', $bangunan['jenis']) }}</td>
-                                    <td class="text-center">{{ $bangunan['kondisi'] }}</td>
-                                    @if ($bangunan['jenis'] == 'ruang_kelas')
-                                        <td class="text-center">Kekurangan {{ $bangunan['kekurangan'] }} ruang</td>
-                                    @else
-                                        {{-- <td class="text-center">Kekurangan {{ $bangunan['kekurangan'] }} bangunan,
-                                            pada jurusan {{ $bangunan['jurusan'] }}</td> --}}
-                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>

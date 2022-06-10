@@ -54,14 +54,14 @@
         <div class="col-lg-6 col-12">
             <div class="card card-success">
                 <div class="card-header">
-                    <h3 class="card-title">Kompetensi Keahlian</h3>
+                    <h3 class="card-title">Diperuntukkan untuk Kompetensi Keahlian</h3>
                 </div>
                 <div class="card-body table-responsive p-0" style="height: 389px">
                     <table class="table table-head-fixed text-nowrap"">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Kompetensi Keahlian</th>
+                                <th>Diperuntukkan untuk Kompetensi Keahlian</th>
                             </tr>
                         </thead>
                         <tbody>
