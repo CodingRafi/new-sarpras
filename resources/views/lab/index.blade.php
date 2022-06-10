@@ -288,78 +288,77 @@
         style="{{ $errors->any() ? 'display: block;background: rgba(69,90,100, .5);' : '' }}">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <form action="/bangunan/usulan-laboratorium" method="post" enctype="multipart/form-data">
-                    <div class="modal-header">
-                        <h4 class="modal-title" style="text-transform: capitalize;">Usulan Laboratorium</h4>
-                        <button type="button" class="close tombol-exnya" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    @csrf
-                    <div class="form-group row">
-                        <label class="col-sm-4 col-form-label">Laboratorium</label>
-                        <select class="form-control col-15 fstdropdown-select" id="kompetensi-keahlian"
-                            name="laboratorium_id" required>
-                            @foreach ($laboratoriums as $jenis)
-                                <option value="{{ $jenis->id }}">{{ $jenis->jenis }}</option>
-                            @endforeach
-                        </select>
-                        @error('laboratorium_id')
-                            <div class="invalid-feedback d-block" style="margin-left: 21vw">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                    {{-- input luas lahan --}}
-                    <div class="form-group row">
-                        <label class="col-sm-4 col-form-label">Luas Lahan (m²)</label>
-                        <input type="number"
-                            class="form-control col-sm-7 @error('luas_lahan') is-invalid @enderror loading-tambah"
-                            placeholder="Masukan Luas Lahan" id="luas-lahan" name="luas_lahan"
-                            value="{{ old('luas_lahan') }}" required>
-                        @error('luas_lahan')
-                            <div class="invalid-feedback d-block" style="margin-left: 21vw">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                    {{-- end luas lahan --}}
-
-                    {{-- upload gambar lokasi --}}
-                    <div class="form-group row">
-                        <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan
-                            <br><small class="text-danger">*Note Max 1 Gambar 5MB</small></label>
-                        <input type="file" id="gambar-lahan" multiple accept="image/*" name="gambar[]"
-                            class="gambar-lahan mt-2 @error('gambar') is-invalid @enderror loading-tambah"
-                            value="{{ old('gambar') }}" required>
-                        @error('gambar.*')
-                            <div class="invalid-feedback d-block" style="margin-left: 21vw">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                    {{-- end upload gambar lokasi --}}
-
-                    {{-- upload proposal --}}
-                    <div class="form-group row">
-                        <label class="col-sm-4 col-form-label pt-1 @error('proposal') is-invalid @enderror"
-                            value="{{ old('proposal') }}" for="customFile">Proposal</label>
-                        <input type="file" class="loading-tambah" id="proposal" accept=".pdf" name="proposal" required>
-                        @error('proposal')
-                            <div class="invalid-feedback d-block" style="margin-left: 21vw">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                    {{-- end upload proposal --}}
-
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default tombol-Close" data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn text-white loading-simpan"
-                            style="background-color: #00a65b">Simpan</button>
-                    </div>
+                <div class="modal-body">
+                    <form action="/bangunan/usulan-laboratorium" method="post" enctype="multipart/form-data">
+                        <div class="modal-header">
+                            <h4 class="modal-title" style="text-transform: capitalize;">Usulan Laboratorium</h4>
+                            <button type="button" class="close tombol-exnya" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @csrf
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Laboratorium</label>
+                            <select class="custom-select col-sm-7" id="kompetensi-keahlian"
+                                name="laboratorium_id" required>
+                                @foreach ($laboratoriums as $jenis)
+                                    <option value="{{ $jenis->id }}">{{ $jenis->jenis }}</option>
+                                @endforeach
+                            </select>
+                            @error('laboratorium_id')
+                                <div class="invalid-feedback d-block" style="margin-left: 21vw">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        {{-- input luas lahan --}}
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Luas Lahan (m²)</label>
+                            <input type="number"
+                                class="form-control col-sm-7 @error('luas_lahan') is-invalid @enderror loading-tambah"
+                                placeholder="Masukan Luas Lahan" id="luas-lahan" name="luas_lahan"
+                                value="{{ old('luas_lahan') }}" required>
+                            @error('luas_lahan')
+                                <div class="invalid-feedback d-block" style="margin-left: 21vw">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        {{-- end luas lahan --}}
+                        {{-- upload gambar lokasi --}}
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan
+                                <br><small class="text-danger">*Note Max 1 Gambar 5MB</small></label>
+                            <input type="file" id="gambar-lahan" multiple accept="image/*" name="gambar[]"
+                                class="gambar-lahan mt-2 @error('gambar') is-invalid @enderror loading-tambah"
+                                value="{{ old('gambar') }}" required>
+                            @error('gambar.*')
+                                <div class="invalid-feedback d-block" style="margin-left: 21vw">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        {{-- end upload gambar lokasi --}}
+                        {{-- upload proposal --}}
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label pt-1 @error('proposal') is-invalid @enderror"
+                                value="{{ old('proposal') }}" for="customFile">Proposal</label>
+                            <input type="file" class="loading-tambah" id="proposal" accept=".pdf" name="proposal" required>
+                            @error('proposal')
+                                <div class="invalid-feedback d-block" style="margin-left: 21vw">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        {{-- end upload proposal --}}
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default tombol-Close" data-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn text-white loading-simpan"
+                                style="background-color: #00a65b">Simpan</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            </form>
         </div>
         <!-- /.modal-content -->
     </div>
