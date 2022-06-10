@@ -63,6 +63,7 @@ class Bangunan extends Model
     }
 
     public static function status_bangunan_dinas($profil){
+        $profil = Profil::find(2817);
         $bangunan_all = Bangunan::status_bangunan($profil);
         $laboratorium = Laboratorium::status_laboratorium($profil);
         $kompetens = Kompeten::status_kompeten($profil);
@@ -92,10 +93,11 @@ class Bangunan extends Model
         }
 
         foreach ($kompetens as $key => $kompeten) {
-            if ($kompeten['kekurangan'] > 0) {
+            // dd($kompeten);
+            if ($kompeten->status == 'tidak_ideal') {
                 $bangunan_tidak_ideal[] = [
                     'kategori' => 'praktik',
-                    'jenis' => $kompeten['jenis'],
+                    'jenis' => $kompeten->kompetensi,
                     'kondisi' => 'Tidak Ideal',
                     'kekurangan' => $kompeten['kekurangan']
                 ];

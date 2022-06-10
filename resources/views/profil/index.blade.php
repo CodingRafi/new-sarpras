@@ -928,14 +928,13 @@
                                 <td class="text-center">Kekurangan Lahan {{ $status_lahan['kekurangan'] }} m²</td>
                             </tr>
                             @foreach ($status_praktik as $kompeten)
-                                {{-- @dd($bangunan['jenis']) --}}
                                 <tr>
                                     <td class="text-center">{{ $no++ }}</td>
                                     <td class="text-center">Bangunan</td>
                                     <td class="text-center" style="text-transform: capitalize">
-                                        Ruang Praktik {{ $kompeten['jenis'] }}</td>
-                                    <td class="text-center">{{ $kompeten['kondisi'] }}</td>
-                                    <td class="text-center">Kekurangan {{ $kompeten['kekurangan'] }} m²</td>
+                                        Ruang Praktik {{ $kompeten->kompetensi }}</td>
+                                    <td class="text-center text-capitalize">{{ str_replace("_", " ", $kompeten->status) }}</td>
+                                    <td class="text-center">Kekurangan {{ $kompeten->kekurangan }} m²</td>
                                 </tr>
                             @endforeach
                             @foreach ($status_laboratorium as $lab)

@@ -21,9 +21,11 @@ return new class extends Migration
             $table->string('jml_pr');
             $table->string('logo')->nullable();
             $table->text('keterangan')->nullable();
-            $table->string('kondisi_ideal');
+            $table->string('kondisi_ideal_ruang');
+            $table->string('kondisi_ideal_lahan');
             $table->string('ketersediaan');
             $table->string('kekurangan');
+            $table->string('status');
             $table->timestamps();
         });
     }

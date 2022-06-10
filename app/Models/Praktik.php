@@ -22,20 +22,20 @@ class Praktik extends Model
         return $this->belongsTo(Kompeten::class);
     }
 
-    public static function ambilKompeten($profil){
-        return DB::table('kompetens as a')->select('a.*')
-                    ->leftJoin('praktiks as b', function($join) use ($profil){
-                        $join->on('a.id', '=', 'b.kompeten_id')
-                            ->where('b.profil_id',  $profil);
-                    })->whereNull('b.kompeten_id')->get();
-    }
+    // public static function ambilKompeten($profil){
+    //     return DB::table('kompetens as a')->select('a.*')
+    //                 ->leftJoin('praktiks as b', function($join) use ($profil){
+    //                     $join->on('a.id', '=', 'b.kompeten_id')
+    //                         ->where('b.profil_id',  $profil);
+    //                 })->whereNull('b.kompeten_id')->get();
+    // }
 
-    public static function kompetenSudahDIpilih($profil){
-        return DB::table('kompetens as a')->select('a.*')
-                    ->leftJoin('praktiks as b', function($join) use ($profil){
-                        $join->on('a.id', '=', 'b.kompeten_id')
-                            ->where('b.profil_id',  $profil);
-                    })->whereNotNull('b.kompeten_id')->get();
-    }
+    // public static function kompetenSudahDIpilih($profil){
+    //     return DB::table('kompetens as a')->select('a.*')
+    //                 ->leftJoin('praktiks as b', function($join) use ($profil){
+    //                     $join->on('a.id', '=', 'b.kompeten_id')
+    //                         ->where('b.profil_id',  $profil);
+    //                 })->whereNotNull('b.kompeten_id')->get();
+    // }
 
 }
