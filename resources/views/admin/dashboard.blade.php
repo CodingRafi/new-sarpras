@@ -201,30 +201,23 @@
                             @foreach ($datas as $data)
                             {{-- @dd($data) --}}
                                 <tr>
-                                    <th class="text-center col-1" scope="row">
+                                    <th class="text-center col-1" scope="row" rowspan="3">
                                         {{ ($profils->currentpage() - 1) * $profils->perpage() + $loop->index + 1 }}</th>
-                                    <td class="text-center col-1">{{ $data['nama'] }}</td>
-                                    <td class="text-center col-1">{{ $data['status_sekolah'] }}</td>
-                                    <td class="text-center col-1">{{ $data['kabupaten'] }}</td>
-                                    <td class="text-center col-2">{{ $data['instansi'] }}</td>
+                                    <td class="text-center col-1" rowspan="3">{{ $data['nama'] }}</td>
+                                    <td class="text-center col-1" rowspan="3">{{ $data['status_sekolah'] }}</td>
+                                    <td class="text-center col-1" rowspan="3">{{ $data['kabupaten'] }}</td>
+                                    <td class="text-center col-2" rowspan="3">{{ $data['instansi'] }}</td>
                                     <td class="text-center col-2">
                                         <div class="text-white mt-1" style="background-color: #00a65b; border-radius:5px">
-                                            Lahan {{ $data['status_lahan']['kondisi'] }}</div>
-                                        <div class="text-white mt-1" style="background-color: #25b5e9; border-radius:5px">
-                                            Peralatan ideal</div>
-                                        <div class="text-white mt-1" style="background-color: #fcc12d; border-radius:5px">
-                                            Belum
-                                            ideal, kurang ruang praktik TKJ</div>
-                                        <div class="text-white mt-1" style="background-color: #fcc12d; border-radius:5px">
-                                            Belum
-                                            ideal, kurang ruang kelas</div>
+                                            Lahan
+                                            ideal</div>
                                     </td>
                                     <td class="text-center col-2">
                                         <div class="text-white mt-1" style="background-color: #00a65b; border-radius:5px">
                                             Peralatan Rekayasa Perangkat Lunak kekurangan 36 laptop
                                         </div>
                                     </td>
-                                    <td class="text-center col-2">
+                                    <td class="text-center col-2" rowspan="3">
                                         @foreach ($data['usulanLahan'] as $usulan)
                                             <a class="btn text-white mt-1" style="background-color: #fcc12d"
                                                 href="/usulan-lahan/{{ $usulan->id }}">Usulan Lahan
@@ -246,8 +239,30 @@
                                             </a>
                                         @endforeach
                                     </td>
-                                    <td class="text-center"><a class="text-center btn text-white"
+                                    <td class="text-center" rowspan="3"><a class="text-center btn text-white"
                                             style="background-color: #263238" href="/profil/{{ $data['id'] }}">Detail</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center col-2">
+                                        <div class="text-white mt-1" style="background-color: #fcc12d; border-radius:5px">
+                                            Bangunan Belum Ideal
+                                        </div>
+                                    </td>
+                                    <td class="text-center col-2">
+                                        <div class="text-white mt-1" style="background-color: #fcc12d; border-radius:5px">
+                                            Belum
+                                            ideal, kurang ruang praktik TKJ</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center col-2">
+                                        <div class="text-white mt-1" style="background-color: #25b5e9; border-radius:5px">
+                                            Peralatan ideal</div>
+                                    </td>
+                                    <td class="text-center col-2">
+                                        <div class="text-white mt-1" style="background-color: #25b5e9; border-radius:5px">
+                                            Peralatan ideal</div>
                                     </td>
                                 </tr>
                             @endforeach
