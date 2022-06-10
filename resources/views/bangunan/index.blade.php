@@ -225,7 +225,6 @@
     @endif
 
     {{-- End Row --}}
-
     <div class="card" style="margin-bottom: 10rem !important">
         <div class="card-header" style="background-color: #25b5e9">
             <h3 class="card-title text-white pt-2 font-weight-bold" style="text-transform: capitalize">Usulan

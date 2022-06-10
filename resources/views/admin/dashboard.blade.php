@@ -199,6 +199,7 @@
                         </thead>
                         <tbody>
                             @foreach ($datas as $data)
+                            {{-- @dd($data) --}}
                                 <tr>
                                     <th class="text-center col-1" scope="row" rowspan="3">
                                         {{ ($profils->currentpage() - 1) * $profils->perpage() + $loop->index + 1 }}</th>

@@ -1,12 +1,12 @@
 @extends('myLayouts.main')
 
 @section('tambahcss')
+    <link rel="stylesheet" href="/css/fstdropdown.css">
     <style>
         .input-group-prepend button i {
             position: absolute;
             left: 35px;
         }
-
     </style>
 @endsection
 
@@ -43,7 +43,8 @@
                                 <thead>
                                     <tr class="text-center">
                                         <th rowspan="2" style="vertical-align: middle; background-color:#eeeeee;">No</th>
-                                        <th rowspan="2" style="vertical-align: middle; background-color:#eeeeee;">Nama Ruang</th>
+                                        <th rowspan="2" style="vertical-align: middle; background-color:#eeeeee;">Nama Ruang
+                                        </th>
                                         <th rowspan="2" style="vertical-align: middle; background-color:#eeeeee;">Aksi</th>
                                     </tr>
                                 </thead>
@@ -142,7 +143,6 @@
                 </div>
             </div>
         </div>
-        
     @elseif(request('jenis') == 'laboratorium' && Auth::user()->hasRole('dinas'))
         <div class="container-fluid">
             <div class="card">
@@ -150,41 +150,40 @@
                     <h3 class="card-title text-white font-weight-bold">Jenis Laboratorium</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
-                            data-target="#tambah-jenis-pimpinan"><i class="bi bi-plus"></i> Tambah Jenis Laboratorium
+                            data-target="#tambah-laboratorium"><i class="bi bi-plus"></i> Tambah Jenis Laboratorium
                         </button>
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        @if (count($jenisPimpinans) > 0)
+                        @if (count($jenis_labolatoriums) > 0)
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr class="text-center">
                                         <th rowspan="2" style="vertical-align: middle; background-color:#eeeeee;">No</th>
                                         <th rowspan="2" style="vertical-align: middle; background-color:#eeeeee;">Jenis</th>
-                                        <th rowspan="2" style="vertical-align: middle; background-color:#eeeeee;">Kompetensi Keahlian</th>
                                         <th rowspan="2" style="vertical-align: middle; background-color:#eeeeee;">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($jenisPimpinans as $key => $jenis)
+                                    @foreach ($jenis_labolatoriums as $i => $jenis)
                                         <tr>
                                             <th class="text-center">{{ $loop->iteration }}</th>
-                                            <td class="text-center text-capitalize nama-jenis-pimpinan"
-                                                data-id="{{ $jenis->id }}">{{ $jenis->nama }}</td>
-                                            <td class="text-center text-capitalize nama-jenis-pimpinan"
-                                                data-id="{{ $jenis->id }}">Rekayasa Perangkat Lunak</td>
+                                            <td class="text-center text-capitalize nama-laboratorium"
+                                                data-id="{{ $jenis->id }}">{{ $jenis->jenis }}</td>
                                             <td class="text-center text-capitalize">
-                                                <button type="button"
-                                                    class="btn btn-warning button-jenis-pimpinan text-white"
-                                                    data-toggle="modal" data-target="#edit-jenis-pimpinan">Edit
+                                                <a href="/jenis-laboratorium/{{ $jenis->id }}"
+                                                    class="btn btn-dark">Detail</a>
+                                                <button type="button" class="btn btn-warning button-laboratorium text-white"
+                                                    data-toggle="modal" data-target="#edit-laboratorium"
+                                                    data-id="{{ $jenis->id }}">Edit
                                                 </button>
-                                                <form action="/jenis-pimpinan/{{ $jenis->id }}" method="post"
+                                                <form action="/jenis-laboratorium/{{ $jenis->id }}" method="post"
                                                     class="d-inline-block">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-success"
-                                                        onclick="return confirm('Apakah anda yakin akan menghapus jenis ruang pimpinan ini?')">Hapus</button>
+                                                        onclick="return confirm('Apakah anda yakin akan menghapus jenis laboratorium ini?')">Hapus</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -204,7 +203,7 @@
         </div>
 
         {{-- ---------------------------------------------------------------------------------------- MODAL USULAN ---------------------------------------------------------------------------------------- --}}
-        <div class="modal fade" id="tambah-jenis-pimpinan">
+        <div class="modal fade" id="tambah-laboratorium">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -214,20 +213,23 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" action="/jenis-pimpinan" method="POST">
+                        <form class="form-horizontal" action="/jenis-laboratorium" method="POST">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group row">
                                     <label for="nama" class="col-sm-3 col-form-label">Jenis Laboratorium</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="nama" name="nama" required>
+                                        <input type="text" name="jenis" id="" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="nama" class="col-sm-3 col-form-label">Kompetensi Keahlian</label>
                                     <div class="col-sm-9">
-                                        <select name="" id="" class="form-control">
-                                            <option value=""></option>
+                                        <select class="fstdropdown-select" id="select" name="komli_id[]" multiple>
+                                            @foreach ($komlis as $komli)
+                                                <option value="{{ $komli->id }}">{{ $komli->kompetensi }}
+                                                </option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -241,33 +243,25 @@
             </div>
         </div>
 
-        <div class="modal fade" id="edit-jenis-pimpinan">
+        <div class="modal fade" id="edit-laboratorium">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Edit Jenis Ruang Pimpinan</h4>
+                        <h4 class="modal-title">Edit Jenis Laboratorium</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal form-jenis-pimpinan" action="/jenis-pimpinan" method="POST">
+                        <form class="form-horizontal form-laboratorium" action="/jenis-pimpinan" method="POST">
                             @csrf
                             @method('patch')
                             <div class="card-body">
                                 <div class="form-group row">
                                     <label for="nama" class="col-sm-3 col-form-label">Jenis Laboratorium</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control input-nama-jenis-pimpinan" id="nama"
-                                            name="nama" required>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="nama" class="col-sm-3 col-form-label">Kompetensi Keahlian</label>
-                                    <div class="col-sm-9">
-                                        <select name="" id="" class="form-control">
-                                            <option value=""></option>
-                                        </select>
+                                        <input type="text" class="form-control input-nama-laboratorium" id="nama"
+                                            name="jenis" required>
                                     </div>
                                 </div>
                             </div>
@@ -417,8 +411,32 @@
     {{-- End --}}
 @endsection
 
-@if (request('jenis') == 'ruang_pimpinan')
-    @section('tambahjs')
+@section('tambahjs')
+    <script src="/js/fstdropdown.js"></script>
+    <script>
+        setFstDropdown();
+    </script>
+
+    @if (request('jenis') == 'laboratorium' && Auth::user()->hasRole('dinas'))
+        <script>
+            const namaLaboratorium = document.querySelectorAll('.nama-laboratorium');
+            const buttonLaboratorium = document.querySelectorAll('.button-laboratorium');
+            console.log(buttonLaboratorium);
+            const formLaboratorium = document.querySelector('.form-laboratorium');
+            const inputNamaLaboratorium = document.querySelector('.input-nama-laboratorium');
+
+            buttonLaboratorium.forEach((e, i) => {
+                console.log(e)
+                e.addEventListener('click', function() {
+                    inputNamaLaboratorium.value = '';
+                    inputNamaLaboratorium.value = namaLaboratorium[i].innerHTML.trim();
+                    console.log(namaLaboratorium[i].innerHTML.trim())
+                    formLaboratorium.removeAttribute('action');
+                    formLaboratorium.setAttribute('action', '/jenis-laboratorium/' + e.getAttribute('data-id'));
+                })
+            });
+        </script>
+    @elseif (request('jenis') == 'ruang_pimpinan')
         <script>
             const inputNamaJenisPimpinan = document.querySelector('.input-nama-jenis-pimpinan');
             const buttonJenisPimpinan = document.querySelectorAll('.button-jenis-pimpinan');
@@ -435,5 +453,5 @@
                 })
             });
         </script>
-    @endsection
-@endif
+    @endif
+@endsection

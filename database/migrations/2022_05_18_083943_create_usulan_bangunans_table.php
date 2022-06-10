@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('usulan_bangunans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('profil_id');
-            $table->enum('jenis', ['ruang_kelas', 'ruang_praktek', 'lab_komputer', 'perpustakaan', 'toilet', 'ruang_pimpinan', 'lab_biologi', 'lab_fisika', 'lab_kimia', 'lab_ipa', 'lab_bahasa'])->nullable();
+            $table->enum('jenis', ['ruang_kelas', 'ruang_praktek', 'laboratorium', 'perpustakaan', 'toilet', 'ruang_pimpinan',])->nullable();
             $table->foreignId('kompeten_id')->nullable();
             $table->foreignId('jenis_pimpinan_id')->nullable();
+            $table->foreignId('laboratorium_id')->nullable();
             $table->string('jml_ruang');
             $table->string('luas_lahan');
             $table->string('proposal');

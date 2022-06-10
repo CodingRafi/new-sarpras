@@ -423,8 +423,6 @@
                                     <tr>
                                         <th scope="col">No</th>
                                         <th scope="col">Nama Lahan</th>
-                                        <th scope="col">Panjang(m)</th>
-                                        <th scope="col">Lebar(m)</th>
                                         <th scope="col">Luas Lahan(m²)</th>
                                         <th scope="col">Keterangan</th>
                                         <th scope="col">Action</th>
@@ -439,9 +437,7 @@
                                         <input type="hidden" class="id_kekuranganLahan" value="{{ $lahan->id }}">
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td class="nama">{{ $lahan->nama }}</td>
-                                        <td class="panjang">{{ $lahan->panjang }} m</td>
-                                        <td class="lebar">{{ $lahan->lebar }} m</td>
-                                        <td>{{ $lahan->luas }} m²</td>
+                                        <td class="luas">{{ $lahan->luas }} m²</td>
                                         <td class="keterangan">{{ $lahan->keterangan }}</td>
                                         <td>
                                             <button type="button" class="btn text-white tombol-edit"
@@ -485,19 +481,11 @@
                             </div>
                             {{-- end input nama lahan --}}
 
-                            {{-- input panjang --}}
+                            {{-- input luas --}}
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Panjang(m)</label>
-                                <input type="number" class="form-control col-sm-9 loading-tambah2" placeholder="Masukan Panjang Lahan"
-                                    id="panjang" name="panjang" required step=any>
-                            </div>
-                            {{-- end input panjang --}}
-
-                            {{-- input lebar --}}
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Lebar(m)</label>
+                                <label class="col-sm-2 col-form-label">Luas(m²)</label>
                                 <input type="number" class="form-control col-sm-9 loading-tambah2" placeholder="Masukan Lebar Lahan"
-                                    id="lebar" name="lebar" required step=any>
+                                    id="lebar" name="luas" required step=any>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Keterangan</label>
@@ -547,21 +535,11 @@
 
                             <div class="row mt-4">
                                 <div class="col-3">
-                                    <label for="col-sm-4 col-form-label">Panjang :</label>
+                                    <label for="col-sm-4 col-form-label">Luas :</label>
                                 </div>
                                 <div class="col">
-                                    <input type="number" class="form-control col-sm-7 panjang-nama-edit"
-                                        placeholder="Masukan Panjang" id="jmlpanjang" name="panjang" required>
-                                </div>
-                            </div>
-
-                            <div class="row mt-4">
-                                <div class="col-3">
-                                    <label for="col-sm-4 col-form-label">Lebar :</label>
-                                </div>
-                                <div class="col">
-                                    <input type="number" class="form-control col-sm-7 lebar-nama-edit"
-                                        placeholder="Masukan Lebar" id="jmllebar" name="lebar" required>
+                                    <input type="number" class="form-control col-sm-7 luas-nama-edit"
+                                        placeholder="Masukan Lebar" id="jmllebar" name="luas" required>
                                 </div>
                             </div>
 
@@ -652,11 +630,9 @@
 <script>
     const tombolEdit = document.querySelectorAll('.tombol-edit');
     const inputNamaEdit = document.querySelector('.input-nama-edit');
-    const inputPanjangEdit = document.querySelector('.panjang-nama-edit');
-    const inputLebarEdit = document.querySelector('.lebar-nama-edit');
+    const inputLuasEdit = document.querySelector('.luas-nama-edit');
     const nama = document.querySelectorAll('.nama');
-    const panjang = document.querySelectorAll('.panjang');
-    const lebar = document.querySelectorAll('.lebar');
+    const luas = document.querySelectorAll('.luas');
     const inputKetereangan = document.querySelector('.keterangan-nama-edit');
     const id_kekuranganLahan = document.querySelectorAll('.id_kekuranganLahan');
     const inputIdKekurangan = document.querySelector('.inputIdKekurangan');
@@ -667,10 +643,8 @@
             console.log()
             inputNamaEdit.value = '';
             inputNamaEdit.value = nama[i].innerHTML;
-            inputPanjangEdit.value = '';
-            inputPanjangEdit.value = parseInt(panjang[i].innerHTML.replace('m²', ''));
-            inputLebarEdit.value = '';
-            inputLebarEdit.value = parseInt(lebar[i].innerHTML.replace('m²', ''));
+            inputLuasEdit.value = '';
+            inputLuasEdit.value = parseInt(luas[i].innerHTML.replace('m²', ''));
             inputIdKekurangan.value = '';
             inputIdKekurangan.value = id_kekuranganLahan[i].value;
             inputKetereangan.value = '';

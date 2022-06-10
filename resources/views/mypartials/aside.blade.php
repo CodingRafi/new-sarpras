@@ -11,7 +11,6 @@
         ::-webkit-scrollbar {
             display: none;
         }
-
     </style>
 @endsection
 
@@ -85,7 +84,8 @@
                 @endif
 
                 {{-- ---------------------------------------------------------------------------------------- BANGUNAN SEKOLAH ---------------------------------------------------------------------------------------- --}}
-                <li class="nav-item has-treeview {{ Request::is('bangunan/*') ? 'menu-open' : (Request::is('bangunan*') ? 'menu-open': '') }}">
+                <li
+                    class="nav-item has-treeview {{ Request::is('bangunan/*') ? 'menu-open' : (Request::is('bangunan*') ? 'menu-open' : '') }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-building"></i>
                         <p>

@@ -513,7 +513,7 @@
                                         </td>
                                         <td class="text-center">{{ $usulan->keterangan }}</td>
                                         <td class="text-center">
-                                            <a href="/bangunan/usulan-ruang-pimpinan/{{ $usulan->id }}/edit"
+                                            <a href="/bangunan/usulan/{{ $usulan->id }}/edit"
                                                 class="btn btn-warning text-white">Edit</a>
                                             <form action="/usulan-bangunan/{{ $usulan->id }}" method="post">
                                                 @csrf

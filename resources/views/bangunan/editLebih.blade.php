@@ -40,7 +40,6 @@
         .preview img {
             /* display: none; */
         }
-
     </style>
 @endsection
 
@@ -49,28 +48,59 @@
         <h3 class="text-dark display-4 pl-3" style="font-size: 25px;text-transform: capitalize;">Edit
             {{ str_replace('_', ' ', $data->jenis) }}</h3>
     </div>
+    {{-- @dd($data) --}}
 
     <div class="form-edit pt-3">
 
-        <form action="/bangunan/usulan-ruang-pimpinan/{{ $data->id }}" method="post" enctype="multipart/form-data">
+        <form action="/bangunan/usulan/{{ $data->id_usulan_bangunan }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('patch')
             <div class="card pt-3" style="background-color: white; border-radius: 10px; ">
-
-
-                {{-- --------------------------------------------- JENIS RUANG PIMPINAN --------------------------------------------- --}}
-                <div class="row input pl-5 mt-2">
-                    <label class="col-2 mt-3">Jenis Ruang</label>
-                    <select name="jenis_pimpinan_id" id="" required class="custom-select col-9" style="width: 77%;">
-                        @foreach ($jenis_pimpinans as $data_jenis)
-                            @if ($data_jenis->id == $jenis->id)
-                                <option value="{{ $data_jenis->id }}" selected>{{ $data_jenis->nama }}</option>
-                            @else
-                                <option value="{{ $data_jenis->id }}">{{ $data_jenis->nama }}</option>
-                            @endif
-                        @endforeach
-                    </select>
-                </div>
+                @if ($data->jenis == 'ruang_pimpinan')
+                    {{-- --------------------------------------------- JENIS RUANG PIMPINAN --------------------------------------------- --}}
+                    <div class="row input pl-5 mt-2">
+                        <label class="col-2 mt-3">Jenis Ruang</label>
+                        <select name="jenis_pimpinan_id" id="" required class="custom-select col-9" style="width: 77%;">
+                            @foreach ($jenis as $data_jenis)
+                                @if ($data_jenis->id == $data->id_jenis_pimpinan)
+                                    <option value="{{ $data_jenis->id }}" selected>{{ $data_jenis->nama }}</option>
+                                @else
+                                    <option value="{{ $data_jenis->id }}">{{ $data_jenis->nama }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                @elseif($data->jenis == 'laboratorium')
+                    <div class="row input pl-5 mt-2">
+                        <label class="col-2 mt-3">Jenis Laboratorium</label>
+                        <select name="laboratorium_id" id="" required class="custom-select col-9" style="width: 77%;">
+                            @foreach ($jenis as $data_jenis)
+                                @if ($data_jenis->id_laboratorium == $data->id_laboratorium)
+                                    <option value="{{ $data_jenis->id_laboratorium }}" selected>
+                                        {{ $data_jenis->nama_jenis_laboratorium }}</option>
+                                @else
+                                    <option value="{{ $data_jenis->id_laboratorium }}">
+                                        {{ $data_jenis->nama_jenis_laboratorium }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                @else
+                    <div class="row input pl-5 mt-2">
+                        <label class="col-2 mt-3">Jurusan</label>
+                        <select name="kompeten_id" id="" required class="custom-select col-9" style="width: 77%;">
+                            @foreach ($jenis as $data_jenis)
+                                @if ($data_jenis->id_kompeten == $data->kompeten_id)
+                                    <option value="{{ $data_jenis->id_kompeten }}" selected>
+                                        {{ $data_jenis->nama_kompetensi }}</option>
+                                @else
+                                    <option value="{{ $data_jenis->id_kompeten }}">
+                                        {{ $data_jenis->nama_kompetensi }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                @endif
 
                 {{-- --------------------------------------------- LUAS LAHAN --------------------------------------------- --}}
                 <div class="row input pl-5 mt-2">
@@ -101,14 +131,6 @@
                             </div>
                         </div>
                     @endforeach
-                    {{-- <div class="item col-lg-3 col-6 mb-3 container-image preview">
-                            <div class="shadow-sm rounded border">
-                                <a href="#" class="fancybox a-image" data-fancybox="gallery1" id="href-preview">
-                                    <img id="file-ip-1-preview" class="rounded"
-                                        style="object-fit: cover; width: 100%; aspect-ratio: 1/1;">
-                                </a>
-                            </div>
-                        </div> --}}
                 </div>
 
                 {{-- --------------------------------------------- PROPOSAL --------------------------------------------- --}}
@@ -128,7 +150,8 @@
 
                 {{-- --------------------------------------------- SUBMIT --------------------------------------------- --}}
                 <div class="pb-3 pl-5 mt-4">
-                    <button type="submit" class="btn text-white loading-simpan" style="background-color: #00a65b">Simpan</button>
+                    <button type="submit" class="btn text-white loading-simpan"
+                        style="background-color: #00a65b">Simpan</button>
                 </div>
 
             </div>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Komli extends Model
 {
@@ -37,6 +38,10 @@ class Komli extends Model
         return $this->hasMany(Peralatan::class);
     }
 
+    public function jenisLaboratoriumKomlis(){
+        return $this->hasMany(JenisLaboratoriumKomlis::class);
+    }
+
     public static function ambilKomli($kompetens){
         $komli = [];
 
@@ -45,5 +50,12 @@ class Komli extends Model
         }
 
         return $komli;
+    }
+
+    public static function belumDipilihLab(){
+        return $jenis =  DB::table('komlis as a')->select('a.*')
+        ->leftJoin('jenis_laboratorium_komlis as b', function($join) {
+            $join->on('a.id', '=', 'b.komli_id');
+        })->whereNull('b.komli_id')->get();
     }
 }

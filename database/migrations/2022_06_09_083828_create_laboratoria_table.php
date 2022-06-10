@@ -13,17 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kompetens', function (Blueprint $table) {
+        Schema::create('laboratoria', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('jenis_laboratorium_id');
             $table->foreignId('profil_id');
-            $table->foreignId('komli_id');
-            $table->string('jml_lk');
-            $table->string('jml_pr');
-            $table->string('logo')->nullable();
-            $table->text('keterangan')->nullable();
-            $table->string('kondisi_ideal');
             $table->string('ketersediaan');
             $table->string('kekurangan');
+            $table->string('kondisi_ideal');
             $table->timestamps();
         });
     }
@@ -35,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kompetens');
+        Schema::dropIfExists('laboratoria');
     }
 };
