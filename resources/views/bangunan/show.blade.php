@@ -23,7 +23,6 @@
             margin-left: 25px;
             margin-bottom: 30px;
         }
-
     </style>
 @endsection
 
@@ -101,19 +100,18 @@
                         <table class="table table-hover table-bordered text-center">
                             <thead class="bg-light text-center">
                                 <tr>
-                                    @if ($data->jenis != 'ruang_pimpinan')
+                                    @if ($data->jenis != 'ruang_pimpinan' && $data->jenis != 'ruang_praktek' && $data->jenis != 'laboratorium')
                                         <th rowspan="2" style="vertical-align: middle;">Jenis Ruang</th>
-                                    @endif
-                                    @if ($data->jenis == 'ruang_praktek')
+                                    @elseif($data->jenis == 'ruang_praktek')
                                         <th rowspan="2" style="vertical-align: middle;">Jurusan</th>
-                                    @endif
-                                    @if ($data->jenis == 'ruang_pimpinan')
+                                    @elseif($data->jenis == 'ruang_pimpinan')
                                         <th rowspan="2" style="vertical-align: middle;">Jenis Ruang</th>
+                                    @else
+                                        <th rowspan="2" style="vertical-align: middle;">Jenis Laboratorium</th>
                                     @endif
-                                    @if ($data->jenis != 'perpustakaan')
-                                        @if ($data->jenis != 'toilet')
-                                            <th rowspan="2" style="vertical-align: middle;">Jumlah Ruang</th>
-                                        @endif
+
+                                    @if ($data->jenis != 'perpustakaan' || $data->jenis != 'toilet')
+                                        <th rowspan="2" style="vertical-align: middle;">Jumlah Ruang</th>
                                     @endif
                                     <th colspan="2" style="vertical-align: middle;">Ketersedian Lahan</th>
                                     <th rowspan="2" style="vertical-align: middle;">Keterangan</th>
@@ -125,16 +123,17 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    @if ($data->jenis != 'ruang_pimpinan')
+                                    @if ($data->jenis != 'ruang_pimpinan' && $data->jenis != 'ruang_praktek' && $data->jenis != 'laboratorium')
                                         <td style="vertical-align: middle;text-transform: capitalize;">
                                             {{ str_replace('_', ' ', $data->jenis) }}</td>
-                                    @endif
-                                    @if ($data->jenis == 'ruang_praktek')
+                                    @elseif($data->jenis == 'ruang_praktek')
                                         <td style="vertical-align: middle;">{{ $jurusan }}</td>
-                                    @endif
-                                    @if ($data->jenis == 'ruang_pimpinan')
+                                    @elseif($data->jenis == 'ruang_pimpinan')
                                         <td style="vertical-align: middle;">{{ $jenisPimpinan }}</td>
+                                    @else
+                                        <td style="vertical-align: middle;">{{ $jenisLaboratorium }}</td>
                                     @endif
+
                                     @if ($data->jenis != 'perpustakaan')
                                         @if ($data->jenis != 'toilet')
                                             <td class="text-center" style="vertical-align: middle;">
@@ -158,7 +157,7 @@
                             </tbody>
                         </table>
                         <iframe src="{{ asset('storage/' . $data->proposal) }}" frameborder="0" style="width: 66%;
-                                                            height: 72rem;"></iframe>
+                                                                                    height: 72rem;"></iframe>
                     </div>
                 </div>
             </div>

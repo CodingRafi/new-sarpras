@@ -168,7 +168,7 @@
                                 {{-- input nama --}}
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Email</label>
-                                    <input type="email" class="form-control col-sm-9 is-invalid" placeholder="Masukan Email"
+                                    <input type="email" class="form-control col-sm-9" placeholder="Masukan Email"
                                         id="email" name="email">
                                 </div>
                                 {{-- end input nama --}}

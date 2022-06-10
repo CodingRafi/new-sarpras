@@ -490,7 +490,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Keterangan</label>
                                 <input type="text" class="form-control col-sm-9 loading-tambah" placeholder="Keterangan"
-                                    id="keterangan" name="keterangan" required>git
+                                    id="keterangan" name="keterangan" required>
                             </div>
                             {{-- end input lebar --}}
 
