@@ -782,7 +782,7 @@
                                             </tbody>
                                         </table>
                                         <div class="buttonSubmit">
-                                            <button class="btn btn-success">Apply</button>
+                                            <button class="btn text-white" style="background-color: #00a65b">Simpan</button>
                                         </div>
                                     </form>
                                 @else
