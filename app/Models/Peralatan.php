@@ -60,6 +60,28 @@ class Peralatan extends Model
         }
 
         return $status_peralatans;
+    }
 
+    public static function status_dashboard_dinas($profil){
+        $peralatan_tidak_ideal = [];
+
+        foreach ($profil->peralatanTersedia as $key => $peralatan) {
+            if ($peralatan->kekurangan > 0) {
+                if ($peralatan->nama == null) {
+                    $nama = $peralatan->peralatan->nama;
+                }else{
+                    $nama = $peralatan->nama;
+                }
+
+                $peralatan_tidak_ideal[] = [
+                    'kondisi' => 'Tidak Ideal',
+                    'kekurangan' => $peralatan->kekurangan,
+                    'nama' => $nama,
+                    'jurusan' => $peralatan->kompeten->komli->kompetensi
+                ];
+            }
+        }
+
+        return $peralatan_tidak_ideal;
     }
 }

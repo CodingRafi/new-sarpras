@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Profil;
 use App\Models\UsulanLahan;
 use App\Models\ProfilKcd;
+use App\Models\Peralatan;
 use App\Models\UsulanBangunan;
 use App\Models\UsulanPeralatan;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,7 @@ class AdminController extends Controller
 
     function __construct()
     {
-         $this->middleware('permission:view_profiladmin', ['only' => ['index','show']]);
+        $this->middleware('permission:view_profiladmin', ['only' => ['index','show']]);
         $this->middleware('permission:view_profil_search', ['only' => ['search']]);
     }
     /**

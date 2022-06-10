@@ -11,6 +11,14 @@ use App\Http\Requests\UpdateJenisLaboratoriumRequest;
 
 class JenisLaboratoriumController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_jenis_laboratorium|add_jenis_laboratorium|edit_jenis_laboratorium|delete_jenis_laboratorium', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_jenis_laboratorium', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_jenis_laboratorium', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_jenis_laboratorium', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -17,6 +17,15 @@ use Illuminate\Http\Request;
 
 class LaboratoriumController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_laboratorium|add_laboratorium|edit_laboratorium|delete_laboratorium', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_laboratorium', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_laboratorium', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_laboratorium', ['only' => ['destroy']]);
+         $this->middleware('permission:laboratorium_create_usulan', ['only' => ['createusulan']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

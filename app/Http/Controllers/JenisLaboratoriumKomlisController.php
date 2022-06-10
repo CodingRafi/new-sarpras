@@ -9,6 +9,14 @@ use Illuminate\Http\Request;
 
 class JenisLaboratoriumKomlisController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware('permission:view_jenis_laboratorium_komlis|add_jenis_laboratorium_komlis|edit_jenis_laboratorium_komlis|delete_jenis_laboratorium_komlis', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_jenis_laboratorium_komlis', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_jenis_laboratorium_komlis', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_jenis_laboratorium_komlis', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

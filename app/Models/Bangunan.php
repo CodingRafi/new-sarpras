@@ -61,4 +61,48 @@ class Bangunan extends Model
 
         return $status_bangunan;
     }
+
+    public static function status_bangunan_dinas($profil){
+        $bangunan_all = Bangunan::status_bangunan($profil);
+        $laboratorium = Laboratorium::status_laboratorium($profil);
+        $kompetens = Kompeten::status_kompeten($profil);
+
+        $bangunan_tidak_ideal = [];
+
+        foreach ($bangunan_all as $key => $bangunan) {
+            if ($bangunan['kekurangan'] > 0) {
+                $bangunan_tidak_ideal = [
+                    'kategori' => 'all',
+                    'jenis' => $bangunan['jenis'],
+                    'kondisi' => 'Tidak Ideal',
+                    'kekurangan' => $bangunan['kekurangan']
+                ];
+            }
+        }
+
+        foreach ($laboratorium as $key => $lab) {
+            if ($lab['kekurangan'] > 0) {
+                $bangunan_tidak_ideal[] = [
+                    'kategori' => 'lab',
+                    'jenis' => $lab['jenis'],
+                    'kondisi' => 'Tidak Ideal',
+                    'kekurangan' => $lab['kekurangan']
+                ];
+            }
+        }
+
+        foreach ($kompetens as $key => $kompeten) {
+            if ($kompeten['kekurangan'] > 0) {
+                $bangunan_tidak_ideal[] = [
+                    'kategori' => 'praktik',
+                    'jenis' => $kompeten['jenis'],
+                    'kondisi' => 'Tidak Ideal',
+                    'kekurangan' => $kompeten['kekurangan']
+                ];
+            }
+        }
+       
+        return $bangunan_tidak_ideal;
+
+    }
 }

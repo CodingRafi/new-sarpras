@@ -152,7 +152,6 @@ class Profil extends Model
         $usulanPeralatan = 0;
 
         foreach ($profils as $key => $profil) {
-            // dd($profil->peralatanTersedia);
             $lahan = UsulanLahan::where('profil_id', $profil->id)->get();
             $bangunan = UsulanBangunan::where('profil_id', $profil->id)->get();
             $peralatan = UsulanPeralatan::where('profil_id', $profil->id)->get();
@@ -160,8 +159,6 @@ class Profil extends Model
             $usulanLahan += count($lahan);
             $usulanBangunan += count($bangunan);
             $usulanPeralatan += count($peralatan);
-            // dd($profil->peralatanTersedia);
-            // dd(UsulanLahan::where('profil_id', $profil->id)->get());
 
             $datas[] = [
                 'id' => $profil->id,
@@ -187,8 +184,8 @@ class Profil extends Model
                 'instansi' => $profil->instansi,
                 'rehab' => $profil->rehab,
                 'status_lahan' => KekuranganLahan::status_kekurangan($profil),
-
-
+                'status_peralatan' => Peralatan::status_dashboard_dinas($profil),
+                'status_bangunan' => Bangunan::status_bangunan_dinas($profil)
             ];
         }
 

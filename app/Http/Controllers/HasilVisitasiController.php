@@ -11,13 +11,13 @@ use Illuminate\Support\Facades\Auth;
 
 class HasilVisitasiController extends Controller
 {
-    // function __construct()
-    // {
-    //      $this->middleware('permission:view_hasil_visitasi|add_hasil_visitasi|edit_hasil_visitasi|delete_hasil_visitasi', ['only' => ['index','show ']]);
-    //      $this->middleware('permission:add_hasil_visitasi', ['only' => ['create','store']]);
-    //      $this->middleware('permission:edit_hasil_visitasi', ['only' => ['edit','update']]);
-    //      $this->middleware('permission:delete_hasil_visitasi', ['only' => ['destroy']]);
-    // }
+    function __construct()
+    {
+         $this->middleware('permission:view_hasil_visitasi|add_hasil_visitasi|edit_hasil_visitasi|delete_hasil_visitasi', ['only' => ['index','show ']]);
+         $this->middleware('permission:add_hasil_visitasi', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_hasil_visitasi', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_hasil_visitasi', ['only' => ['destroy']]);
+    }
 
     /**
      * Display a listing of the resource.
