@@ -54,20 +54,19 @@
                                 @foreach ($datas as $data)
                                 {{-- @dd($data) --}}
                                     <tr>
-                                        <input type="hidden" class="id_pimpinan" value="{{ $data['id'] }}">
                                         <td class="text-center" style="vertical-align: middle">{{ $loop->iteration }}
                                         </td>
-                                        <td class="text-center" style="vertical-align: middle">{{ $data['jenis'] }}</td>
-                                        <td class="text-center kondisi_ideal" style="vertical-align: middle">{{ $data['kondisi_ideal'] }}
+                                        <td class="text-center" style="vertical-align: middle">{{ $data->nama }}</td>
+                                        <td class="text-center kondisi_ideal" style="vertical-align: middle">{{ $data->kondisi_ideal }}
                                         </td>
                                         <td class="text-center ketersediaan" style="vertical-align: middle">
-                                            {{ $data['ketersediaan'] }}
+                                            {{ $data->ketersediaan }}
                                         </td>
                                         <td class="text-center kekurangan" style="vertical-align: middle">
-                                            {{ $data['kekurangan'] }}
+                                            {{ $data->kekurangan }}
                                         </td>
                                         <td class="text-center keterangan" style="vertical-align: middle">
-                                            {{ $data['keterangan'] }}
+                                            {{ $data->keterangan }}
                                         </td>
                                         <td>
                                             <div class="card-body">
@@ -78,8 +77,8 @@
                                                             <i class="bi bi-three-dots-vertical"></i>
                                                         </button>
                                                         <div class="dropdown-menu" style="margin-left: -73px">
-                                                            <button type="submit" class="dropdown-item tombol-edit-ketersediaan" data-toggle="modal" data-target="#edit-tersedia" data-id="{{ $data['id'] }}">Edit</button>
-                                                            <form action="/bangunan/penunjang/{{ $data['id'] }}"
+                                                            <button type="submit" class="dropdown-item tombol-edit-ketersediaan" data-toggle="modal" data-target="#edit-tersedia" data-id="{{ $data->id }}">Edit</button>
+                                                            <form action="/bangunan/penunjang/{{ $data->id }}"
                                                                 method="post">
                                                                 @csrf
                                                                 @method('delete')
@@ -258,7 +257,7 @@
                                 @foreach ($usulans as $key => $usulan)
                                     <tr>
                                         <th class="text-center">{{ $loop->iteration }}</th>
-                                        <td class="text-center text-capitalize">{{ $usulanJenis[$key]->nama }}
+                                        <td class="text-center text-capitalize">{{ $usulan->nama }}
                                         </td>
                                         <td class="text-center">{{ $usulan->jml_ruang }}</td>
                                         <td class="text-center">{{ $usulan->luas_lahan }} M²</td>
@@ -279,7 +278,7 @@
                                         </td>
                                         <td class="text-center">{{ $usulan->keterangan }}</td>
                                         <td class="text-center">
-                                            <a href="/bangunan/usulan/{{ $usulan->id }}/edit"
+                                            <a href="/bangunan/usulan/{{ $usulan->id }}/edit?home=penunjang"
                                                 class="btn btn-warning text-white">Edit</a>
                                             <form action="/usulan-bangunan/{{ $usulan->id }}" method="post">
                                                 @csrf
@@ -316,11 +315,11 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            @if (count($jenis_pimpinans) > 0)
+                            @if (count($datas) > 0)
                                 <div class="form-group row">
                                     <label for="jumlah-lahan" class="col-sm-4 col-form-label">Jenis Ruang</label>
-                                        <select name="jenis_pimpinan_id" id="" required class="custom-select col-sm-7">
-                                            @foreach ($jenis_pimpinans as $data)
+                                        <select name="pimpinan_id" id="" required class="custom-select col-sm-7">
+                                            @foreach ($datas as $data)
                                                 <option value="{{ $data->id }}">{{ $data->nama }}</option>
                                             @endforeach
                                         </select>

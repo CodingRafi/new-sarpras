@@ -39,42 +39,25 @@ class RehabRenovController extends Controller
         $koleksi_rehab = UsulanKoleksi::koleksi($rehab);
         $fotos_rehab = UsulanFoto::fotos($koleksi_rehab);
 
-        $jenis_pimpinan = JenisPimpinan::all();
-        $pimpinan = Pimpinan::where('profil_id', Auth::user()->profil_id)->get();
-        $usulans = UsulanBangunan::where('profil_id', Auth::user()->profil_id)->where('jenis', 'ruang_pimpinan')->get();
+        $pimpinan = Pimpinan::select('pimpinans.*', 'jenis_pimpinans.*', 'pimpinans.id as id_pimpinan' , 'jenis_pimpinans.id as id_jenis_pimpinan')
+                            ->leftJoin('jenis_pimpinans', 'jenis_pimpinans.id', 'pimpinans.jenis_pimpinan_id')
+                            ->where('profil_id', Auth::user()->profil_id)->get();
+        $usulans = UsulanBangunan::select('usulan_bangunans.*', 'jenis_pimpinans.nama')
+                                    ->leftJoin('pimpinans', 'pimpinans.id', 'usulan_bangunans.pimpinan_id')
+                                    ->leftJoin('jenis_pimpinans', 'jenis_pimpinans.id', 'pimpinans.jenis_pimpinan_id')
+                                    ->where('usulan_bangunans.profil_id', Auth::user()->profil_id)
+                                    ->where('usulan_bangunans.jenis', 'ruang_pimpinan')->get();
         $koleksi = UsulanKoleksi::koleksi($usulans);
         $fotos = UsulanFoto::fotos($koleksi);
-        $bangunan = Bangunan::where('profil_id', Auth::user()->profil_id)->where('jenis', 'ruang_pimpinan')->get()[0];
-        $jenisUsulanPimpinan = [];
-
-        foreach($usulans as $usulan){
-            $jenisUsulanPimpinan[] = $usulan->jenisPimpinan;
-        }
-
-        $data = [];
-        foreach ($pimpinan as $key => $pim) {
-            $data[] = [
-                'id' => $pim->id,
-                'id_jenis' => $pim->jenisPimpinan->id,
-                'jenis' => $pim->jenisPimpinan->nama,
-                'nama' => $pim->nama,
-                'lebar' => $pim->lebar,
-                'panjang' => $pim->panjang,
-                'luas' => $pim->luas
-            ];
-        }
 
         return view("bangunan.rehabrenov.index", [
             'rehabs' => $rehab,
             'usulanKoleksis' => $koleksi,
             'usulanFotos' => $fotos,
-            'jenis_pimpinans' => $jenis_pimpinan,
-            'datas' => $data,
             'usulans' => $usulans,
             'usulanFotos_rehab' => $fotos_rehab,
-            'usulanJenis' => $jenisUsulanPimpinan,
             'kompils' => Kompeten::getKompeten(),
-            'bangunan' => $bangunan
+            'datas' => $pimpinan
         ]);
     }
 

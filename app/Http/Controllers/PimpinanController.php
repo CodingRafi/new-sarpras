@@ -37,38 +37,23 @@ class PimpinanController extends Controller
      */
     public function index()
     {
-        $pimpinan = Pimpinan::where('profil_id', Auth::user()->profil_id)->get();
-        $usulans = UsulanBangunan::where('profil_id', Auth::user()->profil_id)->where('jenis', 'ruang_pimpinan')->get();
+        $pimpinan = Pimpinan::select('pimpinans.*', 'jenis_pimpinans.*', 'pimpinans.id as id_pimpinan' , 'jenis_pimpinans.id as id_jenis_pimpinan')
+                            ->leftJoin('jenis_pimpinans', 'jenis_pimpinans.id', 'pimpinans.jenis_pimpinan_id')
+                            ->where('profil_id', Auth::user()->profil_id)->get();
+        $usulans = UsulanBangunan::select('usulan_bangunans.*', 'jenis_pimpinans.nama')
+                                    ->leftJoin('pimpinans', 'pimpinans.id', 'usulan_bangunans.pimpinan_id')
+                                    ->leftJoin('jenis_pimpinans', 'jenis_pimpinans.id', 'pimpinans.jenis_pimpinan_id')
+                                    ->where('usulan_bangunans.profil_id', Auth::user()->profil_id)
+                                    ->where('usulan_bangunans.jenis', 'ruang_pimpinan')->get();
         $koleksi = UsulanKoleksi::koleksi($usulans);
         $fotos = UsulanFoto::fotos($koleksi);
-        $jenisUsulanPimpinan = [];
-        $bangunan = Bangunan::where('profil_id', Auth::user()->profil_id)->where('jenis', 'ruang_pimpinan')->get()[0];
-
-        foreach($usulans as $usulan){
-            $jenisUsulanPimpinan[] = $usulan->jenisPimpinan;
-        }
-
-        $data = [];
-        foreach ($pimpinan as $key => $pim) {
-            $data[] = [
-                'id' => $pim->id,
-                'id_jenis' => $pim->jenisPimpinan->id,
-                'jenis' => $pim->jenisPimpinan->nama,
-                'kondisi_ideal' => $pim->kondisi_ideal,
-                'ketersediaan' => $pim->ketersediaan,
-                'kekurangan' => $pim->kekurangan,
-                'keterangan' => $pim->keterangan,
-            ];
-        }
 
         return view("bangunan.pimpinan.index", [
             'jenis_pimpinans' => JenisPimpinan::belumTerpilih(),
-            'datas' => $data,
+            'datas' => $pimpinan,
             'usulans' => $usulans,
             'usulanFotos' => $fotos,
-            'usulanJenis' => $jenisUsulanPimpinan,
             'kompils' => Kompeten::getKompeten(),
-            'bangunan' => $bangunan
         ]);
     }
 
@@ -180,7 +165,7 @@ class PimpinanController extends Controller
 
     public function createusulan(Request $request){
         $validatedData = $request->validate([
-            'jenis_pimpinan_id' => 'required',
+            'pimpinan_id' => 'required',
             'luas_lahan' => 'required',
             'gambar' => 'required',
             'proposal' => 'required|mimes:pdf',
