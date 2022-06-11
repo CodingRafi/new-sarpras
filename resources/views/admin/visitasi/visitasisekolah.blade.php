@@ -123,8 +123,7 @@
                                     <div class="container d-flex justify-content-center align-items-center"
                                         style="height: 10rem">
                                         <div class="alert" role="alert">
-                                            Tidak ada {{ count($verifikators) > 0 ? 'sekolah' : 'verifikator' }}
-                                            ditemukan
+                                            Tidak ada visitasi ditemukan
                                         </div>
                                     </div>
                                 @endif
@@ -155,7 +154,7 @@
                                         <select class="fstdropdown-select select-jurusan" id="select" name="profil_id">
                                             @foreach ($profils as $profil)
                                                 <option value="{{ $profil->id }}">{{ $profil->nama }}
-                                                    ({{ $profil->alamat }})
+                                                    ({{ $profil->npsn }})
                                                 </option>
                                             @endforeach
                                         </select>
@@ -195,7 +194,8 @@
                                 <div class="container d-flex justify-content-center align-items-center"
                                     style="height: 10rem">
                                     <div class="alert" role="alert">
-                                        Tidak ada data ditemukan
+                                        Tidak ada {{ count($verifikators) > 0 ? 'sekolah' : 'verifikator' }}
+                                            ditemukan
                                     </div>
                                 </div>
                             @endif

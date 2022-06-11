@@ -17,6 +17,10 @@
             display: none !important;
         }
 
+        .coba{
+            background: red;
+        }
+
         .loading-container {
             position: relative;
             width: 110px;
@@ -218,5 +222,8 @@
                 kcd_id.value = e.getAttribute('data-id');
             })
         });
+
+        const listSelect = document.querySelector('.list-select');
+        console.log(listSelect)
     </script>
 @endsection

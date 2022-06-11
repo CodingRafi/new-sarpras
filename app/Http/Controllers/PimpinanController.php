@@ -37,7 +37,6 @@ class PimpinanController extends Controller
      */
     public function index()
     {
-        $jenis_pimpinan = JenisPimpinan::all();
         $pimpinan = Pimpinan::where('profil_id', Auth::user()->profil_id)->get();
         $usulans = UsulanBangunan::where('profil_id', Auth::user()->profil_id)->where('jenis', 'ruang_pimpinan')->get();
         $koleksi = UsulanKoleksi::koleksi($usulans);
@@ -55,15 +54,15 @@ class PimpinanController extends Controller
                 'id' => $pim->id,
                 'id_jenis' => $pim->jenisPimpinan->id,
                 'jenis' => $pim->jenisPimpinan->nama,
-                'nama' => $pim->nama,
-                'lebar' => $pim->lebar,
-                'panjang' => $pim->panjang,
-                'luas' => $pim->luas,
+                'kondisi_ideal' => $pim->kondisi_ideal,
+                'ketersediaan' => $pim->ketersediaan,
+                'kekurangan' => $pim->kekurangan,
+                'keterangan' => $pim->keterangan,
             ];
         }
 
         return view("bangunan.pimpinan.index", [
-            'jenis_pimpinans' => $jenis_pimpinan,
+            'jenis_pimpinans' => JenisPimpinan::belumTerpilih(),
             'datas' => $data,
             'usulans' => $usulans,
             'usulanFotos' => $fotos,
@@ -93,19 +92,19 @@ class PimpinanController extends Controller
     {
         $validatedData = $request->validate([
             'jenis_pimpinan_id' => 'required',
-            'nama' => 'required',
-            'panjang' => 'required',
-            'lebar' => 'required'
+            'kondisi_ideal' => 'required',
+            'ketersediaan' => 'required',
+            'kekurangan' => 'required',
+            'keterangan' => 'required'
         ]);
 
         $validatedData['profil_id'] = Auth::user()->profil_id;
-        $validatedData['luas'] = $request->panjang * $request->lebar;
 
         Pimpinan::create($validatedData);
 
-        Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambah Ketersediaan Ruang Pimpinan');
+        Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambah Jenis Ruang Penunjang' . JenisPimpinan::find($request->jenis_pimpinan_id)->nama);
 
-        return redirect()->back()->with('success', 'Berhasil menambah ketersediaan ruang pimpinan!');
+        return redirect()->back()->with('success', 'Berhasil menambah Jenis Ruang Penunjang ' .  JenisPimpinan::find($request->jenis_pimpinan_id)->nama);
     }
 
     /**
@@ -137,20 +136,18 @@ class PimpinanController extends Controller
      * @param  \App\Models\Pimpinan  $pimpinan
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePimpinanRequest $request, Pimpinan $pimpinan)
+    public function update(UpdatePimpinanRequest $request, Pimpinan $pimpinan, $id)
     {
-        $data = Pimpinan::find($request->id_pimpinan);
+        $data = Pimpinan::find($id);
         
         if($data->profil_id == Auth::user()->profil_id){
             $validatedData = $request->validate([
-                'id_pimpinan' => 'required',
-                'jenis_pimpinan_id' => 'required',
-                'nama' => 'required',
-                'panjang' => 'required',
-                'lebar' => 'required'
+                'kondisi_ideal' => 'required',
+                'ketersediaan' => 'required',
+                'kekurangan' => 'required',
+                'keterangan' => 'required'
             ]);
 
-            $validatedData['luas'] = $request->panjang * $request->lebar;
             $data->update($validatedData);
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah data ketersediaan Ruang Pimpinan');
@@ -170,8 +167,9 @@ class PimpinanController extends Controller
      * @param  \App\Models\Pimpinan  $pimpinan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pimpinan $pimpinan)
+    public function destroy(Pimpinan $pimpinan, $id)
     {
+        $pimpinan = Pimpinan::find($id);
         if($pimpinan->profil_id == Auth::user()->profil_id){
             Pimpinan::destroy($pimpinan->id);
             return redirect()->back()->with('success', 'Berhasil menghapus ketersediaan ruang pimpinan!');

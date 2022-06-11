@@ -78,7 +78,8 @@ class LaboratoriumController extends Controller
             'jenis_laboratorium_id' => 'required',
             'kondisi_ideal' => 'required',
             'ketersediaan' => 'required',
-            'kekurangan' => 'required'
+            'kekurangan' => 'required',
+            'keterangan' => 'required'
         ]);
 
         $validatedData['profil_id'] = Auth::user()->profil_id;
@@ -128,7 +129,8 @@ class LaboratoriumController extends Controller
             $validatedData = $request->validate([
                 'kondisi_ideal' => 'required',
                 'ketersediaan' => 'required',
-                'kekurangan' => 'required'
+                'kekurangan' => 'required',
+                'keterangan' => 'required'
             ]);
     
             $laboratorium->update($validatedData);

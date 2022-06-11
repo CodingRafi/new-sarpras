@@ -151,11 +151,11 @@
                     <div class="card-header text-white" href="" style="background-color: #263238">
                         <h4 class="card-title font-weight-bold">Kekurangan</h4>
                         <div class="card-tools">
-                            @if (request('jenis') == 'toilet')
-                                <button type="button" class="btn btn-tool" data-toggle="modal"
+                            {{-- @if (request('jenis') != 'toilet') --}}
+                                {{-- <button type="button" class="btn btn-tool" data-toggle="modal"
                                     data-target="#edit-kekurangan"><i class="bi bi-pencil-square"></i>
-                                </button>
-                            @endif
+                                </button> --}}
+                            {{-- @endif --}}
                         </div>
                     </div>
                     {{-- end card header --}}

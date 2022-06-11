@@ -43,30 +43,31 @@
                                 <tr class="text-center">
                                     <th style="vertical-align: middle;">No</th>
                                     <th style="vertical-align: middle;">Jenis Ruang</th>
-                                    <th style="vertical-align: middle;">Nama</th>
-                                    <th style="vertical-align: middle;">Panjang(M)</th>
-                                    <th style="vertical-align: middle;">Lebar(M)</th>
-                                    <th style="vertical-align: middle;">Luas (M²)</th>
+                                    <th style="vertical-align: middle;">Kondisi Ideal</th>
+                                    <th style="vertical-align: middle;">Ketersediaan</th>
+                                    <th style="vertical-align: middle;">Kekurangan</th>
+                                    <th style="vertical-align: middle;">Keterangan</th>
                                     <th style="vertical-align: middle;">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($datas as $data)
+                                {{-- @dd($data) --}}
                                     <tr>
                                         <input type="hidden" class="id_pimpinan" value="{{ $data['id'] }}">
                                         <td class="text-center" style="vertical-align: middle">{{ $loop->iteration }}
                                         </td>
-                                        <td class="text-center jenis" style="vertical-align: middle"
-                                            data-id="{{ $data['id_jenis'] }}">{{ $data['jenis'] }}</td>
-                                        <td class="text-center nama" style="vertical-align: middle">{{ $data['nama'] }}
+                                        <td class="text-center" style="vertical-align: middle">{{ $data['jenis'] }}</td>
+                                        <td class="text-center kondisi_ideal" style="vertical-align: middle">{{ $data['kondisi_ideal'] }}
                                         </td>
-                                        <td class="text-center panjang" style="vertical-align: middle">
-                                            {{ $data['panjang'] }}
+                                        <td class="text-center ketersediaan" style="vertical-align: middle">
+                                            {{ $data['ketersediaan'] }}
                                         </td>
-                                        <td class="text-center lebar" style="vertical-align: middle">
-                                            {{ $data['lebar'] }}
+                                        <td class="text-center kekurangan" style="vertical-align: middle">
+                                            {{ $data['kekurangan'] }}
                                         </td>
-                                        <td class="text-center luas" style="vertical-align: middle">{{ $data['luas'] }}
+                                        <td class="text-center keterangan" style="vertical-align: middle">
+                                            {{ $data['keterangan'] }}
                                         </td>
                                         <td>
                                             <div class="card-body">
@@ -77,7 +78,7 @@
                                                             <i class="bi bi-three-dots-vertical"></i>
                                                         </button>
                                                         <div class="dropdown-menu" style="margin-left: -73px">
-                                                            <button type="submit" class="dropdown-item tombol-edit-ketersediaan" data-toggle="modal" data-target="#edit-tersedia">Edit</button>
+                                                            <button type="submit" class="dropdown-item tombol-edit-ketersediaan" data-toggle="modal" data-target="#edit-tersedia" data-id="{{ $data['id'] }}">Edit</button>
                                                             <form action="/bangunan/penunjang/{{ $data['id'] }}"
                                                                 method="post">
                                                                 @csrf
@@ -131,23 +132,29 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="luas-lahan" class="col-sm-2 col-form-label">Nama Bangunan</label>
+                                        <label for="luas-lahan" class="col-sm-2 col-form-label">Kondisi Ideal</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="luas-lahan" name="nama" required>
+                                            <input type="text" class="form-control" id="luas-lahan" name="kondisi_ideal" required placeholder="Kondisi Ideal">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="luas-lahan" class="col-sm-2 col-form-label">Panjang(M)</label>
+                                        <label for="luas-lahan" class="col-sm-2 col-form-label">Ketersediaan</label>
                                         <div class="col-sm-10">
-                                            <input type="number" class="form-control" id="luas-lahan" name="panjang"
-                                                required>
+                                            <input type="number" class="form-control" id="luas-lahan" name="ketersediaan"
+                                                required placeholder="Ketersediaan">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="luas-lahan" class="col-sm-2 col-form-label">Lebar(M)</label>
+                                        <label for="luas-lahan" class="col-sm-2 col-form-label">Kekurangan</label>
                                         <div class="col-sm-10">
-                                            <input type="number" class="form-control" id="luas-lahan" name="lebar"
-                                                required>
+                                            <input type="number" class="form-control" id="luas-lahan" name="kekurangan"
+                                                required placeholder="Kekurangan">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="keterangan" class="col-sm-2 col-form-label">keterangan</label>
+                                        <div class="col-sm-10">
+                                            <textarea name="keterangan" id="" cols="30" class="form-control" placeholder="Keterangan" required></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -177,56 +184,42 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        @if (count($jenis_pimpinans) > 0)
-                            <form class="form-horizontal" action="/bangunan/penunjang" method="POST">
-                                @csrf
-                                @method('patch')
-                                <div class="card-body">
-                                    <div class="form-group row">
-                                        <input type="hidden" name="id_pimpinan" class="id_pimpinan_input">
-                                        <label for="jumlah-lahan" class="col-sm-2 col-form-label">Jenis Ruang</label>
-                                        <div class="col-sm-10">
-                                            <select name="jenis_pimpinan_id" id="" required class="custom-select">
-                                                @foreach ($jenis_pimpinans as $data)
-                                                    <option value="{{ $data->id }}" class="option-jenis">
-                                                        {{ $data->nama }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="luas-lahan" class="col-sm-2 col-form-label">Nama Bangunan</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control input-nama" id="luas-lahan" name="nama"
-                                                required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="luas-lahan" class="col-sm-2 col-form-label">Panjang(M)</label>
-                                        <div class="col-sm-10">
-                                            <input type="number" class="form-control input-panjang" id="luas-lahan"
-                                                name="panjang" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="luas-lahan" class="col-sm-2 col-form-label">Lebar(M)</label>
-                                        <div class="col-sm-10">
-                                            <input type="number" class="form-control input-lebar" id="luas-lahan"
-                                                name="lebar" required>
-                                        </div>
+                        <form class="form-horizontal form-edit" action="/bangunan/penunjang" method="POST">
+                            @csrf
+                            @method('patch')
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label for="luas-lahan" class="col-sm-2 col-form-label">Kondisi Ideal</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control input-kondisi-ideal" id="luas-lahan" name="kondisi_ideal"
+                                            required>
                                     </div>
                                 </div>
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-success float-right">Simpan</button>
+                                <div class="form-group row">
+                                    <label for="luas-lahan" class="col-sm-2 col-form-label">Ketersediaan</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control input-ketersediaan" id="luas-lahan" name="ketersediaan"
+                                            required>
+                                    </div>
                                 </div>
-                            </form>
-                        @else
-                            <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
-                                <div class="alert" role="alert">
-                                    Belum ada jenis ruang Penunjang
+                                <div class="form-group row">
+                                    <label for="luas-lahan" class="col-sm-2 col-form-label">Kekurangan</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control input-kekurangan" id="luas-lahan" name="kekurangan"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="luas-lahan" class="col-sm-2 col-form-label">Keterangan</label>
+                                    <div class="col-sm-10">
+                                        <textarea name="keterangan" id="" cols="30" class="form-control input-keterangan" placeholder="Keterangan" required></textarea>
+                                    </div>
                                 </div>
                             </div>
-                        @endif
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-success float-right">Simpan</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -384,33 +377,30 @@
 
 @section('tambahjs')
     <script>
-        const jenis = document.querySelectorAll('.jenis');
-        const nama = document.querySelectorAll('.nama');
-        const panjang = document.querySelectorAll('.panjang');
-        const lebar = document.querySelectorAll('.lebar');
-        const optionJenis = document.querySelectorAll('.option-jenis');
-        const inputNama = document.querySelector('.input-nama');
-        const inputPanjang = document.querySelector('.input-panjang');
-        const inputLebar = document.querySelector('.input-lebar');
-        const id_pimpinan = document.querySelectorAll('.id_pimpinan');
-        const id_pimpinan_input = document.querySelector('.id_pimpinan_input');
         const tombolEditKetersediaan = document.querySelectorAll('.tombol-edit-ketersediaan');
+        const kondisi_ideal = document.querySelectorAll('.kondisi_ideal');
+        const ketersediaan = document.querySelectorAll('.ketersediaan');
+        const kekurangan = document.querySelectorAll('.kekurangan');
+        const keterangan = document.querySelectorAll('.keterangan');
+        const inputKondisiIdeal = document.querySelector('.input-kondisi-ideal');
+        const inputKetersediaan = document.querySelector('.input-ketersediaan');
+        const inputKekurangan = document.querySelector('.input-kekurangan');
+        const inputKeterangan = document.querySelector('.input-keterangan');
+        const formEdit = document.querySelector('.form-edit');
 
         tombolEditKetersediaan.forEach((e, i) => {
+            console.log(i)
             e.addEventListener('click', function() {
-                optionJenis.forEach((elem) => {
-                    if (elem.value == jenis[i].getAttribute('data-id')) {
-                        elem.setAttribute('selected', 'selected');
-                    }
-                });
-                id_pimpinan_input.value = '';
-                id_pimpinan_input.value = id_pimpinan[i].value;
-                inputNama.value = '';
-                inputNama.value = nama[i].innerHTML;
-                inputPanjang.value = '';
-                inputPanjang.value = parseInt(panjang[i].innerHTML);
-                inputLebar.value = '';
-                inputLebar.value = parseInt(lebar[i].innerHTML);
+                inputKondisiIdeal.value = '';
+                inputKondisiIdeal.value = kondisi_ideal[i].innerHTML.trim();
+                inputKetersediaan.value = '';
+                inputKetersediaan.value = ketersediaan[i].innerHTML.trim();
+                inputKekurangan.value = '';
+                inputKekurangan.value = kekurangan[i].innerHTML.trim();
+                inputKeterangan.innerHTML = '';
+                inputKeterangan.innerHTML = keterangan[i].innerHTML.trim();
+                formEdit.removeAttribute('action');
+                formEdit.setAttribute('action', '/bangunan/penunjang/' + e.getAttribute('data-id'));
             })
         });
     </script>

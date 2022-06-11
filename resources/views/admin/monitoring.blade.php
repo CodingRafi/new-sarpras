@@ -432,7 +432,7 @@
                                                                 data-toggle="modal" data-target="#edit-unsur"
                                                                 data-id="{{ $unsur->id }}">Edit
                                                             </button>
-                                                            <form action="/unsur-verifikasi" method="post">
+                                                            <form action="/unsur-verifikasi/{{ $unsur->id }}" method="post">
                                                                 @csrf
                                                                 @method('delete')
                                                                 <button type="submit"
