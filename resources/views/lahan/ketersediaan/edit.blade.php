@@ -155,7 +155,6 @@
                     <button type="submit" class="btn text-white loading-simpan" style="background-color: #00a65b">Simpan</button>
                 </div>
             </form>
-
         </div>
     </div>
 @endsection

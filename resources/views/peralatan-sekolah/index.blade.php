@@ -20,7 +20,7 @@
         {{-- ---------------------------------------------------------------------------------------- PERATURAN PERMENDIKBUD ---------------------------------------------------------------------------------------- --}}
         <div class="card card-info">
             <div class="card-header" style="background-color: #25b5e9">
-                <h3 class="card-title">PERATURAN PERMENDIKBUD NO. 11 TAHUN 2020 </h3>
+                <h3 class="card-title font-weight-bold">PERATURAN PERMENDIKBUD NO. 11 TAHUN 2020 </h3>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -68,7 +68,7 @@
         {{-- ---------------------------------------------------------------------------------------- PERALATAN SEKOLAH ---------------------------------------------------------------------------------------- --}}
         <div class="card">
             <div class="card-header bg-warning d-flex p-0">
-                <h3 class="card-title p-3 text-white">Ketersediaan Peralatan Sekolah</h3>
+                <h3 class="card-title p-3 text-white font-weight-bold">Ketersediaan Peralatan Sekolah</h3>
                 <ul class="nav nav-pills ml-auto p-2">
                     <li class="nav-item pr-2">
                         <button type="button" class="btn btn-tool border border-light text-white" style="margin-top: 1px" data-toggle="modal"
@@ -115,16 +115,13 @@
                                             <div class="d-sm-flex justify-content-center" style="gap: 5px;">
                                                 <a class="btn text-white d-inline"
                                                     href="/peralatan-tersedia/{{ $peralatanTersedia->id }}/edit"
-                                                    style="background-color: #25b5e9">Edit</a>
+                                                    style="background-color: #FCC12D">Edit</a>
                                                 {{-- <form action=""><a class="btn text-white d-inline" style="background-color: #00a65b">Hapus</a></form> --}}
-                                                <form action="/peralatan-tersedia/{{ $peralatanTersedia->id }} class="
-                                                    
-                                                    d-inline"
-                                                    method="post">
+                                                <form action="/peralatan-tersedia/{{ $peralatanTersedia->id }} class="d-inline" method="post">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn text-white d-inline"
-                                                        style="background-color: #00a65b"
+                                                        style="background-color: #263228"
                                                         onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Hapus</button>
                                                 </form>
                                             </div>
@@ -191,7 +188,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <hr>
                                 {{-- ---------------------------------------------------------------------------------------- KATEGORI ---------------------------------------------------------------------------------------- --}}
                                 <div class="form-group row">
                                     <label for="kategori" class="col-sm-3 col-form-label">Kategori</label>
@@ -202,20 +198,18 @@
                                         </select>
                                     </div>
                                 </div>
-                                <hr>
-                                {{-- ---------------------------------------------------------------------------------------- KEKURANGAN ---------------------------------------------------------------------------------------- --}}
-                                <div class="form-group row">
-                                    <label for="kekurangan" class="col-sm-3 col-form-label">Kekurangan</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control loading-tambah" id="kekurangan" name="kekurangan" required>
-                                    </div>
-                                </div>
-                                <hr>
                                 {{-- ---------------------------------------------------------------------------------------- KETERSEDIAAN ---------------------------------------------------------------------------------------- --}}
                                 <div class="form-group row">
                                     <label for="ketersediaan" class="col-sm-3 col-form-label">Ketersediaan</label>
                                     <div class="col-sm-9">
                                         <input type="number" class="form-control loading-tambah" id="ketersediaan" name="katersediaan" required>
+                                    </div>
+                                </div>
+                                {{-- ---------------------------------------------------------------------------------------- KEKURANGAN ---------------------------------------------------------------------------------------- --}}
+                                <div class="form-group row">
+                                    <label for="kekurangan" class="col-sm-3 col-form-label">Kekurangan</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control loading-tambah" id="kekurangan" name="kekurangan" required>
                                     </div>
                                 </div>
                             </div>
@@ -240,7 +234,7 @@
         {{-- ---------------------------------------------------------------------------------------- USUALAN PERALATAN ---------------------------------------------------------------------------------------- --}}
         <div class="card">
             <div class="card-header bg-dark d-flex p-0">
-                <h3 class="card-title p-3">Usulan Peralatan</h3>
+                <h3 class="card-title font-weight-bold p-3">Usulan Peralatan</h3>
                 <ul class="nav nav-pills ml-auto p-2">
                     <li class="nav-item pr-2">
                         <button type="button" class="btn btn-tool border border-light text-white" style="margin-top:1px" data-toggle="modal"
@@ -288,12 +282,12 @@
                                         <td>{{ $usulanPeralatan->keterangan }}</td>
                                         <td class="text-center" style="vertical-align: middle">
                                             <a href="/usulan-peralatan/{{ $usulanPeralatan->id }}/edit"
-                                                class="btn btn-warning text-white mb-2">Edit</a>
+                                                class="btn btn-warning text-white mb-2" style="background-color: #FCC12D">Edit</a>
 
                                             <form action="/usulan-peralatan/{{ $usulanPeralatan->id }}" method="post">
                                                 @csrf
                                                 @method('delete')
-                                                <button class="btn text-white" style="background-color: #00a65b"
+                                                <button class="btn text-white" style="background-color: #263228"
                                                     type="submit"
                                                     onclick="return confirm('Apakah anda yakin akan membatalkan usulan peralatan ini?')">Batalkan</button>
                                             </form>
@@ -364,7 +358,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <hr>
                                     {{-- ---------------------------------------------------------------------------------------- KATEGORI ---------------------------------------------------------------------------------------- --}}
                                     <div class="form-group row">
                                         <label for="kategori" class="col-sm-3 col-form-label">Kategori</label>
@@ -375,7 +368,6 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <hr>
                                     {{-- ---------------------------------------------------------------------------------------- JUMLAH ---------------------------------------------------------------------------------------- --}}
                                     <div class="form-group row">
                                         <label for="jumlah" class="col-sm-3 col-form-label">Jumlah</label>
@@ -383,7 +375,6 @@
                                             <input type="number" class="form-control loading-tambah2" id="jumlah" name="jml">
                                         </div>
                                     </div>
-                                    <hr>
                                     {{-- ---------------------------------------------------------------------------------------- PROPOSAL ---------------------------------------------------------------------------------------- --}}
                                     <div class="form-group row">
                                         <label for="proposal" class="col-sm-3 col-form-label">Proposal</label>

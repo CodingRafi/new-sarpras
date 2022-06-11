@@ -26,7 +26,7 @@
                                 @if (count($fotos) < 1 || $koleksi->jenis === 'lain')
                                 <a href="/foto/create/{{ $koleksi->slug }}" class="btn btn-success">Tambah foto</a>
                                 @endif
-                                <a href="/profil/{{ $koleksi->profil_depo_id }}" class="btn btn-danger ml-3">Back</a>
+                                <a href="/profil/{{ $koleksi->profil_depo_id }}" class="btn btn-dark ml-3">Kembali</a>
                             </div>
                         </div>
                     </div>

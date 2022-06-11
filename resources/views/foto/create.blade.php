@@ -16,9 +16,9 @@
 
     <div class="container-fluid">
 
-        <div class="card card-outline card-success">
+        <div class="card card-success">
             <div class="card-header">
-               
+              <h3>Upload Gambar</h2> 
             </div>
             <div class="card-body">
                 <div class="row">

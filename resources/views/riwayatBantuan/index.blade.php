@@ -32,17 +32,16 @@
 
     {{-- ---------------------------------------------------------------------------------------- RIWAYAT BANTUAN ---------------------------------------------------------------------------------------- --}}
     <div class="card">
-        <div class="card-header" style="background-color: #25b5e9">
-            <div class="container row p-0">
-                <ul class="nav nav-pills ml-auto">
-                    <li class="nav-item mr-1">
+          <div class="card-header d-flex p-0" style="background-color: #25b5e9">
+                <h3 class="card-title p-3 text-white font-weight-bold">Riwayat Bantuan</h3>
+                <ul class="nav nav-pills ml-auto p-2">
+                    <li class="nav-item pr-2">
                         <button type="button" class="btn text-white border pr-4 pl-4" data-toggle="modal"
                             data-target="#tambah"><i class="bi bi-plus-lg"></i> Tambah
                         </button>
                     </li>
                 </ul>
             </div>
-        </div>
         <div class="card-body">
             <div class="table-responsive">
                 @if (count($riwayats) > 0)
