@@ -48,91 +48,87 @@
 @section('container')
     {{-- @dd($data) --}}
     <div class="title pt-3">
-        <h3 class="text-dark display-4 pl-3" style="font-size: 25px">Edit Usulan Lahan</h3>
+        <h3 class="text-dark display-4 pl-3" style="font-size: 25px">Edit Visitasi Sekolah</h3>
     </div>
-
-    <div class="form-edit pt-3">
-
-        <form action="/visitasi/{{ $data->id }}" method="post" enctype="multipart/form-data">
-            @csrf
-            @method('patch')
-            <div class="card pt-3" style="background-color: white; border-radius: 10px; ">
-                {{-- input nama verifikator --}}
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Nama Verifikator</label>
-                    <select class="fstdropdown-select select-jurusan" id="select" name="user_id">
-                        @foreach ($verifikators as $verifikator)
-                            @if ($verifikator->id == $data->user_id)
-                                <option value="{{ $verifikator->id }}" selected>{{ $verifikator->name }}
-                                </option>
-                            @else
-                                <option value="{{ $verifikator->id }}">{{ $verifikator->name }}
-                                </option>
-                            @endif
-                        @endforeach
-                    </select>
+        
+            <div class="form-edit pt-3">
+                <div class="card pt-3" style="background-color: white; border-radius: 10px;">
+                    <div class="card-body">
+                        <form action="/visitasi/{{ $data->id }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            @method('patch')
+                            {{-- input nama verifikator --}}
+                            <div class="row input pl-4">
+                                <label class="col-sm-2 col-form-label">Nama Verifikator</label>
+                                <select class="fstdropdown-select select-jurusan" id="select" name="user_id">
+                                    @foreach ($verifikators as $verifikator)
+                                        @if ($verifikator->id == $data->user_id)
+                                            <option value="{{ $verifikator->id }}" selected>{{ $verifikator->name }}
+                                            </option>
+                                        @else
+                                            <option value="{{ $verifikator->id }}">{{ $verifikator->name }}
+                                            </option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                            {{-- end input nama verifikator --}}
+                            {{-- input nama sekolah --}}
+                            <div class="row input pl-4">
+                                <label class="col-sm-2 col-form-label">Nama Sekolah</label>
+                                <select class="fstdropdown-select select-jurusan" id="select" name="profil_id">
+                                    @foreach ($profils as $profil)
+                                        @if ($profil->id == $data->profil_id)
+                                            <option value="{{ $profil->id }}" selected>{{ $profil->nama }}
+                                                ({{ $profil->alamat }})
+                                            </option>
+                                        @else
+                                            <option value="{{ $profil->id }}">{{ $profil->nama }}
+                                                ({{ $profil->alamat }})
+                                            </option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                            {{-- end input nama sekolah --}}
+                            {{-- input keperluan --}}
+                            <div class="row input pl-4">
+                                <label class="col-sm-2 col-form-label">Keperluan</label>
+                                <div class="div">
+                                    <input type="text" class="form-control col-sm-13" placeholder="Masukan Keperluan" id="keperluan" name="keperluan" required value="{{ $data->keperluan }}">
+                                </div>
+                            </div>
+                            {{-- end input keperluan --}}
+                            {{-- input nama tanggal visitasi --}}
+                            <div class="form-group row input pl-4">
+                                <label class="col-sm-2 col-form-label">Tanggal Visitasi</label>
+                                <div class="div">
+                                    <input type="date" class="form-control col-sm-13" placeholder="Masukan Tanggal Visitasi" id="visitasi" name="tanggal_visitasi" required value="{{ $data->tanggal_visitasi }}">
+                                </div>
+                            </div>
+                            {{-- end input nama tanggal visitasi --}}
+                            {{-- --------------------------------------------- surat_tugas --------------------------------------------- --}}
+                            <div class="row input pl-4 mt-3" style="margin-top: 10px">
+                                <label class="col-2 mt-1" value="{{ $data->surat_tugas }}">Surat Tugas</label>
+                                <input type="file" id="surat_tugas" name="surat_tugas"
+                                    value="{{ asset('storage/' . $data->surat_tugas) }}" accept=".pdf">
+                            </div>
+                            <div class="container d-flex pl-4 mt-3">
+                                <iframe class="iframe-surat_tugas border border-rounded shadow-sm"
+                                    src="{{ asset('storage/' . $data->surat_tugas) }}" frameborder="0" width="300" height="400"
+                                    style="display: block; border-radius: 10px !important;"></iframe>
+                                <div id="pdf-loader">Loading Preview ..</div>
+                                <div><canvas id="pdf-preview" class="border border-rounded shadow-sm"
+                                        style="width: 300px !important; border-radius: 10px !important;"></canvas></div>
+                            </div>
+                            {{-- --------------------------------------------- SUBMIT --------------------------------------------- --}}
+                            <div class="pb-3 pl-4 mt-4">
+                                <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                {{-- end input nama verifikator --}}
-
-                {{-- input nama sekolah --}}
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Nama Sekolah</label>
-                    <select class="fstdropdown-select select-jurusan" id="select" name="profil_id">
-                        @foreach ($profils as $profil)
-                            @if ($profil->id == $data->profil_id)
-                                <option value="{{ $profil->id }}" selected>{{ $profil->nama }}
-                                    ({{ $profil->alamat }})
-                                </option>
-                            @else
-                                <option value="{{ $profil->id }}">{{ $profil->nama }}
-                                    ({{ $profil->alamat }})
-                                </option>
-                            @endif
-                        @endforeach
-                    </select>
-                </div>
-                {{-- end input nama sekolah --}}
-
-                {{-- input keperluan --}}
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Keperluan</label>
-                    <input type="text" class="form-control col-sm-9" placeholder="Masukan Keperluan" id="keperluan"
-                        name="keperluan" required value="{{ $data->keperluan }}">
-                </div>
-                {{-- end input keperluan --}}
-
-                {{-- input nama tanggal visitasi --}}
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Tanggal Visitasi</label>
-                    <input type="date" class="form-control col-sm-9" placeholder="Masukan Tanggal Visitasi" id="visitasi"
-                        name="tanggal_visitasi" required value="{{ $data->tanggal_visitasi }}">
-                </div>
-                {{-- end input nama tanggal visitasi --}}
-
-                {{-- --------------------------------------------- surat_tugas --------------------------------------------- --}}
-                <div class="row input pl-5 mt-3" style="margin-top: 10px">
-                    <label class="col-2 mt-1" value="{{ $data->surat_tugas }}">Surat Tugas</label>
-                    <input type="file" id="surat_tugas" name="surat_tugas"
-                        value="{{ asset('storage/' . $data->surat_tugas) }}" accept=".pdf">
-                </div>
-                <div class="container d-flex pl-5 mt-3">
-                    <iframe class="iframe-surat_tugas border border-rounded shadow-sm"
-                        src="{{ asset('storage/' . $data->surat_tugas) }}" frameborder="0" width="300" height="400"
-                        style="display: block; border-radius: 10px !important;"></iframe>
-                    <div id="pdf-loader">Loading Preview ..</div>
-                    <div><canvas id="pdf-preview" class="border border-rounded shadow-sm"
-                            style="width: 300px !important; border-radius: 10px !important;"></canvas></div>
-                </div>
-
-                {{-- --------------------------------------------- SUBMIT --------------------------------------------- --}}
-                <div class="pb-3 pl-5 mt-4">
-                    <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
-                </div>
-
             </div>
-        </form>
-
-    </div>
 
     {{-- --------------------------------------------- ALERT --------------------------------------------- --}}
     <div class="container container-alert" style="position: fixed;right: 20px;bottom: 25px;width: auto"></div>

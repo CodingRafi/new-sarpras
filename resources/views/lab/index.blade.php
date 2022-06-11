@@ -396,7 +396,7 @@
 
         tombolEdit.forEach((e, i) => {
             e.addEventListener('click', function() {
-                console.log(kekurangan[i].innerHTML.trim())
+                // console.log(kekurangan[i].innerHTML.trim())
                 inputKondisiIdeal.value = '';
                 inputKondisiIdeal.value = kondisiIdeal[i].innerHTML.trim();
                 inputKetersediaan.value = '';

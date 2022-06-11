@@ -31,14 +31,15 @@ function setFstDropdown() {
         }
         if (select.multiple) {
             var selectAll = createFstElement("button", "fstAll", dropdown, { "click": selectAllOptions });
-            selectAll.textContent = "Select All";
+            selectAll.textContent = "Pilih Semua Jurusan";
             selectAll.type = "button";
             selectAll.selected = false;
         }
-        createFstElement("div", "fstlist", dropdown, null);
+        createFstElement("div", "fstlist list-select", dropdown, null);
         select.fstdropdown = { dd: dropdown, rebind: function () { rebindDropdown(select); }, setValue: function(value){setValue(dropdown, value)} };
         rebindDropdown(select);
         select.classList.add("fstcreated");
+
     }
     function setValue(dd, value) {
         if (Array.isArray(value))
@@ -112,7 +113,7 @@ function setFstDropdown() {
         selectAll.selected = length > 0;
         if (opened)
             dd.querySelector(".fstselected").textContent = length == 1 ? event.target.textContent : length + " options selected";
-        selectAll.textContent = selectAll.selected ? "Deselect All" : "Select All";
+        selectAll.textContent = selectAll.selected ? "Batal" : "Pilih Semua Jurusan";
     }
 
     function rebindDropdown(select) {
@@ -182,13 +183,17 @@ function setFstDropdown() {
         for (var l in list)
             if (list.hasOwnProperty(l)) {
                 select.querySelector("[value='" + list[l].dataset["value"] + "']").selected = selected;
-                if (selected)
+                if (selected){
                     list[l].classList.add("selected");
-                else
+                    list[l].setAttribute("disabled", 'disabled');
+                }
+                else{
+                    list[l].removeAttribute("disabled", 'disabled');
                     list[l].classList.remove("selected");
+                }
             }
         initNewEvent("change", select);
-        event.target.textContent = !selected ? "Select All" : "Deselect All";
+        event.target.textContent = !selected ? "Pilih Semua Jurusan" : "Batal";
         setHeader(select, event);
     }
 

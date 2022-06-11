@@ -782,7 +782,8 @@
                                             </tbody>
                                         </table>
                                         <div class="buttonSubmit">
-                                            <button class="btn text-white" style="background-color: #00a65b">Simpan</button>
+                                            <button class="btn text-white"
+                                                style="background-color: #00a65b">Simpan</button>
                                         </div>
                                     </form>
                                 @else
@@ -933,7 +934,8 @@
                                     <td class="text-center">Bangunan</td>
                                     <td class="text-center" style="text-transform: capitalize">
                                         Ruang Praktik {{ $kompeten->kompetensi }}</td>
-                                    <td class="text-center text-capitalize">{{ str_replace("_", " ", $kompeten->status) }}</td>
+                                    <td class="text-center text-capitalize">
+                                        {{ str_replace('_', ' ', $kompeten->status) }}</td>
                                     <td class="text-center">Kekurangan {{ $kompeten->kekurangan }} m²</td>
                                 </tr>
                             @endforeach
@@ -1156,5 +1158,15 @@
         selectjurusan.addEventListener('change', function() {
             console.log(selectjurusan.value)
         })
+
+        let listSelect = document.querySelector('.list-select');
+        listSelect = listSelect.children;
+        for (let e of listSelect) {
+            e.addEventListener('click', function() {
+                e.style.background = 'transparent';
+                e.style.color = 'black';
+                e.setAttribute('disabled', 'true');
+            })
+        }
     </script>
 @endsection

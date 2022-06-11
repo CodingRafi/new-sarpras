@@ -68,11 +68,11 @@
                                     </td>
                                     <td class="text-center">
                                         <div>
-                                            <a href="/komli/{{ $komli->id_komlis }}/edit" class="btn btn-warning text-white">Edit</a>
+                                            <a href="/komli/{{ $komli->id_komlis }}/edit" class="btn btn-warning text-white mt-2">Edit</a>
                                             <form action="/komli/{{ $komli->id_komlis }}" method="post" class="d-inline-block">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="btn btn-success"
+                                                <button type="submit" class="btn text-white mt-2" style="background-color: #263238"
                                                     onclick="return confirm('Apakah anda yakin akan menghapus jurusan ini? semua sekolah yang menggunakan jurusan ini akan terhapus')">Hapus</button>
                                             </form>
                                         </div>

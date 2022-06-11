@@ -102,7 +102,7 @@
                                                     </td>
                                                     <td class="col-1 text-center">{{ $visitasi->tanggal_visitasi }}</td>
                                                     <td class="col-1 text-center">
-                                                        <a class="btn text-white" style="background-color: #00a65b"
+                                                        <a class="btn text-white" style="background-color: #fcc12d"
                                                             href="{{ ($visitasi->status == 'proses_visitasi') ? 'visitasi/' . $visitasi->id . '/edit' : '#' }}"
                                                             {{ $visitasi->status == 'proses_visitasi' ? 'disabled' : '' }}>Edit</a>
                                                         <form action="/visitasi/{{ $visitasi->id }}" method="post"
@@ -123,8 +123,7 @@
                                     <div class="container d-flex justify-content-center align-items-center"
                                         style="height: 10rem">
                                         <div class="alert" role="alert">
-                                            Tidak ada {{ count($verifikators) > 0 ? 'sekolah' : 'verifikator' }}
-                                            ditemukan
+                                            Tidak ada visitasi ditemukan
                                         </div>
                                     </div>
                                 @endif
@@ -195,7 +194,8 @@
                                 <div class="container d-flex justify-content-center align-items-center"
                                     style="height: 10rem">
                                     <div class="alert" role="alert">
-                                        Tidak ada data ditemukan
+                                        Tidak ada {{ count($verifikators) > 0 ? 'sekolah' : 'verifikator' }}
+                                            ditemukan
                                     </div>
                                 </div>
                             @endif

@@ -112,6 +112,8 @@ class UnsurVerifikasiController extends Controller
     {
         if(Auth::user()->hasRole('dinas')){
             UnsurVerifikasi::destroy($unsurVerifikasi->id);
+
+            return redirect()->back();
         }else{  
             abort(403);
         }
