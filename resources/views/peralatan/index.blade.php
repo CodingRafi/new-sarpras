@@ -21,7 +21,7 @@
         {{-- ---------------------------------------------------------------------------------------- PERALATAN SEKOLAH ---------------------------------------------------------------------------------------- --}}
         <div class="card">
             <div class="card-header d-flex p-0" style="background-color: #25b5e9">
-                <h3 class="card-title p-3 text-white">Peralatan Sekolah</h3>
+                <h3 class="card-title p-3 text-white font-weight-bold">Peralatan Sekolah</h3>
                 <ul class="nav nav-pills ml-auto p-2">
                     <li class="nav-item pr-2">
                         <button type="button" class="btn btn-tool border border-light text-white ml-3" style="margin-top: 1px" data-toggle="modal" data-target="#tambah-peralatan"><i class="bi bi-plus"></i> Tambah Peralatan

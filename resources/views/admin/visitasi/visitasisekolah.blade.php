@@ -102,7 +102,7 @@
                                                     </td>
                                                     <td class="col-1 text-center">{{ $visitasi->tanggal_visitasi }}</td>
                                                     <td class="col-1 text-center">
-                                                        <a class="btn text-white" style="background-color: #00a65b"
+                                                        <a class="btn text-white" style="background-color: #fcc12d"
                                                             href="{{ ($visitasi->status == 'proses_visitasi') ? 'visitasi/' . $visitasi->id . '/edit' : '#' }}"
                                                             {{ $visitasi->status == 'proses_visitasi' ? 'disabled' : '' }}>Edit</a>
                                                         <form action="/visitasi/{{ $visitasi->id }}" method="post"

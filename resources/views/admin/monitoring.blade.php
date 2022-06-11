@@ -468,7 +468,7 @@
                             @csrf
                             {{-- input unsur verifikator --}}
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Unsur yang Diverifikasi</label>
+                                <label class="col-sm-3 col-form-label">Unsur yang Diverifikasi</label>
                                 <input type="text" class="form-control col-sm-9"
                                     placeholder="Masukan Unsur yang Diverifikasi" id="unsur" name="unsur" required>
                             </div>

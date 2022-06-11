@@ -306,9 +306,9 @@
                     
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label">Status</label>
-                        <div class="custom-control custom-switch" style="transform: scale(1.2)">
-                            <input type="checkbox" class="custom-control-input" id="customSwitch1" name="status" {{ ($kompeten->status == 'ideal') ? 'checked' : '' }}>
-                            <label class="custom-control-label" for="customSwitch1" style="height: 1rem; vertical-align: middle;"></label>
+                        <div class="custom-control custom-switch" style="transform: scale(1)">
+                            <input type="checkbox" class="custom-control-input button-ideal" id="customSwitch1" name="status" {{ ($kompeten->status == 'ideal') ? 'checked' : '' }}>
+                            <label class="custom-control-label label-ideal" for="customSwitch1" style="height: 1rem; vertical-align: middle; font-size:14px;">Tidak Ideal</label>
                         </div>
                     </div>
 
@@ -390,4 +390,21 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('tambahjs')
+
+    <script>
+        const button = document.querySelector('.button-ideal')
+        const label = document.querySelector('.label-ideal')
+
+        button.addEventListener('click', function() {
+           if(button.checked){
+            label.innerHTML = 'Ideal'
+           }else{
+            label.innerHTML = 'Tidak Ideal'
+           }
+
+        });
+    </script>
 @endsection

@@ -32,8 +32,8 @@
     <div class="container-fluid mt-3">
         <!-- Small boxes (Stat box) -->
         <div class="card mb-5">
-            <div class="card-header" style="display:flex; background-color: #25b5e9">
-                <h3 class="card-title text-white">Data Usulan Peralatan</h3>
+            <div class="card-header" style="background-color: #25b5e9">
+                <h3 class="card-title text-white font-weight-bold">Data Usulan Peralatan</h3>
             </div>
             <!-- /.card-header DATA SEKOLAH-->
             <div class="card-body p-0">

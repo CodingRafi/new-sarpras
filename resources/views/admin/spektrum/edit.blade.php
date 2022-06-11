@@ -74,8 +74,7 @@
 
                 <div class="row input pl-5 mt-2">
                     <label class="col-2 mt-3">Tanggal</label>
-                    <input type="text" class="col-9 form-control mt-2" style="width: 750px" placeholder="Masukan Tanggal"
-                        value="{{ $data->tanggal }}" name="tanggal" required>
+                    <input type="date" class="col-9 form-control mt-2" style="width: 750px" placeholder="Masukan Tanggal" value="{{ $data->tanggal }}" name="tanggal" required>
                 </div>
 
                 {{-- --------------------------------------------- lampiran --------------------------------------------- --}}
