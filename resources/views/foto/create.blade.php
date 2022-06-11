@@ -16,16 +16,16 @@
 
     <div class="container-fluid">
 
-        <div class="card card-outline card-success">
+        <div class="card card-success">
             <div class="card-header">
-               
+              <h3>Upload Gambar</h2> 
             </div>
             <div class="card-body">
                 <div class="row">
 
                     <div class="col">
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end position-absolute" style="right: 0;">
-                            <a href="/profil/{{ $koleksi->profil_depo_id }}" class="btn btn-danger">Kembali</a>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end position-absolute" style="right: 0; border-radius: 10px">
+                            <a href="/profil/{{ $koleksi->profil_depo_id }}" class="btn btn-dark">Kembali</a>
                           </div>
                         <form action="/foto" method="POST" enctype="multipart/form-data">
                             @csrf
@@ -37,7 +37,7 @@
                                   </div>
                             </div>
                             <div class="container-preview"></div>
-                            <button type="submit" class="btn btn-success loading-simpan">Submit</button>
+                            <button type="submit" class="btn btn-success loading-simpan">Kirim</button>
                         </form>
                     </div>
 

@@ -445,11 +445,12 @@
                                         <td class="keterangan">{{ $lahan->keterangan }}</td>
                                         <td>
                                             <button type="button" class="btn text-white tombol-edit"
-                                                style="background-color: #25b5e9" data-toggle="modal"
+                                                style="background-color: #FCC12D" data-toggle="modal"
                                                 data-target="#modal-edit">
                                                 Edit
                                             </button>
-                                            <button type="button" class="btn btn-danger tombolHapus2"
+                                            <button type="button" class="btn btn-dark tombolHapus2"
+                                                style="background-color: #263238"
                                                 data-toggle="modal" data-target="#confirmHapus"
                                                 data-id="{{ $lahan->id }}">
                                                 Hapus
@@ -537,7 +538,7 @@
                             <input type="hidden" name="id_kekurangan" class="inputIdKekurangan">
                             <div class="row mt-2">
                                 <div class="col-3">
-                                    <label for="col-sm-4 col-form-label">Nama Lahan :</label>
+                                    <label for="col-sm-4 col-form-label">Nama Lahan</label>
                                 </div>
                                 <div class="col">
                                     <input type="text" class="form-control col-sm-7 input-nama-edit"
@@ -547,7 +548,7 @@
 
                             <div class="row mt-4">
                                 <div class="col-3">
-                                    <label for="col-sm-4 col-form-label">Panjang :</label>
+                                    <label for="col-sm-4 col-form-label">Panjang</label>
                                 </div>
                                 <div class="col">
                                     <input type="number" class="form-control col-sm-7 panjang-nama-edit"
@@ -557,7 +558,7 @@
 
                             <div class="row mt-4">
                                 <div class="col-3">
-                                    <label for="col-sm-4 col-form-label">Lebar :</label>
+                                    <label for="col-sm-4 col-form-label">Lebar</label>
                                 </div>
                                 <div class="col">
                                     <input type="number" class="form-control col-sm-7 lebar-nama-edit"
@@ -567,7 +568,7 @@
 
                             <div class="row mt-4">
                                 <div class="col-3">
-                                    <label for="col-sm-4 col-form-label">Keterangan :</label>
+                                    <label for="col-sm-4 col-form-label">Keterangan</label>
                                 </div>
                                 <div class="col">
                                     <input type="text" class="form-control col-sm-7 keterangan-nama-edit"

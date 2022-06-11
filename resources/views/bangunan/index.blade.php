@@ -303,7 +303,7 @@
                                             class="btn btn-warning text-white">Edit</a>
 
                                         <button type="button" class="btn text-white tombolHapus" data-toggle="modal"
-                                            data-target="#confirmhapus" data-id="{{ $usulan->id }}" style="background-color: #00a65b">
+                                            data-target="#confirmhapus" data-id="{{ $usulan->id }}" style="background-color: #263238">
                                             Hapus
                                         </button>
                                 </tr>

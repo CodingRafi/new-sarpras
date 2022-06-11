@@ -51,17 +51,17 @@
             <div class="card-header" style="background-color: #25b5e9">
                 <ul class="nav nav-pills ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-white active" href="#data-sekolah" data-toggle="tab"><i
+                        <a class="nav-link text-white active font-weight-bold" href="#data-sekolah" data-toggle="tab"><i
                                 class="bi bi-house-fill mr-1"></i>Data Sekolah</a>
                     </li>
                     @if (Auth::user()->hasRole('sekolah'))
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#edit-data-sekolah" data-toggle="tab"><i
+                            <a class="nav-link text-white font-weight-bold" href="#edit-data-sekolah" data-toggle="tab"><i
                                     class="bi bi-plus-lg mr-1"></i>Edit Data Sekolah</a>
                         </li>
                     @endif
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#foto-sekolah" data-toggle="tab">
+                        <a class="nav-link text-white font-weight-bold" href="#foto-sekolah" data-toggle="tab">
                             {!! Auth::user()->hasRole('sekolah') ? '<i class="bi bi-plus-lg mr-1"></i> ' : '<i class="bi bi-eye-fill mr-1"></i> ' !!}
                             Foto Sekolah</a>
                     </li>
@@ -390,7 +390,7 @@
                                                         </p>
                                                         @if ($jenis_koleksi_terpilih[$key]->id === 5)
                                                             <a href="/foto/create/{{ $koleksi->slug }}"
-                                                                class="btn btn-primary bg-info">Tambah</a>
+                                                                class="btn font text-white" style="background-color: #25b5e9">Tambah</a>
                                                         @endif
                                                         <button type="button"
                                                             class="btn btn-warning text-white tombol-edit-koleksi"
@@ -403,7 +403,7 @@
                                                             @csrf
                                                             @method('delete')
                                                             <button type="submit" class="btn text-white"
-                                                                style="background-color: #00a65b"
+                                                                style="background-color: #263238"
                                                                 onclick="return confirm('Apakah anda yakin akan menghapus koleksi ini?')">Hapus</button>
                                                         </form>
                                                     </div>
@@ -842,7 +842,7 @@
                                                             method="post">
                                                             @csrf
                                                             @method('delete')
-                                                            <button class="btn btn-danger"
+                                                            <button class="btn btn-danger" style="background-color: #263238"
                                                                 onclick="return confirm('Apakah anda yakin akan menghapus jurusan ini?')">Hapus</button>
                                                         </form>
                                                     </td>
