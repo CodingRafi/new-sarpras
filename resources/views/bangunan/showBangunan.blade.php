@@ -33,7 +33,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header" style="background-color: #25b5e9">
-                    <h3 class="card-title text-white font-weight-bold">Jenis Ruang Pimpinan</h3>
+                    <h3 class="card-title text-white font-weight-bold">Jenis Ruang Penunjang</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
                             data-target="#tambah-jenis-pimpinan"><i class="bi bi-plus"></i> Tambah Jenis Ruang Penunjang
@@ -69,7 +69,7 @@
                                                     @method('delete')
                                                     <button type="submit" class="btn text-white"
                                                         style="background-color: #263238"
-                                                        onclick="return confirm('Apakah anda yakin akan menghapus jenis ruang pimpinan ini?')">Hapus</button>
+                                                        onclick="return confirm('Apakah anda yakin akan menghapus jenis ruang penunjang ini?')">Hapus</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -93,7 +93,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Tambah Ketersediaan Ruang Pimpinan</h4>
+                        <h4 class="modal-title">Tambah Ketersediaan Ruang Penunjang</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

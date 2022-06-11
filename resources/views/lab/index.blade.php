@@ -28,6 +28,7 @@
                                 <th scope="col" class="text-center">Kondisi Ideal</th>
                                 <th scope="col" class="text-center">Ketersediaan</th>
                                 <th scope="col" class="text-center">Kekurangan</th>
+                                <th scope="col" class="text-center">Keterangan</th>
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
                         </thead>
@@ -48,6 +49,9 @@
                                     </td>
                                     <td class="text-center kekurangan">
                                         {{ $lab->kekurangan }}
+                                    </td>
+                                    <td class="text-center keterangan">
+                                        {{ $lab->keterangan }}
                                     </td>
                                     <td class="text-center">
                                         <a href="/bangunan/laboratorium/{{ $lab->id_lab }}"
@@ -110,21 +114,27 @@
                                     <label for="kondisi" class="col-sm-2 col-form-label">Kondisi Ideal</label>
                                     <div class="col-sm-10">
                                         <input type="number" class="form-control" id="kondisi" name="kondisi_ideal"
-                                            required>
+                                            required placeholder="Kondisi Ideal">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="ketersediaan" class="col-sm-2 col-form-label">Ketersediaan</label>
                                     <div class="col-sm-10">
                                         <input type="number" class="form-control" id="ketersediaan" name="ketersediaan"
-                                            required>
+                                            required placeholder="Ketersediaan">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="kekurangan" class="col-sm-2 col-form-label">Kekurangan</label>
                                     <div class="col-sm-10">
                                         <input type="number" class="form-control" id="kekurangan" name="kekurangan"
-                                            required>
+                                            required placeholder="Kekurangan">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="keterangan" class="col-sm-2 col-form-label">keterangan</label>
+                                    <div class="col-sm-10">
+                                        <textarea name="keterangan" id="" cols="30" class="form-control" placeholder="Keterangan" required></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -180,6 +190,12 @@
                                 <div class="col-sm-10">
                                     <input type="number" class="form-control input-kekurangan" id="kekurangan"
                                         name="kekurangan" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="kekurangan" class="col-sm-2 col-form-label">keterangan</label>
+                                <div class="col-sm-10">
+                                    <textarea name="keterangan" id="" cols="30" class="form-control input-keterangan" placeholder="Keterangan" required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -393,6 +409,8 @@
         const inputKetersediaan = document.querySelector('.input-ketersediaan');
         const inputKekurangan = document.querySelector('.input-kekurangan');
         const formEdit = document.querySelector('.form-edit');
+        const keterangan = document.querySelectorAll('.keterangan');
+        const inputKeterangan = document.querySelector('.input-keterangan');
 
         tombolEdit.forEach((e, i) => {
             e.addEventListener('click', function() {
@@ -405,6 +423,8 @@
                 inputKekurangan.value = kekurangan[i].innerHTML.trim();
                 formEdit.removeAttribute('action');
                 formEdit.setAttribute('action', '/bangunan/laboratorium/' + e.getAttribute('data-id'));
+                inputKeterangan.innerHTML = '';
+                inputKeterangan.innerHTML = keterangan[i].innerHTML.trim();
             })
         });
     </script>
