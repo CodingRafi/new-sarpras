@@ -5,7 +5,10 @@
 @endsection
 
 @section('container')
-    <div class="card mt-4">
+    <div class="callout mt-4 callout-success">
+        <h5 class="m-0">Jumlah Rombel: <span class="ml-2 h4 font-weight-bold">36</span></h5>
+    </div>
+    <div class="card">
         <div class="card-header p-3" style="background-color: #25b5e9; margin-right: -1px; margin-top: -1px;">
             <h3 class="card-title text-white">Data Laboratorium</h3>
             <button type="button" class="btn btn-tool border border-light text-white ml-3" data-toggle="modal"
