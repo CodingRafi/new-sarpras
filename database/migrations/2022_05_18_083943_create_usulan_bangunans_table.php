@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('profil_id');
             $table->enum('jenis', ['ruang_kelas', 'ruang_praktek', 'laboratorium', 'perpustakaan', 'toilet', 'ruang_pimpinan',])->nullable();
             $table->foreignId('kompeten_id')->nullable();
-            $table->foreignId('jenis_pimpinan_id')->nullable();
+            $table->foreignId('pimpinan_id')->nullable();
             $table->foreignId('laboratorium_id')->nullable();
             $table->string('jml_ruang');
             $table->string('luas_lahan');

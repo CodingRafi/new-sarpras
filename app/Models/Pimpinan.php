@@ -20,4 +20,8 @@ class Pimpinan extends Model
     public function jenisPimpinan(){
         return $this->belongsTo(JenisPimpinan::class);
     }
+
+    public function usulanBangunan(){
+        return $this->hasMany(UsulanBangunan::class);
+    }
 }
