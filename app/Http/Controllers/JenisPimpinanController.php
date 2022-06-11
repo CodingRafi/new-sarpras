@@ -90,12 +90,14 @@ class JenisPimpinanController extends Controller
      * @param  \App\Models\JenisPimpinan  $jenisPimpinan
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateJenisPimpinanRequest $request, JenisPimpinan $jenisPimpinan)
+    public function update(UpdateJenisPimpinanRequest $request, JenisPimpinan $jenisPimpinan, $id)
     {
         if(Auth::user()->hasRole('dinas')){
             $validatedData = $request->validate([
                 'nama' => 'required'
             ]);
+
+            $jenisPimpinan = JenisPimpinan::find($id);
 
             $jenisPimpinan->update($validatedData);
 
@@ -111,9 +113,10 @@ class JenisPimpinanController extends Controller
      * @param  \App\Models\JenisPimpinan  $jenisPimpinan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(JenisPimpinan $jenisPimpinan)
+    public function destroy(JenisPimpinan $jenisPimpinan, $id)
     {
         if (Auth::user()->hasRole('dinas')) {
+            $jenisPimpinan = JenisPimpinan::find($id);
             JenisPimpinan::destroy($jenisPimpinan->id);
 
             return redirect()->back()->with('success', 'Berhasil menghapus jenis ruang pimpinan!');

@@ -16,7 +16,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark display-4" style="padding: 0 !important;">Ruang Pimpinan</h1>
+                    <h1 class="m-0 text-dark display-4" style="padding: 0 !important;">Ruang Penunjang</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -252,13 +252,13 @@
         </div>
         {{-- modal --}}
 
-        {{-- ---------------------------------------------------------------------------------------- USULAN PIMPINAN ---------------------------------------------------------------------------------------- --}}
+        {{-- ---------------------------------------------------------------------------------------- USULAN PENUNJANG ---------------------------------------------------------------------------------------- --}}
         <div class="card">
             <div class="card-header" style="background-color: #25b5e9">
-                <h3 class="card-title text-white font-weight-bold">Ruang Pimpinan Tersedia</h3>
+                <h3 class="card-title text-white font-weight-bold">Ruang Penunjang Tersedia</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
-                        data-target="#tambah-tersedia"><i class="bi bi-plus"></i> Tambah Ketersediaan Ruang Pimpinan
+                        data-target="#tambah-tersedia"><i class="bi bi-plus"></i> Tambah Ketersediaan Ruang Penunjang
                     </button>
                 </div>
             </div>
@@ -305,12 +305,12 @@
                                                         </button>
                                                         <div class="dropdown-menu" style="margin-left: -73px">
                                                             <button type="submit" class="dropdown-item tombol-edit-ketersediaan" data-toggle="modal" data-target="#edit-tersedia">Edit</button>
-                                                            <form action="/bangunan/pimpinan/{{ $data['id'] }}"
+                                                            <form action="/bangunan/penunjang/{{ $data['id'] }}"
                                                                 method="post">
                                                                 @csrf
                                                                 @method('delete')
                                                                 <button type="submit" class="dropdown-item"
-                                                                    onclick="return confirm('Apakah anda yakin akan manghapus ketersediaan ruang pimpinan ini?')">Hapus</button>
+                                                                    onclick="return confirm('Apakah anda yakin akan manghapus ketersediaan ruang penunjang ini?')">Hapus</button>
                                                             </form>
                                                         </div>
                                                     </div>
@@ -337,14 +337,14 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Tambah Ketersediaan Ruang Pimpinan</h4>
+                        <h4 class="modal-title">Tambah Ketersediaan Ruang Penunjang</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         @if (count($jenis_pimpinans) > 0)
-                            <form class="form-horizontal" action="/bangunan/pimpinan" method="POST">
+                            <form class="form-horizontal" action="/bangunan/penunjang" method="POST">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group row">
@@ -385,7 +385,7 @@
                         @else
                             <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
                                 <div class="alert" role="alert">
-                                    Belum ada jenis ruang pimpinan
+                                    Belum ada jenis ruang Penunjang
                                 </div>
                             </div>
                         @endif
@@ -398,14 +398,14 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Edit Ketersediaan Ruang Pimpinan</h4>
+                        <h4 class="modal-title">Edit Ketersediaan Ruang Penunjang</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         @if (count($jenis_pimpinans) > 0)
-                            <form class="form-horizontal" action="/bangunan/pimpinan" method="POST">
+                            <form class="form-horizontal" action="/bangunan/penunjang" method="POST">
                                 @csrf
                                 @method('patch')
                                 <div class="card-body">
@@ -450,7 +450,7 @@
                         @else
                             <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
                                 <div class="alert" role="alert">
-                                    Belum ada jenis ruang pimpinan
+                                    Belum ada jenis ruang Penunjang
                                 </div>
                             </div>
                         @endif
@@ -459,10 +459,10 @@
             </div>
         </div>
 
-        {{-- --------------------------------------- USULAN RUANG PIMPINAN --------------------------------------- --}}
+        {{-- --------------------------------------- USULAN RUANG PENUNJANG --------------------------------------- --}}
         <div class="card card-info">
             <div class="card-header bg-warning">
-                <h3 class="card-title font-weight-bold text-white">Usulan Ruang Pimpinan</h3>
+                <h3 class="card-title font-weight-bold text-white">Usulan Ruang Penunjang</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
                         data-target="#tambah-usulan"><i class="bi bi-plus"></i> Tambah Usulan
@@ -541,10 +541,10 @@
         <div class="modal fade" id="tambah-usulan">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
-                    <form action="/bangunan/usulan-ruang-pimpinan" method="post" enctype="multipart/form-data">
+                    <form action="/bangunan/usulan-ruang-penunjang" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-header">
-                            <h4 class="modal-title">Usulan Ruang Pimpinan</h4>
+                            <h4 class="modal-title">Usulan Ruang Penunjang</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -596,7 +596,7 @@
                 @else
                     <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
                         <div class="alert" role="alert">
-                            Belum ada jenis ruang pimpinan
+                            Belum ada jenis ruang Penunjang
                         </div>
                     </div>
                     @endif
