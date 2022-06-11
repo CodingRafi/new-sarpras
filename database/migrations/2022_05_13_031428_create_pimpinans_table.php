@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('profil_id');
             $table->foreignId('jenis_pimpinan_id');
-            $table->string('nama');
-            $table->string('lebar');
-            $table->string('luas');
-            $table->string('panjang');
+            $table->string('ketersediaan');
+            $table->string('kekurangan');
+            $table->string('kondisi_ideal');
+            $table->text('keterangan');
             $table->timestamps();
         });
     }

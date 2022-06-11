@@ -25,14 +25,14 @@
     </div>
     {{-- End Header --}}
 
-    @if (request('jenis') == 'ruang_pimpinan' && Auth::user()->hasRole('dinas'))
+    @if (request('jenis') == 'ruang_penunjang' && Auth::user()->hasRole('dinas'))
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header" style="background-color: #25b5e9">
                     <h3 class="card-title text-white font-weight-bold">Jenis Ruang Pimpinan</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
-                            data-target="#tambah-jenis-pimpinan"><i class="bi bi-plus"></i> Tambah Jenis Ruang Pimpinan
+                            data-target="#tambah-jenis-pimpinan"><i class="bi bi-plus"></i> Tambah Jenis Ruang Penunjang
                         </button>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                                                     class="btn btn-warning button-jenis-pimpinan text-white"
                                                     data-toggle="modal" data-target="#edit-jenis-pimpinan">Edit
                                                 </button>
-                                                <form action="/jenis-pimpinan/{{ $jenis->id }}" method="post"
+                                                <form action="/jenis-penunjang/{{ $jenis->id }}" method="post"
                                                     class="d-inline-block">
                                                     @csrf
                                                     @method('delete')
@@ -94,7 +94,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" action="/jenis-pimpinan" method="POST">
+                        <form class="form-horizontal" action="/jenis-penunjang" method="POST">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group row">
@@ -117,13 +117,13 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Edit Jenis Ruang Pimpinan</h4>
+                        <h4 class="modal-title">Edit Jenis Ruang Penunjang</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal form-jenis-pimpinan" action="/jenis-pimpinan" method="POST">
+                        <form class="form-horizontal form-jenis-pimpinan" action="/jenis-penunjang" method="POST">
                             @csrf
                             @method('patch')
                             <div class="card-body">
@@ -436,7 +436,7 @@
                 })
             });
         </script>
-    @elseif (request('jenis') == 'ruang_pimpinan')
+    @elseif (request('jenis') == 'ruang_penunjang')
         <script>
             const inputNamaJenisPimpinan = document.querySelector('.input-nama-jenis-pimpinan');
             const buttonJenisPimpinan = document.querySelectorAll('.button-jenis-pimpinan');
@@ -448,7 +448,7 @@
                     inputNamaJenisPimpinan.value = '';
                     inputNamaJenisPimpinan.value = namaJenisPimpinan[i].innerHTML;
                     formJenisPimpinan.removeAttribute('action');
-                    formJenisPimpinan.setAttribute('action', '/jenis-pimpinan/' + namaJenisPimpinan[i]
+                    formJenisPimpinan.setAttribute('action', '/jenis-penunjang/' + namaJenisPimpinan[i]
                         .getAttribute('data-id'))
                 })
             });

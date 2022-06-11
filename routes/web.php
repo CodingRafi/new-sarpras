@@ -191,9 +191,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/bangunan/toilet', ToiletController::class);
     Route::post('/bangunan/usulan-toilet', [ToiletController::class, 'createusulan']);
     Route::resource('/bangunan/ruang-rehabrenov', RehabRenovController::class);
-    Route::resource('/bangunan/pimpinan', PimpinanController::class);
-    Route::post('/bangunan/usulan-ruang-pimpinan', [PimpinanController::class, 'createusulan']);
-    Route::patch('/bangunan/pimpinan', [PimpinanController::class, 'update']);
+    Route::resource('/bangunan/penunjang', PimpinanController::class);
+    Route::post('/bangunan/usulan-ruang-penunjang', [PimpinanController::class, 'createusulan']);
+    Route::patch('/bangunan/penunjang', [PimpinanController::class, 'update']);
     Route::get('/bangunan/usulan/{id}/edit', [UsulanBangunanController::class, 'editPimpinan']);
     Route::patch('/bangunan/usulan/{id}', [UsulanBangunanController::class, 'updatePimpinan']);
     Route::resource('/bangunan/laboratorium', LaboratoriumController::class);
@@ -201,7 +201,7 @@ Route::group(['middleware' => ['auth']], function() {
 
 
 
-    Route::resource('/jenis-pimpinan', JenisPimpinanController::class);
+    Route::resource('/jenis-penunjang', JenisPimpinanController::class);
     Route::resource('/monitoring', MonevController::class);
     Route::get('/peralatan-sekolah/{id}', [PeralatanController::class, 'showPeralatan']);
     Route::resource('/peralatan', PeralatanController::class);

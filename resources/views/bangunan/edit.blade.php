@@ -95,7 +95,7 @@
             @method('patch')
             <div class="card-body">
                 
-                @if ($data->jenis == 'perpustakaan' || $data->jenis == 'toilet')
+                @if ($data->jenis == 'perpustakaan')
                 <input type="hidden" name="jml_ruang" value="{{ $data->jml_ruang }}">
                 @else
 

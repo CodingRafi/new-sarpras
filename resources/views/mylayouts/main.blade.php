@@ -146,7 +146,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         li.hover-dropdown:hover .rotate-arrow {
             transform: rotate(180deg)
         }
-
     </style>
 
     @yield('tambahcss')
@@ -165,9 +164,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         {{-- SIDEBAR --}}
         @can('view_profiladmin')
-        @include('mypartials.asideadmin')
+            @include('mypartials.asideadmin')
         @else
-        @include('mypartials.aside')
+            @include('mypartials.aside')
         @endcan
 
         {{-- /SIDEBAR --}}
@@ -194,13 +193,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- FLASH MESSAGE -->
         @if (session()->has('success'))
-        <div class="alert text-white alert-dismissible fade show m-0 temp-alert-success" role="alert"
-            style="background: #00a65bb7; z-index: 99; position: fixed; bottom: 2vh; right: 2vh;">
-            <i class="bi bi-check-lg"></i> {{ session('success') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+            <div class="alert text-white alert-dismissible fade show m-0 temp-alert-success" role="alert"
+                style="background: #00a65bb7; z-index: 99; position: fixed; bottom: 2vh; right: 2vh;">
+                <i class="bi bi-check-lg"></i> {{ session('success') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
         @endif
         <!-- /FLASH MESSAGE -->
 
@@ -212,7 +211,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="item"></div>
                 <div class="item"></div>
                 <div class="item"></div>
-                <img src="/assets/img/avatars/logo-jawa-barat.png" alt="TarunaBhakti Logo" width="50" class="logo">
+                <img src="/assets/img/avatars/logo-jawa-barat.png" alt="TarunaBhakti Logo" width="50"
+                    class="logo">
             </div>
         </div>
         {{-- End Loading --}}
@@ -245,7 +245,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 tempAlertSuccess.classList.remove('show');
             }
         }
-
     </script>
 </body>
 

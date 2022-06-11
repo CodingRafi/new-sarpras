@@ -16,7 +16,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark display-4" style="padding: 0 !important;">Ruang Pimpinan</h1>
+                    <h1 class="m-0 text-dark display-4" style="padding: 0 !important;">Ruang Penunjang</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -25,240 +25,13 @@
 
     <div class="container-fluid">
 
-        {{-- ---------------------------------------------------------------------------------------- KONDISI IDEAL ---------------------------------------------------------------------------------------- --}}
-        <div class="info-box p-0 pimpinan-infobox">
-            <span class="info-box-icon p-4" style="background-color: #25b5e9; width: auto; min-width: 300px;">
-                <img src="/assets/img/icons/flaticons/town.png"
-                    style="filter: invert(100%); object-fit: cover; width: 80px; aspect-ratio: 1/1;">
-                <div class="ml-4">
-                    <span class="text-white font-weight-bold" style="font-size: 25px">
-                        Kondisi Ideal
-                    </span>
-                    <div class="d-flex align-items-end justify-content-center">
-                        <h1 class="display-4 text-white font-weight-bold">{{ $bangunan->kondisi_ideal }}</h1>
-                        <p class="text-white font-weight-bold" style="font-size: 15px">/ Kantor</p>
-                    </div>
-                </div>
-            </span>
-            <div class="info-box-content">
-                @if ($bangunan->ket_kondisi_ideal != null)
-                    <label>Keterangan:</label>
-                @endif
-                <button type="button" class="btn btn-tool text-dark" style="position: absolute; right:0%; padding-top:8px"
-                    data-toggle="modal" data-target="#edit-kondisi-ideal"><i class="bi bi-pencil-square"></i>
-                </button>
-                <p>{{ $bangunan->ket_kondisi_ideal }}</p>
-                @if ($bangunan->ket_kondisi_ideal == null)
-                    <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
-                        <div class="alert" role="alert">
-                            Data Tidak Ditemukan
-                        </div>
-                    </div>
-                @endif
-
-            </div>
-        </div>
-        {{-- modal --}}
-        <div class="modal fade" id="edit-kondisi-ideal">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header" style="background-color: #25b5e9; margin-left:-1px">
-                        <h4 class="modal-title text-white">Kondisi Ideal</h4>
-                        <button type="button" class="close" style="color: aliceblue" data-dismiss="modal"
-                            aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form action="/bangunan-all/update-kondisi-ideal/{{ $bangunan->id }}" method="post">
-                        @csrf
-                        @method('patch')
-                        <div class="modal-body">
-                            <div class="card-body">
-                                <div class="form-group row">
-                                    <label for="ideal" class="col-sm-2 col-form-label">Kondisi Ideal</label>
-                                    <div class="col-sm-10">
-                                        <input type="number" class="form-control" id="ideal" name="kondisi_ideal"
-                                            value="{{ $bangunan->kondisi_ideal }}">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="ideal" class="col-sm-2 col-form-label">Keterangan kondisi
-                                        ideal</label>
-                                    <div class="col-sm-10">
-                                        <textarea name="ket_kondisi_ideal" id="ideal" rows="5" class="form-control"
-                                            placeholder="Keterangan Kondisi Ideal">{{ $bangunan->ket_kondisi_ideal }}</textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn text-white float-right"
-                                style="background-color: #00a65b">Simpan</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        {{-- modal --}}
-
-        {{-- ---------------------------------------------------------------------------------------- KETERSEDIAAN ---------------------------------------------------------------------------------------- --}}
-        <div class="info-box p-0 pimpinan-infobox">
-            <span class="info-box-icon p-4" style="background-color: #fcc12d; width: auto; min-width: 300px;">
-                <img src="/assets/img/icons/flaticons/building.png"
-                    style="filter: invert(100%); object-fit: cover; width: 80px; aspect-ratio: 1/1;">
-                <div class="ml-4 text-white font-weight-bold">
-                    <span class="text white font-weight-bold" style="font-size: 25px">
-                        Ketersediaan
-                    </span>
-                    <div class="d-flex align-items-end justify-content-center">
-                        <h1 class="display-4 text-white font-weight-bold">{{ $bangunan->ketersediaan }}</h1>
-                        <p class="text-white font-weight-bold" style="font-size: 15px">/ Kantor</p>
-                    </div>
-                </div>
-            </span>
-            <div class="info-box-content">
-            @if ($bangunan->ket_ketersediaan != null)
-                    <label>Keterangan:</label>
-                @endif
-                <button type="button" class="btn btn-tool text-dark" style="position: absolute; right:0%; padding-top:8px"
-                    data-toggle="modal" data-target="#edit-ketersediaan"><i class="bi bi-pencil-square"></i>
-                </button>
-                @if ($bangunan->ket_ketersediaan == null)
-                    <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
-                        <div class="alert" role="alert">
-                            Data Tidak Ditemukan
-                        </div>
-                    </div>
-                @endif
-                <p>{{ $bangunan->ket_ketersediaan }}</p>
-
-            </div>
-        </div>
-        {{-- modal --}}
-        <div class="modal fade" id="edit-ketersediaan">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header" style="background-color: #fcc12d; margin-left:-1px">
-                        <h4 class="modal-title text-white">Ketersediaan</h4>
-                        <button type="button" class="close" style="color: aliceblue" data-dismiss="modal"
-                            aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form action="/bangunan-all/update-ketersediaan/{{ $bangunan->id }}" method="post">
-                        @csrf
-                        @method('patch')
-                        <div class="modal-body">
-                            <div class="card-body">
-                                <div class="form-group row">
-                                    <label for="ideal" class="col-sm-2 col-form-label">Ketersediaan</label>
-                                    <div class="col-sm-10">
-                                        <input type="number" class="form-control" id="ideal" name="ketersediaan"
-                                            value="{{ $bangunan->ketersediaan }}">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="ideal" class="col-sm-2 col-form-label">Keterangan
-                                        Ketersediaan</label>
-                                    <div class="col-sm-10">
-                                        <textarea name="ket_ketersediaan" id="ideal" rows="5" class="form-control"
-                                            placeholder="Keterangan Ketersediaan">{{ $bangunan->ket_ketersediaan }}</textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn text-white float-right"
-                                style="background-color: #00a65b">Simpan</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        {{-- modal --}}
-
-        {{-- ---------------------------------------------------------------------------------------- KEKURANGAN ---------------------------------------------------------------------------------------- --}}
-        <div class="info-box p-0 pimpinan-infobox">
-            <span class="info-box-icon p-4" style="background-color: #263238; width: auto; min-width: 300px;">
-                <img src="/assets/img/icons/flaticons/school.png"
-                    style="filter: invert(100%); object-fit: cover; width: 50px; aspect-ratio: 1/1;">
-                <div class="ml-4">
-                    <span class="text-white font-weight-bold" style="font-size: 25px">
-                        Kekurangan
-                    </span>
-                    <div class="d-flex align-items-end justify-content-center">
-                        <h1 class="display-4 text-white font-weight-bold">{{ $bangunan->kekurangan }}</h1>
-                        <p class="text-white font-weight-bold" style="font-size: 15px">/ Kantor</p>
-                    </div>
-                </div>
-            </span>
-            <div class="info-box-content">
-                @if ($bangunan->ket_kekurangan != null)
-                    <label>Keterangan:</label>
-                @endif
-                <button type="button" class="btn btn-tool text-dark" style="position: absolute; right:0%; padding-top:8px"
-                    data-toggle="modal" data-target="#edit-kekurangan"><i class="bi bi-pencil-square"></i>
-                </button>
-                @if ($bangunan->ket_kekurangan == null)
-                    <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
-                        <div class="alert" role="alert">
-                            Data Tidak Ditemukan
-                        </div>
-                    </div>
-                @endif
-                <p>{{ $bangunan->ket_kekurangan }}</p>
-
-            </div>
-        </div>
-        {{-- modal --}}
-        <div class="modal fade" id="edit-kekurangan">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header" style="background-color: #263238; margin-left:-1px">
-                        <h4 class="modal-title text-white">Kekurangan</h4>
-                        <button type="button" class="close" style="color: aliceblue" data-dismiss="modal"
-                            aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form action="/bangunan-all/update-kekurangan/{{ $bangunan->id }}" method="post">
-                        @csrf
-                        @method('patch')
-                        <div class="modal-body">
-                            <div class="card-body">
-                                <div class="form-group row">
-                                    <label for="ideal" class="col-sm-2 col-form-label">Kekurangan</label>
-                                    <div class="col-sm-10">
-                                        <input type="number" class="form-control" id="ideal" name="kekurangan"
-                                            value="{{ $bangunan->kekurangan }}">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="ideal" class="col-sm-2 col-form-label">Keterangan Kekurangan</label>
-                                    <div class="col-sm-10">
-                                        <textarea name="ket_kekurangan" id="ideal" rows="5" class="form-control"
-                                            placeholder="Keterangan Kekurangan">{{ $bangunan->ket_kekurangan }}</textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn text-white float-right"
-                                style="background-color: #00a65b">Simpan</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        {{-- modal --}}
-
         {{-- ---------------------------------------------------------------------------------------- USULAN PIMPINAN ---------------------------------------------------------------------------------------- --}}
         <div class="card">
             <div class="card-header" style="background-color: #25b5e9">
-                <h3 class="card-title text-white font-weight-bold">Ruang Pimpinan Tersedia</h3>
+                <h3 class="card-title text-white font-weight-bold">Ruang Penunjang Tersedia</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
-                        data-target="#tambah-tersedia"><i class="bi bi-plus"></i> Tambah Ketersediaan Ruang Pimpinan
+                        data-target="#tambah-tersedia"><i class="bi bi-plus"></i> Tambah Ketersediaan Ruang Penunjang
                     </button>
                 </div>
             </div>
@@ -305,12 +78,12 @@
                                                         </button>
                                                         <div class="dropdown-menu" style="margin-left: -73px">
                                                             <button type="submit" class="dropdown-item tombol-edit-ketersediaan" data-toggle="modal" data-target="#edit-tersedia">Edit</button>
-                                                            <form action="/bangunan/pimpinan/{{ $data['id'] }}"
+                                                            <form action="/bangunan/penunjang/{{ $data['id'] }}"
                                                                 method="post">
                                                                 @csrf
                                                                 @method('delete')
                                                                 <button type="submit" class="dropdown-item"
-                                                                    onclick="return confirm('Apakah anda yakin akan manghapus ketersediaan ruang pimpinan ini?')">Hapus</button>
+                                                                    onclick="return confirm('Apakah anda yakin akan manghapus ketersediaan ruang penunjang ini?')">Hapus</button>
                                                             </form>
                                                         </div>
                                                     </div>
@@ -337,14 +110,14 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Tambah Ketersediaan Ruang Pimpinan</h4>
+                        <h4 class="modal-title">Tambah Ketersediaan Ruang Penunjang</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         @if (count($jenis_pimpinans) > 0)
-                            <form class="form-horizontal" action="/bangunan/pimpinan" method="POST">
+                            <form class="form-horizontal" action="/bangunan/penunjang" method="POST">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group row">
@@ -385,7 +158,7 @@
                         @else
                             <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
                                 <div class="alert" role="alert">
-                                    Belum ada jenis ruang pimpinan
+                                    Belum ada jenis ruang Penunjang
                                 </div>
                             </div>
                         @endif
@@ -398,14 +171,14 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Edit Ketersediaan Ruang Pimpinan</h4>
+                        <h4 class="modal-title">Edit Ketersediaan Ruang Penunjang</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         @if (count($jenis_pimpinans) > 0)
-                            <form class="form-horizontal" action="/bangunan/pimpinan" method="POST">
+                            <form class="form-horizontal" action="/bangunan/penunjang" method="POST">
                                 @csrf
                                 @method('patch')
                                 <div class="card-body">
@@ -450,7 +223,7 @@
                         @else
                             <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
                                 <div class="alert" role="alert">
-                                    Belum ada jenis ruang pimpinan
+                                    Belum ada jenis ruang Penunjang
                                 </div>
                             </div>
                         @endif
@@ -459,10 +232,10 @@
             </div>
         </div>
 
-        {{-- --------------------------------------- USULAN RUANG PIMPINAN --------------------------------------- --}}
+        {{-- --------------------------------------- USULAN RUANG PENUNJANG --------------------------------------- --}}
         <div class="card card-info">
             <div class="card-header bg-warning">
-                <h3 class="card-title font-weight-bold text-white">Usulan Ruang Pimpinan</h3>
+                <h3 class="card-title font-weight-bold text-white">Usulan Ruang Penunjang</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
                         data-target="#tambah-usulan"><i class="bi bi-plus"></i> Tambah Usulan
@@ -541,10 +314,10 @@
         <div class="modal fade" id="tambah-usulan">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
-                    <form action="/bangunan/usulan-ruang-pimpinan" method="post" enctype="multipart/form-data">
+                    <form action="/bangunan/usulan-ruang-penunjang" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-header">
-                            <h4 class="modal-title">Usulan Ruang Pimpinan</h4>
+                            <h4 class="modal-title">Usulan Ruang Penunjang</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -596,7 +369,7 @@
                 @else
                     <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
                         <div class="alert" role="alert">
-                            Belum ada jenis ruang pimpinan
+                            Belum ada jenis ruang Penunjang
                         </div>
                     </div>
                     @endif

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('ketersediaan');
             $table->string('kekurangan');
             $table->string('kondisi_ideal');
+            $table->text('keterangan');
             $table->timestamps();
         });
     }
