@@ -28,6 +28,10 @@
         .fstAll {
             display: none !important;
         }
+
+        .nama-koleksi{
+            font-size: 16px;
+        }
     </style>
 @endsection
 
@@ -382,9 +386,9 @@
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="card-body">
-                                                        <a class="card-text d-block nama-koleksi"
+                                                        <a class="card-text d-block  text-primary"
                                                             href="/koleksi/{{ $koleksi->slug }}"
-                                                            style="color: black;">{{ $koleksi->nama }}</a>
+                                                            >{{ $koleksi->nama }}</a>
                                                         <p style="text-transform: capitalize">Kategori :
                                                             {{ str_replace('_', ' ', $jenis_koleksi_terpilih[$key]->nama) }}
                                                         </p>
@@ -478,7 +482,7 @@
                                                 @csrf
                                                 <input type="hidden" name="profil_depo_id" value="{{ $profil->id }}">
                                                 <div class="mb-3">
-                                                    <label for="nama" class="form-label">Nama Koleksi</label>
+                                                    <label for="nama" class="form-label">Nama</label>
                                                     <input type="text"
                                                         class="form-control @error('nama') is-invalid @enderror" id="nama"
                                                         name="nama" placeholder="Nama Koleksi" required
@@ -490,6 +494,7 @@
                                                     @enderror
                                                 </div>
                                                 <div class="mb-3">
+                                                    <label for="nama" class="form-label">Kategori</label>
                                                     <select class="custom-select" name="jeniskoleksi_id">
                                                         @foreach ($jenis_koleksis as $jenis)
                                                             @if ($jenis->nama != 'lain')

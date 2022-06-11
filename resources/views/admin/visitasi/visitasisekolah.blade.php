@@ -154,7 +154,7 @@
                                         <select class="fstdropdown-select select-jurusan" id="select" name="profil_id">
                                             @foreach ($profils as $profil)
                                                 <option value="{{ $profil->id }}">{{ $profil->nama }}
-                                                    ({{ $profil->alamat }})
+                                                    ({{ $profil->npsn }})
                                                 </option>
                                             @endforeach
                                         </select>
