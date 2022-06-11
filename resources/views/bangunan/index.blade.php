@@ -305,7 +305,7 @@
 
                                                     <button type="button" class="btn text-white tombolHapus"
                                                         data-toggle="modal" data-target="#confirmhapus"
-                                                        data-id="{{ $usulan->id }}" style="background-color: #00a65b">
+                                                        data-id="{{ $usulan->id }}" style="background-color: #263238">
                                                         Hapus
                                                     </button>
                                             </tr>
