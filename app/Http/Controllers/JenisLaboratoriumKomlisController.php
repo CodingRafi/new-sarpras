@@ -6,6 +6,7 @@ use App\Models\JenisLaboratoriumKomlis;
 use App\Http\Requests\StoreJenisLaboratoriumKomlisRequest;
 use App\Http\Requests\UpdateJenisLaboratoriumKomlisRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class JenisLaboratoriumKomlisController extends Controller
 {

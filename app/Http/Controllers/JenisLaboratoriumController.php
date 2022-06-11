@@ -78,7 +78,7 @@ class JenisLaboratoriumController extends Controller
     public function show(JenisLaboratorium $jenisLaboratorium)
     {
         if(Auth::user()->hasRole('dinas')){
-            $komlis = getJenis($jenisLaboratorium->id);
+            $komlis = JenisLaboratorium::getJenis($jenisLaboratorium->id);
     
             return view('admin.detail-lab',[
                 'jenis' => $jenisLaboratorium,
