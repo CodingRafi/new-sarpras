@@ -18,14 +18,14 @@ class SpektrumSeeder extends Seeder
         Spektrum::create([
            'nama' => 'Kurikulum Merdeka' ,
            'aturan' => 'NOMOR 024/H/KR/2022',
-           'tanggal' => '19 April 2022',
+           'tanggal' => '2022-04-19',
            'lampiran' => 'merdeka.pdf'
         ]);
 
         Spektrum::create([
             'nama' => 'Kurikulum 2018' ,
             'aturan' => 'NOMOR 06/D.D5/KK/2018',
-            'tanggal' => '7 Juni 2018',
+            'tanggal' => '2018-06-07',
             'lampiran' => '2018.pdf'
          ]);
     }

@@ -7,6 +7,10 @@
             position: absolute;
             left: 35px;
         }
+
+        /* .open .fstAll{
+            display: none;
+        } */
     </style>
 @endsection
 
@@ -63,7 +67,8 @@
                                                     class="d-inline-block">
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="submit" class="btn text-white" style="background-color: #263238"
+                                                    <button type="submit" class="btn text-white"
+                                                        style="background-color: #263238"
                                                         onclick="return confirm('Apakah anda yakin akan menghapus jenis ruang pimpinan ini?')">Hapus</button>
                                                 </form>
                                             </td>
@@ -172,8 +177,8 @@
                                             <td class="text-center text-capitalize nama-laboratorium"
                                                 data-id="{{ $jenis->id }}">{{ $jenis->jenis }}</td>
                                             <td class="text-center text-capitalize">
-                                                <a href="/jenis-laboratorium/{{ $jenis->id }}"
-                                                    class="btn text-white" style="background-color: #00a65b">Detail</a>
+                                                <a href="/jenis-laboratorium/{{ $jenis->id }}" class="btn text-white"
+                                                    style="background-color: #00a65b">Detail</a>
                                                 <button type="button" class="btn btn-warning button-laboratorium text-white"
                                                     data-toggle="modal" data-target="#edit-laboratorium"
                                                     data-id="{{ $jenis->id }}">Edit
@@ -182,7 +187,8 @@
                                                     class="d-inline-block">
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="submit" class="btn text-white" style="background-color: #263238"
+                                                    <button type="submit" class="btn text-white"
+                                                        style="background-color: #263238"
                                                         onclick="return confirm('Apakah anda yakin akan menghapus jenis laboratorium ini?')">Hapus</button>
                                                 </form>
                                             </td>
@@ -213,31 +219,39 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" action="/jenis-laboratorium" method="POST">
-                            @csrf
-                            <div class="card-body">
-                                <div class="form-group row">
-                                    <label for="nama" class="col-sm-3 col-form-label">Jenis Laboratorium</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" name="jenis" id="" class="form-control">
+                        @if (count($komlis) > 0)
+                            <form class="form-horizontal" action="/jenis-laboratorium" method="POST">
+                                @csrf
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label for="nama" class="col-sm-3 col-form-label">Jenis Laboratorium</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="jenis" id="" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="nama" class="col-sm-3 col-form-label">Kompetensi Keahlian</label>
+                                        <div class="col-sm-9">
+                                            <select class="fstdropdown-select" id="select" name="komli_id[]" multiple>
+                                                @foreach ($komlis as $komli)
+                                                    <option value="{{ $komli->id }}">{{ $komli->kompetensi }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="nama" class="col-sm-3 col-form-label">Kompetensi Keahlian</label>
-                                    <div class="col-sm-9">
-                                        <select class="fstdropdown-select" id="select" name="komli_id[]" multiple>
-                                            @foreach ($komlis as $komli)
-                                                <option value="{{ $komli->id }}">{{ $komli->kompetensi }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-success float-right">Simpan</button>
+                                </div>
+                            </form>
+                        @else
+                            <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                                <div class="alert" role="alert">
+                                    Tidak ada kompetensi keahlian tersedia
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-success float-right">Simpan</button>
-                            </div>
-                        </form>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -421,7 +435,7 @@
         <script>
             const namaLaboratorium = document.querySelectorAll('.nama-laboratorium');
             const buttonLaboratorium = document.querySelectorAll('.button-laboratorium');
-            console.log(buttonLaboratorium);
+            // console.log(buttonLaboratorium);
             const formLaboratorium = document.querySelector('.form-laboratorium');
             const inputNamaLaboratorium = document.querySelector('.input-nama-laboratorium');
 

@@ -207,14 +207,13 @@
                                     <td class="text-center col-1" rowspan="3">{{ $data['kabupaten'] }}</td>
                                     <td class="text-center col-2" rowspan="3">{{ $data['instansi'] }}</td>
                                     <td class="text-center col-2">
-                                        <div class="text-white mt-1 p-1"
-                                            style="background-color: #00a65b; border-radius:5px">
-                                            Lahan {{ $data['status_lahan']['kondisi'] }}</div>
+                                        <div class="mt-1 p-1">
+                                            Lahan</div>
                                     </td>
                                     <td class="text-center col-2">
                                         <div class="text-white mt-1 p-1"
                                             style="background-color: #00a65b; border-radius:5px">
-                                            Kekurangan {{ $data['status_lahan']['kekurangan'] }} m²
+                                            {{ $data['status_lahan']['kondisi'] }}, Kekurangan {{ $data['status_lahan']['kekurangan'] }} m²
                                         </div>
                                     </td>
                                     <td class="text-center col-2" rowspan="3">
@@ -245,9 +244,9 @@
                                 </tr>
                                 <tr>
                                     <td class="text-center col-2">
-                                        <div class="text-white mt-1" style="background-color: #25b5e9; border-radius:5px">
+                                        <div class="mt-1">
                                             Peralatan
-                                            {{ count($data['status_peralatan']) > 0 ? 'Tidak Ideal' : 'Ideal' }}
+                                            {{-- {{ count($data['status_peralatan']) > 0 ? 'Tidak Ideal' : 'Ideal' }} --}}
                                         </div>
                                     </td>
                                     <td class="text-center col-2">
@@ -255,20 +254,20 @@
                                             @foreach ($data['status_peralatan'] as $peralatan)
                                                 <div class="text-white mt-1"
                                                     style="background-color: #25b5e9; border-radius:5px">
-                                                    kekurangan {{ $peralatan['kekurangan'] }} peralatan pada jurusan
+                                                    Tidak Ideal, kekurangan {{ $peralatan['kekurangan'] }} peralatan pada jurusan
                                                     {{ $peralatan['jurusan'] }}</div>
                                             @endforeach
                                         @else
                                             <div class="text-white mt-1"
-                                                style="background-color: #25b5e9; border-radius:5px">Peralatan sudah ideal
+                                                style="background-color: #25b5e9; border-radius:5px">Ideal, Peralatan sudah sesuai standar
                                             </div>
                                         @endif
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="text-center col-2">
-                                        <div class="text-white mt-1" style="background-color: #fcc12d; border-radius:5px">
-                                            Bangunan {{ count($data['status_bangunan']) > 0 ? 'Tidak Ideal' : 'Ideal' }}
+                                        <div class="mt-1">
+                                            Bangunan 
                                         </div>
                                     </td>
                                     <td class="text-center col-2">
@@ -277,22 +276,22 @@
                                                 @if ($bangunan['kategori'] == 'lab')
                                                     <div class="text-white mt-1"
                                                         style="background-color: #fcc12d; border-radius:5px">
-                                                        kekurangan {{ $bangunan['kekurangan'] }} m² pada
+                                                        {{ count($data['status_bangunan']) > 0 ? 'Tidak Ideal' : 'Ideal' }}, kekurangan {{ $bangunan['kekurangan'] }} m² pada
                                                         {{ $bangunan['jenis'] }}</div>
                                                 @elseif($bangunan['kategori'] == 'praktik')
                                                     <div class="text-white mt-1"
                                                         style="background-color: #fcc12d; border-radius:5px">
-                                                        Ruang Praktik {{ $bangunan['jenis'] }} {{ $bangunan['kondisi'] }}</div>
+                                                        {{ count($data['status_bangunan']) > 0 ? 'Tidak Ideal' : 'Ideal' }}, Ruang Praktik {{ $bangunan['jenis'] }} {{ $bangunan['kondisi'] }}</div>
                                                 @else
                                                     @if ($bangunan['jenis'] == 'ruang_kelas' || $bangunan['jenis'] == 'toilet')
                                                         <div class="text-white mt-1"
                                                             style="background-color: #fcc12d; border-radius:5px;text-transform: capitalize">
-                                                            kekurangan {{ $bangunan['kekurangan'] }} bangunan pada
+                                                            {{ count($data['status_bangunan']) > 0 ? 'Tidak Ideal' : 'Ideal' }}, kekurangan {{ $bangunan['kekurangan'] }} bangunan pada
                                                             {{ str_replace('_', ' ', $bangunan['jenis']) }}</div>
                                                     @else
                                                         <div class="text-white mt-1"
                                                             style="background-color: #fcc12d; border-radius:5px;text-transform: capitalize">
-                                                            kekurangan {{ $bangunan['kekurangan'] }} m² pada
+                                                            {{ count($data['status_bangunan']) > 0 ? 'Tidak Ideal' : 'Ideal' }}, kekurangan {{ $bangunan['kekurangan'] }} m² pada
                                                             {{ str_replace('_', ' ', $bangunan['jenis']) }}</div>
                                                     @endif
                                                 @endif
