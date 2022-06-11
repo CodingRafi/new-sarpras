@@ -123,8 +123,7 @@
                                     <div class="container d-flex justify-content-center align-items-center"
                                         style="height: 10rem">
                                         <div class="alert" role="alert">
-                                            Tidak ada {{ count($verifikators) > 0 ? 'sekolah' : 'verifikator' }}
-                                            ditemukan
+                                            Tidak ada visitasi ditemukan
                                         </div>
                                     </div>
                                 @endif
@@ -195,7 +194,8 @@
                                 <div class="container d-flex justify-content-center align-items-center"
                                     style="height: 10rem">
                                     <div class="alert" role="alert">
-                                        Tidak ada data ditemukan
+                                        Tidak ada {{ count($verifikators) > 0 ? 'sekolah' : 'verifikator' }}
+                                            ditemukan
                                     </div>
                                 </div>
                             @endif

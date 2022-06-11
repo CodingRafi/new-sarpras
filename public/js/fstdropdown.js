@@ -35,10 +35,11 @@ function setFstDropdown() {
             selectAll.type = "button";
             selectAll.selected = false;
         }
-        createFstElement("div", "fstlist", dropdown, null);
+        createFstElement("div", "fstlist list-select", dropdown, null);
         select.fstdropdown = { dd: dropdown, rebind: function () { rebindDropdown(select); }, setValue: function(value){setValue(dropdown, value)} };
         rebindDropdown(select);
         select.classList.add("fstcreated");
+
     }
     function setValue(dd, value) {
         if (Array.isArray(value))

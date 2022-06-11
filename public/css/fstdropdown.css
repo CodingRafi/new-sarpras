@@ -97,7 +97,7 @@
 }
 
 .fstlist > div.selected {
-    /* background-color: #cdcdcd; */
+    background-color: #cdcdcd;
     color: #262626;
 }
 
