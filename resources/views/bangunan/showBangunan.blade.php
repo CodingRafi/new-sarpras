@@ -63,7 +63,7 @@
                                                     class="d-inline-block">
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="submit" class="btn btn-success"
+                                                    <button type="submit" class="btn text-white" style="background-color: #263238"
                                                         onclick="return confirm('Apakah anda yakin akan menghapus jenis ruang pimpinan ini?')">Hapus</button>
                                                 </form>
                                             </td>
@@ -173,7 +173,7 @@
                                                 data-id="{{ $jenis->id }}">{{ $jenis->jenis }}</td>
                                             <td class="text-center text-capitalize">
                                                 <a href="/jenis-laboratorium/{{ $jenis->id }}"
-                                                    class="btn btn-dark">Detail</a>
+                                                    class="btn text-white" style="background-color: #00a65b">Detail</a>
                                                 <button type="button" class="btn btn-warning button-laboratorium text-white"
                                                     data-toggle="modal" data-target="#edit-laboratorium"
                                                     data-id="{{ $jenis->id }}">Edit
@@ -182,7 +182,7 @@
                                                     class="d-inline-block">
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="submit" class="btn btn-success"
+                                                    <button type="submit" class="btn text-white" style="background-color: #263238"
                                                         onclick="return confirm('Apakah anda yakin akan menghapus jenis laboratorium ini?')">Hapus</button>
                                                 </form>
                                             </td>
@@ -278,8 +278,8 @@
     {{-- Table --}}
     <div class="container-fluid">
         <div class="card">
-            <div class="card-header bg-warning d-flex p-0">
-                <h3 class="card-title p-3 text-white" style="text-transform: capitalize;">
+            <div class="card-header d-flex p-0" style="background-color: #25b5e9">
+                <h3 class="card-title p-3 text-white font-weight-bold" style="text-transform: capitalize;">
                     {{ str_replace('_', ' ', request('jenis')) }}</h3>
             </div>
             <div class="card-body">
