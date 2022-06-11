@@ -185,10 +185,12 @@ function setFstDropdown() {
                 if (selected){
                     list[l].classList.add("selected");
                     list[l].setAttribute("disabled", 'disabled');
+                    list[l].removeEventListener('click', changeSelect);
                 }
                 else{
                     list[l].removeAttribute("disabled", 'disabled');
                     list[l].classList.remove("selected");
+                    list[l].addEventListener('click', changeSelect);
                 }
             }
         initNewEvent("change", select);
