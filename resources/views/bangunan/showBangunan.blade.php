@@ -321,7 +321,7 @@
                                                         @endif
                                                         <input type="hidden" name="filter" value="kcd">
                                                         <button class="dropdown-item text-truncate kab" tabindex="-1"
-                                                            type="submit">Kantor Cabang Dinas</button>
+                                                            type="submit">Cabang Dinas Pendidikan</button>
                                                     </form>
                                                 </div>
                                             </li>

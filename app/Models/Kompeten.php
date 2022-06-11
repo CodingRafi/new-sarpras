@@ -104,22 +104,9 @@ class Kompeten extends Model
     }
     
     public static function status_kompeten($profil){
-        $status_kompeten = [];
-
-        foreach ($profil->kompeten as $key => $kompeten) {
-            if ($kompeten->kekurangan > 0) {
-                $kondisi = 'Tidak Ideal';
-            }else{
-                $kondisi = 'Ideal';
-            }
-
-            $status_kompeten[] = [
-                'jenis' => $kompeten->komli->kompetensi,
-                'kondisi' => $kondisi,
-                'kekurangan' => $kompeten->kekurangan
-            ];
-        }
-
-        return $status_kompeten;
+        return Kompeten::select('kompetens.*', 'komlis.kompetensi')
+                        ->where('profil_id', $profil->id)
+                        ->leftJoin('komlis', 'komlis.id', 'kompetens.komli_id')
+                        ->get();
     }
 }

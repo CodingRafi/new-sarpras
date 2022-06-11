@@ -71,7 +71,7 @@ class Bangunan extends Model
 
         foreach ($bangunan_all as $key => $bangunan) {
             if ($bangunan['kekurangan'] > 0) {
-                $bangunan_tidak_ideal = [
+                $bangunan_tidak_ideal[] = [
                     'kategori' => 'all',
                     'jenis' => $bangunan['jenis'],
                     'kondisi' => 'Tidak Ideal',
@@ -92,17 +92,31 @@ class Bangunan extends Model
         }
 
         foreach ($kompetens as $key => $kompeten) {
-            if ($kompeten['kekurangan'] > 0) {
+            // dd($kompeten);
+            if ($kompeten->status == 'tidak_ideal') {
                 $bangunan_tidak_ideal[] = [
                     'kategori' => 'praktik',
-                    'jenis' => $kompeten['jenis'],
+                    'jenis' => $kompeten->kompetensi,
                     'kondisi' => 'Tidak Ideal',
                     'kekurangan' => $kompeten['kekurangan']
                 ];
             }
         }
-       
+    
         return $bangunan_tidak_ideal;
+    }
 
+    public static function ubah_kekurangan($profil_id){
+        $bangunan = Bangunan::find($profil_id);
+        
+        $hasil = $bangunan->kondisi_ideal - $bangunan->ketersediaan;
+
+        if ($hasil < 0) {
+            $hasil = 0;
+        }
+        
+        $bangunan->update([
+            'kekurangan' => $hasil
+        ]); 
     }
 }

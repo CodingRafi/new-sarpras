@@ -178,6 +178,8 @@ class BangunanController extends Controller
             
             $data->update($validatedData);
             
+            Bangunan::ubah_kekurangan($id);
+
             if($data->jenis == 'ruang_kelas'){
                 $ketersediaan = Bangunan::where('id', $id)->get()[0]->ketersediaan;
                 $jml_rombel = Profil::where('id', Auth::user()->profil_id)->get()[0]->jml_rombel;
@@ -226,7 +228,7 @@ class BangunanController extends Controller
     public function kondisiIdeal(Request $request, $id){
         $data = Bangunan::where('id', $id)->get()[0];
         if($data->profil_id == Auth::user()->profil_id){
-            if($data->jenis == 'toilet' || $data->jenis == 'lab_komputer' || $data->jenis == 'lab_biologi' || $data->jenis == 'lab_fisika' || $data->jenis == 'lab_ipa' || $data->jenis == 'lab_kimia' || $data->jenis == 'lab_bahasa' || $data->jenis == 'ruang_pimpinan'){
+            if($data->jenis == 'toilet' || $data->jenis == 'perpustakaan' || $data->jenis == 'ruang_pimpinan'){
                 $validatedData = $request->validate([
                     'kondisi_ideal' => 'required|numeric',
                 ]);

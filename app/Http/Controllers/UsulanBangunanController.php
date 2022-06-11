@@ -83,6 +83,14 @@ class UsulanBangunanController extends Controller
                 'profil' => $usulanBangunan->profil,
                 'kompils' => Kompeten::getKompeten()
             ]);
+        }elseif($usulanBangunan->jenis == 'laboratorium'){
+            return view('bangunan.show', [
+                'data' => $usulanBangunan,
+                'jenisLaboratorium' => $usulanBangunan->laboratorium->jenis_laboratorium->jenis,
+                'usulanFoto' => $usulanBangunan->usulanKoleksi[0]->usulanFoto,
+                'profil' => $usulanBangunan->profil,
+                'kompils' => Kompeten::getKompeten()
+            ]);
         }
 
         return view('bangunan.show', [

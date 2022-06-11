@@ -282,8 +282,7 @@
                                                 @elseif($bangunan['kategori'] == 'praktik')
                                                     <div class="text-white mt-1"
                                                         style="background-color: #fcc12d; border-radius:5px">
-                                                        kekurangan {{ $bangunan['kekurangan'] }} m² pada
-                                                        {{ $bangunan['jenis'] }}</div>
+                                                        Ruang Praktik {{ $bangunan['jenis'] }} {{ $bangunan['kondisi'] }}</div>
                                                 @else
                                                     @if ($bangunan['jenis'] == 'ruang_kelas' || $bangunan['jenis'] == 'toilet')
                                                         <div class="text-white mt-1"

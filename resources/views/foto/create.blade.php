@@ -25,7 +25,7 @@
 
                     <div class="col">
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end position-absolute" style="right: 0;">
-                            <a href="/profil/{{ $koleksi->profil_depo_id }}" class="btn btn-danger">Kembali</a>
+                            <a href="/profil/{{ $koleksi->profil_depo_id }}" class="btn text-white" style="background-color: #263238">Kembali</a>
                           </div>
                         <form action="/foto" method="POST" enctype="multipart/form-data">
                             @csrf
@@ -37,7 +37,7 @@
                                   </div>
                             </div>
                             <div class="container-preview"></div>
-                            <button type="submit" class="btn btn-success loading-simpan">Submit</button>
+                            <button type="submit" class="btn text-white loading-simpan" style="background-color: #00a65b">Simpan</button>
                         </form>
                     </div>
 

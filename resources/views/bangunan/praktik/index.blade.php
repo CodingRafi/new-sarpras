@@ -29,7 +29,6 @@
 
 @section('container')
     {{-- Main-Content --}}
-
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -39,28 +38,12 @@
             </div>
         </div>
     </div>
-
-
     {{-- Kompetensi Keahlian --}}
 
     <div class="container-fluid">
         <div class="row">
 
             @foreach ($kompetens as $id => $kompeten)
-                {{-- <div class="col-4 d-flex justify-content-center mt-4">
-                    <div class="card h-15 p-4" style="width: 20rem">
-                        @if ($kompeten->logo)
-                            <h1>ada</h1>
-                        @else
-                            <img src="/img/Kompetensi Keahlian.png" class="card-img-top border rounded-circle" alt="...">
-                        @endif
-                        <div class="card-body">
-                            <h5 class="card-title mb-2"></h5>
-                            <p class="card-text"> Siswa</p>
-                        </div>
-                        <a href="" class="btn btn-outline-primary">Detail</a>
-                    </div>
-                </div> --}}
                 <a href="/kompeten/{{ $kompeten->id }}" class="col-md-4 col-12">
                     <div class="info-box">
                         @if ($kompeten->logo)
@@ -73,7 +56,7 @@
                                 class="card-img-top border rounded-circle">
                         @endif
                         <div class="info-box-content" style="margin-left: 10px; margin-top: 10px; margin-bottom: 10px;">
-                            <p class="font-weight-bold" style="font-size: 1.3rem">{{ $komlis[$id]->kompetensi }}</p>
+                            <p class="font-weight-bold" style="font-size: 1.3rem">{{ $kompeten->kompetensi }}</p>
                             <p class="font-weight-normal">{{ $kompeten->jml_lk + $kompeten->jml_pr }} Siswa</p>
                         </div>
                     </div>
@@ -88,63 +71,30 @@
         <div class="card">
             <div class="card-header" style="background-color: #25b5e9">
                 <h3 class="card-title text-white font-weight-bold">Ruang Praktek Tersedia</h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
-                        data-target="#modal-lg"><i class="bi bi-plus"></i> Tambah Ruang Tersedia
-                    </button>
-                </div>
             </div>
             <div class="card-body">
                 <div class="tab-content">
                     <div class="tab-pane active" id="">
-                        @if (count($datas) > 0)
+                        @if (count($kompetens) > 0)
                             <div class="table-responsive">
                                 <table class="table table-bordered table-hover text-center">
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
                                             <th scope="col">Jurusan</th>
-                                            <th scope="col">Jumlah Ruangan</th>
+                                            <th scope="col">Jumlah Ketersediaan Ruangan</th>
+                                            <th scope="col">Jumlah Ideal Ruang</th>
                                             <th scope="col">Status</th>
-                                            <th scope="col">Jumlah Ideal</th>
-                                            <th scope="col">Keterangan</th>
-                                            <th scope="col">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($datas as $data)
+                                        @foreach ($kompetens as $kompeten)
                                             <tr>
-                                                <input type="hidden" class="id-ruangPraktik" value="{{ $data['id'] }}">
                                                 <th scope="row">{{ $loop->iteration }}</th>
-                                                <td class="jurusan">{{ $data['jurusan'] }}</td>
-                                                <td class="jml_ruang">{{ $data['jml_ruang'] }}</td>
-                                                <td class="status">{{ $data['status'] }}</td>
-                                                <td class="jml_ideal">{{ $data['jml_ideal'] }} Siswa / Kelas</td>
-                                                <td class="keterangan">{{ $data['keterangan'] }}</td>
-                                                <td>
-                                                    <div class="card-body">
-                                                        <div class="input-group">
-                                                            <div class="input-group-prepend">
-                                                                <button type="button" class="btn edit-ketersediaan"
-                                                                    data-toggle="dropdown">
-                                                                    <i class="bi bi-three-dots-vertical"></i>
-                                                                </button>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="dropdown-item" data-toggle="modal"
-                                                                        data-target="#modal-edit">Edit</a>
-                                                                    <form
-                                                                        action="/bangunan/ruang-praktik/{{ $data['id'] }}"
-                                                                        method="post">
-                                                                        @csrf
-                                                                        @method('delete')
-                                                                        <button type="submit" class="dropdown-item"
-                                                                            onclick="return confirm('Apakah anda yakin akan menghapus ketersedian ruang praktek ini?')">Hapus</button>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
+                                                <td class="jurusan">{{ $kompeten->kompetensi }}</td>
+                                                <td class="jml_ruang">{{ $kompeten->ketersediaan }}</td>
+                                                <td class="jml_ideal">{{ $kompeten->kondisi_ideal_ruang }}</td>
+                                                <td class="status" style="text-transform: capitalize;">{{ str_replace("_", " ", $kompeten->status) }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -248,72 +198,7 @@
             </div>
         </div>
     </div>
-
-    {{-- Modal --}}
-    <div class="modal fade" id="modal-lg">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <form action="/bangunan/ruang-praktik" method="post">
-                    @csrf
-                    <div class="modal-header">
-                        <h4 class="modal-title">Tambah Ruang Praktik Tersedia</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container">
-                            @if (count($komliPraktekTersedias) > 0)
-                                {{-- input jurusan --}}
-                                <div class="row">
-                                    <div class="col-3">
-                                        <label for="cars">Jurusan</label>
-                                    </div>
-                                    <div class="col">
-                                        <select name="kompeten_id" id="cars" class="custom-select col-12"
-                                            name="kompeten_id">
-                                            @foreach ($komliPraktekTersedias as $key => $komli)
-                                                <option value="{{ $kompetenPraktekTersedias[$key]->id }}">
-                                                    {{ $komli->kompetensi }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                {{-- end input jurusan --}}
-
-                                {{-- input jumlah ruangan --}}
-                                <div class="row mt-4">
-                                    <div class="col-3">
-                                        <label>Jumlah Ruangan</label>
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" class="form-control col-12" placeholder="Masukan Jumlah Ruang"
-                                            id="jmlrg" name="jml_ruang" required>
-                                    </div>
-                                </div>
-                                {{-- end input jumlah ruangan --}}
-                            @else
-                                <div class="container d-flex justify-content-center align-items-center">
-                                    <div class="alert" role="alert">
-                                        Tidak ada Kompetensi
-                                    </div>
-                                </div>
-                            @endif
-
-                        </div>
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-success">Simpan</button>
-                    </div>
-                </form>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
-
+    
     {{-- modal tambah usulan --}}
     <div class="modal fade" id="modal-default">
         <div class="modal-dialog modal-lg">
@@ -327,14 +212,14 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        @if (count($komlis) > 0)
-                            {{-- input jumlah ruangan --}}
-                            <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">Jenis Ruang</label>
-                                <select class="custom-select col-sm-7" aria-label="Default select example"
-                                    name="kompeten_id">
-                                    @foreach ($komlis as $key => $komli)
-                                        <option value="{{ $kompetens[$key]->id }}">{{ $komli->kompetensi }}</option>
+                        @if (count($kompetens) > 0)
+                        {{-- input jumlah ruangan --}}
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Jenis Ruang</label>
+                            <select class="custom-select col-sm-7" aria-label="Default select example"
+                            name="kompeten_id">
+                                    @foreach ($kompetens as $key => $kompeten)
+                                        <option value="{{ $kompeten->id }}">{{ $kompeten->kompetensi }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -392,53 +277,13 @@
     </div>
     {{-- end modal tambah usulan --}}
 
-    {{-- Tab --}}
-    <div class="modal fade" id="modal-edit">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <form action="/bangunan/ruang-praktik" method="post">
-                    @csrf
-                    @method('patch')
-                    <div class="modal-header">
-                        <h3 class="modal-title">Edit</h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container">
-
-                            <input type="hidden" name="id_praktik" class="id_praktik_kirim">
-                            <div class="row mt-4">
-                                <div class="col-3">
-                                    <label for="col-sm-4 col-form-label">Jumlah Ruangan :</label>
-                                </div>
-                                <div class="col">
-                                    <input type="number" class="form-control col-sm-7 jumlah-ruang-edit"
-                                        placeholder="Masukan Jumlah Ruang" id="jmlrg" name="jml_ruang" required>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-warning text-white">Edit</button>
-                    </div>
-                </form>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
-    {{-- End Tab --}}
 
 
     {{-- End Main-Content --}}
 @endsection
 
 @section('tambahjs')
-    <script>
+    {{-- <script>
         const editKetersediaan = document.querySelectorAll('.edit-ketersediaan');
         const jml_ruang = document.querySelectorAll('.jml_ruang');
         const jumlahRuangEdit = document.querySelector('.jumlah-ruang-edit');
@@ -453,5 +298,5 @@
                 id_praktik_kirim.value = idRuangPraktik[i].value;
             })
         });
-    </script>
+    </script> --}}
 @endsection
