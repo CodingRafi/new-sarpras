@@ -158,12 +158,12 @@
                                 <p>Usulan Toilet</p>
                             </a>
                         </li>
-                        {{-- ---------------------------------------------------------------------------------------- RUANGAN PIMPINAN ---------------------------------------------------------------------------------------- --}}
+                        {{-- ---------------------------------------------------------------------------------------- RUANGAN PENUNJANG ---------------------------------------------------------------------------------------- --}}
                         <li class="nav-item">
-                            <a href="/bangunan-all?jenis=ruang_pimpinan"
-                                class="nav-link {{ request('jenis') == 'ruang_pimpinan' ? 'active' : '' }}">
+                            <a href="/bangunan-all?jenis=ruang_penunjang"
+                                class="nav-link {{ request('jenis') == 'ruang_penunjang' ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
-                                <p>Usulan Ruangan Pimpinan</p>
+                                <p>Usulan Ruangan Penunjang</p>
                             </a>
                         </li>
                         {{-- ---------------------------------------------------------------------------------------- REHAB/RENOV ---------------------------------------------------------------------------------------- --}}

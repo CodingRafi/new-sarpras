@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Bangunan;
 use App\Models\Profil;
+use App\Models\Komli;
 use App\Models\Kelas;
 use App\Models\Log;
 use App\Models\UsulanBangunan;
 use App\Models\JenisPimpinan;
+use App\Models\JenisLaboratorium;
+use App\Models\JenisLaboratoriumKomlis;
 use App\Models\UsulanKoleksi;
 use App\Models\UsulanFoto;
 use App\Http\Requests\StoreBangunanRequest;
@@ -41,6 +44,7 @@ class BangunanController extends Controller
     {
         DB::enableQueryLog();
         $jenisPimpinan = JenisPimpinan::all();
+        $komlis = Komli::all();
 
         if (Auth::user()->hasRole('kcd')) {
             if (request('jenis')) {
@@ -74,12 +78,23 @@ class BangunanController extends Controller
                             ->select('profils.*', 'kcds.instansi', 'usulan_bangunans.proposal', 'usulan_bangunans.id')->get();
         }
 
-
+        $jenis_laboratorium = JenisLaboratorium::all();
+        $datas = [];
+        foreach ($jenis_laboratorium as $key => $jenis) {
+            $jenis = JenisLaboratoriumKomlis::select('komlis.*')
+                                        ->where('jenis_laboratorium_komlis.jenis_laboratorium_id', $jenis->id)
+                                        ->leftJoin('komlis', 'jenis_laboratorium_komlis.komli_id', 'komlis.id')
+                                        ->get();
+            $datas[] = $jenis;
+        }
 
         return view('bangunan.showBangunan', [
             'usulanBangunans' => $usulanBangunan,
             'kompils' => Kompeten::getKompeten(),
-            'jenisPimpinans' => $jenisPimpinan
+            'jenisPimpinans' => $jenisPimpinan,
+            'komlis' => $komlis,
+            'jenis_labolatoriums' => $jenis_laboratorium,
+            'jurusan_jenis_laboratorium' => $datas
         ]);
     }
 
@@ -163,6 +178,8 @@ class BangunanController extends Controller
             
             $data->update($validatedData);
             
+            Bangunan::ubah_kekurangan($id);
+
             if($data->jenis == 'ruang_kelas'){
                 $ketersediaan = Bangunan::where('id', $id)->get()[0]->ketersediaan;
                 $jml_rombel = Profil::where('id', Auth::user()->profil_id)->get()[0]->jml_rombel;
@@ -211,7 +228,7 @@ class BangunanController extends Controller
     public function kondisiIdeal(Request $request, $id){
         $data = Bangunan::where('id', $id)->get()[0];
         if($data->profil_id == Auth::user()->profil_id){
-            if($data->jenis == 'toilet' || $data->jenis == 'lab_komputer' || $data->jenis == 'lab_biologi' || $data->jenis == 'lab_fisika' || $data->jenis == 'lab_ipa' || $data->jenis == 'lab_kimia' || $data->jenis == 'lab_bahasa' || $data->jenis == 'ruang_pimpinan'){
+            if($data->jenis == 'toilet' || $data->jenis == 'perpustakaan' || $data->jenis == 'ruang_pimpinan'){
                 $validatedData = $request->validate([
                     'kondisi_ideal' => 'required|numeric',
                 ]);

@@ -65,6 +65,11 @@
                         <option value="ruang_kelas" {{ ($data->jenis == 'ruang_kelas') ? 'selected' : '' }}>Ruang Kelas</option>
                         <option value="ruang_praktek" {{ ($data->jenis == 'ruang_praktek') ? 'selected' : '' }}>Ruang Praktek</option>
                         <option value="lab_komputer" {{ ($data->jenis == 'lab_komputer') ? 'selected' : '' }}>Lab Komputer</option>
+                        <option value="lab_biologi" {{ ($data->jenis == 'lab_biologi') ? 'selected' : '' }}>Lab Biologi</option>
+                        <option value="lab_fisika" {{ ($data->jenis == 'lab_fisika') ? 'selected' : '' }}>Lab Fisika</option>
+                        <option value="lab_kimia" {{ ($data->jenis == 'lab_kimia') ? 'selected' : '' }}>Lab Kimia</option>
+                        <option value="lab_ipa" {{ ($data->jenis == 'lab_ipa') ? 'selected' : '' }}>Lab Ipa</option>
+                        <option value="lab_bahasa" {{ ($data->jenis == 'lab_bahasa') ? 'selected' : '' }}>Lab Bahasa</option>
                         <option value="perpustakaan" {{ ($data->jenis == 'perpustakaan') ? 'selected' : '' }}>Perpustakaan</option>
                         <option value="toilet" {{ ($data->jenis == 'toilet') ? 'selected' : '' }}>Toilet</option>
                         <option value="kantor" {{ ($data->jenis == 'kantor') ? 'selected' : '' }}>Kantor</option>

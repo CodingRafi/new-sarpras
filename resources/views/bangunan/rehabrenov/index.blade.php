@@ -550,6 +550,11 @@
                                 <option value="ruang_kelas">Ruang Kelas</option>
                                 <option value="ruang_praktek">Ruang Praktek</option>
                                 <option value="lab_komputer">Lab Komputer</option>
+                                <option value="lab_biologi">Lab Biologi</option>
+                                <option value="lab_fisika">Lab Fisika</option>
+                                <option value="lab_kimia">Lab Kimia</option>
+                                <option value="lab_ipa">Lab Ipa</option>
+                                <option value="lab_bahasa">Lab Ipa</option>
                                 <option value="perpustakaan">Perpustakaan</option>
                                 <option value="toilet">Toilet</option>
                                 <option value="kantor">Kantor</option>
@@ -579,6 +584,7 @@
                             <label class="col-sm-4 col-form-label">Objek</label>
                             <input type="text" class="form-control col-sm-7" placeholder="Masukan Objek" id="objek"
                                 name="objek" required>
+                            <small class="text-danger col-sm-7">Objek seperti : atap, dinding</small>
                         </div>
                         {{-- end luas lahan --}}
 

@@ -3,8 +3,8 @@
 @section('tambahcss')
     <style>
         /* .row-data .col-3 {
-                                                max-width: 15.5rem !important;
-                                            } */
+                                                                                max-width: 15.5rem !important;
+                                                                            } */
 
         .card-header h4 {
             font-size: 1.2rem !important
@@ -14,7 +14,6 @@
             position: absolute;
             margin-top: -25px;
         }
-
     </style>
 @endsection
 
@@ -191,7 +190,8 @@
                                 <th class="text-center col-2" style="background-color: #eeeeee" scope="col">Kantor Cabang
                                     Dinas
                                 </th>
-                                <th class="text-center col-2" style="background-color: #eeeeee" scope="col" colspan="2">Status Sarpras
+                                <th class="text-center col-2" style="background-color: #eeeeee" scope="col" colspan="2">
+                                    Status Sarpras
                                 </th>
                                 <th class="text-center col-2" style="background-color: #eeeeee" scope="col">Usulan</th>
                                 <th class="text-center col-2" style="background-color: #eeeeee" scope="col">Aksi</th>
@@ -200,31 +200,24 @@
                         <tbody>
                             @foreach ($datas as $data)
                                 <tr>
-                                    <th class="text-center col-1" scope="row">
+                                    <th class="text-center col-1" scope="row" rowspan="3">
                                         {{ ($profils->currentpage() - 1) * $profils->perpage() + $loop->index + 1 }}</th>
-                                    <td class="text-center col-1">{{ $data['nama'] }}</td>
-                                    <td class="text-center col-1">{{ $data['status_sekolah'] }}</td>
-                                    <td class="text-center col-1">{{ $data['kabupaten'] }}</td>
-                                    <td class="text-center col-2">{{ $data['instansi'] }}</td>
+                                    <td class="text-center col-1" rowspan="3">{{ $data['nama'] }}</td>
+                                    <td class="text-center col-1" rowspan="3">{{ $data['status_sekolah'] }}</td>
+                                    <td class="text-center col-1" rowspan="3">{{ $data['kabupaten'] }}</td>
+                                    <td class="text-center col-2" rowspan="3">{{ $data['instansi'] }}</td>
                                     <td class="text-center col-2">
-                                        <div class="text-white mt-1" style="background-color: #00a65b; border-radius:5px">
-                                            Lahan
-                                            ideal</div>
-                                        <div class="text-white mt-1" style="background-color: #25b5e9; border-radius:5px">
-                                            Peralatan ideal</div>
-                                        <div class="text-white mt-1" style="background-color: #fcc12d; border-radius:5px">
-                                            Belum
-                                            ideal, kurang ruang praktik TKJ</div>
-                                        <div class="text-white mt-1" style="background-color: #fcc12d; border-radius:5px">
-                                            Belum
-                                            ideal, kurang ruang kelas</div>
+                                        <div class="text-white mt-1 p-1"
+                                            style="background-color: #00a65b; border-radius:5px">
+                                            Lahan {{ $data['status_lahan']['kondisi'] }}</div>
                                     </td>
                                     <td class="text-center col-2">
-                                        <div class="text-white mt-1" style="background-color: #00a65b; border-radius:5px">
-                                            Peralatan Rekayasa Perangkat Lunak kekurangan 36 laptop
+                                        <div class="text-white mt-1 p-1"
+                                            style="background-color: #00a65b; border-radius:5px">
+                                            Kekurangan {{ $data['status_lahan']['kekurangan'] }} m²
                                         </div>
                                     </td>
-                                    <td class="text-center col-2">
+                                    <td class="text-center col-2" rowspan="3">
                                         @foreach ($data['usulanLahan'] as $usulan)
                                             <a class="btn text-white mt-1" style="background-color: #fcc12d"
                                                 href="/usulan-lahan/{{ $usulan->id }}">Usulan Lahan
@@ -246,8 +239,69 @@
                                             </a>
                                         @endforeach
                                     </td>
-                                    <td class="text-center"><a class="text-center btn text-white"
+                                    <td class="text-center" rowspan="3"><a class="text-center btn text-white"
                                             style="background-color: #263238" href="/profil/{{ $data['id'] }}">Detail</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center col-2">
+                                        <div class="text-white mt-1" style="background-color: #25b5e9; border-radius:5px">
+                                            Peralatan
+                                            {{ count($data['status_peralatan']) > 0 ? 'Tidak Ideal' : 'Ideal' }}
+                                        </div>
+                                    </td>
+                                    <td class="text-center col-2">
+                                        @if (count($data['status_peralatan']) > 0)
+                                            @foreach ($data['status_peralatan'] as $peralatan)
+                                                <div class="text-white mt-1"
+                                                    style="background-color: #25b5e9; border-radius:5px">
+                                                    kekurangan {{ $peralatan['kekurangan'] }} peralatan pada jurusan
+                                                    {{ $peralatan['jurusan'] }}</div>
+                                            @endforeach
+                                        @else
+                                            <div class="text-white mt-1"
+                                                style="background-color: #25b5e9; border-radius:5px">Peralatan sudah ideal
+                                            </div>
+                                        @endif
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center col-2">
+                                        <div class="text-white mt-1" style="background-color: #fcc12d; border-radius:5px">
+                                            Bangunan {{ count($data['status_bangunan']) > 0 ? 'Tidak Ideal' : 'Ideal' }}
+                                        </div>
+                                    </td>
+                                    <td class="text-center col-2">
+                                        @if (count($data['status_bangunan']) > 0)
+                                            @foreach ($data['status_bangunan'] as $bangunan)
+                                                @if ($bangunan['kategori'] == 'lab')
+                                                    <div class="text-white mt-1"
+                                                        style="background-color: #fcc12d; border-radius:5px">
+                                                        kekurangan {{ $bangunan['kekurangan'] }} m² pada
+                                                        {{ $bangunan['jenis'] }}</div>
+                                                @elseif($bangunan['kategori'] == 'praktik')
+                                                    <div class="text-white mt-1"
+                                                        style="background-color: #fcc12d; border-radius:5px">
+                                                        Ruang Praktik {{ $bangunan['jenis'] }} {{ $bangunan['kondisi'] }}</div>
+                                                @else
+                                                    @if ($bangunan['jenis'] == 'ruang_kelas' || $bangunan['jenis'] == 'toilet')
+                                                        <div class="text-white mt-1"
+                                                            style="background-color: #fcc12d; border-radius:5px;text-transform: capitalize">
+                                                            kekurangan {{ $bangunan['kekurangan'] }} bangunan pada
+                                                            {{ str_replace('_', ' ', $bangunan['jenis']) }}</div>
+                                                    @else
+                                                        <div class="text-white mt-1"
+                                                            style="background-color: #fcc12d; border-radius:5px;text-transform: capitalize">
+                                                            kekurangan {{ $bangunan['kekurangan'] }} m² pada
+                                                            {{ str_replace('_', ' ', $bangunan['jenis']) }}</div>
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                        @else
+                                            <div class="text-white mt-1"
+                                                style="background-color: #fcc12d; border-radius:5px">bangunan sudah ideal
+                                            </div>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

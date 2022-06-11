@@ -17,8 +17,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('profil_id');
             $table->string('nama');
-            $table->string('panjang');
-            $table->string('lebar');
             $table->string('luas');
             $table->string('keterangan');
             $table->timestamps();

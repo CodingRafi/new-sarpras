@@ -38,6 +38,10 @@ class UsulanBangunan extends Model
         return $this->belongsTo(JenisPimpinan::class);
     }
 
+    public function laboratorium(){
+        return $this->belongsTo(Laboratorium::class);
+    }
+
     public static function createUsulan($request, $jenis, $validatedData){
         $validatedData['proposal'] = $request->file('proposal')->store('proposal-usulan-bangunan');
         $validatedData['profil_id'] = Auth::user()->profil_id;
@@ -67,19 +71,19 @@ class UsulanBangunan extends Model
                         ->orWhere('profils.nama', 'like', '%' . $search . '%');
         });
 
-        if(isset($filters['filter'])){
-            if($filters['filter'] == 'kota'){
-                return $query->orderBy('profils.kabupaten', 'asc');
-            }
-    
-            if($filters['filter'] == 'kcd'){
-                return $query->orderBy('kcds.instansi', 'asc');
-            }
-        }
-
         $query->when($search['jenis'] ?? false, function($query, $jenis){
             return $query->where('usulan_bangunans.jenis', $jenis);
         });
+
+        if(isset($search['filter'])){
+            if($search['filter'] == 'kota'){
+                return $query->orderBy('profils.kabupaten', 'asc');
+            }
+    
+            if($search['filter'] == 'kcd'){
+                return $query->orderBy('kcds.instansi', 'asc');
+            }
+        }
 
     }
 }

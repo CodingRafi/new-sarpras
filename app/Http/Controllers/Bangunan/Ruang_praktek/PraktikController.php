@@ -37,49 +37,23 @@ class PraktikController extends Controller
      */
     public function index()
     {
-        $kompetens = Kompeten::where('profil_id', Auth::user()->profil_id)->get();
+        $kompetens = Kompeten::select('kompetens.*', 'komlis.kompetensi')
+                                ->where('profil_id', Auth::user()->profil_id)
+                                ->leftJoin('komlis', 'komlis.id', 'kompetens.komli_id')->get();
         $usulanPraktek = UsulanBangunan::where('profil_id', Auth::user()->profil_id)->where('jenis', 'ruang_praktek')->get();
         $koleksi = UsulanKoleksi::koleksi($usulanPraktek);
         $fotos = UsulanFoto::fotos($koleksi);
 
-        $kompetenPraktekTersedia = Praktik::ambilKompeten(Auth::user()->profil_id);
-        $komliPraktekTersedia = Komli::ambilKomli($kompetenPraktekTersedia);
-
-        $data = [];
-        $praktiks = Praktik::where('profil_id', Auth::user()->profil_id )->get();
-
-        foreach($praktiks as $ke => $praktik){
-            $data[] = [
-                'id' => $praktik->id,
-                'kompeten_id' => $praktik->kompeten_id,
-                'jml_ruang' => $praktik->jml_ruang,
-                'status' => $praktik->status,
-                'jml_ideal' => Kompeten::where('id', $praktik->kompeten_id)->get()[0]->kondisi_ideal,
-                'keterangan' => $praktik->keterangan,
-                'jurusan' => Kompeten::where('id', $praktik->kompeten_id)->get()[0]->komli->kompetensi
-            ];
-        }
-
         $komliUsulan = [];
-
         foreach ($usulanPraktek as $key => $usulan) {
             $komliUsulan[] = $usulan->kompeten->komli;
         }
 
-        $komli = [];
-        foreach($kompetens as $kompeten){
-            $komli[] = $kompeten->komli;
-        }
-
         return view("bangunan.praktik.index", [
-            'komlis' => $komli,
-            'usulanPraktek' => $usulanPraktek,
             'kompetens' => $kompetens,
+            'usulanPraktek' => $usulanPraktek,
             'komliUsulan' => $komliUsulan,
             'usulanFotos' => $fotos,
-            'kompetenPraktekTersedias' => $kompetenPraktekTersedia,
-            'komliPraktekTersedias' => $komliPraktekTersedia,
-            'datas' => $data,
             'kompils' => Kompeten::getKompeten()
         ]);
     }

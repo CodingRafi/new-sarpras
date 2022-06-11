@@ -153,7 +153,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        @if (count($peralatanOptions) > 0)
+                        @if (count($peralatanOptionsTersedias) > 0)
                             
                         <form class="form-horizontal" action="/peralatan-tersedia" method="post">
                             @csrf
@@ -164,14 +164,14 @@
                                     <label for="nama-peralatan" class="col-sm-3 col-form-label">Nama Peralatan</label>
                                     <div class="col-sm-9">
                                         <div class="input-group peralatan-parent">
-                                            @foreach ($peralatanOptions as $options)
+                                            @foreach ($peralatanOptionsTersedias as $options)
                                                 <input type="hidden" class="input-option-{{ $options->id }}"
                                                     data-kategori="{{ $options->kategori }}">
                                             @endforeach
                                             <select class="form-control select-peralatan" id="peralatan-select"
                                                 name="peralatan_id">
                                                 <option value="">Pilih Peralatan</option>
-                                                @foreach ($peralatanOptions as $options)
+                                                @foreach ($peralatanOptionsTersedias as $options)
                                                     <option value="{{ $options->id }}">{{ $options->nama }}</option>
                                                 @endforeach
                                             </select>
@@ -220,7 +220,7 @@
                         @else
                         <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
                             <div class="alert" role="alert">
-                               Belum ada peralatan ditemukan
+                               Tidak ada peralatan ditemukan
                             </div>
                         </div>
                         @endif

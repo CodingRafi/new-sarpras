@@ -26,6 +26,7 @@ use App\Http\Controllers\ProfilKcdController;
 use App\Http\Controllers\ProfilDepoController;
 use App\Http\Controllers\RehabRenovController;
 use App\Http\Controllers\UsulanFotoController;
+use App\Http\Controllers\LaboratoriumController;
 use App\Http\Controllers\PerpustakaanController;
 use App\Http\Controllers\HasilVisitasiController;
 use App\Http\Controllers\JenisPimpinanController;
@@ -34,9 +35,11 @@ use App\Http\Controllers\UsulanBangunanController;
 use App\Http\Controllers\UnsurVerifikasiController;
 use App\Http\Controllers\UsulanPeralatanController;
 use App\Http\Controllers\BidangKompetensiController;
+use App\Http\Controllers\JenisLaboratoriumController;
 use App\Http\Controllers\PeralatanTersediaController;
 use App\Http\Controllers\ProgramKompetensiController;
 use App\Http\Controllers\Lahan_sekolah\LahanController;
+use App\Http\Controllers\JenisLaboratoriumKomlisController;
 use App\Http\Controllers\Lahan_sekolah\UsulanLahanController;
 use App\Http\Controllers\Bangunan\Ruang_kelas\KelasController;
 use App\Http\Controllers\Lahan_sekolah\KekuranganLahanController;
@@ -64,10 +67,13 @@ Route::get('gallery', function () {
 Route::get('/lab', function () {
     return view('lab.index');
 });
-
-Route::get('/detail-lab', function () {
-    return view('admin.detail-lab');
+Route::get('/detail', function () {
+    
 });
+
+// Route::get('/detail-lab', function () {
+    
+// });
 
 // Route::get('forgot', function () {
 //     return view('myauth.resetPassword');
@@ -133,6 +139,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::patch('/visitasi-publish', [VisitasiController::class, 'visitasiPublish']);
     Route::get('/visitasi-sekolah', [VisitasiController::class, 'visitasiSekolah']);
     Route::resource('/hasil-visitasi', HasilVisitasiController::class);
+    Route::resource('/jenis-laboratorium', JenisLaboratoriumController::class);
+    Route::resource('/jenis-laboratorium-komli', JenisLaboratoriumKomlisController::class);
+    Route::delete('/jenis-laboratorium-komli-delete', [JenisLaboratoriumKomlisController::class, 'destroy']);
     Route::patch('/hasil-visitasi-update', [HasilVisitasiController::class, 'update']);
     // Route::resource('/visitasi', VisitasiController::class);
     Route::resource('roles', RoleController::class); 
@@ -147,7 +156,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/kompeten/create/{id:profil}', [KompetenController::class, 'create']);
     Route::patch('/kompeten/update-ketersediaan/{id}', [KompetenController::class, 'updateKetersediaan']);
     Route::patch('/kompeten/update-kekurangan/{id}', [KompetenController::class, 'updateKekurangan']);
-    Route::patch('/kompeten/update-kondisi-ideal/{id}', [KompetenController::class, 'updateKondisiIdeal']);
+    Route::patch('/kompeten/update-kondisi-ideal-ruang/{id}', [KompetenController::class, 'updateKondisiIdealRuang']);
+    Route::patch('/kompeten/update-kondisi-ideal-lahan/{id}', [KompetenController::class, 'updateKondisiIdealLahan']);
     Route::patch('/kompeten/upload-logo/{id}', [KompetenController::class, 'uploadLogo']);
     Route::patch('/kompeten/tambah-keterangan/{id}', [KompetenController::class, 'tambahKeterangan']);
     Route::patch('/koleksi/update-koleksi', [KoleksiController::class, 'update']);
@@ -181,14 +191,17 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/bangunan/toilet', ToiletController::class);
     Route::post('/bangunan/usulan-toilet', [ToiletController::class, 'createusulan']);
     Route::resource('/bangunan/ruang-rehabrenov', RehabRenovController::class);
-    Route::resource('/bangunan/pimpinan', PimpinanController::class);
-    Route::patch('/bangunan/pimpinan', [PimpinanController::class, 'update']);
-    Route::post('/bangunan/usulan-ruang-pimpinan', [PimpinanController::class, 'createusulan']);
-    Route::get('/bangunan/usulan-ruang-pimpinan/{id}/edit', [UsulanBangunanController::class, 'editPimpinan']);
-    Route::patch('/bangunan/usulan-ruang-pimpinan/{id}', [UsulanBangunanController::class, 'updatePimpinan']);
+    Route::resource('/bangunan/penunjang', PimpinanController::class);
+    Route::post('/bangunan/usulan-ruang-penunjang', [PimpinanController::class, 'createusulan']);
+    Route::patch('/bangunan/penunjang', [PimpinanController::class, 'update']);
+    Route::get('/bangunan/usulan/{id}/edit', [UsulanBangunanController::class, 'editPimpinan']);
+    Route::patch('/bangunan/usulan/{id}', [UsulanBangunanController::class, 'updatePimpinan']);
+    Route::resource('/bangunan/laboratorium', LaboratoriumController::class);
+    Route::post('/bangunan/usulan-laboratorium', [LaboratoriumController::class, 'createusulan']);
 
 
-    Route::resource('/jenis-pimpinan', JenisPimpinanController::class);
+
+    Route::resource('/jenis-penunjang', JenisPimpinanController::class);
     Route::resource('/monitoring', MonevController::class);
     Route::get('/peralatan-sekolah/{id}', [PeralatanController::class, 'showPeralatan']);
     Route::resource('/peralatan', PeralatanController::class);

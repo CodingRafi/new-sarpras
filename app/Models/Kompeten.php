@@ -103,4 +103,10 @@ class Kompeten extends Model
         }
     }
     
+    public static function status_kompeten($profil){
+        return Kompeten::select('kompetens.*', 'komlis.kompetensi')
+                        ->where('profil_id', $profil->id)
+                        ->leftJoin('komlis', 'komlis.id', 'kompetens.komli_id')
+                        ->get();
+    }
 }

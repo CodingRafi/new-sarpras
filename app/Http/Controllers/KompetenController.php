@@ -72,9 +72,11 @@ class KompetenController extends Controller
                     'komli_id' => $kom,
                     'jml_lk' => 0,
                     'jml_pr' => 0,
-                    'kondisi_ideal' => 0,
+                    'kondisi_ideal_ruang' => 0,
+                    'kondisi_ideal_lahan' => 0,
                     'ketersediaan' => 0,
-                    'kekurangan' => 0
+                    'kekurangan' => 0,
+                    'status' => 'ideal'
                 ]);
             }
     
@@ -241,11 +243,12 @@ class KompetenController extends Controller
 
         if($data->profil_id == Auth::user()->profil_id){
             $validatedData = $request->validate([
-                'ketersediaan' => 'required'
+                'ketersediaan' => 'required',
             ]);
 
             $data->update([
-                'ketersediaan' =>  ($request->ketersediaan == 0) ? 0 : ltrim($request->ketersediaan, '0')
+                'ketersediaan' =>  ($request->ketersediaan == 0) ? 0 : ltrim($request->ketersediaan, '0'),
+                'status' => ($request->status) ? 'ideal' : 'tidak_ideal'
             ]);
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Ketersediaan Ruang Praktik ' . $data->komli->kompetensi);
@@ -318,19 +321,38 @@ class KompetenController extends Controller
         }
     }
 
-    public function updateKondisiIdeal(Request $request, $id){
+    public function updateKondisiIdealRuang(Request $request, $id){
         $data = Kompeten::where('id', $id)->get()[0];
-
         if($data->profil_id == Auth::user()->profil_id){
             $validatedData = $request->validate([
-                'kondisi_ideal' => 'required'
+                'kondisi_ideal_ruang' => 'required'
             ]);
 
             $data->update([
-                'kondisi_ideal' =>  ($request->kondisi_ideal == 0) ? 0 : ltrim($request->kondisi_ideal, '0')
+                'kondisi_ideal_ruang' =>  ($request->kondisi_ideal_ruang == 0) ? 0 : ltrim($request->kondisi_ideal_ruang, '0')
             ]);
 
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Kondisi Ideal Ruang Praktik ' . $data->komli->kompetensi);
+
+            return redirect()->back();
+
+        }else{
+            abort(403);
+        }
+    }
+
+    public function updateKondisiIdealLahan(Request $request, $id){
+        $data = Kompeten::where('id', $id)->get()[0];
+        if($data->profil_id == Auth::user()->profil_id){
+            $validatedData = $request->validate([
+                'kondisi_ideal_lahan' => 'required'
+            ]);
+
+            $data->update([
+                'kondisi_ideal_lahan' =>  ($request->kondisi_ideal_lahan == 0) ? 0 : ltrim($request->kondisi_ideal_lahan, '0')
+            ]);
+
+            Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Kondisi Ideal Lahan Ruang Praktik ' . $data->komli->kompetensi);
 
             return redirect()->back();
 

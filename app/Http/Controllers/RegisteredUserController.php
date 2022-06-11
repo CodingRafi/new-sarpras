@@ -63,7 +63,6 @@ class RegisteredUserController extends Controller
             $validatedData['foto_profil'] = '/img/logo_navbar.png';
             $validatedData['password'] = Hash::make('12345678');
             $validatedData['provinsi'] = 'Jawa Barat';
-            
             $user = User::create($validatedData);
             
             if($request->role == 1){
@@ -120,10 +119,12 @@ class RegisteredUserController extends Controller
             $validatedData['password'] = bcrypt('12345678');
         }
 
-        $user->kcd->update([
-            'nama' => $request->name
-        ]);
-
+        if ($user->hasRole('kcd')) {
+            $user->kcd->update([
+                'nama' => $request->name
+            ]);
+        }
+        
         $user->update($validatedData);
     
         if ($user->hasRole('kcd')) {

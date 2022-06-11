@@ -152,24 +152,39 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-4 col-6">
+        <div class="col-lg-3 col-6">
             <div class="card">
                 <div class="card-header" style="background-color: #00a65b">
-                    <h3 class="text-white card-title font-weight-bold">Kondisi Ideal</h3>
+                    <h3 class="text-white card-title font-weight-bold">Kondisi Ideal Ruang</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool text-white"><i class="bi bi-pencil-square"
-                                data-toggle="modal" data-target="#modal-kondisi-ideal"></i></button>
+                                data-toggle="modal" data-target="#modal-kondisi-ideal-ruang"></i></button>
                     </div>
                 </div>
                 <div class="card-body" style="height: 117px;">
-                    <h1 class="text-center font-weight-bold display-4">{{ $kompeten->kondisi_ideal }}</h1>
+                    <h1 class="text-center font-weight-bold display-4">{{ $kompeten->kondisi_ideal_ruang }}</h1>
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-4 col-12">
-            <div class="card card-info">
+        <div class="col-lg-3 col-6">
+            <div class="card">
                 <div class="card-header" style="background-color: #25b5e9">
+                    <h3 class="text-white card-title font-weight-bold">Kondisi Ideal Luas Lahan</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool text-white"><i class="bi bi-pencil-square"
+                                data-toggle="modal" data-target="#modal-kondisi-ideal-lahan"></i></button>
+                    </div>
+                </div>
+                <div class="card-body" style="height: 117px;">
+                    <h1 class="text-center font-weight-bold display-4">{{ $kompeten->kondisi_ideal_lahan }} m²</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-12">
+            <div class="card card-warning">
+                <div class="card-header">
                     <h3 class="text-white card-title font-weight-bold">Ketersediaan</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool text-white"><i class="bi bi-pencil-square"
@@ -178,14 +193,14 @@
                 </div>
                 <div class="card-body" style="height: 117px;">
                     <h1 class="text-center font-weight-bold display-4">{{ $kompeten->ketersediaan }}</h1>
-                    <small class="text-center d-block font-weight-bold">Ideal</small>
+                    <small class="text-center d-block font-weight-bold" style="text-transform: capitalize;">{{ str_replace("_", " ", $kompeten->status) }}</small>
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-4 col-12">
-            <div class="card card-warning">
-                <div class="card-header">
+        <div class="col-lg-3 col-12">
+            <div class="card">
+                <div class="card-header" style="background: #263238;">
                     <h3 class="card-title font-weight-bold text-white">Kekurangan</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool text-white"><i class="bi bi-pencil-square"
@@ -201,14 +216,14 @@
 </div>
 
 {{-- Modal Kondisi Ideal --}}
-<div class="modal fade" id="modal-kondisi-ideal">
+<div class="modal fade" id="modal-kondisi-ideal-ruang">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="/kompeten/update-kondisi-ideal/{{ $kompeten->id }}" method="post">
+            <form action="/kompeten/update-kondisi-ideal-ruang/{{ $kompeten->id }}" method="post">
                 @csrf
                 @method('patch')
                 <div class="modal-header">
-                    <h4 class="modal-title">Masukan Kondisi Ideal</h4>
+                    <h4 class="modal-title">Masukan Kondisi Ideal Ruang</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -216,9 +231,42 @@
                 <div class="modal-body">
                     {{-- input jumlah ruangan --}}
                     <div class="form-group row">
-                        <label class="col-sm-4 col-form-label">Kondisi Ideal</label>
+                        <label class="col-sm-4 col-form-label">Kondisi Ideal Ruang</label>
                         <input type="number" class="form-control col-sm-7" placeholder="Masukan Kondisi Ideal"
-                            id="jumlah-ruangan" name="kondisi_ideal" required value="{{ $kompeten->kondisi_ideal }}">
+                            id="jumlah-ruangan" name="kondisi_ideal_ruang" required value="{{ $kompeten->kondisi_ideal_ruang }}">
+                    </div>
+                    {{-- end input jumlah ruangan --}}
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn text-white" style="background-color: #00a65b">Simpan</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+{{-- End  --}}
+{{-- Modal Kondisi Ideal --}}
+<div class="modal fade" id="modal-kondisi-ideal-lahan">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/kompeten/update-kondisi-ideal-lahan/{{ $kompeten->id }}" method="post">
+                @csrf
+                @method('patch')
+                <div class="modal-header">
+                    <h4 class="modal-title">Masukan Kondisi Ideal Lahan</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{-- input jumlah ruangan --}}
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Kondisi Ideal Lahan</label>
+                        <input type="number" class="form-control col-sm-7" placeholder="Masukan Kondisi Ideal"
+                            id="jumlah-ruangan" name="kondisi_ideal_lahan" required value="{{ $kompeten->kondisi_ideal_lahan }}">
                     </div>
                     {{-- end input jumlah ruangan --}}
                 </div>
@@ -257,9 +305,9 @@
                     {{-- end input jumlah ruangan --}}
                     
                     <div class="form-group row">
-                        <label class="col-sm-4 col-form-label">Ideal</label>
+                        <label class="col-sm-4 col-form-label">Status</label>
                         <div class="custom-control custom-switch" style="transform: scale(1.2)">
-                            <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch1" name="status" {{ ($kompeten->status == 'ideal') ? 'checked' : '' }}>
                             <label class="custom-control-label" for="customSwitch1" style="height: 1rem; vertical-align: middle;"></label>
                         </div>
                     </div>

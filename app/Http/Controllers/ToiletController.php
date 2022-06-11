@@ -130,10 +130,10 @@ class ToiletController extends Controller
             'luas_lahan' => 'required',
             'gambar' => 'required',
             'proposal' => 'required|mimes:pdf',
+            'jml_ruang' => 'required',
             'gambar.*' => 'mimes:jpg,jpeg,png|file|max:5120'
         ]);
 
-        $validatedData['jml_ruang'] = 1;
         $validatedData['keterangan'] = 'Proses Pengajuan';
 
         UsulanBangunan::createUsulan($request, 'toilet', $validatedData);

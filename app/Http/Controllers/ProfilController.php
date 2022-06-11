@@ -7,10 +7,13 @@ use App\Models\Komli;
 use App\Models\Log;
 use App\Models\User;
 use App\Models\Kompeten;
+use App\Models\Laboratorium;
 use App\Models\Koleksi;
 use App\Models\Bangunan;
 use App\Models\KompetenDepo;
+use App\Models\Peralatan;
 use App\Models\Jeniskoleksi;
+use App\Models\KekuranganLahan;
 use App\Models\ProfilDepo;
 use App\Http\Requests\StoreProfilRequest;
 use App\Http\Requests\UpdateProfilRequest;
@@ -115,7 +118,12 @@ class ProfilController extends Controller
                 'jenis_koleksis' => $semua_jenis_koleksi,
                 'jenis_koleksi_terpilih' => $jenis_koleksi_terpilih,
                 'jurusanDepos' => $jurusanDepo,
-                'kompils' => Kompeten::getKompeten()
+                'kompils' => Kompeten::getKompeten(),
+                'status_lahan' => KekuranganLahan::status_kekurangan($profil),
+                'status_peralatan' => Peralatan::status_peralatan($profil),
+                'status_bangunan' => Bangunan::status_bangunan($profil),
+                'status_laboratorium' => Laboratorium::status_laboratorium($profil),
+                'status_praktik' => Kompeten::status_kompeten($profil)
             ]);
         }else{
             return abort(403);

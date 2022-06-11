@@ -49,12 +49,10 @@ class KekuranganLahanController extends Controller
     {
         $validatedData = $request->validate([
             'nama' => 'required',
-            'lebar' => 'required',
-            'panjang' => 'required',
+            'luas' => 'required',
             'keterangan' => 'required'
         ]);
 
-        $validatedData['luas'] = $request->panjang * $request->lebar;
         $validatedData['profil_id'] = Auth::user()->profil_id;
 
         KekuranganLahan::create($validatedData);
@@ -99,12 +97,9 @@ class KekuranganLahanController extends Controller
         if($data->profil_id == Auth::user()->profil_id){
             $validatedData = $request->validate([
                 'nama' => 'required',
-                'panjang' => 'required',
-                'lebar' => 'required',
+                'luas' => 'required',
                 'keterangan' => 'required'
             ]);
-
-            $validatedData['luas'] = $request->panjang * $request->lebar;
 
             KekuranganLahan::where('id', $data->id)->update($validatedData);
 

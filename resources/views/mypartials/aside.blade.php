@@ -11,7 +11,6 @@
         ::-webkit-scrollbar {
             display: none;
         }
-
     </style>
 @endsection
 
@@ -85,7 +84,8 @@
                 @endif
 
                 {{-- ---------------------------------------------------------------------------------------- BANGUNAN SEKOLAH ---------------------------------------------------------------------------------------- --}}
-                <li class="nav-item has-treeview {{ Request::is('bangunan/*') ? 'menu-open' : (Request::is('bangunan*') ? 'menu-open': '') }}">
+                <li
+                    class="nav-item has-treeview {{ Request::is('bangunan/*') ? 'menu-open' : (Request::is('bangunan*') ? 'menu-open' : '') }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-building"></i>
                         <p>
@@ -134,12 +134,12 @@
                                 <p>Ruang Toilet</p>
                             </a>
                         </li>
-                        {{-- ---------------------------------------------------------------------------------------- RUANGAN PIMPINAN ---------------------------------------------------------------------------------------- --}}
+                        {{-- ---------------------------------------------------------------------------------------- RUANGAN PENUNJANG ---------------------------------------------------------------------------------------- --}}
                         <li class="nav-item">
-                            <a href="/bangunan/pimpinan"
-                                class="nav-link {{ Request::is('bangunan/pimpinan') ? 'active' : '' }}">
+                            <a href="/bangunan/penunjang"
+                                class="nav-link {{ Request::is('bangunan/penunjang') ? 'active' : '' }}">
                                 <i class="fa-regular fa-circle"></i>
-                                <p>Ruang Pimpinan</p>
+                                <p>Ruang Penunjang</p>
                             </a>
                         </li>
                         {{-- ---------------------------------------------------------------------------------------- REHAB/RENOV ---------------------------------------------------------------------------------------- --}}
