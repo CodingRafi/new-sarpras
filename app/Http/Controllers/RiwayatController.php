@@ -7,6 +7,7 @@ use App\Http\Requests\StoreRiwayatRequest;
 use App\Http\Requests\UpdateRiwayatRequest;
 use App\Models\Kompeten;
 use App\Models\UsulanKoleksi;
+use App\Models\UsulanFotos;
 use App\Models\ProfilKcd;
 use App\Models\Profil;
 use App\Models\UsulanFoto;
@@ -88,9 +89,22 @@ class RiwayatController extends Controller
      * @param  \App\Models\Riwayat  $riwayat
      * @return \Illuminate\Http\Response
      */
-    public function show(Riwayat $riwayat)
+    public function show(Riwayat $riwayat, $id)
     {
-        //
+        if (!Auth::user()->hasRole('sekolah')) {
+            $riwayat = Riwayat::where('profil_id', $id)->get();
+
+            $koleksi = UsulanKoleksi::koleksi($riwayat);
+            $fotos = UsulanFoto::fotos($koleksi);
+
+            return view('admin.detail-riwayat', [
+                'riwayats' => $riwayat,
+                'profil' => Profil::find($id),
+                'fotos' => $fotos
+            ]);
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -176,14 +190,17 @@ class RiwayatController extends Controller
     public function showDinas(){
         if (!Auth::user()->hasRole('sekolah')) {
             if (Auth::user()->hasRole('kcd')) {
-                $profils = ProfilKcd::ambil(Auth::user()->kcd_id);
+                $profils = ProfilKcd::get_data_for_kcd(Auth::user()->kcd_id);
+                
             }else{
-                $profils = Profil::all();
+                $profils = Profil::search(request(['search', 'filter']))->paginate(40)->withQueryString();
+                // dd($profils);
             }
 
             $sekolah = [];
             foreach ($profils as $key => $profil) {
                 $sekolah[] = [
+                    'id_profil' => $profil->id, 
                     'nama' => $profil->nama,
                     'npsn' => $profil->npsn,    
                     'status_sekolah' => $profil->status_sekolah,
@@ -192,7 +209,8 @@ class RiwayatController extends Controller
             }
 
             return view('admin.riwayat', [
-                'profils' =>$sekolah
+                'datas' =>$sekolah,
+                'profils' => $profils
             ]);
         }else{
             abort(403);
