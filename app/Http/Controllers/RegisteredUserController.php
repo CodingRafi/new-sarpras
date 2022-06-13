@@ -123,12 +123,14 @@ class RegisteredUserController extends Controller
             $user->kcd->update([
                 'nama' => $request->name
             ]);
+        }elseif($user->hasRole('pengawas')){
+            $validatedData['kota_kabupaten_id'] = $request->kota_kabupaten_id;
         }
         
         $user->update($validatedData);
     
         if ($user->hasRole('kcd')) {
-            return redirect('/cadisdik/'    . $user->kcd->id)->with('success', 'Berhasil mengubah cadisdik!');
+            return redirect('/cadisdik/' . $user->kcd->id)->with('success', 'Berhasil mengubah cadisdik!');
         }else{
             return redirect('/monitoring'); 
         }
