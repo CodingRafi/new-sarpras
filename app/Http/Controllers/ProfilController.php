@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Kompeten;
 use App\Models\Laboratorium;
 use App\Models\Koleksi;
+use App\Models\Pimpinan;
 use App\Models\Bangunan;
 use App\Models\KompetenDepo;
 use App\Models\Peralatan;
@@ -123,7 +124,8 @@ class ProfilController extends Controller
                 'status_peralatan' => Peralatan::status_peralatan($profil),
                 'status_bangunan' => Bangunan::status_bangunan($profil),
                 'status_laboratorium' => Laboratorium::status_laboratorium($profil),
-                'status_praktik' => Kompeten::status_kompeten($profil)
+                'status_praktik' => Kompeten::status_kompeten($profil),
+                'status_pimpinan' => Pimpinan::status_pimpinan($profil)
             ]);
         }else{
             return abort(403);

@@ -29,7 +29,7 @@
             display: none !important;
         }
 
-        .nama-koleksi{
+        .nama-koleksi {
             font-size: 16px;
         }
     </style>
@@ -387,14 +387,14 @@
                                                 <div class="col-md-8">
                                                     <div class="card-body">
                                                         <a class="card-text d-block  text-primary"
-                                                            href="/koleksi/{{ $koleksi->slug }}"
-                                                            >{{ $koleksi->nama }}</a>
+                                                            href="/koleksi/{{ $koleksi->slug }}">{{ $koleksi->nama }}</a>
                                                         <p style="text-transform: capitalize">Kategori :
                                                             {{ str_replace('_', ' ', $jenis_koleksi_terpilih[$key]->nama) }}
                                                         </p>
                                                         @if ($jenis_koleksi_terpilih[$key]->id === 5)
                                                             <a href="/foto/create/{{ $koleksi->slug }}"
-                                                                class="btn font text-white" style="background-color: #25b5e9">Tambah</a>
+                                                                class="btn font text-white"
+                                                                style="background-color: #25b5e9">Tambah</a>
                                                         @endif
                                                         <button type="button"
                                                             class="btn btn-warning text-white tombol-edit-koleksi"
@@ -849,7 +849,8 @@
                                                             method="post">
                                                             @csrf
                                                             @method('delete')
-                                                            <button class="btn btn-danger" style="background-color: #263238"
+                                                            <button class="btn btn-danger"
+                                                                style="background-color: #263238"
                                                                 onclick="return confirm('Apakah anda yakin akan menghapus jurusan ini?')">Hapus</button>
                                                         </form>
                                                     </td>
@@ -953,6 +954,17 @@
                                         {{ $lab['jenis'] }}</td>
                                     <td class="text-center">{{ $lab['kondisi'] }}</td>
                                     <td class="text-center">Kekurangan {{ $lab['kekurangan'] }} m²</td>
+                                </tr>
+                            @endforeach
+                            @foreach ($status_pimpinan as $pimpinan)
+                                {{-- @dd($pimpinan) --}}
+                                <tr>
+                                    <td class="text-center">{{ $no++ }}</td>
+                                    <td class="text-center">Bangunan</td>
+                                    <td class="text-center" style="text-transform: capitalize">
+                                        {{ $pimpinan->nama }}</td>
+                                    <td class="text-center">{{ ($pimpinan->kekurangan > 0) ? 'Tidak Ideal' : 'Ideal' }}</td>
+                                    <td class="text-center">Kekurangan {{ $pimpinan->kekurangan }} m²</td>
                                 </tr>
                             @endforeach
                             @foreach ($status_bangunan as $bangunan)
