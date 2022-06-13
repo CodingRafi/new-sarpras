@@ -100,6 +100,9 @@ class Profil extends Model
         return $this->hasMany(Laboratorium::class);
     }
 
+    public function riwayat(){
+        return $this->hasMany(Riwayat::class);
+    }
 
     public function scopeSearch($query, array $search)
     {
