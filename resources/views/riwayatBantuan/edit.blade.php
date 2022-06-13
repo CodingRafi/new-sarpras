@@ -52,7 +52,7 @@
             <h3 class="text-dark display-4 pl-3" style="font-size: 25px;text-transform: capitalize;">Edit Riwayat Bantuan</h3>
         </div>
         <hr style="color: rgb(189, 189, 189)">
-        <form class="form-horizontal" action="/riwayat-bantuan/{{ $data->id }}" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal" action="/riwayat-bantuan/{{ $data->id }}" method="post" enctype="multipart/form-data" onsubmit="myLoading()">
             @csrf
             @method('patch')
             <div class="card-body">

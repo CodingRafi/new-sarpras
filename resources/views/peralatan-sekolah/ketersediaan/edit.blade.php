@@ -20,7 +20,7 @@
     </div>
 
     <div class="form-edit pt-3">
-        <form action="/peralatan-tersedia/{{ $data->id }}" method="post">
+        <form action="/peralatan-tersedia/{{ $data->id }}" method="post" onsubmit="myLoading()">
             @csrf
             @method('patch')
             <input type="hidden" name="profil_id" value="{{ Auth::user()->profil_id }}">

@@ -205,7 +205,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         {{-- Loading --}}
         <div
-            style="position: fixed; background: rgba(0, 0, 0, 0.1); width: 100%; height: 100vh; z-index: 9999; display: flex; justify-content: center; align-items: center;">
+            style="position: fixed; background: rgba(0, 0, 0, 0.1); width: 100%; height: 100vh; z-index: 9999; display: none; justify-content: center; align-items: center;">
             <div class="loading-container">
                 <div class="item"></div>
                 <div class="item"></div>

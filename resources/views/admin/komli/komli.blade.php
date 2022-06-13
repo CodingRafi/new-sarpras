@@ -102,7 +102,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" action="/komli" method="post">
+                        <form class="form-horizontal" action="/komli" method="post" onsubmit="myLoading()">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group row">

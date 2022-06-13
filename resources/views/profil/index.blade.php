@@ -254,7 +254,7 @@
                     @if (Auth::user()->hasRole('sekolah'))
                         <div class="chart tab-pane" id="edit-data-sekolah">
                             {{-- ---------------------------------------------------------------------------------------- FORM PROFIL SEKOLAH ---------------------------------------------------------------------------------------- --}}
-                            <form action="/profil/{{ $profil->id }}" method="POST">
+                            <form action="/profil/{{ $profil->id }}" method="POST" onsubmit="myLoading()">
                                 @csrf
                                 @method('put')
                                 <input type="hidden" name="profil_depo_id" value="{{ $profil->id }}">
@@ -431,7 +431,7 @@
                             <div class="modal fade" id="edit-koleksi">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
-                                        <form action="/koleksi/update-koleksi" method="post">
+                                        <form action="/koleksi/update-koleksi" method="post" onsubmit="myLoading()">
                                             @csrf
                                             @method('patch')
                                             <div class="modal-header">
@@ -478,7 +478,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="/koleksi" method="POST">
+                                            <form action="/koleksi" method="POST" onsubmit="myLoading()">
                                                 @csrf
                                                 <input type="hidden" name="profil_depo_id" value="{{ $profil->id }}">
                                                 <div class="mb-3">

@@ -100,7 +100,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" action="/spektrum" method="post" enctype="multipart/form-data">
+                        <form class="form-horizontal" action="/spektrum" method="post" enctype="multipart/form-data" onsubmit="myLoading()">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group row">

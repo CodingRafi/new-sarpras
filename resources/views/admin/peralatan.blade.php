@@ -109,7 +109,7 @@
 
                 <div class="chart tab-pane" id="tambah-usulan-lahan">
                     <div class="card-body">
-                        <form action="/usulan-lahan" method="post" enctype="multipart/form-data">
+                        <form action="/usulan-lahan" method="post" enctype="multipart/form-data" >
                             {{-- input kompetensi keahlian --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Kompetensi Keahlian</label>

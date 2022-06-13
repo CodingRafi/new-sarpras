@@ -90,7 +90,7 @@
     </div> --}}
 
     <div class="card">
-        <form class="form-horizontal" action="/usulan-bangunan/{{ $data->id }}" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal" action="/usulan-bangunan/{{ $data->id }}" method="post" enctype="multipart/form-data" onsubmit="myLoading()">
             @csrf
             @method('patch')
             <div class="card-body">

@@ -52,7 +52,7 @@
 
     <div class="form-edit pt-3">
 
-        <form action="/spektrum/{{ $data->id }}" method="post" enctype="multipart/form-data">
+        <form action="/spektrum/{{ $data->id }}" method="post" enctype="multipart/form-data" onsubmit="myLoading()">
             @csrf
             @method('patch')
             <div class="card pt-3" style="background-color: white; border-radius: 10px; ">

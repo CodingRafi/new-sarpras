@@ -168,7 +168,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" action="/program-kompetensi" method="post">
+                        <form class="form-horizontal" action="/program-kompetensi" method="post" onsubmit="myLoading()">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group row">
@@ -200,7 +200,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal form-edit" action="/program-kompetensi" method="post">
+                        <form class="form-horizontal form-edit" action="/program-kompetensi" method="post" onsubmit="myLoading()">
                             @csrf
                             @method('patch')
                             <div class="card-body">
