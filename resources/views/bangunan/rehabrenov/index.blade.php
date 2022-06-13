@@ -6,7 +6,6 @@
             position: absolute;
             left: 35px;
         }
-
     </style>
 @endsection
 
@@ -62,8 +61,7 @@
                                         @foreach ($usulanFotos[$key] as $ke => $foto)
                                             <a href="{{ asset('storage/' . $foto->nama) }}" class="fancybox"
                                                 data-fancybox="gallery{{ $key }}">
-                                                <img src="{{ asset('storage/' . $foto->nama) }}"
-                                                    class="rounded"
+                                                <img src="{{ asset('storage/' . $foto->nama) }}" class="rounded"
                                                     style="object-fit: cover; width: 150px; aspect-ratio: 1/1;{{ $ke == 0 ? '' : 'display:none;' }}">
                                             </a>
                                         @endforeach
@@ -103,64 +101,67 @@
     <div class="modal fade" id="tambah-usulan">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <form action="/bangunan/usulan-ruang-penunjang" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="modal-header">
-                        <h4 class="modal-title">Usulan Ruang Penunjang</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        @if (count($datas) > 0)
+                @if (count($datas) > 0)
+                    <form action="/bangunan/usulan-ruang-penunjang" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="modal-header">
+                            <h4 class="modal-title">Usulan Ruang Penunjang</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
                             <div class="form-group row">
                                 <label for="jumlah-lahan" class="col-sm-4 col-form-label">Jenis Ruang</label>
-                                    <select name="pimpinan_id" id="" required class="custom-select col-sm-7">
-                                        @foreach ($datas as $data)
-                                            <option value="{{ $data->id }}">{{ $data->nama }}</option>
-                                        @endforeach
-                                    </select>
+                                <select name="pimpinan_id" id="" required class="custom-select col-sm-7">
+                                    @foreach ($datas as $data)
+                                        <option value="{{ $data->id }}">{{ $data->nama }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             {{-- input jumlah ruangan --}}
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Jumlah Ruang</label>
-                                <input type="number" class="form-control col-sm-7 loading-tambah" placeholder="Masukan Jumlah Ruangan"
-                                    id="jumlah-ruangan" name="jml_ruang" required>
+                                <input type="number" class="form-control col-sm-7 loading-tambah"
+                                    placeholder="Masukan Jumlah Ruangan" id="jumlah-ruangan" name="jml_ruang" required>
                             </div>
                             {{-- end input jumlah ruangan --}}
 
                             {{-- input luas lahan --}}
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Luas Lahan (M²)</label>
-                                <input type="number" class="form-control col-sm-7 loading-tambah" placeholder="Masukan Luas Lahan"
-                                    id="luas-lahan" name="luas_lahan" required>
+                                <input type="number" class="form-control col-sm-7 loading-tambah"
+                                    placeholder="Masukan Luas Lahan" id="luas-lahan" name="luas_lahan" required>
                             </div>
                             {{-- end luas lahan --}}
 
                             {{-- upload gambar lokasi --}}
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label pt-1" for="customFile">Gambar Lahan</label>
-                                <input type="file" class="loading-tambah" id="gambar-lahan" required multiple accept="image/*" name="gambar[]">
+                                <input type="file" class="loading-tambah" id="gambar-lahan" required multiple
+                                    accept="image/*" name="gambar[]">
                             </div>
                             {{-- end upload gambar lokasi --}}
                             {{-- upload proposal --}}
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label pt-1" for="customFile">Proposal</label>
-                                <input type="file" class="loading-tambah" id="proposal" required accept=".pdf" name="proposal">
+                                <input type="file" class="loading-tambah" id="proposal" required accept=".pdf"
+                                    name="proposal">
                             </div>
                             {{-- end upload proposal --}}
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn text-white loading-simpan"
+                                style="background-color: #00a65b">Simpan</button>
+                        </div>
+                    </form>
+                @else
+                    <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                        <div class="alert" role="alert">
+                            Belum ada jenis ruang Penunjang
+                        </div>
                     </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn text-white loading-simpan" style="background-color: #00a65b">Simpan</button>
-                    </div>
-                </form>
-            @else
-                <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
-                    <div class="alert" role="alert">
-                        Belum ada jenis ruang Penunjang
-                    </div>
-                </div>
                 @endif
             </div>
             <!-- /.modal-content -->
@@ -192,12 +193,14 @@
                                                 <tr>
                                                     <th rowspan="2" class="text-center" style="vertical-align: middle">No
                                                     </th>
-                                                    <th rowspan="2" class="text-center" style="vertical-align: middle">Jenis
+                                                    <th rowspan="2" class="text-center" style="vertical-align: middle">
+                                                        Jenis
                                                         Usulan</th>
                                                     <th colspan="2" class="text-center" style="vertical-align: middle">
                                                         Tingkat
                                                         Kerusakan</th>
-                                                    <th colspan="3" class="text-center" style="vertical-align: middle">Objek
+                                                    <th colspan="3" class="text-center" style="vertical-align: middle">
+                                                        Objek
                                                         Rehab/ Renov
                                                     </th>
                                                     <th rowspan="2" class="text-center" style="vertical-align: middle">
@@ -205,7 +208,8 @@
                                                     </th>
                                                     <th rowspan="2" class="text-center" style="vertical-align: middle">
                                                         Keterangan</th>
-                                                    <th rowspan="2" class="text-center" style="vertical-align: middle">Aksi
+                                                    <th rowspan="2" class="text-center" style="vertical-align: middle">
+                                                        Aksi
                                                     </th>
                                                 </tr>
                                                 <tr>
@@ -222,7 +226,7 @@
                                                 @foreach ($rehabs as $key => $rehab)
                                                     <tr>
                                                         <th class="text-center">{{ $loop->iteration }}</th>
-                                                        <td class="text-center">
+                                                        <td class="text-center" style="text-transform: capitalize;">
                                                             {{ str_replace('_', ' ', $rehab->jenis) }}
                                                         </td>
                                                         <td class="text-center">{{ $rehab->persentase }}%</td>
@@ -317,16 +321,9 @@
                             <select name="jenis" id="" class="custom-select col-sm-7" required>
                                 <option value="ruang_kelas">Ruang Kelas</option>
                                 <option value="ruang_praktek">Ruang Praktek</option>
-                                <option value="lab_komputer">Lab Komputer</option>
-                                <option value="lab_biologi">Lab Biologi</option>
-                                <option value="lab_fisika">Lab Fisika</option>
-                                <option value="lab_kimia">Lab Kimia</option>
-                                <option value="lab_ipa">Lab Ipa</option>
-                                <option value="lab_bahasa">Lab Ipa</option>
+                                <option value="laboratorium">Laboratorium</option>
                                 <option value="perpustakaan">Perpustakaan</option>
                                 <option value="toilet">Toilet</option>
-                                <option value="kantor">Kantor</option>
-                                <option value="ruang_guru">Ruang Guru</option>
                             </select>
                         </div>
                         {{-- end input jumlah ruangan --}}

@@ -1,4 +1,4 @@
-a{{-- @dd($logs[0]['keterangan']) --}}
+{{-- @dd($logs[0]['keterangan']) --}}
 
 @extends('mylayouts.main')
 
