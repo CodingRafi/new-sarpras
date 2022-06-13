@@ -10,12 +10,14 @@
     </div>
     <div class="card">
         <div class="card-header p-3" style="background-color: #25b5e9; margin-right: -1px; margin-top: -1px;">
-            <h3 class="card-title text-white">Data Laboratorium</h3>
-            <button type="button" class="btn btn-tool border border-light text-white ml-3" data-toggle="modal"
-                data-target="#modal-tambah">
-                <i class="bi bi-plus"></i>
-                Tambah Laboratorium
-            </button>
+            <h3 class="card-title text-white font-weight-bold">Data Laboratorium</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool border border-light text-white ml-3" data-toggle="modal"
+                    data-target="#modal-tambah">
+                    <i class="bi bi-plus"></i>
+                    Tambah Laboratorium
+                </button>
+            </div>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -55,9 +57,9 @@
                                     </td>
                                     <td class="text-center">
                                         <a href="/bangunan/laboratorium/{{ $lab->id_lab }}"
-                                            class="btn btn-info btn-block">Detail</a>
+                                            class="btn btn-block text-white" style="background-color: #00a65b">Detail</a>
                                         <a href="#" class="btn text-white tombol-edit btn-block" data-toggle="modal"
-                                            data-target="#modal-edit" style="background-color: #00a65b"
+                                            data-target="#modal-edit" style="background-color: #fcc12d"
                                             data-id="{{ $lab->id_lab }}">
                                             Edit
                                         </a>
@@ -65,7 +67,7 @@
                                             class="mt-2">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class="btn btn-danger btn-block"
+                                            <button type="submit" class="btn btn-block text-white" style="background-color: #263238"
                                                 onclick="return confirm('apakah anda yakin akan menghapus laboratorium ini?')">Hapus</button>
                                         </form>
                                     </td>
@@ -282,7 +284,7 @@
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn text-white mt-2"
-                                                        style="background-color: #00a65b"
+                                                        style="background-color: #263238"
                                                         onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
                                                 </form>
                                         </tr>
