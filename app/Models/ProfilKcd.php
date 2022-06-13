@@ -70,14 +70,14 @@ class ProfilKcd extends Model
     }
 
     public static function get_data_for_kcd($kcd_id){
-        return ProfilKcd::search(request(['search', 'filter']))
-                ->where('profil_kcds.kcd_id', $kcd_id)
+        return ProfilKcd::where('profil_kcds.kcd_id', $kcd_id)
                 ->select('profils.*', 'kcds.instansi')
                 ->leftJoin('kcds', function($join) use ($kcd_id){
                     $join->where('kcds.id', $kcd_id);
                 })
                 ->leftJoin('kota_kabupatens', 'kota_kabupatens.id', 'profil_kcds.kota_kabupaten_id')
                 ->leftJoin('profils', 'profils.kota_kabupaten_id', 'kota_kabupatens.id')
+                ->search(request(['search', 'filter']))
                 ->paginate(40)->withQueryString();
     }
 }
