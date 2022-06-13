@@ -186,6 +186,7 @@ class RiwayatController extends Controller
                                     ->leftJoin('profil_kcds', 'kota_kabupatens.id', 'profil_kcds.kota_kabupaten_id')
                                     ->leftJoin('kcds', 'kcds.id', 'profil_kcds.kcd_id')
                                     ->select('profils.nama', 'riwayats.*')
+                                    // ->groupBy('riwayats.profil_id')
                                     ->get();
                     if (count($usulans) > 0) {
                         foreach ($usulans as $usulan) {
@@ -200,6 +201,7 @@ class RiwayatController extends Controller
                         ->leftJoin('profil_kcds', 'kota_kabupatens.id', 'profil_kcds.kota_kabupaten_id')
                         ->leftJoin('kcds', 'kcds.id', 'profil_kcds.kcd_id')
                         ->select('profils.nama', 'riwayats.*')
+                        // ->groupBy('riwayats.profil_id')
                         ->get();
             }
 

@@ -34,8 +34,8 @@ class UsulanBangunan extends Model
         return $this->hasMany(UsulanPraktek::class);
     }
 
-    public function jenisPimpinan(){
-        return $this->belongsTo(JenisPimpinan::class);
+    public function pimpinan(){
+        return $this->belongsTo(Pimpinan::class);
     }
 
     public function laboratorium(){

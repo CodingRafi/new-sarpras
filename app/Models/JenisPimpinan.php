@@ -19,10 +19,6 @@ class JenisPimpinan extends Model
         return $this->hasMany(Pimpinan::class);
     }
 
-    public function usulanBangunan(){
-        return $this->hasMany(UsulanBangunan::class);
-    }
-
     public static function belumTerpilih(){
         return DB::table('jenis_pimpinans as a')->select('a.*')
                 ->leftJoin('pimpinans as b', function($join) {

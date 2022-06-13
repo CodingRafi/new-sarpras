@@ -48,6 +48,7 @@ class HasilVisitasiController extends Controller
     public function store(StoreHasilVisitasiRequest $request)
     {
         if( Auth::user()->hasRole('verifikator') ){
+            dd($request);
             $unsurs = UnsurVerifikasi::all();
             $visitasi = Visitasi::where('id', $request->visitasi_id)->get()->first();
             

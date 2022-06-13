@@ -52,17 +52,18 @@
 
     <div class="form-edit pt-3">
 
-        <form action="/bangunan/usulan/{{ $data->id_usulan_bangunan }}" method="post" enctype="multipart/form-data" onsubmit="myLoading()">
+        <form action="/bangunan/usulan/{{ $data->id_usulan_bangunan }}?home={{ request('home') }}" method="post" enctype="multipart/form-data" onsubmit="myLoading()">
             @csrf
             @method('patch')
+            {{-- @dd($jenis) --}}
             <div class="card pt-3" style="background-color: white; border-radius: 10px; ">
                 @if ($data->jenis == 'ruang_pimpinan')
                     {{-- --------------------------------------------- JENIS RUANG PIMPINAN --------------------------------------------- --}}
                     <div class="row input pl-5 mt-2">
                         <label class="col-2 mt-3">Jenis Ruang</label>
-                        <select name="jenis_pimpinan_id" id="" required class="custom-select col-9" style="width: 77%;">
+                        <select name="pimpinan_id" id="" required class="custom-select col-9" style="width: 77%;">
                             @foreach ($jenis as $data_jenis)
-                                @if ($data_jenis->id == $data->id_jenis_pimpinan)
+                                @if ($data_jenis->id == $data->pimpinan_id)
                                     <option value="{{ $data_jenis->id }}" selected>{{ $data_jenis->nama }}</option>
                                 @else
                                     <option value="{{ $data_jenis->id }}">{{ $data_jenis->nama }}</option>

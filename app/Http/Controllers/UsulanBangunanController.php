@@ -7,6 +7,7 @@ use App\Models\Log;
 use App\Models\UsulanKoleksi;
 use App\Models\UsulanFoto;
 use App\Models\JenisPimpinan;
+use App\Models\Pimpinan;
 use App\Models\laboratorium;
 use ImageOptimizer;
 use Illuminate\Support\Facades\Auth;
@@ -183,11 +184,16 @@ class UsulanBangunanController extends Controller
         $data = UsulanBangunan::find($id);
         if($data->profil_id == Auth::user()->profil_id){
             if ($data->jenis == 'ruang_pimpinan') {
-                $datadetail = UsulanBangunan::select('usulan_bangunans.*', 'jenis_pimpinans.*', 'usulan_bangunans.id as id_usulan_bangunan', 'jenis_pimpinans.id as id_jenis_pimpinan')
+                $datadetail = UsulanBangunan::select('usulan_bangunans.*', 'pimpinans.*', 'jenis_pimpinans.nama', 'usulan_bangunans.id as id_usulan_bangunan')
                                             ->where('usulan_bangunans.id', $id)
-                                            ->leftJoin('jenis_pimpinans', 'jenis_pimpinans.id', 'usulan_bangunans.jenis_pimpinan_id')
+                                            ->leftJoin('pimpinans', 'pimpinans.id', 'usulan_bangunans.pimpinan_id')
+                                            ->leftJoin('jenis_pimpinans', 'jenis_pimpinans.id', 'pimpinans.jenis_pimpinan_id')
                                             ->get()->first();
-                $jenis = JenisPimpinan::all();
+
+                $jenis = Pimpinan::select('pimpinans.*', 'jenis_pimpinans.nama')
+                        ->leftJoin('jenis_pimpinans', 'jenis_pimpinans.id', 'pimpinans.jenis_pimpinan_id')
+                        ->where('profil_id', Auth::user()->profil_id)
+                        ->get();
             }else if($data->jenis == 'laboratorium'){
                 $datadetail = UsulanBangunan::select('usulan_bangunans.*', 'laboratoria.*', 'usulan_bangunans.id as id_usulan_bangunan', 'laboratoria.id as id_laboratorium')
                                             ->where('usulan_bangunans.id', $id)
@@ -223,7 +229,7 @@ class UsulanBangunanController extends Controller
         if($usulanBangunan->profil_id == Auth::user()->profil_id){
             if ($usulanBangunan->jenis == 'ruang_pimpinan') {
                 $validatedData = $request->validate([
-                    'jenis_pimpinan_id' => 'required',
+                    'pimpinan_id' => 'required',
                     'luas_lahan' => 'required'
                 ]);
             }elseif($usulanBangunan->jenis == 'laboratorium'){
@@ -255,11 +261,15 @@ class UsulanBangunanController extends Controller
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Usulan Bangunan ' . str_replace("_", " ", $usulanBangunan->jenis));
 
             if ($usulanBangunan->jenis == 'ruang_pimpinan') {
-                return redirect('/bangunan/penunjang')->with('success', 'Berhasil mengubah usulan ruang pimpinan!');
+                if (request('home') == 'penunjang') {
+                    return redirect('/bangunan/penunjang')->with('success', 'Berhasil mengubah usulan Ruang Penunjang!');
+                }else{
+                    return redirect('/bangunan/ruang-rehabrenov')->with('success', 'Berhasil mengubah usulan Ruang Penunjang!');
+                }
             }elseif($usulanBangunan->jenis == 'laboratorium'){
                 return redirect('/bangunan/laboratorium')->with('success', 'Berhasil mengubah usulan Laboratorium!');
             }else{
-                return redirect('/bangunan/ruang-praktik')->with('success', 'Berhasil mengubah usulan ruang Praktik!');
+                return redirect('/bangunan/ruang-praktik')->with('success', 'Berhasil mengubah usulan Ruang Praktik!');
             }
         }else{
             abort(403);

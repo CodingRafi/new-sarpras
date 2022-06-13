@@ -63,9 +63,12 @@ class Bangunan extends Model
     }
 
     public static function status_bangunan_dinas($profil){
+        $profil = Profil::find($profil->id);
+
         $bangunan_all = Bangunan::status_bangunan($profil);
         $laboratorium = Laboratorium::status_laboratorium($profil);
         $kompetens = Kompeten::status_kompeten($profil);
+        $pimpinans = Pimpinan::status_pimpinan($profil);
 
         $bangunan_tidak_ideal = [];
 
@@ -99,6 +102,17 @@ class Bangunan extends Model
                     'jenis' => $kompeten->kompetensi,
                     'kondisi' => 'Tidak Ideal',
                     'kekurangan' => $kompeten['kekurangan']
+                ];
+            }
+        }
+
+        foreach ($pimpinans as $key => $pimpinan) {
+            if ($pimpinan->kekurangan > 0) {
+                $bangunan_tidak_ideal[] = [
+                    'kategori' => 'pimpinan',
+                    'jenis' => $pimpinan->nama,
+                    'kondisi' => 'Tidak Ideal',
+                    'kekurangan' => $pimpinan->kekurangan
                 ];
             }
         }
