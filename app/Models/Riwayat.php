@@ -31,4 +31,18 @@ class Riwayat extends Model
         });
 
     }
+
+    public static function get_sum_riwayat($profil){
+        $usulans = Riwayat::where('profil_id', $profil->id)
+                                ->leftJoin('profils', function($join) use ($profil){
+                                    $join->where('profils.id', $profil->id);
+                                })
+                                ->leftJoin('kota_kabupatens', 'kota_kabupatens.id', 'profils.kota_kabupaten_id')
+                                ->leftJoin('profil_kcds', 'kota_kabupatens.id', 'profil_kcds.kota_kabupaten_id')
+                                ->leftJoin('kcds', 'kcds.id', 'profil_kcds.kcd_id')
+                                ->select('profils.nama', 'riwayats.*')
+                                ->get();
+
+        return count($usulans);
+    }
 }
