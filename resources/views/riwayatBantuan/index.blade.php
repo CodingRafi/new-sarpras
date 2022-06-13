@@ -119,7 +119,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal" action="/riwayat-bantuan" method="POST" enctype="multipart/form-data">
+                    <form class="form-horizontal" action="/riwayat-bantuan" method="POST" enctype="multipart/form-data" onsubmit="myLoading()">
                         @csrf
                         <div class="card-body">
                             {{-- ---------------------------------------------------------------------------------------- TAHUN BANTUAN ---------------------------------------------------------------------------------------- --}}

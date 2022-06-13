@@ -134,7 +134,7 @@
                     <div class="chart tab-pane" id="tambah-usulan-lahan">
                         <div class="card-body">
                             @if (count($verifikators) > 0 && count($profils) > 0)
-                                <form action="/visitasi" method="post" enctype="multipart/form-data">
+                                <form action="/visitasi" method="post" enctype="multipart/form-data" onsubmit="myLoading()">
                                     @csrf
                                     {{-- input nama verifikator --}}
                                     <div class="form-group row">

@@ -155,7 +155,7 @@
                     <div class="modal-body">
                         @if (count($peralatanOptionsTersedias) > 0)
                             
-                        <form class="form-horizontal" action="/peralatan-tersedia" method="post">
+                        <form class="form-horizontal" action="/peralatan-tersedia" method="post" onsubmit="myLoading()">
                             @csrf
                             <div class="card-body">
                                 <input type="hidden" name="kompeten_id" value="{{ $kompeten->id }}">
@@ -320,7 +320,7 @@
                     </div>
                     <div class="modal-body">
                         <form class="form-horizontal" action="/usulan-peralatan" method="POST"
-                            enctype="multipart/form-data">
+                            enctype="multipart/form-data" onsubmit="myLoading()">
                             @csrf
                             @if (count($peralatanOptions) > 0)
                                 <div class="card-body">

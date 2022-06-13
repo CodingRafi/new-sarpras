@@ -99,7 +99,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" action="/jenis-penunjang" method="POST">
+                        <form class="form-horizontal" action="/jenis-penunjang" method="POST" onsubmit="myLoading()">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group row">
@@ -128,7 +128,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal form-jenis-pimpinan" action="/jenis-penunjang" method="POST">
+                        <form class="form-horizontal form-jenis-pimpinan" action="/jenis-penunjang" method="POST" onsubmit="myLoading()">
                             @csrf
                             @method('patch')
                             <div class="card-body">
@@ -220,7 +220,7 @@
                     </div>
                     <div class="modal-body">
                         @if (count($komlis) > 0)
-                            <form class="form-horizontal" action="/jenis-laboratorium" method="POST">
+                            <form class="form-horizontal" action="/jenis-laboratorium" method="POST" onsubmit="myLoading()">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group row">
@@ -267,7 +267,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal form-laboratorium" action="/jenis-pimpinan" method="POST">
+                        <form class="form-horizontal form-laboratorium" action="/jenis-pimpinan" method="POST" onsubmit="myLoading()">
                             @csrf
                             @method('patch')
                             <div class="card-body">

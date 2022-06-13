@@ -15,7 +15,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark display-4" style="padding: 0 !important;">Ruang Rehab/ Renov</h1>
+                    <h1 class="m-0 text-dark display-4" style="padding: 0 !important;">Ruang Rehab/Renov</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -254,7 +254,7 @@
     {{-- --------------------------------------- USULAN LAB KOMPUTER --------------------------------------- --}}
     <div class="card card-info">
         <div class="card-header" style="background-color: #25b5e9">
-            <h3 class="card-title font-weight-bold">Usulan Ruang Pimpinan</h3>
+            <h3 class="card-title font-weight-bold">Usulan Ruang Penunjang</h3>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool border border-light text-white" data-toggle="modal"
                     data-target="#tambah-usulan"><i class="bi bi-plus"></i> Tambah Usulan
@@ -304,7 +304,7 @@
                                     </td>
                                     <td class="text-center">{{ $usulan->keterangan }}</td>
                                     <td class="text-center">
-                                        <a href="/bangunan/usulan-ruang-pimpinan/{{ $usulan->id }}/edit"
+                                        <a href="/bangunan/usulan/{{ $usulan->id }}/edit"
                                             class="btn btn-warning text-white">Edit</a>
                                         <form action="/usulan-bangunan/{{ $usulan->id }}" method="post">
                                             @csrf
@@ -333,7 +333,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
 
-                <form action="/bangunan/usulan-ruang-pimpinan" method="post" enctype="multipart/form-data">
+                <form action="/bangunan/usulan-ruang-penunjang" method="post" enctype="multipart/form-data" onsubmit="myLoading()">
                     @csrf
                     <div class="modal-header">
                         <h4 class="modal-title">Usulan Ruang Pimpinan</h4>
@@ -534,7 +534,7 @@
     <div class="modal fade" id="modal-rencana-usulan">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <form action="/bangunan/ruang-rehabrenov" method="post" enctype="multipart/form-data">
+                <form action="/bangunan/ruang-rehabrenov" method="post" enctype="multipart/form-data" onsubmit="myLoading()">
                     @csrf
                     <div class="modal-header">
                         <h4 class="modal-title">Usulan Rencana Rehab/ Renov</h4>

@@ -255,11 +255,11 @@ class UsulanBangunanController extends Controller
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Usulan Bangunan ' . str_replace("_", " ", $usulanBangunan->jenis));
 
             if ($usulanBangunan->jenis == 'ruang_pimpinan') {
-                return redirect('/bangunan/pimpinan')->with('success', 'Berhasil mengubah usulan ruang pimpinan!');
+                return redirect('/bangunan/penunjang')->with('success', 'Berhasil mengubah usulan ruang pimpinan!');
             }elseif($usulanBangunan->jenis == 'laboratorium'){
-                return redirect('/bangunan/laboratorium')->with('success', 'Berhasil mengubah usulan ruang pimpinan!');
+                return redirect('/bangunan/laboratorium')->with('success', 'Berhasil mengubah usulan Laboratorium!');
             }else{
-                return redirect('/bangunan/ruang-praktik')->with('success', 'Berhasil mengubah usulan ruang pimpinan!');
+                return redirect('/bangunan/ruang-praktik')->with('success', 'Berhasil mengubah usulan ruang Praktik!');
             }
         }else{
             abort(403);

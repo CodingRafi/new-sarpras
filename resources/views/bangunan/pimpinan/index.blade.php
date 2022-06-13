@@ -118,7 +118,7 @@
                     </div>
                     <div class="modal-body">
                         @if (count($jenis_pimpinans) > 0)
-                            <form class="form-horizontal" action="/bangunan/penunjang" method="POST">
+                            <form class="form-horizontal" action="/bangunan/penunjang" method="POST" onsubmit="myLoading()">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group row">
@@ -184,7 +184,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal form-edit" action="/bangunan/penunjang" method="POST">
+                        <form class="form-horizontal form-edit" action="/bangunan/penunjang" method="POST" onsubmit="myLoading()">
                             @csrf
                             @method('patch')
                             <div class="card-body">
@@ -198,14 +198,14 @@
                                 <div class="form-group row">
                                     <label for="luas-lahan" class="col-sm-2 col-form-label">Ketersediaan</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control input-ketersediaan" id="luas-lahan" name="ketersediaan"
+                                        <input type="number" class="form-control input-ketersediaan" id="luas-lahan" name="ketersediaan"
                                             required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="luas-lahan" class="col-sm-2 col-form-label">Kekurangan</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control input-kekurangan" id="luas-lahan" name="kekurangan"
+                                        <input type="number" class="form-control input-kekurangan" id="luas-lahan" name="kekurangan"
                                             required>
                                     </div>
                                 </div>
@@ -307,7 +307,7 @@
         <div class="modal fade" id="tambah-usulan">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
-                    <form action="/bangunan/usulan-ruang-penunjang" method="post" enctype="multipart/form-data">
+                    <form action="/bangunan/usulan-ruang-penunjang" method="post" enctype="multipart/form-data" onsubmit="myLoading()">
                         @csrf
                         <div class="modal-header">
                             <h4 class="modal-title">Usulan Ruang Penunjang</h4>

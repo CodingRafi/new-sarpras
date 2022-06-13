@@ -203,7 +203,7 @@
     <div class="modal fade" id="modal-default">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <form action="/bangunan/usulan-ruang-praktik" method="post" enctype="multipart/form-data">
+                <form action="/bangunan/usulan-ruang-praktik" method="post" enctype="multipart/form-data" onsubmit="myLoading()">
                     @csrf
                     <div class="modal-header">
                         <h4 class="modal-title">Usulan</h4>

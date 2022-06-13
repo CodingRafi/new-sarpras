@@ -96,7 +96,7 @@
                     </div>
                     <div class="modal-body">
                         @if (count($semua_jurusan) > 0)
-                            <form class="form-horizontal" action="/peralatan" method="post">
+                            <form class="form-horizontal" action="/peralatan" method="post" onsubmit="myLoading()">
                                 @csrf
                                 <div class="card-body">
                                     {{-- ---------------------------------------------------------------------------------------- KOMPETENSI KEAHLIAN ---------------------------------------------------------------------------------------- --}}

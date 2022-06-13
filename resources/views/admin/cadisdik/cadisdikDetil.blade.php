@@ -171,7 +171,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="/users/{{ $kcd->id_user }}" method="POST">
+                <form action="/users/{{ $kcd->id_user }}" method="POST" onsubmit="myLoading()">
                     {{-- @dd($kcd) --}}
                     @csrf
                     @method('patch')

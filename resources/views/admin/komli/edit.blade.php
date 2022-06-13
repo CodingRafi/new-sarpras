@@ -53,7 +53,7 @@
 
     <div class="form-edit pt-3">
 
-        <form action="/komli/{{ $data->id }}" method="post" enctype="multipart/form-data">
+        <form action="/komli/{{ $data->id }}" method="post" enctype="multipart/form-data" onsubmit="myLoading()">
             @csrf
             @method('patch')
             <div class="container">

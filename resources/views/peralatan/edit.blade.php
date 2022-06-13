@@ -25,7 +25,7 @@
         <h3 class="text-dark display-4 pl-3" style="font-size: 25px">Edit Ruang Praktik</h3>
     </div>
 
-    <form action="/peralatan/{{ $peralatan->id }}" method="POST">
+    <form action="/peralatan/{{ $peralatan->id }}" method="POST" onsubmit="myLoading()">
         @csrf
         @method('patch')
         <div class="form-edit pt-3">

@@ -405,12 +405,12 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     @if (request('jenis') == 'ruang_kelas')
-                        <form action="/bangunan/usulan-ruang-kelas" method="post" enctype="multipart/form-data">
+                        <form action="/bangunan/usulan-ruang-kelas" method="post" enctype="multipart/form-data" onsubmit="myLoading()">
                         @elseif(request('jenis') == 'toilet')
-                            <form action="/bangunan/usulan-toilet" method="post" enctype="multipart/form-data">
+                            <form action="/bangunan/usulan-toilet" method="post" enctype="multipart/form-data" onsubmit="myLoading()">
                             @elseif(request('jenis') == 'perpustakaan')
                                 <form action="/bangunan/usulan-ruang-perpustakaan" method="post"
-                                    enctype="multipart/form-data">
+                                    enctype="multipart/form-data" onsubmit="myLoading()">
                     @endif
                     @csrf
                     <div class="modal-header">
