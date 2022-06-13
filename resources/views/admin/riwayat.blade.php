@@ -30,7 +30,7 @@
         <div class="card-body">
             <div class="tab-content p-0">
                 <div class="tab-pane active" id="data-usulan-sekolah">
-                    @if (count($riwayats) > 0)
+                    @if (count($profils) > 0)
                     <div class="search" style="display: flex">
                             <a class="btn btn-light dropdown-toggle" style="border: 1px solid #263238" data-toggle="dropdown"
                                 href="#">
@@ -65,55 +65,33 @@
                     @endif
                     <div class="table-responsive">
                         {{-- <div class="col-lg-12"> --}}
-                        @if (count($riwayats) > 0)
+                        @if (count($profils) > 0)
                             <table class="table table-bordered mt-3">
                                 {{-- judul table --}}
                                 <thead>
                                     <tr>
                                         <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">No</th>
-                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">Nama Sekolah
-                                        </th>
-                                        <th class="text-center" style="background-color: #eeeeee">Tahun Bantuan</th>
-                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">Jenis Bantuan
-                                        </th>
-                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">Pemberi
-                                            Bantuan</th>
-                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">Sumber
-                                            Anggaran</th>
-                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">Nilai Bantuan
-                                        </th>
-                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">Foto Manfaat
-                                            bantuan</th>
-                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">Keterangan
-                                        </th>
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">Nama Sekolah</th>
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">NPSN</th>
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">Status Sekolah</th>
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">Jumlah Riwayat</th>
+                                        <th rowspan="2" class="text-center" style="vertical-align: middle; background-color:#eeeeee">Aksi</th>
                                     </tr>
                                 </thead>
                                 {{-- end judul table --}}
 
                                 {{-- isi table --}}
                                 <tbody>
-                                    @foreach ($riwayats as $key => $riwayat)
+                                    @foreach ($profils as $key => $profil)
                                         <tr>
                                             <td class="text-center">
                                                 {{ $loop->iteration }}
                                             </td>
-                                            <td class="text-center">{{ $riwayat->nama }}</td>
-                                            <td class="text-center">{{ $riwayat->tahun_bantuan }}</td>
-                                            <td class="text-center">{{ $riwayat->jenis }}</td>
-                                            <td class="text-center">{{ $riwayat->pemberian_bantuan }}</td>
-                                            <td class="text-center">{{ $riwayat->sumber_anggaran }}</td>
-                                            <td class="text-center">{{ $riwayat->nilai_bantuan }}</td>
-                                            <td class="text-center" style="vertical-align: middle">
-                                                @foreach ($fotos[$key] as $ke => $foto)
-                                                    <a href="{{ asset('storage/' . $foto->nama) }}" class="fancybox"
-                                                        data-fancybox="gallery{{ $key }}">
-                                                        <img src="{{ asset('storage/' . $foto->nama) }}"
-                                                            class="rounded"
-                                                            style="object-fit: cover; width: 150px; aspect-ratio: 1/1;{{ $ke == 0 ? '' : 'display:none;' }}">
-                                                    </a>
-                                                @endforeach
-                                            </td>
-                                            <td class="text-center">{{ $riwayat->keterangan }}</td>
+                                            <td class="text-center">{{ $profil['nama'] }}</td>
+                                            <td class="text-center">{{ $profil['npsn'] }}</td>
+                                            <td class="text-center">{{ $profil['status_sekolah'] }}</td>
+                                            <td class="text-center">{{ $profil['jml_riwayat'] }}</td>
+                                            <td class="text-center"><a href="/riwayat-bantuan-dinas/{{ $key }}" class="btn text-white" style="background-color: #25b5e9">Detail</a></td>
                                     @endforeach
                                 </tbody>
                                 {{-- end isi table --}}
