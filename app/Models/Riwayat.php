@@ -17,6 +17,10 @@ class Riwayat extends Model
         return $this->hasMany(UsulanKoleksi::class);
     }
 
+    public function profil(){
+        return $this->belongsTo(Profil::class);
+    }
+
     public function scopeSearch($query, array $search)
     {
         // dd($query->where('npsn', 'like', '%' . $search['search'] . '%'));
