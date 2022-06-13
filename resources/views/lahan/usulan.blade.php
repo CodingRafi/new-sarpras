@@ -14,7 +14,7 @@
 @section('container')
     <div class="container-fluid mt-3">
         {{------------------------------------------------ LAMPIRAN -----------------------------------------------------------}}
-        <div class="container">
+        <div class="container-fluid">
             <div class="card card-info card-outline">
 
                 <div class="ribbon-wrapper ribbon-xl">
@@ -120,7 +120,7 @@
                                                                         </button>
                                                                         <div class="dropdown-menu"
                                                                             style="margin-left: -73px">
-                                                                            <a class="dropdown-item">Edit</a>
+                                                                            <a class="dropdown-item" href="/usulan-lahan/{{ $usulan->id }}/edit">Edit</a>
                                                                             <form action="/usulan-lahan/{{ $usulan->id }}"
                                                                                 method="post">
                                                                                 @csrf
@@ -153,7 +153,7 @@
 
                     <div class="chart tab-pane" id="tambah-usulan-lahan">
                         <div class="card-body">
-                            <form action="/usulan-lahan" method="post" enctype="multipart/form-data">
+                            <form action="/usulan-lahan" method="post" enctype="multipart/form-data" onsubmit="myLoading()">
                                 @csrf
                                 {{-- input nama lahan --}}
                                 <div class="form-group row">

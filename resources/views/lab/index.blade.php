@@ -96,7 +96,7 @@
                 </div>
                 <div class="modal-body">
                     @if (count($jenis_laboratoriums) > 0)
-                        <form class="form-horizontal" action="/bangunan/laboratorium" method="post">
+                        <form class="form-horizontal" action="/bangunan/laboratorium" method="post" onsubmit="myLoading()">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group row">
@@ -167,7 +167,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal form-edit" action="/bangunan/laboratorium" method="post">
+                    <form class="form-horizontal form-edit" action="/bangunan/laboratorium" method="post" onsubmit="myLoading()">
                         @csrf
                         @method('patch')
                         <div class="card-body">
@@ -316,7 +316,7 @@
                 </div>
                 <div class="modal-body">
                     @if (count($laboratoriums) > 0)
-                        <form action="/bangunan/usulan-laboratorium" method="post" enctype="multipart/form-data">
+                        <form action="/bangunan/usulan-laboratorium" method="post" enctype="multipart/form-data" onsubmit="myLoading()">
                             @csrf
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label">Laboratorium</label>

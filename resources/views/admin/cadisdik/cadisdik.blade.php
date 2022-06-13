@@ -178,7 +178,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal" action="/profil-kcd" method="post" class="form-edit">
+                    <form class="form-horizontal form-edit" action="/profil-kcd" method="post" onsubmit="myLoading()">
                         @csrf
                         <div class="card-body">
                             <div class="form-group row">
@@ -186,7 +186,7 @@
                                 <label for="instansi" class="col-sm-2 col-form-label">Kota Kabupaten</label>
                                 <div class="col-sm-10">
                                     <select class="fstdropdown-select select-jurusan" id="select" multiple
-                                        name="id_kota_kabupaten[]">
+                                        name="id_kota_kabupaten[]" required>
                                         @foreach ($kotas as $kota)
                                             <option value="{{ $kota->id }}">{{ $kota->nama }}
                                             </option>

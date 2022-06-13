@@ -27,13 +27,13 @@
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end position-absolute" style="right: 0;">
                             <a href="/profil/{{ $koleksi->profil_depo_id }}" class="btn text-white" style="background-color: #263238">Kembali</a>
                           </div>
-                        <form action="/foto" method="POST" enctype="multipart/form-data">
+                        <form action="/foto" method="POST" enctype="multipart/form-data" onsubmit="myLoading()">
                             @csrf
                             <input type="hidden" name="koleksi_id" value="{{ $koleksi_id }}">
                             <div class="col-6">
                                 <div class="mb-3">
                                     <label for="formFileMultiple" class="form-label">Upload Gambar</label>
-                                    <input class="form-control filename loading-tambah" type="file" id="formFileMultiple" {{ ($jeniskoleksi->id != 5) ? '' : 'multiple' }} accept="image/*" name="nama[]" style="padding: 6px;height: 40px;" onchange="previewImage()">
+                                    <input class="form-control filename loading-tambah" type="file" id="formFileMultiple" {{ ($jeniskoleksi->id != 5) ? '' : 'multiple' }} accept="image/*" name="nama[]" style="padding: 6px;height: 40px;" onchange="previewImage()" required>
                                   </div>
                             </div>
                             <div class="container-preview"></div>

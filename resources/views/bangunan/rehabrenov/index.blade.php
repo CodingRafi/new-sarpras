@@ -14,7 +14,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark display-4" style="padding: 0 !important;">Ruang Rehab/ Renov</h1>
+                    <h1 class="m-0 text-dark display-4" style="padding: 0 !important;">Ruang Rehab/Renov</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -102,7 +102,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 @if (count($datas) > 0)
-                    <form action="/bangunan/usulan-ruang-penunjang" method="post" enctype="multipart/form-data">
+                    <form action="/bangunan/usulan-ruang-penunjang" method="post" enctype="multipart/form-data" onsubmit="myLoading()">
                         @csrf
                         <div class="modal-header">
                             <h4 class="modal-title">Usulan Ruang Penunjang</h4>
@@ -306,7 +306,7 @@
     <div class="modal fade" id="modal-rencana-usulan">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <form action="/bangunan/ruang-rehabrenov" method="post" enctype="multipart/form-data">
+                <form action="/bangunan/ruang-rehabrenov" method="post" enctype="multipart/form-data" onsubmit="myLoading()">
                     @csrf
                     <div class="modal-header">
                         <h4 class="modal-title">Usulan Rencana Rehab/ Renov</h4>

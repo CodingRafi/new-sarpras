@@ -251,7 +251,7 @@
                 <div class="chart tab-pane {{ $errors->any() ? 'active' : '' }}" id="tambah-usulan-lahan"
                     style="min-height: 10rem;">
                     <div class="card-body">
-                        <form action="/ketersediaan-lahan/" method="post" enctype="multipart/form-data">
+                        <form action="/ketersediaan-lahan/" method="post" enctype="multipart/form-data" onsubmit="myLoading()">
                             @csrf
 
                             {{-- input nama lahan --}}
@@ -472,7 +472,7 @@
                 <div class="chart tab-pane {{ $errors->any() ? 'active' : '' }}" id="tambah-kekurangan-lahan"
                     style="min-height: 10rem;">
                     <div class="card-body">
-                        <form action="/kekurangan-lahan" method="post">
+                        <form action="/kekurangan-lahan" method="post" onsubmit="myLoading()">
                             @csrf
                             {{-- input nama lahan --}}
                             <div class="form-group row">
@@ -511,7 +511,7 @@
     <div class="modal fade" id="modal-edit">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <form action="/kekurangan-lahan/update-kekurangan" method="post">
+                <form action="/kekurangan-lahan/update-kekurangan" method="post" onsubmit="myLoading()">
                     @csrf
                     @method('PATCH')
                     <div class="modal-header">

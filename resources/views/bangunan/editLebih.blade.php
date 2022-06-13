@@ -52,7 +52,7 @@
 
     <div class="form-edit pt-3">
 
-        <form action="/bangunan/usulan/{{ $data->id_usulan_bangunan }}?home={{ request('home') }}" method="post" enctype="multipart/form-data">
+        <form action="/bangunan/usulan/{{ $data->id_usulan_bangunan }}?home={{ request('home') }}" method="post" enctype="multipart/form-data" onsubmit="myLoading()">
             @csrf
             @method('patch')
             {{-- @dd($jenis) --}}

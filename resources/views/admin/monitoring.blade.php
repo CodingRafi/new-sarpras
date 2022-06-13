@@ -162,7 +162,7 @@
                     {{-- ---------------------------------------------- CREATE PENGAWAS ---------------------------------------------- --}}
                     <div class="chart tab-pane" id="tambah-pengawas">
                         <div class="card-body">
-                            <form action="{{ route('users.store') }}" method="POST">
+                            <form action="{{ route('users.store') }}" method="POST" onsubmit="myLoading()">
                                 @csrf
                                 <input type="hidden" name="role" value="1">
                                 {{-- input nama --}}
@@ -324,7 +324,7 @@
                     {{-- --------------------------------------------- CREATE VERIFIKATOR --------------------------------------------- --}}
                     <div class="chart tab-pane" id="tambah-verifikator">
                         <div class="card-body">
-                            <form action="{{ route('users.store') }}" method="POST">
+                            <form action="{{ route('users.store') }}" method="POST" onsubmit="myLoading()">
                                 @csrf
                                 <input type="hidden" name="role" value="2">
                                 {{-- input nama --}}
@@ -464,7 +464,7 @@
                     <div class="card-body">
 
                         {{-- ---------------------------------------- CREATE UNSUR YANG DIVERIFIKASI ---------------------------------------- --}}
-                        <form action="/unsur-verifikasi" method="post">
+                        <form action="/unsur-verifikasi" method="post" onsubmit="myLoading()">
                             @csrf
                             {{-- input unsur verifikator --}}
                             <div class="form-group row">
@@ -494,7 +494,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal form-unsur" action="/unsur-verifikasi" method="POST">
+                    <form class="form-horizontal form-unsur" action="/unsur-verifikasi" method="POST" onsubmit="myLoading()">
                         @csrf
                         @method('patch')
                         <div class="card-body">
@@ -523,7 +523,7 @@
 <div class="modal fade" id="modal-edit-pengawas">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="/users" method="post" class="form-edit-pengawas">
+            <form action="/users" method="post" class="form-edit-pengawas" onsubmit="myLoading()">
                 @csrf
                 @method('PATCH')
                 <div class="modal-header">
@@ -600,7 +600,7 @@
 <div class="modal fade" id="modal-edit-verifikator">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="/users" method="post" class="form-edit-verifikator">
+            <form action="/users" method="post" class="form-edit-verifikator" onsubmit="myLoading()">
                 @csrf
                 @method('PATCH')
                 <div class="modal-header">
