@@ -131,7 +131,7 @@
                         Luas lahan minimum dapat menampung sarana dan prasarana unuk melayani 3 rombongan belajar.
                     </li>
                     <li class="pb-4">
-                        Lahan efektif adalah lahan yang digunakan untuk mendirikan bangunan, infrastruktur, tampat bermain/berolahraga/upacara, dan praktik.
+                        Lahan efektif adalah lahan yang digunakan untuk mendirikan bangunan, infrastruktur, tempat bermain/berolahraga/upacara, dan praktik.
                     </li>
                     <li>
                         Luas lahan efektif adalah seratus per tiga puluh (100/30) dikalikan luas lantai dasar bangunan ditambah infrastruktur, tempat bermain/berolahraga/upacara dan luas lahan praktik.
@@ -558,7 +558,7 @@
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn text-white" style="background-color: #00a65b">Edit</button>
+                        <button type="submit" class="btn text-white" style="background-color: #FCC12D">Edit</button>
                     </div>
                 </form>
             </div>

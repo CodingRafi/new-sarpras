@@ -16,9 +16,9 @@
 
     <div class="container-fluid">
 
-        <div class="card card-success">
-            <div class="card-header">
-              <h3>Upload Gambar</h2> 
+        <div class="card">
+            <div class="card-header" style="background-color: #00a65b">
+              <h3 class="text-white font-weight-bold">Upload Gambar</h3> 
             </div>
             <div class="card-body">
                 <div class="row">

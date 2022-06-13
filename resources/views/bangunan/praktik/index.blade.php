@@ -173,11 +173,11 @@
                                                 <td>{{ $usulan->keterangan }}</td>
                                                 <td>
                                                     <a href="/bangunan/usulan/{{ $usulan->id }}/edit"
-                                                        class="btn btn-warning text-white">Edit</a>
+                                                        class="btn btn-warning text-white mt-2">Edit</a>
                                                     <form action="/usulan-bangunan/{{ $usulan->id }}" method="post">
                                                         @csrf
                                                         @method('delete')
-                                                        <button type="submit" class="btn btn-success"
+                                                        <button type="submit" class="btn mt-2 text-white" style="background-color: #263228"
                                                             onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
                                                     </form>
                                                 </td>
