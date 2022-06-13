@@ -89,7 +89,7 @@ class UserSeeder extends Seeder
             'guard_name' => 'web'
         ]);
 
-        $izinVerifikators =['1', '20', '24', '28', '36', '60', '66', '91', '100', '139', '150', '164', '169', '170', '96', '171', '172', '165'];
+        $izinVerifikators =['1', '20', '24', '28', '36', '60', '66', '91', '100', '139', '150', '164', '169', '170', '96', '171', '172', '165', '187', '188'];
 
         $resultVerifikator = array_map(function($izinVerifikator){
             return $izinVerifikator;

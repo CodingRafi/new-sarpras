@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use App\Models\Profil;
 
 class Peralatan extends Model
 {
@@ -63,6 +64,7 @@ class Peralatan extends Model
     }
 
     public static function status_dashboard_dinas($profil){
+        $profil = Profil::find($profil->id);
         $peralatan_tidak_ideal = [];
 
         foreach ($profil->peralatanTersedia as $key => $peralatan) {

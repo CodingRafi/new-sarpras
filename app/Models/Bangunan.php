@@ -63,7 +63,7 @@ class Bangunan extends Model
     }
 
     public static function status_bangunan_dinas($profil){
-        // $profil = Profil::find(2817);
+        $profil = Profil::find($profil->id);
 
         $bangunan_all = Bangunan::status_bangunan($profil);
         $laboratorium = Laboratorium::status_laboratorium($profil);

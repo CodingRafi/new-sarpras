@@ -77,8 +77,8 @@
                                                             <i class="bi bi-three-dots-vertical"></i>
                                                         </button>
                                                         <div class="dropdown-menu" style="margin-left: -73px">
-                                                            <button type="submit" class="dropdown-item tombol-edit-ketersediaan" data-toggle="modal" data-target="#edit-tersedia" data-id="{{ $data->id }}">Edit</button>
-                                                            <form action="/bangunan/penunjang/{{ $data->id }}"
+                                                            <button type="submit" class="dropdown-item tombol-edit-ketersediaan" data-toggle="modal" data-target="#edit-tersedia" data-id="{{ $data->id_pimpinan }}">Edit</button>
+                                                            <form action="/bangunan/penunjang/{{ $data->id_pimpinan }}"
                                                                 method="post">
                                                                 @csrf
                                                                 @method('delete')

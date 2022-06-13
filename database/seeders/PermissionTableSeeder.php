@@ -243,6 +243,11 @@ class PermissionTableSeeder extends Seeder
             'add_jenis_laboratorium_komlis',
             'edit_jenis_laboratorium_komlis',
             'delete_jenis_laboratorium_komlis',
+
+            'view_hasil_visitasi',
+            'add_hasil_visitasi',
+            'edit_hasil_visitasi',
+            'delete_hasil_visitasi',
         ];
 
         foreach ($permissions as $permission) {

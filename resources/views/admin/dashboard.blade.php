@@ -217,6 +217,7 @@
                                             {{ $data['status_lahan']['kekurangan'] }} m²
                                         </div>
                                     </td>
+                                    
                                     <td class="text-center col-2" rowspan="3">
                                         @foreach ($data['usulanLahan'] as $usulan)
                                             <a class="btn text-white mt-1" style="background-color: #fcc12d"
@@ -231,6 +232,7 @@
                                                 ({{ str_replace('_', ' ', $usulan->jenis) }})
                                             </a>
                                         @endforeach
+                                        {{-- @dd($data) --}}
                                         @foreach ($data['rehab'] as $usulan)
                                             <a class="btn text-white mt-1"
                                                 style="background-color: #fcc12d;text-transform: capitalize;"

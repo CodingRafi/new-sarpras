@@ -182,7 +182,7 @@ class Profil extends Model
                 'usulanBangunan' => $bangunan,
                 'usulanPeralatan' => $peralatan,
                 'instansi' => $profil->instansi,
-                'rehab' => $profil->rehab,
+                'rehab' => RehabRenov::where('profil_id', $profil->id)->get(),
                 'status_lahan' => KekuranganLahan::status_kekurangan($profil),
                 'status_peralatan' => Peralatan::status_dashboard_dinas($profil),
                 'status_bangunan' => Bangunan::status_bangunan_dinas($profil)
