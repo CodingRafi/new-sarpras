@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Profil;
 
 class KekuranganLahan extends Model
 {
@@ -18,6 +19,7 @@ class KekuranganLahan extends Model
     }
 
     public static function status_kekurangan($profil){
+        $profil = Profil::find($profil->id);
         if (count($profil->kekuranganLahan) > 0) {
             $jml_kekurangan_lahan = 0;
             foreach ($profil->kekuranganLahan as $key => $kekurangan) {
