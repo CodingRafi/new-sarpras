@@ -31,19 +31,37 @@
             <div class="tab-content p-0">
                 <div class="tab-pane active" id="data-usulan-sekolah">
                     @if (count($riwayats) > 0)
-                        <form class="form-inline ml-1" action="/riwayat-bantuan-dinas" method="GET">
-                            <div class="input-group mt-2" style="width: 100%;border: 1px solid #ced4da;border-radius: 3px;">
-                                <input class="form-control form-control-navbar" type="search"
-                                    placeholder="Search NPSN, sekolah id, nama sekolah" aria-label="Search"
-                                    style="height: 2.5rem;font-size: 15px;padding: 0 10px;border:none;"
-                                    name="search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit" style="width: 40px ">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </div>
+                    <div class="search" style="display: flex">
+                            <a class="btn btn-light dropdown-toggle" style="border: 1px solid #263238" data-toggle="dropdown"
+                                href="#">
+                                Order by... <span class="caret"></span>
+                            </a>
+                            <div class="dropdown-menu" style="min-width: auto !important; width: 160px;">
+                                <form action="/" method="get">
+                                        <input type="hidden" name="search" value="">
+                                    <input type="hidden" name="filter" value="kota">
+                                    <button class="dropdown-item text-truncate kab" tabindex="-1"
+                                        type="submit">Kota/Kabupaten</button>
+                                </form>
+                                <form action="/" method="get">
+                                        <input type="hidden" name="search" value="">
+                                    <input type="hidden" name="filter" value="kcd">
+                                    <button class="dropdown-item text-truncate kab" tabindex="-1" type="submit">Kantor Cabang
+                                        Dinas</button>
+                                </form>
                             </div>
-                        </form>
+                            <form class="form-inline ml-2" action="/" method="GET" style="width: 100%;">
+                                <input type="hidden" name="filter" value="">
+                                <div class="input-group" style="width: 100%;border: 1px solid #ced4da;border-radius: 3px;">
+                                    <input class="form-control form-control-navbar" type="search" placeholder="Search Nama Sekolah" aria-label="Search" style="height: 2.5rem;font-size: 15px;padding: 0 10px;border:none;" name="search">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-navbar" type="submit" style="width: 40px;">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                    </div>
                     @endif
                     <div class="table-responsive">
                         {{-- <div class="col-lg-12"> --}}
