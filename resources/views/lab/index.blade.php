@@ -6,7 +6,7 @@
 
 @section('container')
     <div class="callout mt-4 callout-success">
-        <h5 class="m-0">Jumlah Rombel: <span class="ml-2 h4 font-weight-bold">36</span></h5>
+        <h5 class="m-0">Jumlah Rombel: <span class="ml-2 h4 font-weight-bold">@if($rombel) {{ $rombel }} @else <span style="font-size: 1rem;">Data belum diinput</span> @endif</span></h5>
     </div>
     <div class="card">
         <div class="card-header p-3" style="background-color: #25b5e9; margin-right: -1px; margin-top: -1px;">

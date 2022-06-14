@@ -66,73 +66,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             }
         }
 
-        .loading-container {
-
-            position: relative;
-            width: 110px;
-            height: 110px;
-            margin: auto;
-        }
-
-        .loading-container .item {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border: 5px solid #fff;
-            border-radius: 50%;
-            border-top-color: transparent;
-            border-bottom-color: transparent;
-            animation: spin 2s ease infinite;
-        }
-
-        .loading-container .logo {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            border-top-color: transparent;
-            border-bottom-color: transparent;
-        }
-
-        .loading-container .item:nth-child(1) {
-            width: 100px;
-            height: 100px;
-            border-inline-color: rgba(0, 166, 91, 1);
-        }
-
-        .loading-container .item:nth-child(2) {
-            width: 120px;
-            height: 120px;
-            animation-delay: 0.1s;
-            border-inline-color: rgba(37, 181, 233, 1);
-        }
-
-        .loading-container .item:nth-child(3) {
-            width: 140px;
-            height: 140px;
-            animation-delay: 0.2s;
-            border-inline-color: rgba(252, 193, 45, 1);
-        }
-
-        .loading-container .item:nth-child(4) {
-            width: 110px;
-            height: 110px;
-            animation-delay: 0.3s;
-            opacity: 0;
-        }
-
-        @keyframes spin {
-            50% {
-                transform: translate(-50%, -50%) rotate(180deg);
-            }
-
-            100% {
-                transform: translate(-50%, -50%) rotate(0deg);
-            }
-        }
-
         li.hover-dropdown:hover>.dropdown-menu.hover-dropdown {
             display: block !important;
         }
@@ -152,7 +85,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 </head>
 
-<body class="hold-transition sidebar-mini" style="overflow-x: hidden;">
+<body class="hold-transition sidebar-mini" style="overflow-x: hidden;" onload="myLoadingFirst()" onbeforeunload="myLoading()">
     <div class="wrapper">
         {{-- LOADING SCREEN --}}
         @include('mypartials.loadingScreen')
