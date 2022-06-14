@@ -171,15 +171,15 @@ class PimpinanController extends Controller
             'proposal' => 'required|mimes:pdf',
             'gambar.*' => 'mimes:jpg,jpeg,png|file|max:5120'
         ]);
-
+        
         $validatedData['jml_ruang'] = 1;
         $validatedData['keterangan'] = 'Proses Pengajuan';
-
+        
         UsulanBangunan::createUsulan($request, 'ruang_pimpinan', $validatedData);
 
-        Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan usulan ruang pimpinan');
+        Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan usulan ruang penunjang');
 
-        return redirect()->back()->with('success', 'Berhasil menambah usulan ruang pimpinan!');
+        return redirect()->back()->with('success', 'Berhasil menambah usulan ruang penunjang!');
     }
 
     public function showDinas(){

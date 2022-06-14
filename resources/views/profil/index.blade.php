@@ -386,7 +386,7 @@
                                                 </div>
                                                 <div class="col-md-8">
                                                     <div class="card-body">
-                                                        <a class="card-text d-block  text-primary"
+                                                        <a class="card-text d-block  text-primary nama-koleksi"
                                                             href="/koleksi/{{ $koleksi->slug }}">{{ $koleksi->nama }}</a>
                                                         <p style="text-transform: capitalize">Kategori :
                                                             {{ str_replace('_', ' ', $jenis_koleksi_terpilih[$key]->nama) }}
