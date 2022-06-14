@@ -82,7 +82,7 @@
                                         <tbody>
                                             {{-- isi table --}}
                                             @foreach ($usulan_peralatans as $usulan)
-                                            @dd($usulan)
+                                            {{-- @dd($usulan) --}}
                                                 {{-- @dd($usulan) --}}
                                                 <tr>
                                                     <th class="col-1 text-center" scope="row">
