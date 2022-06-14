@@ -1,5 +1,15 @@
 @extends('myLayouts.main')
 
+@section('tambahcss')
+    <style>
+        @media(max-width: 480px) {
+        .tombolHapus {
+            margin-top: 5px;
+        }
+    }
+    </style>
+@endsection
+
 @section('container')
 <!-- Content Header (Page header) -->
 <div class="content-header">
