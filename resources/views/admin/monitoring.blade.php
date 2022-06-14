@@ -10,8 +10,6 @@
 
     .input-group-prepend button i {
         position: absolute;
-        margin-top: -10px;
-        margin-left: 40px;
     }
 
     .btn-titik {
@@ -120,26 +118,20 @@
                                             <td class="col-1 text-center email_pengawas">
                                                 {{ $pengawas->email }}
                                             </td>
-                                            <td>
-                                                <div class="card-body">
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <button type="button" class="btn " data-toggle="dropdown">
-                                                                <i class="bi bi-three-dots-vertical"></i>
-                                                            </button>
-                                                            <div class="dropdown-menu" style="margin-left: -20px">
-                                                                <a class="dropdown-item tombol-edit-pengawas"
-                                                                    data-toggle="modal" data-target="#modal-edit-pengawas"
-                                                                    data-id="{{ $pengawas->id }}">Edit</a>
-                                                                <form action="/users/{{ $pengawas->id }}" method="post">
-                                                                    @csrf
-                                                                    @method('delete')
-                                                                    <button type="submit" class="dropdown-item"
-                                                                        onclick="return confirm('Apakah anda yakin akan menghapus pengawas ini?')">Hapus</button>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                            <td class="text-center">
+                                                <button type="button" class="btn" data-toggle="dropdown">
+                                                    <i class="bi bi-three-dots-vertical"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item tombol-edit-pengawas" data-toggle="modal"
+                                                        data-target="#modal-edit-pengawas"
+                                                        data-id="{{ $pengawas->id }}">Edit</a>
+                                                    <form action="/users/{{ $pengawas->id }}" method="post">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="dropdown-item"
+                                                            onclick="return confirm('Apakah anda yakin akan menghapus pengawas ini?')">Hapus</button>
+                                                    </form>
                                                 </div>
                                             </td>
                                         </tr>
@@ -282,27 +274,20 @@
                                             <td class="col-1 text-center email_verifikator">
                                                 {{ $verifikator->email }}
                                             </td>
-                                            <td>
-                                                <div class="card-body">
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <button type="button" class="btn " data-toggle="dropdown">
-                                                                <i class="bi bi-three-dots-vertical"></i>
-                                                            </button>
-                                                            <div class="dropdown-menu" style="margin-left: -20px">
-                                                                <a class="dropdown-item tombol-edit-verifikator"
-                                                                    data-toggle="modal" data-target="#modal-edit-verifikator"
-                                                                    data-id="{{ $verifikator->id }}">Edit</a>
-                                                                <form action="/users/{{ $verifikator->id }}"
-                                                                    method="post">
-                                                                    @csrf
-                                                                    @method('delete')
-                                                                    <button type="submit" class="dropdown-item"
-                                                                        onclick="return confirm('Apakah anda yakin akan menghapus verifikator ini?')">Hapus</button>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                            <td class="text-center">
+                                                <button type="button" class="btn " data-toggle="dropdown">
+                                                    <i class="bi bi-three-dots-vertical"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item tombol-edit-verifikator" data-toggle="modal"
+                                                        data-target="#modal-edit-verifikator"
+                                                        data-id="{{ $verifikator->id }}">Edit</a>
+                                                    <form action="/users/{{ $verifikator->id }}" method="post">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="dropdown-item"
+                                                            onclick="return confirm('Apakah anda yakin akan menghapus verifikator ini?')">Hapus</button>
+                                                    </form>
                                                 </div>
                                             </td>
                                         </tr>
@@ -419,29 +404,22 @@
                                         <td class="text-center col-11 unsur-td">
                                             {{ $unsur->unsur }}
                                         </td>
-                                        <td>
-                                            <div class="card-body">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend btn-titik">
-                                                        <button type="button" class="btn" data-toggle="dropdown">
-                                                            <i class="bi bi-three-dots-vertical"></i>
-                                                        </button>
-                                                        <div class="dropdown-menu" style="margin-left: -20px">
-                                                            <button type="button"
-                                                                class="btn btn-warning button-unsur dropdown-item"
-                                                                data-toggle="modal" data-target="#edit-unsur"
-                                                                data-id="{{ $unsur->id }}">Edit
-                                                            </button>
-                                                            <form action="/unsur-verifikasi/{{ $unsur->id }}" method="post">
-                                                                @csrf
-                                                                @method('delete')
-                                                                <button type="submit"
-                                                                    onclick="return confirm('apakah anda yakin akan mengahapus unsur verifikasi ini?')"
-                                                                    class="dropdown-item">Hapus</button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                        <td class="text-center">
+                                            <button type="button" class="btn" data-toggle="dropdown">
+                                                <i class="bi bi-three-dots-vertical"></i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <button type="button" class="btn btn-warning button-unsur dropdown-item"
+                                                    data-toggle="modal" data-target="#edit-unsur"
+                                                    data-id="{{ $unsur->id }}">Edit
+                                                </button>
+                                                <form action="/unsur-verifikasi/{{ $unsur->id }}" method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit"
+                                                        onclick="return confirm('apakah anda yakin akan mengahapus unsur verifikasi ini?')"
+                                                        class="dropdown-item">Hapus</button>
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>
@@ -494,7 +472,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal form-unsur" action="/unsur-verifikasi" method="POST" onsubmit="myLoading()">
+                    <form class="form-horizontal form-unsur" action="/unsur-verifikasi" method="POST"
+                        onsubmit="myLoading()">
                         @csrf
                         @method('patch')
                         <div class="card-body">
@@ -534,7 +513,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="container">
-                        
+
                         {{-- ---------------------------------------- NAMA PENGAWAS ---------------------------------------- --}}
                         <div class="row mt-2">
                             <div class="col-3">
@@ -542,10 +521,10 @@
                             </div>
                             <div class="col">
                                 <input type="text" class="form-control col-sm-7 input-nama-edit-pengawas"
-                                placeholder="Masukan Nama Pengawas" id="nama" name="name" required>
+                                    placeholder="Masukan Nama Pengawas" id="nama" name="name" required>
                             </div>
                         </div>
-                        
+
                         {{-- ---------------------------------------- INSTANSI PENGAWAS ---------------------------------------- --}}
                         <div class="row mt-4">
                             <div class="col-3">
@@ -553,10 +532,10 @@
                             </div>
                             <div class="col">
                                 <input type="text" class="form-control col-sm-7 input-instansi-pengawas"
-                                placeholder="Masukan Nama Instansi" id="nmains" name="instansi" required>
+                                    placeholder="Masukan Nama Instansi" id="nmains" name="instansi" required>
                             </div>
                         </div>
-                        
+
                         {{-- ---------------------------------------- KABUPATEN/KOTA PENGAWAS ---------------------------------------- --}}
                         <div class="row mt-4">
                             <div class="col-3">
@@ -564,15 +543,15 @@
                             </div>
                             <div class="col">
                                 <select class="form-control col-7 selectpengawas" id="kompetensi-keahlian"
-                                name="kota_kabupaten_id">
-                                @foreach ($kota_kabupatens as $kota)
-                                <option value="{{ $kota->id }}" class="option_kota_kabupatens">
-                                    {{ $kota->nama }}</option>
+                                    name="kota_kabupaten_id">
+                                    @foreach ($kota_kabupatens as $kota)
+                                    <option value="{{ $kota->id }}" class="option_kota_kabupatens">
+                                        {{ $kota->nama }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
-                            
+
                         {{-- ---------------------------------------- EMAIL PENGAWAS ---------------------------------------- --}}
                         <div class="row mt-4">
                             <div class="col-3">
@@ -580,7 +559,7 @@
                             </div>
                             <div class="col">
                                 <input type="email" class="form-control col-sm-7 input-email-pengawas"
-                                placeholder="Masukan Nama Email" id="nmains" name="email" required>
+                                    placeholder="Masukan Nama Email" id="nmains" name="email" required>
                             </div>
                         </div>
 
@@ -611,7 +590,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="container">
-                        
+
                         {{-- ---------------------------------------- NAMA VERIFIKATOR ---------------------------------------- --}}
                         <div class="row mt-2">
                             <div class="col-3">
@@ -619,10 +598,10 @@
                             </div>
                             <div class="col">
                                 <input type="text" class="form-control col-sm-7 input-nama-edit-verifikator"
-                                placeholder="Masukan Nama Verifikator" id="nama" name="name" required>
+                                    placeholder="Masukan Nama Verifikator" id="nama" name="name" required>
                             </div>
                         </div>
-                        
+
                         {{-- ---------------------------------------- INSTANSI VERIFIKATOR ---------------------------------------- --}}
                         <div class="row mt-4">
                             <div class="col-3">
@@ -630,10 +609,10 @@
                             </div>
                             <div class="col">
                                 <input type="text" class="form-control col-sm-7 input-instansi-verifikator"
-                                placeholder="Masukan Nama Instansi" id="nmains" name="instansi" required>
+                                    placeholder="Masukan Nama Instansi" id="nmains" name="instansi" required>
                             </div>
                         </div>
-                            
+
                         {{-- ---------------------------------------- EMAIL VERIFIKATOR ---------------------------------------- --}}
                         <div class="row mt-4">
                             <div class="col-3">
@@ -641,7 +620,7 @@
                             </div>
                             <div class="col">
                                 <input type="email" class="form-control col-sm-7 input-email-verifikator"
-                                placeholder="Masukan Email" id="nmains" name="email" required>
+                                    placeholder="Masukan Email" id="nmains" name="email" required>
                             </div>
                         </div>
 
@@ -805,7 +784,7 @@
             formEditPengawas.setAttribute('action', '/users/' + e.getAttribute('data-id'))
         })
     });
-    
+
     tombolEditVerifikator.forEach((e, i) => {
         e.addEventListener('click', function () {
             inputNamaEditVerifikator.value = '';

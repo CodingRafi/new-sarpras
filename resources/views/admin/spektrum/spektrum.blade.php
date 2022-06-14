@@ -11,6 +11,12 @@
             margin-top: -25px;
         }
 
+        @media(max-width: 768px) {
+        .btn-hapus{
+            margin-top: 8px;
+        }
+    }
+
     </style>
 @endsection
 
@@ -70,7 +76,7 @@
                                                 class="d-inline-block">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="btn btn-success"
+                                                <button type="submit" class="btn btn-dark btn-hapus" style="background-color: #263238"
                                                     onclick="return confirm('Apakah anda yakin akan menghapus spektrum kompetensi ini? semua sekolah yang menggunakan spektrum kompetensi ini akan terhapus')">Hapus</button>
                                             </form>
                                         </div>

@@ -7,7 +7,7 @@
         left: 30px;
     }
 
-    @media only screen and (max-width: 480px) {
+    @media(max-width: 768px) {
         .btn-batal {
             margin-top: 5px;
         }
@@ -225,6 +225,7 @@
                                                         style="background-color: #00a65b"
                                                         onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
                                                 </form>
+                                            </td>   
                                         </tr>
                                         @endforeach
                                     </tbody>

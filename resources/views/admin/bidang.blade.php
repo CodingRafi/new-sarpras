@@ -11,6 +11,12 @@
             margin-top: -25px;
         }
 
+        @media(max-width: 768px) {
+        .btn-hapus{
+            margin-top: 8px;
+        }
+    }
+
     </style>
 @endsection
 
@@ -60,7 +66,7 @@
                                         <form action="/bidang-kompetensi/{{ $bidang->id }}" method="post" class="d-inline-block">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class="btn btn-success"
+                                            <button type="submit" class="btn btn-dark btn-hapus" style="background-color: #263238"
                                                 onclick="return confirm('Apakah anda yakin akan menghapus bidang kompetensi ini? semua sekolah yang menggunakan bidang kompetensi ini akan terhapus')">Hapus</button>
                                         </form>
                                     </div>

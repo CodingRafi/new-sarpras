@@ -5,6 +5,12 @@
         .card-header h4 {
             font-size: 1.2rem !important
         }
+
+        @media(max-width: 480px) {
+        .tombolHapus {
+            margin-top: 5px;
+        }
+    }
     </style>
 @endsection
 
