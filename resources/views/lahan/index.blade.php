@@ -417,46 +417,47 @@
                     <div class="row">
                         <div class="col">
                             @if (count($kekuranganLahans) > 0)
-                            <table class="table table-hover text-nowrap text-center">
-                                {{-- judul table --}}
-                                <thead>
-                                    <tr>
-                                        <th scope="col">No</th>
-                                        <th scope="col">Nama Lahan</th>
-                                        <th scope="col">Luas Lahan(m²)</th>
-                                        <th scope="col">Keterangan</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                </thead>
-                                {{-- end judul table --}}
-
-                                {{-- isi table --}}
-                                <tbody>
-                                    @foreach ($kekuranganLahans as $lahan)
-                                    <tr>
-                                        <input type="hidden" class="id_kekuranganLahan" value="{{ $lahan->id }}">
-                                        <th scope="row">{{ $loop->iteration }}</th>
-                                        <td class="nama">{{ $lahan->nama }}</td>
-                                        <td class="luas">{{ $lahan->luas }} m²</td>
-                                        <td class="keterangan">{{ $lahan->keterangan }}</td>
-                                        <td>
-                                            <button type="button" class="btn text-white tombol-edit"
-                                                style="background-color: #FCC12D" data-toggle="modal"
-                                                data-target="#modal-edit">
-                                                Edit
-                                            </button>
-                                            <button type="button" class="btn btn-dark tombolHapus2"
-                                                style="background-color: #263238"
-                                                data-toggle="modal" data-target="#confirmHapus"
-                                                data-id="{{ $lahan->id }}">
-                                                Hapus
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                                {{-- end isi table --}}
-                            </table>
+                            <div class="table-responsive">
+                                <table class="table table-hover text-nowrap text-center">
+                                    {{-- judul table --}}
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Nama Lahan</th>
+                                            <th scope="col">Luas Lahan(m²)</th>
+                                            <th scope="col">Keterangan</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    {{-- end judul table --}}
+                                    {{-- isi table --}}
+                                    <tbody>
+                                        @foreach ($kekuranganLahans as $lahan)
+                                        <tr>
+                                            <input type="hidden" class="id_kekuranganLahan" value="{{ $lahan->id }}">
+                                            <th scope="row">{{ $loop->iteration }}</th>
+                                            <td class="nama">{{ $lahan->nama }}</td>
+                                            <td class="luas">{{ $lahan->luas }} m²</td>
+                                            <td class="keterangan">{{ $lahan->keterangan }}</td>
+                                            <td>
+                                                <button type="button" class="btn text-white tombol-edit"
+                                                    style="background-color: #FCC12D" data-toggle="modal"
+                                                    data-target="#modal-edit">
+                                                    Edit
+                                                </button>
+                                                <button type="button" class="btn btn-dark tombolHapus2"
+                                                    style="background-color: #263238"
+                                                    data-toggle="modal" data-target="#confirmHapus"
+                                                    data-id="{{ $lahan->id }}">
+                                                    Hapus
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                    {{-- end isi table --}}
+                                </table>
+                            </div>
                             @else
                             <div class="container d-flex justify-content-center align-items-center"
                                 style="height: 10rem">

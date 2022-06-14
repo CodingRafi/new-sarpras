@@ -14,7 +14,7 @@
          !important
     }
 
-    @media only screen and (max-width: 480px) {
+    @media(max-width: 480px) {
         .btn-batal {
             margin-top: 5px;
         }

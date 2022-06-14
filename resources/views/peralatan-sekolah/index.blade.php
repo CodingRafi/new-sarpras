@@ -1,5 +1,15 @@
 @extends('myLayouts.main')
 
+@section('tambahcss')
+    <style>
+        @media(max-width: 480px) {
+        .btn-hapus {
+            margin-top: 10px;
+        }
+    }
+    </style>    
+@endsection
+
 @section('container')
     {{-- @dd($peralatanOptions) --}}
     <!-- Content Header (Page header) -->
@@ -120,7 +130,7 @@
                                                 <form action="/peralatan-tersedia/{{ $peralatanTersedia->id }} class="d-inline" method="post">
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="submit" class="btn text-white d-inline"
+                                                    <button type="submit" class="btn text-white d-inline btn-hapus"
                                                         style="background-color: #263228"
                                                         onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Hapus</button>
                                                 </form>
