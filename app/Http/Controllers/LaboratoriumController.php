@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Laboratorium;
+use App\Models\Profil;
 use App\Models\Kompeten;
 use App\Models\UsulanBangunan;
 use App\Models\UsulanKoleksi;
@@ -44,6 +45,11 @@ class LaboratoriumController extends Controller
                     ->leftJoin('laboratoria', 'laboratoria.id', 'usulan_bangunans.laboratorium_id')
                     ->leftJoin('jenis_laboratoria', 'jenis_laboratoria.id', 'laboratoria.jenis_laboratorium_id')
                     ->get();
+
+        $rombel = Profil::select('jml_rombel')
+                    ->where('profils.id', Auth::user()->profil_id)
+                    ->first();
+
         $koleksi = UsulanKoleksi::koleksi($usulans);
         $fotos = UsulanFoto::fotos($koleksi);
 
@@ -51,6 +57,7 @@ class LaboratoriumController extends Controller
             'kompils' => Kompeten::getKompeten(),
             'jenis_laboratoriums' => JenisLaboratorium::belumTerpilih(),
             'laboratoriums' => $laboratorium,
+            'rombel' => $rombel->jml_rombel,
             'usulans' => $usulans,
             'usulanFotos' => $fotos,
         ]);

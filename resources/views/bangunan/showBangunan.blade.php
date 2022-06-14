@@ -302,10 +302,10 @@
                     @if (count($usulanBangunans) > 0)
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover mt-2">
-                                <div class="search" style="display: flex">
+                                <div class="search" style="display: flex; gap: 1rem;">
                                     @if (!Auth::user()->hasRole('kcd'))
-                                        <ul class="nav nav-pills ml-auto p-2 col-1" style="max-width: 11%;">
-                                            <li class="nav-item dropdown mb-3">
+                                        <ul class="nav nav-pills">
+                                            <li class="nav-item dropdown">
                                                 <a class="btn btn-light dropdown-toggle" data-toggle="dropdown" href="#">
                                                     Order by ... <span class="caret"></span>
                                                 </a>
@@ -341,8 +341,8 @@
                                             </li>
                                         </ul>
                                     @endif
-                                    <div class="md-2 col-11 mt-2" style="max-width: 89%;">
-                                        <form class="form-inline ml-2" action="/bangunan-all" method="GET"
+                                    <div class="col p-0">
+                                        <form class="form-inline" action="/bangunan-all" method="GET"
                                             style="width: 100%;">
                                             @if (request('jenis'))
                                                 <input type="hidden" name="jenis" value="{{ request('jenis') }}">
