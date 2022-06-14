@@ -1,6 +1,9 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SISTEM SARPRAS | Reset Password</title>
     
     <!-- Favicon -->
@@ -15,7 +18,7 @@
 </head>
 
 <body>
-    <div class="container-fluid text-center" style="background-color: rgba(238, 238, 238, 1); height: 100vh;">
+    <div class="container-fluid text-center" style="background-color: rgba(238, 238, 238, 1); min-height: 100vh;">
 
         <img class="my-4" src="/assets/img/logoJabar.png" width="115">
 
