@@ -31,4 +31,10 @@ class Riwayat extends Model
         });
 
     }
+
+    public static function get_sum_riwayat($profil){
+        $usulans = Riwayat::where('profil_id', $profil->id)->get();
+        
+        return count($usulans);
+    }
 }

@@ -21,7 +21,7 @@
                 <div class="card-header" style="background-color: #25b5e9">
                     <h3 class="card-title font-weight-bold">Detail</h3>
                 </div>
-                <div class="card-body" style="height: 390px">
+                <div class="card-body" style="min-height: 390px;">
                     <div class="row">
                         <div class="col">
                             <div class="info-box text-white"
@@ -53,15 +53,15 @@
                         <div class="col-12">
                             <div class="card card-outline card-warning">
                                 <div class="card-header">
-                                    <h3 class="card-title"><i class="bi bi-info-circle"></i> Informasi</h3>
+                                    <h3 class="card-title">Keterangan</h3>
                                     <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
-                                                class="fas fa-minus"></i>
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <svg style="color: gray" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                                         </button>
                                     </div>
                                 </div>
-                                <div class="card-body text-muted">
-                                    Kekurangan didapatkan dari selisih kondisi ideal dan ketersediaan
+                                <div class="card-body text-muted" style="max-height: 12rem;overflow: auto;">
+                                    Conubia netus vulputate dis tempor pharetra at viverra praesent litora cras mi sem est potenti blandit tempus proin turpis parturient morbi dolor pede dui nunc eros neque in vitae quam cubilia fames iaculis nisl suspendisse egestas sagittis eu erat euismod per letius montes massa porttitor semper vehicula ligula nibh curae tortor ex senectus inceptos himenaeos nam hendrerit orci pulvinar velit augue fringilla porta nascetur rutrum fusce mus aliquam finibus eget facilisi ullamcorper libero bibendum metus ut tristique odio efficitur tincidunt ultricies felis lacinia vestibulum cursus dapibus rhoncus suscipit ac habitasse nullam torquent mollis eleifend nulla scelerisque sollicitudin habitant penatibus    
                                 </div>
                             </div>
                         </div>

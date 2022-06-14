@@ -103,6 +103,12 @@ Route::get('/detail', function () {
 //     return view('admin.monitoring');
 // });
 
+Route::get('/riwayat-bantuan-dinas/{id}', function () {
+    return view('admin.detail-riwayat');
+});
+
+
+
 // |-------------------------------------------------------------------------- /SEMENTARA |--------------------------------------------------------------------------
 
 Route::group(['middleware' => ['auth']], function() {

@@ -33,10 +33,12 @@ class ProfilKcd extends Model
         if(isset($search['filter'])){
             if($search['filter'] == 'kota'){
                 return $query->orderBy('profils.kabupaten', 'asc');
-            }
-    
-            if($search['filter'] == 'kcd'){
+            }elseif($search['filter'] == 'kcd'){
                 return $query->orderBy('kcds.instansi', 'asc');
+            }elseif($search['filter'] == 'belum'){
+                return $query->select('profils.*', 'riwayats.profil_id')->leftJoin('riwayats', 'riwayats.profil_id', 'profils.id')->whereNull('riwayats.profil_id');
+            }elseif($search['filter'] == 'sudah'){
+                return $query->select('profils.*', 'riwayats.profil_id')->leftJoin('riwayats', 'riwayats.profil_id', 'profils.id')->whereNotNull('riwayats.profil_id')->groupBy('profils.npsn');
             }
         }
 
@@ -68,14 +70,14 @@ class ProfilKcd extends Model
     }
 
     public static function get_data_for_kcd($kcd_id){
-        return ProfilKcd::search(request(['search']))
-                ->where('profil_kcds.kcd_id', $kcd_id)
+        return ProfilKcd::where('profil_kcds.kcd_id', $kcd_id)
                 ->select('profils.*', 'kcds.instansi')
                 ->leftJoin('kcds', function($join) use ($kcd_id){
                     $join->where('kcds.id', $kcd_id);
                 })
                 ->leftJoin('kota_kabupatens', 'kota_kabupatens.id', 'profil_kcds.kota_kabupaten_id')
                 ->leftJoin('profils', 'profils.kota_kabupaten_id', 'kota_kabupatens.id')
+                ->search(request(['search', 'filter']))
                 ->paginate(40)->withQueryString();
     }
 }

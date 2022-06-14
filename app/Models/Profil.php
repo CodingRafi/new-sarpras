@@ -116,10 +116,12 @@ class Profil extends Model
         if(isset($search['filter'])){
             if($search['filter'] == 'kota'){
                 return $query->orderBy('profils.kabupaten', 'asc');
-            }
-    
-            if($search['filter'] == 'kcd'){
+            }elseif($search['filter'] == 'kcd'){
                 return $query->orderBy('kcds.instansi', 'asc');
+            }elseif($search['filter'] == 'belum'){
+                return $query->select('profils.*', 'riwayats.profil_id')->leftJoin('riwayats', 'riwayats.profil_id', 'profils.id')->whereNull('riwayats.profil_id');
+            }elseif($search['filter'] == 'sudah'){
+                return $query->select('profils.*', 'riwayats.profil_id')->leftJoin('riwayats', 'riwayats.profil_id', 'profils.id')->whereNotNull('riwayats.profil_id')->groupBy('profils.npsn');
             }
         }
 
