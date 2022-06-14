@@ -35,11 +35,10 @@
                 @if (count($usulanLahans) > 0)
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover mt-2">
-                            <div class="search" style="display: flex">
-                                <ul class="nav nav-pills ml-auto p-2 col-1" style="max-width: 11%;">
+                            <div class="search" style="display: flex; gap: 1rem;">
+                                <ul class="nav nav-pills">
                                     <li class="nav-item dropdown">
-                                        <a class="btn btn-light dropdown-toggle" data-toggle="dropdown" href="#"
-                                            style="margin-top: -6px;">
+                                        <a class="btn btn-light dropdown-toggle" data-toggle="dropdown" href="#">
                                             Filter by ... <span class="caret"></span>
                                         </a>
                                         <div class="dropdown-menu" style="min-width: auto !important; width: 125px;">
@@ -50,8 +49,8 @@
                                         </div>
                                     </li>
                                 </ul>
-                                <div class="md-2 col-11" style="max-width: 89%;">
-                                    <form class="form-inline ml-2" action="/lahan-dinas" method="GET" style="width: 100%;">
+                                <div class="col p-0">
+                                    <form class="form-inline" action="/lahan-dinas" method="GET" style="width: 100%;">
                                         <div class="input-group"
                                             style="width: 100%;border: 1px solid #ced4da;border-radius: 3px;">
                                             <input class="form-control form-control-navbar" type="search"
