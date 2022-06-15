@@ -486,12 +486,12 @@
                             {{-- input luas --}}
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Luas(m²)</label>
-                                <input type="number" class="form-control col-sm-9 loading-tambah2" placeholder="Masukan Lebar Lahan"
+                                <input type="number" class="form-control col-sm-9 loading-tambah2" placeholder="Masukan Luas Lahan"
                                     id="lebar" name="luas" required step=any>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Keterangan</label>
-                                <input type="text" class="form-control col-sm-9 loading-tambah" placeholder="Keterangan"
+                                <input type="text" class="form-control col-sm-9 loading-tambah" placeholder="Masukan Keterangan"
                                     id="keterangan" name="keterangan" required>
                             </div>
                             {{-- end input lebar --}}
@@ -537,11 +537,11 @@
 
                             <div class="row mt-4">
                                 <div class="col-3">
-                                    <label for="col-sm-4 col-form-label">Luas :</label>
+                                    <label for="col-sm-4 col-form-label">Luas</label>
                                 </div>
                                 <div class="col">
                                     <input type="number" class="form-control col-sm-7 luas-nama-edit"
-                                        placeholder="Masukan Lebar" id="jmllebar" name="luas" required>
+                                        placeholder="Masukan Luas" id="jmllebar" name="luas" required>
                                 </div>
                             </div>
 
@@ -551,7 +551,7 @@
                                 </div>
                                 <div class="col">
                                     <input type="text" class="form-control col-sm-7 keterangan-nama-edit"
-                                        placeholder="Keterangan" id="ketereangan" name="keterangan" required>
+                                        placeholder="Masukan Keterangan" id="ketereangan" name="keterangan" required>
                                 </div>
                             </div>
 
