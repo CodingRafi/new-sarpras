@@ -40,7 +40,7 @@
                 @if (count($usulan_peralatans) > 0)
                     <form class="form-inline mt-2" action="/usulan-peralatan" method="GET"
                         style="margin-left:10px; width: 98%;">
-                        <div class="input-group m-0 p-0" style="width: 100%;border: 1px solid #ced4da;border-radius: 3px;">
+                        <div class="input-group mx-2 mt-2" style="width: 100%;border: 1px solid #ced4da;border-radius: 3px;">
                             <input class="form-control form-control-navbar" type="search"
                                 placeholder="Search Nama Sekolah, Kompetensi Keahlian, Nama peralatan" aria-label="Search"
                                 style="height: 2.5rem;font-size: 15px;padding: 0 10px;border:none;" name="search">

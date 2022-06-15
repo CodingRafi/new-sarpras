@@ -78,7 +78,7 @@
                             <form action="/usulan-bangunan/{{ $usulan->id }}" method="post">
                                 @csrf
                                 @method('delete')
-                                <button type="submit" class="btn text-white mt-2" style="background-color: #00a65b"
+                                <button type="submit" class="btn text-white mt-2" style="background-color: #263238"
                                     onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
                             </form>
                     </tr>
