@@ -306,9 +306,9 @@
                     @if (!Auth::user()->hasRole('kcd'))
                     <ul class="nav nav-pills">
                         <li class="nav-item dropdown mb-3">
-                            <a class="btn btn-light dropdown-toggle" data-toggle="dropdown" href="#">
+                            {{-- <a class="btn btn-light dropdown-toggle" data-toggle="dropdown" href="#">
                                 Order by ... <span class="caret"></span>
-                            </a>
+                            </a> --}}
                             <div class="dropdown-menu" style="min-width: auto !important; width: 125px;">
                                 <form action="/bangunan-all" method="get">
                                     @if (request('jenis'))
@@ -346,7 +346,7 @@
                             @if (request('filter'))
                             <input type="hidden" name="filter" value="{{ request('filter') }}">
                             @endif
-                            <div class="input-group" style="width: 100%;border: 1px solid #ced4da;border-radius: 3px;">
+                            {{-- <div class="input-group" style="width: 100%;border: 1px solid #ced4da;border-radius: 3px;">
                                 <input class="form-control form-control-navbar" type="search"
                                     placeholder="Search Nama Sekolah" aria-label="Search"
                                     style="height: 2.5rem;font-size: 15px;padding: 0 10px;border:none;" name="search">
@@ -356,7 +356,7 @@
                                     </button>
                                 </div>
                             </div>
-                        </form>
+                        </form> --}}
                     </div>
 
                 </div>
