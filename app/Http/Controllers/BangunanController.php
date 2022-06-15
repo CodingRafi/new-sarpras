@@ -234,7 +234,7 @@ class BangunanController extends Controller
                 ]);
 
                 if($request->ket_kondisi_ideal){
-                    $validatedData['ket_kondisi_ideal'] = $request->ket_kondisi_ideal;
+                    $validatedData['ket_kondisi_ideal'] = ($request->kondisi_ideal == 0) ? 0 : ltrim($request->kondisi_ideal, '0');
                 }
     
                 $data->update($validatedData);

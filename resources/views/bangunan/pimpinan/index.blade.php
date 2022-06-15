@@ -325,7 +325,7 @@
                             <label for="jumlah-lahan" class="col-sm-4 col-form-label">Jenis Ruang</label>
                             <select name="pimpinan_id" id="" required class="custom-select col-sm-7">
                                 @foreach ($datas as $data)
-                                <option value="{{ $data->id }}">{{ $data->nama }}</option>
+                                <option value="{{ $data->id_pimpinan }}">{{ $data->nama }}</option>
                                 @endforeach
                             </select>
                         </div>

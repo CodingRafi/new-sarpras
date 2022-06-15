@@ -54,12 +54,14 @@ class UsulanPeralatanController extends Controller
 
         }else{
             $usulanPeralatan = UsulanPeralatan::filter(request(['search']))
-                            ->select('usulan_peralatans.*', 'komlis.kompetensi')
+                            ->select('usulan_peralatans.*', 'komlis.kompetensi', 'profils.nama', 'peralatans.nama as nama_peralatan_relasi')
                             ->leftJoin('peralatans', 'peralatans.id', 'usulan_peralatans.peralatan_id')
                             ->leftJoin('profils', 'profils.id', 'usulan_peralatans.profil_id')
                             ->leftJoin('kompetens', 'kompetens.id', 'usulan_peralatans.kompeten_id')
-                            ->leftJoin('komlis', 'komlis.id', 'kompetens.id')
+                            ->leftJoin('komlis', 'komlis.id', 'kompetens.komli_id')
                             ->get();
+
+            // dd($usulanPeralatan);
         }
         
         return view('admin.usulanperalatan', [

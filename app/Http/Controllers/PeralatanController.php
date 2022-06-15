@@ -148,11 +148,17 @@ class PeralatanController extends Controller
 
     public function showPeralatan($id){
         $kompeten = Kompeten::find($id);
+        // dd($kompeten);
         $peralatans = Peralatan::where('komli_id', $kompeten->komli->id)->select('peralatans.*', 'komlis.kompetensi')->leftJoin('komlis', 'peralatans.komli_id', 'komlis.id')->paginate(15);
         $peralatanTersedias = PeralatanTersedia::where('kompeten_id', $id)->get();
         $peralatansOptions = Peralatan::where('komli_id', $kompeten->komli_id)->get();
-        $peralatanOptionsTersedia = Peralatan::option_peralatan_tersedia( Auth::user()->profil );
-        $usulanPeralatan = UsulanPeralatan::where('usulan_peralatans.profil_id', Auth::user()->profil_id)->select('usulan_peralatans.*', 'komlis.kompetensi', 'peralatans.nama')->leftJoin('kompetens', 'kompetens.id', 'usulan_peralatans.kompeten_id')->leftJoin('komlis', 'komlis.id', 'kompetens.komli_id')->leftJoin('peralatans', 'usulan_peralatans.peralatan_id', 'peralatans.id')->get();
+        $peralatanOptionsTersedia = Peralatan::option_peralatan_tersedia(Auth::user()->profil, $kompeten->komli_id);
+        $usulanPeralatan = UsulanPeralatan::where('usulan_peralatans.profil_id', Auth::user()->profil_id)
+                            ->select('usulan_peralatans.*', 'komlis.kompetensi', 'peralatans.nama')
+                            ->leftJoin('kompetens', 'kompetens.id', 'usulan_peralatans.kompeten_id')
+                            ->leftJoin('komlis', 'komlis.id', 'kompetens.komli_id')
+                            ->leftJoin('peralatans', 'usulan_peralatans.peralatan_id', 'peralatans.id')
+                            ->where('kompetens.id', $kompeten->id)->get();
         // dd($usulanPeralatan);
         return view('peralatan-sekolah.index', [
             'peralatanTersedias' => $peralatanTersedias,

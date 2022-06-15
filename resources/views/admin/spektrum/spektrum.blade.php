@@ -12,11 +12,10 @@
         }
 
         @media(max-width: 768px) {
-        .btn-hapus{
-            margin-top: 8px;
+            .btn-hapus {
+                margin-top: 8px;
+            }
         }
-    }
-
     </style>
 @endsection
 
@@ -65,18 +64,27 @@
                                     <td class="text-center spektrum-spektrum">{{ $spektrum->aturan }}</td>
                                     <td class="text-center spektrum-spektrum">{{ $spektrum->tanggal }}</td>
                                     <td class="text-center spektrum-spektrum">
-                                        <a href="{{ asset('storage/' . $spektrum->lampiran) }}" target="_blank">
-                                            <img src="/img/pdf.png" alt="image" style="width: 30px">
-                                        </a>
+                                        {{-- @dd($spektrum) --}}
+                                        @if ($spektrum->lampiran == 'merdeka.pdf' || $spektrum->lampiran == '2018.pdf')
+                                            <a href="/{{ $spektrum->lampiran }}" target="_blank">
+                                                <img src="/img/pdf.png" alt="image" style="width: 30px">
+                                            </a>
+                                        @else
+                                            <a href="{{ asset('storage/' . $spektrum->lampiran) }}" target="_blank">
+                                                <img src="/img/pdf.png" alt="image" style="width: 30px">
+                                            </a>
+                                        @endif
                                     </td>
                                     <td class="text-center">
                                         <div>
-                                            <a href="/spektrum/{{ $spektrum->id }}/edit" class="btn btn-warning text-white">Edit</a>
+                                            <a href="/spektrum/{{ $spektrum->id }}/edit"
+                                                class="btn btn-warning text-white">Edit</a>
                                             <form action="/spektrum/{{ $spektrum->id }}" method="post"
                                                 class="d-inline-block">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="btn btn-dark btn-hapus" style="background-color: #263238"
+                                                <button type="submit" class="btn btn-dark btn-hapus"
+                                                    style="background-color: #263238"
                                                     onclick="return confirm('Apakah anda yakin akan menghapus spektrum kompetensi ini? semua sekolah yang menggunakan spektrum kompetensi ini akan terhapus')">Hapus</button>
                                             </form>
                                         </div>
@@ -106,7 +114,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" action="/spektrum" method="post" enctype="multipart/form-data" onsubmit="myLoading()">
+                        <form class="form-horizontal" action="/spektrum" method="post" enctype="multipart/form-data"
+                            onsubmit="myLoading()">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group row">

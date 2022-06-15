@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
         $admin = User::create([
             'name' => 'Dinas Pendidikan',
             'email' => 'admin@gmail.com',
-            'password' => bcrypt('12345678'),
+            'password' => bcrypt('*123456*'),
             'foto_profil' => '/img/logo_navbar.png'
         ]);
 
@@ -109,7 +109,7 @@ class UserSeeder extends Seeder
                 'profil_id' => $profil['id'],
                 'name' => $profil['nama'],
                 'npsn' => $profil["npsn"],
-                'password' => bcrypt('12345678'),
+                'password' => bcrypt('*123456*'),
                 'email' => $profil['email'],
                 'foto_profil' => '/img/logo_navbar.png'
             ]);

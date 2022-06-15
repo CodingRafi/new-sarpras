@@ -130,7 +130,7 @@ class Bangunan extends Model
         }
         
         $bangunan->update([
-            'kekurangan' => $hasil
+            'kekurangan' => ($hasil == 0) ? 0 : ltrim($hasil, '0')
         ]); 
     }
 }

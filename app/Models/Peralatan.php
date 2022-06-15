@@ -27,12 +27,12 @@ class Peralatan extends Model
         return $this->hasMany(UsulanPeralatan::class);
     }
 
-    public static function option_peralatan_tersedia($profil){
+    public static function option_peralatan_tersedia($profil, $komli_id){
         return DB::table('peralatans as a')->select('a.*')
         ->leftJoin('peralatan_tersedias as b', function($join) use ($profil){
             $join->on('a.id', '=', 'b.peralatan_id')
                 ->where('b.profil_id',  $profil->id);
-        })->whereNull('b.peralatan_id')->get();
+        })->where('a.komli_id', $komli_id)->whereNull('b.peralatan_id')->get();
     }
 
     public static function status_peralatan($profil){

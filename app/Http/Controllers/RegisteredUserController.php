@@ -124,7 +124,10 @@ class RegisteredUserController extends Controller
                 'nama' => $request->name
             ]);
         }elseif($user->hasRole('pengawas')){
+            $validatedData['instansi'] = $request->instansi;
             $validatedData['kota_kabupaten_id'] = $request->kota_kabupaten_id;
+        }elseif($user->hasRole('verifikator')){
+            $validatedData['instansi'] = $request->instansi;
         }
         
         $user->update($validatedData);

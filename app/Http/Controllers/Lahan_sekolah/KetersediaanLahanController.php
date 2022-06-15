@@ -57,7 +57,7 @@ class KetersediaanLahanController extends Controller
             'alamat' => 'required',
             'jenis_kepemilikan' => 'required',
             'keterangan' => 'required',
-            'bukti_lahan' => 'required'
+            'bukti_lahan' => 'required|mimes:jpg,jpeg,png,pdf|file|max:10240'
         ]);
 
         $validatedData['profil_id'] = Auth::user()->profil_id;

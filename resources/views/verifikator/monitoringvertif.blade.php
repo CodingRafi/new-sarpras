@@ -16,7 +16,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark display-4" style="padding: 0 !important;">Vertifikator</h1>
+                    <h1 class="m-0 text-dark display-4" style="padding: 0 !important;">Verifikator</h1>
                 </div>
             </div>
         </div>
