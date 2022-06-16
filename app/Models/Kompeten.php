@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class Kompeten extends Model
 {
@@ -58,7 +59,6 @@ class Kompeten extends Model
 
     public static function hapusKompeten($kompetens){
         foreach ($kompetens as $key => $kompeten) {
-
             // Profil
             $jml_lk = 0;
             $jml_pr = 0;
@@ -92,12 +92,7 @@ class Kompeten extends Model
                 Storage::delete($usulan->proposal);
                 UsulanPeralatan::destroy($usulan->id);
             }
-
-            $praktiks = Praktik::where('kompeten_id', $kompeten->id)->get();
-            foreach ($praktiks as $praktik) {
-                Praktik::destroy($data->id);
-            }
-
+            
             Kompeten::destroy($kompeten->id);
 
         }
