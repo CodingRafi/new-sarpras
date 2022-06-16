@@ -1,4 +1,4 @@
-@extends('myLayouts.main')
+@extends('mylayouts.main')
 
 @section('tambahcss')
     <style>
@@ -425,10 +425,12 @@
         const peralatanCheckbox = document.getElementById('peralatan-checkbox');
         const peralatanSelect = document.getElementById('peralatan-select');
         const peralatanText = document.getElementById('peralatan-text');
+
         const usulanCheckbox = document.getElementById('usulan-checkbox');
         const usulanSelect = document.getElementById('usulan-select');
         const usulanText = document.getElementById('usulan-text');
         // const selectUsulan = document.querySelectorAll('.select-usulan');
+        
         const kategoriUtama = document.querySelectorAll('.kategori-utama');
         const kategoriPendukung = document.querySelectorAll('.kategori-pendukung');
         const selectKategori = document.querySelectorAll('.select-kategori');

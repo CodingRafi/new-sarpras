@@ -1,4 +1,4 @@
-@extends('myLayouts.main')
+@extends('mylayouts.main')
 
 @section('container')
     <!-- Content Header (Page header) -->
