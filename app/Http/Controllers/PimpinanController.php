@@ -45,6 +45,7 @@ class PimpinanController extends Controller
                                     ->leftJoin('jenis_pimpinans', 'jenis_pimpinans.id', 'pimpinans.jenis_pimpinan_id')
                                     ->where('usulan_bangunans.profil_id', Auth::user()->profil_id)
                                     ->where('usulan_bangunans.jenis', 'ruang_pimpinan')->get();
+                                    
         $koleksi = UsulanKoleksi::koleksi($usulans);
         $fotos = UsulanFoto::fotos($koleksi);
 
@@ -187,7 +188,7 @@ class PimpinanController extends Controller
         ->leftJoin('profils', 'profils.id', '=', 'usulan_bangunans.profil_id')
         ->leftJoin('profil_kcds', 'profils.id', '=', 'profil_kcds.profil_id')
         ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi', 'usulan_bangunans.proposal', 'usulan_bangunans.id')->where('usulan_bangunans.jenis', 'ruang_pimpinan')->paginate(40)->withQueryString();
-
+        
         return view('admin.ruangpimpinan', [
             'usulanBangunans' => $usulanBangunan,
             'kompils' => Kompeten::getKompeten()

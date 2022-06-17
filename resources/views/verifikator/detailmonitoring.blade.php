@@ -6,7 +6,6 @@
                 position: absolute;
                 left: 35px;
             }
-
         </style>
     @endsection
 
@@ -92,9 +91,9 @@
                     @csrf
                     @method('patch')
         @endif
-        <div class="container-fluid p-0 {{ (Auth::user()->hasRole('verifikator')) ? '' : 'mt-3' }}">
+        <div class="container-fluid p-0 {{ Auth::user()->hasRole('verifikator') ? '' : 'mt-3' }}">
             <div class="card">
-                <div class="card-header bg-warning {{ (Auth::user()->hasRole('verifikator')) ? 'p-4' : '' }}">
+                <div class="card-header bg-warning {{ Auth::user()->hasRole('verifikator') ? 'p-4' : '' }}">
                     <h3 class="card-title text-white font-weight-bold">Visitasi</h3>
                     @if (Auth::user()->hasRole('verifikator'))
                         <div class="card-tools">
@@ -132,9 +131,8 @@
                                 </tr>
                                 <tr>
                                     <th>Surat Tugas</th>
-                                    <td class="text-wrap ">: <a
-                                            href="{{ asset('storage/' . $visitasi->surat_tugas) }}" target="_blank"><img
-                                                src="/img/pdf.png" alt="image" style="width: 30px"></a>
+                                    <td class="text-wrap ">: <a href="{{ asset('storage/' . $visitasi->surat_tugas) }}"
+                                            target="_blank"><img src="/img/pdf.png" alt="image" style="width: 30px"></a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -145,42 +143,74 @@
                             </table>
                         </div>
                     </div>
-                    <table class="table table-bordered table-hover mt-2">
-                        <thead>
-                            <tr class="text-center">
-                                <th>No</th>
-                                <th>Unsur Yang Divertifikasi</th>
-                                <th>Belum Layak</th>
-                                <th>Layak</th>
-                                <th>Sangat Layak</th>
-                            </tr>
-                        </thead>
+                    @if (Auth::user()->hasRole('sekolah') && $visitasi->status == 'unggah')
+                        <table class="table table-bordered table-hover mt-2">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>No</th>
+                                    <th>Unsur Yang Divertifikasi</th>
+                                    <th>Belum Layak</th>
+                                    <th>Layak</th>
+                                    <th>Sangat Layak</th>
+                                </tr>
+                            </thead>
 
-                        @if (Auth::user()->hasRole('verifikator'))
-                            <tbody>
+                            @if (Auth::user()->hasRole('verifikator'))
+                                <tbody>
 
-                                @if ($hasils[0]['unsur'] == null)
-                                    @foreach ($unsurs as $unsur)
-                                        <tr>
-                                            <td class="text-center" style="vertical-align: middle">
-                                                {{ $loop->iteration }}
-                                            </td>
-                                            <td class="text-center" style="vertical-align: middle">{{ $unsur->unsur }}
-                                            </td>
-                                            <td class="text-center" style="vertical-align: middle">
-                                                <input type="radio" name="unsur_id_{{ $unsur->id }}"
-                                                    value="belum_layak">
-                                            </td>
-                                            <td class="text-center" style="vertical-align: middle">
-                                                <input type="radio" name="unsur_id_{{ $unsur->id }}" value="layak">
-                                            </td>
-                                            <td class="text-center" style="vertical-align: middle">
-                                                <input type="radio" name="unsur_id_{{ $unsur->id }}"
-                                                    value="sangat_layak">
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                @else
+                                    @if ($hasils[0]['unsur'] == null)
+                                        @foreach ($unsurs as $unsur)
+                                            <tr>
+                                                <td class="text-center" style="vertical-align: middle">
+                                                    {{ $loop->iteration }}
+                                                </td>
+                                                <td class="text-center" style="vertical-align: middle">
+                                                    {{ $unsur->unsur }}
+                                                </td>
+                                                <td class="text-center" style="vertical-align: middle">
+                                                    <input type="radio" name="unsur_id_{{ $unsur->id }}"
+                                                        value="belum_layak">
+                                                </td>
+                                                <td class="text-center" style="vertical-align: middle">
+                                                    <input type="radio" name="unsur_id_{{ $unsur->id }}"
+                                                        value="layak">
+                                                </td>
+                                                <td class="text-center" style="vertical-align: middle">
+                                                    <input type="radio" name="unsur_id_{{ $unsur->id }}"
+                                                        value="sangat_layak">
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @else
+                                        @foreach ($hasils as $hasil)
+                                            <tr>
+                                                <td class="text-center" style="vertical-align: middle">
+                                                    {{ $loop->iteration }}
+                                                </td>
+                                                <td class="text-center" style="vertical-align: middle">
+                                                    {{ $hasil->unsur }}
+                                                </td>
+                                                <td class="text-center" style="vertical-align: middle">
+                                                    <input type="radio" name="unsur_id_{{ $hasil->id_hasil }}"
+                                                        value="belum_layak"
+                                                        {{ $hasil->hasil == 'belum_layak' ? 'checked' : '' }}>
+                                                </td>
+                                                <td class="text-center" style="vertical-align: middle">
+                                                    <input type="radio" name="unsur_id_{{ $hasil->id_hasil }}"
+                                                        value="layak" {{ $hasil->hasil == 'layak' ? 'checked' : '' }}>
+                                                </td>
+                                                <td class="text-center" style="vertical-align: middle">
+                                                    <input type="radio" name="unsur_id_{{ $hasil->id_hasil }}"
+                                                        value="sangat_layak"
+                                                        {{ $hasil->hasil == 'sangat_layak' ? 'checked' : '' }}>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+
+                                </tbody>
+                            @else
+                                <tbody>
                                     @foreach ($hasils as $hasil)
                                         <tr>
                                             <td class="text-center" style="vertical-align: middle">
@@ -189,47 +219,20 @@
                                             <td class="text-center" style="vertical-align: middle">{{ $hasil->unsur }}
                                             </td>
                                             <td class="text-center" style="vertical-align: middle">
-                                                <input type="radio" name="unsur_id_{{ $hasil->id_hasil }}"
-                                                    value="belum_layak"
-                                                    {{ $hasil->hasil == 'belum_layak' ? 'checked' : '' }}>
+                                                {!! $hasil->hasil == 'belum_layak' ? '<i class="bi bi-check-lg"></i>' : '' !!}
                                             </td>
                                             <td class="text-center" style="vertical-align: middle">
-                                                <input type="radio" name="unsur_id_{{ $hasil->id_hasil }}" value="layak"
-                                                    {{ $hasil->hasil == 'layak' ? 'checked' : '' }}>
+                                                {!! $hasil->hasil == 'layak' ? '<i class="bi bi-check-lg"></i>' : '' !!}
                                             </td>
                                             <td class="text-center" style="vertical-align: middle">
-                                                <input type="radio" name="unsur_id_{{ $hasil->id_hasil }}"
-                                                    value="sangat_layak"
-                                                    {{ $hasil->hasil == 'sangat_layak' ? 'checked' : '' }}>
+                                                {!! $hasil->hasil == 'sangat_layak' ? '<i class="bi bi-check-lg"></i>' : '' !!}
                                             </td>
                                         </tr>
                                     @endforeach
-                                @endif
-
-                            </tbody>
-                        @else
-                            <tbody>
-                                @foreach ($hasils as $hasil)
-                                    <tr>
-                                        <td class="text-center" style="vertical-align: middle">
-                                            {{ $loop->iteration }}
-                                        </td>
-                                        <td class="text-center" style="vertical-align: middle">{{ $hasil->unsur }}
-                                        </td>
-                                        <td class="text-center" style="vertical-align: middle">
-                                            {!! $hasil->hasil == 'belum_layak' ? '<i class="bi bi-check-lg"></i>' : '' !!}
-                                        </td>
-                                        <td class="text-center" style="vertical-align: middle">
-                                            {!! $hasil->hasil == 'layak' ? '<i class="bi bi-check-lg"></i>' : '' !!}
-                                        </td>
-                                        <td class="text-center" style="vertical-align: middle">
-                                            {!! $hasil->hasil == 'sangat_layak' ? '<i class="bi bi-check-lg"></i>' : '' !!}
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        @endif
-                    </table>
+                                </tbody>
+                            @endif
+                        </table>
+                    @endif
                 </div>
             </div>
         </div>

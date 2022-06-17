@@ -78,6 +78,7 @@ class BangunanController extends Controller
                             ->select('profils.*', 'kcds.instansi', 'usulan_bangunans.proposal', 'usulan_bangunans.id')->get();
         }
 
+        dd($usulanBangunan);
         $jenis_laboratorium = JenisLaboratorium::all();
         $datas = [];
         foreach ($jenis_laboratorium as $key => $jenis) {
