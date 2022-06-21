@@ -43,7 +43,6 @@ class BangunanController extends Controller
     public function index()
     {
         DB::enableQueryLog();
-        $jenisPimpinan = JenisPimpinan::all();
         $komlis = Komli::all();
 
         if (Auth::user()->hasRole('kcd')) {
@@ -79,23 +78,12 @@ class BangunanController extends Controller
         }
 
         // dd($usulanBangunan);
-        $jenis_laboratorium = JenisLaboratorium::all();
-        $datas = [];
-        foreach ($jenis_laboratorium as $key => $jenis) {
-            $jenis = JenisLaboratoriumKomlis::select('komlis.*')
-                                        ->where('jenis_laboratorium_komlis.jenis_laboratorium_id', $jenis->id)
-                                        ->leftJoin('komlis', 'jenis_laboratorium_komlis.komli_id', 'komlis.id')
-                                        ->get();
-            $datas[] = $jenis;
-        }
+        
 
         return view('bangunan.showBangunan', [
             'usulanBangunans' => $usulanBangunan,
             'kompils' => Kompeten::getKompeten(),
-            'jenisPimpinans' => $jenisPimpinan,
             'komlis' => $komlis,
-            'jenis_labolatoriums' => $jenis_laboratorium,
-            'jurusan_jenis_laboratorium' => $datas
         ]);
     }
 
