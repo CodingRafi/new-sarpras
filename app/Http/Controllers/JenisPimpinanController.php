@@ -25,7 +25,11 @@ class JenisPimpinanController extends Controller
      */
     public function index()
     {
-        //
+        $jenisPimpinan = JenisPimpinan::all();
+
+        return view('jenispenunjang.index', [
+            'jenisPimpinans' => $jenisPimpinan,
+        ]);
     }
 
     /**
