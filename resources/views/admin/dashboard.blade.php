@@ -219,27 +219,80 @@
                                     </td>
                                     
                                     <td class="text-center col-2" rowspan="3">
-                                        @foreach ($data['usulanLahan'] as $usulan)
-                                            <a class="btn text-white mt-1" style="background-color: #fcc12d"
-                                                href="/usulan-lahan/{{ $usulan->id }}">Usulan Lahan
-                                                ({{ $usulan->nama }})
-                                            </a>
-                                        @endforeach
-                                        @foreach ($data['usulanBangunan'] as $usulan)
-                                            <a class="btn text-white mt-1"
-                                                style="background-color: #fcc12d;text-transform: capitalize;"
-                                                href="/usulan-bangunan/{{ $usulan['id'] }}">Usulan Bangunan
-                                                ({{ str_replace('_', ' ', $usulan->jenis) }})
-                                            </a>
-                                        @endforeach
+                                        <div class="accordion" id="accordionExample{{ $loop->index }}">
+                                            @if ($data['usulanLahan']->count())
+                                                <div class="card shadow-none">
+                                                    <div class="card-header p-0 border-0" id="headingOne">
+                                                        <h2 class="mb-0">
+                                                            <button class="btn btn-link btn-block text-left text-white" type="button"
+                                                                data-toggle="collapse" data-target="#collapseOne{{ $loop->index }}"
+                                                                aria-expanded="true" aria-controls="collapseOne" style="background-color: #00a65b; white-space:nowrap">
+                                                                <i class="bi bi-caret-down-fill icon"></i> Usulan Lahan
+                                                            </button>
+                                                        </h2>
+                                                    </div>
+
+                                                    <div id="collapseOne{{ $loop->index }}" class="collapse" aria-labelledby="headingOne"
+                                                        data-parent="#accordionExample{{ $loop->index }}">
+                                                        @foreach ($data['usulanLahan'] as $usulan)
+                                                            <a class="btn text-white mt-1" style="background-color: #00a65b"
+                                                                href="/usulan-lahan/{{ $usulan->id }}">Usulan Lahan
+                                                                ({{ $usulan->nama }})
+                                                            </a>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            @endif
+                                            @if ($data['usulanBangunan']->count())
+                                                <div class="card shadow-none">
+                                                    <div class="card-header p-0 border-0" id="headingTwo">
+                                                        <h2 class="mb-0">
+                                                            <button class="btn btn-link btn-block text-left text-white collapsed"
+                                                                type="button" data-toggle="collapse"
+                                                                data-target="#collapseTwo{{ $loop->index }}" aria-expanded="false"
+                                                                aria-controls="collapseTwo" style="background-color: #fcc12d; white-space:nowrap">
+                                                                <i class="bi bi-caret-down-fill icon"></i> Usulan Bangunan
+                                                            </button>
+                                                        </h2>
+                                                    </div>
+                                                    <div id="collapseTwo{{ $loop->index }}" class="collapse" aria-labelledby="headingTwo"
+                                                        data-parent="#accordionExample{{ $loop->index }}">
+                                                        @foreach ($data['usulanBangunan'] as $usulan)
+                                                            <a class="btn text-white mt-1"
+                                                                style="background-color: #fcc12d;text-transform: capitalize;"
+                                                                href="/usulan-bangunan/{{ $usulan['id'] }}">Usulan Bangunan
+                                                                ({{ str_replace('_', ' ', $usulan->jenis) }})
+                                                            </a>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            @endif
+                                            @if ($data['rehab']->count())
+                                                <div class="card shadow-none">
+                                                    <div class="card-header p-0 border-0" id="headingThree">
+                                                        <h2 class="mb-0">
+                                                            <button class="btn btn-link btn-block text-left text-white collapsed"
+                                                                type="button" data-toggle="collapse"
+                                                                data-target="#collapseThree{{ $loop->index }}" aria-expanded="false"
+                                                                aria-controls="collapseThree" style="background-color: #fcc12d; white-space:nowrap">
+                                                                <i class="bi bi-caret-down-fill icon"></i> Rehab Renov
+                                                            </button>
+                                                        </h2>
+                                                    </div>
+                                                    <div id="collapseThree{{ $loop->index }}" class="collapse" aria-labelledby="headingThree"
+                                                        data-parent="#accordionExample{{ $loop->index }}">
+                                                        @foreach ($data['rehab'] as $usulan)
+                                                            <a class="btn text-white mt-1"
+                                                                style="background-color: #fcc12d;text-transform: capitalize;"
+                                                                href="/bangunan/ruang-rehabrenov/{{ $usulan['id'] }}">Rehab Renov
+                                                                ({{ str_replace('_', ' ', $usulan->jenis) }})
+                                                            </a>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        </div>
                                         {{-- @dd($data) --}}
-                                        @foreach ($data['rehab'] as $usulan)
-                                            <a class="btn text-white mt-1"
-                                                style="background-color: #fcc12d;text-transform: capitalize;"
-                                                href="/bangunan/ruang-rehabrenov/{{ $usulan['id'] }}">Rehab Renov
-                                                ({{ str_replace('_', ' ', $usulan->jenis) }})
-                                            </a>
-                                        @endforeach
                                     </td>
                                     <td class="text-center" rowspan="3"><a class="text-center btn text-white"
                                             style="background-color: #263238" href="/profil/{{ $data['id'] }}">Detail</a>
@@ -254,13 +307,28 @@
                                     </td>
                                     <td class="text-center col-2">
                                         @if (count($data['status_peralatan']) > 0)
-                                            @foreach ($data['status_peralatan'] as $peralatan)
-                                                <div class="text-white mt-1"
-                                                    style="background-color: #25b5e9; border-radius:5px">
-                                                    Tidak Ideal, kekurangan {{ $peralatan['kekurangan'] }} peralatan pada
-                                                    jurusan
-                                                    {{ $peralatan['jurusan'] }}</div>
-                                            @endforeach
+                                            <div class="accordion" id="accordionKetPeralatan">
+                                                <div class="card shadow-none">
+                                                    <div class="card-header p-0 border-0" id="headingOne">
+                                                        <h2 class="mb-0">
+                                                            <button class="btn btn-link btn-block text-left text-white" type="button"
+                                                                data-toggle="collapse" data-target="#ketPeralatan"
+                                                                aria-expanded="true" aria-controls="collapseOne" style="background-color: #25b5e9;white-space: nowrap;">
+                                                                <i class="bi bi-caret-down-fill icon"></i>  Tidak ideal
+                                                            </button>
+                                                        </h2>
+                                                    </div>
+                                                    <div id="ketPeralatan" class="collapse" aria-labelledby="headingOne" data-parent="#accordionKetPeralatan">
+                                                        @foreach ($data['status_peralatan'] as $peralatan)
+                                                            <div class="text-white mt-1"
+                                                                style="background-color: #25b5e9; border-radius:5px">
+                                                                Tidak Ideal, kekurangan {{ $peralatan['kekurangan'] }} peralatan pada
+                                                                jurusan
+                                                                {{ $peralatan['jurusan'] }}</div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            </div>
                                         @else
                                             <div class="text-white mt-1"
                                                 style="background-color: #25b5e9; border-radius:5px">Ideal, Peralatan sudah
@@ -277,40 +345,55 @@
                                     </td>
                                     <td class="text-center col-2">
                                         @if (count($data['status_bangunan']) > 0)
-                                            @foreach ($data['status_bangunan'] as $bangunan)
-                                                @if ($bangunan['kategori'] == 'lab')
-                                                    <div class="text-white mt-1"
-                                                        style="background-color: #fcc12d; border-radius:5px">
-                                                        {{ count($data['status_bangunan']) > 0 ? 'Tidak Ideal' : 'Ideal' }},
-                                                        kekurangan {{ $bangunan['kekurangan'] }} m² pada
-                                                        {{ $bangunan['jenis'] }}</div>
-                                                @elseif($bangunan['kategori'] == 'praktik')
-                                                    <div class="text-white mt-1"
-                                                        style="background-color: #fcc12d; border-radius:5px">
-                                                        {{ count($data['status_bangunan']) > 0 ? 'Tidak Ideal' : 'Ideal' }},
-                                                        kekurangan {{ $bangunan['kekurangan'] }} pada
-                                                        Ruang Praktik {{ $bangunan['jenis'] }}</div>
-                                                @elseif($bangunan['kategori'] == 'pimpinan')
-                                                    <div class="text-white mt-1"
-                                                        style="background-color: #fcc12d; border-radius:5px">
-                                                        {{ count($data['status_bangunan']) > 0 ? 'Tidak Ideal' : 'Ideal' }}, kekurangan {{ $bangunan['kekurangan'] }} m² pada 
-                                                        Ruang {{ $bangunan['jenis'] }} </div>
-                                                @else
-                                                    @if ($bangunan['jenis'] == 'ruang_kelas' || $bangunan['jenis'] == 'toilet')
-                                                        <div class="text-white mt-1"
-                                                            style="background-color: #fcc12d; border-radius:5px;text-transform: capitalize">
-                                                            {{ count($data['status_bangunan']) > 0 ? 'Tidak Ideal' : 'Ideal' }},
-                                                            kekurangan {{ $bangunan['kekurangan'] }} bangunan pada
-                                                            {{ str_replace('_', ' ', $bangunan['jenis']) }}</div>
-                                                    @else
-                                                        <div class="text-white mt-1"
-                                                            style="background-color: #fcc12d; border-radius:5px;text-transform: capitalize">
-                                                            {{ count($data['status_bangunan']) > 0 ? 'Tidak Ideal' : 'Ideal' }},
-                                                            kekurangan {{ $bangunan['kekurangan'] }} m² pada
-                                                            {{ str_replace('_', ' ', $bangunan['jenis']) }}</div>
-                                                    @endif
-                                                @endif
-                                            @endforeach
+                                            <div class="accordion" id="accordionKetBangunan">
+                                                <div class="card shadow-none">
+                                                    <div class="card-header p-0 border-0" id="headingOne">
+                                                        <h2 class="mb-0">
+                                                            <button class="btn btn-link btn-block text-left text-white" type="button"
+                                                                data-toggle="collapse" data-target="#ketBangunan"
+                                                                aria-expanded="true" aria-controls="collapseOne" style="background-color: #fcc12d;white-space: nowrap;">
+                                                                <i class="bi bi-caret-down-fill icon"></i> Tidak ideal
+                                                            </button>
+                                                        </h2>
+                                                    </div>
+                                                    <div id="ketBangunan" class="collapse" aria-labelledby="headingOne" data-parent="#accordionKetBangunan">
+                                                        @foreach ($data['status_bangunan'] as $bangunan)
+                                                            @if ($bangunan['kategori'] == 'lab')
+                                                                <div class="text-white mt-1"
+                                                                    style="background-color: #fcc12d; border-radius:5px">
+                                                                    {{ count($data['status_bangunan']) > 0 ? 'Tidak Ideal' : 'Ideal' }},
+                                                                    kekurangan {{ $bangunan['kekurangan'] }} m² pada
+                                                                    {{ $bangunan['jenis'] }}</div>
+                                                            @elseif($bangunan['kategori'] == 'praktik')
+                                                                <div class="text-white mt-1"
+                                                                    style="background-color: #fcc12d; border-radius:5px">
+                                                                    {{ count($data['status_bangunan']) > 0 ? 'Tidak Ideal' : 'Ideal' }},
+                                                                    kekurangan {{ $bangunan['kekurangan'] }} pada
+                                                                    Ruang Praktik {{ $bangunan['jenis'] }}</div>
+                                                            @elseif($bangunan['kategori'] == 'pimpinan')
+                                                                <div class="text-white mt-1"
+                                                                    style="background-color: #fcc12d; border-radius:5px">
+                                                                    {{ count($data['status_bangunan']) > 0 ? 'Tidak Ideal' : 'Ideal' }}, kekurangan {{ $bangunan['kekurangan'] }} m² pada 
+                                                                    Ruang {{ $bangunan['jenis'] }} </div>
+                                                            @else
+                                                                @if ($bangunan['jenis'] == 'ruang_kelas' || $bangunan['jenis'] == 'toilet')
+                                                                    <div class="text-white mt-1"
+                                                                        style="background-color: #fcc12d; border-radius:5px;text-transform: capitalize">
+                                                                        {{ count($data['status_bangunan']) > 0 ? 'Tidak Ideal' : 'Ideal' }},
+                                                                        kekurangan {{ $bangunan['kekurangan'] }} bangunan pada
+                                                                        {{ str_replace('_', ' ', $bangunan['jenis']) }}</div>
+                                                                @else
+                                                                    <div class="text-white mt-1"
+                                                                        style="background-color: #fcc12d; border-radius:5px;text-transform: capitalize">
+                                                                        {{ count($data['status_bangunan']) > 0 ? 'Tidak Ideal' : 'Ideal' }},
+                                                                        kekurangan {{ $bangunan['kekurangan'] }} m² pada
+                                                                        {{ str_replace('_', ' ', $bangunan['jenis']) }}</div>
+                                                                @endif
+                                                            @endif
+                                                         @endforeach
+                                                    </div>
+                                                </div>
+                                            </div>
                                         @else
                                             <div class="text-white mt-1"
                                                 style="background-color: #fcc12d; border-radius:5px">bangunan sudah ideal
