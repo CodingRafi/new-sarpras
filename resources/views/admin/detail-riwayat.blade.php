@@ -39,43 +39,51 @@
                 <h3 class="card-title font-weight-bold text-white">Detail</h3>
             </div>
             <div class="card-body table-responsive pt-0">
-                <table class="table table-bordered text-nowrap">
-                    <thead style="background-color: #eeeeee">
-                        <tr>
-                            <th>No</th>
-                            <th>Tahun Bantuan</th>
-                            <th>Jenis</th>
-                            <th>Pemberi Bantuan</th>
-                            <th>Sumber Anggaran</th>
-                            <th>Nilai Bantuan</th>
-                            <th>Keterangan</th>
-                            <th>Foto Bantuan</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($riwayats as $key => $riwayat)
+                @if (count($riwayats) > 0)
+                    <table class="table table-bordered text-nowrap">
+                        <thead style="background-color: #eeeeee">
                             <tr>
-                                <th>{{ $loop->iteration }}</th>
-                                <td>{{ $riwayat->tahun_bantuan }}</td>
-                                <td>{{ $riwayat->jenis }}</td>
-                                <td>{{ $riwayat->pemberian_bantuan }}</td>
-                                <td style="text-transform: uppercase;">{{ $riwayat->sumber_anggaran }}</td>
-                                <td>{{ $riwayat->nilai_bantuan }}</td>
-                                <td style="max-width: 90px; white-space: normal">{{ $riwayat->keterangan }}</td>
-                                @foreach ($fotos[$key] as $ke => $foto)
-                                    <td class="text-center">
-                                        <a href="{{ asset('storage/' . $foto->nama) }}" class="fancybox"
-                                            data-fancybox="gallery{{ $key }}">
-                                            <img src="{{ asset('storage/' . $foto->nama) }}" class="rounded"
-                                                style="object-fit: cover; width: 150px; aspect-ratio: 1/1;{{ $ke == 0 ? '' : 'display:none;' }}">
-                                        </a>
-                                    </td>
-                                @endforeach
+                                <th>No</th>
+                                <th>Tahun Bantuan</th>
+                                <th>Jenis</th>
+                                <th>Pemberi Bantuan</th>
+                                <th>Sumber Anggaran</th>
+                                <th>Nilai Bantuan</th>
+                                <th>Keterangan</th>
+                                <th>Foto Bantuan</th>
                             </tr>
-                        @endforeach
+                        </thead>
+                        <tbody>
+                            @foreach ($riwayats as $key => $riwayat)
+                                <tr>
+                                    <th>{{ $loop->iteration }}</th>
+                                    <td>{{ $riwayat->tahun_bantuan }}</td>
+                                    <td>{{ $riwayat->jenis }}</td>
+                                    <td>{{ $riwayat->pemberian_bantuan }}</td>
+                                    <td style="text-transform: uppercase;">{{ $riwayat->sumber_anggaran }}</td>
+                                    <td>{{ $riwayat->nilai_bantuan }}</td>
+                                    <td style="max-width: 90px; white-space: normal">{{ $riwayat->keterangan }}</td>
+                                    @foreach ($fotos[$key] as $ke => $foto)
+                                        <td class="text-center">
+                                            <a href="{{ asset('storage/' . $foto->nama) }}" class="fancybox"
+                                                data-fancybox="gallery{{ $key }}">
+                                                <img src="{{ asset('storage/' . $foto->nama) }}" class="rounded"
+                                                    style="object-fit: cover; width: 150px; aspect-ratio: 1/1;{{ $ke == 0 ? '' : 'display:none;' }}">
+                                            </a>
+                                        </td>
+                                    @endforeach
+                                </tr>
+                            @endforeach
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                @else
+                    <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                        <div class="alert" role="alert">
+                            Data Tidak Ditemukan
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

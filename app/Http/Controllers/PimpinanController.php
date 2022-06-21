@@ -44,7 +44,7 @@ class PimpinanController extends Controller
                                     ->leftJoin('pimpinans', 'pimpinans.id', 'usulan_bangunans.pimpinan_id')
                                     ->leftJoin('jenis_pimpinans', 'jenis_pimpinans.id', 'pimpinans.jenis_pimpinan_id')
                                     ->where('usulan_bangunans.profil_id', Auth::user()->profil_id)
-                                    ->where('usulan_bangunans.jenis', 'ruang_pimpinan')->get();
+                                    ->where('usulan_bangunans.jenis', 'ruang_penunjang')->get();
                                     
         $koleksi = UsulanKoleksi::koleksi($usulans);
         $fotos = UsulanFoto::fotos($koleksi);
@@ -176,7 +176,7 @@ class PimpinanController extends Controller
         $validatedData['jml_ruang'] = 1;
         $validatedData['keterangan'] = 'Proses Pengajuan';
         
-        UsulanBangunan::createUsulan($request, 'ruang_pimpinan', $validatedData);
+        UsulanBangunan::createUsulan($request, 'ruang_penunjang', $validatedData);
 
         Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Menambahkan usulan ruang penunjang');
 
@@ -187,7 +187,7 @@ class PimpinanController extends Controller
         $usulanBangunan = UsulanBangunan::search(request(['search']))
         ->leftJoin('profils', 'profils.id', '=', 'usulan_bangunans.profil_id')
         ->leftJoin('profil_kcds', 'profils.id', '=', 'profil_kcds.profil_id')
-        ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi', 'usulan_bangunans.proposal', 'usulan_bangunans.id')->where('usulan_bangunans.jenis', 'ruang_pimpinan')->paginate(40)->withQueryString();
+        ->leftJoin('kcds', 'profil_kcds.kcd_id', '=', 'kcds.id')->select('profils.*', 'kcds.instansi', 'usulan_bangunans.proposal', 'usulan_bangunans.id')->where('usulan_bangunans.jenis', 'ruang_penunjang')->paginate(40)->withQueryString();
         
         return view('admin.ruangpimpinan', [
             'usulanBangunans' => $usulanBangunan,

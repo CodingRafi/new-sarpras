@@ -57,7 +57,7 @@
             @method('patch')
             {{-- @dd($jenis) --}}
             <div class="card pt-3" style="background-color: white; border-radius: 10px; ">
-                @if ($data->jenis == 'ruang_pimpinan')
+                @if ($data->jenis == 'ruang_penunjang')
                     {{-- --------------------------------------------- JENIS RUANG PIMPINAN --------------------------------------------- --}}
                     <div class="row input pl-5 mt-2">
                         <label class="col-2 mt-3">Jenis Ruang</label>
