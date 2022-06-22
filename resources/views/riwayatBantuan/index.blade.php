@@ -98,7 +98,7 @@
                             <td class="text-center" style="vertical-align: middle">
                                 <a href="/riwayat-bantuan/{{ $riwayat->id }}/edit"
                                     class="btn btn-warning text-white mt-2">Edit</a>
-                                    <button type="button" class="btn text-white tombolHapus mt-2" style="background-color: #263238" data-toggle="modal"
+                                    <button type="button" class="btn btn-danger tombolHapus mt-2" data-toggle="modal"
                                         data-target="#confirmhapus" data-id="{{ $riwayat->id }}">
                                         Hapus
                                     </button>

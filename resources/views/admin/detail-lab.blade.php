@@ -7,7 +7,7 @@
 @section('container')
     <div class="card mt-2">
         <div class="card-header" style="background-color: #25b5e9; margin-right: -1px; margin-top: -1px;">
-            <h3 class="card-title text-white">Detail Laboratorium</h3>
+            <h3 class="card-title text-white font-weight-bold">Detail Laboratorium</h3>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -40,12 +40,12 @@
                                 <td class="text-center">
                                     <div class="div">
                                         <a href="#" class="btn text-white mt-2" data-toggle="modal"
-                                            data-target="#modal-tambah" style="background-color: #00a65b;">
+                                            data-target="#modal-tambah" style="background-color: #00a65b; width: 150px">
                                             Tambah Kompetensi
                                         </a>
                                     </div>
                                     <div class="div">
-                                        <button type="submit" class="btn btn-dark mt-2">Hapus Kompetensi</button>
+                                        <button type="submit" class="btn btn-danger mt-2" style="width: 150px">Hapus Kompetensi</button>
                                     </div>
                                 </td>
                             </tr>

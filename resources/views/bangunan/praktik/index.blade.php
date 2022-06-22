@@ -177,8 +177,7 @@
                                                     <form action="/usulan-bangunan/{{ $usulan->id }}" method="post">
                                                         @csrf
                                                         @method('delete')
-                                                        <button type="submit" class="btn mt-2 text-white" style="background-color: #263228"
-                                                            onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
+                                                        <button type="submit" class="btn btn-danger mt-2" onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
                                                     </form>
                                                 </td>
                                             </tr>

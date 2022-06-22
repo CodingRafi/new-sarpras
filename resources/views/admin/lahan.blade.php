@@ -97,7 +97,7 @@
                                             </a>
                                         </td>
                                         <td class="text-center" style="vertical-align: middle">
-                                            <a href="/usulan-lahan/{{ $usulan->id_usulan_lahan }}" class="btn btn-info">Detail</a>
+                                            <a href="/usulan-lahan/{{ $usulan->id_usulan_lahan }}" class="btn text-white" style="background-color: #00a65b">Detail</a>
                                         </td>
                                     </tr>
                                 @endforeach

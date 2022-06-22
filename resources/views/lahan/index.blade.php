@@ -445,8 +445,7 @@
                                                     data-target="#modal-edit">
                                                     Edit
                                                 </button>
-                                                <button type="button" class="btn btn-dark tombolHapus2"
-                                                    style="background-color: #263238"
+                                                <button type="button" class="btn btn-danger tombolHapus2"
                                                     data-toggle="modal" data-target="#confirmHapus"
                                                     data-id="{{ $lahan->id }}">
                                                     Hapus

@@ -30,7 +30,7 @@
     <div class="container">
         <div class="card card-widget widget-user ">
             <!-- Add the bg color to the header using any of the bg-* classes -->
-            <div class="widget-user-header bg-info">
+            <div class="widget-user-header text-white" style="background-color: #25b5e9">
                 <h3 class="widget-user-username">{{ Auth::user()->name }}</h3>
                 @if (Auth::user()->hasRole('dinas'))
                     <h5 class="widget-user-desc">Dinas Pendidikan</h5>

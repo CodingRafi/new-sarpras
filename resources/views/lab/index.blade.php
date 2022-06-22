@@ -67,8 +67,7 @@
                                             class="mt-2">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class="btn btn-block text-white" style="background-color: #263238"
-                                                onclick="return confirm('apakah anda yakin akan menghapus laboratorium ini?')">Hapus</button>
+                                            <button type="submit" class="btn btn-danger btn-block" onclick="return confirm('apakah anda yakin akan menghapus laboratorium ini?')">Hapus</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -283,8 +282,7 @@
                                                 <form action="/usulan-bangunan/{{ $usulan->id }}" method="post">
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="submit" class="btn text-white mt-2"
-                                                        style="background-color: #263238"
+                                                    <button type="submit" class="btn btn-danger mt-2"
                                                         onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Batalkan</button>
                                                 </form>
                                         </tr>

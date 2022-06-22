@@ -34,22 +34,6 @@
                 {{-- Table --}}
                 <div class="table-responsive">
                     @if (count($usulanBangunans) > 0)
-                    <div class="col-12 p-0" style="max-width: 100%;">
-                        <form class="form-inline" action="/bangunan/rehab-renov-dinas" method="GET"
-                            style="width: 100%;">
-                            <div class="input-group mt-2" style="width: 100%;border: 1px solid #ced4da;border-radius: 3px;">
-                                <input class="form-control form-control-navbar" type="search"
-                                    placeholder="Search Nama Sekolah" aria-label="Search"
-                                    style="height: 2.5rem;font-size: 15px;padding: 0 10px;border:none;"
-                                    name="search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit" style="width: 40px ">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover mt-2">
                                 <div class="search" style="display: flex">
@@ -91,7 +75,22 @@
                                             </li>
                                         </ul>
                                     @endif
-                                    
+                                    <div class="md-2 col-12 p-0" style="max-width: 100%;">
+                                        <form class="form-inline ml-2" action="/bangunan/rehab-renov-dinas" method="GET"
+                                            style="width: 100%;">
+                                            <div class="input-group mt-2" style="width: 100%;border: 1px solid #ced4da;border-radius: 3px;">
+                                                <input class="form-control form-control-navbar" type="search"
+                                                    placeholder="Search Nama Sekolah" aria-label="Search"
+                                                    style="height: 2.5rem;font-size: 15px;padding: 0 10px;border:none;"
+                                                    name="search">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-navbar" type="submit" style="width: 40px ">
+                                                        <i class="fas fa-search"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                                 <thead>
                                     <tr class="text-center">
