@@ -180,7 +180,7 @@
                     <table class="table table-responsive table-bordered mb-0">
                         <thead>
                             <tr>
-                                <th class="text-center col-1" style="background-color: #eeeeee" scope="col">No</th>
+                                <th class="text-center" style="background-color: #eeeeee" scope="col">No</th>
                                 <th class="text-center col-1" style="background-color: #eeeeee" scope="col">Nama Sekolah
                                 </th>
                                 <th class="text-center col-1" style="background-color: #eeeeee" scope="col">Status Sekolah
@@ -200,19 +200,19 @@
                         <tbody>
                             @foreach ($datas as $data)
                                 <tr>
-                                    <th class="text-center col-1" scope="row" rowspan="3">
+                                    <th class="text-center" scope="row" rowspan="3">
                                         {{ ($profils->currentpage() - 1) * $profils->perpage() + $loop->index + 1 }}</th>
                                     <td class="text-center col-1" rowspan="3">{{ $data['nama'] }}</td>
                                     <td class="text-center col-1" rowspan="3">{{ $data['status_sekolah'] }}</td>
                                     <td class="text-center col-1" rowspan="3">{{ $data['kabupaten'] }}</td>
                                     <td class="text-center col-2" rowspan="3">{{ $data['instansi'] }}</td>
-                                    <td class="text-center col-2">
-                                        <div class="mt-1 p-1">
+                                    <td class="text-center">
+                                        <div class="mt-1">
                                             Lahan</div>
                                     </td>
-                                    <td class="text-center col-2">
+                                    <td class="text-center col-3">
                                         <div class="text-white mt-1 p-1"
-                                            style="background-color: #00a65b; border-radius:5px">
+                                            style="background-color: {{ $data['status_lahan']['kondisi'] == 'Ideal' ? '#00a65b' : '#dc3545' }}; border-radius:5px">
                                             {{ $data['status_lahan']['kondisi'] }}, Kekurangan
                                             {{ $data['status_lahan']['kekurangan'] }} m²
                                         </div>
@@ -226,7 +226,7 @@
                                                         <h2 class="mb-0">
                                                             <button class="btn btn-link btn-block text-left text-white" type="button"
                                                                 data-toggle="collapse" data-target="#collapseOne{{ $loop->index }}"
-                                                                aria-expanded="true" aria-controls="collapseOne" style="background-color: #00a65b; white-space:nowrap">
+                                                                aria-expanded="true" aria-controls="collapseOne" style="background-color: #fcc12d; white-space:nowrap">
                                                                 <i class="bi bi-caret-down-fill icon"></i> Usulan Lahan
                                                             </button>
                                                         </h2>
@@ -235,7 +235,7 @@
                                                     <div id="collapseOne{{ $loop->index }}" class="collapse" aria-labelledby="headingOne"
                                                         data-parent="#accordionExample{{ $loop->index }}">
                                                         @foreach ($data['usulanLahan'] as $usulan)
-                                                            <a class="btn text-white mt-1" style="background-color: #00a65b"
+                                                            <a class="btn text-white mt-1" style="background-color: #fcc12d"
                                                                 href="/usulan-lahan/{{ $usulan->id }}">Usulan Lahan
                                                                 ({{ $usulan->nama }})
                                                             </a>
@@ -311,17 +311,17 @@
                                                 <div class="card shadow-none">
                                                     <div class="card-header p-0 border-0" id="headingOne">
                                                         <h2 class="mb-0">
-                                                            <button class="btn btn-link btn-block text-left text-white" type="button"
+                                                            <button class="btn btn-link btn-danger btn-block text-left text-white" type="button"
                                                                 data-toggle="collapse" data-target="#ketPeralatan"
-                                                                aria-expanded="true" aria-controls="collapseOne" style="background-color: #25b5e9;white-space: nowrap;">
+                                                                aria-expanded="true" aria-controls="collapseOne" style="white-space: nowrap;">
                                                                 <i class="bi bi-caret-down-fill icon"></i>  Tidak ideal
                                                             </button>
                                                         </h2>
                                                     </div>
                                                     <div id="ketPeralatan" class="collapse" aria-labelledby="headingOne" data-parent="#accordionKetPeralatan">
                                                         @foreach ($data['status_peralatan'] as $peralatan)
-                                                            <div class="text-white mt-1"
-                                                                style="background-color: #25b5e9; border-radius:5px">
+                                                            <div class="text-white mt-1 bg-danger"
+                                                                style="border-radius:5px">
                                                                 Tidak Ideal, kekurangan {{ $peralatan['kekurangan'] }} peralatan pada
                                                                 jurusan
                                                                 {{ $peralatan['jurusan'] }}</div>
@@ -331,7 +331,7 @@
                                             </div>
                                         @else
                                             <div class="text-white mt-1"
-                                                style="background-color: #25b5e9; border-radius:5px">Ideal, Peralatan sudah
+                                                style="background-color: #00a65b; border-radius:5px">Ideal, Peralatan sudah
                                                 sesuai standar
                                             </div>
                                         @endif
@@ -349,9 +349,9 @@
                                                 <div class="card shadow-none">
                                                     <div class="card-header p-0 border-0" id="headingOne">
                                                         <h2 class="mb-0">
-                                                            <button class="btn btn-link btn-block text-left text-white" type="button"
+                                                            <button class="btn btn-link btn-danger btn-block text-left text-white" type="button"
                                                                 data-toggle="collapse" data-target="#ketBangunan"
-                                                                aria-expanded="true" aria-controls="collapseOne" style="background-color: #fcc12d;white-space: nowrap;">
+                                                                aria-expanded="true" aria-controls="collapseOne" style="white-space: nowrap;">
                                                                 <i class="bi bi-caret-down-fill icon"></i> Tidak ideal
                                                             </button>
                                                         </h2>
@@ -359,32 +359,32 @@
                                                     <div id="ketBangunan" class="collapse" aria-labelledby="headingOne" data-parent="#accordionKetBangunan">
                                                         @foreach ($data['status_bangunan'] as $bangunan)
                                                             @if ($bangunan['kategori'] == 'lab')
-                                                                <div class="text-white mt-1"
-                                                                    style="background-color: #fcc12d; border-radius:5px">
+                                                                <div class="text-white mt-1 bg-danger"
+                                                                    style="border-radius:5px">
                                                                     {{ count($data['status_bangunan']) > 0 ? 'Tidak Ideal' : 'Ideal' }},
                                                                     kekurangan {{ $bangunan['kekurangan'] }} m² pada
                                                                     {{ $bangunan['jenis'] }}</div>
                                                             @elseif($bangunan['kategori'] == 'praktik')
-                                                                <div class="text-white mt-1"
-                                                                    style="background-color: #fcc12d; border-radius:5px">
+                                                                <div class="text-white mt-1 bg-danger"
+                                                                    style="border-radius:5px">
                                                                     {{ count($data['status_bangunan']) > 0 ? 'Tidak Ideal' : 'Ideal' }},
                                                                     kekurangan {{ $bangunan['kekurangan'] }} pada
                                                                     Ruang Praktik {{ $bangunan['jenis'] }}</div>
                                                             @elseif($bangunan['kategori'] == 'pimpinan')
-                                                                <div class="text-white mt-1"
-                                                                    style="background-color: #fcc12d; border-radius:5px">
+                                                                <div class="text-white mt-1 bg-danger"
+                                                                    style="border-radius:5px">
                                                                     {{ count($data['status_bangunan']) > 0 ? 'Tidak Ideal' : 'Ideal' }}, kekurangan {{ $bangunan['kekurangan'] }} m² pada 
                                                                     Ruang {{ $bangunan['jenis'] }} </div>
                                                             @else
                                                                 @if ($bangunan['jenis'] == 'ruang_kelas' || $bangunan['jenis'] == 'toilet')
-                                                                    <div class="text-white mt-1"
-                                                                        style="background-color: #fcc12d; border-radius:5px;text-transform: capitalize">
+                                                                    <div class="text-white mt-1 bg-danger"
+                                                                        style="border-radius:5px;text-transform: capitalize">
                                                                         {{ count($data['status_bangunan']) > 0 ? 'Tidak Ideal' : 'Ideal' }},
                                                                         kekurangan {{ $bangunan['kekurangan'] }} bangunan pada
                                                                         {{ str_replace('_', ' ', $bangunan['jenis']) }}</div>
                                                                 @else
-                                                                    <div class="text-white mt-1"
-                                                                        style="background-color: #fcc12d; border-radius:5px;text-transform: capitalize">
+                                                                    <div class="text-white mt-1 bg-danger"
+                                                                        style="border-radius:5px;text-transform: capitalize">
                                                                         {{ count($data['status_bangunan']) > 0 ? 'Tidak Ideal' : 'Ideal' }},
                                                                         kekurangan {{ $bangunan['kekurangan'] }} m² pada
                                                                         {{ str_replace('_', ' ', $bangunan['jenis']) }}</div>
@@ -396,7 +396,7 @@
                                             </div>
                                         @else
                                             <div class="text-white mt-1"
-                                                style="background-color: #fcc12d; border-radius:5px">bangunan sudah ideal
+                                                style="background-color: #00a65b; border-radius:5px">bangunan sudah ideal
                                             </div>
                                         @endif
                                     </td>
