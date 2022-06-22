@@ -27,7 +27,7 @@
         @if (Auth::user()->hasRole('verifikator'))
             <div class="card mt-3">
                 <div class="card-header text-white" style="background-color: #25b5e9;">
-                    <h3 class="card-title">
+                    <h3 class="card-title font-weight-bold">
                         Profil Sekolah
                     </h3>
                 </div>
@@ -74,12 +74,13 @@
         <!-- /.row -->
 
         @if ($visitasi->status == 'simpan')
-            <form action="/visitasi-publish" method="post">
+            <form action="/visitasi-publish" method="post" class="mb-3">
                 @csrf
                 @method('patch')
                 <input type="hidden" name="visitasi_id" value="{{ $visitasi->id }}">
-                <button type="submit" class="btn btn-success"
+                <button type="submit" class="btn text-white" style="background-color: #00a65b"
                     onclick="return confirm('Apakah anda yakin akan mempublish visitasi ini?')">Unggah</button>
+            </form>
         @endif
 
 
@@ -94,12 +95,11 @@
         @endif
         <div class="container-fluid p-0 {{ (Auth::user()->hasRole('verifikator')) ? '' : 'mt-3' }}">
             <div class="card">
-                <div class="card-header bg-warning {{ (Auth::user()->hasRole('verifikator')) ? 'p-4' : '' }}">
+                <div class="card-header bg-warning">
                     <h3 class="card-title text-white font-weight-bold">Visitasi</h3>
                     @if (Auth::user()->hasRole('verifikator'))
                         <div class="card-tools">
-                            <button type="submit" class="btn btn-tool border border-light text-white mr-2"
-                                style="padding: 10px">
+                            <button type="submit" class="btn btn-tool border border-light text-white mr-2">
                                 @if ($hasils[0]['unsur'] == null)
                                     Simpan
                                 @else

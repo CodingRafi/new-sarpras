@@ -97,7 +97,7 @@
                                                 <form action="/profil-kcd/{{ $kabupaten->id_profil_kcds }}" method="post">
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="submit" class="btn text-white" style="background-color: #263238"
+                                                    <button type="submit" class="btn btn-danger" 
                                                         onclick="return confirm('apakah anda yakin akan mengahapus wilayah ini?')">Hapus</button>
                                                 </form>
                                             </td>
