@@ -1,13 +1,13 @@
-@extends('myLayouts.main')
+@extends('mylayouts.main')
 
 @section('tambahcss')
     <style>
         @media(max-width: 480px) {
-        .btn-hapus {
-            margin-top: 10px;
+            .btn-hapus {
+                margin-top: 10px;
+            }
         }
-    }
-    </style>    
+    </style>
 @endsection
 
 @section('container')
@@ -81,8 +81,8 @@
                 <h3 class="card-title p-3 text-white font-weight-bold">Ketersediaan Peralatan Sekolah</h3>
                 <ul class="nav nav-pills ml-auto p-2">
                     <li class="nav-item pr-2">
-                        <button type="button" class="btn btn-tool border border-light text-white" style="margin-top: 1px" data-toggle="modal"
-                            data-target="#tambah-peralatan"><i class="bi bi-plus"></i> Tambah Peralatan
+                        <button type="button" class="btn btn-tool border border-light text-white" style="margin-top: 1px"
+                            data-toggle="modal" data-target="#tambah-peralatan"><i class="bi bi-plus"></i> Tambah Peralatan
                         </button>
                     </li>
                 </ul>
@@ -127,11 +127,12 @@
                                                     href="/peralatan-tersedia/{{ $peralatanTersedia->id }}/edit"
                                                     style="background-color: #FCC12D">Edit</a>
                                                 {{-- <form action=""><a class="btn text-white d-inline" style="background-color: #00a65b">Hapus</a></form> --}}
-                                                <form action="/peralatan-tersedia/{{ $peralatanTersedia->id }} class="d-inline" method="post">
+                                                <form
+                                                    action="/peralatan-tersedia/{{ $peralatanTersedia->id }}" class="d-inline"
+                                                    method="post">
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="submit" class="btn text-white d-inline btn-hapus"
-                                                        style="background-color: #263228"
+                                                    <button type="submit" class="btn btn-danger d-inline btn-hapus"
                                                         onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Hapus</button>
                                                 </form>
                                             </div>
@@ -164,75 +165,80 @@
                     </div>
                     <div class="modal-body">
                         @if (count($peralatanOptionsTersedias) > 0)
-                            
-                        <form class="form-horizontal" action="/peralatan-tersedia" method="post" onsubmit="myLoading()">
-                            @csrf
-                            <div class="card-body">
-                                <input type="hidden" name="kompeten_id" value="{{ $kompeten->id }}">
-                                {{-- ---------------------------------------------------------------------------------------- NAMA PERALATAN ---------------------------------------------------------------------------------------- --}}
-                                <div class="form-group row">
-                                    <label for="nama-peralatan" class="col-sm-3 col-form-label">Nama Peralatan</label>
-                                    <div class="col-sm-9">
-                                        <div class="input-group peralatan-parent">
-                                            @foreach ($peralatanOptionsTersedias as $options)
-                                                <input type="hidden" class="input-option-{{ $options->id }}"
-                                                    data-kategori="{{ $options->kategori }}">
-                                            @endforeach
-                                            <select class="form-control select-peralatan" id="peralatan-select"
-                                                name="peralatan_id">
-                                                <option value="">Pilih Peralatan</option>
+                            <form class="form-horizontal" action="/peralatan-tersedia" method="post"
+                                onsubmit="myLoading()">
+                                @csrf
+                                <div class="card-body">
+                                    <input type="hidden" name="kompeten_id" value="{{ $kompeten->id }}">
+                                    {{-- ---------------------------------------------------------------------------------------- NAMA PERALATAN ---------------------------------------------------------------------------------------- --}}
+                                    <div class="form-group row">
+                                        <label for="nama-peralatan" class="col-sm-3 col-form-label">Nama Peralatan</label>
+                                        <div class="col-sm-9">
+                                            <div class="input-group peralatan-parent">
                                                 @foreach ($peralatanOptionsTersedias as $options)
-                                                    <option value="{{ $options->id }}">{{ $options->nama }}</option>
+                                                    <input type="hidden" class="input-option-{{ $options->id }}"
+                                                        data-kategori="{{ $options->kategori }}">
                                                 @endforeach
-                                            </select>
-                                            <input type="text" class="form-control input-manual-peralatan"
-                                                style="display: none" id="peralatan-text" name="nama"
-                                                placeholder="Masukkan Nama Peralatan">
+                                                <select class="form-control select-peralatan" id="peralatan-select"
+                                                    name="peralatan_id">
+                                                    <option value="">Pilih Peralatan</option>
+                                                    @foreach ($peralatanOptionsTersedias as $options)
+                                                        <option value="{{ $options->id }}">{{ $options->nama }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                <input type="text" class="form-control input-manual-peralatan-tersedia"
+                                                    style="display: none" id="peralatan-text" name="nama"
+                                                    placeholder="Masukkan Nama Peralatan">
 
-                                            {{-- ---------------------------------------------------------------------------------------- CHECKBOX ---------------------------------------------------------------------------------------- --}}
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">
-                                                    <input id="peralatan-checkbox" type="checkbox">
-                                                </span>
+                                                {{-- ---------------------------------------------------------------------------------------- CHECKBOX ---------------------------------------------------------------------------------------- --}}
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">
+                                                        <input id="peralatan-checkbox" type="checkbox">
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                {{-- ---------------------------------------------------------------------------------------- KATEGORI ---------------------------------------------------------------------------------------- --}}
-                                <div class="form-group row">
-                                    <label for="kategori" class="col-sm-3 col-form-label">Kategori</label>
-                                    <div class="col-sm-9">
-                                        <select name="kategori" id="" class="custom-select select-kategori" disabled>
-                                            <option value="utama" class="kategori-utama">Utama</option>
-                                            <option value="pendukung" class="kategori-pendukung">Pendukung</option>
-                                        </select>
+                                    {{-- ---------------------------------------------------------------------------------------- KATEGORI ---------------------------------------------------------------------------------------- --}}
+                                    <div class="form-group row">
+                                        <label for="kategori" class="col-sm-3 col-form-label">Kategori</label>
+                                        <div class="col-sm-9">
+                                            <select name="kategori" id="" class="custom-select select-kategori-peralatan-tersedia"
+                                                disabled>
+                                                <option value="utama" class="kategori-utama-peralatan-tersedia">Utama</option>
+                                                <option value="pendukung" class="kategori-pendukung-peralatan-tersedia">Pendukung</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    {{-- ---------------------------------------------------------------------------------------- KETERSEDIAAN ---------------------------------------------------------------------------------------- --}}
+                                    <div class="form-group row">
+                                        <label for="ketersediaan" class="col-sm-3 col-form-label">Ketersediaan</label>
+                                        <div class="col-sm-9">
+                                            <input type="number" class="form-control loading-tambah" id="ketersediaan"
+                                                name="katersediaan" required>
+                                        </div>
+                                    </div>
+                                    {{-- ---------------------------------------------------------------------------------------- KEKURANGAN ---------------------------------------------------------------------------------------- --}}
+                                    <div class="form-group row">
+                                        <label for="kekurangan" class="col-sm-3 col-form-label">Kekurangan</label>
+                                        <div class="col-sm-9">
+                                            <input type="number" class="form-control loading-tambah" id="kekurangan"
+                                                name="kekurangan" required>
+                                        </div>
                                     </div>
                                 </div>
-                                {{-- ---------------------------------------------------------------------------------------- KETERSEDIAAN ---------------------------------------------------------------------------------------- --}}
-                                <div class="form-group row">
-                                    <label for="ketersediaan" class="col-sm-3 col-form-label">Ketersediaan</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control loading-tambah" id="ketersediaan" name="katersediaan" required>
-                                    </div>
+                                <div class="card-footer">
+                                    <button type="submit"
+                                        class="btn btn-success float-right tombol-simpan-peralatan-tersedia loading-simpan">Simpan</button>
                                 </div>
-                                {{-- ---------------------------------------------------------------------------------------- KEKURANGAN ---------------------------------------------------------------------------------------- --}}
-                                <div class="form-group row">
-                                    <label for="kekurangan" class="col-sm-3 col-form-label">Kekurangan</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control loading-tambah" id="kekurangan" name="kekurangan" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-success float-right tombol-simpan loading-simpan">Simpan</button>
-                            </div>
-                        </form>
+                            </form>
                         @else
-                        <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
-                            <div class="alert" role="alert">
-                               Tidak ada peralatan ditemukan
+                            <div class="container d-flex justify-content-center align-items-center" style="height: 10rem">
+                                <div class="alert" role="alert">
+                                    Tidak ada peralatan ditemukan
+                                </div>
                             </div>
-                        </div>
                         @endif
                     </div>
                 </div>
@@ -247,8 +253,8 @@
                 <h3 class="card-title font-weight-bold p-3">Usulan Peralatan</h3>
                 <ul class="nav nav-pills ml-auto p-2">
                     <li class="nav-item pr-2">
-                        <button type="button" class="btn btn-tool border border-light text-white" style="margin-top:1px" data-toggle="modal"
-                            data-target="#tambah-usulan"><i class="bi bi-plus"></i> Tambah Usulan
+                        <button type="button" class="btn btn-tool border border-light text-white" style="margin-top:1px"
+                            data-toggle="modal" data-target="#tambah-usulan"><i class="bi bi-plus"></i> Tambah Usulan
                         </button>
                     </li>
                 </ul>
@@ -292,13 +298,13 @@
                                         <td>{{ $usulanPeralatan->keterangan }}</td>
                                         <td class="text-center" style="vertical-align: middle">
                                             <a href="/usulan-peralatan/{{ $usulanPeralatan->id }}/edit"
-                                                class="btn btn-warning text-white mb-2" style="background-color: #FCC12D">Edit</a>
+                                                class="btn btn-warning text-white mb-2"
+                                                style="background-color: #FCC12D">Edit</a>
 
                                             <form action="/usulan-peralatan/{{ $usulanPeralatan->id }}" method="post">
                                                 @csrf
                                                 @method('delete')
-                                                <button class="btn text-white" style="background-color: #263228"
-                                                    type="submit"
+                                                <button class="btn btn-danger" type="submit"
                                                     onclick="return confirm('Apakah anda yakin akan membatalkan usulan peralatan ini?')">Batalkan</button>
                                             </form>
                                         </td>
@@ -355,7 +361,7 @@
                                                     @endforeach
                                                 </select>
 
-                                                <input type="text" class="form-control input-manual-peralatan"
+                                                <input type="text" class="form-control input-manual-peralatan-usulan"
                                                     style="display: none" id="usulan-text" name="nama_peralatan"
                                                     placeholder="Masukkan Nama Peralatan">
 
@@ -372,9 +378,10 @@
                                     <div class="form-group row">
                                         <label for="kategori" class="col-sm-3 col-form-label">Kategori</label>
                                         <div class="col-sm-9">
-                                            <select name="kategori" id="" class="custom-select select-kategori" disabled>
-                                                <option value="utama" class="kategori-utama">Utama</option>
-                                                <option value="pendukung" class="kategori-pendukung">Pendukung</option>
+                                            <select name="kategori" id="" class="custom-select select-kategori-usulan-peralatan"
+                                                disabled>
+                                                <option value="utama" class="kategori-utama-usulan">Utama</option>
+                                                <option value="pendukung" class="kategori-pendukung-usulan">Pendukung</option>
                                             </select>
                                         </div>
                                     </div>
@@ -382,7 +389,8 @@
                                     <div class="form-group row">
                                         <label for="jumlah" class="col-sm-3 col-form-label">Jumlah</label>
                                         <div class="col-sm-9">
-                                            <input type="number" class="form-control loading-tambah2" id="jumlah" name="jml">
+                                            <input type="number" class="form-control loading-tambah2" id="jumlah"
+                                                name="jml">
                                         </div>
                                     </div>
                                     {{-- ---------------------------------------------------------------------------------------- PROPOSAL ---------------------------------------------------------------------------------------- --}}
@@ -391,15 +399,16 @@
                                         <div class="col-sm-9">
                                             <div class="input-group">
                                                 <div class="custom-file">
-                                                    <input class="loading-tambah2" type="file" id="chooseFile" accept=".pdf" name="proposal"
-                                                        required>
+                                                    <input class="loading-tambah2" type="file" id="chooseFile"
+                                                        accept=".pdf" name="proposal" required>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-success float-right tombol-simpan loading-simpan2">Simpan</button>
+                                    <button type="submit"
+                                        class="btn btn-success float-right tombol-simpan-usulan-peralatan loading-simpan2">Simpan</button>
                                 </div>
                             @else
                                 <div class="container d-flex justify-content-center align-items-center"
@@ -420,81 +429,93 @@
 @endsection
 
 @section('peralatanjs')
+    @if (count($peralatanOptionsTersedias) > 0)
+        <script>
+            const selectKategoriPeralatanTersedia = document.querySelector('.select-kategori-peralatan-tersedia');
+            const inputManualPeralatanTersedia = document.querySelector('.input-manual-peralatan-tersedia');
+            const kategoriUtamaPeralatanTersedia = document.querySelector('.kategori-utama-peralatan-tersedia');
+            const kategoriPendukungPeralatanTersedia = document.querySelector('.kategori-pendukung-peralatan-tersedia');
+            const peralatanCheckbox = document.getElementById('peralatan-checkbox');
+            const peralatanSelect = document.getElementById('peralatan-select');
+            const peralatanText = document.getElementById('peralatan-text');
+            const tombolSimpanPeralatanTersedia = document.querySelector('.tombol-simpan-peralatan-tersedia');
+
+            peralatanCheckbox.addEventListener('change', e => {
+                if (e.target.checked === true) {
+                    console.log("Checkbox is checked - boolean value: ", e.target.checked)
+                    peralatanSelect.style.setProperty("display", "none")
+                    peralatanText.style.setProperty("display", "block")
+                    selectKategoriPeralatanTersedia.removeAttribute('disabled');
+                    peralatanSelect.value = '';
+                }
+                if (e.target.checked === false) {
+                    console.log("Checkbox is not checked - boolean value: ", e.target.checked)
+                    peralatanSelect.style.setProperty("display", "block")
+                    peralatanText.style.setProperty("display", "none")
+                    selectKategoriPeralatanTersedia.setAttribute('disabled', 'disabled');
+                    inputManualPeralatanTersedia.value = '';
+                }
+            });
+
+            peralatanSelect.addEventListener('change', function() {
+                if (document.querySelector('.input-option-' + peralatanSelect.value).getAttribute('data-kategori')
+                    .toLowerCase() == 'utama') {
+                    kategoriUtamaPeralatanTersedia.setAttribute('selected', 'selected');
+                    kategoriPendukungPeralatanTersedia.removeAttribute('selected');
+                } else {
+                    kategoriPendukungPeralatanTersedia.setAttribute('selected', 'selected');
+                    kategoriUtamaPeralatanTersedia.removeAttribute('selected');
+                }
+            })
+
+            tombolSimpanPeralatanTersedia.addEventListener('click', function() {
+                selectKategoriPeralatanTersedia.removeAttribute('disabled');
+            })
+        </script>
+    @endif
+
     <script>
         // JavaScript
-        const peralatanCheckbox = document.getElementById('peralatan-checkbox');
-        const peralatanSelect = document.getElementById('peralatan-select');
-        const peralatanText = document.getElementById('peralatan-text');
+        const selectKategoriUsulanBangunan = document.querySelector('.select-kategori-usulan-peralatan');
+        const inputManualPeralatanUsulan = document.querySelector('.input-manual-peralatan-usulan');
+        const kategoriUtamaUsulan = document.querySelector('.kategori-utama-usulan');
+        const kategoriPendukungUsulan = document.querySelector('.kategori-pendukung-usulan');
         const usulanCheckbox = document.getElementById('usulan-checkbox');
         const usulanSelect = document.getElementById('usulan-select');
         const usulanText = document.getElementById('usulan-text');
+        const tombolSimpanUsulanPeralatan = document.querySelector('.tombol-simpan-usulan-peralatan');
         // const selectUsulan = document.querySelectorAll('.select-usulan');
-        const kategoriUtama = document.querySelectorAll('.kategori-utama');
-        const kategoriPendukung = document.querySelectorAll('.kategori-pendukung');
-        const selectKategori = document.querySelectorAll('.select-kategori');
-        const inputManualPeralatan = document.querySelectorAll('.input-manual-peralatan');
-        const tombolSimpan = document.querySelectorAll('.tombol-simpan');
-
-        peralatanCheckbox.addEventListener('change', e => {
-            if (e.target.checked === true) {
-                console.log("Checkbox is checked - boolean value: ", e.target.checked)
-                peralatanSelect.style.setProperty("display", "none")
-                peralatanText.style.setProperty("display", "block")
-                selectKategori[0].removeAttribute('disabled');
-                peralatanSelect.value = '';
-            }
-            if (e.target.checked === false) {
-                console.log("Checkbox is not checked - boolean value: ", e.target.checked)
-                peralatanSelect.style.setProperty("display", "block")
-                peralatanText.style.setProperty("display", "none")
-                selectKategori[0].setAttribute('disabled', 'disabled');
-                inputManualPeralatan[0].value = '';
-            }
-        });
-
-        for (let i = 0; i < tombolSimpan.length; i++) {
-            tombolSimpan[i].addEventListener('click', function() {
-                selectKategori[i].removeAttribute('disabled');
-            })
-        }
 
         usulanCheckbox.addEventListener('change', a => {
             if (a.target.checked === true) {
                 console.log("Checkbox is checked - boolean value: ", a.target.checked)
                 usulanSelect.style.setProperty("display", "none")
                 usulanText.style.setProperty("display", "block")
-                selectKategori[1].removeAttribute('disabled');
+                selectKategoriUsulanBangunan.removeAttribute('disabled');
                 usulanSelect.value = '';
             }
             if (a.target.checked === false) {
                 console.log("Checkbox is not checked - boolean value: ", a.target.checked)
                 usulanSelect.style.setProperty("display", "block")
                 usulanText.style.setProperty("display", "none")
-                selectKategori[1].setAttribute('disabled', 'disabled');
-                inputManualPeralatan[1].value = '';
+                selectKategoriUsulanBangunan.setAttribute('disabled', 'disabled');
+                inputManualPeralatanUsulan.value = '';
             }
         });
-
-        peralatanSelect.addEventListener('change', function() {
-            if (document.querySelector('.input-option-' + peralatanSelect.value).getAttribute('data-kategori')
-                .toLowerCase() == 'utama') {
-                kategoriUtama[0].setAttribute('selected', 'selected');
-                kategoriPendukung[0].removeAttribute('selected');
-            } else {
-                kategoriPendukung[0].setAttribute('selected', 'selected');
-                kategoriUtama[0].removeAttribute('selected');
-            }
-        })
 
         usulanSelect.addEventListener('change', function() {
             if (document.querySelector('.input-option-' + usulanSelect.value).getAttribute('data-kategori')
                 .toLowerCase() == 'utama') {
-                kategoriUtama[1].setAttribute('selected', 'selected');
-                kategoriPendukung[1].removeAttribute('selected');
+                kategoriUtamaUsulan.setAttribute('selected', 'selected');
+                kategoriPendukungUsulan.removeAttribute('selected');
             } else {
-                kategoriPendukung[1].setAttribute('selected', 'selected');
-                kategoriUtama[1].removeAttribute('selected');
+                kategoriPendukungUsulan.setAttribute('selected', 'selected');
+                kategoriUtamaUsulan.removeAttribute('selected');
             }
         })
+
+        tombolSimpanUsulanPeralatan.addEventListener('click', function() {
+                selectKategoriUsulanBangunan.removeAttribute('disabled');
+            })
     </script>
 @endsection

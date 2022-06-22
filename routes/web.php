@@ -60,16 +60,16 @@ use App\Http\Controllers\Lahan_sekolah\KetersediaanLahanController;
 
 
 // |-------------------------------------------------------------------------- SEMENTARA |--------------------------------------------------------------------------
-Route::get('gallery', function () {
-    return view('profil.gallery');
-});
+// Route::get('gallery', function () {
+//     return view('profil.gallery');
+// });
 
-Route::get('/lab', function () {
-    return view('lab.index');
-});
-Route::get('/detail', function () {
+// Route::get('/lab', function () {
+//     return view('lab.index');
+// });
+// Route::get('/detail', function () {
     
-});
+// });
 
 // Route::get('/detail-lab', function () {
     
@@ -103,9 +103,9 @@ Route::get('/detail', function () {
 //     return view('admin.monitoring');
 // });
 
-Route::get('/riwayat-bantuan-dinas/{id}', function () {
-    return view('admin.detail-riwayat');
-});
+// Route::get('/riwayat-bantuan-dinas/{id}', function () {
+//     return view('admin.detail-riwayat');
+// });
 
 
 

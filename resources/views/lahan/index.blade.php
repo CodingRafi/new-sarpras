@@ -111,286 +111,279 @@
 {{------------------------------------------------ End -----------------------------------------------------------}}
 
 {{------------------------------------------------ LAMPIRAN -----------------------------------------------------------}}
-<div class="container">
-    <div class="card card-info card-outline">
+<div class="card card-info card-outline">
 
-        <div class="ribbon-wrapper ribbon-xl">
-            <div class="ribbon bg-info text-lg">
-              <span style="font-size: .8rem;">Permendiknas No.40 2008</span>
-            </div>
+    <div class="ribbon-wrapper ribbon-xl">
+        <div class="ribbon bg-info text-lg">
+            <span style="font-size: .8rem;">Permendiknas No.40 2008</span>
         </div>
+    </div>
 
-        <div class="card-header">
-            <h3 class="card-title">Lampiran Lahan</h3>
+    <div class="card-header">
+        <h3 class="card-title">Lampiran Lahan</h3>
+    </div>
+    <div class="card-body p-0">
+        <div class="mailbox-read-message px-4">
+            <ol type="I">
+                <li class="pb-4">
+                    Luas lahan minimum dapat menampung sarana dan prasarana unuk melayani 3 rombongan belajar.
+                </li>
+                <li class="pb-4">
+                    Lahan efektif adalah lahan yang digunakan untuk mendirikan bangunan, infrastruktur, tempat bermain/berolahraga/upacara, dan praktik.
+                </li>
+                <li>
+                    Luas lahan efektif adalah seratus per tiga puluh (100/30) dikalikan luas lantai dasar bangunan ditambah infrastruktur, tempat bermain/berolahraga/upacara dan luas lahan praktik.
+                </li>
+            </ol>
         </div>
-        <!-- /.card-header -->
-        <div class="card-body p-0">
-            <div class="mailbox-read-message px-4">
-                <ol type="I">
-                    <li class="pb-4">
-                        Luas lahan minimum dapat menampung sarana dan prasarana unuk melayani 3 rombongan belajar.
-                    </li>
-                    <li class="pb-4">
-                        Lahan efektif adalah lahan yang digunakan untuk mendirikan bangunan, infrastruktur, tempat bermain/berolahraga/upacara, dan praktik.
-                    </li>
-                    <li>
-                        Luas lahan efektif adalah seratus per tiga puluh (100/30) dikalikan luas lantai dasar bangunan ditambah infrastruktur, tempat bermain/berolahraga/upacara dan luas lahan praktik.
-                    </li>
-                </ol>
-            </div>
-            <!-- /.mailbox-read-message -->
+    </div>
+    <div class="card-footer">
+        <div class="float-right">
+            <a href="https://luk.staff.ugm.ac.id/atur/bsnp/Permendiknas40-2008SarprasSMK.pdf" target="_blank"><button type="button" class="btn btn-default"><i class="fas fa-share"></i> Dokumen</button></a>
         </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
-            <div class="float-right">
-                <a href="https://luk.staff.ugm.ac.id/atur/bsnp/Permendiknas40-2008SarprasSMK.pdf" target="_blank"><button type="button" class="btn btn-default"><i class="fas fa-share"></i> Dokumen</button></a>
-            </div>
-        </div>
-        <!-- /.card-footer -->
     </div>
 </div>
 
-<div class="container">
-    {{---------------------------------------------- Lahan Sekolah ---------------------------------------------------}}
-    <div class="card mt-3 mb-5">
-        <div class="card-header" style="background-color: #25b5e9">
-            <ul class="nav nav-pills ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link {{ $errors->any() ? '' : 'active' }} text-white font-weight-bold"
-                        href="#data-lahan-sekolah" data-toggle="tab">
-                        <i class="bi bi-house-fill mr-1"></i>Lahan Sekolah</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ $errors->any() ? 'active' : '' }} text-white font-weight-bold"
-                        href="#tambah-usulan-lahan" data-toggle="tab">
-                        <i class="bi bi-plus-lg mr-1"></i>Tambah Ketersediaan Lahan</a>
-                </li>
-            </ul>
-        </div>
-        <!-- /.card-header DATA SEKOLAH-->
-        <div class="card-body p-0">
-            <div class="tab-content p-0">
-                <div class="tab-pane {{ $errors->any() ? '' : 'active' }}" id="data-lahan-sekolah"
-                    style="min-height: 10rem;">
-                    <div class="row">
-                        <div class="col">
-                            @if (count($ketersediaanLahans) > 0)
-                            <div class="table-responsive">
-                                <table class="table table-hover table-border  text-nowrap text-center">
-                                    {{-- judul table --}}
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">No</th>
-                                            <th scope="col">Nama Lahan</th>
-                                            <th scope="col">No Sertifikat</th>
-                                            <th scope="col">Panjang(m)</th>
-                                            <th scope="col">Lebar(m)</th>
-                                            <th scope="col">Luas Lahan(m²)</th>
-                                            <th scope="col">Alamat</th>
-                                            <th scope="col">Jenis Kepemilikan</th>
-                                            <th scope="col">Keterangan</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    {{-- end judul table --}}
-                                    {{-- isi table --}}
-                                    <tbody>
-                                        @foreach ($ketersediaanLahans as $lahan)
-                                        {{-- @dd($lahan) --}}
-                                        <tr>
-                                            <th scope="row">{{ $loop->iteration }}</th>
-                                            <td>{{ $lahan->nama }}</td>
-                                            <td>{{ $lahan->no_sertifikat }}</td>
-                                            <td>{{ $lahan->panjang }} m</td>
-                                            <td>{{ $lahan->lebar }} m</td>
-                                            <td>{{ $lahan->luas }} m²</td>
-                                            <td>{{ $lahan->alamat }}</td>
-                                            <td style="text-transform: capitalize;">
-                                                {{ str_replace("_", " ", $lahan->jenis_kepemilikan) }}</td>
-                                            <td>{{ $lahan->keterangan }}</td>
-                                            <td>
-                                                <div class="card-body">
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <button type="button" class="btn" data-toggle="dropdown">
-                                                                <i class="bi bi-three-dots-vertical"></i>
-                                                            </button>
-                                                            <div class="dropdown-menu" style="margin-left: -56px">
-                                                                <a class="dropdown-item"
-                                                                    href="/ketersediaan-lahan/{{ $lahan->id }}/edit">Edit</a>
-                                                                <a class="dropdown-item tombolHapus" data-toggle="modal"
-                                                                    data-target="#confirmhapus"
-                                                                    data-id="{{ $lahan->id }}">Hapus</a>
-                                                                <a class="dropdown-item"
-                                                                    href="{{ asset('storage/' . $lahan->bukti_lahan) }}"
-                                                                    target="_blank">Lihat
-                                                                    Dokumen</a>
-                                                            </div>
+{{---------------------------------------------- Lahan Sekolah ---------------------------------------------------}}
+<div class="card mt-3 mb-5">
+    <div class="card-header" style="background-color: #25b5e9">
+        <ul class="nav nav-pills ml-auto">
+            <li class="nav-item">
+                <a class="nav-link {{ $errors->any() ? '' : 'active' }} text-white font-weight-bold"
+                    href="#data-lahan-sekolah" data-toggle="tab">
+                    <i class="bi bi-house-fill mr-1"></i>Lahan Sekolah</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ $errors->any() ? 'active' : '' }} text-white font-weight-bold"
+                    href="#tambah-usulan-lahan" data-toggle="tab">
+                    <i class="bi bi-plus-lg mr-1"></i>Tambah Ketersediaan Lahan</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /.card-header DATA SEKOLAH-->
+    <div class="card-body p-0">
+        <div class="tab-content p-0">
+            <div class="tab-pane {{ $errors->any() ? '' : 'active' }}" id="data-lahan-sekolah"
+                style="min-height: 10rem;">
+                <div class="row">
+                    <div class="col">
+                        @if (count($ketersediaanLahans) > 0)
+                        <div class="table-responsive">
+                            <table class="table table-hover table-border  text-nowrap text-center">
+                                {{-- judul table --}}
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Nama Lahan</th>
+                                        <th scope="col">No Sertifikat</th>
+                                        <th scope="col">Panjang(m)</th>
+                                        <th scope="col">Lebar(m)</th>
+                                        <th scope="col">Luas Lahan(m²)</th>
+                                        <th scope="col">Alamat</th>
+                                        <th scope="col">Jenis Kepemilikan</th>
+                                        <th scope="col">Keterangan</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                {{-- end judul table --}}
+                                {{-- isi table --}}
+                                <tbody>
+                                    @foreach ($ketersediaanLahans as $lahan)
+                                    {{-- @dd($lahan) --}}
+                                    <tr>
+                                        <th scope="row">{{ $loop->iteration }}</th>
+                                        <td>{{ $lahan->nama }}</td>
+                                        <td>{{ $lahan->no_sertifikat }}</td>
+                                        <td>{{ $lahan->panjang }} m</td>
+                                        <td>{{ $lahan->lebar }} m</td>
+                                        <td>{{ $lahan->luas }} m²</td>
+                                        <td>{{ $lahan->alamat }}</td>
+                                        <td style="text-transform: capitalize;">
+                                            {{ str_replace("_", " ", $lahan->jenis_kepemilikan) }}</td>
+                                        <td>{{ $lahan->keterangan }}</td>
+                                        <td>
+                                            <div class="card-body">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <button type="button" class="btn" data-toggle="dropdown">
+                                                            <i class="bi bi-three-dots-vertical"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu" style="margin-left: -56px">
+                                                            <a class="dropdown-item"
+                                                                href="/ketersediaan-lahan/{{ $lahan->id }}/edit">Edit</a>
+                                                            <a class="dropdown-item tombolHapus" data-toggle="modal"
+                                                                data-target="#confirmhapus"
+                                                                data-id="{{ $lahan->id }}">Hapus</a>
+                                                            <a class="dropdown-item"
+                                                                href="{{ asset('storage/' . $lahan->bukti_lahan) }}"
+                                                                target="_blank">Lihat
+                                                                Dokumen</a>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                    {{-- end isi table --}}
-                                </table>
-                            </div>
-                            @else
-                            <div class="container d-flex justify-content-center align-items-center"
-                                style="height: 10rem">
-                                <div class="alert" role="alert">
-                                    Data Tidak Ditemukan
-                                </div>
-                            </div>
-                            @endif
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                                {{-- end isi table --}}
+                            </table>
                         </div>
+                        @else
+                        <div class="container d-flex justify-content-center align-items-center"
+                            style="height: 10rem">
+                            <div class="alert" role="alert">
+                                Data Tidak Ditemukan
+                            </div>
+                        </div>
+                        @endif
                     </div>
                 </div>
+            </div>
 
-                <div class="chart tab-pane {{ $errors->any() ? 'active' : '' }}" id="tambah-usulan-lahan"
-                    style="min-height: 10rem;">
-                    <div class="card-body">
-                        <form action="/ketersediaan-lahan/" method="post" enctype="multipart/form-data" onsubmit="myLoading()">
-                            @csrf
+            <div class="chart tab-pane {{ $errors->any() ? 'active' : '' }}" id="tambah-usulan-lahan"
+                style="min-height: 10rem;">
+                <div class="card-body">
+                    <form action="/ketersediaan-lahan/" method="post" enctype="multipart/form-data" onsubmit="myLoading()">
+                        @csrf
 
-                            {{-- input nama lahan --}}
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Nama Lahan</label>
-                                <input type="text"
-                                    class="form-control col-sm-9  @error('nama') is-invalid @enderror loading-tambah"
-                                    placeholder="Masukan Nama Lahan" id="nama-lahan" name="nama"
-                                    value="{{ old('nama') }}" required>
-                                @error('nama')
-                                <div class="invalid-feedback d-block" style="margin-left: 13vw">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                        {{-- input nama lahan --}}
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Nama Lahan</label>
+                            <input type="text"
+                                class="form-control col-sm-9  @error('nama') is-invalid @enderror loading-tambah"
+                                placeholder="Masukan Nama Lahan" id="nama-lahan" name="nama"
+                                value="{{ old('nama') }}" required>
+                            @error('nama')
+                            <div class="invalid-feedback d-block" style="margin-left: 13vw">
+                                {{ $message }}
                             </div>
-                            {{-- end input nama lahan --}}
+                            @enderror
+                        </div>
+                        {{-- end input nama lahan --}}
 
-                            {{-- input sertifikat --}}
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">No Sertifikat</label>
-                                <input type="text"
-                                    class="form-control col-sm-9 @error('no_sertifikat') is-invalid @enderror loading-tambah"
-                                    placeholder="Masukan No Sertifikat" id="sert" name="no_sertifikat"
-                                    value="{{ old('no_sertifikat') }}" required>
-                                @error('no_sertifikat')
-                                <div class="invalid-feedback d-block" style="margin-left: 13vw">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                        {{-- input sertifikat --}}
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">No Sertifikat</label>
+                            <input type="text"
+                                class="form-control col-sm-9 @error('no_sertifikat') is-invalid @enderror loading-tambah"
+                                placeholder="Masukan No Sertifikat" id="sert" name="no_sertifikat"
+                                value="{{ old('no_sertifikat') }}" required>
+                            @error('no_sertifikat')
+                            <div class="invalid-feedback d-block" style="margin-left: 13vw">
+                                {{ $message }}
                             </div>
-                            {{-- end input sertifikat --}}
+                            @enderror
+                        </div>
+                        {{-- end input sertifikat --}}
 
-                            {{-- input panjang --}}
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Panjang(m)</label>
-                                <input type="number"
-                                    class="form-control col-sm-9 @error('panjang') is-invalid @enderror loading-tambah"
-                                    placeholder="Masukan Panjang Lahan" id="panjang" name="panjang"
-                                    value="{{ old('panjang') }}" step=any required>
-                                @error('panjang')
-                                <div class="invalid-feedback d-block" style="margin-left: 13vw">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                        {{-- input panjang --}}
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Panjang(m)</label>
+                            <input type="number"
+                                class="form-control col-sm-9 @error('panjang') is-invalid @enderror loading-tambah"
+                                placeholder="Masukan Panjang Lahan" id="panjang" name="panjang"
+                                value="{{ old('panjang') }}" step=any required>
+                            @error('panjang')
+                            <div class="invalid-feedback d-block" style="margin-left: 13vw">
+                                {{ $message }}
                             </div>
-                            {{-- end input panjang --}}
+                            @enderror
+                        </div>
+                        {{-- end input panjang --}}
 
-                            {{-- input lebar --}}
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Lebar(m)</label>
-                                <input type="number"
-                                    class="form-control col-sm-9 @error('lebar') is-invalid @enderror loading-tambah"
-                                    placeholder="Masukan Lebar Lahan" id="lebar" name="lebar" value="{{ old('lebar') }}"
-                                    step=any required>
-                                @error('lebar')
-                                <div class="invalid-feedback d-block" style="margin-left: 13vw">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                        {{-- input lebar --}}
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Lebar(m)</label>
+                            <input type="number"
+                                class="form-control col-sm-9 @error('lebar') is-invalid @enderror loading-tambah"
+                                placeholder="Masukan Lebar Lahan" id="lebar" name="lebar" value="{{ old('lebar') }}"
+                                step=any required>
+                            @error('lebar')
+                            <div class="invalid-feedback d-block" style="margin-left: 13vw">
+                                {{ $message }}
                             </div>
-                            {{-- end input lebar --}}
+                            @enderror
+                        </div>
+                        {{-- end input lebar --}}
 
-                            {{-- input alamat --}}
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Alamat</label>
-                                <input type="text"
-                                    class="form-control col-sm-9 @error('alamat') is-invalid @enderror loading-tambah"
-                                    placeholder="Masukan Alamat" id="alamat" name="alamat" value="{{ old('alamat') }}"
-                                    required>
-                                @error('alamat')
-                                <div class="invalid-feedback d-block" style="margin-left: 13vw">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                        {{-- input alamat --}}
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Alamat</label>
+                            <input type="text"
+                                class="form-control col-sm-9 @error('alamat') is-invalid @enderror loading-tambah"
+                                placeholder="Masukan Alamat" id="alamat" name="alamat" value="{{ old('alamat') }}"
+                                required>
+                            @error('alamat')
+                            <div class="invalid-feedback d-block" style="margin-left: 13vw">
+                                {{ $message }}
                             </div>
-                            {{-- end input alamat --}}
+                            @enderror
+                        </div>
+                        {{-- end input alamat --}}
 
 
-                            {{-- input jenis kepemilikan --}}
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Jenis Kepemilikan</label>
-                                <select class="custom-select rounded-0 col-sm-9" id="exampleSelectRounded0"
-                                    name="jenis_kepemilikan">
-                                    <option value="sewa">Sewa</option>
-                                    <option value="shm">SHM</option>
-                                    <option value="hgb">HGB</option>
-                                    <option value="hibah">Hibah/Wakaf</option>
-                                    <option value="tanah_desa">Tanah Desa</option>
-                                </select>
+                        {{-- input jenis kepemilikan --}}
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Jenis Kepemilikan</label>
+                            <select class="custom-select rounded-0 col-sm-9" id="exampleSelectRounded0"
+                                name="jenis_kepemilikan">
+                                <option value="sewa">Sewa</option>
+                                <option value="shm">SHM</option>
+                                <option value="hgb">HGB</option>
+                                <option value="hibah">Hibah/Wakaf</option>
+                                <option value="tanah_desa">Tanah Desa</option>
+                            </select>
+                        </div>
+                        {{-- end input alamat --}}
+
+                        {{-- input jenis keterangan --}}
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Keterangan</label>
+                            <input type="text"
+                                class="form-control col-sm-9 @error('keterangan') is-invalid @enderror loading-tambah"
+                                placeholder="Masukan Keterangan" id="Masukan Keterangan" name="keterangan"
+                                value="{{ old('keterangan') }}" required>
+                            @error('keterangan')
+                            <div class="invalid-feedback d-block" style="margin-left: 13vw">
+                                {{ $message }}
                             </div>
-                            {{-- end input alamat --}}
+                            @enderror
+                        </div>
+                        {{-- end input alamat --}}
 
-                            {{-- input jenis keterangan --}}
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Keterangan</label>
-                                <input type="text"
-                                    class="form-control col-sm-9 @error('keterangan') is-invalid @enderror loading-tambah"
-                                    placeholder="Masukan Keterangan" id="Masukan Keterangan" name="keterangan"
-                                    value="{{ old('keterangan') }}" required>
-                                @error('keterangan')
-                                <div class="invalid-feedback d-block" style="margin-left: 13vw">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                        {{-- upload file(pdf) --}}
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label pt-1" for="customFile">Dokumen Bukti Lahan (PDF /
+                                Foto)</label>
+                            <input type="file"
+                                class="pilih @error('chooseFile') is-invalid @enderror loading-tambah"
+                                id="chooseFile" name="bukti_lahan" accept="image/*, .pdf" required
+                                onchange="previewImage()" value="{{ old('keterangan') }}" required>
+                            @error('chooseFile')
+                            <div class="invalid-feedback d-block" style="margin-left: 13vw">
+                                {{ $message }}
                             </div>
-                            {{-- end input alamat --}}
+                            @enderror
+                        </div>
+                        <img class="img-preview col-sm-3 img-thumbnail mb-3" style="display: none">
+                        <div id="pdf-loader">Loading Preview ..</div>
+                        <div>
+                            <canvas id="pdf-preview" class="border border-rounded shadow-sm"
+                                style="width: 300px !important; border-radius: 10px !important;"></canvas>
+                        </div>
+                        {{-- end upload file(pdf) --}}
 
-                            {{-- upload file(pdf) --}}
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label pt-1" for="customFile">Dokumen Bukti Lahan (PDF /
-                                    Foto)</label>
-                                <input type="file"
-                                    class="pilih @error('chooseFile') is-invalid @enderror loading-tambah"
-                                    id="chooseFile" name="bukti_lahan" accept="image/*, .pdf" required
-                                    onchange="previewImage()" value="{{ old('keterangan') }}" required>
-                                @error('chooseFile')
-                                <div class="invalid-feedback d-block" style="margin-left: 13vw">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-                            <img class="img-preview col-sm-3 img-thumbnail mb-3" style="display: none">
-                            <div id="pdf-loader">Loading Preview ..</div>
-                            <div>
-                                <canvas id="pdf-preview" class="border border-rounded shadow-sm"
-                                    style="width: 300px !important; border-radius: 10px !important;"></canvas>
-                            </div>
-                            {{-- end upload file(pdf) --}}
-
-                            {{-- button simpan --}}
-                            <button type="submit" class="btn text-white col-sm-1 loading-simpan"
-                                style="background-color: #00a65b">Simpan</button>
-                            {{-- end button simpan --}}
-                        </form>
-                    </div>
+                        {{-- button simpan --}}
+                        <button type="submit" class="btn text-white col-sm-1 loading-simpan"
+                            style="background-color: #00a65b">Simpan</button>
+                        {{-- end button simpan --}}
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
     {{-- ---------------------------------------------- End ------------------------------------------------- --}}
 
 
@@ -445,8 +438,7 @@
                                                     data-target="#modal-edit">
                                                     Edit
                                                 </button>
-                                                <button type="button" class="btn btn-dark tombolHapus2"
-                                                    style="background-color: #263238"
+                                                <button type="button" class="btn btn-danger tombolHapus2"
                                                     data-toggle="modal" data-target="#confirmHapus"
                                                     data-id="{{ $lahan->id }}">
                                                     Hapus
@@ -465,108 +457,107 @@
                                     Data Tidak Ditemukan
                                 </div>
                             </div>
-                            @endif
                         </div>
+                        @endif
                     </div>
                 </div>
+            </div>
 
-                <div class="chart tab-pane {{ $errors->any() ? 'active' : '' }}" id="tambah-kekurangan-lahan"
-                    style="min-height: 10rem;">
-                    <div class="card-body">
-                        <form action="/kekurangan-lahan" method="post" onsubmit="myLoading()">
-                            @csrf
-                            {{-- input nama lahan --}}
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Nama Lahan</label>
-                                <input type="text" class="form-control col-sm-9 loading-tambah2" placeholder="Masukan Nama Lahan"
-                                    id="nama-lahan" name="nama" required>
-                            </div>
-                            {{-- end input nama lahan --}}
+            <div class="chart tab-pane {{ $errors->any() ? 'active' : '' }}" id="tambah-kekurangan-lahan"
+                style="min-height: 10rem;">
+                <div class="card-body">
+                    <form action="/kekurangan-lahan" method="post" onsubmit="myLoading()">
+                        @csrf
+                        {{-- input nama lahan --}}
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Nama Lahan</label>
+                            <input type="text" class="form-control col-sm-9 loading-tambah2" placeholder="Masukan Nama Lahan"
+                                id="nama-lahan" name="nama" required>
+                        </div>
+                        {{-- end input nama lahan --}}
 
-                            {{-- input luas --}}
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Luas(m²)</label>
-                                <input type="number" class="form-control col-sm-9 loading-tambah2" placeholder="Masukan Lebar Lahan"
-                                    id="lebar" name="luas" required step=any>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Keterangan</label>
-                                <input type="text" class="form-control col-sm-9 loading-tambah" placeholder="Keterangan"
-                                    id="keterangan" name="keterangan" required>
-                            </div>
-                            {{-- end input lebar --}}
+                        {{-- input luas --}}
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Luas(m²)</label>
+                            <input type="number" class="form-control col-sm-9 loading-tambah2" placeholder="Masukan Luas Lahan"
+                                id="lebar" name="luas" required step=any>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Keterangan</label>
+                            <input type="text" class="form-control col-sm-9 loading-tambah" placeholder="Masukan Keterangan"
+                                id="keterangan" name="keterangan" required>
+                        </div>
+                        {{-- end input lebar --}}
 
-                            {{-- button simpan --}}
-                            <button type="submit" class="btn text-white col-sm-1 loading-simpan2"
-                                style="background-color: #00a65b">Simpan</button>
-                        </form>
-                        {{-- end button simpan --}}
-                    </div>
+                        {{-- button simpan --}}
+                        <button type="submit" class="btn text-white col-sm-1 loading-simpan2"
+                            style="background-color: #00a65b">Simpan</button>
+                    </form>
+                    {{-- end button simpan --}}
                 </div>
             </div>
         </div>
     </div>
-    {{-- ---------------------------------------------------- End ----------------------------------------- --}}
+{{-- ---------------------------------------------------- End ----------------------------------------- --}}
 
-    {{-- --------------------------------------------------- Tab ------------------------------------------ --}}
-    <div class="modal fade" id="modal-edit">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <form action="/kekurangan-lahan/update-kekurangan" method="post" onsubmit="myLoading()">
-                    @csrf
-                    @method('PATCH')
-                    <div class="modal-header">
-                        <h3 class="modal-title">Edit</h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container">
+{{-- --------------------------------------------------- Tab ------------------------------------------ --}}
+<div class="modal fade" id="modal-edit">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form action="/kekurangan-lahan/update-kekurangan" method="post" onsubmit="myLoading()">
+                @csrf
+                @method('PATCH')
+                <div class="modal-header">
+                    <h3 class="modal-title">Edit</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
 
-                            <input type="hidden" name="id_kekurangan" class="inputIdKekurangan">
-                            <div class="row mt-2">
-                                <div class="col-3">
-                                    <label for="col-sm-4 col-form-label">Nama Lahan</label>
-                                </div>
-                                <div class="col">
-                                    <input type="text" class="form-control col-sm-7 input-nama-edit"
-                                        placeholder="Masukan Nama Lahan" id="nmalhn" name="nama" required>
-                                </div>
+                        <input type="hidden" name="id_kekurangan" class="inputIdKekurangan">
+                        <div class="row mt-2">
+                            <div class="col-3">
+                                <label for="col-sm-4 col-form-label">Nama Lahan</label>
                             </div>
-
-                            <div class="row mt-4">
-                                <div class="col-3">
-                                    <label for="col-sm-4 col-form-label">Luas :</label>
-                                </div>
-                                <div class="col">
-                                    <input type="number" class="form-control col-sm-7 luas-nama-edit"
-                                        placeholder="Masukan Lebar" id="jmllebar" name="luas" required>
-                                </div>
+                            <div class="col">
+                                <input type="text" class="form-control col-sm-7 input-nama-edit"
+                                    placeholder="Masukan Nama Lahan" id="nmalhn" name="nama" required>
                             </div>
-
-                            <div class="row mt-4">
-                                <div class="col-3">
-                                    <label for="col-sm-4 col-form-label">Keterangan</label>
-                                </div>
-                                <div class="col">
-                                    <input type="text" class="form-control col-sm-7 keterangan-nama-edit"
-                                        placeholder="Keterangan" id="ketereangan" name="keterangan" required>
-                                </div>
-                            </div>
-
                         </div>
+
+                        <div class="row mt-4">
+                            <div class="col-3">
+                                <label for="col-sm-4 col-form-label">Luas</label>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control col-sm-7 luas-nama-edit"
+                                    placeholder="Masukan Luas" id="jmllebar" name="luas" required>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-3">
+                                <label for="col-sm-4 col-form-label">Keterangan</label>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control col-sm-7 keterangan-nama-edit"
+                                    placeholder="Masukan Keterangan" id="ketereangan" name="keterangan" required>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn text-white" style="background-color: #FCC12D">Edit</button>
-                    </div>
-                </form>
-            </div>
-            <!-- /.modal-content -->
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn text-white" style="background-color: #FCC12D">Edit</button>
+                </div>
+            </form>
         </div>
-        <!-- /.modal-dialog -->
+        <!-- /.modal-content -->
     </div>
+    <!-- /.modal-dialog -->
 </div>
 {{-- --------------------------------------------------- End ------------------------------------------ --}}
 {{-- End Main-Content --}}

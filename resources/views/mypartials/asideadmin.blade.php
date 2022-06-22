@@ -18,8 +18,8 @@
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false"
-                style="margin-bottom: 5rem">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                data-accordion="false" style="margin-bottom: 5rem">
 
                 {{-- ---------------------------------------------------------------------------------------- DASHBOARD ---------------------------------------------------------------------------------------- --}}
                 <li class="nav-item">
@@ -41,6 +41,35 @@
                     </li>
                 @endif
 
+                @if (Auth::user()->hasRole('dinas'))
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="bi bi-archive"></i>
+                            <p>
+                                Data Master
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            {{-- ---------------------------------------------------------------------------------------- RUANG KELAS ---------------------------------------------------------------------------------------- --}}
+                            <li class="nav-item">
+                                <a href="/jenis-laboratorium"
+                                    class="nav-link {{ Request::is('jenis-laboratorium') ? 'active' : '' }}">
+                                    <i class="fa-regular fa-circle"></i>
+                                    <p>Jenis Laboratorium</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/jenis-penunjang"
+                                    class="nav-link {{ Request::is('jenis-penunjang') ? 'active' : '' }}">
+                                    <i class="fa-regular fa-circle"></i>
+                                    <p>Jenis Penunjang</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+
                 {{-- ---------------------------------------------------------------------------------------- LIST SEKOLAH & PROFIL SEKOLAH ---------------------------------------------------------------------------------------- --}}
                 <li class="nav-item">
                     <a href="/profil/admin" class="nav-link {{ Request::is('profil/*') ? 'active' : '' }}">
@@ -51,12 +80,16 @@
 
                 @if (Auth::user()->hasRole('dinas'))
                     {{-- ---------------------------------------------------------------------------------------- KOMPETENSI KEAHLIAN ---------------------------------------------------------------------------------------- --}}
-                    <li class="nav-item has-treeview {{
-                        Request::is('bidang-kompetensi') ? 'menu-open' : 
-                        (Request::is('program-kompetensi') ? 'menu-open' : 
-                        (Request::is('spektrum') ? 'menu-open' : 
-                        (Request::is('komli') ? 'menu-open' : '' )))
-                    }}">
+                    <li
+                        class="nav-item has-treeview {{ Request::is('bidang-kompetensi')
+                            ? 'menu-open'
+                            : (Request::is('program-kompetensi')
+                                ? 'menu-open'
+                                : (Request::is('spektrum')
+                                    ? 'menu-open'
+                                    : (Request::is('komli')
+                                        ? 'menu-open'
+                                        : ''))) }}">
                         <a href="#" class="nav-link">
                             <i class="nav-icon bi bi-award"></i>
                             <p>
@@ -68,8 +101,8 @@
                             {{-- ---------------------------------------------------------------------------------------- BIDANG KEAHLIAN ---------------------------------------------------------------------------------------- --}}
                             <li class="nav-item">
                                 <a href="/bidang-kompetensi"
-                                class="nav-link {{ Request::is('bidang-kompetensi') ? 'active' : '' }}">
-                                <i class="fa-regular fa-circle"></i>
+                                    class="nav-link {{ Request::is('bidang-kompetensi') ? 'active' : '' }}">
+                                    <i class="fa-regular fa-circle"></i>
                                     <p>Bidang Keahlian</p>
                                 </a>
                             </li>
@@ -109,7 +142,7 @@
 
                 {{-- ---------------------------------------------------------------------------------------- BANGUNAN SEKOLAH ---------------------------------------------------------------------------------------- --}}
                 <li
-                    class="nav-item has-treeview {{ Request::is('bangunan/*') ? 'menu-open' : (Request::is('bangunan*') ? 'menu-open': '') }}">
+                    class="nav-item has-treeview {{ Request::is('bangunan/*') ? 'menu-open' : (Request::is('bangunan*') ? 'menu-open' : '') }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-building"></i>
                         <p>
@@ -227,7 +260,8 @@
 
                 @if (Auth::user()->hasRole('dinas'))
                     {{-- ---------------------------------------------------------------------------------------- MONITORING & EVALUASI ---------------------------------------------------------------------------------------- --}}
-                    <li class="nav-item has-treeview {{ Request::is('monitoring') ? 'menu-open' : (Request::is('visitasi') ? 'menu-open' : '') }}">
+                    <li
+                        class="nav-item has-treeview {{ Request::is('monitoring') ? 'menu-open' : (Request::is('visitasi') ? 'menu-open' : '') }}">
                         <a href="#" class="nav-link">
                             <i class="nav-icon bi bi-shield-check"></i>
                             <p>
@@ -238,14 +272,14 @@
                         <ul class="nav nav-treeview">
                             {{-- ---------------------------------------------------------------------------------------- JURUSAN ---------------------------------------------------------------------------------------- --}}
                             <li class="nav-item">
-                                <a href="/monitoring" class="nav-link {{ Request::is('monitoring') ? 'active' : '' }}">
+                                <a href="/monitoring"
+                                    class="nav-link {{ Request::is('monitoring') ? 'active' : '' }}">
                                     <i class="fa-regular fa-circle"></i>
                                     <p>Monitoring</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/visitasi"
-                                    class="nav-link {{ Request::is('visitasi') ? 'active' : '' }}">
+                                <a href="/visitasi" class="nav-link {{ Request::is('visitasi') ? 'active' : '' }}">
                                     <i class="fa-regular fa-circle"></i>
                                     <p>Visitasi Sekolah</p>
                                 </a>

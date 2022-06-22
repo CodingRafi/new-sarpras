@@ -229,6 +229,85 @@
             </div>
         @endif
 
+        {{------------------------------------------------ LAMPIRAN -----------------------------------------------------------}}
+        <div class="card card-info card-outline">
+            <div class="ribbon-wrapper ribbon-xl">
+                <div class="ribbon bg-info text-lg">
+                    <span style="font-size: .8rem;">Permendiknas No.40 2008</span>
+                </div>
+            </div>
+            <div class="card-header">
+                @if (request('jenis') == 'ruang_kelas')
+                <h3 class="card-title">Lampiran Ruang Kelas</h3>
+                @elseif (request('jenis') == 'perpustakaan')
+                <h3 class="card-title">Lampiran Perpustakaan</h3>
+                @elseif (request('jenis') == 'toilet')
+                <h3 class="card-title">Lampiran Toilet</h3>
+                @endif
+            </div>
+            <div class="card-body p-0">
+                <div class="mailbox-read-message px-4">
+                    <ol type="I">
+                        @if (request('jenis') == 'ruang_kelas')
+                        <li class="pb-4">
+                            Ruang kelas berfungsi sebagai tempat berlangsungnya kegiatan pembelajaran
+                            teori, praktik yang tidak memerlukan peralatan khusus, atau praktik dengan alat
+                            khusus yang mudah dihadirkan.
+                        </li>
+                        <li class="pb-4">
+                            Jumlah minimum ruang kelas adalah 60% dari jumlah rombongan belajar.
+                        </li>
+                        <li class="pb-4">
+                            Kapasitas maksimum ruang kelas adalah 32 peserta didik.
+                        </li>
+                        <li>
+                            Rasio minimum luas ruang kelas adalah 2 m2
+                            /peserta didik. Untuk rombongan
+                            belajar dengan peserta didik kurang dari 16 orang, luas minimum ruang kelas
+                            adalah 32 m2. Lebar minimum ruang kelas adalah 4 m
+                        </li>
+                        @elseif (request('jenis') == 'perpustakaan')
+                        <li class="pb-4">
+                            Ruang perpustakaan berfungsi sebagai tempat kegiatan peserta didik dan guru
+                            memperoleh informasi dari berbagai jenis bahan pustaka dengan membaca,
+                            mengamati, mendengar, dan sekaligus tempat petugas mengelola perpustakaan.
+                        </li>
+                        <li class="pb-4">
+                            Luas minimum ruang perpustakaan adalah 96 m2. Lebar minimum ruang
+                            perpustakaan adalah 8 m.
+                        </li>
+                        <li>
+                            Ruang perpustakaan terletak di kelompok ruang kelas.
+                        </li>
+                        @elseif (request('jenis') == 'toilet')
+                        <li class="pb-4">
+                            Jamban berfungsi sebagai tempat buang air besar dan/atau kecil.
+                        </li>
+                        <li class="pb-4">
+                            Minimum terdapat 1 unit jamban untuk setiap 40 peserta didik pria, 1 unit
+                            jamban untuk setiap 30 peserta didik wanita, dan 1 unit jamban untuk guru.
+                            Jumlah minimum jamban di setiap SMK/MAK adalah 3 unit.
+                        </li>
+                        <li class="pb-4">
+                            Luas minimum 1 unit jamban adalah 2 m2
+                        </li>
+                        <li class="pb-4">
+                            Jamban harus berdinding, beratap, dapat dikunci, dan mudah dibersihkan.
+                        </li>
+                        <li>
+                            Tersedia air bersih di setiap unit jamban.
+                        </li>
+                        @endif
+                    </ol>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="float-right">
+                    <a href="https://luk.staff.ugm.ac.id/atur/bsnp/Permendiknas40-2008SarprasSMK.pdf" target="_blank"><button type="button" class="btn btn-default"><i class="fas fa-share"></i> Dokumen</button></a>
+                </div>
+            </div>
+        </div>
+
         {{-- End Row --}}
         <div class="card" style="margin-bottom: 10rem !important">
             <div class="card-header" style="background-color: #25b5e9">
@@ -309,9 +388,9 @@
                                                     <a href="/usulan-bangunan/{{ $usulan->id }}/edit"
                                                         class="btn btn-warning text-white">Edit</a>
 
-                                                    <button type="button" class="btn text-white tombolHapus"
+                                                    <button type="button" class="btn btn-danger tombolHapus"
                                                         data-toggle="modal" data-target="#confirmhapus"
-                                                        data-id="{{ $usulan->id }}" style="background-color: #263238">
+                                                        data-id="{{ $usulan->id }}" >
                                                         Hapus
                                                     </button>
                                             </tr>

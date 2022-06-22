@@ -414,8 +414,7 @@
                                                             class="d-inline-block">
                                                             @csrf
                                                             @method('delete')
-                                                            <button type="submit" class="btn text-white"
-                                                                style="background-color: #263238"
+                                                            <button type="submit" class="btn btn-danger"
                                                                 onclick="return confirm('Apakah anda yakin akan menghapus koleksi ini?')">Hapus</button>
                                                         </form>
                                                     </div>

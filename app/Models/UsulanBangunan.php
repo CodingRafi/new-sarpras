@@ -84,6 +84,5 @@ class UsulanBangunan extends Model
                 return $query->orderBy('kcds.instansi', 'asc');
             }
         }
-
     }
 }

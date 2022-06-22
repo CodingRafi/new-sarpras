@@ -111,7 +111,8 @@
                                             <td class="text-center">{{ $profil['jml_riwayat'] }}</td>
                                             <td class="text-center"><a
                                                     href="/riwayat-bantuan/{{ $profil['id_profil'] }}"
-                                                    class="btn text-white" style="background-color: #25b5e9">Detail</a></td>
+                                                    class="btn text-white" style="background-color: #00a65b">Detail</a>
+                                            </td>
                                     @endforeach
                                 </tbody>
                                 {{-- end isi table --}}

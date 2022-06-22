@@ -206,7 +206,7 @@ class VisitasiController extends Controller
                             ->leftJoin('profils', 'profils.id', 'visitasis.profil_id')
                             ->get();
         }else{
-            $visitasi = Visitasi::where('profil_id', Auth::user()->profil_id)->where('visitasis.status', 'unggah')->get();
+            $visitasi = Visitasi::where('profil_id', Auth::user()->profil_id)->get();
             // dd($visitasi);
             // $visitasi = ->visitasi;
         }

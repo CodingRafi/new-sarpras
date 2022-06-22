@@ -1,4 +1,4 @@
-@extends('myLayouts.main')
+@extends('mylayouts.main')
 
 @section('tambahcss')
     <link rel="stylesheet" href="/css/fstdropdown.css">
@@ -64,8 +64,7 @@
                                             <form action="/peralatan/{{ $peralatan->id }}" method="POST">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="btn text-white mt-2" style="background-color: #263238"
-                                                    onclick="return confirm('Apakah anda yakin akan menghapus peralatan ini?')">Hapus</button>
+                                                <button type="submit" class="btn btn-danger mt-2" onclick="return confirm('Apakah anda yakin akan menghapus peralatan ini?')">Hapus</button>
                                             </form>
                                         </td>
                                     </tr>

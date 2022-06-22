@@ -1,4 +1,4 @@
-@extends('myLayouts.main')
+@extends('mylayouts.main')
 
 @section('tambahcss')
     <style>
@@ -75,7 +75,7 @@
                                             </li>
                                         </ul>
                                     @endif
-                                    <div class="md-2 col-11" style="max-width: 89%;">
+                                    <div class="md-2 col-12 p-0" style="max-width: 100%;">
                                         <form class="form-inline ml-2" action="/bangunan/rehab-renov-dinas" method="GET"
                                             style="width: 100%;">
                                             <div class="input-group mt-2" style="width: 100%;border: 1px solid #ced4da;border-radius: 3px;">

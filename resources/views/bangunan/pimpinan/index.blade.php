@@ -1,4 +1,4 @@
-@extends('myLayouts.main')
+@extends('mylayouts.main')
 
 @section('tambahcss')
 <style>
@@ -242,6 +242,7 @@
         </div>
         <div class="card-body">
             @if (count($usulans) > 0)
+            
             <div class="table-responsive">
                 <table class="table table-bordered table-hover">
                     <thead>

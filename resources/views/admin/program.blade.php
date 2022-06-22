@@ -146,8 +146,7 @@
                                     class="d-inline-block">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="btn btn-dark btn-hapus" style="background-color: #263238"
-                                        onclick="return confirm('Apakah anda yakin akan menghapus program kompetensi ini? semua sekolah yang menggunakan program kompetensi ini akan terhapus')">Hapus</button>
+                                    <button type="submit" class="btn btn-danger btn-hapus" onclick="return confirm('Apakah anda yakin akan menghapus program kompetensi ini? semua sekolah yang menggunakan program kompetensi ini akan terhapus')">Hapus</button>
                                 </form>
                             </div>
                         </td>
