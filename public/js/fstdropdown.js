@@ -31,7 +31,7 @@ function setFstDropdown() {
         }
         if (select.multiple) {
             var selectAll = createFstElement("button", "fstAll", dropdown, { "click": selectAllOptions });
-            selectAll.textContent = "Pilih Semua Jurusan";
+            selectAll.textContent = "Pilih Semua Kompetensi Keahlian";
             selectAll.type = "button";
             selectAll.selected = false;
         }
@@ -113,7 +113,7 @@ function setFstDropdown() {
         selectAll.selected = length > 0;
         if (opened)
             dd.querySelector(".fstselected").textContent = length == 1 ? event.target.textContent : length + " options selected";
-        selectAll.textContent = selectAll.selected ? "Batal" : "Pilih Semua Jurusan";
+        selectAll.textContent = selectAll.selected ? "Batal" : "Pilih Semua Kompetensi Keahlian";
     }
 
     function rebindDropdown(select) {
@@ -195,7 +195,7 @@ function setFstDropdown() {
                 }
             }
         initNewEvent("change", select);
-        event.target.textContent = !selected ? "Pilih Semua Jurusan" : "Batal";
+        event.target.textContent = !selected ? "Pilih Semua Kompetensi Keahlian" : "Batal";
         setHeader(select, event);
     }
 
@@ -203,12 +203,21 @@ function setFstDropdown() {
         if (select.dataset["opened"] == null || select.dataset["opened"] != "true") {
             var text = "";
             var sOption = select.options[select.selectedIndex];
+            var jumlahKomli = document.querySelector(".list-select").childElementCount;
+            console.log(jumlahKomli);
             if (select.multiple) {
                 var count = 0;
                 for (var s in select.options)
                     if (select.options.hasOwnProperty(s) && select.options[s].selected == true)
                         count++;
-                text = count == 1 ? sOption.textContent : count + " options selected";
+                if (count != 1 && count != jumlahKomli) {
+                    text = count + " options selected";
+                } else if (count != 1 && count == jumlahKomli){
+                    text = "Semua Kompetensi Keahlian";
+                } else {
+                    sOption.textContent;
+                }
+                // text = count == 1 ? sOption.textContent : count + " options selected";
             }
             select.fstdropdown.dd.querySelector(".fstselected").textContent = select.multiple ? text : sOption != undefined ? sOption.textContent : "";
             if(event != null)
