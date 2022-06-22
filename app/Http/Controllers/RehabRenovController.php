@@ -39,25 +39,10 @@ class RehabRenovController extends Controller
         $koleksi_rehab = UsulanKoleksi::koleksi($rehab);
         $fotos_rehab = UsulanFoto::fotos($koleksi_rehab);
 
-        $pimpinan = Pimpinan::select('pimpinans.*', 'jenis_pimpinans.*', 'pimpinans.id as id_pimpinan' , 'jenis_pimpinans.id as id_jenis_pimpinan')
-                            ->leftJoin('jenis_pimpinans', 'jenis_pimpinans.id', 'pimpinans.jenis_pimpinan_id')
-                            ->where('profil_id', Auth::user()->profil_id)->get();
-        $usulans = UsulanBangunan::select('usulan_bangunans.*', 'jenis_pimpinans.nama')
-                                    ->leftJoin('pimpinans', 'pimpinans.id', 'usulan_bangunans.pimpinan_id')
-                                    ->leftJoin('jenis_pimpinans', 'jenis_pimpinans.id', 'pimpinans.jenis_pimpinan_id')
-                                    ->where('usulan_bangunans.profil_id', Auth::user()->profil_id)
-                                    ->where('usulan_bangunans.jenis', 'ruang_pimpinan')->get();
-        $koleksi = UsulanKoleksi::koleksi($usulans);
-        $fotos = UsulanFoto::fotos($koleksi);
-
         return view("bangunan.rehabrenov.index", [
             'rehabs' => $rehab,
-            'usulanKoleksis' => $koleksi,
-            'usulanFotos' => $fotos,
-            'usulans' => $usulans,
             'usulanFotos_rehab' => $fotos_rehab,
             'kompils' => Kompeten::getKompeten(),
-            'datas' => $pimpinan
         ]);
     }
 

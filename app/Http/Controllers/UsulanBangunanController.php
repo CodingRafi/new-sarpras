@@ -76,7 +76,7 @@ class UsulanBangunanController extends Controller
                 'profil' => $usulanBangunan->profil,
                 'kompils' => Kompeten::getKompeten()
             ]);
-        }else if($usulanBangunan->jenis == 'ruang_pimpinan'){
+        }else if($usulanBangunan->jenis == 'ruang_penunjang'){
             return view('bangunan.show', [
                 'data' => $usulanBangunan,
                 'jenisPimpinan' => $usulanBangunan->jenisPimpinan->nama,
@@ -183,7 +183,7 @@ class UsulanBangunanController extends Controller
     public function editPimpinan(Request $request, $id){
         $data = UsulanBangunan::find($id);
         if($data->profil_id == Auth::user()->profil_id){
-            if ($data->jenis == 'ruang_pimpinan') {
+            if ($data->jenis == 'ruang_penunjang') {
                 $datadetail = UsulanBangunan::select('usulan_bangunans.*', 'pimpinans.*', 'jenis_pimpinans.nama', 'usulan_bangunans.id as id_usulan_bangunan')
                                             ->where('usulan_bangunans.id', $id)
                                             ->leftJoin('pimpinans', 'pimpinans.id', 'usulan_bangunans.pimpinan_id')
@@ -227,7 +227,7 @@ class UsulanBangunanController extends Controller
     {
         $usulanBangunan = UsulanBangunan::find($id);
         if($usulanBangunan->profil_id == Auth::user()->profil_id){
-            if ($usulanBangunan->jenis == 'ruang_pimpinan') {
+            if ($usulanBangunan->jenis == 'ruang_penunjang') {
                 $validatedData = $request->validate([
                     'pimpinan_id' => 'required',
                     'luas_lahan' => 'required'
@@ -260,7 +260,7 @@ class UsulanBangunanController extends Controller
     
             Log::createLog(Auth::user()->profil_id, Auth::user()->id, 'Mengubah Usulan Bangunan ' . str_replace("_", " ", $usulanBangunan->jenis));
 
-            if ($usulanBangunan->jenis == 'ruang_pimpinan') {
+            if ($usulanBangunan->jenis == 'ruang_penunjang') {
                 if (request('home') == 'penunjang') {
                     return redirect('/bangunan/penunjang')->with('success', 'Berhasil mengubah usulan Ruang Penunjang!');
                 }else{
