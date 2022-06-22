@@ -311,31 +311,37 @@
                                             name="email" value="{{ $profil->email, old('email') }}">
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Instagram</label>
+                                        <label class="col-sm-2 col-form-label">Instagram <span style="font-size: 14px;" class="text-danger">*</span></label>
                                         <input type="text" class="form-control col-sm-6" placeholder="Instagram"
                                             id="instagram" name="instagram"
                                             value="{{ $profil->instagram, old('instagram') }}" required>
+                                            <div class="row col-12"><div class="col-2"></div><small class="form-text text-muted col-6">https://www.instagram.com/<span class="text-bold">namainstagram</span></small></div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Facebook</label>
                                         <input type="text" class="form-control col-sm-6" placeholder="Facebook"
                                             id="facebook" name="facebook"
                                             value="{{ $profil->facebook, old('facebook') }}">
+                                            <div class="row col-12"><div class="col-2"></div><small class="form-text text-muted col-6">https://facebook.com/<span class="text-bold">namafacebook</span></small></div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Twitter</label>
                                         <input type="text" class="form-control col-sm-6" placeholder="Twitter" id="twitter"
                                             name="twitter" value="{{ $profil->twitter, old('twitter') }}">
+                                        <div class="row col-12"><div class="col-2"></div><small class="form-text text-muted col-6">https://twitter.com/<span class="text-bold">namatwitter</span></small></div>
+
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Tiktok</label>
                                         <input type="text" class="form-control col-sm-6" placeholder="Tiktok" id="tiktok"
                                             name="tiktok" value="{{ $profil->tiktok, old('tiktok') }}">
+                                        <div class="row col-12"><div class="col-2"></div><small class="form-text text-muted col-6">https://www.tiktok.com/<span class="text-bold">@namatiktok</span></small></div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Youtube</label>
-                                        <input type="text" class="form-control col-sm-6" placeholder="Youtube" id="youtube"
+                                        <label class="col-sm-2 col-form-label">Youtube <span style="font-size: 14px;" class="text-danger">*</span></label>
+                                        <input type="text" class="form-control col-sm-6" placeholder="Link Youtube" id="youtube"
                                             name="youtube" value="{{ $profil->youtube, old('youtube') }}" required>
+                                         <div class="row col-12"><div class="col-2"></div><b class="form-text text-muted col-6">https://www.youtube.com/...</b></div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Website</label>
@@ -348,6 +354,7 @@
                                             id="no_telp" name="no_telp" required
                                             value="{{ $profil->nomor_telepon, old('no_telp') }}">
                                     </div>
+                                      <p class="text-muted"><span class="text-danger">* </span>Note harus diisi</p>
                                 </div>
                                 <!-- /.card-body DATA SEKOLAH-->
 
