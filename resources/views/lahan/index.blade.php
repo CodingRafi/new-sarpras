@@ -384,78 +384,78 @@
         </div>
     </div>
 </div>
-{{-- ---------------------------------------------- End ------------------------------------------------- --}}
+    {{-- ---------------------------------------------- End ------------------------------------------------- --}}
 
 
-{{-- -------------------------------------------- Kekurangan Lahan ------------------------------------ --}}
-<div class="card mb-5">
-    <div class="card-header" style="background-color: #FCC12D">
-        <ul class="nav nav-pills ml-auto">
-            <li class="nav-item">
-                <a class="nav-link text-white font-weight-bold active" href="#data-kekurangan-lahan-sekolah"
-                    data-toggle="tab">
-                    <i class="bi bi-house-fill mr-1"></i>Kekurangan Lahan</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white font-weight-bold" href="#tambah-kekurangan-lahan" data-toggle="tab">
-                    <i class="bi bi-plus-lg mr-1"></i>Tambah Kekurangan Lahan</a>
-            </li>
-        </ul>
-    </div>
-    <!-- /.card-header DATA SEKOLAH-->
+    {{-- -------------------------------------------- Kekurangan Lahan ------------------------------------ --}}
+    <div class="card mb-5">
+        <div class="card-header" style="background-color: #FCC12D">
+            <ul class="nav nav-pills ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-white font-weight-bold active" href="#data-kekurangan-lahan-sekolah"
+                        data-toggle="tab">
+                        <i class="bi bi-house-fill mr-1"></i>Kekurangan Lahan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white font-weight-bold" href="#tambah-kekurangan-lahan" data-toggle="tab">
+                        <i class="bi bi-plus-lg mr-1"></i>Tambah Kekurangan Lahan</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.card-header DATA SEKOLAH-->
 
-    <div class="card-body p-0">
-        <div class="tab-content p-0">
-            <div class="tab-pane active" id="data-kekurangan-lahan-sekolah" style="min-height: 10rem;">
-                <div class="row">
-                    <div class="col">
-                        @if (count($kekuranganLahans) > 0)
-                        <div class="table-responsive">
-                            <table class="table table-hover text-nowrap text-center">
-                                {{-- judul table --}}
-                                <thead>
-                                    <tr>
-                                        <th scope="col">No</th>
-                                        <th scope="col">Nama Lahan</th>
-                                        <th scope="col">Luas Lahan(m²)</th>
-                                        <th scope="col">Keterangan</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                </thead>
-                                {{-- end judul table --}}
-                                {{-- isi table --}}
-                                <tbody>
-                                    @foreach ($kekuranganLahans as $lahan)
-                                    <tr>
-                                        <input type="hidden" class="id_kekuranganLahan" value="{{ $lahan->id }}">
-                                        <th scope="row">{{ $loop->iteration }}</th>
-                                        <td class="nama">{{ $lahan->nama }}</td>
-                                        <td class="luas">{{ $lahan->luas }} m²</td>
-                                        <td class="keterangan">{{ $lahan->keterangan }}</td>
-                                        <td>
-                                            <button type="button" class="btn text-white tombol-edit"
-                                                style="background-color: #FCC12D" data-toggle="modal"
-                                                data-target="#modal-edit">
-                                                Edit
-                                            </button>
-                                            <button type="button" class="btn btn-dark tombolHapus2"
-                                                style="background-color: #263238"
-                                                data-toggle="modal" data-target="#confirmHapus"
-                                                data-id="{{ $lahan->id }}">
-                                                Hapus
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                                {{-- end isi table --}}
-                            </table>
-                        </div>
-                        @else
-                        <div class="container d-flex justify-content-center align-items-center"
-                            style="height: 10rem">
-                            <div class="alert" role="alert">
-                                Data Tidak Ditemukan
+        <div class="card-body p-0">
+            <div class="tab-content p-0">
+                <div class="tab-pane active" id="data-kekurangan-lahan-sekolah" style="min-height: 10rem;">
+                    <div class="row">
+                        <div class="col">
+                            @if (count($kekuranganLahans) > 0)
+                            <div class="table-responsive">
+                                <table class="table table-hover text-nowrap text-center">
+                                    {{-- judul table --}}
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Nama Lahan</th>
+                                            <th scope="col">Luas Lahan(m²)</th>
+                                            <th scope="col">Keterangan</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    {{-- end judul table --}}
+                                    {{-- isi table --}}
+                                    <tbody>
+                                        @foreach ($kekuranganLahans as $lahan)
+                                        <tr>
+                                            <input type="hidden" class="id_kekuranganLahan" value="{{ $lahan->id }}">
+                                            <th scope="row">{{ $loop->iteration }}</th>
+                                            <td class="nama">{{ $lahan->nama }}</td>
+                                            <td class="luas">{{ $lahan->luas }} m²</td>
+                                            <td class="keterangan">{{ $lahan->keterangan }}</td>
+                                            <td>
+                                                <button type="button" class="btn text-white tombol-edit"
+                                                    style="background-color: #FCC12D" data-toggle="modal"
+                                                    data-target="#modal-edit">
+                                                    Edit
+                                                </button>
+                                                <button type="button" class="btn btn-danger tombolHapus2"
+                                                    data-toggle="modal" data-target="#confirmHapus"
+                                                    data-id="{{ $lahan->id }}">
+                                                    Hapus
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                    {{-- end isi table --}}
+                                </table>
+                            </div>
+                            @else
+                            <div class="container d-flex justify-content-center align-items-center"
+                                style="height: 10rem">
+                                <div class="alert" role="alert">
+                                    Data Tidak Ditemukan
+                                </div>
                             </div>
                         </div>
                         @endif
@@ -498,7 +498,6 @@
             </div>
         </div>
     </div>
-</div>
 {{-- ---------------------------------------------------- End ----------------------------------------- --}}
 
 {{-- --------------------------------------------------- Tab ------------------------------------------ --}}

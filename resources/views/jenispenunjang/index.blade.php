@@ -48,8 +48,7 @@
                                     <form action="/jenis-penunjang/{{ $jenis->id }}" method="post" class="d-inline-block">
                                         @csrf
                                         @method('delete')
-                                        <button type="submit" class="btn text-white" style="background-color: #263238"
-                                            onclick="return confirm('Apakah anda yakin akan menghapus jenis ruang penunjang ini?')">Hapus</button>
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus jenis ruang penunjang ini?')">Hapus</button>
                                     </form>
                                 </td>
                             </tr>

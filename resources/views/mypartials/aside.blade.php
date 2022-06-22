@@ -189,7 +189,7 @@
 
                 {{-- ---------------------------------------------------------------------------------------- MONITORING & EVALUASI ---------------------------------------------------------------------------------------- --}}
                 <li class="nav-item has-treeview">
-                    <a href="/visitasi-list" class="nav-link">
+                    <a href="/visitasi-list" class="nav-link {{ Request::is('visitasi-list') ? 'active' : '' }}">
                         <i class="nav-icon bi bi-shield-check"></i>
                         <p>
                             Monitoring & Evaluasi

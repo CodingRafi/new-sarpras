@@ -72,8 +72,7 @@
                                             <form action="/komli/{{ $komli->id_komlis }}" method="post" class="d-inline-block">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="btn text-white mt-2" style="background-color: #263238"
-                                                    onclick="return confirm('Apakah anda yakin akan menghapus jurusan ini? semua sekolah yang menggunakan jurusan ini akan terhapus')">Hapus</button>
+                                                <button type="submit" class="btn btn-danger mt-2" onclick="return confirm('Apakah anda yakin akan menghapus jurusan ini? semua sekolah yang menggunakan jurusan ini akan terhapus')">Hapus</button>
                                             </form>
                                         </div>
                                     </td>

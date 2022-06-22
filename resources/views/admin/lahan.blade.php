@@ -28,7 +28,7 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header d-flex p-0" style="background-color: #25b5e9">
-                <h3 class="card-title p-3 text-white">Lahan</h3>
+                <h3 class="card-title p-3 text-white font-weight-bold">Lahan</h3>
             </div>
             <div class="card-body">
                 {{-- Table --}}
@@ -97,7 +97,7 @@
                                             </a>
                                         </td>
                                         <td class="text-center" style="vertical-align: middle">
-                                            <a href="/usulan-lahan/{{ $usulan->id_usulan_lahan }}" class="btn btn-info">Detail</a>
+                                            <a href="/usulan-lahan/{{ $usulan->id_usulan_lahan }}" class="btn text-white" style="background-color: #00a65b">Detail</a>
                                         </td>
                                     </tr>
                                 @endforeach

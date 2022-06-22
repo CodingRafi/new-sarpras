@@ -388,9 +388,9 @@
                                                     <a href="/usulan-bangunan/{{ $usulan->id }}/edit"
                                                         class="btn btn-warning text-white">Edit</a>
 
-                                                    <button type="button" class="btn text-white tombolHapus"
+                                                    <button type="button" class="btn btn-danger tombolHapus"
                                                         data-toggle="modal" data-target="#confirmhapus"
-                                                        data-id="{{ $usulan->id }}" style="background-color: #263238">
+                                                        data-id="{{ $usulan->id }}" >
                                                         Hapus
                                                     </button>
                                             </tr>

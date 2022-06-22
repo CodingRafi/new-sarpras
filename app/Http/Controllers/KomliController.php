@@ -147,6 +147,5 @@ class KomliController extends Controller
         Kompeten::hapusKompeten($kompetens);
         Komli::destroy($komli->id);
         return redirect()->back()->with('success', 'Berhasil menghapus kompetensi keahlian!');
-
     }
 }

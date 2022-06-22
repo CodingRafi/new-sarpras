@@ -128,12 +128,11 @@
                                                     style="background-color: #FCC12D">Edit</a>
                                                 {{-- <form action=""><a class="btn text-white d-inline" style="background-color: #00a65b">Hapus</a></form> --}}
                                                 <form
-                                                    action="/peralatan-tersedia/{{ $peralatanTersedia->id }} class="d-inline"
+                                                    action="/peralatan-tersedia/{{ $peralatanTersedia->id }}" class="d-inline"
                                                     method="post">
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="submit" class="btn text-white d-inline btn-hapus"
-                                                        style="background-color: #263228"
+                                                    <button type="submit" class="btn btn-danger d-inline btn-hapus"
                                                         onclick="return confirm('Apakah anda yakin akan membatalkan usulan ini?')">Hapus</button>
                                                 </form>
                                             </div>
@@ -305,8 +304,7 @@
                                             <form action="/usulan-peralatan/{{ $usulanPeralatan->id }}" method="post">
                                                 @csrf
                                                 @method('delete')
-                                                <button class="btn text-white" style="background-color: #263228"
-                                                    type="submit"
+                                                <button class="btn btn-danger" type="submit"
                                                     onclick="return confirm('Apakah anda yakin akan membatalkan usulan peralatan ini?')">Batalkan</button>
                                             </form>
                                         </td>

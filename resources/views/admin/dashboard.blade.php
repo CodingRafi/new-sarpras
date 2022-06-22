@@ -130,7 +130,7 @@
     {{-- konten --}}
     <div class="card card-info">
         <div class="card-header" style="background-color: #25b5e9">
-            <h3 class="card-title">Status Sarana Pra sarana Sekolah</h3>
+            <h3 class="card-title font-weight-bold">Status Sarana Pra sarana Sekolah</h3>
         </div>
         <div class="card-body table-responsive">
             @if (count($datas) > 0)

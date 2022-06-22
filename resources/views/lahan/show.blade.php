@@ -42,8 +42,8 @@
     <div class="container-fluid">
         {{-- @dd($profil) --}}
         <div class="card">
-            <div class="card-header bg-info">
-                <h3 class="card-title">
+            <div class="card-header" style="background-color: #25b5e9">
+                <h3 class="card-title text-white font-weight-bold">
                     Profil Sekolah
                 </h3>
             </div>
@@ -89,8 +89,8 @@
         <!-- /.row -->
 
         <div class="card">
-            <div class="card-header bg-success">
-                <h3 class="card-title">
+            <div class="card-header" style="background-color: #00a65b">
+                <h3 class="card-title text-white font-weight-bold">
                     Usulan
                 </h3>
             </div>

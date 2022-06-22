@@ -18,7 +18,7 @@
 
         <div class="card">
             <div class="card-header" style="background-color: #00a65b">
-              <h3 class="text-white font-weight-bold">Upload Gambar</h3> 
+              <h3 class="text-white">Upload Gambar</h3> 
             </div>
             <div class="card-body">
                 <div class="row">
@@ -32,12 +32,11 @@
                             <input type="hidden" name="koleksi_id" value="{{ $koleksi_id }}">
                             <div class="col-6">
                                 <div class="mb-3">
-                                    <label for="formFileMultiple" class="form-label">Upload Gambar</label>
                                     <input class="form-control filename loading-tambah" type="file" id="formFileMultiple" {{ ($jeniskoleksi->id != 5) ? '' : 'multiple' }} accept="image/*" name="nama[]" style="padding: 6px;height: 40px;" onchange="previewImage()" required>
                                   </div>
                             </div>
                             <div class="container-preview"></div>
-                            <button type="submit" class="btn text-white loading-simpan" style="background-color: #00a65b">Simpan</button>
+                            <button type="submit" class="btn text-white loading-simpan ml-2" style="background-color: #00a65b">Simpan</button>
                         </form>
                     </div>
 

@@ -63,7 +63,8 @@
                                         <td class="text-center">{{ $visitasi->tanggal_visitasi }}</td>
                                         <td class="text-center">
                                             <a href="/visitasi/{{ $visitasi->id }}"
-                                                class="btn btn-warning text-white">Detail</a>
+                                                class="btn text-white" style="background-color: #00a65b">Detail
+                                            </a>
                                     </tr>
                                 @endforeach
                             </tbody>
