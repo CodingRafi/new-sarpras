@@ -322,7 +322,7 @@
                                         <input type="text" class="form-control col-sm-6" placeholder="Facebook"
                                             id="facebook" name="facebook"
                                             value="{{ $profil->facebook, old('facebook') }}">
-                                            <div class="row col-12"><div class="col-2"></div><small class="form-text text-muted col-6">https://web.facebook.com/<span class="text-bold">namafacebook</span></small></div>
+                                            <div class="row col-12"><div class="col-2"></div><small class="form-text text-muted col-6">https://facebook.com/<span class="text-bold">namafacebook</span></small></div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Twitter</label>
@@ -339,9 +339,9 @@
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Youtube <span style="font-size: 14px;" class="text-danger">*</span></label>
-                                        <input type="text" class="form-control col-sm-6" placeholder="https://www.youtube.com/" id="youtube"
+                                        <input type="text" class="form-control col-sm-6" placeholder="Link Youtube" id="youtube"
                                             name="youtube" value="{{ $profil->youtube, old('youtube') }}" required>
-                                         <div class="row col-12"><div class="col-2"></div><small class="form-text text-bold col-6">https://www.youtube.com/</small></div>
+                                         <div class="row col-12"><div class="col-2"></div><b class="form-text text-muted col-6">https://www.youtube.com/...</b></div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label">Website</label>
